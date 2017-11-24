@@ -3,23 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\UserType;
-use Session;
 
-class UsersController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    
-
     public function index()
     {
-        return view('admin.users.index')->with('users', User::all());
+        //
     }
 
     /**
@@ -29,8 +23,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $usersType = UserType::all();
-        return view('admin.users.create')->with('usersType', $usersType);
+        //
     }
 
     /**
@@ -41,22 +34,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'userType_id' => 'required'
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt('$request->password'),
-            'userType_id' => $request->userType_id
-        ]);
-        
-        Session::flash('success', 'Usuário adicionado com sucesso');
-        return redirect()->route('users');
+        //
     }
 
     /**
@@ -101,11 +79,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-
-        $user->delete();
-
-        Session::flash('success', 'Usuário deletado com sucesso');
-        return redirect()->back();
+        //
     }
 }
