@@ -3,9 +3,9 @@
 @section('content')
 	<div class="panel panel-default">
 		<div class="panel-heading" style="position: relative; height:80x; ">
-			<p style="line-height: 40px;">Todos Usuários</p>
+			<p style="line-height: 40px;">Todos Tipos de Usuários</p>
 			
-			<a href="{{ route('user.create') }}">
+			<a href="{{ route('userType.create') }}">
 				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
 			</a>
 
@@ -15,29 +15,26 @@
 			<table class="table table-hover">
 				<thead>
 					<th>Nome</th>
-					<th>Tipo de Usário</th>
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead>
 				<tbody>
-					@if ($users->count() > 0)
-						@foreach ($users as $user)
+					@if ($usersType->count() > 0)
+						@foreach ($usersType as $userType)
 							<tr>
-								<td style="vertical-align: middle !important;">{{ $user->name }}</td>
-								<td style="vertical-align: middle !important;">{{ $user->usersType->type_name }}</td>
+								<td style="vertical-align: middle !important;">{{ $userType->type_name }}</td>
 								<td><img style=" width:35px; " src="{{asset('images\edit.svg')}}"></td>
 								<td>
-									@if(Auth::id() !== $user->id)
-										<a href="{{ route('user.delete', ['id' => $user->id]) }} ">
-											<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
-										</a>
-									@endif
+									
+									<a href="{{ route('userType.delete', ['id' => $userType->id]) }} ">
+										<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
+									</a>
 								</td>
 							</tr>
 						@endforeach
 					@else						
 					<tr>
-							<td colspan="4" class="text-center">Sem usuários</td>
+							<td colspan="3" class="text-center">Sem tipos de usuário</td>
 						</tr>
 					@endif
 				</tbody>

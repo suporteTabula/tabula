@@ -3,23 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\UserType;
 use Session;
+use App\UserType;
 
-class UsersController extends Controller
+
+class UsersTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    
-
     public function index()
     {
-        return view('admin.users.index')->with('users', User::all());
+        return view('admin.usersType.index')->with('usersType', UserType::all());
     }
 
     /**
@@ -29,8 +26,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        $usersType = UserType::all();
-        return view('admin.users.create')->with('usersType', $usersType);
+        return view('admin.usersType.create');
     }
 
     /**
@@ -42,21 +38,19 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'userType_id' => 'required'
+            'type_name' => 'required'
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt('$request->password'),
-            'userType_id' => $request->userType_id
-        ]);
-        
-        Session::flash('success', 'Usuário adicionado com sucesso');
-        return redirect()->route('users');
+        $userType = new UserType();
+
+        $userType->type_name = $request->type_name;
+
+        $userType->save();
+
+        Session::flash('success', 'Novo tipo de usuário adicionado com sucesso');
+
+        return redirect()->route('usersType');
+
     }
 
     /**
@@ -101,11 +95,12 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
+        $userType = UserType::find($id);
 
-        $user->delete();
+        $userType->delete();
 
-        Session::flash('success', 'Usuário deletado com sucesso');
+        Session::flash('success', 'Tipo de usuário deletado com sucesso');
+
         return redirect()->back();
     }
 }
