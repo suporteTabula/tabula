@@ -30,4 +30,7 @@ Route::get('/admin/usersType/create', 'UsersTypeController@create')->name('userT
 Route::post('/admin/usersType/store', 'UsersTypeController@store')->name('userType.store');
 Route::get('/admin/userType/delete/{id}', 'UsersTypeController@destroy')->name('userType.delete');
 
-Route::get('admin/categories', 'CategoriesController@index')->name('categories');
+Route::get('/admin/categories', 'CategoriesController@index')->name('categories');
+Route::get('/admin/category/create', 'CategoriesController@create')->name('category.create');
+Route::post('/admin/category/store', 'CategoriesController@store')->name('category.store');
+Route::get('/admin/category/delete/{id}', 'CategoriesController@destroy')->name('category.delete');

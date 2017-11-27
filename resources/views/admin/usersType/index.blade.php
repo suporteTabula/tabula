@@ -24,8 +24,7 @@
 							<tr>
 								<td style="vertical-align: middle !important;">{{ $userType->type_name }}</td>
 								<td><img style=" width:35px; " src="{{asset('images\edit.svg')}}"></td>
-								<td>
-									
+								<td>									
 									<a href="{{ route('userType.delete', ['id' => $userType->id]) }} ">
 										<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
 									</a>

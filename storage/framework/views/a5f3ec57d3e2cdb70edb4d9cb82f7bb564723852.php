@@ -69,7 +69,7 @@
             <?php if(Route::has('login')): ?>
                 <div class="top-right links">
                     <?php if(auth()->guard()->check()): ?>
-                        <a href="<?php echo e(url('/home')); ?>">Home</a>
+                        <a href="<?php echo e(url('/admin/home')); ?>">Home</a>
                     <?php else: ?>
                         <a href="<?php echo e(route('login')); ?>">Login</a>
                         <a href="<?php echo e(route('register')); ?>">Register</a>
