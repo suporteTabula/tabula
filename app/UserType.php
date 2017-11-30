@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class UserType extends Model
 {
 
-	protected $fillable = ['type_name'];
+	protected $fillable = ['desc'];
     
     public function users()
     {
-    	return $this->hasMany('App\User');
+    	return $this->belongsToMany('App\User');
     }
 }

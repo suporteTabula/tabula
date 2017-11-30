@@ -43,19 +43,19 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'nickname' => 'required',
             'email' => 'required|email',
             'password' => 'required',
             'userType_id' => 'required'
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'nickname' => $request->nickname,
             'email' => $request->email,
             'password' => bcrypt('$request->password'),
-            'userType_id' => $request->userType_id
         ]);
         
+        $user->userTypes()->attach($request->userType_id);
         Session::flash('success', 'Usuário adicionado com sucesso');
         return redirect()->route('users');
     }

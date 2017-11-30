@@ -13,9 +13,9 @@
 
 				
 				<div class="form-group">
-					<label for="type_name">Nome</label>
+					<label for="desc">Nome</label>
 
-					<input class="form-control" type="text" name="type_name">
+					<input class="form-control" type="text" name="desc">
 				</div>
 
 				<div class="form-group">

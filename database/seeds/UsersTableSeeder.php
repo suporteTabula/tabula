@@ -11,17 +11,45 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $userType = App\UserType::create([
-            'type_name' => 'Admin'
+        $country = App\Country::create([
+            'name' => 'Brazil'
+        ]);
+
+        $state = App\State::create([
+            'name' => 'São Paulo',
+            'country_id' => $country->id
+        ]);
+
+        $schooling = App\Schooling::create([
+            'desc' => 'Tabula'
+        ]);
+
+        $admin = App\UserType::create([
+            'desc' => 'Admin'
         ]);
 
 
-        App\User::create([
-        	'name' => 'Admin',
+        $user = App\User::create([
+            'login' => 'Tabula',
+            'first_name' => 'Tabula',
+            'last_name' => 'Admin',
+            'sex' => 'Masculino',
+            'occupation' => 'Admin',
+            'birthdate' => '01/01/2016',
+            'website' => 'tabula.com.br',
+            'google_plus' => 'gmail.com',
+            'twitter' => 'twitter.com',
+            'facebook' => 'facebook.com',
+            'youtube' => 'youtube.com',
+            'bio' => 'Admin master of Tabula',
+        	'nickname' => 'Admin',
         	'email' => 'tabula@tabula.com.br',
         	'password' => bcrypt('tabula'),
-            'userType_id' => $userType->id,
-        	'admin' => 1
+            'country_id' => $country->id,
+            'state_id' => $state->id,
+            'schooling_id' => $schooling->id
         ]);
+
+        $user->userTypes()->attach($admin->id);
     }
 }

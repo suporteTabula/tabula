@@ -15,7 +15,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','userType_id'
+        'login', 'nickname', 'email', 'password', 'first_name', 'last_name',
+        'sex', 'occupation', 'bio'
     ];
 
     /**
@@ -27,8 +28,38 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function usersType()
+    public function countries()
     {
-        return $this->belongsTo('App\UserType', 'userType_id');
+        return $this->belongsTo('App\Country', 'country_id');
+    }
+
+    public function states()
+    {
+        return $this->belongsTo('App\State', 'state_id');
+    } 
+
+    public function schoolings()
+    {
+        return $this->belongsTo('App\Schooling', 'schooling_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
+    }
+
+    public function userTypes()
+    {
+        return $this->belongsToMany('App\UserType');
+    }
+
+    public function userGroups()
+    {
+        return $this->belongsToMany('App\UserGroup');
+    }
+
+    public function institution()
+    {
+        return $this->hasOne('App\UserGroup');
     }
 }

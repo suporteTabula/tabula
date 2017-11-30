@@ -38,12 +38,12 @@ class UsersTypeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'type_name' => 'required'
+            'desc' => 'required'
         ]);
 
         $userType = new UserType();
 
-        $userType->type_name = $request->type_name;
+        $userType->desc = $request->desc;
 
         $userType->save();
 
