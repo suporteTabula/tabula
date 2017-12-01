@@ -50,7 +50,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->nickname }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -79,25 +79,22 @@
                     <div class="col-lg-4">
                         <ul class="list-group">
                             
-                            @if(Auth::user()->admin)
+                            <li class="list-group-item">
+                                <a href="{{ route('home') }}">Home</a>
+                             </li>
 
-                                <li class="list-group-item">
-                                    <a href="{{ route('home') }}">Home</a>
-                                </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('users') }}">Todos Usuários</a>
+                            </li>
 
-                                <li class="list-group-item">
-                                    <a href="{{ route('users') }}">Todos Usuários</a>
-                                </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('usersType') }}">Tipos de Usuário</a>
+                            </li>
 
-                                <li class="list-group-item">
-                                    <a href="{{ route('usersType') }}">Tipos de Usuário</a>
-                                </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
+                            </li>
 
-                                <li class="list-group-item">
-                                    <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
-                                </li>
-
-                            @endif
                         </ul>
                     </div>
                 @endif

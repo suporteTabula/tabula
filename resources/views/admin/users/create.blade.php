@@ -16,14 +16,14 @@
 
 					<select id="userType" name="userType_id" class="form-control">
 						@foreach ($usersType as $userType)
-							<option value="{{ $userType->id }}"> {{ $userType->type_name }} </option>
+							<option value="{{ $userType->id }}"> {{ $userType->desc }} </option>
 						@endforeach
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="name">Nome</label>
+					<label for="nickname">Apelido</label>
 
-					<input class="form-control" type="text" name="name">
+					<input class="form-control" type="text" name="nickname">
 				</div>
 
 				<div class="form-group">
