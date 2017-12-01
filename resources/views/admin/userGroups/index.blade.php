@@ -28,7 +28,9 @@
 									{{ $userGroup->leader->first_name }}
 								</td>
 								<td>
-									<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
+									<a href="{{ route('userGroups.edit', ['id' => $userGroup->id]) }} ">
+										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
+									</a>
 								</td>
 								<td>									
 									<a href="{{ route('userGroups.destroy', ['id' => $userGroup->id]) }} ">

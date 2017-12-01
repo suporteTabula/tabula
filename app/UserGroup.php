@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserGroup extends Model
 {
+
+	protected $fillable = [
+		'desc', 'user_id'
+	];
+
     public function users()
     {
     	return $this->belongsToMany('App\User');

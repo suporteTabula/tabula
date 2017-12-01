@@ -37,5 +37,7 @@ Route::get('/admin/category/delete/{id}', 'CategoriesController@destroy')->name(
 
 Route::get('/admin/userGroups', 'UserGroupsController@index')->name('userGroups');
 Route::get('/admin/userGroups/create', 'UserGroupsController@create')->name('userGroups.create');
-Route::get('/admin/userGroups/store', 'UserGroupsController@store')->name('userGroups.store');
-Route::get('/admin/userGroups/destroy', 'UserGroupsController@destroy')->name('userGroups.destroy');
+Route::post('/admin/userGroups/store', 'UserGroupsController@store')->name('userGroups.store');
+Route::get('/admin/userGroups/edit/{id}', 'UserGroupsController@edit')->name('userGroups.edit');
+Route::post('/admin/userGroups/update/{id}', 'UserGroupsController@update')->name('userGroups.update');
+Route::get('/admin/userGroups/destroy/{id}', 'UserGroupsController@destroy')->name('userGroups.destroy');
