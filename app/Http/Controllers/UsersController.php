@@ -56,7 +56,7 @@ class UsersController extends Controller
             'nickname'      => 'required',
             'email'         => 'required|email',
             'password'      => 'required',
-            'usersType '    => 'required'
+            'usersType'     => 'required'
         ]);
 
         $user = User::create([

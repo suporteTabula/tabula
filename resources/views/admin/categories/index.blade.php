@@ -5,7 +5,7 @@
 		<div class="panel-heading" style="position: relative; height:80x; ">
 			<p style="line-height: 40px;">Todos Macrotemas</p>
 			
-			<a href="{{ route('categories') }}">
+			<a href="{{ route('category.create') }}">
 				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
 			</a>
 
@@ -23,9 +23,13 @@
 						@foreach ($categories as $category)
 							<tr>
 								<td style="vertical-align: middle !important;">{{ $category->desc }}</td>
-								<td><img style=" width:35px; " src="{{asset('images\edit.svg')}}"></td>
 								<td>
-									<a href="{{ route('categories', ['id' => $category->id]) }} ">
+									<a href="{{ route('category.edit', ['id' => $category->id]) }}">
+										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
+									</a>
+								</td>
+								<td>
+									<a href="{{ route('category.delete', ['id' => $category->id]) }} ">
 										<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
 									</a>									
 								</td>
