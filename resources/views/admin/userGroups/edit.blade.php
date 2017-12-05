@@ -15,6 +15,18 @@
 					<input class="form-control" type="text" value="{{ $userGroup->desc }}" name="desc">
 				</div>
 				<div class="form-group">
+					<label for="company_id">Empresa</label>
+					<select id="company" name="company_id" class="form-control">
+						@foreach ($companies as $company)
+							<option value="{{ $company->id }}"
+							@if($userGroup->company->id == $company->id)
+								selected
+							@endif
+							> {{ $company->name }} </option>
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
 					<div class="text-center">
 						<button class="button btn-success" type="submit">Editar</button>
 					</div>

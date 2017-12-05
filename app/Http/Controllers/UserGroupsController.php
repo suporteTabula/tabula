@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
-use App\User;
-use App\UserType;
 use App\UserGroup;
+use App\Company;
 
 class UserGroupsController extends Controller
 {
@@ -19,9 +18,8 @@ class UserGroupsController extends Controller
     public function index()
     {
         return view('admin.userGroups.index')
-            ->with('users', User::all())
-            ->with('userGroups', UserGroup::all());
-            
+            ->with('userGroups', UserGroup::all())
+            ->with('companies', Company::all());
     }
 
     /**
@@ -31,7 +29,8 @@ class UserGroupsController extends Controller
      */
     public function create()
     {
-        return view('admin.userGroups.create');
+        return view('admin.userGroups.create')
+            ->with('companies', Company::all());
     }
 
     /**
@@ -43,14 +42,13 @@ class UserGroupsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'desc' => 'required|max:100'
+            'desc'       => 'required|max:100',
+            'company_id' => 'required'
         ]);
-
-        $user = Auth::user();
 
         $userGroup = UserGroup::create([
             'desc' => $request->desc,
-            'user_id' => $user->id
+            'company_id' => $request->company_id
         ]);
 
         Session::flash('success', 'Grupo criado com sucesso');
@@ -80,7 +78,8 @@ class UserGroupsController extends Controller
         $userGroup = UserGroup::find($id);
 
         return view('admin.userGroups.edit')
-            ->with('userGroup', $userGroup);
+            ->with('userGroup', $userGroup)
+            ->with('companies', Company::all());
     }
 
     /**
