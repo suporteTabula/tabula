@@ -78,7 +78,7 @@
          <div class="container">
             <div class="row">
                 <?php if(Auth::check()): ?>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <ul class="list-group">
                             
                             <li class="list-group-item">
@@ -100,7 +100,7 @@
                         </ul>
                     </div>
                 <?php endif; ?>
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <?php echo $__env->yieldContent('content'); ?>
                 </div>
             </div>

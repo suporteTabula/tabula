@@ -22,7 +22,9 @@
 		<div class="panel-body">
 			<table class="table table-hover" id="userTable">
 				<thead>
-					<th>Apelido</th>
+					<th>Login</th>
+					<th>Nome Completo</th>
+					<th>E-mail</th>
 					<th>Tipo de Usário</th>
 					<th>Editar</th>
 					<th>Deletar</th>
@@ -31,9 +33,19 @@
 					@if ($users->count() > 0)
 						@foreach ($users as $user)
 							<tr>
-								<td style="vertical-align: middle !important;">{{ $user->nickname }}</td>
-								<td style="vertical-align: middle !important;">{{ $user->userTypes->find($user->id)->desc }}</td>
-								<td><img style=" width:35px; " src="{{asset('images\edit.svg')}}"></td>
+								<td style="vertical-align: middle !important;">{{ $user->login }}</td>
+								<td style="vertical-align: middle !important;">{{ $user->first_name. ' ' .$user->last_name}}</td>
+								<td style="vertical-align: middle !important;">{{ $user->email }}</td>
+								<td style="vertical-align: middle !important;">
+									@foreach ($user->userTypes as $userType)
+										{{$userType->desc}}
+									@endforeach 
+								</td>
+								<td>
+									<a href="{{ route('user.edit', ['id' => $user->id]) }}">
+										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
+									</a>
+								</td>
 								<td>
 									@if(Auth::id() !== $user->id)
 										<a href="{{ route('user.delete', ['id' => $user->id]) }} ">
@@ -62,7 +74,7 @@
 			table = document.getElementById("userTable");
 			tr = table.getElementsByTagName("tr");
 			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[0];
+				td = tr[i].getElementsByTagName("td")[1];
 				if (td) {
 					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
 						tr[i].style.display = "";
@@ -80,7 +92,7 @@
 			table = document.getElementById("userTable");
 		  	tr = table.getElementsByTagName("tr");
 		  	for (i = 0; i < tr.length; i++) {
-		  		td = tr[i].getElementsByTagName("td")[1];
+		  		td = tr[i].getElementsByTagName("td")[3];
 		  		if (td) {
 		  			if (td.innerHTML.indexOf(option) > -1) {
 		  				tr[i].style.display = "";

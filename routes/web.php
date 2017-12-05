@@ -24,6 +24,8 @@ Route::get('/admin/users', 'UsersController@index')->name('users');
 Route::get('/admin/user/delete/{id}', 'UsersController@destroy')->name('user.delete');
 Route::get('/admin/user/create', 'UsersController@create')->name('user.create');
 Route::post('/admin/user/store', 'UsersController@store')->name('user.store');
+Route::get('/admin/user/edit/{id}', 'UsersController@edit')->name('user.edit');
+Route::post('/admin/user/update/{id}', 'UsersController@update')->name('user.update');
 
 Route::get('/admin/usersType', 'UsersTypeController@index')->name('usersType');
 Route::get('/admin/usersType/create', 'UsersTypeController@create')->name('userType.create');

@@ -20,7 +20,9 @@
 		<div class="panel-body">
 			<table class="table table-hover" id="userTable">
 				<thead>
-					<th>Apelido</th>
+					<th>Login</th>
+					<th>Nome Completo</th>
+					<th>E-mail</th>
 					<th>Tipo de Usário</th>
 					<th>Editar</th>
 					<th>Deletar</th>
@@ -29,9 +31,20 @@
 					<?php if($users->count() > 0): ?>
 						<?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 							<tr>
-								<td style="vertical-align: middle !important;"><?php echo e($user->nickname); ?></td>
-								<td style="vertical-align: middle !important;"><?php echo e($user->userTypes->find($user->id)->desc); ?></td>
-								<td><img style=" width:35px; " src="<?php echo e(asset('images\edit.svg')); ?>"></td>
+								<td style="vertical-align: middle !important;"><?php echo e($user->login); ?></td>
+								<td style="vertical-align: middle !important;"><?php echo e($user->first_name. ' ' .$user->last_name); ?></td>
+								<td style="vertical-align: middle !important;"><?php echo e($user->email); ?></td>
+								<td style="vertical-align: middle !important;">
+									<?php $__currentLoopData = $user->userTypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $userType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+										<?php echo e($userType->desc); ?>
+
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+								</td>
+								<td>
+									<a href="<?php echo e(route('user.edit', ['id' => $user->id])); ?>">
+										<img style=" width:35px; " src="<?php echo e(asset('images\edit.svg')); ?>">
+									</a>
+								</td>
 								<td>
 									<?php if(Auth::id() !== $user->id): ?>
 										<a href="<?php echo e(route('user.delete', ['id' => $user->id])); ?> ">
@@ -60,7 +73,7 @@
 			table = document.getElementById("userTable");
 			tr = table.getElementsByTagName("tr");
 			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[0];
+				td = tr[i].getElementsByTagName("td")[1];
 				if (td) {
 					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
 						tr[i].style.display = "";
@@ -78,7 +91,7 @@
 			table = document.getElementById("userTable");
 		  	tr = table.getElementsByTagName("tr");
 		  	for (i = 0; i < tr.length; i++) {
-		  		td = tr[i].getElementsByTagName("td")[1];
+		  		td = tr[i].getElementsByTagName("td")[3];
 		  		if (td) {
 		  			if (td.innerHTML.indexOf(option) > -1) {
 		  				tr[i].style.display = "";
