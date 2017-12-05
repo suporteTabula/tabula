@@ -94,6 +94,9 @@
                             <li class="list-group-item">
                                 <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('userGroups') }}">Todos os Grupos</a>
+                            </li>
 
                         </ul>
                     </div>

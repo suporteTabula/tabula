@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserGroup extends Model
 {
+
+	protected $fillable = [
+		'desc', 'user_id'
+	];
+
     public function users()
     {
     	return $this->belongsToMany('App\User');
@@ -13,6 +18,6 @@ class UserGroup extends Model
 
     public function leader()
     {
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\User', 'user_id');
     }
 }
