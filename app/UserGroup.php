@@ -8,7 +8,7 @@ class UserGroup extends Model
 {
 
 	protected $fillable = [
-		'desc', 'user_id'
+		'desc', 'company_id'
 	];
 
     public function users()
@@ -16,8 +16,8 @@ class UserGroup extends Model
     	return $this->belongsToMany('App\User');
     }
 
-    public function leader()
+    public function company()
     {
-    	return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\Company');
     }
 }
