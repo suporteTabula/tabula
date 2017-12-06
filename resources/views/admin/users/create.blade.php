@@ -23,7 +23,7 @@
 							@foreach ($states as $state)
 								<option value="{{ $state->id }}"> {{ $state->name }} </option>
 							@endforeach
-					</select>
+						</select>
 					</div>
 
 					<div class="col-xs-4">
@@ -32,7 +32,7 @@
 							@foreach ($countries as $country)
 								<option value="{{ $country->id }}"> {{ $country->name }} </option>
 							@endforeach
-					</select>
+						</select>
 					</div>
 
 				</div>

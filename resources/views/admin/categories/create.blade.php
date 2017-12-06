@@ -13,9 +13,9 @@
 
 				<div class="form-group">
 					<select id="category" name="category_id" class="form-control">
-						<option value="0">Escolha o Macrotema</option>
+						<option value="">Escolha o Macrotema</option>
 						@foreach ($categories as $category)
-							@if ($category->category_id_parent == NULL || $category->category_id_parent == 0 )
+							@if ($category->category_id_parent == NULL)
 								<option value="{{ $category->id }}"> {{$category->desc}} </option>
 							@endif
 						@endforeach

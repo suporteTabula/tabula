@@ -45,9 +45,16 @@ class CategoriesController extends Controller
 
         $category->desc = $request->desc;
         
-        $category->category_id_parent = $request->category_id;
-        
-        $category->save();
+        if($request->category_id == '')
+        {
+            $category->category_id_parent = NULL;
+            $category->save();
+        }
+        else
+        {
+            $category->category_id_parent = $request->category_id;
+            $category->save();
+        }
 
         Session::flash('success', 'Categoria adicionada com sucesso');
 
@@ -93,7 +100,6 @@ class CategoriesController extends Controller
         $category = Category::find($id);
 
         $category->desc = $request->desc;
-
         $category->save();
 
         Session::flash('success', 'Categoria/Subcategoria alterada com sucesso');
