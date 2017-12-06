@@ -26,6 +26,18 @@
 						@endforeach
 					</select>
 				</div>
+				<table class="table table-hover">
+					<thead>
+						<th>Membros</th>
+					</thead>
+					<tbody>
+						@foreach($userGroup->users as $user)
+							<tr>
+								<td>{{ $user->first_name }}</td>
+							</tr>
+						@endforeach
+					</tbody>
+				</table>
 				<div class="form-group">
 					<div class="text-center">
 						<button class="button btn-success" type="submit">Editar</button>
