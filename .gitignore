@@ -20,3 +20,5 @@ Homestead.json
 .rocketeer/
 
 storage/logs/laravel\.log
+
+storage/framework/views/5758613ccdff0966ecba59303e05e04223b0066d\.php

@@ -11,7 +11,7 @@
 			<form action="{{ route('user.store') }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
 
-				<label for="userType">Tipo de usuário: </label>
+				<label for="usersType">Tipo de usuário: </label>
 				@foreach ($usersType as $userType)
 					<label class="checkbox-inline"><input type="checkbox" name="usersType[]" value="{{ $userType->id }}"> {{ $userType->desc }}</label>
 				@endforeach
@@ -23,7 +23,7 @@
 							@foreach ($states as $state)
 								<option value="{{ $state->id }}"> {{ $state->name }} </option>
 							@endforeach
-					</select>
+						</select>
 					</div>
 
 					<div class="col-xs-4">
@@ -32,7 +32,7 @@
 							@foreach ($countries as $country)
 								<option value="{{ $country->id }}"> {{ $country->name }} </option>
 							@endforeach
-					</select>
+						</select>
 					</div>
 
 				</div>

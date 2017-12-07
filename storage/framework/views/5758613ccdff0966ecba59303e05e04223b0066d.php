@@ -96,6 +96,9 @@
                             <li class="list-group-item">
                                 <a href="<?php echo e(route('categories')); ?>">Categorias/Macrotemas</a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="<?php echo e(route('userGroups')); ?>">Todos os Grupos</a>
+                            </li>
 
                         </ul>
                     </div>
