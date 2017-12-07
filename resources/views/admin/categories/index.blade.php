@@ -22,7 +22,7 @@
 					@if ($categories->count() > 0)
 						@foreach ($categories as $category)
 							<tr>
-								<td style="vertical-align: middle !important;">{{ $category->desc }}</td>
+								<td style="vertical-align: middle !important;">{{ $category->categoryName }}</td>
 								<td><img style=" width:35px; " src="{{asset('images\edit.svg')}}"></td>
 								<td>
 									<a href="{{ route('categories', ['id' => $category->id]) }} ">
