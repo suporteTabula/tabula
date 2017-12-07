@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
-use Auth;
 use Session;
+use App\Company;
 
-class CategoriesController extends Controller
+class CompaniesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index')->with('categories', Category::all());
+        return view('admin.companies.index')
+            ->with('companies', Company::all());
     }
 
     /**
@@ -26,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create')->with('categories', Category::all());
+        return view('admin.companies.create');
     }
 
     /**
@@ -38,27 +38,17 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'desc' => 'required'
+            'name' => 'required|max:100',
+            'desc' => 'required|max:300'
         ]);
 
-        $category = new Category();
+        $company = Company::create([
+            'name' => $request->name,
+            'desc' => $request->desc
+        ]);
 
-        $category->desc = $request->desc;
-        
-        if($request->category_id == '')
-        {
-            $category->category_id_parent = NULL;
-            $category->save();
-        }
-        else
-        {
-            $category->category_id_parent = $request->category_id;
-            $category->save();
-        }
-
-        Session::flash('success', 'Categoria adicionada com sucesso');
-
-        return redirect()->route('categories');
+        Session::flash('success', 'Empresa cadastrada com sucesso');
+        return redirect()->route('companies');
     }
 
     /**
@@ -80,8 +70,10 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.categories.edit')->with('category', $category);
+        $company = Company::find($id);
+
+        return view('admin.companies.edit')
+            ->with('company', $company);
     }
 
     /**
@@ -94,17 +86,18 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'desc' => 'required'
+            'name' => 'required|max:100',
+            'desc' => 'required|max:300'
         ]);
 
-        $category = Category::find($id);
+        $company = Company::find($id);
 
-        $category->desc = $request->desc;
-        $category->save();
-
-        Session::flash('success', 'Categoria/Subcategoria alterada com sucesso');
-
-        return redirect()->route('categories');
+        $company->name = $request->name;
+        $company->desc = $request->desc;
+        $company->save();
+        
+        Session::flash('success', 'Dados da Empresa alterados com sucesso');
+        return redirect()->route('companies');
     }
 
     /**
@@ -115,12 +108,11 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
+        $company = Company::find($id);
 
-        $category->delete();
+        $company->delete();
 
-        Session::flash('success', 'Categoria deletada com sucesso');
-
+        Session::flash('success', 'Empresa removida comp sucesso');
         return redirect()->back();
     }
 }

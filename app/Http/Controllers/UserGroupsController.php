@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
 use Auth;
 use Session;
+use App\User;
+use App\UserGroup;
+use App\Company;
 
-class CategoriesController extends Controller
+class UserGroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +18,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index')->with('categories', Category::all());
+        return view('admin.userGroups.index')
+            ->with('userGroups', UserGroup::all())
+            ->with('companies', Company::all());
     }
 
     /**
@@ -26,7 +30,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create')->with('categories', Category::all());
+        return view('admin.userGroups.create')
+            ->with('companies', Company::all());
     }
 
     /**
@@ -38,27 +43,18 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'desc' => 'required'
+            'desc'       => 'required|max:100',
+            'company_id' => 'required'
         ]);
 
-        $category = new Category();
+        $userGroup = UserGroup::create([
+            'desc' => $request->desc,
+            'company_id' => $request->company_id
+        ]);
 
-        $category->desc = $request->desc;
-        
-        if($request->category_id == '')
-        {
-            $category->category_id_parent = NULL;
-            $category->save();
-        }
-        else
-        {
-            $category->category_id_parent = $request->category_id;
-            $category->save();
-        }
+        Session::flash('success', 'Grupo criado com sucesso');
 
-        Session::flash('success', 'Categoria adicionada com sucesso');
-
-        return redirect()->route('categories');
+        return redirect()->route('userGroups');
     }
 
     /**
@@ -80,8 +76,11 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.categories.edit')->with('category', $category);
+        $userGroup = UserGroup::find($id);
+
+        return view('admin.userGroups.edit')
+            ->with('userGroup', $userGroup)
+            ->with('companies', Company::all());
     }
 
     /**
@@ -94,17 +93,17 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'desc' => 'required'
+            'desc' => 'required|max:100'
         ]);
 
-        $category = Category::find($id);
+        $userGroup = UserGroup::find($id);
 
-        $category->desc = $request->desc;
-        $category->save();
+        $userGroup->desc = $request->desc;
+        $userGroup->save();
 
-        Session::flash('success', 'Categoria/Subcategoria alterada com sucesso');
+        Session::flash('success', 'Grupo editado com sucesso');
 
-        return redirect()->route('categories');
+        return redirect()->route('userGroups');
     }
 
     /**
@@ -115,12 +114,11 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
+        $userGroup = UserGroup::find($id);
 
-        $category->delete();
+        $userGroup->delete();
 
-        Session::flash('success', 'Categoria deletada com sucesso');
-
+        Session::flash('success', 'Grupo removido com sucesso');
         return redirect()->back();
     }
 }
