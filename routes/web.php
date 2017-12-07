@@ -36,8 +36,6 @@ Route::get('/admin/categories', 'CategoriesController@index')->name('categories'
 Route::get('/admin/category/create', 'CategoriesController@create')->name('category.create');
 Route::post('/admin/category/store', 'CategoriesController@store')->name('category.store');
 Route::get('/admin/category/delete/{id}', 'CategoriesController@destroy')->name('category.delete');
-Route::get('/admin/category/edit/{id}', 'CategoriesController@edit')->name('category.edit');
-Route::post('/admin/category/update/{id}', 'CategoriesController@update')->name('category.update');
 
 Route::get('/admin/userGroups', 'UserGroupsController@index')->name('userGroups');
 Route::get('/admin/userGroups/create', 'UserGroupsController@create')->name('userGroups.create');
@@ -45,3 +43,10 @@ Route::post('/admin/userGroups/store', 'UserGroupsController@store')->name('user
 Route::get('/admin/userGroups/edit/{id}', 'UserGroupsController@edit')->name('userGroups.edit');
 Route::post('/admin/userGroups/update/{id}', 'UserGroupsController@update')->name('userGroups.update');
 Route::get('/admin/userGroups/destroy/{id}', 'UserGroupsController@destroy')->name('userGroups.destroy');
+
+Route::get('/admin/companies', 'CompaniesController@index')->name('companies');
+Route::get('/admin/companies/create', 'CompaniesController@create')->name('companies.create');
+Route::post('/admin/companies/store', 'CompaniesController@store')->name('companies.store');
+Route::get('/admin/companies/edit/{id}', 'CompaniesController@edit')->name('companies.edit');
+Route::post('/admin/companies/update/{id}', 'CompaniesController@update')->name('companies.update');
+Route::get('/admin/companies/destroy/{id}', 'CompaniesController@destroy')->name('companies.destroy');

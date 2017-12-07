@@ -78,7 +78,6 @@
                 @if(Auth::check())
                     <div class="col-lg-3">
                         <ul class="list-group">
-                            
                             <li class="list-group-item">
                                 <a href="{{ route('home') }}">Home</a>
                              </li>
@@ -95,9 +94,11 @@
                                 <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('userGroups') }}">Todos os Grupos</a>
+                                <a href="{{ route('companies') }}">Empresas</a>
                             </li>
-
+                            <li class="list-group-item">
+                                <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
+                            </li>
                         </ul>
                     </div>
                 @endif
