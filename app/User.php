@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\UserGroup');
     }
 
+    public function companies()
+    {
+        return $this->belongsToMany('App\Company');
+    }
+
     public function institution()
     {
         return $this->hasOne('App\UserGroup');

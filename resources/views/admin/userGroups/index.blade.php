@@ -25,7 +25,7 @@
 									{{ $userGroup->desc }}
 								</td>							
 								<td style="vertical-align: middle !important;">
-									{{ $userGroup->leader->first_name }}
+									{{ $userGroup->company->name }}
 								</td>
 								<td>
 									<a href="{{ route('userGroups.edit', ['id' => $userGroup->id]) }} ">

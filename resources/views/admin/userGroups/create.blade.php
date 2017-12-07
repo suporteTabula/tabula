@@ -15,6 +15,14 @@
 					<input class="form-control" type="text" name="desc">
 				</div>
 				<div class="form-group">
+					<label for="company_id">Empresas</label>
+					<select id="company" name="company_id" class="form-control">
+						@foreach ($companies as $company)
+							<option value="{{ $company->id }}"> {{ $company->name }} </option>
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
 					<div class="text-center">
 						<button class="button btn-success" type="submit">Criar</button>
 					</div>
