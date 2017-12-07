@@ -12,63 +12,63 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         App\Category::create([
-        	'categoryName' => 'Finanças e Economia'
+        	'desc' => 'Finanças e Economia'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Varejo e Consumo'
+        	'desc' => 'Varejo e Consumo'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Negócio e Gestão'
+        	'desc' => 'Negócio e Gestão'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Direito'
+        	'desc' => 'Direito'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Controladoria e Contabilidade'
+        	'desc' => 'Controladoria e Contabilidade'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'T.I. e Softwares'
+        	'desc' => 'T.I. e Softwares'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Marketing'
+        	'desc' => 'Marketing'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Engenharia'
+        	'desc' => 'Engenharia'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Concursos e Certificação'
+        	'desc' => 'Concursos e Certificação'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Arquitetura e Design'
+        	'desc' => 'Arquitetura e Design'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Saúde'
+        	'desc' => 'Saúde'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'História e Arte'
+        	'desc' => 'História e Arte'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Ensino Médio e Fundamental'
+        	'desc' => 'Ensino Médio e Fundamental'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Vídeo e Fotografia'
+        	'desc' => 'Vídeo e Fotografia'
         ]);
 
         App\Category::create([
-        	'categoryName' => 'Culinária e Hobbies'
+        	'desc' => 'Culinária e Hobbies'
         ]);
     }
 }

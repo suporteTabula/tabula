@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use Session;
-use App\UserType;
+use App\User;
+use App\UserGroup;
+use App\Company;
 
-
-class UsersTypeController extends Controller
+class UserGroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +18,9 @@ class UsersTypeController extends Controller
      */
     public function index()
     {
-        return view('admin.usersType.index')->with('usersType', UserType::all());
+        return view('admin.userGroups.index')
+            ->with('userGroups', UserGroup::all())
+            ->with('companies', Company::all());
     }
 
     /**
@@ -26,7 +30,8 @@ class UsersTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.usersType.create');
+        return view('admin.userGroups.create')
+            ->with('companies', Company::all());
     }
 
     /**
@@ -38,19 +43,18 @@ class UsersTypeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'desc' => 'required'
+            'desc'       => 'required|max:100',
+            'company_id' => 'required'
         ]);
 
-        $userType = new UserType();
+        $userGroup = UserGroup::create([
+            'desc' => $request->desc,
+            'company_id' => $request->company_id
+        ]);
 
-        $userType->desc = $request->desc;
+        Session::flash('success', 'Grupo criado com sucesso');
 
-        $userType->save();
-
-        Session::flash('success', 'Novo tipo de usuário adicionado com sucesso');
-
-        return redirect()->route('usersType');
-
+        return redirect()->route('userGroups');
     }
 
     /**
@@ -72,7 +76,11 @@ class UsersTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $userGroup = UserGroup::find($id);
+
+        return view('admin.userGroups.edit')
+            ->with('userGroup', $userGroup)
+            ->with('companies', Company::all());
     }
 
     /**
@@ -84,7 +92,18 @@ class UsersTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'desc' => 'required|max:100'
+        ]);
+
+        $userGroup = UserGroup::find($id);
+
+        $userGroup->desc = $request->desc;
+        $userGroup->save();
+
+        Session::flash('success', 'Grupo editado com sucesso');
+
+        return redirect()->route('userGroups');
     }
 
     /**
@@ -95,12 +114,11 @@ class UsersTypeController extends Controller
      */
     public function destroy($id)
     {
-        $userType = UserType::find($id);
+        $userGroup = UserGroup::find($id);
 
-        $userType->delete();
+        $userGroup->delete();
 
-        Session::flash('success', 'Tipo de usuário deletado com sucesso');
-
+        Session::flash('success', 'Grupo removido com sucesso');
         return redirect()->back();
     }
 }

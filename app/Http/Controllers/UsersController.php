@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\UserType;
 use Session;
+use App\State;
+use App\Country;
+use App\Schooling;
 
 class UsersController extends Controller
 {
@@ -31,7 +34,10 @@ class UsersController extends Controller
     public function create()
     {
         $usersType = UserType::all();
-        return view('admin.users.create')->with('usersType', $usersType);
+        return view('admin.users.create')->with('usersType', $usersType)
+                                         ->with('states', State::all())
+                                         ->with('countries', Country::all())
+                                         ->with('schoolings', Schooling::all());
     }
 
     /**
@@ -43,19 +49,38 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required',
-            'userType_id' => 'required'
+            'login'         => 'required',
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'sex'           => 'required',
+            'nickname'      => 'required',
+            'email'         => 'required|email',
+            'password'      => 'required',
+            'usersType '    => 'required'
         ]);
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt('$request->password'),
-            'userType_id' => $request->userType_id
+            'login'         => $request->login,
+            'email'         => $request->email,
+            'password'      => bcrypt('$request->password'),            
+            'first_name'    => $request->first_name,
+            'last_name'     => $request->last_name,
+            'nickname'      => $request->nickname,
+            'birthdate'     => $request->birthdate,
+            'sex'           => $request->sex,
+            'occupation'    => $request->occupation,
+            'bio'           => $request->bio,
+            'website'       => $request->website,
+            'google_plus'   => $request->google_plus,
+            'twitter'       => $request->twitter,
+            'facebook'      => $request->facebook,
+            'youtube'       => $request->youtube,
+            'state_id'      => $request->state_id,
+            'country_id'    => $request->country_id,
+            'schooling_id'  => $request->schooling_id
         ]);
-        
+
+        $user->userTypes()->attach($request->usersType);
         Session::flash('success', 'Usuário adicionado com sucesso');
         return redirect()->route('users');
     }
@@ -79,7 +104,12 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.users.edit')->with('user', $user)
+                                       ->with('usersType', UserType::all())
+                                       ->with('states', State::all())
+                                       ->with('countries', Country::all())
+                                       ->with('schoolings', Schooling::all());
     }
 
     /**
@@ -91,7 +121,37 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $this->validate($request, [
+            'login'         => 'required',
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'sex'           => 'required',
+            'nickname'      => 'required',
+            'email'         => 'required|email',
+        ]);
+
+        $user->login        = $request->login;
+        $user->email        = $request->email;
+        $user->first_name   = $request->first_name;
+        $user->last_name    = $request->last_name;
+        $user->nickname     = $request->nickname;
+        $user->birthdate    = $request->birthdate;
+        $user->sex          = $request->sex;
+        $user->occupation   = $request->occupation;
+        $user->bio          = $request->bio;
+        $user->website      = $request->website;
+        $user->google_plus  = $request->google_plus;
+        $user->twitter      = $request->twitter;
+        $user->facebook     = $request->facebook;
+        $user->youtube      = $request->youtube;
+        
+        $user->userTypes()->sync($request->usersType);
+        $user->save();
+
+        Session::flash('success', 'Usuário alterado com sucesso');
+        return redirect()->route('users');
     }
 
     /**
