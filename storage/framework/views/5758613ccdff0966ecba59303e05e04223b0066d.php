@@ -51,7 +51,7 @@
                         <?php else: ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    <?php echo e(Auth::user()->nickname); ?> <span class="caret"></span>
+                                    <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -78,29 +78,32 @@
          <div class="container">
             <div class="row">
                 <?php if(Auth::check()): ?>
-                    <div class="col-lg-3">
+                    <div class="col-lg-4">
                         <ul class="list-group">
                             
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('home')); ?>">Home</a>
-                             </li>
+                            <?php if(Auth::user()->admin): ?>
 
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('users')); ?>">Todos Usuários</a>
-                            </li>
+                                <li class="list-group-item">
+                                    <a href="<?php echo e(route('home')); ?>">Home</a>
+                                </li>
 
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('usersType')); ?>">Tipos de Usuário</a>
-                            </li>
+                                <li class="list-group-item">
+                                    <a href="<?php echo e(route('users')); ?>">Todos Usuários</a>
+                                </li>
 
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('categories')); ?>">Categorias/Macrotemas</a>
-                            </li>
+                                <li class="list-group-item">
+                                    <a href="<?php echo e(route('usersType')); ?>">Tipos de Usuário</a>
+                                </li>
 
+                                <li class="list-group-item">
+                                    <a href="<?php echo e(route('categories')); ?>">Categorias/Macrotemas</a>
+                                </li>
+
+                            <?php endif; ?>
                         </ul>
                     </div>
                 <?php endif; ?>
-                <div class="col-lg-9">
+                <div class="col-lg-8">
                     <?php echo $__env->yieldContent('content'); ?>
                 </div>
             </div>
