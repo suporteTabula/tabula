@@ -8,10 +8,12 @@
 				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}"> 
 			</a> 
 
-      		<select id="category" onchange="Filter()">
+      		<select id="category">
       			<option value="">Filtrar por: </option>
 				@foreach ($categories as $cat)
-					<option value="{{ $cat->desc }}">{{ $cat->desc }}</option>
+					@if ($cat->category_id_parent == NULL)
+						<option value="{{ $cat->desc }}">{{ $cat->desc }}</option>
+					@endif
 				@endforeach
 			</select>
 		</div> 
@@ -50,25 +52,23 @@
 	</div> 
 	@section('scripts')
 		<script>
+				 $('#category').on('change',function(){
 
-			function Filter() {
-				var select, option, table, tr, td, i;
-				select = document.getElementById("usersType");
-				option = select.options[select.selectedIndex].value;
-				table = document.getElementById("userTable");
-			  	tr = table.getElementsByTagName("tr");
-			  	for (i = 0; i < tr.length; i++) {
-			  		td = tr[i].getElementsByTagName("td")[3];
-			  		if (td) {
-			  			if (td.innerHTML.indexOf(option) > -1) {
-			  				tr[i].style.display = "";
-			  			} else {
-			  				tr[i].style.display = "none";
-			  			}
-			  		}        
-			  	}
-			}
 
+			        $.get("{{ url('/category/subcategories') }}", 
+			        { option: $(this).val() }, 
+			        function(data) {
+
+			            var model = $('#categories');
+			            alert(model);
+			            model.empty();
+			            $.each(data, function(index, element) {
+
+			                model.append("<tr><td>" +element.desc+ "</td></tr>");
+
+			            });
+			        });
+			    });
 		</script>
 	@stop
 @stop

@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/category/subcategories', 'CategoriesController@search');
 
 Route::get('admin/home', 'HomeController@index')->name('home');
 
@@ -31,7 +32,8 @@ Route::get('/admin/usersType', 'UsersTypeController@index')->name('usersType');
 Route::get('/admin/usersType/create', 'UsersTypeController@create')->name('userType.create');
 Route::post('/admin/usersType/store', 'UsersTypeController@store')->name('userType.store');
 Route::get('/admin/userType/delete/{id}', 'UsersTypeController@destroy')->name('userType.delete');
-
+Route::get('/admin/userType/edit/{id}', 'UsersTypeController@edit')->name('userType.edit');
+Route::post('/admin/userType/update/{id}', 'UsersTypeController@update')->name('userType.update');
 Route::get('/admin/categories', 'CategoriesController@index')->name('categories');
 Route::get('/admin/category/create', 'CategoriesController@create')->name('category.create');
 Route::post('/admin/category/store', 'CategoriesController@store')->name('category.store');
