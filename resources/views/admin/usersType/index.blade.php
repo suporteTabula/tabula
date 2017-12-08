@@ -23,7 +23,11 @@
 						@foreach ($usersType as $userType)
 							<tr>
 								<td style="vertical-align: middle !important;">{{ $userType->desc }}</td>
-								<td><img style=" width:35px; " src="{{asset('images\edit.svg')}}"></td>
+								<td>
+									<a href="{{ route('userType.edit', ['id' => $userType->id]) }} ">
+										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
+									</a>
+								</td>
 								<td>									
 									<a href="{{ route('userType.delete', ['id' => $userType->id]) }} ">
 										<img style=" width:35px; " src="{{ asset('images\error.svg') }}">

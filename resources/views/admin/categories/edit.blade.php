@@ -13,12 +13,24 @@
 
 				@if ($category->category_id_parent == NULL)
 					<div class="form-group">
-						<label for="desc">Lista de todas Subcategorias</label>
+						<label for="list">Lista de todas Subcategorias</label>
 						<ul class="list-group"> 
 							@foreach ($category->children as $cat)
 								<li class="list-group-item">{{ $cat->desc }}</li>
 							@endforeach
 						</ul>
+					</div>
+				@else
+					<div class="form-group">
+						<label for="category">Categorias</label>
+						<select id="category" name="category_id" class="form-control">
+							<option value="">Escolha o Macrotema</option>
+							@foreach ($categories as $cat)
+								@if ($cat->category_id_parent == NULL)
+									<option value="{{ $cat->id }}" @if($cat->id == $category->category_id_parent) selected @endif>{{ $cat->desc }}</option>
+								@endif
+							@endforeach
+						</select>
 					</div>
 				@endif
 
