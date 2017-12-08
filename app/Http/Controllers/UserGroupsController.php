@@ -99,6 +99,7 @@ class UserGroupsController extends Controller
         $userGroup = UserGroup::find($id);
 
         $userGroup->desc = $request->desc;
+        $userGroup->company_id = $request->company_id;
         $userGroup->save();
 
         Session::flash('success', 'Grupo editado com sucesso');
