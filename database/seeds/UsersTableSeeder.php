@@ -11,15 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $country = App\Country::create([
-            'name' => 'Brazil'
-        ]);
-
-        $state = App\State::create([
-            'name' => 'São Paulo',
-            'country_id' => $country->id
-        ]);
-
         $schooling = App\Schooling::create([
             'desc' => 'Tabula'
         ]);
@@ -39,8 +30,8 @@ class UsersTableSeeder extends Seeder
         	'nickname' => 'Admin',
         	'email' => 'tabula@tabula.com.br',
         	'password' => bcrypt('tabula'),
-            'country_id' => $country->id,
-            'state_id' => $state->id,
+            'country_id' => '1',
+            'state_id' => '1',
             'schooling_id' => $schooling->id
         ]);
 

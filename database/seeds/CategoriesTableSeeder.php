@@ -11,64 +11,22 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Category::create([
-        	'desc' => 'Finanças e Economia'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Varejo e Consumo'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Negócio e Gestão'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Direito'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Controladoria e Contabilidade'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'T.I. e Softwares'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Marketing'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Engenharia'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Concursos e Certificação'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Arquitetura e Design'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Saúde'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'História e Arte'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Ensino Médio e Fundamental'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Vídeo e Fotografia'
-        ]);
-
-        App\Category::create([
-        	'desc' => 'Culinária e Hobbies'
-        ]);
+       DB::table('categories')->insert([
+            ['desc' => 'Finanças e Economia'],
+            ['desc' => 'Varejo e Consumo'],
+            ['desc' => 'Negócio e Gestão'],
+            ['desc' => 'Direito'],
+            ['desc' => 'Controladoria e Contabilidade'],
+            ['desc' => 'T.I. e Softwares'],
+            ['desc' => 'Marketing'],
+            ['desc' => 'Engenharia'],
+            ['desc' => 'Concursos e Certificação'],
+            ['desc' => 'Arquitetura e Design'],
+            ['desc' => 'Saúde'],
+            ['desc' => 'História e Arte'],
+            ['desc' => 'Ensino Médio e Fundamental'],
+            ['desc' => 'Vídeo e Fotografia'],
+            ['desc' => 'Culinária e Hobbies']
+       ]);
     }
 }

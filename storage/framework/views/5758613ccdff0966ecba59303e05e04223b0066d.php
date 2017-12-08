@@ -80,7 +80,6 @@
                 <?php if(Auth::check()): ?>
                     <div class="col-lg-3">
                         <ul class="list-group">
-                            
                             <li class="list-group-item">
                                 <a href="<?php echo e(route('home')); ?>">Home</a>
                              </li>
@@ -97,9 +96,11 @@
                                 <a href="<?php echo e(route('categories')); ?>">Categorias/Macrotemas</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="<?php echo e(route('userGroups')); ?>">Todos os Grupos</a>
+                                <a href="<?php echo e(route('companies')); ?>">Empresas</a>
                             </li>
-
+                            <li class="list-group-item">
+                                <a href="<?php echo e(route('userGroups')); ?>">Grupos de Usuários</a>
+                            </li>
                         </ul>
                     </div>
                 <?php endif; ?>
