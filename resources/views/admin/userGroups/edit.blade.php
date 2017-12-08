@@ -28,6 +28,16 @@
 				</div>
 				<table class="table table-hover">
 					<thead>
+						<th>Empresa</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ $userGroup->company->name }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-hover">
+					<thead>
 						<th>Membros</th>
 					</thead>
 					<tbody>

@@ -20,6 +20,18 @@
 				</div>
 				<table class="table table-hover">
 					<thead>
+						<th>Grupos Associados</th>
+					</thead>
+					<tbody>
+						@foreach($company->userGroups as $userGroup)
+							<tr>
+								<td>{{ $userGroup->desc }}</td>
+							</tr>
+						@endforeach
+					</tbody>
+				</table>
+				<table class="table table-hover">
+					<thead>
 						<th>Usuários associados</th>
 					</thead>
 					<tbody>

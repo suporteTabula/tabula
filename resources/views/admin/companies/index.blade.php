@@ -3,7 +3,7 @@
 @section('content')
 	<div class="panel panel-default">
 		<div class="panel-heading" style="position: relative; height:80x; ">
-			<p style="line-height: 40px;">Todos os Grupos</p>
+			<p style="line-height: 40px;">Empresas cadastradas</p>
 			
 			<a href="{{ route('companies.create') }}">
 				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
@@ -40,7 +40,7 @@
 							</tr>
 						@endforeach
 					@else						
-					<tr>
+						<tr>
 							<td colspan="3" class="text-center">Não existem empresas cadastradas</td>
 						</tr>
 					@endif
@@ -48,5 +48,4 @@
 			</table>
 		</div>
 	</div>
-	
 @stop
