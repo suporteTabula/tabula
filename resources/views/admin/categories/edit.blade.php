@@ -33,18 +33,16 @@
 						</select>
 					</div>
 				@endif
-
 				<div class="form-group">
 					<label for="desc">Nome Categoria/Subcategoria</label>
-					<input class="form-control" type="text" value="{{ $category->desc }}" name="desc">
+					<input class="form-control" type="text" placeholder="Nome da categoria/subcategoria" value="{{ $category->desc }}" name="desc">
 				</div>
-
 				<div class="form-group">
 					<div class="text-center">
-						<button class="button btn-success" type="submit">Editar</button>
+						<button class="btn btn-success" type="submit">Salvar</button>
+						<a class="btn btn-success" href="{{ route('categories') }}">Voltar</a>
 					</div>
 				</div>
-
 			</form>
 		</div>
 	</div>
