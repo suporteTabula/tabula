@@ -12,11 +12,12 @@
 				{{ csrf_field() }}
 				<div class="form-group">
 					<label for="desc">Nome</label>
-					<input class="form-control" type="text" value="{{ $userType->desc }}" name="desc">
+					<input class="form-control" type="text" value="{{ $userType->desc }}" placeholder="Nome do tipo de usuário" name="desc">
 				</div>
 				<div class="form-group">
 					<div class="text-center">
-						<button class="button btn-success" type="submit">Editar</button>
+						<button class="btn btn-success" type="submit">Salvar</button>
+						<a class="btn btn-success" href="{{ route('usersType') }}">Voltar</a>
 					</div>
 				</div>
 			</form>
