@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-
+    protected $fillable = ['desc'];
+    
     public function users()
     {
     	return $this->belongsToMany('App\User');
