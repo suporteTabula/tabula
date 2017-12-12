@@ -17,18 +17,6 @@
 				@endforeach
 
 				<div class="form-group row">
-<<<<<<< HEAD
-					<div class="col-xs-4">
-						<label for="state">Estado</label>
-						<select id="state" name="state_id" class="form-control">
-							<option value="" selected disabled hidden>Escolha um...</option>
-							@foreach ($states as $state)
-								<option value="{{ $state->id }}"> {{ $state->name }} </option>
-							@endforeach
-						</select>
-					</div>
-=======
->>>>>>> feature_auth
 
 					<div class="col-xs-4">
 						<label for="country">País</label>

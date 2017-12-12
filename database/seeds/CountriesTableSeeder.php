@@ -12,12 +12,7 @@ class CountriesTableSeeder extends Seeder
     public function run()
     {
         $countries = array(
-<<<<<<< HEAD
-            array('name' => 'United States'),
-            array('name' => 'Canada'),
-=======
             array('name' => 'Brazil'),
->>>>>>> feature_auth
             array('name' => 'Afghanistan'),
             array('name' => 'Albania'),
             array('name' => 'Algeria'),
@@ -47,10 +42,6 @@ class CountriesTableSeeder extends Seeder
             array('name' => 'Bosnia and Herzegovina'),
             array('name' => 'Botswana'),
             array('name' => 'Bouvet Island'),
-<<<<<<< HEAD
-            array('name' => 'Brazil'),
-=======
->>>>>>> feature_auth
             array('name' => 'British lndian Ocean Territory'),
             array('name' => 'Brunei Darussalam'),
             array('name' => 'Bulgaria'),
@@ -58,10 +49,7 @@ class CountriesTableSeeder extends Seeder
             array('name' => 'Burundi'),
             array('name' => 'Cambodia'),
             array('name' => 'Cameroon'),
-<<<<<<< HEAD
-=======
             array('name' => 'Canada'),
->>>>>>> feature_auth
             array('name' => 'Cape Verde'),
             array('name' => 'Cayman Islands'),
             array('name' => 'Central African Republic'),
@@ -249,10 +237,7 @@ class CountriesTableSeeder extends Seeder
             array('name' => 'Ukraine'),
             array('name' => 'United Arab Emirates'),
             array('name' => 'United Kingdom'),
-<<<<<<< HEAD
-=======
             array('name' => 'United States'),
->>>>>>> feature_auth
             array('name' => 'United States minor outlying islands'),
             array('name' => 'Uruguay'),
             array('name' => 'Uzbekistan'),
