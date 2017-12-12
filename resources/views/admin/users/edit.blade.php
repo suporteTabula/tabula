@@ -24,14 +24,6 @@
 					@endforeach
 
 				<div class="form-group row">
-					<div class="col-xs-4">
-						<label for="state">Estado</label>
-						<select id="state" name="state_id" class="form-control">
-							@foreach ($states as $state)
-								<option value="{{ $state->id }}" @if($user->state_id == $state->id) selected @endif> {{ $state->name }} </option>
-							@endforeach
-					</select>
-					</div>
 
 					<div class="col-xs-4">
 						<label for="country">País</label>
@@ -39,9 +31,19 @@
 							@foreach ($countries as $country)
 								<option value="{{ $country->id }}" @if($user->country_id == $country->id) selected @endif> {{ $country->name }} </option>
 							@endforeach
-					</select>
+						</select>
 					</div>
 
+					<div class="col-xs-4">
+						<div class="state">
+							<label for="state">Estado</label>
+							<select id="state" name="state_id" class="form-control">
+								@foreach ($states as $state)
+									<option value="{{ $state->id }}" @if($user->state_id == $state->id) selected @endif> {{ $state->name }} </option>
+								@endforeach
+							</select>
+						</div>
+					</div>
 				</div>
 
 				<div class="form-group row">
@@ -154,4 +156,23 @@
 		</div>
 	</div>
 
+	@section('scripts')
+		<script>
+
+			if($('#country').val() == 1){
+				$('.state').show();
+			} else{
+				$('.state').hide();
+			}
+			
+			$('#country').change(function(){
+				if($('#country').val() == 1){
+					$('.state').show();
+				} else{
+					$('.state').hide();
+				}
+			});
+
+		</script>
+	@stop
 @stop
