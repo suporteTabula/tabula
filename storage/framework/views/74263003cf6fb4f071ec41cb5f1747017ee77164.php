@@ -10,7 +10,7 @@
 			<input class="form-control" type="text" id="search" onkeyup="Search()" placeholder="Digite um nome de usuário..." style="width: 300px;">
 
 			<select id="usersType" onchange="Filter()">
-				<option value="0">Tipo de usuário</option>
+				<option value="all">Todos tipos de usuário</option>
 				<?php $__currentLoopData = $usersType; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $userType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<option value="<?php echo e($userType->desc); ?>"><?php echo e($userType->desc); ?></option>
 				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -90,6 +90,7 @@
 				option = select.options[select.selectedIndex].value;
 				table = document.getElementById("userTable");
 			  	tr = table.getElementsByTagName("tr");
+<<<<<<< HEAD
 			  	for (i = 0; i < tr.length; i++) {
 			  		td = tr[i].getElementsByTagName("td")[3];
 			  		if (td) {
@@ -100,6 +101,27 @@
 			  			}
 			  		}        
 			  	}
+=======
+			  	if(option == 'all'){
+			  		for (i = 0; i < tr.length; i++) {
+			  			tr[i].style.display = "";
+        
+			  		}
+			  	}
+			  	else{
+			  		for (i = 0; i < tr.length; i++) {
+				  		td = tr[i].getElementsByTagName("td")[3];
+				  		if (td) {
+				  			if (td.innerHTML.indexOf(option) > -1) {
+				  				tr[i].style.display = "";
+				  			} else {
+				  				tr[i].style.display = "none";
+				  			}
+				  		}        
+			  		}	
+			  	}
+			  	
+>>>>>>> feature_auth
 			}
 		</script>
 	<?php $__env->stopSection(); ?>

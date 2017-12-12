@@ -28,6 +28,17 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function isAdmin()
+    {
+        foreach ($this->userTypes()->get() as $types) {
+            if($types->desc == 'Admin')
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function country()
     {
         return $this->belongsTo('App\Country', 'country_id');

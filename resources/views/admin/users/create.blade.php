@@ -17,6 +17,7 @@
 				@endforeach
 
 				<div class="form-group row">
+<<<<<<< HEAD
 					<div class="col-xs-4">
 						<label for="state">Estado</label>
 						<select id="state" name="state_id" class="form-control">
@@ -26,6 +27,8 @@
 							@endforeach
 						</select>
 					</div>
+=======
+>>>>>>> feature_auth
 
 					<div class="col-xs-4">
 						<label for="country">País</label>
@@ -35,6 +38,18 @@
 								<option value="{{ $country->id }}"> {{ $country->name }} </option>
 							@endforeach
 						</select>
+					</div>
+
+					<div class="col-xs-4">
+						<div class="state">
+							<label for="state">Estado</label>
+							<select id="state" name="state_id" class="form-control">
+								<option selected disabled hidden>Escolha um...</option>
+								@foreach ($states as $state)
+									<option value="{{ $state->id }}"> {{ $state->name }} </option>
+								@endforeach
+							</select>
+						</div>
 					</div>
 
 				</div>
@@ -144,4 +159,18 @@
 		</div>
 	</div>
 
+	@section('scripts')
+		<script>
+
+			$('.state').hide();
+			$('#country').change(function(){
+				if($('#country').val() == 1){
+					$('.state').show();
+				} else{
+					$('.state').hide();
+				}
+			});
+
+		</script>
+	@stop
 @stop
