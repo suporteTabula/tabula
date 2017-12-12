@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('facebook', 100)->nullable();
             $table->string('youtube', 100)->nullable();
             $table->integer('country_id');
-            $table->integer('state_id');
+            $table->integer('state_id')->nullable();
             $table->integer('schooling_id');
             $table->rememberToken();
             $table->timestamps();

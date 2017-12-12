@@ -72,7 +72,8 @@ class UsersTypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $userType = UserType::find($id);
+        return view('admin.usersType.edit')->with('userType', $userType);
     }
 
     /**
@@ -84,7 +85,20 @@ class UsersTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'desc' => 'required'
+        ]);
+
+        $userType = UserType::find($id);
+
+        $userType->desc = $request->desc;
+
+        $userType->save();
+        
+        Session::flash('success', 'Tipo de usuário alterado com sucesso');
+
+        return redirect()->route('usersType');
+
     }
 
     /**

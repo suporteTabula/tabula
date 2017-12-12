@@ -12,7 +12,7 @@
 				{{ csrf_field() }}
 				<div class="form-group">
 					<label for="desc">Nome</label>
-					<input class="form-control" type="text" value="{{ $userGroup->desc }}" name="desc">
+					<input class="form-control" type="text" value="{{ $userGroup->desc }}" placeholder="Nome do grupo" name="desc">
 				</div>
 				<div class="form-group">
 					<label for="company_id">Empresa</label>
@@ -28,6 +28,16 @@
 				</div>
 				<table class="table table-hover">
 					<thead>
+						<th>Empresa</th>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ $userGroup->company->name }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table table-hover">
+					<thead>
 						<th>Membros</th>
 					</thead>
 					<tbody>
@@ -40,7 +50,8 @@
 				</table>
 				<div class="form-group">
 					<div class="text-center">
-						<button class="button btn-success" type="submit">Editar</button>
+						<button class="btn btn-success" type="submit">Salvar</button>
+						<a class="btn btn-success" href="{{ route('userGroups') }}">Voltar</a>
 					</div>
 				</div>
 			</form>

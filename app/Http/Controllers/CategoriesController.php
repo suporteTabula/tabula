@@ -81,7 +81,8 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('admin.categories.edit')->with('category', $category);
+        return view('admin.categories.edit')->with('category', $category)
+                                            ->with('categories', Category::all());
     }
 
     /**
@@ -100,7 +101,17 @@ class CategoriesController extends Controller
         $category = Category::find($id);
 
         $category->desc = $request->desc;
-        $category->save();
+
+        if($request->category_id == '')
+        {
+            $category->category_id_parent = NULL;
+            $category->save();
+        }
+        else
+        {
+            $category->category_id_parent = $request->category_id;
+            $category->save();
+        }
 
         Session::flash('success', 'Categoria/Subcategoria alterada com sucesso');
 
@@ -122,5 +133,12 @@ class CategoriesController extends Controller
         Session::flash('success', 'Categoria deletada com sucesso');
 
         return redirect()->back();
+    }
+
+    public function search()
+    {
+        $input = Input::get('option');
+        $cat = Category::where('desc', '=', $input)->get();
+        return view('admin.categories.index')->with('sub', $cat);
     }
 }

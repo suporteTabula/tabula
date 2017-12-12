@@ -10,7 +10,7 @@
 			<input class="form-control" type="text" id="search" onkeyup="Search()" placeholder="Digite um nome de usuário..." style="width: 300px;">
 
 			<select id="usersType" onchange="Filter()">
-				<option value="0">Tipo de usuário</option>
+				<option value="all">Todos tipos de usuário</option>
 				<?php $__currentLoopData = $usersType; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $userType): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 					<option value="<?php echo e($userType->desc); ?>"><?php echo e($userType->desc); ?></option>
 				<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -65,43 +65,52 @@
 	</div>
 
 	<?php $__env->startSection('scripts'); ?>
-	<script>
-		function Search() {
-			var input, filter, table, tr, td, i;
-			input = document.getElementById("search");
-			filter = input.value.toUpperCase();
-			table = document.getElementById("userTable");
-			tr = table.getElementsByTagName("tr");
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[1];
-				if (td) {
-					if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
-					}
-				}        
+		<script>
+			function Search() {
+				var input, filter, table, tr, td, i;
+				input = document.getElementById("search");
+				filter = input.value.toUpperCase();
+				table = document.getElementById("userTable");
+				tr = table.getElementsByTagName("tr");
+				for (i = 0; i < tr.length; i++) {
+					td = tr[i].getElementsByTagName("td")[1];
+					if (td) {
+						if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+							tr[i].style.display = "";
+						} else {
+							tr[i].style.display = "none";
+						}
+					}        
+				}
 			}
-		}
 
-		function Filter() {
-			var select, option, table, tr, td, i;
-			select = document.getElementById("usersType");
-			option = select.options[select.selectedIndex].value;
-			table = document.getElementById("userTable");
-		  	tr = table.getElementsByTagName("tr");
-		  	for (i = 0; i < tr.length; i++) {
-		  		td = tr[i].getElementsByTagName("td")[3];
-		  		if (td) {
-		  			if (td.innerHTML.indexOf(option) > -1) {
-		  				tr[i].style.display = "";
-		  			} else {
-		  				tr[i].style.display = "none";
-		  			}
-		  		}        
-		  	}
-		}
-	</script>
+			function Filter() {
+				var select, option, table, tr, td, i;
+				select = document.getElementById("usersType");
+				option = select.options[select.selectedIndex].value;
+				table = document.getElementById("userTable");
+			  	tr = table.getElementsByTagName("tr");
+			  	if(option == 'all'){
+			  		for (i = 0; i < tr.length; i++) {
+			  			tr[i].style.display = "";
+        
+			  		}
+			  	}
+			  	else{
+			  		for (i = 0; i < tr.length; i++) {
+				  		td = tr[i].getElementsByTagName("td")[3];
+				  		if (td) {
+				  			if (td.innerHTML.indexOf(option) > -1) {
+				  				tr[i].style.display = "";
+				  			} else {
+				  				tr[i].style.display = "none";
+				  			}
+				  		}        
+			  		}	
+			  	}
+			  	
+			}
+		</script>
 	<?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

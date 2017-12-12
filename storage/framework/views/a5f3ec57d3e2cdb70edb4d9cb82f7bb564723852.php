@@ -70,6 +70,17 @@
                 <div class="top-right links">
                     <?php if(auth()->guard()->check()): ?>
                         <a href="<?php echo e(url('/admin/home')); ?>">Home</a>
+                        <a href="<?php echo e(route('logout')); ?>"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                            <?php echo e(csrf_field()); ?>
+
+
+                        </form>
                     <?php else: ?>
                         <a href="<?php echo e(route('login')); ?>">Login</a>
                         <a href="<?php echo e(route('register')); ?>">Register</a>
