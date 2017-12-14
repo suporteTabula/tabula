@@ -80,16 +80,16 @@
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <a href="{{ route('home') }}">Home</a>
-                             </li>
-
+                            </li>
                             <li class="list-group-item">
                                 <a href="{{ route('users') }}">Todos Usuários</a>
                             </li>
-
                             <li class="list-group-item">
                                 <a href="{{ route('usersType') }}">Tipos de Usuário</a>
                             </li>
-
+                            <li class="list-group-item">
+                                <a href="{{ route('courses') }}">Cursos</a>
+                            </li>
                             <li class="list-group-item">
                                 <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
                             </li>
