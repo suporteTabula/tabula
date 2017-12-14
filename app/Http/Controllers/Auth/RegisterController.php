@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\State; 
+use App\Country;
+use App\UserType;
+use App\Schooling;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -27,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -45,15 +51,29 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-    }
+    
 
+    protected function validator($request)
+    {       
+         return Validator::make($request, [
+            'login'         => 'required',   
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'nickname'      => 'required',
+            'sex'           => 'required',
+            'country_id'    => 'required',
+            'schooling_id'  => 'required',
+            'email'         => 'required|string|email|max:255|unique:users',
+            'password'      => 'required|min:6|confirmed',
+        ]);     
+    }    
+
+    public function showRegistrationForm()
+    {
+        return view('auth.register')->with('countries', Country::all())
+                                    ->with('states', State::all())
+                                    ->with('schoolings', Schooling::all());
+    }
     /**
      * Create a new user instance after a valid registration.
      *
@@ -62,10 +82,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $user = User::create([
+            'login'         => $data['login'],
+            'email'         => $data['email'],
+            'first_name'    => $data['first_name'],
+            'nickname'      => $data['nickname'],
+            'sex'           => $data['sex'],
+            'country_id'    => $data['country_id'],
+            'schooling_id'  => $data['schooling_id'],
+            'last_name'     => $data['last_name'],
+            'password'      => bcrypt($data['password']),
         ]);
+
+        $user->userTypes()->attach(2);
+        if ($data['state_id'] != '') {
+            $user->state_id = $data['state_id'];
+        }
+        $user->save();
+
+        return $user;
     }
 }
