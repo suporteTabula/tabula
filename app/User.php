@@ -78,4 +78,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\UserGroup');
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany('App\Course');
+    }
 }

@@ -56,4 +56,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/companies/edit/{id}', 'CompaniesController@edit')->name('companies.edit');
 	Route::post('/admin/companies/update/{id}', 'CompaniesController@update')->name('companies.update');
 	Route::get('/admin/companies/destroy/{id}', 'CompaniesController@destroy')->name('companies.destroy');
+
+	Route::get('/admin/courses', 'CoursesController@index')->name('courses');
+	Route::get('/admin/courses/create', 'CoursesController@create')->name('course.create');
+	Route::post('/admin/courses/store', 'CoursesController@store')->name('course.store');
+	Route::get('/admin/courses/edit/{id}', 'CoursesController@edit')->name('course.edit');
+	Route::post('/admin/courses/update/{id}', 'CoursesController@update')->name('course.update');
+	Route::get('/admin/courses/destroy/{id}', 'CoursesController@destroy')->name('course.destroy');
 });
