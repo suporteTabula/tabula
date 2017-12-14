@@ -124,8 +124,8 @@
                             </div>
 
                             <div class="state">
-                                <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
-                                    <label for="country" class="col-md-4 control-label">Estado</label>
+                                <div class="form-group{{ $errors->has('state') ? ' has-error' : '' }}">
+                                    <label for="state" class="col-md-4 control-label">Estado</label>
 
                                     <div class="col-md-6">
                                         <select id="state" name="state_id" class="form-control">

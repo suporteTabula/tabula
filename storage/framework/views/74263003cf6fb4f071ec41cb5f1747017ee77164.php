@@ -90,18 +90,6 @@
 				option = select.options[select.selectedIndex].value;
 				table = document.getElementById("userTable");
 			  	tr = table.getElementsByTagName("tr");
-<<<<<<< HEAD
-			  	for (i = 0; i < tr.length; i++) {
-			  		td = tr[i].getElementsByTagName("td")[3];
-			  		if (td) {
-			  			if (td.innerHTML.indexOf(option) > -1) {
-			  				tr[i].style.display = "";
-			  			} else {
-			  				tr[i].style.display = "none";
-			  			}
-			  		}        
-			  	}
-=======
 			  	if(option == 'all'){
 			  		for (i = 0; i < tr.length; i++) {
 			  			tr[i].style.display = "";
@@ -121,7 +109,6 @@
 			  		}	
 			  	}
 			  	
->>>>>>> feature_auth
 			}
 		</script>
 	<?php $__env->stopSection(); ?>

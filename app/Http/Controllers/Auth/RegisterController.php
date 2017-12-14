@@ -95,7 +95,7 @@ class RegisterController extends Controller
         ]);
 
         $user->userTypes()->attach(2);
-        if ($data['state_id'] != '') {
+        if (!empty($data['state_id'])) {
             $user->state_id = $data['state_id'];
         }
         $user->save();
