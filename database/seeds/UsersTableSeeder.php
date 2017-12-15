@@ -13,12 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         $schooling = App\Schooling::create([
             'desc' => 'Tabula'
-        ]);
-
-        $admin = App\UserType::create([
-            'desc' => 'Admin'
-        ]);
-
+        ]);        
 
         $user = App\User::create([
             'login' => 'Tabula',
@@ -35,6 +30,6 @@ class UsersTableSeeder extends Seeder
             'schooling_id' => $schooling->id
         ]);
 
-        $user->userTypes()->attach($admin->id);
+        $user->userTypes()->attach(1);
     }
 }
