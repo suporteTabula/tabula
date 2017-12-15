@@ -22,6 +22,8 @@ Route::get('/category/subcategories', 'CategoriesController@search');
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'HomeController@index')->name('home');
 
+	Route::get('category/{id}', 'HomeController@category')->name('category.single');
+
 	Route::get('/admin/users', 'UsersController@index')->name('users');
 	Route::get('/admin/user/delete/{id}', 'UsersController@destroy')->name('user.delete');
 	Route::get('/admin/user/create', 'UsersController@create')->name('user.create');
