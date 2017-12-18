@@ -26,15 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin/home')
-            ->with('categories', Category::all());
-    }
-
-    public function category($id)
-    {
-        $category = Category::find($id);
-
-        return view('category')
-            ->with('category', $category);
+        return view('admin/home');
     }
 }

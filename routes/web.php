@@ -17,12 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/category/subcategories', 'CategoriesController@search');
+Route::get('/', 'FrontController@index')->name('index.single');
+Route::get('category/{id}', 'FrontController@category')->name('category.single');
+Route::get('search', 'FrontController@search')->name('search.single');
 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'HomeController@index')->name('home');
-
-	Route::get('category/{id}', 'HomeController@category')->name('category.single');
 
 	Route::get('/admin/users', 'UsersController@index')->name('users');
 	Route::get('/admin/user/delete/{id}', 'UsersController@destroy')->name('user.delete');
