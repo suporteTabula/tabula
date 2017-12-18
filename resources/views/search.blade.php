@@ -3,12 +3,12 @@
 @section('content')
     <div class="panel panel-default">
         <div class="panel-heading">
-            {{ $category->desc }}
+            Busca
         </div>
         <div class="panel-body">
             <table class="table table-hover">
                 <thead>
-                    <th>Cursos</th>
+                    <th>Resultados</th>
                 </thead>
                 <tbody>
                     <tr>

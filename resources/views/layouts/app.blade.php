@@ -31,8 +31,15 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Tabula
                     </a>
+                    <div class="navbar-brand">
+                        >>
+                    </div>
+                    <div class="navbar-brand">
+                        Administração
+                    </div>
+                    
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -44,6 +51,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        <li><a href="{{ route('search.single') }}">Busca</a></li>
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
@@ -79,7 +87,7 @@
                     <div class="col-lg-3">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="{{ route('home') }}">Home</a>
+                                <a href="{{ route('home') }}">Principal</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="{{ route('users') }}">Todos Usuários</a>
