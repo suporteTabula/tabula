@@ -25,6 +25,6 @@ class Category extends Model
 
     public function courses()
     {
-        return $this->belongsToMany('App\Course');
+        return $this->hasMany('App\Course');
     }
 }

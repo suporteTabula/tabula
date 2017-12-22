@@ -24,8 +24,23 @@ class FrontController extends Controller
     }
 
     public function search()
-    {
+    {   
         return view('search')
-            ->with('categories', Category::all());
+            ->with('categories', Category::orderBy('desc', 'ASC')->get())  
+            ->with('catgroup', "Selecione um macrotema para pesquisar.");
+    }
+
+    public function searchCat(Request $request)
+    {
+        if(isset($request->checked_categories_output)) 
+        {
+            $catgroup = Category::all()->whereIN('id', explode(',', $request->checked_categories_output));
+                        
+            dd($catgroup);
+        }
+        else 
+        {
+            echo $catgroup = "Selecione um macrotema para pesquisar.";
+        }
     }
 }
