@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/', 'FrontController@index')->name('index.single');
 Route::get('category/{id}', 'FrontController@category')->name('category.single');
 Route::get('search', 'FrontController@search')->name('search.single');
+Route::get('searchcat', 'FrontController@searchCat')->name('search.category');
 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'HomeController@index')->name('home');
