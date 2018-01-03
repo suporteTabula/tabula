@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/', 'FrontController@index')->name('index.single');
 Route::get('category/{id}', 'FrontController@category')->name('category.single');
+Route::get('course/{id}', 'FrontController@course')->name('course.single');
 Route::get('search', 'FrontController@search')->name('search.single');
 Route::get('searchcat', 'FrontController@searchCat')->name('search.category');
 

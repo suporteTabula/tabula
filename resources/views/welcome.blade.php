@@ -13,7 +13,7 @@
                             <td>
                                 <a href="{{ route('category.single', ['id' => $category->id]) }}">
                                     <div style="height:100%;width:100%">
-                                        {{ $category->desc }}
+                                        {{ $category->desc }} ({{ $category->courses->count() }})
                                     </div>
                                 </a>
                             </td>
