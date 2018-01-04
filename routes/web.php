@@ -67,4 +67,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/courses/edit/{id}', 'CoursesController@edit')->name('course.edit');
 	Route::post('/admin/courses/update/{id}', 'CoursesController@update')->name('course.update');
 	Route::get('/admin/courses/destroy/{id}', 'CoursesController@destroy')->name('course.destroy');
+	Route::post('/admin/course/chapter/{id}', 'CoursesController@chapter')->name('course.chapter');
+	Route::get('/admin/course/chapter/edit/{id}', 'CoursesController@chapter_edit')->name('course.chapter.edit');
+	Route::post('/admin/course/chapter/update/{id}', 'CoursesController@chapter.update')->name('course.chapter.update');
+	Route::post('/admin/course/item/{id}', 'CoursesController@item')->name('course.item');
 });

@@ -82,16 +82,16 @@
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <a href="<?php echo e(route('home')); ?>">Home</a>
-                             </li>
-
+                            </li>
                             <li class="list-group-item">
                                 <a href="<?php echo e(route('users')); ?>">Todos Usuários</a>
                             </li>
-
                             <li class="list-group-item">
                                 <a href="<?php echo e(route('usersType')); ?>">Tipos de Usuário</a>
                             </li>
-
+                            <li class="list-group-item">
+                                <a href="<?php echo e(route('courses')); ?>">Cursos</a>
+                            </li>
                             <li class="list-group-item">
                                 <a href="<?php echo e(route('categories')); ?>">Categorias/Macrotemas</a>
                             </li>

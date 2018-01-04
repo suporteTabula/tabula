@@ -8,6 +8,9 @@ use Auth;
 use App\Category;
 use App\Course;
 use App\User;
+use App\CourseItemType;
+use App\CourseItemGroup;
+use App\CourseItem;
 
 class CoursesController extends Controller
 {
@@ -82,7 +85,8 @@ class CoursesController extends Controller
 
         return view('admin.courses.edit')
             ->with('course', $course)
-            ->with('categories', Category::all());
+            ->with('categories', Category::all())
+            ->with('course_items_group', CourseItemGroup::all());
     }
 
     /**
@@ -94,7 +98,24 @@ class CoursesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $course = Course::find($id);
+
+        $this->validate($request, [
+            'name'        => 'required|max:100',
+            'desc'        => 'required',
+            'category_id' => 'required'
+        ]);
+        
+        $course->name           = $request->name;
+        $course->desc           = $request->desc;
+        $course->category_id    = $request->category_id;
+
+        $course->save();
+
+        Session::flash('success', 'Curso atualizado com sucesso');
+        return redirect()->back();
+
+
     }
 
     /**
@@ -111,5 +132,27 @@ class CoursesController extends Controller
 
         Session::flash('success', 'Curso removido com sucesso');
         return redirect()->back();
+    }
+
+    public function chapter(Request $request, $id)
+    {
+        $course_item_group = CourseItemGroup::create([
+            'name'      =>  $request->name,
+            'desc'      =>  $request->desc,
+            'course_id' =>  $id
+        ]);
+
+        Session::flash('success', 'Capítulo adicionado com sucesso');
+        return redirect()->back();
+    }
+
+    public function chapter_edit($id)
+    {
+        $chapter = CourseItemGroup::find($id);
+
+        return view('admin.courses.chapter')
+                ->with('chapter', $chapter)
+                ->with('items', CourseItem::all())
+                ->with('items_type', CourseItemType::all());
     }
 }

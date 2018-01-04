@@ -19,4 +19,9 @@ class Course extends Model
     {
     	return $this->belongsTo('App\Category');
     }
+
+    public function course_item_groups()
+    {
+        return $this->hasMany('App\CourseItemGroup');
+    }
 }
