@@ -3,16 +3,17 @@
 @section('content') 
 	<div class="panel panel-default"> 
 		<div class="panel-heading" style="position: relative; height:80x; ">
-			<p style="line-height: 40px;">Todos Macrotemas</p> 
+			<p style="line-height: 40px;">Todos Macrotemas e Subtemas</p> 
 			<a href="{{ route('category.create') }}"> 
 				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}"> 
 			</a> 
 
-      		<select id="category">
-      			<option value="">Filtrar por: </option>
+			<label>Filtrar por Macrotemas:</label>
+      		<select class="testeClass" id="category">
+      			<option value="0">Todos os itens</option>
 				@foreach ($categories as $cat)
 					@if ($cat->category_id_parent == NULL)
-						<option value="{{ $cat->desc }}">{{ $cat->desc }}</option>
+						<option value="{{ $cat->id }}">{{ $cat->desc }}</option>
 					@endif
 				@endforeach
 			</select>
@@ -24,7 +25,7 @@
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead> 
-				<tbody>
+				<tbody class="panel-filter">
 					@if ($categories->count() > 0)
 						@foreach ($categories as $category) 
 							<tr>
@@ -52,23 +53,20 @@
 	</div> 
 	@section('scripts')
 		<script>
-				 $('#category').on('change',function(){
+			$('.testeClass').on('change', function()
+			{
+				var selected_category = $('.testeClass').val();
 
-
-			        $.get("{{ url('/category/subcategories') }}", 
-			        { option: $(this).val() }, 
-			        function(data) {
-
-			            var model = $('#categories');
-			            alert(model);
-			            model.empty();
-			            $.each(data, function(index, element) {
-
-			                model.append("<tr><td>" +element.desc+ "</td></tr>");
-
-			            });
-			        });
-			    });
+				$.ajax({
+	                type: 'get',
+	                dataType: 'html',
+	                url: '{{ URL::route('category.filter') }}',
+	                data: "cat_id=" + selected_category,
+	                success: function (response) {
+	                    $('.panel-filter').html(response);
+	                }
+                });
+			});
 		</script>
 	@stop
 @stop

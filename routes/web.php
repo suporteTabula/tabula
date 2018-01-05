@@ -46,6 +46,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/category/edit/{id}', 'CategoriesController@edit')->name('category.edit');
 	Route::post('/admin/category/update/{id}', 'CategoriesController@update')->name('category.update');
 	Route::get('/admin/category/delete/{id}', 'CategoriesController@destroy')->name('category.delete');
+	Route::get('/admin/category/filter', 'CategoriesController@filter')->name('category.filter');
 
 	Route::get('/admin/userGroups', 'UserGroupsController@index')->name('userGroups');
 	Route::get('/admin/userGroups/create', 'UserGroupsController@create')->name('userGroups.create');
