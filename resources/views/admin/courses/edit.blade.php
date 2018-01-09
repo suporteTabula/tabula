@@ -52,12 +52,10 @@
 			<div class="title_chapter">
 				<p style="line-height: 40px;">Capítulos</p>
 
-				<a class="chapter_click">
-					<img style=" width:30px; float: right; " src="{{asset('images\add.svg')}}">
-				</a>
+				<button id="create-chapter">Novo Cap.</button>
 			</div>
 
-			<div class="chapter">
+			<div id="chapter">
 				<form action="{{ route('course.chapter', ['id' => $course->id]) }}"method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
 
@@ -85,7 +83,9 @@
 				<thead>
 					<th>Capítulo</th>
 					<th>Descrição</th>
+					<th>Aulas/Avaliações</th>
 					<th>Editar</th>
+					<th>Deletar</th>
 				</thead>
 				<tbody>
 					@if ($course_items_group->count() > 0)
@@ -97,6 +97,11 @@
 									</td>							
 									<td style="vertical-align: middle !important;">
 										{{ $course_item_group->desc }}
+									</td>
+									<td>
+										@foreach ($ as $element)
+											{{-- expr --}}
+										@endforeach
 									</td>
 									<td>
 										<a href="{{ route('course.chapter.edit', ['id' => $course_item_group->id]) }}">
@@ -118,9 +123,35 @@
 
 	@section('scripts')
 		<script>
-			$('.chapter').hide();
-			$('.chapter_click').on('click', function() {
-				$('.chapter').toggle();
+			$( function() {
+				var dialog, form,
+				name = $( "#name" ),
+				desc = $( "#desc" ),
+				allFields = $( [] ).add( name ).add( desc ),
+				
+				    dialog = $( "#chapter" ).dialog({
+				    	autoOpen: false,
+				    	height: 400,
+				      	width: 350,
+				    	modal: true,
+				    	buttons: {
+				         	Cancel: function() {
+				          		dialog.dialog( "close" );
+				        	}
+				      	},
+				      	close: function() {
+				        	form[ 0 ].reset();
+				        	allFields.removeClass( "ui-state-error" );
+				      	}
+				    });
+				 
+				    form = dialog.find( "form" ).on( "submit", function( event ) {
+				    	
+				    });
+				 
+				    $( "#create-chapter" ).button().on( "click", function() {
+				    	dialog.dialog( "open" );
+				    });
 			});
 		</script>
 	@stop
