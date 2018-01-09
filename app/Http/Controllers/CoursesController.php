@@ -23,6 +23,7 @@ class CoursesController extends Controller
     {
         return view('admin.courses.index')
             ->with('courses', Course::all())
+            ->with('categories', Category::all())
             ->with('users', User::all());
     }
 
