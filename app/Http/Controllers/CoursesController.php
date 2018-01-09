@@ -155,4 +155,69 @@ class CoursesController extends Controller
                 ->with('items', CourseItem::all())
                 ->with('items_type', CourseItemType::all());
     }
+
+    public function chapter_update(Request $request, $id)
+    {
+        $chapter = CourseItemGroup::find($id);
+
+        $this->validate($request, [
+            'name'      => 'required',
+            'desc'      => 'required'
+        ]);
+
+        $chapter->name = $request->name;
+        $chapter->desc = $request->desc;
+        $chapter->save();
+
+        Session::flash('success', 'Capítulo editado com sucesso');
+        return redirect()->back();
+    }
+    public function item(Request $request, $id)
+    {
+        $item = CourseItem::create([
+            'name'                  => $request->name,
+            'desc'                  => $request->desc,
+            'course_item_group_id'  => $id,
+            'course_item_types_id'  => $request->item_type_id
+        ]);
+
+        Session::flash('success', 'Aula/Avaliação adicionada com sucesso');
+        return redirect()->back();
+    }
+
+    public function item_edit($id)
+    {
+        $item = CourseItem::find($id);
+
+        return view('admin.courses.item')
+                    ->with('item', $item)
+                    ->with('items_type', CourseItemType::all());
+    }
+
+    public function item_update(Request $request, $id)
+    {
+        $item = CourseItem::find($id);
+
+        $this->validate($request, [
+            'name'          => 'required',
+            'desc'          => 'required',
+            'item_type_id'  => 'required',
+        ]);
+
+        $item->name                 = $request->name;
+        $item->desc                 = $request->desc;
+        $item->course_item_types_id = $request->item_type_id;
+        $item->save();
+
+        Session::flash('success', 'Aula/Avaliação atualizada com sucesso');
+        return redirect()->back();
+    }
+    public function item_delete($id)
+    {
+        $item = CourseItem::find($id);
+
+        $item->delete();
+
+        Session::flash('info', 'Aula/Avaliação deletada com sucesso');
+    }
 }
