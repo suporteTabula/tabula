@@ -30,7 +30,8 @@ class FrontController extends Controller
         $course = Course::find($id);
 
         return view('course')
-            ->with('course', $course);
+            ->with('course', $course)
+            ->with('chapters', $course->course_item_groups->all());
     }
 
     public function search()
@@ -51,12 +52,9 @@ class FrontController extends Controller
                 $catcourses = $catgroup->courses->all();
                 foreach($catcourses as $catcourse)
                 {
-                    echo 
-                        '<a href="'.route('course.single', ['id' => $catcourse->id]).'">
-                            <div style="height:100%;width:100%">'
-                                .$catcourse->name.
-                            '</div>
-                        </a>';
+                    echo '<a href="'.route('course.single', ['id' => $catcourse->id]).'">';
+                    echo    '<div style="height:100%;width:100%">'.$catcourse->name.'</div>';
+                    echo '</a>';
                     echo '<br />';
                 }
             }            
