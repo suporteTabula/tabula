@@ -6,7 +6,7 @@
             <ul class="list-group">
                 @foreach($categories as $category)
                     <li class="list-group-item">
-                        <input type="checkbox" name="checkbox_category" value="{{ $category->id }}">
+                        <input type="checkbox" name="category_checkbox" value="{{ $category->id }}">
                         <label for="{{ $category->id }}"> {{ $category->desc }} ({{ $category->courses->count() }}) </label><br>
                     </li>
                 @endforeach
@@ -16,32 +16,43 @@
     <div class="col-lg-9">
         <div class="panel panel-default">
             <div class="panel-body">
-                {{ $catgroup }}
+                <div id="dynamic_serach_panel">
+                    Selecione um macrotema para pesquisar.
+                </div>
             </div>
         </div>
     </div>
     @section('scripts')
         <script>
-            $('input[name="checkbox_category"]').on('change', function()
-            {
+            $(document).ready(function(){
+                $('input[name="category_checkbox"]').change(function(){
 
-                var checkbox_category_group = [];
+                    var checked_group = [];
+                    var checked_num = 0;
 
-                $('input[name="checkbox_category"]:checked').each(function()
-                {
-                    checkbox_category_group.push($(this).val());
-                });
+                    $('input[name="category_checkbox"]:checked').each(function()
+                    {
+                        checked_group.push($(this).val());
+                        checked_num++;
+                    });
 
-                checkbox_category_group = checkbox_category_group.toString();
+                    checked_group = checked_group.toString();    
 
-                $.ajax({
-                    type: 'get',
-                    dataType: 'html',
-                    url: '{{ URL::route('search.category') }}',
-                    data: "checked_categories_output=" + checkbox_category_group,
-                    success: function (response) {
-                        $('.panel-body').html(response);
-                    }
+                    $.ajax({
+                        type: 'GET',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        url: '{{ route('search.category')}}',
+                        data: {checked_group_output:checked_group},
+                        error: function(e){
+                            console.log(e);
+                        },
+                        success: function(response){
+                            if (checked_num > 0)
+                                $('#dynamic_serach_panel').html(response);
+                            else 
+                                $('#dynamic_serach_panel').html('Selecione um macrotema para pesquisar.');
+                        }
+                    });
                 });
             });
         </script>

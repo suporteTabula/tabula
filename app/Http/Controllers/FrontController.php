@@ -37,31 +37,34 @@ class FrontController extends Controller
     public function search()
     {   
         return view('search')
-            ->with('categories', Category::orderBy('desc', 'ASC')->get())  
-            ->with('catgroup', "Selecione um macrotema para pesquisar.");
+            ->with('categories', Category::orderBy('desc', 'ASC')->get());
     }
 
     public function searchCat(Request $request)
     {
-        if(isset($request->checked_categories_output)) 
-        {
-            $catgroup = Category::all()->whereIN('id', explode(',', $request->checked_categories_output));
-            
-            foreach($catgroup as $catgroup)
+        if ($request->ajax()){
+            if(isset($request->checked_group_output))
             {
-                $catcourses = $catgroup->courses->all();
-                foreach($catcourses as $catcourse)
+                $categories = Category::all()->whereIN('id', explode(',', $request->checked_group_output));
+                $courses_group = array();
+
+                foreach($categories as $category)
                 {
-                    echo '<a href="'.route('course.single', ['id' => $catcourse->id]).'">';
-                    echo    '<div style="height:100%;width:100%">'.$catcourse->name.'</div>';
-                    echo '</a>';
-                    echo '<br />';
+                    $category_courses = $category->courses->all();
+
+                    foreach($category_courses as $category_course){
+                        array_push($courses_group, $category_course);
+                    }
+                }    
+
+                if($courses_group != NULL)
+                {
+                    return view('searchResults')
+                        ->with('courses', $courses_group); 
                 }
-            }            
-        }
-        else 
-        {
-            echo $catgroup = "Selecione um macrotema para pesquisar.";
+                else
+                    return 'Não existem cursos das opções selecionadas.';
+            }
         }
     }
 }
