@@ -9,7 +9,7 @@
 			</a> 
 
 			<label>Filtrar por Macrotemas:</label>
-      		<select class="testeClass" id="category">
+      		<select class="category_select" id="category">
       			<option value="0">Todos os itens</option>
 				@foreach ($categories as $cat)
 					@if ($cat->category_id_parent == NULL)
@@ -53,20 +53,25 @@
 	</div> 
 	@section('scripts')
 		<script>
-			$('.testeClass').on('change', function()
-			{
-				var selected_category = $('.testeClass').val();
+            $(document).ready(function(){
+                $('.category_select').change(function(){ 
 
-				$.ajax({
-	                type: 'get',
-	                dataType: 'html',
-	                url: '{{ URL::route('category.filter') }}',
-	                data: "cat_id=" + selected_category,
-	                success: function (response) {
-	                    $('.panel-filter').html(response);
-	                }
+                	var selected_category = $('.category_select').val();
+
+                    $.ajax({
+                        type: 'GET',
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        url: '{{ route('category.filter')}}',
+                        data: {selected_category_output:selected_category},
+                        error: function(e){
+                            console.log(e);
+                        },
+                        success: function(response){
+                            $('.panel-filter').html(response);
+                        }
+                    });
                 });
-			});
-		</script>
+            });
+        </script>
 	@stop
 @stop

@@ -145,54 +145,19 @@ class CategoriesController extends Controller
     public function filter(Request $request)
     {
 
-        if ($request->cat_id != 0)
+        if ($request->selected_category_output != 0)
         {
-            $subcats = Category::all()->whereIN('category_id_parent', explode(',', $request->cat_id));
-            if ($subcats->count() > 0)
-            {   
-                foreach($subcats as $subcat)
-                {
-                    echo '<tr>'; 
-                    echo    '<td style="vertical-align: middle !important;">'.$subcat->desc.'</td>'; 
-                    echo    '<td>';
-                    echo        '<a href="'.route('category.edit', ['id' => $subcat->id]).'">';
-                    echo            '<img style=" width:35px; " src="'.asset('images\edit.svg').'">';
-                    echo        '</a>';
-                    echo    '</td>'; 
-                    echo    '<td>'; 
-                    echo        '<a href="'.route('category.delete', ['id' => $subcat->id]).'">'; 
-                    echo            '<img style=" width:35px; " src="'.asset('images\error.svg').'">'; 
-                    echo        '</a>';                   
-                    echo    '</td>';
-                    echo '</tr>';
-                }    
-            }
-            else
-            {
-                echo '<tr>';
-                echo    '<td colspan="4" class="text-center">Sem Subtemas</td>';
-                echo '</tr>';
-            }
+            $subcategories = Category::all()->whereIN('category_id_parent', explode(',', $request->selected_category_output));
+
+            return view('admin.categories.filterResults')
+                ->with('subcategories', $subcategories);
         }
         else
         {
-            $subcats = Category::all();
-            foreach($subcats as $subcat)
-                {
-                    echo '<tr>'; 
-                    echo    '<td style="vertical-align: middle !important;">'.$subcat->desc.'</td>'; 
-                    echo    '<td>';
-                    echo        '<a href="'.route('category.edit', ['id' => $subcat->id]).'">';
-                    echo            '<img style=" width:35px; " src="'.asset('images\edit.svg').'">';
-                    echo        '</a>';
-                    echo    '</td>'; 
-                    echo    '<td>'; 
-                    echo        '<a href="'.route('category.delete', ['id' => $subcat->id]).'">'; 
-                    echo            '<img style=" width:35px; " src="'.asset('images\error.svg').'">'; 
-                    echo        '</a>';                   
-                    echo    '</td>';
-                    echo '</tr>';
-                } 
+            $subcategories = Category::all();
+
+            return view('admin.categories.filterResults')
+                ->with('subcategories', $subcategories);
         }
     }
 }
