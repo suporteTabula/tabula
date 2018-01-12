@@ -57,13 +57,8 @@ class FrontController extends Controller
                     }
                 }    
 
-                if($courses_group != NULL)
-                {
-                    return view('searchResults')
-                        ->with('courses', $courses_group); 
-                }
-                else
-                    return 'Não existem cursos das opções selecionadas.';
+                return view('searchResults')
+                    ->with('courses', $courses_group);
             }
         }
     }
