@@ -17,6 +17,8 @@
 					@endif
 				@endforeach
 			</select>
+			<input id="category_string" placeholder="Filtrar por Nome" type="text">
+            <button class="btn btn-success" id="filter_btn" type="button">Filtrar</button>
 		</div> 
 		<div class="panel-body"> 
 			<table id="categories" class="table table-hover"> 
@@ -54,15 +56,34 @@
 	@section('scripts')
 		<script>
             $(document).ready(function(){
-                $('.category_select').change(function(){ 
 
-                	var selected_category = $('.category_select').val();
+            	var output;
 
+            	$('#filter_btn').click(function(){ 
+            		setValues();
+                	filterCategories();
+            	});
+
+                $('.category_select').change(function(){
+                	setValues();
+                	filterCategories();
+                });
+
+                function setValues()
+                {
+                	var typed_category = $('#category_string').val();
+            		var selected_category = $('.category_select').val();
+
+                	output = {selected_category_output:selected_category,typed_category_output:typed_category};
+                }
+
+                function filterCategories()
+                {console.log(output);
                     $.ajax({
                         type: 'GET',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         url: '{{ route('category.filter')}}',
-                        data: {selected_category_output:selected_category},
+                        data: output,
                         error: function(e){
                             console.log(e);
                         },
@@ -70,7 +91,7 @@
                             $('.panel-filter').html(response);
                         }
                     });
-                });
+                }
             });
         </script>
 	@stop
