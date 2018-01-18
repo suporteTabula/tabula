@@ -144,10 +144,28 @@ class CategoriesController extends Controller
 
     public function filter(Request $request)
     {
+        if ($request->selected_category_output != 0 && $request->typed_category_output != "")
+        {
+            $subcategories = collect();
+            $subcategories_select = Category::all()->whereIN('category_id_parent', explode(',', $request->selected_category_output));
 
-        if ($request->selected_category_output != 0)
+            foreach ($subcategories_select as $subcategory) 
+                if(strpos(strtolower($subcategory->desc), strtolower($request->typed_category_output)) !== false)
+                    $subcategories->push($subcategory);
+
+            return view('admin.categories.filterResults')
+                ->with('subcategories', $subcategories);
+        }
+        else if ($request->selected_category_output != 0 && $request->typed_category_output == "")
         {
             $subcategories = Category::all()->whereIN('category_id_parent', explode(',', $request->selected_category_output));
+
+            return view('admin.categories.filterResults')
+                ->with('subcategories', $subcategories);
+        }
+        else if ($request->selected_category_output == 0 && $request->typed_category_output != "")
+        {
+            $subcategories = Category::where('desc','like', '%' . $request->typed_category_output . '%')->get();
 
             return view('admin.categories.filterResults')
                 ->with('subcategories', $subcategories);
