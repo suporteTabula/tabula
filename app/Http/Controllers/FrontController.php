@@ -12,8 +12,21 @@ class FrontController extends Controller
 {
     public function index()
     {
+        $featured_category1 = Category::find(1);
+        $featured_category2 = Category::find(2);
+
+        $featured_courses1 = $featured_category1->courses()->take(3)->get();
+        $featured_courses2 = $featured_category2->courses()->take(3)->get();
+
+        $featured_posts = Course::all()->take(4);
+
         return view('welcome')
-            ->with('categories', Category::orderBy('desc', 'ASC')->get());
+            ->with('categories', Category::orderBy('desc', 'ASC')->get())
+            ->with('featured_category1', $featured_category1->desc)
+            ->with('featured_category2', $featured_category2->desc)
+            ->with('featured_courses1', $featured_courses1)
+            ->with('featured_courses2', $featured_courses2)
+            ->with('featured_posts', $featured_posts);
     }
 
     public function category($id)
