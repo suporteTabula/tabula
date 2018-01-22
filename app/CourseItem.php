@@ -14,6 +14,11 @@ class CourseItem extends Model
 
     public function course_item_group()
     {
-    	return $this->belongsTo('App\CourseItemGroup');
+    	return $this->belongsTo('App\CourseItemGroup', 'course_item_group_id');
+    }
+
+    public function course_item_options()
+    {
+    	return $this->hasMany('App\CourseItemOption', 'course_items_id');
     }
 }

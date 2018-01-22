@@ -11,6 +11,7 @@ use App\User;
 use App\CourseItemType;
 use App\CourseItemGroup;
 use App\CourseItem;
+use App\CourseItemOption;
 
 class CoursesController extends Controller
 {
@@ -135,8 +136,19 @@ class CoursesController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Store a newly chapter in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function chapter(Request $request, $id)
     {
+        $this->validate($request, [
+            'name'      => 'required',
+            'desc'      => 'required'
+        ]);
         $course_item_group = CourseItemGroup::create([
             'name'      =>  $request->name,
             'desc'      =>  $request->desc,
@@ -147,6 +159,12 @@ class CoursesController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Show the form for editing the specified chapter.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function chapter_edit($id)
     {
         $chapter = CourseItemGroup::find($id);
@@ -157,6 +175,13 @@ class CoursesController extends Controller
                 ->with('items_type', CourseItemType::all());
     }
 
+    /**
+     * Update the specified chapter in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function chapter_update(Request $request, $id)
     {
         $chapter = CourseItemGroup::find($id);
@@ -173,8 +198,38 @@ class CoursesController extends Controller
         Session::flash('success', 'Capítulo editado com sucesso');
         return redirect()->back();
     }
+
+    public function chapter_delete($id)
+    {
+        $chapter = CourseItemGroup::find($id);
+
+        foreach ($chapter->course_items as $item)
+        {
+            if($item->course_item_options->count() > 0)
+            {
+                foreach ($item->course_item_options as $option) {
+                    $option->forceDelete();
+                }
+            }
+            $item->forceDelete();
+        }
+
+        $chapter->delete();
+    }
+    /**
+     * Store a newly item for the chapter in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function item(Request $request, $id)
     {
+        $this->validate($request, [
+            'name'          => 'required',
+            'item_type_id'  => 'required'
+        ]);
+
         $item = CourseItem::create([
             'name'                  => $request->name,
             'desc'                  => $request->desc,
@@ -186,22 +241,44 @@ class CoursesController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Show the form for editing the specified item of the chapter.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function item_edit($id)
     {
         $item = CourseItem::find($id);
 
-        return view('admin.courses.item')
+        if($item->course_item_type->id == 6)
+        {
+            return view('admin.courses.question')
                     ->with('item', $item)
+                    ->with('items_type', CourseItemType::all())
+                    ->with('item_options', CourseItemOption::all());
+        }
+        else
+        {
+            return view('admin.courses.item')
+                    ->with('item', $item)                    
                     ->with('items_type', CourseItemType::all());
+        }        
     }
 
+    /**
+     * Update the specified item of the chapter in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function item_update(Request $request, $id)
     {
         $item = CourseItem::find($id);
 
         $this->validate($request, [
             'name'          => 'required',
-            'desc'          => 'required',
             'item_type_id'  => 'required',
         ]);
 
@@ -213,12 +290,102 @@ class CoursesController extends Controller
         Session::flash('success', 'Aula/Avaliação atualizada com sucesso');
         return redirect()->back();
     }
+
+    /**
+     * Remove the specified item from the chapter.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function item_delete($id)
     {
         $item = CourseItem::find($id);
 
+        foreach ($item->course_item_options as $item_options)
+        {
+            $item_options->forceDelete();
+        }
+
         $item->delete();
 
         Session::flash('info', 'Aula/Avaliação deletada com sucesso');
+        return redirect()->back();
+    }
+
+    /**
+     * Store a newly alternative for the question in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function alt(Request $request, $id)
+    {
+        $this->validate($request, [
+            'desc'      =>  'required',
+            'trueFalse' =>  'required'
+        ]);
+
+        $alt = CourseItemOption::create([
+            'desc'              =>  $request->desc,
+            'course_items_id'   =>  $id,
+            'checked'           =>  $request->trueFalse
+        ]);
+
+        Session::flash('success', 'Alternativa adicionada com sucesso');
+        return redirect()->back();
+    }
+
+    /**
+     * Show the form for editing the specified alternative.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function alt_edit($id)
+    {
+        $alt = CourseItemOption::find($id);
+
+        return view('admin.courses.alternative')->with('alt', $alt);
+    }
+
+    /**
+     * Update the specified alternative in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function alt_update(Request $request, $id)
+    {
+        $alt = CourseItemOption::find($id);
+
+        $this->validate($request, [
+            'desc'          => 'required',
+            'trueFalse'     => 'required'
+        ]);
+
+        $alt->desc      = $request->desc;
+        $alt->checked   = $request->trueFalse;  
+        $alt->save();
+
+        Session::flash('success', 'Alternativa atualizada com sucesso!');
+        return redirect()->route('course.item.edit', ['id' => $alt->course_items_id]);
+    }
+
+    /**
+     * Remove the specified alternative.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function alt_delete($id)
+    {
+        $alt = CourseItemOption::find($id);
+
+        $alt->delete();
+
+        Session::flash('info', 'Alternativa excluida!');
+        return redirect()->back();
     }
 }

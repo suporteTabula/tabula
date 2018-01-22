@@ -29,8 +29,15 @@ class CourseItemTypesTableSeeder extends Seeder
         		"name"			=> "audio",
         		"created_at"	=> $now,
         		"updated_at"	=> $now,
-        	],
-
+        	], [
+                "name"          => "dissertativa",
+                "created_at"    => $now,
+                "updated_at"    => $now,
+            ], [
+                "name"          => "multipla_escolha",
+                "created_at"    => $now,
+                "updated_at"    => $now,
+            ],
         ]);
     }
 }

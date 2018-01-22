@@ -33,9 +33,15 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                        <?php echo e(config('app.name', 'Laravel')); ?>
-
+                        Tabula
                     </a>
+                    <div class="navbar-brand">
+                        >>
+                    </div>
+                    <div class="navbar-brand">
+                        Administração
+                    </div>
+                    
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -47,6 +53,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+                        <li><a href="<?php echo e(route('search.single')); ?>">Busca</a></li>
                         <?php if(auth()->guard()->guest()): ?>
                             <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
                             <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
@@ -83,7 +90,7 @@
                     <div class="col-lg-3">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="<?php echo e(route('home')); ?>">Home</a>
+                                <a href="<?php echo e(route('home')); ?>">Principal</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="<?php echo e(route('users')); ?>">Todos Usuários</a>

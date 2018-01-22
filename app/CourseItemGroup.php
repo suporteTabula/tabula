@@ -11,7 +11,7 @@ class CourseItemGroup extends Model
 	
     public function course_items()
     {
-    	return $this->hasMany('App\CourseItem');
+    	return $this->hasMany('App\CourseItem', 'course_item_group_id');
     }
 
     public function course()
