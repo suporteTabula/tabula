@@ -1,15 +1,10 @@
 <?php $__env->startSection('content'); ?>
     <div class="panel panel-default">
-        <div class="panel-heading">Dashboard</div>
-            <div class="panel-body">
-                <?php if(session('status')): ?>
-                    <div class="alert alert-success">
-                        <?php echo e(session('status')); ?>
-
-                    </div>
-                <?php endif; ?>
-                You are logged in!
-            </div>
+        <div class="panel-heading">
+            Principal
+        </div>
+        <div class="panel-body">
+            Bem vindo!
         </div>
     </div>
 <?php $__env->stopSection(); ?>

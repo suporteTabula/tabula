@@ -68,11 +68,19 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/courses/edit/{id}', 'CoursesController@edit')->name('course.edit');
 	Route::post('/admin/courses/update/{id}', 'CoursesController@update')->name('course.update');
 	Route::get('/admin/courses/destroy/{id}', 'CoursesController@destroy')->name('course.destroy');
+
 	Route::post('/admin/course/chapter/{id}', 'CoursesController@chapter')->name('course.chapter');
 	Route::get('/admin/course/chapter/edit/{id}', 'CoursesController@chapter_edit')->name('course.chapter.edit');
 	Route::post('/admin/course/chapter/update/{id}', 'CoursesController@chapter_update')->name('course.chapter.update');
+	Route::get('/admin/course/chapter/delete/{id}', 'CoursesController@chapter_delete')->name('course.chapter.delete');
+
 	Route::post('/admin/course/item/{id}', 'CoursesController@item')->name('course.item');
 	Route::get('/admin/course/chapter/item/edit/{id}', 'CoursesController@item_edit')->name('course.item.edit');
 	Route::post('/admin/course/chapter/item/update/{id}', 'CoursesController@item_update')->name('course.item.update');
 	Route::get('/admin/course/chapter/item/delete/{id}', 'CoursesController@item_delete')->name('course.item.delete');
+
+	Route::post('/admin/course/alt/{id}', 'CoursesController@alt')->name('course.alt');
+	Route::get('/admin/course/alt/edit/{id}', 'CoursesController@alt_edit')->name('course.alt.edit');
+	Route::post('/admin/course/alt/update/{id}', 'CoursesController@alt_update')->name('course.alt.update');
+	Route::get('/admin/course/alt/delete/{id}', 'CoursesController@alt_delete')->name('course.alt.delete');
 });

@@ -77,13 +77,11 @@
 					</div>
 				</form>
 			</div>
-				
-			
-			<table class="table table-hover">
+
+			<table class="table table-hover" data-form="deleteForm">
 				<thead>
 					<th>Capítulo</th>
 					<th>Descrição</th>
-					<th>Aulas/Avaliações</th>
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead>
@@ -97,17 +95,17 @@
 									</td>							
 									<td style="vertical-align: middle !important;">
 										{{ $course_item_group->desc }}
-									</td>
-									<td>
-										@foreach ($ as $element)
-											{{-- expr --}}
-										@endforeach
-									</td>
+									</td>									
 									<td>
 										<a href="{{ route('course.chapter.edit', ['id' => $course_item_group->id]) }}">
 											<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
 										</a>
-									</td>									
+									</td>
+									<td>
+										<a class="remove-record" data-toggle="modal" data-id="{{$course_item_group->id}}" data-target="#custom-width-modal" data-url="{{ route('course.chapter.delete', ['id' => $course_item_group->id]) }}" >
+											<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
+										</a>
+									</td>										
 								</tr>							
 							@endif
 						@endforeach
@@ -120,6 +118,26 @@
 			</table>
 		</div>
 	</div>
+
+	<form action="" method="GET" class="remove-record-model">
+	    <div id="custom-width-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
+	        <div class="modal-dialog" style="width:55%;">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	                    <h4 class="modal-title" id="custom-width-modalLabel">Deletar Capítulo</h4>
+	                </div>
+	                <div class="modal-body">
+	                    <h4>Você tem certeza que deseja deletar o capítulo e todos os itens</h4>
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-default waves-effect remove-data-from-delete-form" data-dismiss="modal">Close</button>
+	                    <button type="submit" class="btn btn-danger waves-effect waves-light delete">Delete</button>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</form>
 
 	@section('scripts')
 		<script>
@@ -152,6 +170,26 @@
 				    $( "#create-chapter" ).button().on( "click", function() {
 				    	dialog.dialog( "open" );
 				    });
+			});
+		</script>
+		<script>
+			$(document).ready(function(){
+			// For A Delete Record Popup
+				$('.remove-record').click(function() {
+					var id = $(this).attr('data-id');
+					var d = $(this).attr('data-url');
+					var token = CSRF_TOKEN;
+					
+					$(".remove-record-model").attr('action',d);
+
+					$('body').find('.remove-record-model').append('<input name="_token" type="hidden" value="'+ token +'">');
+					$('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+					$('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+				});
+
+				$('.remove-data-from-delete-form').click(function() {
+					$('body').find('.remove-record-model').find( "input" ).remove();
+				});
 			});
 		</script>
 	@stop
