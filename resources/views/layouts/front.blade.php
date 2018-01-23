@@ -41,6 +41,9 @@
 
                             <!-- Right Side Of Navbar -->
                             <ul class="nav navbar-nav navbar-right">
+                                @auth
+                                    <li><a href="{{ route('userPanel.single') }}">{{ Auth::user()->first_name }}</a></li>
+                                @endauth
                                 <li><a href="{{ route('search.single') }}">Busca</a></li>
                                 @auth
                                     <li><a href="{{ url('/admin/home') }}">Administração</a></li>
