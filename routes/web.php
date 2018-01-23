@@ -23,6 +23,10 @@ Route::get('course/{id}', 'FrontController@course')->name('course.single');
 Route::get('search', 'FrontController@search')->name('search.single');
 Route::get('searchcat', 'FrontController@searchCat')->name('search.category');
 
+Route::get('userPanel', 'FrontController@userPanel')->name('userPanel.single');
+Route::get('userProfile', 'FrontController@userProfile')->name('userProfile.single');
+Route::post('userProfile/update', 'FrontController@userProfileUpdate')->name('userProfile.update');
+
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'HomeController@index')->name('home');
 

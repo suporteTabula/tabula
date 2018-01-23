@@ -23,7 +23,11 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div id="dynamic_search_panel">
-                    Selecione um macrotema para pesquisar ou escreva um nome de curso.
+                    @foreach($courses as $course)
+                        <a href=" {{ route('course.single', ['id' => $course->id]) }}">
+                            <div style="height:100%;width:100%"> {{ $course->name }}</div>
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>
