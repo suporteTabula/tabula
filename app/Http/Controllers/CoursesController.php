@@ -215,6 +215,8 @@ class CoursesController extends Controller
         }
 
         $chapter->delete();
+        Session::flash('info', 'Capítulo e itens relacionados excluidos com sucesso!');
+        return redirect()->back();
     }
     /**
      * Store a newly item for the chapter in storage.
@@ -227,16 +229,25 @@ class CoursesController extends Controller
     {
         $this->validate($request, [
             'name'          => 'required',
-            'item_type_id'  => 'required'
+            'item_type_id'  => 'required',
         ]);
 
-        $item = CourseItem::create([
-            'name'                  => $request->name,
-            'desc'                  => $request->desc,
-            'course_item_group_id'  => $id,
-            'course_item_types_id'  => $request->item_type_id
-        ]);
+        $item = new CourseItem;
 
+        $item->name                     = $request->name;
+        $item->desc                     = $request->desc;
+        $item->course_item_group_id     = $id;
+        $item->course_item_types_id     = $request->item_type_id;
+
+        if(isset($request->archive))
+        {
+            $attach = $request->archive;
+            $attach_new_name = time().$attach->getClientOriginalName();
+            $attach->move('uploads/archives', $attach_new_name); 
+            $item->path = 'uploads/archives/'. $attach_new_name;     
+        }
+
+        $item->save();
         Session::flash('success', 'Aula/Avaliação adicionada com sucesso');
         return redirect()->back();
     }
@@ -282,6 +293,13 @@ class CoursesController extends Controller
             'item_type_id'  => 'required',
         ]);
 
+        if($request->hasFile('archive'))
+        {
+            $attach = $request->archive;
+            $attach_new_name = time().$attach->getClientOriginalName();
+            $attach->move('uploads/archives', $attach_new_name); 
+            $item->path = 'uploads/archives/'. $attach_new_name;
+        }
         $item->name                 = $request->name;
         $item->desc                 = $request->desc;
         $item->course_item_types_id = $request->item_type_id;
@@ -304,6 +322,11 @@ class CoursesController extends Controller
         foreach ($item->course_item_options as $item_options)
         {
             $item_options->forceDelete();
+        }
+
+        if(file_exists($item->path))
+        {
+            unlink(public_path().'/'. $item->path);
         }
 
         $item->delete();

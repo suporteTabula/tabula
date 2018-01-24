@@ -21,12 +21,14 @@
 						<option value="" selected disabled hidden>Escolha uma...</option>
 						@foreach ($items_type as $item_type)
 							@if($item_type->id > 4)
-								<option value="{{ $item_type->id }}" 
-									@if ($item_type->id == $item->course_item_types_id)
-										selected
-									@endif
-									>{{ $item_type->name }}
-								</option>
+								@if($item_type->id == 6)
+									<option value="{{ $item_type->id }}" 
+										@if ($item_type->id == $item->course_item_types_id)
+											selected
+										@endif
+										>{{ $item_type->name }}
+									</option>
+								@endif
 							@endif
 						@endforeach
 					</select>
