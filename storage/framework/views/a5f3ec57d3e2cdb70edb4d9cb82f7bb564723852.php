@@ -19,6 +19,57 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
+            <table class="table table-hover">
+                <thead>
+                    <th>CURSOS EM DESTAQUE EM <?php echo e($featured_category1); ?></th>
+                </thead>
+                <tbody>
+                    <?php $__currentLoopData = $featured_courses1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <td>
+                                <a href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
+                                    <?php echo e($course->name); ?>
+
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
+            <table class="table table-hover">
+                <thead>
+                    <th>CURSOS EM DESTAQUE EM <?php echo e($featured_category2); ?></th>
+                </thead>
+                <tbody>
+                    <?php $__currentLoopData = $featured_courses2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <td>
+                                <a href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
+                                    <?php echo e($course->name); ?>
+
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
+            <table class="table table-hover">
+                <thead>
+                    <th>BLOG</th>
+                </thead>
+                <tbody>
+                    <?php $__currentLoopData = $featured_posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <tr>
+                            <td>
+                                <a href="<?php echo e(route('course.single', ['id' => $post->id])); ?>">
+                                    <?php echo e($post->name); ?>
+
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
         </div>
     </div>
 <?php $__env->stopSection(); ?>

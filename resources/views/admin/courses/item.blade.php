@@ -36,6 +36,15 @@
 					</select>
 				</div>
 
+				@if($item->course_item_types_id <= 4)					
+					<div id="arquivo">
+						<div class="form-group">
+							<label for="desc">Adicionar Arquivo</label>
+							<input class="form-control" type="file" name="archive">
+						</div>
+					</div>				
+				@endif		
+
 				<div class="form-group">
 					<div class="text-center">
 						<button class="btn btn-success" type="submit">Salvar</button>

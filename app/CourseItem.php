@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseItem extends Model
 {
-	protected $fillable = ['name','desc', 'course_item_group_id', 'course_item_types_id'];
+	protected $fillable = ['name','desc','path','course_item_group_id', 'course_item_types_id'];
     public function course_item_type()
     {
     	return $this->belongsTo('App\CourseItemType', 'course_item_types_id');
