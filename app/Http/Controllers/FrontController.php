@@ -27,12 +27,14 @@ class FrontController extends Controller
         $featured_posts = Course::all()->take(4);
 
         return view('welcome')
-            ->with('categories', Category::orderBy('desc', 'ASC')->get())
+            ->with('categories', Category::all())
             ->with('featured_category1', $featured_category1->desc)
             ->with('featured_category2', $featured_category2->desc)
             ->with('featured_courses1', $featured_courses1)
             ->with('featured_courses2', $featured_courses2)
-            ->with('featured_posts', $featured_posts);
+            ->with('featured_posts', $featured_posts)
+            ->with('row_limit', 10)
+            ->with('category_count', 0);
     }
 
     public function category($id)
