@@ -1,4 +1,4 @@
-{{-- @extends('layouts.front')
+@extends('layouts.front')
 @section('content')
     <section class="hero-wrapper">
         <div class="hero-text">
@@ -81,76 +81,24 @@
         </div>
     </section>
     <section class="macrotemas-desktop">
-        <div class="hex-row-1">
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex1-alt.svg">
-                    <p>Finanças e Economia</p> <img class="macro-icon" src="images/financaseeconcomia-icon.svg" style="display: none;"> </a>
+        @for($i = 0; $i<3; $i++)
+            <div class="hex-row-{{ $i+1 }}">
+                @for($j = 0; $j < $row_limit; $j++)
+                    <div class="hexagon">
+                        <a href="{{ route('category.single', ['id' => $categories[$category_count]->id]) }}" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/{{$category_count}}.svg">
+                            <p>{{ $categories[$category_count]->desc }}</p> 
+                            <img class="macro-icon" src="images/hex-icon/{{$category_count}}.svg" style="display: none;"> 
+                        </a>
+                        @php($category_count++)
+                    </div>
+                @endfor
+                @if($row_limit == 5)
+                    @php($row_limit = 6)
+                @else
+                    @php($row_limit = 5)
+                @endif
             </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex2-alt.svg">
-                    <p>Varejo e Consumo</p> <img class="macro-icon" src="images/varejoeconsumo-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex3-alt.svg">
-                    <p>Negócio e Gestão</p> <img class="macro-icon" src="images/neogocioegestao-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex4-alt.svg">
-                    <p>Direito</p> <img class="macro-icon" src="images/direito-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex5-alt.svg">
-                    <p>Controladoria e Contabilidade</p> <img class="macro-icon" src="images/controladoriaecontabilidade-icon.svg" style="display: none;"> </a>
-            </div>
-        </div>
-        <div class="hex-row-2">
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex6-alt.svg">
-                    <p>T.I. e Softwares</p> <img class="macro-icon" src="images/tiesoftwares-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex7-alt.svg">
-                    <p>Marketing</p> <img class="macro-icon" src="images/marketing-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex8-alt.svg">
-                    <p>Engenharia</p> <img class="macro-icon" src="images/engenharia-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex9-alt.svg">
-                    <p>Concursos e Certificação</p> <img class="macro-icon" src="images/concursosecertificados-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex10-alt.svg">
-                    <p>Arquitetura e Design</p> <img class="macro-icon" src="images/arquiteturaedesign-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex11-alt.svg">
-                    <p>Saúde</p> <img class="macro-icon" src="images/saude-icon.svg" style="display: none;"> </a>
-            </div>
-        </div>
-        <div class="hex-row-3">
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex12-alt.svg">
-                    <p>História e Arte</p> <img class="macro-icon" src="images/historiaearte-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex13-alt.svg">
-                    <p>Ensino Médio e Fundamental</p> <img class="macro-icon" src="images/ensinomedioefundamental-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex14-alt.svg">
-                    <p>Vídeo e Fotografia</p> <img class="macro-icon" src="images/videoefotografia-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex15-alt.svg">
-                    <p>Gastronomia</p> <img class="macro-icon" src="images/gastronomia-icon.svg" style="display: none;"> </a>
-            </div>
-            <div class="hexagon">
-                <a href="#" class="hex-inner"> <img src="images/hex-alt-desktop/SVG/hex16-alt.svg">
-                    <p>Hobbies</p> <img class="macro-icon" src="images/hobbies-icon.svg" style="display: none;"> </a>
-            </div>
-        </div>
+        @endfor
     </section>
     <section class="most-viewed-wrapper">
         <h1 style="color: #404040; margin-top: 120px; text-align: center;">MAIS VISUALIZADOS</h1>
@@ -358,11 +306,10 @@
             </a>
         </div>
     </section>
-@endsection   --}}
+@endsection
 
 {{-- @extends('layouts.front')
-
-@section('content') --}}
+@section('content') 
 
     <div class="panel panel-default">
         <div class="panel-body">
@@ -371,34 +318,24 @@
                     <th>Macrotemas</th>
                 </thead>
                 <tbody>
-
-
                     @for($i = 0; $i<3; $i++)
-
-
-                        
-                            @php($row_limit = 6)
-                        
-                         
-                        
-                        <tr><td>--</td></tr>
                         @for($j = 0; $j < $row_limit; $j++)
-
                             <tr>
                                 <td>
-                                    <a href="{{ route('category.single', ['id' => $categories[$i]->id]) }}">
+                                    <a href="{{ route('category.single', ['id' => $categories[$category_count]->id]) }}">
                                         <div style="height:100%;width:100%">
-                                            {{ $categories[$category_count]->desc }} ({{ $categories[$i]->courses->count() }})
-                                            @php($category_count++)
+                                            {{ $categories[$category_count]->desc }}
+                                            {{ $category_count++ }}
                                         </div>
                                     </a>
                                 </td>
                             </tr>
                         @endfor
-                        <tr><td>++</td></tr>
-                        
-
-
+                        @if($row_limit == 5)
+                            @php($row_limit = 6)
+                        @else
+                            @php($row_limit = 5)
+                        @endif
                     @endfor
                 </tbody>
             </table>
@@ -452,5 +389,5 @@
             </table>
         </div>
     </div>
-{{-- @endsection
+@endsection
  --}}

@@ -33,7 +33,7 @@ class FrontController extends Controller
             ->with('featured_courses1', $featured_courses1)
             ->with('featured_courses2', $featured_courses2)
             ->with('featured_posts', $featured_posts)
-            ->with('row_limit', 10)
+            ->with('row_limit', 5)
             ->with('category_count', 0);
     }
 
