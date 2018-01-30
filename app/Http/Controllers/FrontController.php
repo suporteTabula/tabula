@@ -9,6 +9,7 @@ Use App\Post;
 Use App\User;
 Use App\Course;
 Use App\Category;
+Use App\MobileCategory;
 Use App\UserType;
 Use App\State;
 Use App\Country;
@@ -21,20 +22,23 @@ class FrontController extends Controller
         $featured_category1 = Category::find(1);
         $featured_category2 = Category::find(2);
 
-        $featured_courses1 = $featured_category1->courses()->take(3)->get();
-        $featured_courses2 = $featured_category2->courses()->take(3)->get();
+        $featured_courses1 = $featured_category1->courses()->take(8)->get();
+        $featured_courses2 = $featured_category2->courses()->take(8)->get();
 
-        $featured_posts = Course::all()->take(4);
+        $featured_posts = Course::all()->take(8);
 
         return view('welcome')
             ->with('categories', Category::all())
+            ->with('row_limit', 5)
+            ->with('category_count', 0)
+            ->with('mobile_categories', MobileCategory::all())
+            ->with('mobile_col_limit', 5)
+            ->with('mobile_category_count', 0)
             ->with('featured_category1', $featured_category1->desc)
             ->with('featured_category2', $featured_category2->desc)
             ->with('featured_courses1', $featured_courses1)
             ->with('featured_courses2', $featured_courses2)
-            ->with('featured_posts', $featured_posts)
-            ->with('row_limit', 5)
-            ->with('category_count', 0);
+            ->with('featured_posts', $featured_posts);
     }
 
     public function category($id)

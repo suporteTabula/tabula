@@ -11,8 +11,8 @@
         <title>Tabula</title>
 
         <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
+        <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}" >
         <link rel="stylesheet" href="{{ asset('css/slick-1.8.0/slick/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('css/slick-1.8.0/slick/slick-theme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -80,9 +80,9 @@
                 <li><a href="#">Suporte</a></li>
             </ul>
             <ul class="social-media">
-                <li><a href="#"><img src="images/facebook-logo.svg" alt="facebook" style="width: 25px;"></a></li>
-                <li><a href="#"><img src="images/instagram-logo.svg" alt="instagram" style="width: 25px;"></a></li>
-                <li><a href="#"><img src="images/youtube-logo.svg" alt="youtube" style="width: 25px;"></a></li>
+                <li><a href="#"><img src="images/layout/footer/facebook-logo.svg" alt="facebook" style="width: 25px;"></a></li>
+                <li><a href="#"><img src="images/layout/footer/instagram-logo.svg" alt="instagram" style="width: 25px;"></a></li>
+                <li><a href="#"><img src="images/layout/footer/youtube-logo.svg" alt="youtube" style="width: 25px;"></a></li>
             </ul>
         </footer>
 
