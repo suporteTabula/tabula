@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategoriesTableSeeder extends Seeder
+class MobileCategoriesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,23 +11,23 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('categories')->insert([
+        DB::table('mobile_categories')->insert([
             ['desc' => 'Finanças e Economia'],
-            ['desc' => 'Varejo e Consumo'],
-            ['desc' => 'Negócio e Gestão'],
-            ['desc' => 'Direito'],
             ['desc' => 'Controladoria e Contabilidade'],
             ['desc' => 'T.I. e Softwares'],
-            ['desc' => 'Marketing'],
-            ['desc' => 'Engenharia'],
-            ['desc' => 'Concursos e Certificação'],
-            ['desc' => 'Arquitetura e Design'],
             ['desc' => 'Saúde'],
             ['desc' => 'História e Arte'],
+            ['desc' => 'Varejo e Consumo'],
+            ['desc' => 'Direito'],
+            ['desc' => 'Marketing'],
+            ['desc' => 'Arquitetura e Design'],
             ['desc' => 'Ensino Médio e Fundamental'],
+            ['desc' => 'Hobbies'],
+            ['desc' => 'Negócio e Gestão'],
+            ['desc' => 'Engenharia'],
+            ['desc' => 'Concursos e Certificação'],
             ['desc' => 'Vídeo e Fotografia'],
-            ['desc' => 'Gastronomia'],
-            ['desc' => 'Hobbies']
+            ['desc' => 'Gastronomia']
         ]);
     }
 }

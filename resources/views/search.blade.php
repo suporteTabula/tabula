@@ -1,48 +1,42 @@
 @extends('layouts.front')
 
 @section('content')
-    <div class="col-lg-3">
-        <ul class="list-group">
-            @foreach($categories as $category)
-                <li class="list-group-item">
-                    <input type="checkbox" name="search_event" value="{{ $category->id }}">
-                    <label for="{{ $category->id }}"> {{ $category->desc }} ({{ $category->courses->count() }}) </label><br>
-                </li>
-            @endforeach
-        </ul>
-    </div>
-    <div class="col-lg-9">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <input id="course_title" placeholder="Pesquisa por título de curso" type="text" size="75">
-                <button class="btn btn-success" id="search_btn" type="button">Pesquisar</button>
+    <section class="search-wrapper">
+        <div class="search-container">
+            <div class="search-inputeers">
+                <input id="course_title" type="text" placeholder="Faça sua busca" class="tabula-input">
+                <button id="search_btn" class="tabula-button">Buscar</button>
             </div>
-        </div>
-    </div>
-    <div class="col-lg-9">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div id="dynamic_search_panel">
-                    @foreach($courses as $course)
-                        <a href=" {{ route('course.single', ['id' => $course->id]) }}">
-                            <div style="height:100%;width:100%"> {{ $course->name }}</div>
-                        </a>
+            <p class="adv-search"><b>Busca Avançada</b></p>
+            <form class="search-checkers">
+                <ul>
+                    @foreach($categories as $category)
+                        <li><label><input type="checkbox" name="macrotema" value="{{ $category->id }}"> {{ $category->desc }}</label></li>
                     @endforeach
-                </div>
-            </div>
+                </ul>
+            </form>
         </div>
-    </div>
+        <div class="search-results">
+            <ul>
+                @foreach($courses as $course)
+                    <a href=" {{ route('course.single', ['id' => $course->id]) }}">
+                        <li>{{ $course->name }}</li>
+                    </a>
+                @endforeach
+            </ul>
+        </div>
+    </section>
     @section('scripts')
         <script>
             $(document).ready(function(){
-                $('input[name="search_event"], #search_btn').click(function(){
+                $('input[name="macrotema"], #search_btn').click(function(){
 
                     var checked_group = [];
                     var checked_num = 0;
                     var course_title;
                     var output;
 
-                    $('input[name="search_event"]:checked').each(function()
+                    $('input[name="macrotema"]:checked').each(function()
                     {
                         checked_group.push($(this).val());
                         checked_num++;
@@ -70,7 +64,7 @@
                             console.log(e);
                         },
                         success: function(response){
-                            $('#dynamic_search_panel').html(response);
+                            $('.search-results').html(response);
                         }
                     });
                 });
