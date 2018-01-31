@@ -11,7 +11,6 @@
         <title>Tabula</title>
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
         <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}" >
         <link rel="stylesheet" href="{{ asset('css/slick-1.8.0/slick/slick.css') }}">
         <link rel="stylesheet" href="{{ asset('css/slick-1.8.0/slick/slick-theme.css') }}">
