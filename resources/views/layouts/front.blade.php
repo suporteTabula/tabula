@@ -40,7 +40,6 @@
                     <li><a class="sta-link" href="#">Instituições</a></li>
                     @auth
                         <li><a class="tabula-button" href="{{ route('userPanel.single') }}">Painel</a></li>
-                        <li><a class="tabula-button" href="{{ url('/admin/home') }}">Administração</a></li>
                         <li><a class="tabula-button" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
                     @else
@@ -51,13 +50,15 @@
             </div>
             <div class="menu-links-mobile">
                 <ul>
-                    @auth
-                        <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
-                    @endauth
                     <li><a href="#">Canais</a></li>
                     <li><a href="#">Instituições</a></li>
-                    <li><a href="#">Cadastre-se</a></li>
-                    <li><a href="#">Login</a></li>
+                    @auth
+                        <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                    @else   
+                        <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                    @endauth
                 </ul>
             </div>
         </section>
@@ -70,7 +71,6 @@
                 <li><a href="#">Instituições</a></li>
                 @auth
                     <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
-                    <li><a href="{{ url('/admin/home') }}">Administração</a></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                 @else
                     <li><a href="{{ route('register') }}">Cadastre-se</a></li>
