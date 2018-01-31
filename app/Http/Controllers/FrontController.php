@@ -22,10 +22,10 @@ class FrontController extends Controller
         $featured_category1 = Category::find(1);
         $featured_category2 = Category::find(2);
 
-        $featured_courses1 = $featured_category1->courses()->take(8)->get();
-        $featured_courses2 = $featured_category2->courses()->take(8)->get();
+        $featured_courses1 = $featured_category1->courses()->inRandomOrder()->take(8)->get();
+        $featured_courses2 = $featured_category2->courses()->inRandomOrder()->take(8)->get();
 
-        $featured_posts = Course::all()->take(8);
+        $featured_posts = Course::inRandomOrder()->take(8)->get();
 
         return view('welcome')
             ->with('categories', Category::all())
