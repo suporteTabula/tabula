@@ -27,7 +27,7 @@
                     @foreach($chapters as $chapter)
                         <tr>
                             <td>
-                                <a href="#">
+                                <a href="{{ route('chapter.single', ['id' => $chapter->id]) }}">
                                     {{ $chapter->name }}
                                 </a>
                             </td> 

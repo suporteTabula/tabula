@@ -238,7 +238,36 @@ class CoursesController extends Controller
         $item->desc                     = $request->desc;
         $item->course_item_group_id     = $id;
         $item->course_item_types_id     = $request->item_type_id;
+        $item->course_items_parent      = NULL;
+       
+        if(isset($request->archive))
+        {
+            $attach = $request->archive;
+            $attach_new_name = time().$attach->getClientOriginalName();
+            $attach->move('uploads/archives', $attach_new_name); 
+            $item->path = 'uploads/archives/'. $attach_new_name;     
+        }
 
+        $item->save();
+        Session::flash('success', 'Aula/Avaliação adicionada com sucesso');
+        return redirect()->back();
+    }
+
+    public function item_child(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name'          => 'required',
+            'item_type_id'  => 'required',
+        ]);
+
+        $item = new CourseItem;
+
+        $item->name                     = $request->name;
+        $item->desc                     = $request->desc;
+        $item->course_item_group_id     = $id;
+        $item->course_item_types_id     = $request->item_type_id;
+        $item->course_items_parent      = $request->id;
+       
         if(isset($request->archive))
         {
             $attach = $request->archive;
@@ -261,6 +290,7 @@ class CoursesController extends Controller
     public function item_edit($id)
     {
         $item = CourseItem::find($id);
+        $chapter = CourseItemGroup::find($item->course_item_group_id);
 
         if($item->course_item_type->id == 6)
         {
@@ -272,7 +302,9 @@ class CoursesController extends Controller
         else
         {
             return view('admin.courses.item')
-                    ->with('item', $item)                    
+                    ->with('item', $item)
+                    ->with('items', CourseItem::all())
+                    ->with('chapter', $chapter)    
                     ->with('items_type', CourseItemType::all());
         }        
     }

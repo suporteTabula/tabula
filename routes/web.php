@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/', 'FrontController@index')->name('index.single');
 Route::get('category/{id}', 'FrontController@category')->name('category.single');
 Route::get('course/{id}', 'FrontController@course')->name('course.single');
+Route::get('course/chapter/{id}', 'FrontController@chapter')->name('chapter.single');
+Route::get('course/chapter/item/{id}', 'FrontController@item')->name('item.single');
+
 Route::get('search', 'FrontController@search')->name('search.single');
 Route::get('searchcat', 'FrontController@searchCat')->name('search.category');
 
@@ -79,6 +82,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/course/chapter/delete/{id}', 'CoursesController@chapter_delete')->name('course.chapter.delete');
 
 	Route::post('/admin/course/item/{id}', 'CoursesController@item')->name('course.item');
+	Route::post('/admin/course/item/child/{id}', 'CoursesController@item_child')->name('course.item.child');
 	Route::get('/admin/course/chapter/item/edit/{id}', 'CoursesController@item_edit')->name('course.item.edit');
 	Route::post('/admin/course/chapter/item/update/{id}', 'CoursesController@item_update')->name('course.item.update');
 	Route::get('/admin/course/chapter/item/delete/{id}', 'CoursesController@item_delete')->name('course.item.delete');

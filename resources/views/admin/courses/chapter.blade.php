@@ -40,9 +40,9 @@
 			</div>
 
 			 <div id="lesson">
-				<form action="{{ route('course.item', ['id' => $chapter->id]) }}"method="post" enctype="multipart/form-data">
+				<form action="{{ route('course.item', ['id' => $chapter->id]) }}" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
-
+					
 					<div class="form-group">
 						<label for="name">Nome</label>
 						<input class="form-control" type="text" placeholder="Nome da aula" name="name">
@@ -139,7 +139,7 @@
 				<tbody>
 					@if ($items->count() > 0)
 						@foreach ($items as $item)
-							@if($chapter->id == $item->course_item_group_id)
+							@if($chapter->id == $item->course_item_group_id && $item->course_items_parent == NULL)
 								<tr>
 									<td style="vertical-align: middle !important;">
 										{{ $item->name }}
