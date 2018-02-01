@@ -13,6 +13,7 @@ Use App\UserType;
 Use App\State;
 Use App\Country;
 Use App\Schooling;
+use App\CourseItemGroup;
 
 class FrontController extends Controller
 {
@@ -51,6 +52,15 @@ class FrontController extends Controller
         return view('course')
             ->with('course', $course)
             ->with('chapters', $course->course_item_groups->all());
+    }
+
+    public function chapter($id)
+    {
+        $chapter = CourseItemGroup::find($id);
+
+        return view('chapter')
+            ->with('chapter', $chapter)
+            ->with('items', $chapter->course_items->all()); 
     }
 
     public function userPanel() // criar outras funções para update de usuario no banco

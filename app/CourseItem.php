@@ -21,4 +21,14 @@ class CourseItem extends Model
     {
     	return $this->hasMany('App\CourseItemOption', 'course_items_id');
     }
+
+    public function item_parent()
+    {
+        return $this->belongsTo('App\CourseItem', 'course_items_parent');
+    }
+
+    public function item_children()
+    {
+        return $this->hasMany('App\CourseItem', 'course_items_parent');
+    }
 }
