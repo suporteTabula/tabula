@@ -50,11 +50,10 @@
     </section>
     <section class="most-viewed-wrapper">
         <h1 style="color: #404040; margin-top: 120px; text-align: center;">MAIS VISUALIZADOS</h1>
-        <p style="color: #808080; padding-left: 35px;">Vídeo populares em {{ $featured_category1 }}</p>
+        <p style="color: #808080; padding-left: 35px;">Cursos populares em {{ $featured_category1 }}</p>
         <div class="carousel1">
             @foreach($featured_courses1 as $course)
                 <a href="{{ route('course.single', ['id' => $course->id]) }}" class="card">
-                    <p>{{ $featured_category1 }}</p>
                     <div class="card-media" style="background-image: url(../images/aulas/{{$course->id}}.jpg);">
                         <div class="card-overlay"></div>
                     </div>
@@ -63,11 +62,10 @@
                 </a>
             @endforeach
         </div>
-        <p style="color: #808080; padding-left: 35px;">Vídeo populares em {{ $featured_category2 }}</p>
+        <p style="color: #808080; padding-left: 35px;">Cursos populares em {{ $featured_category2 }}</p>
         <div class="carousel2">
             @foreach($featured_courses2 as $course)
                 <a href="{{ route('course.single', ['id' => $course->id]) }}" class="card">
-                    <p>{{ $featured_category2 }}</p>
                     <div class="card-media" style="background-image: url(../images/aulas/{{$course->id}}.jpg);">
                         <div class="card-overlay"></div>
                     </div>
