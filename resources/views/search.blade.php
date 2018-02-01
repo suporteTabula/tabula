@@ -17,13 +17,19 @@
             </form>
         </div>
         <div class="search-results">
-            <ul>
-                @foreach($courses as $course)
-                    <a href=" {{ route('course.single', ['id' => $course->id]) }}">
-                        <li>{{ $course->name }}</li>
-                    </a>
-                @endforeach
-            </ul>
+            <section class="most-viewed-wrapper">
+                <div class="carousel1">
+                    @foreach($courses as $course)
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}" class="card">
+                            <div class="card-media" style="background-image: url(../images/aulas/{{$course->id}}.jpg);">
+                                <div class="card-overlay"></div>
+                            </div>
+                            <p><b>{{ $course->name }}</b></p>
+                            <p>{{ $course->desc }}</p>
+                        </a>
+                    @endforeach
+                </div>
+            </section>
         </div>
     </section>
     @section('scripts')

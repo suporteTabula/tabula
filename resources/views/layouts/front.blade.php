@@ -28,11 +28,11 @@
             <div class="loupe-icon"></div>
             <div class="search-mob">
                 <input class="tabula-input" type="text" placeholder="Faça sua busca">
-                <button class="tabula-button"><a href="{{ route('search.single') }}">Buscar</a></button>
+                <a class="tabula-button" style="text-decoration: none" href="{{ route('search.single') }}">Buscar</a>
             </div>
             <div class="search-desktop">
                 <input class="tabula-input-inverted" placeholder="Faça sua busca" type="text">
-                <button class="tabula-button-inverted"><a href="{{ route('search.single') }}">Buscar</a></button>
+                <a class="tabula-button-inverted" style="text-decoration: none" href="{{ route('search.single') }}">Buscar</a>
             </div>
             <div class="menu-links-desktop">
                 <ul>
