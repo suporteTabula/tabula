@@ -238,8 +238,15 @@ class CoursesController extends Controller
         $item->desc                     = $request->desc;
         $item->course_item_group_id     = $id;
         $item->course_item_types_id     = $request->item_type_id;
-        $item->course_items_parent      = NULL;
-       
+        if($request->item_type_id == 5)
+        {
+            $item->course_items_parent = 0;
+        }
+        else
+        {
+            $item->course_items_parent      = NULL;
+        }
+               
         if(isset($request->archive))
         {
             $attach = $request->archive;
@@ -292,7 +299,7 @@ class CoursesController extends Controller
         $item = CourseItem::find($id);
         $chapter = CourseItemGroup::find($item->course_item_group_id);
 
-        if($item->course_item_type->id == 6)
+        if($item->course_item_type->id >= 5)
         {
             return view('admin.courses.question')
                     ->with('item', $item)

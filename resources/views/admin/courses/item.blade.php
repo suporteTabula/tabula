@@ -10,21 +10,13 @@
 		<div class="panel-body">
 			<form action="{{ route('course.item.update', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
-				<div class="form-group">
-					<label for="name">Nome</label>
-					<input class="form-control" type="text" value="{{ $item->name }}" placeholder="Nome" name="name">
-				</div>
-				<div class="form-group">
-					<label for="desc">Descrição</label>
-					<input class="form-control" type="text" value="{{ $item->desc }}" placeholder="Descrição da questão" name="desc">
-				</div>
 
 				<div class="form-group">
-					<label for="item_type">Tipos</label>
+					<label for="item_type">Tipo de Aula</label>
 					<select id="item_type" name="item_type_id" class="form-control">
 						<option value="" selected disabled hidden>Escolha uma...</option>
 						@foreach ($items_type as $item_type)
-							@if($item_type->id < 6)
+							@if($item_type->id < 5)
 							<option value="{{ $item_type->id }}" 
 								@if ($item_type->id == $item->course_item_types_id)
 									selected
@@ -34,16 +26,24 @@
 							@endif
 						@endforeach
 					</select>
+				</div>	
+
+				<div class="form-group">
+					<label for="name">Nome</label>
+					<input class="form-control" type="text" value="{{ $item->name }}" placeholder="Nome" name="name">
 				</div>
 
-				@if($item->course_item_types_id <= 4)					
-					<div id="arquivo">
-						<div class="form-group">
-							<label for="desc">Adicionar Arquivo</label>
-							<input class="form-control" type="file" name="archive">
-						</div>
-					</div>				
-				@endif		
+				<div class="form-group">
+					<label for="desc">Descrição</label>
+					<input class="form-control" type="text" value="{{ $item->desc }}" placeholder="Descrição da questão" name="desc">
+				</div>				
+
+				<div id="arquivo">
+					<div class="form-group">
+						<label for="desc">Adicionar Arquivo</label>
+						<input class="form-control" type="file" name="archive">
+					</div>
+				</div>	
 
 				<div class="form-group">
 					<div class="text-center">
@@ -63,6 +63,19 @@
 				<div id="lesson">
 					<form action="{{ route('course.item.child', ['id' => $chapter->id]) }}" method="post" enctype="multipart/form-data">
 						{{ csrf_field() }}
+
+						<div class="form-group">
+						<label for="i_type">Tipo da aula</label>
+							<select id="i_type" name="item_type_id" class="form-control">
+								<option value="" selected disabled hidden>Escolha uma...</option>
+
+								@foreach ($items_type as $item_type)
+									@if ($item_type->id <= 4)
+										<option value="{{ $item_type->id }}">{{ $item_type->name }}</option>
+									@endif 									
+								@endforeach
+							</select>					
+						</div>
 						
 						<input class="form-control" type="hidden" name="id" value="{{ $item->id }}">
 
@@ -71,24 +84,12 @@
 							<input class="form-control" type="text" placeholder="Nome da aula" name="name">
 						</div>
 
-						<div class="form-group">
-							<label for="desc">Descrição</label>
-							<input class="form-control" type="text" placeholder="Descrição da aula" name="desc">
-						</div>
-						
-						<div class="form-group">
-							<label for="i_type">Tipos</label>
-							<select id="i_type" name="item_type_id" class="form-control">
-								<option value="" selected disabled hidden>Escolha uma...</option>
-
-								@foreach ($items_type as $item_type)
-									@if ($item_type->id <= 4)
-										<option value="{{ $item_type->id }}">{{ $item_type->name }}</option>
-									@endif 		
-									
-								@endforeach
-							</select>					
-						</div>
+						<div id="desc">
+							<div class="form-group">
+								<label for="desc">Descrição</label>
+								<input class="form-control" type="text" placeholder="Descrição da aula" name="desc">
+							</div>
+						</div>				
 
 						<div id="arq">
 							<div class="form-group">
@@ -216,18 +217,44 @@
 		</script>
 
 		<script>
-			$('#arq').hide();
+			$('#arq').hide();			
 			$('#text').hide();
 
 			$('#i_type').change(function(){
 				if($('#i_type').val() == 3){
 					$('#text').show();
+					$('#desc').hide();
 					$('#arq').hide();
 				} else{
 					$('#text').hide();
+					$('#desc').show();					
 					$('#arq').show();
 				}				
 			});
+
+			$(document).ready(function(){
+				if($('#item_type').val() == 3){
+					$('#arquivo').hide();
+
+					$('#item_type').change(function(){
+					if($('#item_type').val() == 3){
+						$('#arquivo').hide();
+					} else{				
+						$('#arquivo').show();
+					}				
+				});
+				} else{				
+					$('#arquivo').show();
+					$('#item_type').change(function(){
+					if($('#item_type').val() == 3){
+						$('#arquivo').hide();
+					} else{				
+						$('#arquivo').show();
+					}
+				});
+				}		
+			});
+		
 		</script>
 
 		<script>
