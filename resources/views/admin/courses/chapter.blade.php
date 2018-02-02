@@ -39,34 +39,35 @@
 				<button id="create-test">Nova Avaliação</button>
 			</div>
 
-			 <div id="lesson">
+			<div id="lesson">
 				<form action="{{ route('course.item', ['id' => $chapter->id]) }}" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					
 					<div class="form-group">
-						<label for="name">Nome</label>
-						<input class="form-control" type="text" placeholder="Nome da aula" name="name">
-					</div>
-
-					<div class="form-group">
-						<label for="desc">Descrição</label>
-						<input class="form-control" type="text" placeholder="Descrição da aula" name="desc">
-					</div>
-					
-					<div class="form-group">
-						<label for="item_type">Tipos</label>
+						<label for="item_type">Tipo da aula</label>
 						<select id="item_type" name="item_type_id" class="form-control">
 							<option value="" selected disabled hidden>Escolha uma...</option>
 
 							@foreach ($items_type as $item_type)
 								@if ($item_type->id <= 4)
 									<option value="{{ $item_type->id }}">{{ $item_type->name }}</option>
-								@endif 		
-								
+								@endif 									
 							@endforeach
 						</select>					
 					</div>
 
+					<div class="form-group">
+						<label for="name">Nome</label>
+						<input class="form-control" type="text" placeholder="Nome da aula" name="name">
+					</div>		
+
+					<div id="desc">
+						<div class="form-group">
+							<label for="desc">Descrição</label>
+							<input class="form-control" type="text" placeholder="Descrição da aula" name="desc">
+						</div>
+					</div>
+					
 					<div id="arquivo">
 						<div class="form-group">
 							<label for="desc">Adicionar Arquivo</label>
@@ -77,7 +78,7 @@
 					<div id="texto">
 						<div class="form-group">
 							<label for="texto">Adicionar Texto</label>
-							<textarea id="texto" name="texto" class="form-control" rows="4" cols="5"></textarea>
+							<textarea id="desc" name="desc" class="form-control" rows="4" cols="5"></textarea>
 						</div>
 					</div>
 
@@ -100,7 +101,7 @@
 					</div>				
 					
 					<div class="form-group">
-						<label for="item_type_question">Tipos</label>
+						<label for="item_type_question">Tipo de avaliação</label>
 						<select id="item_type_question" name="item_type_id" class="form-control">
 							<option value="" selected disabled hidden>Escolha uma...</option>
 
@@ -260,10 +261,12 @@
 
 			$('#item_type').change(function(){
 				if($('#item_type').val() == 3){
+					$('#desc').hide();
 					$('#texto').show();
 					$('#arquivo').hide();
 				} else{
 					$('#texto').hide();
+					$('#desc').show();
 					$('#arquivo').show();
 				}				
 			});

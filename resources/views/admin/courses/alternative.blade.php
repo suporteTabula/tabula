@@ -5,7 +5,7 @@
 	@include('admin.includes.errors')
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Editar Aula/Avaliação
+			Editar Alternativa
 		</div>
 		<div class="panel-body">
 			<form action="{{ route('course.alt.update', ['id' => $alt->id]) }}" method="post" enctype="multipart/form-data">
