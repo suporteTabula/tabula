@@ -27,12 +27,16 @@
             <div class="logo-icon"></div>
             <div class="loupe-icon"></div>
             <div class="search-mob">
-                <input class="tabula-input" type="text" placeholder="Faça sua busca">
-                <a class="tabula-button" style="text-decoration: none" href="{{ route('search.single') }}">Buscar</a>
+                <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
+                    <input class="tabula-input" name="search_string" type="text" placeholder="Faça sua busca">
+                    <button class="tabula-button" style="text-decoration: none" type="submit" }}">Buscar</button>
+                </form>
             </div>
             <div class="search-desktop">
-                <input class="tabula-input-inverted" placeholder="Faça sua busca" type="text">
-                <a class="tabula-button-inverted" style="text-decoration: none" href="{{ route('search.single') }}">Buscar</a>
+                <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
+                    <input class="tabula-input-inverted" name="search_string" placeholder="Faça sua busca" type="text">
+                    <button class="tabula-button-inverted" style="text-decoration: none" type="submit" }}">Buscar</button>
+                </form>
             </div>
             <div class="menu-links-desktop">
                 <ul>

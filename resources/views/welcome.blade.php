@@ -13,7 +13,7 @@
             <div class="hex-col-{{ $i+1 }}">
                 @for($j = 0; $j < $mobile_col_limit; $j++)
                     <div class="hexagon">
-                        <a href="{{ route('category.single', ['id' => $mobile_categories[$mobile_category_count]->id]) }}" class="hex-inner"> <img src="images/hex/mobile/{{$mobile_category_count}}.svg">
+                        <a href="{{ route('search.single', ['id' => $mobile_categories[$mobile_category_count]->id]) }}" class="hex-inner"> <img src="images/hex/mobile/{{$mobile_category_count}}.svg">
                             <p>{{ $mobile_categories[$mobile_category_count]->desc }}</p> 
                             <img class="macro-icon" src="images/hex/icon/{{$mobile_category_count}}.svg" style="display: none;"> 
                         </a>
@@ -33,7 +33,7 @@
             <div class="hex-row-{{ $i+1 }}">
                 @for($j = 0; $j < $row_limit; $j++)
                     <div class="hexagon">
-                        <a href="{{ route('category.single', ['id' => $categories[$category_count]->id]) }}" class="hex-inner"> <img src="images/hex/desktop/{{$category_count}}.svg">
+                        <a href="{{ route('search.single', ['id' => $categories[$category_count]->id]) }}" class="hex-inner"> <img src="images/hex/desktop/{{$category_count}}.svg">
                             <p>{{ $categories[$category_count]->desc }}</p> 
                             <img class="macro-icon" src="images/hex/icon/{{$category_count}}.svg" style="display: none;"> 
                         </a>

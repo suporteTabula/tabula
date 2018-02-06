@@ -17,7 +17,7 @@ $('.hexagon').mouseleave(function () {
 
 $('.carousel1, .carousel2, .carousel3').slick({
   dots: true,
-  infinite: false,
+  infinite: true,
   speed: 300,
   slidesToShow: 4,
   slidesToScroll: 4,
@@ -25,9 +25,9 @@ $('.carousel1, .carousel2, .carousel3').slick({
     {
       breakpoint: 1024,
       settings: {
+        infinite: true,
         slidesToShow: 3,
         slidesToScroll: 3,
-        infinite: true,
         dots: true
       }
     },
@@ -35,6 +35,7 @@ $('.carousel1, .carousel2, .carousel3').slick({
       breakpoint: 768,
       settings: {
         slidesToShow: 2,
+        infinite: true,
         slidesToScroll: 2
       }
     },
@@ -42,6 +43,7 @@ $('.carousel1, .carousel2, .carousel3').slick({
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
+        infinite: true,
         slidesToScroll: 1
       }
     }

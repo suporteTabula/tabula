@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 Use Auth;
 Use Session;
+use Illuminate\Support\Facades\Input;
 Use App\Post;
 Use App\User;
 Use App\Course;
@@ -40,15 +41,6 @@ class FrontController extends Controller
             ->with('featured_courses1', $featured_courses1)
             ->with('featured_courses2', $featured_courses2)
             ->with('featured_posts', $featured_posts);
-    }
-
-    public function category($id)
-    {
-        $category = Category::find($id);
-
-        return view('category')
-            ->with('category', $category)
-            ->with('courses', $category->courses->all());
     }
 
     public function course($id)
@@ -121,11 +113,33 @@ class FrontController extends Controller
         return redirect()->back();
     }
 
-    public function search()
-    {   
-        return view('search')
-            ->with('categories', Category::orderBy('desc', 'ASC')->get())
-            ->with('courses', Course::all());
+    public function search($id)
+    {    
+        if($id == -1)
+        {
+
+            $search_string = Input::get('search_string');
+
+            if($search_string != "")
+                $courses = Course::where('name','like', '%' . $search_string . '%')->get();
+            else
+                $courses = Course::all();
+
+            return view('search')
+                ->with('categories', Category::orderBy('desc', 'ASC')->get())
+                ->with('courses', $courses)
+                ->with('search_string', $search_string);
+        }
+        else
+        {   
+            $category = Category::find($id);
+
+            return view('search')
+                ->with('categories', Category::orderBy('desc', 'ASC')->get())
+                ->with('courses', $category->courses->all())
+                ->with('checked_category', $category)
+                ->with('search_string', '');
+        }
     }
 
     public function searchCat(Request $request)

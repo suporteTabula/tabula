@@ -4,32 +4,39 @@
     <section class="search-wrapper">
         <div class="search-container">
             <div class="search-inputeers">
-                <input id="course_title" type="text" placeholder="Faça sua busca" class="tabula-input">
+                <input id="course_title" type="text" placeholder="Faça sua busca" value="{{ $search_string }}" class="tabula-input">
                 <button id="search_btn" class="tabula-button">Buscar</button>
             </div>
             <p class="adv-search"><b>Busca Avançada</b></p>
             <form class="search-checkers">
                 <ul>
                     @foreach($categories as $category)
-                        <li><label><input type="checkbox" name="macrotema" value="{{ $category->id }}"> {{ $category->desc }}</label></li>
+                        <li><label><input 
+                            @if (isset($checked_category)) 
+                                @if ($checked_category->id == $category->id) 
+                                    checked 
+                                @endif 
+                            @endif 
+                        type="checkbox" name="macrotema" value="{{ $category->id }}"> {{ $category->desc }}</label></li>
                     @endforeach
                 </ul>
             </form>
         </div>
         <div class="search-results">
-            <section class="most-viewed-wrapper">
-                <div class="carousel1">
+            @if (count($courses) > 0)
+                <ul>
                     @foreach($courses as $course)
                         <a href="{{ route('course.single', ['id' => $course->id]) }}" class="card">
                             <div class="card-media" style="background-image: url(../images/aulas/{{$course->id}}.jpg);">
                                 <div class="card-overlay"></div>
                             </div>
                             <p><b>{{ $course->name }}</b></p>
-                            <p>{{ $course->desc }}</p>
                         </a>
                     @endforeach
-                </div>
-            </section>
+                </ul>
+            @else
+                Não existem cursos das opções selecionadas.
+            @endif
         </div>
     </section>
     @section('scripts')
