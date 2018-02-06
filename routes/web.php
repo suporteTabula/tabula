@@ -18,12 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'FrontController@index')->name('index.single');
-Route::get('category/{id}', 'FrontController@category')->name('category.single');
 Route::get('course/{id}', 'FrontController@course')->name('course.single');
 Route::get('course/chapter/{id}', 'FrontController@chapter')->name('chapter.single');
 Route::get('course/chapter/item/{id}', 'FrontController@item')->name('item.single');
 
-Route::get('search', 'FrontController@search')->name('search.single');
+Route::get('search/{id}', 'FrontController@search')->name('search.single');
 Route::get('searchcat', 'FrontController@searchCat')->name('search.category');
 
 Route::get('userPanel', 'FrontController@userPanel')->name('userPanel.single');
