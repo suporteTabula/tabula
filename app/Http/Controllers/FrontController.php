@@ -30,10 +30,10 @@ class FrontController extends Controller
         $featured_posts = Course::inRandomOrder()->take(8)->get();
 
         return view('welcome')
-            ->with('categories', Category::all())
+            ->with('categories', Category::orderBy('desktop_index', 'ASC')->get())
             ->with('row_limit', 5)
             ->with('category_count', 0)
-            ->with('mobile_categories', MobileCategory::all())
+            ->with('mobile_categories', Category::orderBy('mobile_index', 'ASC')->get())
             ->with('mobile_col_limit', 5)
             ->with('mobile_category_count', 0)
             ->with('featured_category1', $featured_category1->desc)

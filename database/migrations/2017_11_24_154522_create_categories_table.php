@@ -17,6 +17,11 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('desc');
             $table->integer('category_id_parent')->nullable();
+            $table->integer('desktop_index')->nullable();
+            $table->integer('mobile_index')->nullable();
+            $table->string('desktop_hex_bg')->nullable();
+            $table->string('mobile_hex_bg')->nullable();
+            $table->string('hex_icon')->nullable();
             $table->timestamps();
         });
     }
