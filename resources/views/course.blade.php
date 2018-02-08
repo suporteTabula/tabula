@@ -9,8 +9,19 @@
     <table>
         <tbody>
             @foreach($chapters as $chapter)
-                <tr><td>Nome: <a href="{{ route('chapter.single', ['id' => $chapter->id]) }}">{{ $chapter->name }}</a></td></tr>
-                <tr><td>Descrição: {{ $chapter->desc }}</td></tr>
+                <tr>
+                    <td>Capitulo: {{ $chapter->name }} </td>
+                    <td>Descrição: {{ $chapter->desc }}</td>
+                </tr>
+                @foreach ($chapter->course_items as $item)
+                    @if (is_null($item->course_items_parent))
+                       
+                       <tr>
+                            <td><a href="{{ route('course.lesson', ['id' => $item->id]) }}"> {{ $item->name}} </a></td>
+                        </tr>
+
+                    @endif
+                @endforeach
             @endforeach
         </tbody>
     </table>

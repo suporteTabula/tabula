@@ -111,18 +111,11 @@
 								@endif
 							@endforeach
 						</select>
-					</div>
-
-					<div id="dissertativa">
-						<div class="form-group">
-							<label for="desc">Pergunta</label>
-							<input class="form-control" type="text" placeholder="Descrição" name="desc">
-						</div>
-					</div>
+					</div>					
 					
 					<div class="form-group">
 						<div class="text-center">
-							<button class="btn btn-success" type="submit">Nova Questão</button>
+							<button class="btn btn-success" type="submit">Nova Avaliaçao</button>
 							{{--<a class="btn btn-success" href="{{ route('courses') }}">Voltar</a>--}}
 						</div>
 					</div>
@@ -269,16 +262,6 @@
 					$('#desc').show();
 					$('#arquivo').show();
 				}				
-			});
-
-			$('#item_type_question').change(function(){
-				if($('#item_type_question').val() == 5){
-					$('#dissertativa').show();
-				}
-				else
-				{
-					$('#dissertativa').hide();
-				}
 			});
 
 		</script>

@@ -37,6 +37,10 @@ class CourseItemTypesTableSeeder extends Seeder
                 "name"          => "multipla_escolha",
                 "created_at"    => $now,
                 "updated_at"    => $now,
+            ], [
+                "name"          => "mista",
+                "created_at"    => $now,
+                "updated_at"    => $now,
             ],
         ]);
     }

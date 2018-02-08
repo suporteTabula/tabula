@@ -151,7 +151,7 @@
 							@endforeach
 						@else						
 							<tr>
-								<td colspan="3" class="text-center">Não existem aulas/avaliações neste capítulo</td>
+								<td colspan="3" class="text-center">Não existem perguntas nesta prova</td>
 							</tr>
 						@endif
 					</tbody>
