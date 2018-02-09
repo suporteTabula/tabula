@@ -13,9 +13,9 @@
             <div class="hex-col-{{ $i+1 }}">
                 @for($j = 0; $j < $mobile_col_limit; $j++)
                     <div class="hexagon">
-                        <a href="{{ route('search.single', ['id' => $mobile_categories[$mobile_category_count]->id]) }}" class="hex-inner"> <img src="images/hex/mobile/{{$mobile_category_count}}.svg">
+                        <a href="{{ route('search.single', ['id' => $mobile_categories[$mobile_category_count]->id]) }}" class="hex-inner"> <img src="{{ asset('images/hex/mobile/'.$mobile_categories[$mobile_category_count]->mobile_hex_bg) }}">
                             <p>{{ $mobile_categories[$mobile_category_count]->desc }}</p> 
-                            <img class="macro-icon" src="images/hex/icon/{{$mobile_category_count}}.svg" style="display: none;"> 
+                            <img class="macro-icon" src="{{ asset('images/hex/icon/'.$mobile_categories[$mobile_category_count]->hex_icon) }}" style="display: none;"> 
                         </a>
                         @php($mobile_category_count++)
                     </div>
@@ -33,9 +33,9 @@
             <div class="hex-row-{{ $i+1 }}">
                 @for($j = 0; $j < $row_limit; $j++)
                     <div class="hexagon">
-                        <a href="{{ route('search.single', ['id' => $categories[$category_count]->id]) }}" class="hex-inner"> <img src="images/hex/desktop/{{$category_count}}.svg">
+                        <a href="{{ route('search.single', ['id' => $categories[$category_count]->id]) }}" class="hex-inner"> <img src="{{ asset('images/hex/desktop/'.$categories[$category_count]->desktop_hex_bg) }}">
                             <p>{{ $categories[$category_count]->desc }}</p> 
-                            <img class="macro-icon" src="images/hex/icon/{{$category_count}}.svg" style="display: none;"> 
+                            <img class="macro-icon" src="{{ asset('images/hex/icon/'.$categories[$category_count]->hex_icon) }}" style="display: none;"> 
                         </a>
                         @php($category_count++)
                     </div>

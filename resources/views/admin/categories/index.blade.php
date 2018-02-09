@@ -23,7 +23,10 @@
 		<div class="panel-body"> 
 			<table id="categories" class="table table-hover"> 
 				<thead> 
-					<th>Nome Macrotema</th>
+					<th>Nome</th>
+					<th>Desktop</th>
+					<th>Mobile</th>
+					<th>Macrotema</th>
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead> 
@@ -32,6 +35,19 @@
 						@foreach ($categories as $category) 
 							<tr>
 								<td style="vertical-align: middle !important;">{{ $category->desc }}</td> 
+								<td align="center">
+									{{ $category->desktop_index }}
+								</td>
+								<td align="center">
+									{{ $category->mobile_index }}
+								</td>
+								<td align="center">
+									@if($category->category_id_parent == NULL)
+										Sim
+									@else
+										Não
+									@endif
+								</td>
 								<td>
 									<a href="{{ route('category.edit', ['id' => $category->id]) }} ">
 										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">

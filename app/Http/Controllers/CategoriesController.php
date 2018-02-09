@@ -16,7 +16,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index')->with('categories', Category::all());
+        return view('admin.categories.index')
+            ->with('categories', Category::all());
     }
 
     /**
@@ -26,7 +27,11 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create')->with('categories', Category::all());
+        $last_index = Category::orderBy('desktop_index', 'desc')->first()->desktop_index;
+
+        return view('admin.categories.create')
+            ->with('categories', Category::all())
+            ->with('suggested_index', $last_index + 1);
     }
 
     /**
@@ -42,19 +47,54 @@ class CategoriesController extends Controller
         ]);
 
         $category = new Category();
-
-        $category->desc = $request->desc;
         
         if($request->category_id == '')
         {
-            $category->category_id_parent = NULL;
-            $category->save();
+            $this->validate($request, [
+                'desktop_hex_bg' => 'required',
+                'mobile_hex_bg' => 'required',
+                'hex_icon' => 'required'
+            ]);
+
+            $last_index = Category::orderBy('desktop_index', 'desc')->first()->desktop_index;
+
+            if($request->desktop_index == '') 
+            {
+                $category->desktop_index = $last_index + 1;
+                $attach_number = $last_index + 1;
+            }
+            else
+            {
+                $category->desktop_index = $request->desktop_index;
+                $attach_number = $request->desktop_index;
+            }
+            if($request->mobile_index == '')
+                $category->mobile_index = $last_index + 1;
+            else 
+                $category->mobile_index = $request->mobile_index;
+
+            $attach_desktop_hex_bg = $request->desktop_hex_bg;
+            $attach_desktop_hex_bg_name = time().'category-'.$attach_number.'.svg';
+            $attach_desktop_hex_bg->move('images/hex/desktop', $attach_desktop_hex_bg_name); 
+
+            $attach_mobile_hex_bg = $request->mobile_hex_bg;
+            $attach_mobile_hex_bg_name = time().'category-'.$attach_number.'.svg';
+            $attach_mobile_hex_bg->move('images/hex/mobile', $attach_mobile_hex_bg_name); 
+
+            $attach_hex_icon = $request->hex_icon;
+            $attach_hex_icon_name = time().'category-'.$attach_number.'.svg';
+            $attach_hex_icon->move('images/hex/icon', $attach_hex_icon_name); 
+
+            $category->desktop_hex_bg = $attach_desktop_hex_bg_name;  
+            $category->mobile_hex_bg = $attach_mobile_hex_bg_name;
+            $category->hex_icon = $attach_hex_icon_name;   
         }
         else
-        {
             $category->category_id_parent = $request->category_id;
-            $category->save();
-        }
+
+        $category->desc = $request->desc;
+
+        $category->save();
 
         Session::flash('success', 'Categoria adicionada com sucesso');
 
@@ -100,18 +140,58 @@ class CategoriesController extends Controller
 
         $category = Category::find($id);
 
-        $category->desc = $request->desc;
-
-        if($request->category_id == '')
+        if($category->category_id_parent == '')
         {
-            $category->category_id_parent = NULL;
-            $category->save();
+            $last_index = Category::orderBy('desktop_index', 'desc')->first()->desktop_index;
+
+            if($request->desktop_index == '') 
+            {
+                $category->desktop_index = $last_index + 1;
+                $attach_number = $last_index + 1;
+            }
+            else
+            {
+                $category->desktop_index = $request->desktop_index;
+                $attach_number = $request->desktop_index;
+            }
+            if($request->mobile_index == '')
+                $category->mobile_index = $last_index + 1;
+            else 
+                $category->mobile_index = $request->mobile_index;
+
+            if(isset($request->desktop_hex_bg))
+            {
+                $attach_desktop_hex_bg = $request->desktop_hex_bg;
+                $attach_desktop_hex_bg_name = time().'category-'.$attach_number.'.svg';
+                $attach_desktop_hex_bg->move('images/hex/desktop', $attach_desktop_hex_bg_name); 
+
+                $category->desktop_hex_bg = $attach_desktop_hex_bg_name;
+            }
+
+            if(isset($request->mobile_hex_bg))
+            {
+                $attach_mobile_hex_bg = $request->mobile_hex_bg;
+                $attach_mobile_hex_bg_name = time().'category-'.$attach_number.'.svg';
+                $attach_mobile_hex_bg->move('images/hex/mobile', $attach_mobile_hex_bg_name); 
+
+                $category->mobile_hex_bg = $attach_mobile_hex_bg_name;
+            }
+
+            if(isset($request->hex_icon))
+            {
+                $attach_hex_icon = $request->hex_icon;
+                $attach_hex_icon_name = time().'category-'.$attach_number.'.svg';
+                $attach_hex_icon->move('images/hex/icon', $attach_hex_icon_name);
+
+                $category->hex_icon = $attach_hex_icon_name;  
+            }
         }
         else
-        {
             $category->category_id_parent = $request->category_id;
-            $category->save();
-        }
+
+        $category->desc = $request->desc;
+
+        $category->save();
 
         Session::flash('success', 'Categoria/Subcategoria alterada com sucesso');
 
