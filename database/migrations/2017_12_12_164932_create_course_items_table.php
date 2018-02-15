@@ -21,6 +21,7 @@ class CreateCourseItemsTable extends Migration
             $table->integer('course_item_types_id');
             $table->string('path')->nullable();
             $table->integer('course_items_parent')->nullable();
+            $table->integer('order');
             $table->timestamps();
         });
     }

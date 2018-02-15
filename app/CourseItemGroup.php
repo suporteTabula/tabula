@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CourseItemGroup extends Model
 {
 
-	protected $fillable = ['name', 'desc', 'course_id'];
+	protected $fillable = ['name', 'desc', 'course_id', 'order'];
 	
     public function course_items()
     {

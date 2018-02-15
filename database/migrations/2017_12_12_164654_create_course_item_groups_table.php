@@ -18,6 +18,7 @@ class CreateCourseItemGroupsTable extends Migration
             $table->string('name', 255);
             $table->string('desc', 255);
             $table->integer('course_id');
+            $table->integer('order');
             $table->timestamps();
         });
     }

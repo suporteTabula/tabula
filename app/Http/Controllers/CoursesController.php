@@ -12,6 +12,7 @@ use App\CourseItemType;
 use App\CourseItemGroup;
 use App\CourseItem;
 use App\CourseItemOption;
+use Illuminate\Support\Facades\DB;
 
 class CoursesController extends Controller
 {
@@ -149,11 +150,17 @@ class CoursesController extends Controller
             'name'      => 'required',
             'desc'      => 'required'
         ]);
+
+
+        $order = CourseItemGroup::count();
+
         $course_item_group = CourseItemGroup::create([
             'name'      =>  $request->name,
             'desc'      =>  $request->desc,
-            'course_id' =>  $id
+            'course_id' =>  $id,
+            'order'     =>  $order 
         ]);
+
 
         Session::flash('success', 'Capítulo adicionado com sucesso');
         return redirect()->back();
@@ -233,19 +240,13 @@ class CoursesController extends Controller
         ]);
 
         $item = new CourseItem;
-
+        
         $item->name                     = $request->name;
         $item->desc                     = $request->desc;
         $item->course_item_group_id     = $id;
         $item->course_item_types_id     = $request->item_type_id;
-        if($request->item_type_id == 5)
-        {
-            $item->course_items_parent = 0;
-        }
-        else
-        {
-            $item->course_items_parent      = NULL;
-        }
+        $item->course_items_parent  = NULL;
+        
                
         if(isset($request->archive))
         {
@@ -254,6 +255,12 @@ class CoursesController extends Controller
             $attach->move('uploads/archives', $attach_new_name); 
             $item->path = 'uploads/archives/'. $attach_new_name;     
         }
+
+        $order = DB::table('course_items')
+                            ->whereNull('course_items_parent')
+                            ->count();
+        
+        $item->order = $order;
 
         $item->save();
         Session::flash('success', 'Aula/Avaliação adicionada com sucesso');
@@ -283,6 +290,12 @@ class CoursesController extends Controller
             $item->path = 'uploads/archives/'. $attach_new_name;     
         }
 
+        $order = DB::table('course_items')
+                            ->whereNotNull('course_items_parent')
+                            ->count();
+        
+        $item->order = $order;
+
         $item->save();
         Session::flash('success', 'Aula/Avaliação adicionada com sucesso');
         return redirect()->back();
@@ -303,6 +316,8 @@ class CoursesController extends Controller
         {
             return view('admin.courses.question')
                     ->with('item', $item)
+                    ->with('items', CourseItem::all())
+                    ->with('chapter', $chapter)
                     ->with('items_type', CourseItemType::all())
                     ->with('item_options', CourseItemOption::all());
         }
