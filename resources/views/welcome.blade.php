@@ -54,7 +54,7 @@
         <div class="carousel1">
             @foreach($featured_courses1 as $course)
                 <a href="{{ route('course.single', ['id' => $course->id]) }}" class="card">
-                    <div class="card-media" style="background-image: url(../images/aulas/{{$course->id}}.jpg);">
+                    <div class="card-media" style="background-image: url(../images/aulas/{{$course->thumb_img}});">
                         <div class="card-overlay"></div>
                     </div>
                     <p><b>{{ $course->name }}</b></p>
@@ -66,7 +66,7 @@
         <div class="carousel2">
             @foreach($featured_courses2 as $course)
                 <a href="{{ route('course.single', ['id' => $course->id]) }}" class="card">
-                    <div class="card-media" style="background-image: url(../images/aulas/{{$course->id}}.jpg);">
+                    <div class="card-media" style="background-image: url(../images/aulas/{{$course->thumb_img}});">
                         <div class="card-overlay"></div>
                     </div>
                     <p><b>{{ $course->name }}</b></p>
@@ -80,7 +80,7 @@
         <div class="carousel3">
             @foreach($featured_posts as $post)
                 <a href="{{ route('course.single', ['id' => $post->id]) }}" class="card">
-                    <div class="card-media" style="background-image: url(../images/aulas/{{$post->id}}.jpg);">
+                    <div class="card-media" style="background-image: url(../images/aulas/{{$post->thumb_img}});">
                         <div class="card-overlay"></div>
                     </div>
                     <p><b>{{ $post->name }}</b></p>

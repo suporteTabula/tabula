@@ -27,7 +27,10 @@
 						@endforeach
 					</select>
 				</div>
-				
+				<div class="form-group">
+					<label for="thumb_img">Imagem da Vitrine</label>
+					<input class="form-control" type="file" name="thumb_img">
+				</div>
 				<div class="form-group">
 					<div class="text-center">
 						<button class="btn btn-success" type="submit">Criar</button>
