@@ -54,12 +54,25 @@ class CoursesController extends Controller
             'category_id' => 'required'
         ]);
 
-        $course = Course::create([
-            'name'          => $request->name,
-            'desc'          => $request->desc,
-            'category_id'   => $request->category_id,
-            'user_id_owner' => Auth::user()->id
-        ]);
+        $course = new Course();
+
+        $course->name = $request->name;
+        $course->desc = $request->desc;
+        $course->category_id = $request->category_id;
+        $course->user_id_owner = Auth::user()->id;
+
+        if($request->thumb_img != '')
+        {
+            $attach_thumb_img = $request->thumb_img;
+            $attach_thumb_img_name = time().$attach_thumb_img->getClientOriginalName();
+            $attach_thumb_img->move('images/aulas', $attach_thumb_img_name); 
+
+            $course->thumb_img = $attach_thumb_img_name;  
+        }
+        else
+            $course->thumb_img = 'default.jpg'; 
+
+        $course->save();
 
         Session::flash('success', 'Curso criado com sucesso');
         return redirect()->route('courses');
@@ -108,17 +121,24 @@ class CoursesController extends Controller
             'desc'        => 'required',
             'category_id' => 'required'
         ]);
-        
-        $course->name           = $request->name;
-        $course->desc           = $request->desc;
-        $course->category_id    = $request->category_id;
+
+        $course->name        = $request->name;
+        $course->desc        = $request->desc;
+        $course->category_id = $request->category_id;
+
+        if($request->thumb_img != '')
+        {
+            $attach_thumb_img = $request->thumb_img;
+            $attach_thumb_img_name = time().$attach_thumb_img->getClientOriginalName();
+            $attach_thumb_img->move('images/aulas', $attach_thumb_img_name); 
+
+            $course->thumb_img = $attach_thumb_img_name;  
+        }
 
         $course->save();
 
         Session::flash('success', 'Curso atualizado com sucesso');
         return redirect()->back();
-
-
     }
 
     /**

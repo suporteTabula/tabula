@@ -19,6 +19,7 @@ class CreateCoursesTable extends Migration
             $table->text('desc');
             $table->integer('user_id_owner');
             $table->integer('category_id');
+            $table->string('thumb_img')->nullable();
             $table->timestamps();
         });
     }

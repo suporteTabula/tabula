@@ -31,7 +31,10 @@
 						@endforeach
 					</select>
 				</div>
-		
+				<div class="form-group">
+					<label for="thumb_img">Imagem da Vitrine</label>
+					<input class="form-control" type="file" name="thumb_img">
+				</div>
 				{{--  <div class="form-group">
 					<label for="course_item_type">Selecione o tipo de arquivo</label>
 					<select class="form-control" id="item_type_id" name="item_type_id">
