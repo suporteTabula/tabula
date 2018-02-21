@@ -10,7 +10,7 @@ use App\State;
 use App\Country;
 use App\Schooling;
 
-class UsersController extends Controller
+class AdminUsersController extends Controller
 {
     /**
      * Display a listing of the resource.

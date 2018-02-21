@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use Session;
+use App\User;
+use App\UserGroup;
 use App\Company;
 
-class CompaniesController extends Controller
+class AdminUserGroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +18,8 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        return view('admin.companies.index')
+        return view('admin.userGroups.index')
+            ->with('userGroups', UserGroup::all())
             ->with('companies', Company::all());
     }
 
@@ -26,7 +30,8 @@ class CompaniesController extends Controller
      */
     public function create()
     {
-        return view('admin.companies.create');
+        return view('admin.userGroups.create')
+            ->with('companies', Company::all());
     }
 
     /**
@@ -38,17 +43,18 @@ class CompaniesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:100',
-            'desc' => 'required|max:300'
+            'desc'       => 'required|max:100',
+            'company_id' => 'required'
         ]);
 
-        $company = Company::create([
-            'name' => $request->name,
-            'desc' => $request->desc
+        $userGroup = UserGroup::create([
+            'desc' => $request->desc,
+            'company_id' => $request->company_id
         ]);
 
-        Session::flash('success', 'Empresa cadastrada com sucesso');
-        return redirect()->route('companies');
+        Session::flash('success', 'Grupo criado com sucesso');
+
+        return redirect()->route('userGroups');
     }
 
     /**
@@ -70,10 +76,11 @@ class CompaniesController extends Controller
      */
     public function edit($id)
     {
-        $company = Company::find($id);
+        $userGroup = UserGroup::find($id);
 
-        return view('admin.companies.edit')
-            ->with('company', $company);
+        return view('admin.userGroups.edit')
+            ->with('userGroup', $userGroup)
+            ->with('companies', Company::all());
     }
 
     /**
@@ -86,18 +93,18 @@ class CompaniesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|max:100',
-            'desc' => 'required|max:300'
+            'desc' => 'required|max:100'
         ]);
 
-        $company = Company::find($id);
+        $userGroup = UserGroup::find($id);
 
-        $company->name = $request->name;
-        $company->desc = $request->desc;
-        $company->save();
-        
-        Session::flash('success', 'Dados da Empresa alterados com sucesso');
-        return redirect()->route('companies');
+        $userGroup->desc = $request->desc;
+        $userGroup->company_id = $request->company_id;
+        $userGroup->save();
+
+        Session::flash('success', 'Grupo editado com sucesso');
+
+        return redirect()->route('userGroups');
     }
 
     /**
@@ -108,11 +115,11 @@ class CompaniesController extends Controller
      */
     public function destroy($id)
     {
-        $company = Company::find($id);
+        $userGroup = UserGroup::find($id);
 
-        $company->delete();
+        $userGroup->delete();
 
-        Session::flash('success', 'Empresa removida comp sucesso');
+        Session::flash('success', 'Grupo removido com sucesso');
         return redirect()->back();
     }
 }
