@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\MobileCategory;
-use Auth;
 use Session;
+use App\Company;
 
-class MobileCategoriesController extends Controller
+class AdminCompaniesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,8 @@ class MobileCategoriesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.companies.index')
+            ->with('companies', Company::all());
     }
 
     /**
@@ -26,7 +26,7 @@ class MobileCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.companies.create');
     }
 
     /**
@@ -37,7 +37,18 @@ class MobileCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'desc' => 'required|max:300'
+        ]);
+
+        $company = Company::create([
+            'name' => $request->name,
+            'desc' => $request->desc
+        ]);
+
+        Session::flash('success', 'Empresa cadastrada com sucesso');
+        return redirect()->route('companies');
     }
 
     /**
@@ -59,7 +70,10 @@ class MobileCategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = Company::find($id);
+
+        return view('admin.companies.edit')
+            ->with('company', $company);
     }
 
     /**
@@ -71,7 +85,19 @@ class MobileCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            'desc' => 'required|max:300'
+        ]);
+
+        $company = Company::find($id);
+
+        $company->name = $request->name;
+        $company->desc = $request->desc;
+        $company->save();
+        
+        Session::flash('success', 'Dados da Empresa alterados com sucesso');
+        return redirect()->route('companies');
     }
 
     /**
@@ -82,6 +108,11 @@ class MobileCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company = Company::find($id);
+
+        $company->delete();
+
+        Session::flash('success', 'Empresa removida comp sucesso');
+        return redirect()->back();
     }
 }

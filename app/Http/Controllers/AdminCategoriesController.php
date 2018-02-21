@@ -7,7 +7,7 @@ use App\Category;
 use Auth;
 use Session;
 
-class CategoriesController extends Controller
+class AdminCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.

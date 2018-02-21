@@ -14,7 +14,7 @@ use App\CourseItem;
 use App\CourseItemOption;
 use Illuminate\Support\Facades\DB;
 
-class CoursesController extends Controller
+class AdminCoursesController extends Controller
 {
     /**
      * Display a listing of the resource.

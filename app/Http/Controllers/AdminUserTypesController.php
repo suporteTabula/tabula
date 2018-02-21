@@ -7,7 +7,7 @@ use Session;
 use App\UserType;
 
 
-class UsersTypeController extends Controller
+class AdminUserTypesController extends Controller
 {
     /**
      * Display a listing of the resource.
