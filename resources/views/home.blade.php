@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.user')
 @section('content')
     <section class="hero-wrapper">
         <div class="hero-text">
