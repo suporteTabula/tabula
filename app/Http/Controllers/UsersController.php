@@ -9,7 +9,7 @@ use App\State;
 use App\Country;
 use App\Schooling;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
     public function userPanel() // criar outras funções para update de usuario no banco
     {

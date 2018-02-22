@@ -19,17 +19,17 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index.single');
 
-Route::get('cart', 'FrontController@cart')->name('cart');
+Route::get('cart', 'TransactionsController@cart')->name('cart');
 
-Route::get('course/{id}', 'CourseController@course')->name('course.single');
-Route::get('course/lesson/{id}', 'CourseController@lesson')->name('course.lesson');
+Route::get('course/{id}', 'CoursesController@course')->name('course.single');
+Route::get('course/lesson/{id}', 'CoursesController@lesson')->name('course.lesson');
 
 Route::get('search/{id}', 'SearchController@search')->name('search.single');
 Route::get('searchcat', 'SearchController@searchCat')->name('search.category');
 
-Route::get('userPanel', 'UserController@userPanel')->name('userPanel.single');
-Route::get('userProfile', 'UserController@userProfile')->name('userProfile.single');
-Route::post('userProfile/update', 'UserController@userProfileUpdate')->name('userProfile.update');
+Route::get('userPanel', 'UsersController@userPanel')->name('userPanel.single');
+Route::get('userProfile', 'UsersController@userProfile')->name('userProfile.single');
+Route::post('userProfile/update', 'UsersController@userProfileUpdate')->name('userProfile.update');
 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'AdminHomeController@index')->name('home');

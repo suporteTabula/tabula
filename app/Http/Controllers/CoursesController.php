@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\CourseItem;
 
-class CourseController extends Controller
+class CoursesController extends Controller
 {
     public function course($id)
     {
