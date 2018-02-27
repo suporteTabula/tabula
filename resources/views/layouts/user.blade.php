@@ -40,6 +40,9 @@
             </div>
             <div class="menu-links-desktop">
                 <ul>
+                    @auth
+                        <li><a href="{{ route('cart') }}">Cart</a></li>
+                    @endauth
                     <li><a class="sta-link" href="#">Canais</a></li>
                     <li><a class="sta-link" href="#">Instituições</a></li>
                     @auth

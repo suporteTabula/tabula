@@ -19,7 +19,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index.single');
 
-Route::get('cart', 'TransactionsController@cart')->name('cart');
+Route::get('cart', 'CartController@cart')->name('cart');
+Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
+Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('cart.remove');
 
 Route::get('course/{id}', 'CoursesController@course')->name('course.single');
 Route::get('course/lesson/{id}', 'CoursesController@lesson')->name('course.lesson');

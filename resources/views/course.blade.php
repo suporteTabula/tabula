@@ -8,6 +8,7 @@
     </table>
     <table>
         <tbody>
+            <tr><td><a href="{{ route('cart.insert', ['id' => $course->id]) }}"> Colocar no carrinho </a></td></tr>
             @foreach($chapters as $chapter)
                 <tr>
                     <td>Capitulo: {{ $chapter->name }} </td>
@@ -15,11 +16,7 @@
                 </tr>
                 @foreach ($chapter->course_items as $item)
                     @if (is_null($item->course_items_parent))
-                       
-                       <tr>
-                            <td><a href="{{ route('course.lesson', ['id' => $item->id]) }}"> {{ $item->name}} </a></td>
-                        </tr>
-
+                        <tr><td><a href="{{ route('course.lesson', ['id' => $item->id]) }}">{{ $item->name }}</a></td></tr>
                     @endif
                 @endforeach
             @endforeach
