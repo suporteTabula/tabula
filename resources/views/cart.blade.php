@@ -4,7 +4,11 @@
     <br><br><br><br>
     Carrinho
     <table>
-        <tr><td>teste</td></tr>      
-        <tr><td> </td></tr>
+        @foreach($courses as $course)
+        	<tr>
+        		<td>{{ $course->name }}</td>
+        		<td><a href="{{ route('cart.remove', ['id' => $course->cart_id]) }}">Remover</a></td>
+        	</tr>
+        @endforeach
     </table>
 @endsection
