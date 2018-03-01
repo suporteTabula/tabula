@@ -8,7 +8,9 @@
     </table>
     <table>
         <tbody>
-            <tr><td><a href="{{ route('cart.insert', ['id' => $course->id]) }}"> Colocar no carrinho </a></td></tr>
+            @auth
+                <tr><td><a href="{{ route('cart.insert', ['id' => $course->id]) }}"> Colocar no carrinho </a></td></tr>
+            @endauth
             @foreach($chapters as $chapter)
                 <tr>
                     <td>Capitulo: {{ $chapter->name }} </td>
