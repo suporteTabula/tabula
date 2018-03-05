@@ -20,6 +20,8 @@ class TransactionsController extends Controller
             $course = Course::find($item->course_id);
             array_push($courses, $course);
 
+            $user->courses()->save($course);
+
             $cart_item = Cart::find($item->id);
         	$cart_item->delete();
         }
