@@ -28,6 +28,10 @@
 					</select>
 				</div>
 				<div class="form-group">
+					<label for="price">Preço</label>
+					<input class="form-control" type="text" name="price" placeholder="Preço do curso" value="{{ old('price') }}">
+				</div>
+				<div class="form-group">
 					<label for="thumb_img">Imagem da Vitrine</label>
 					<input class="form-control" type="file" name="thumb_img">
 				</div>

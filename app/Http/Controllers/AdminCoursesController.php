@@ -51,6 +51,7 @@ class AdminCoursesController extends Controller
         $this->validate($request, [
             'name'        => 'required|max:100',
             'desc'        => 'required',
+            'price'       => 'required',
             'category_id' => 'required'
         ]);
 
@@ -59,6 +60,7 @@ class AdminCoursesController extends Controller
         $course->name = $request->name;
         $course->desc = $request->desc;
         $course->category_id = $request->category_id;
+        $course->price = $request->price;
         $course->user_id_owner = Auth::user()->id;
 
         if($request->thumb_img != '')
