@@ -15,16 +15,20 @@ class CartController extends Controller
     	$user = Auth::user();
     	$items = Cart::where('user_id', $user->id)->get();
     	$courses = array();
+        $total_price = 0;
 
     	foreach($items as $item)
     	{
     		$course = Course::find($item->course_id);
     		$course['cart_id'] = $item->id;
     		array_push($courses, $course);
+
+            $total_price = $total_price + $course->price;
     	}
 
     	return view('cart')
-    		->with('courses', $courses);
+    		->with('courses', $courses)
+            ->with('total_price', $total_price);
     }
 
     public function insertCourseIntoCart($id)
@@ -67,14 +71,18 @@ class CartController extends Controller
         $user = Auth::user();
         $items = Cart::where('user_id', $user->id)->get();
         $courses = array();
+        $total_price = 0;
 
         foreach($items as $item)
         {
             $course = Course::find($item->course_id);
             array_push($courses, $course);
+
+            $total_price = $total_price + $course->price;
         }
 
         return view('checkout')
-            ->with('courses', $courses);
+            ->with('courses', $courses)
+            ->with('total_price', $total_price);
     }
 }

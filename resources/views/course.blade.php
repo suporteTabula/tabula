@@ -5,6 +5,7 @@
     <table>
         <tr><td>{{ $course->name }}</td></tr>
         <tr><td>{{ $course->desc }}</td></tr>
+        <tr><td>{{ $course->price }}</td></tr>
     </table>
     <table>
         <tbody>

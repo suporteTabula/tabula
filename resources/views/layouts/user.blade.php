@@ -86,9 +86,9 @@
                 <li><a href="#">Suporte</a></li>
             </ul>
             <ul class="social-media">
-                <li><a href="#"><img src="images/layout/footer/facebook-logo.svg" alt="facebook" style="width: 25px;"></a></li>
-                <li><a href="#"><img src="images/layout/footer/instagram-logo.svg" alt="instagram" style="width: 25px;"></a></li>
-                <li><a href="#"><img src="images/layout/footer/youtube-logo.svg" alt="youtube" style="width: 25px;"></a></li>
+                <li><a href="#"><img src="../images/layout/footer/facebook-logo.svg" alt="facebook" style="width: 25px;"></a></li>
+                <li><a href="#"><img src="../images/layout/footer/instagram-logo.svg" alt="instagram" style="width: 25px;"></a></li>
+                <li><a href="#"><img src="../images/layout/footer/youtube-logo.svg" alt="youtube" style="width: 25px;"></a></li>
             </ul>
         </footer>
 
