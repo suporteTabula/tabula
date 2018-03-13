@@ -1,19 +1,14 @@
-@extends('layouts.user')
-
-@section('content')
-    <br><br><br><br>
-    <table>
-        <tr><td>{{ $lesson->name }}</td></tr>
-        <tr><td>{{ $lesson->desc }}</td></tr>
-    </table>
-    <table>
-        <tbody>
-            @foreach($lesson->item_child as $child)
-                <tr>
-                    <td>Aula: {{ $child->name }} </td>
-                    <td>Descrição: {{ $child->desc }}</td>
-                </tr>                
-            @endforeach
-        </tbody>
-    </table>
-@endsection
+@if (isset($items))
+    <ul>
+        @foreach ($items as $item)
+           {{ $item->name }}
+           @if (!is_null($item->path))
+                <img src="{{ asset($item->path) }}">
+           @endif
+           @foreach ($item->item_child as $child)
+               {{ $child->id }}
+           @endforeach
+        @endforeach
+    </ul>
+@else
+@endif

@@ -27,7 +27,8 @@ Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
 Route::get('success', 'TransactionsController@success')->name('transaction.success');
 
 Route::get('course/{id}', 'CoursesController@course')->name('course.single');
-Route::get('course/lesson/{id}', 'CoursesController@lesson')->name('course.lesson');
+Route::get('course/start/{id}', 'CoursesController@course_start')->name('course.start');
+Route::get('progress', 'CoursesController@progress')->name('course.progress');
 
 Route::get('search/{id}', 'SearchController@search')->name('search.single');
 Route::get('searchcat', 'SearchController@searchCat')->name('search.category');
