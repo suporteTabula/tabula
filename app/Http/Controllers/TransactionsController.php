@@ -35,6 +35,7 @@ class TransactionsController extends Controller
             $transaction_item->hash = $random_hash;
             $transaction_item->user_id = $user->id;
             $transaction_item->course_id = $course->id;
+            $transaction_item->price = $course->price;
             $transaction_item->save();
         }
 

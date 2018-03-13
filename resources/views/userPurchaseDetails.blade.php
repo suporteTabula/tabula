@@ -11,14 +11,14 @@
     <p><a href="{{ route('userPanel.single') }}">Painel</a></p>
     <p><a href="{{ route('userProfile.single') }}">Perfil</a></p>
     <p><a href="{{ route('userPurchases.single') }}">Histórico</a></p>
-    <p>Cursos</p>
     <table>
-        @foreach($user->courses as $course)
+        @foreach($purchases as $purchase)
             <tr>
                 <td>
-                    <a href="{{ route('course.single', ['id' => $course->id]) }}">
-                        <div style="height:100%;width:100%">{{ $course->name }}</div>
-                    </a>
+                    Hash: {{ $purchase->hash }} //
+                    Valor: {{ $purchase->price }} // 
+                    Curso: <a href="{{ route('course.single', ['id' => $purchase->course_id]) }}">{{ $purchase->course_name }}</a> //
+                    Data: {{ $purchase->created_at }}
                 </td>
             </tr>
         @endforeach
