@@ -15,9 +15,10 @@ class CreateTransactionItemsTable extends Migration
     {
         Schema::create('transaction_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('hash');
+            $table->string('hash');
             $table->integer('user_id');
             $table->integer('course_id');
+            $table->double('price');
             $table->timestamps();
         });
     }

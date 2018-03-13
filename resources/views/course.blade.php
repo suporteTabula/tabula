@@ -10,7 +10,11 @@
     <table>
         <tbody>
             @auth
-                <tr><td><a href="{{ route('cart.insert', ['id' => $course->id]) }}"> Colocar no carrinho </a></td></tr>
+                @if($hasCourse)
+                    <tr><td>INICIAR CURSO</td></tr>
+                @else 
+                    <tr><td><a href="{{ route('cart.insert', ['id' => $course->id]) }}"> Colocar no carrinho </a></td></tr>
+                @endif
             @endauth
             @foreach($chapters as $chapter)
                 <tr>

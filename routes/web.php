@@ -35,6 +35,8 @@ Route::get('searchcat', 'SearchController@searchCat')->name('search.category');
 Route::get('userPanel', 'UsersController@userPanel')->name('userPanel.single');
 Route::get('userProfile', 'UsersController@userProfile')->name('userProfile.single');
 Route::post('userProfile/update', 'UsersController@userProfileUpdate')->name('userProfile.update');
+Route::get('userPurchases', 'UsersController@userPurchases')->name('userPurchases.single');
+Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails')->name('userPurchaseDetails.single');
 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'AdminHomeController@index')->name('home');

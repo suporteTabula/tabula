@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use App\Course;
 use App\State;
 use App\Country;
 use App\Schooling;
+use App\Transaction;
+use App\TransactionItem;
 
 class UsersController extends Controller
 {
@@ -61,5 +64,31 @@ class UsersController extends Controller
 
         Session::flash('success', 'Usuário alterado com sucesso');
         return redirect()->back();
+    }
+
+    public function userPurchases() 
+    {
+        $user = Auth::user();
+        $purchases = Transaction::where('user_id', $user->id)->get();
+
+        return view('userPurchases')
+            ->with('user', Auth::user())
+            ->with('purchases', $purchases);
+    }
+
+    public function userPurchaseDetails($hash) 
+    {
+        $user = Auth::user();
+        $purchases = TransactionItem::where('hash', $hash)->get();
+
+        foreach ($purchases as $purchase) {
+
+            $course = Course::find($purchase->course_id);
+            $purchase['course_name'] = $course->name;
+        }
+
+        return view('userPurchaseDetails')
+            ->with('user', Auth::user())
+            ->with('purchases', $purchases);
     }
 }
