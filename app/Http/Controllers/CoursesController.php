@@ -16,7 +16,7 @@ class CoursesController extends Controller
         $chapter = $course->course_item_groups->all();
         $hasCourse = false;
 
-        if($user->courses()->find($id))
+        if($user && $user->courses()->find($id))
             $hasCourse = true;
 
         return view('course')
