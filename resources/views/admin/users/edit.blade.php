@@ -11,20 +11,35 @@
 		<div class="panel-body">
 			<form action="{{ route('user.update', ['id' => $user->id]) }}" method="post">
 				{{ csrf_field() }}
-				
-					<label for="userType">Tipo de usuário: </label>
-					@foreach ($usersType as $userType)
-						<label class="checkbox-inline"><input type="checkbox" name="usersType[]" value="{{ $userType->id }}" 
-							@foreach ($user->userTypes as $type)
-								@if ($type->id == $userType->id)
-									checked
-								@endif
-							@endforeach
-							> {{ $userType->desc }}</label>
-					@endforeach
 
 				<div class="form-group row">
+					<div class="col-xs-4">
+						<label for="userType">Tipo de usuário: </label>
+						@foreach ($usersType as $userType)
+							<label class="checkbox-inline"><input type="checkbox" name="usersType[]" value="{{ $userType->id }}" 
+								@foreach ($user->userTypes as $type)
+									@if ($type->id == $userType->id)
+										checked
+									@endif
+								@endforeach
+								> {{ $userType->desc }}</label>
+						@endforeach
+					</div>
+				</div>
 
+				<div class="form-group row">
+					<div class="col-xs-4">
+						<label for="group">Grupo de usuários</label>
+						<select id="group_id" name="group" class="form-control">
+							<option value="">Nenhum</option>
+							@foreach ($userGroups as $userGroup)
+								<option value="{{ $userGroup->id }}" @if($user->group == $userGroup->desc) selected @endif> {{ $userGroup->desc }} </option>
+							@endforeach
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group row">
 					<div class="col-xs-4">
 						<label for="country">País</label>
 						<select id="country" name="country_id" class="form-control">

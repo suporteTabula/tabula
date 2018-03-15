@@ -11,10 +11,26 @@
 			<form action="{{ route('user.store') }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
 
-				<label for="usersType">Tipo de usuário: </label>
-				@foreach ($usersType as $userType)
-					<label class="checkbox-inline"><input type="checkbox" name="usersType[]" value="{{ $userType->id }}"> {{ $userType->desc }}</label>
-				@endforeach
+				<div class="form-group row">
+					<div class="col-xs-4">
+						<label for="usersType">Tipo de usuário: </label>
+						@foreach ($usersType as $userType)
+							<label class="checkbox-inline"><input type="checkbox" name="usersType[]" value="{{ $userType->id }}"> {{ $userType->desc }}</label>
+						@endforeach
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-xs-4">
+						<label for="group">Grupo de usuários</label>
+						<select id="group_id" name="group" class="form-control">
+							<option value="" selected>Nenhum</option>
+							@foreach ($userGroups as $userGroup)
+								<option value="{{ $userGroup->id }}"> {{ $userGroup->desc }} </option>
+							@endforeach
+						</select>
+					</div>
+				</div>
 
 				<div class="form-group row">
 

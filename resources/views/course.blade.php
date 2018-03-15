@@ -15,6 +15,8 @@
                 @else 
                     <tr><td><a href="{{ route('cart.insert', ['id' => $course->id]) }}"> Colocar no carrinho </a></td></tr>
                 @endif
+            @else
+                <tr><td>SEM LOGIN</td></tr>
             @endauth
             @foreach($chapters as $chapter)
                 <tr>
