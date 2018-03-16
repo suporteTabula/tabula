@@ -20,4 +20,9 @@ class UserGroup extends Model
     {
         return $this->belongsTo('App\Company');
     }
+
+    public function courses()
+    {
+        return $this->hasMany('App\Course');
+    }
 }

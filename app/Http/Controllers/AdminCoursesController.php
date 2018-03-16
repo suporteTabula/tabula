@@ -8,6 +8,7 @@ use Auth;
 use App\Category;
 use App\Course;
 use App\User;
+use App\UserGroup;
 use App\CourseItemType;
 use App\CourseItemGroup;
 use App\CourseItem;
@@ -37,7 +38,8 @@ class AdminCoursesController extends Controller
     public function create()
     {
         return view('admin.courses.create')
-            ->with('categories', Category::all());
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all());
     }
 
     /**
@@ -76,6 +78,14 @@ class AdminCoursesController extends Controller
 
         $course->save();
 
+        if($request->group != '')
+        {
+            $userGroup = UserGroup::find($request->group);
+            $course->group = $userGroup->desc;
+            $course->userGroups()->attach($userGroup);
+            $course->save();
+        }
+
         Session::flash('success', 'Curso criado com sucesso');
         return redirect()->route('courses');
     }
@@ -104,7 +114,8 @@ class AdminCoursesController extends Controller
         return view('admin.courses.edit')
             ->with('course', $course)
             ->with('categories', Category::all())
-            ->with('course_items_group', CourseItemGroup::all());
+            ->with('course_items_group', CourseItemGroup::all())
+            ->with('user_groups', UserGroup::all());
     }
 
     /**
@@ -121,12 +132,14 @@ class AdminCoursesController extends Controller
         $this->validate($request, [
             'name'        => 'required|max:100',
             'desc'        => 'required',
+            'price'       => 'required',
             'category_id' => 'required'
         ]);
 
         $course->name        = $request->name;
         $course->desc        = $request->desc;
         $course->category_id = $request->category_id;
+        $course->price       = $request->price;
 
         if($request->thumb_img != '')
         {
@@ -135,6 +148,24 @@ class AdminCoursesController extends Controller
             $attach_thumb_img->move('images/aulas', $attach_thumb_img_name); 
 
             $course->thumb_img = $attach_thumb_img_name;  
+        }
+        else
+            $course->thumb_img = 'default.jpg';
+
+        if($request->group != '')
+        {
+            $userGroup = UserGroup::find($request->group);
+            $course->group = $userGroup->desc;
+            $course->userGroups()->attach($userGroup);
+        }
+        else
+        {
+            $userGroups = $course->userGroups()->get();
+
+            foreach ($userGroups as $userGroup) 
+                $course->userGroups()->detach($userGroup);
+
+            $course->group = null;
         }
 
         $course->save();
