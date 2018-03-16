@@ -26,6 +26,7 @@
 					<th>Descrição</th>
 					<th>Categoria</th>
 					<th>Autor</th>
+					<th>Cursos</th>
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead>
@@ -44,6 +45,13 @@
 								</td>
 								<td style="vertical-align: middle !important;">
 									{{ $users->find($course->user_id_owner)->first_name }}
+								</td>
+								<td style="vertical-align: middle !important;">
+									@if(!$course->group)
+										Não tem
+									@else
+										{{ $course->group }}
+									@endif
 								</td>
 								<td>
 									<a href="{{ route('course.edit', ['id' => $course->id]) }} ">

@@ -83,17 +83,17 @@ class AdminUsersController extends Controller
         $user->schooling_id = $request->schooling_id;
         $user->youtube      = $request->youtube;
 
-        $user->userTypes()->attach($request->usersType);
         $user->save();
 
-        if($request->group != "")
+        $user->userTypes()->attach($request->usersType);
+
+        if($request->group != '')
         {
             $userGroup = UserGroup::find($request->group);
             $user->group = $userGroup->desc;
-            $user->userGroups()->save($userGroup);
+            $user->userGroups()->attach($userGroup);
+            $user->save();
         }
-
-        $user->save();
 
         Session::flash('success', 'Usuário adicionado com sucesso');
         return redirect()->route('users');
@@ -162,7 +162,7 @@ class AdminUsersController extends Controller
         $user->facebook     = $request->facebook;
         $user->youtube      = $request->youtube;
 
-        if($request->group != "")
+        if($request->group != '')
         {
             $userGroup = UserGroup::find($request->group);
             $user->group = $userGroup->desc;

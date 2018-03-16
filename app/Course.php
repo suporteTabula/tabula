@@ -24,4 +24,9 @@ class Course extends Model
     {
         return $this->hasMany('App\CourseItemGroup');
     }
+
+    public function userGroups()
+    {
+        return $this->belongsToMany('App\UserGroup');
+    }
 }

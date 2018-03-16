@@ -26,8 +26,8 @@
 					<th>Nome Completo</th>
 					<th>E-mail</th>
 					<th>Tipo de Usário</th>
-					<th>Editar</th>
 					<th>Grupo</th>
+					<th>Editar</th>
 					<th>Deletar</th>
 				</thead>
 				<tbody>
@@ -43,16 +43,16 @@
 									@endforeach 
 								</td>
 								<td>
-									<a href="{{ route('user.edit', ['id' => $user->id]) }}">
-										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
-									</a>
-								</td>
-								<td>
 									@if(!$user->group)
 										Não tem
 									@else
 										{{ $user->group }}
 									@endif
+								</td>
+								<td>
+									<a href="{{ route('user.edit', ['id' => $user->id]) }}">
+										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
+									</a>
 								</td>
 								<td>
 									@if(Auth::id() !== $user->id)

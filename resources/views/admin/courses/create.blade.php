@@ -32,6 +32,15 @@
 					<input class="form-control" type="text" name="price" placeholder="Preço do curso" value="{{ old('price') }}">
 				</div>
 				<div class="form-group">
+					<label for="group">Grupo</label>
+					<select class="form-control" id="group_id" name="group">
+						<option value="" selected>Nenhum</option>
+						@foreach($user_groups as $user_group)
+							<option value="{{ $user_group->id }}">{{ $user_group->desc }}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
 					<label for="thumb_img">Imagem da Vitrine</label>
 					<input class="form-control" type="file" name="thumb_img">
 				</div>
