@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('index.single');
+Route::get('/', 'HomeController@index')->name('index.single')->middleware('check.user');
+
+Route::get('userGroupHome', 'UserGroupsController@index')->name('userGroupIndex.single');
 
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
