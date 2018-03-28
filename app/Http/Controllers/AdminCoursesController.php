@@ -79,12 +79,13 @@ class AdminCoursesController extends Controller
         $course->save();
 
         if($request->group != '')
-        {
-            $userGroup = UserGroup::find($request->group);
-            $course->group = $userGroup->desc;
-            $course->userGroups()->attach($userGroup);
-            $course->save();
-        }
+            foreach($request->group as $checked) 
+            {
+                $userGroup = UserGroup::find($checked);
+                $course->userGroups()->attach($userGroup);
+                $course->group = 'ta dentro';
+                $course->save();
+            }
 
         Session::flash('success', 'Curso criado com sucesso');
         return redirect()->route('courses');
@@ -152,20 +153,30 @@ class AdminCoursesController extends Controller
         else
             $course->thumb_img = 'default.jpg';
 
-        if($request->group != '')
+        $userGroups = UserGroup::all();
+        foreach($userGroups as $userGroup) 
         {
-            $userGroup = UserGroup::find($request->group);
-            $course->group = $userGroup->desc;
-            $course->userGroups()->attach($userGroup);
-        }
-        else
-        {
-            $userGroups = $course->userGroups()->get();
+            if($userGroup->courses->contains($course))
+            {   
+                $remove = true;
+                if($request->group)
+                    foreach($request->group as $checked) 
+                        if($userGroup->id == $checked)
+                            $remove = false;
 
-            foreach ($userGroups as $userGroup) 
-                $course->userGroups()->detach($userGroup);
-
-            $course->group = null;
+                if($remove)
+                    $course->userGroups()->detach($userGroup);
+            }
+            else
+            {
+                $add = false;
+                if($request->group)
+                    foreach($request->group as $checked) 
+                        if($userGroup->id == $checked)
+                            $add = true;
+                if($add)
+                    $course->userGroups()->attach($userGroup);
+            }
         }
 
         $course->save();

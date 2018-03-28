@@ -29,13 +29,16 @@
 
 				<div class="form-group row">
 					<div class="col-xs-4">
-						<label for="group">Grupo de usuários</label>
-						<select id="group_id" name="group" class="form-control">
-							<option value="">Nenhum</option>
-							@foreach ($userGroups as $userGroup)
-								<option value="{{ $userGroup->id }}" @if($user->group == $userGroup->desc) selected @endif> {{ $userGroup->desc }} </option>
-							@endforeach
-						</select>
+						<label for="group">Grupo de usuário: </label>
+						@foreach ($userGroups as $userGroup)
+							<label class="checkbox-inline"><input type="checkbox" name="group[]" value="{{ $userGroup->id }}" 
+								@foreach ($user->userGroups as $group)
+									@if ($group->id == $userGroup->id)
+										checked
+									@endif
+								@endforeach
+								> {{ $userGroup->desc }}</label>
+						@endforeach
 					</div>
 				</div>
 

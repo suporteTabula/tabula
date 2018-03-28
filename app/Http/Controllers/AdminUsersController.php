@@ -88,12 +88,13 @@ class AdminUsersController extends Controller
         $user->userTypes()->attach($request->usersType);
 
         if($request->group != '')
-        {
-            $userGroup = UserGroup::find($request->group);
-            $user->group = $userGroup->desc;
-            $user->userGroups()->attach($userGroup);
-            $user->save();
-        }
+            foreach($request->group as $checked) 
+            {
+                $userGroup = UserGroup::find($checked);
+                $user->userGroups()->attach($userGroup);
+                $user->group = 'ta dentro';
+                $user->save();
+            }
 
         Session::flash('success', 'Usuário adicionado com sucesso');
         return redirect()->route('users');
@@ -162,20 +163,30 @@ class AdminUsersController extends Controller
         $user->facebook     = $request->facebook;
         $user->youtube      = $request->youtube;
 
-        if($request->group != '')
+        $userGroups = UserGroup::all();
+        foreach($userGroups as $userGroup) 
         {
-            $userGroup = UserGroup::find($request->group);
-            $user->group = $userGroup->desc;
-            $user->userGroups()->attach($userGroup);
-        }
-        else
-        {
-            $userGroups = $user->userGroups()->get();
+            if($userGroup->users->contains($user))
+            {   
+                $remove = true;
+                if($request->group)
+                    foreach($request->group as $checked) 
+                        if($userGroup->id == $checked)
+                            $remove = false;
 
-            foreach ($userGroups as $userGroup) 
-                $user->userGroups()->detach($userGroup);
-
-            $user->group = null;
+                if($remove)
+                    $user->userGroups()->detach($userGroup);
+            }
+            else
+            {
+                $add = false;
+                if($request->group)
+                    foreach($request->group as $checked) 
+                        if($userGroup->id == $checked)
+                            $add = true;
+                if($add)
+                    $user->userGroups()->attach($userGroup);
+            }
         }
         
         $user->userTypes()->sync($request->usersType);
