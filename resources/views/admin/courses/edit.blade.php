@@ -35,14 +35,19 @@
 					<label for="price">Preço</label>
 					<input class="form-control" type="text" value="{{ $course->price }}" name="price" placeholder="Preço do curso" value="{{ old('price') }}">
 				</div>
-				<div class="form-group">
-					<label for="group">Grupo</label>
-					<select class="form-control" id="group_id" name="group">
-						<option value="" selected>Nenhum</option>
-						@foreach($user_groups as $user_group)
-							<option value="{{ $user_group->id }}" @if($course->group == $user_group->desc) selected @endif>{{ $user_group->desc }}</option>
+				<div class="form-group row">
+					<div class="col-xs-4">
+						<label for="group">Grupo</label>
+						@foreach ($user_groups as $user_group)
+							<label class="checkbox-inline"><input type="checkbox" name="group[]" value="{{ $user_group->id }}" 
+								@foreach ($course->userGroups as $group)
+									@if ($group->id == $user_group->id)
+										checked
+									@endif
+								@endforeach
+								> {{ $user_group->desc }}</label>
 						@endforeach
-					</select>
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="thumb_img">Imagem da Vitrine</label>

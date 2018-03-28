@@ -3,6 +3,7 @@
 @section('content')
 
 	@include('admin.includes.errors')
+	
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Adicionar novo usuário
@@ -15,20 +16,17 @@
 					<div class="col-xs-4">
 						<label for="usersType">Tipo de usuário: </label>
 						@foreach ($usersType as $userType)
-							<label class="checkbox-inline"><input type="checkbox" name="usersType[]" value="{{ $userType->id }}"> {{ $userType->desc }}</label>
+							<label class="checkbox-inline"><input type="checkbox" name="usersType[]" value="{{ $userType->id }}"> {{ $userType->desc }} </label>
 						@endforeach
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<div class="col-xs-4">
-						<label for="group">Grupo de usuários</label>
-						<select id="group_id" name="group" class="form-control">
-							<option value="" selected>Nenhum</option>
-							@foreach ($userGroups as $userGroup)
-								<option value="{{ $userGroup->id }}"> {{ $userGroup->desc }} </option>
-							@endforeach
-						</select>
+						<label for="group">Grupo de usuário: </label>
+						@foreach ($userGroups as $userGroup)
+							<label class="checkbox-inline"><input type="checkbox" name="group[]" value="{{ $userGroup->id }}"> {{ $userGroup->desc }} </label>
+						@endforeach
 					</div>
 				</div>
 
