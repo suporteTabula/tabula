@@ -26,7 +26,21 @@ class LoginController extends Controller
      * @var string
      */
 
-    protected $redirectTo = 'admin/home';
+    protected function authenticated($request, $user)
+    {
+        $groups = count($user->userGroups()->get());
+
+        if($groups == 0) {
+            return redirect()->intended('/');
+        }
+        else if($groups == 1) {
+
+            $userGroup = $user->userGroups()->first();
+            
+            return redirect()->route('userGroupIndex.single', ['group' => $userGroup->desc]);
+        }
+        return redirect()->intended('/userGroups');
+    }
 
     /**
      * Create a new controller instance.
