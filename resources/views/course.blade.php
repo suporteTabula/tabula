@@ -11,7 +11,7 @@
             <div class="left-cards">
                 <div class="will-learn">
                     <p><b>O que você irá aprender</b></p>
-                    <p style="padding: 15px; margin: 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium aliquam esse quam a neque, sint quibusdam nihil vitae architecto dignissimos obcaecati sed suscipit recusandae. Reiciendis ducimus minus ad maxime incidunt corporis obcaecati eligendi laboriosam, commodi facere! Perspiciatis non impedit debitis dolore et, magni, vero ipsam fuga laudantium, dignissimos fugit nisi! Minus voluptatem rerum a voluptates, eaque eos est fugiat, odio. Molestiae voluptatem temporibus maxime molestias minus facere quis unde inventore excepturi dolorem repellendus vero illo reprehenderit hic possimus, recusandae! Id minima suscipit repellat cumque corporis quidem, sed fugit quia nam quisquam ab, magni sit provident laborum vero ut in enim.</p>
+                    <p style="padding: 15px; margin: 0;">{{ $course->desc }}</p>
                 </div>
                 <div class="requirements">
                     <p><b>Requisitos</b></p>
@@ -42,16 +42,20 @@
                 <div class="card-right-wrapper">
                     <div class="video-preview"> <img src="http://via.placeholder.com/350x250"> </div>
                     <div class="buyit">
-                        <h2 style="text-align: center;"><b>R$ 112</b></h2>
+                        <h2 style="text-align: center;"><b>R$ {{ $course->price }}</b></h2>
                         <div class="buttons-to-buy">               
                             @auth
-                                <a class="tabula-button" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
-                            @endauth
-
-                            @guest
+                                @if($hasCourse)
+                                    <a class="tabula-button" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
+                                @else
+                                    <a class="tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a>
+                                    <a class="tabula-button-inverted" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a>
+                                @endif
+                            @else 
                                 <a class="tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a>
                                 <a class="tabula-button-inverted" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a>
-                            @endguest
+                            @endauth
+                            
                         </div>
                         <div class="include">
                             <p><b>O que está incluso?</b></p>
@@ -67,7 +71,8 @@
                             <p><b>Você tem um cupom?</b></p>
                             <div class="form-group">
                                 <input type="text" class="tabula-input-inverted" placeholder="Digite aqui!">
-                                <input type="button" class="tabula-button" value="Enviar"> </div>
+                                <input type="button" class="tabula-button" value="Enviar"> 
+                            </div>
                         </div>
                     </div>
                 </div>
