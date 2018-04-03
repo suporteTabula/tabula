@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\CourseItem;
 use Illuminate\Support\Facades\DB;
+use App\CourseItemOption;
+use App\CourseItemGroup;
 
 class CoursesController extends Controller
 {
@@ -30,7 +32,7 @@ class CoursesController extends Controller
             ->with('chapters', $chapter);
             //->with('items', $item);
     }
-    public function progress(Request $request)
+    public function lesson(Request $request)
     {   
         if ($request->ajax()){
             
@@ -38,8 +40,32 @@ class CoursesController extends Controller
             $item = CourseItem::where('id', $request->item_id)->get();            
 
             return view('lesson')
-                ->with('items', $item);
+                ->with('items', $item)
+                ->with('count', 0);
         }
         
+    }
+
+    public function answers(Request $request, $id)
+    {
+        //$options = new CourseItemOption();
+        //$items = CourseItemOption::where('course_items_id', $id)->get();
+        
+        $questoes = $request->all();
+
+        foreach ($questoes as $key => $value) {
+            if (strpos($key, 'multiple') !== false) {
+                $respostas_multipla[] = explode('_', $key)[1];
+                //INSTANCIA DE OPTION
+                //$option->option_user()->attach($id_novo, ['desc' => $value]);
+           }
+        }
+        dd($respostas_multipla);
+        
+    }
+
+    public function next(Request $request, $id)
+    {
+
     }
 }

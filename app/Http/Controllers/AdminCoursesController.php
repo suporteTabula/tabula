@@ -255,8 +255,7 @@ class AdminCoursesController extends Controller
     public function item(Request $request, $id)
     {
         $this->validate($request, [
-            'name'          => 'required',
-            'item_type_id'  => 'required',
+            'name'          => 'required'
         ]);
 
         $item = new CourseItem;
@@ -265,7 +264,7 @@ class AdminCoursesController extends Controller
         $item->desc                     = $request->desc;
         $item->course_item_group_id     = $id;
         $item->course_item_types_id     = $request->item_type_id;
-        $item->course_items_parent  = NULL;
+        $item->course_items_parent      = NULL;
         
                
         if(isset($request->archive))
@@ -338,8 +337,7 @@ class AdminCoursesController extends Controller
                     ->with('item', $item)
                     ->with('items', CourseItem::all())
                     ->with('chapter', $chapter)
-                    ->with('items_type', CourseItemType::all())
-                    ->with('item_options', CourseItemOption::all());
+                    ->with('items_type', CourseItemType::all());
         }
         else
         {
@@ -393,11 +391,13 @@ class AdminCoursesController extends Controller
     {
         $item = CourseItem::find($id);
 
-        foreach ($item->course_item_options as $item_options)
+        foreach ($item->item_child as $child)
         {
-            $item_options->forceDelete();
+            $child->course_item_options()->forceDelete();
         }
-
+        
+        $item->item_child()->forceDelete();
+        
         if(file_exists($item->path))
         {
             unlink(public_path().'/'. $item->path);
@@ -423,10 +423,17 @@ class AdminCoursesController extends Controller
             'trueFalse' =>  'required'
         ]);
 
-        $alt = CourseItemOption::create([
-            'desc'              =>  $request->desc,
-            'course_items_id'   =>  $id,
-            'checked'           =>  $request->trueFalse
+        $order = DB::table('course_items')
+                            ->whereNull('course_items_parent')
+                            ->count();
+
+        $alt = CourseItem::create([
+            'name'                  =>  $request->desc,
+            'desc'                  =>  $request->trueFalse,
+            'course_item_group_id'  =>  $id,
+            'course_item_types_id'  =>  $request->item_type_id,
+            'course_items_parent'   =>  $request->id,
+            'order'                 =>  $order
         ]);
 
         Session::flash('success', 'Alternativa adicionada com sucesso');
@@ -441,9 +448,12 @@ class AdminCoursesController extends Controller
      */
     public function alt_edit($id)
     {
-        $alt = CourseItemOption::find($id);
+        $alt = CourseItem::find($id);
+        
 
-        return view('admin.courses.alternative')->with('alt', $alt);
+        return view('admin.courses.alternative')
+                    ->with('alt', $alt);
+
     }
 
     /**
@@ -455,19 +465,19 @@ class AdminCoursesController extends Controller
      */
     public function alt_update(Request $request, $id)
     {
-        $alt = CourseItemOption::find($id);
+        $alt = CourseItem::find($id);
 
         $this->validate($request, [
             'desc'          => 'required',
             'trueFalse'     => 'required'
         ]);
 
-        $alt->desc      = $request->desc;
-        $alt->checked   = $request->trueFalse;  
+        $alt->name   = $request->desc;
+        $alt->desc   = $request->trueFalse;  
         $alt->save();
 
         Session::flash('success', 'Alternativa atualizada com sucesso!');
-        return redirect()->route('course.item.edit', ['id' => $alt->course_items_id]);
+        return redirect()->route('course.item.edit', ['id' => $alt->course_items_parent]);
     }
 
     /**
@@ -478,11 +488,100 @@ class AdminCoursesController extends Controller
      */
     public function alt_delete($id)
     {
-        $alt = CourseItemOption::find($id);
+        $alt = CourseItem::find($id);
 
         $alt->delete();
 
         Session::flash('info', 'Alternativa excluida!');
+        return redirect()->back();
+    }
+
+    public function add_question_multiple($id, $name, $desc, $item_type_id)
+    {
+
+        $item = CourseItem::find($id);
+
+        $multiple = new CourseItem;
+
+        $multiple->name                     = $name;
+        $multiple->desc                     = $desc;
+        $multiple->course_item_group_id     = $item->course_item_group_id;
+        $multiple->course_item_types_id     = $item_type_id;
+        $multiple->course_items_parent      = $item->id;
+
+        $order = DB::table('course_items')
+                            ->whereNotNull('course_items_parent')
+                            ->count();
+        
+        $multiple->order = $order;
+
+        $multiple->save();
+
+        return $multiple;
+    }
+
+    public function multiple(Request $request, $id)
+    {
+
+        $this->validate($request, [
+            'afirmacao' => 'required',
+        ]);
+
+        $all_trues = array();
+        $variavel = array();
+        $funcao = $this->add_question_multiple($id, $request->name, $request->desc, $request->item_type_id);
+        $all_requests = $request->all();
+        
+        if ($request->item_type_id == '6') {
+           foreach ($all_requests as $key => $value) {
+                if (strpos($key, 'verdadeira') !== false) {
+                $all_trues[] = explode('_', $key)[1];
+                }
+            }
+
+        
+            foreach ( $all_requests['afirmacao'] as $key => $value) {
+                if($value == '' || $value == NULL){
+                    continue;
+                }
+                else
+                {
+                    $multi = new CourseItemOption;
+                    $multi->course_items_id = $funcao->id;
+                    $multi->desc = $value;
+                    $multi->checked = 0;
+                    foreach ($all_trues as $verdadeiras) {
+                        if ($key == $verdadeiras) {
+                            $multi->checked = 1;
+                        }    
+                    }           
+                } 
+                $multi->save();
+            }
+        }
+        if ($request->item_type_id == '9')
+        {
+            $this->validate($request, [
+                'verdadeira'    => 'required',
+            ]);
+
+            foreach ( $all_requests['afirmacao'] as $key => $value) {
+                if($value == '' || $value == NULL){
+                    continue;
+                }
+                else
+                {
+                    $multi = new CourseItemOption;
+                    $multi->course_items_id = $funcao->id;
+                    $multi->desc = $value;
+                    $multi->checked = 0;
+                    if ($request->verdadeira == $key) {
+                        $multi->checked = 1;
+                    }               
+                } 
+                $multi->save();
+            }
+        }
         return redirect()->back();
     }
 }

@@ -6,24 +6,24 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			Editar Alternativa
-		</div>
+		</div>		
 		<div class="panel-body">
 			<form action="{{ route('course.alt.update', ['id' => $alt->id]) }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
-				
+					
 				<div class="form-group">
 					<label for="desc">Descrição da Alternativa</label>
-					<input class="form-control" type="text" value="{{ $alt->desc }}" name="desc">
+					<input class="form-control" type="text" value="{{ $alt->name }}" name="desc">
 				</div>			
 
 				<label for="name">A alternativa é Verdadeira ou Falsa?</label><br>
-						<label class="radio-inline"><input type="radio" name="trueFalse" value="1" @if ($alt->checked == '1') checked @endif>Verdadeira</label>
-						<label class="radio-inline"><input type="radio" name="trueFalse" value="0" @if ($alt->checked == '0') checked @endif>Falsa</label>
+						<label class="radio-inline"><input type="radio" name="trueFalse" value="1" @if ($alt->desc == '1') checked @endif>Verdadeira</label>
+						<label class="radio-inline"><input type="radio" name="trueFalse" value="0" @if ($alt->desc == '0') checked @endif>Falsa</label>
 				<div class="form-group">
 
 					<div class="text-center">
 						<button class="btn btn-success" type="submit">Salvar</button>
-						<a class="btn btn-success" href="{{ route('course.item.edit', ['id' => $alt->course_items_id]) }}">Voltar</a>
+						<a class="btn btn-success" href="{{ route('course.item.edit', ['id' => $alt->course_items_parent]) }}">Voltar</a>
 					</div>
 				</div>
 			</form>			

@@ -34,7 +34,7 @@
                     $.ajax({
                         type: 'GET',
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        url: '{{ route('course.progress') }}',
+                        url: '{{ route('course.lesson') }}',
                         data: req,
                         error: function(e){
                             console.log(e);

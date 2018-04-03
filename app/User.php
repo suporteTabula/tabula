@@ -83,4 +83,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Course');
     }
+
+    public function itemOptions()
+    {
+        return $this->belongsToMany('App\CourseItemOption');
+    }
 }
