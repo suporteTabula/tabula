@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index.single');
 
+Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
+Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
+
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
 Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('cart.remove');
@@ -38,6 +41,8 @@ Route::get('searchcat', 'SearchController@searchCat')->name('search.category');
 Route::get('userPanel', 'UsersController@userPanel')->name('userPanel.single');
 Route::get('userProfile', 'UsersController@userProfile')->name('userProfile.single');
 Route::post('userProfile/update', 'UsersController@userProfileUpdate')->name('userProfile.update');
+Route::get('userPurchases', 'UsersController@userPurchases')->name('userPurchases.single');
+Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails')->name('userPurchaseDetails.single');
 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'AdminHomeController@index')->name('home');

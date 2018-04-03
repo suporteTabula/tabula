@@ -8,6 +8,7 @@ use Auth;
 use App\Category;
 use App\Course;
 use App\User;
+use App\UserGroup;
 use App\CourseItemType;
 use App\CourseItemGroup;
 use App\CourseItem;
@@ -37,7 +38,8 @@ class AdminCoursesController extends Controller
     public function create()
     {
         return view('admin.courses.create')
-            ->with('categories', Category::all());
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all());
     }
 
     /**
@@ -51,6 +53,7 @@ class AdminCoursesController extends Controller
         $this->validate($request, [
             'name'        => 'required|max:100',
             'desc'        => 'required',
+            'price'       => 'required',
             'category_id' => 'required'
         ]);
 
@@ -59,6 +62,7 @@ class AdminCoursesController extends Controller
         $course->name = $request->name;
         $course->desc = $request->desc;
         $course->category_id = $request->category_id;
+        $course->price = $request->price;
         $course->user_id_owner = Auth::user()->id;
 
         if($request->thumb_img != '')
@@ -73,6 +77,15 @@ class AdminCoursesController extends Controller
             $course->thumb_img = 'default.jpg'; 
 
         $course->save();
+
+        if($request->group != '')
+            foreach($request->group as $checked) 
+            {
+                $userGroup = UserGroup::find($checked);
+                $course->userGroups()->attach($userGroup);
+                $course->group = 'ta dentro';
+                $course->save();
+            }
 
         Session::flash('success', 'Curso criado com sucesso');
         return redirect()->route('courses');
@@ -102,7 +115,8 @@ class AdminCoursesController extends Controller
         return view('admin.courses.edit')
             ->with('course', $course)
             ->with('categories', Category::all())
-            ->with('course_items_group', CourseItemGroup::all());
+            ->with('course_items_group', CourseItemGroup::all())
+            ->with('user_groups', UserGroup::all());
     }
 
     /**
@@ -119,12 +133,14 @@ class AdminCoursesController extends Controller
         $this->validate($request, [
             'name'        => 'required|max:100',
             'desc'        => 'required',
+            'price'       => 'required',
             'category_id' => 'required'
         ]);
 
         $course->name        = $request->name;
         $course->desc        = $request->desc;
         $course->category_id = $request->category_id;
+        $course->price       = $request->price;
 
         if($request->thumb_img != '')
         {
@@ -133,6 +149,34 @@ class AdminCoursesController extends Controller
             $attach_thumb_img->move('images/aulas', $attach_thumb_img_name); 
 
             $course->thumb_img = $attach_thumb_img_name;  
+        }
+        else
+            $course->thumb_img = 'default.jpg';
+
+        $userGroups = UserGroup::all();
+        foreach($userGroups as $userGroup) 
+        {
+            if($userGroup->courses->contains($course))
+            {   
+                $remove = true;
+                if($request->group)
+                    foreach($request->group as $checked) 
+                        if($userGroup->id == $checked)
+                            $remove = false;
+
+                if($remove)
+                    $course->userGroups()->detach($userGroup);
+            }
+            else
+            {
+                $add = false;
+                if($request->group)
+                    foreach($request->group as $checked) 
+                        if($userGroup->id == $checked)
+                            $add = true;
+                if($add)
+                    $course->userGroups()->attach($userGroup);
+            }
         }
 
         $course->save();

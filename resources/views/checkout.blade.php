@@ -11,6 +11,7 @@
                     <td>{{ $course->desc }}</td>
             	</tr>
             @endforeach
+            <tr><td>Total: {{ $total_price }}</td></tr>
             <tr><td><a href="{{ route('transaction.success') }}">Finalizar a compra</a></td></tr>
         @else
             <tr><td>Não existem items para finalizar a compra!</td></tr>

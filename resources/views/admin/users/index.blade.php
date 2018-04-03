@@ -26,6 +26,7 @@
 					<th>Nome Completo</th>
 					<th>E-mail</th>
 					<th>Tipo de Usário</th>
+					<th>Grupo</th>
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead>
@@ -40,6 +41,13 @@
 									@foreach ($user->userTypes as $userType)
 										{{$userType->desc}}
 									@endforeach 
+								</td>
+								<td>
+									@if(!$user->group)
+										Não tem
+									@else
+										{{ $user->group }}
+									@endif
 								</td>
 								<td>
 									<a href="{{ route('user.edit', ['id' => $user->id]) }}">

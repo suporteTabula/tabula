@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $fillable = [
-    	'name', 'desc', 'user_id_owner', 'category_id'
+    	'name', 'desc', 'price', 'user_id_owner', 'category_id'
     ];
 
     public function users()
@@ -23,5 +23,10 @@ class Course extends Model
     public function course_item_groups()
     {
         return $this->hasMany('App\CourseItemGroup');
+    }
+
+    public function userGroups()
+    {
+        return $this->belongsToMany('App\UserGroup');
     }
 }

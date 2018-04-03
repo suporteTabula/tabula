@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Tabula</title>
+        <title>{{ $company->name }}</title>
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}" >
