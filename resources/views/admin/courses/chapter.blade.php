@@ -98,21 +98,8 @@
 					<div class="form-group">
 						<label for="name">Título</label>
 						<input class="form-control" type="text" placeholder="Titulo da Questão" name="name">
-					</div>				
-					
-					<div class="form-group">
-						<label for="item_type_question">Tipo de avaliação</label>
-						<select id="item_type_question" name="item_type_id" class="form-control">
-							<option value="" selected disabled hidden>Escolha uma...</option>
-
-							@foreach ($items_type as $item_type)
-								@if ($item_type->id > 4)
-									<option value="{{ $item_type->id }}">{{ $item_type->name }}</option>
-								@endif
-							@endforeach
-						</select>
-					</div>					
-					
+					</div>			
+						<input class="form-control" type="hidden" value="7" name="item_type_id">
 					<div class="form-group">
 						<div class="text-center">
 							<button class="btn btn-success" type="submit">Nova Avaliaçao</button>

@@ -30,7 +30,10 @@ Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
 Route::get('success', 'TransactionsController@success')->name('transaction.success');
 
 Route::get('course/{id}', 'CoursesController@course')->name('course.single');
-Route::get('course/lesson/{id}', 'CoursesController@lesson')->name('course.lesson');
+Route::get('course/start/{id}', 'CoursesController@course_start')->name('course.start');
+Route::get('lesson', 'CoursesController@lesson')->name('course.lesson');
+Route::post('next/{id}', 'CoursesController@next')->name('course.next');
+Route::post('answers/{id}', 'CoursesController@answers')->name('course.answer');
 
 Route::get('search/{id}', 'SearchController@search')->name('search.single');
 Route::get('searchcat', 'SearchController@searchCat')->name('search.category');
@@ -76,6 +79,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/course/chapter/item/edit/{id}', 'AdminCoursesController@item_edit')->name('course.item.edit');
 	Route::post('/admin/course/chapter/item/update/{id}', 'AdminCoursesController@item_update')->name('course.item.update');
 	Route::get('/admin/course/chapter/item/delete/{id}', 'AdminCoursesController@item_delete')->name('course.item.delete');
+
+	Route::post('/admin/course/multiple/{id}', 'AdminCoursesController@multiple')->name('course.multiple');
 
 	Route::post('/admin/course/alt/{id}', 'AdminCoursesController@alt')->name('course.alt');
 	Route::get('/admin/course/alt/edit/{id}', 'AdminCoursesController@alt_edit')->name('course.alt.edit');
