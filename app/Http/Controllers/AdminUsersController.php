@@ -87,11 +87,14 @@ class AdminUsersController extends Controller
 
         $user->userTypes()->attach($request->usersType);
 
+        // se tiver algum check nos grupos de usuário
         if($request->group != '')
             foreach($request->group as $checked) 
             {
                 $userGroup = UserGroup::find($checked);
+                // vincula user com o usergroup em questao
                 $user->userGroups()->attach($userGroup);
+                // remover essa linha e a coluna da tabela de usuários
                 $user->group = 'ta dentro';
                 $user->save();
             }
@@ -163,28 +166,48 @@ class AdminUsersController extends Controller
         $user->facebook     = $request->facebook;
         $user->youtube      = $request->youtube;
 
+        // busca TODOS os usergroups para serem comparados com:
+        // - os CHECKS 
+        // - os vínculos do usuário aos userGroups
         $userGroups = UserGroup::all();
+        // grupo por grupo
         foreach($userGroups as $userGroup) 
         {
+            // se o usuário PERTENCE ao grupo
             if($userGroup->users->contains($user))
             {   
+                // seta condição de remoção do grupo como verdadeira
                 $remove = true;
+
+                //verifica se existe algum CHECK no request
                 if($request->group)
+                    // lista cada um dos CHECKS
                     foreach($request->group as $checked) 
+                        // se o id do CHECK for igual ao id do GRUPO (do foreach)
                         if($userGroup->id == $checked)
+                            // usuário não será removido do grupo
                             $remove = false;
 
                 if($remove)
+                    // remove usuário do grupo
                     $user->userGroups()->detach($userGroup);
             }
+            // se o usuário NÃO PERTENCE ao grupo
             else
             {
+                // seta condição de adição no grupo como falsa
                 $add = false;
+
+                // verifica se existe algum CHECK no request
                 if($request->group)
+                    // lista cada um dos CHECKS
                     foreach($request->group as $checked) 
+                        // se o id do CHECK for igual ao id do GRUPO (do foreach)
                         if($userGroup->id == $checked)
+                            // usuário será adicionado do grupo
                             $add = true;
                 if($add)
+                    // adiciona usuário ao grupo
                     $user->userGroups()->attach($userGroup);
             }
         }

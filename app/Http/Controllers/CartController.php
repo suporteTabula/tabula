@@ -14,15 +14,19 @@ class CartController extends Controller
     {
     	$user = Auth::user();
     	$items = Cart::where('user_id', $user->id)->get();
+        // array de cursos do pedido
     	$courses = array();
+        // preço acumulado dos cursos
         $total_price = 0;
 
     	foreach($items as $item)
     	{
     		$course = Course::find($item->course_id);
+            // adiciona o ATRIBUTO 'cart_id' em cada $course, para saber qual id no carrinho pode ser REMOVIDO
     		$course['cart_id'] = $item->id;
+            // adiciona o curso do item em questão no array de cursos
     		array_push($courses, $course);
-
+            // soma o preço de cada curso
             $total_price = $total_price + $course->price;
     	}
 
@@ -35,12 +39,15 @@ class CartController extends Controller
     {
     	$user = Auth::user();
         $items = Cart::where('user_id', $user->id)->get();
+        // boolean de duplicata no carrinho 
         $double = false;
 
+        // verifica se o $id do produto à adicionar é igual a algum $item->course_id
         foreach($items as $item)
             if($id == $item->course_id)
                 $double = true;
 
+        //se produto não já estiver no carrinho, então salva no banco
         if(!$double)
         {
         	$cart = new Cart;
@@ -70,14 +77,17 @@ class CartController extends Controller
     {
         $user = Auth::user();
         $items = Cart::where('user_id', $user->id)->get();
+        // array de cursos do pedido
         $courses = array();
+        // preço acumulado dos cursos
         $total_price = 0;
 
         foreach($items as $item)
         {
             $course = Course::find($item->course_id);
+            // adiciona o curso do item em questão no array de cursos
             array_push($courses, $course);
-
+            // soma o preço de cada curso
             $total_price = $total_price + $course->price;
         }
 

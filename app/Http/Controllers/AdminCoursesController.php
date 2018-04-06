@@ -78,11 +78,14 @@ class AdminCoursesController extends Controller
 
         $course->save();
 
+        // se tiver algum check nos grupos de usuário
         if($request->group != '')
             foreach($request->group as $checked) 
             {
                 $userGroup = UserGroup::find($checked);
+                // vincula curso com o usergroup em questao
                 $course->userGroups()->attach($userGroup);
+                // remover essa linha e a coluna da tabela de grupos
                 $course->group = 'ta dentro';
                 $course->save();
             }
@@ -153,28 +156,48 @@ class AdminCoursesController extends Controller
         else
             $course->thumb_img = 'default.jpg';
 
+        // busca TODOS os usergroups para serem comparados com:
+        // - os CHECKS 
+        // - os vínculos do grupo aos userGroups
         $userGroups = UserGroup::all();
+        // grupo por grupo
         foreach($userGroups as $userGroup) 
         {
+            // se o curso PERTENCE ao grupo
             if($userGroup->courses->contains($course))
             {   
+                // seta condição de remoção do grupo como verdadeira
                 $remove = true;
+
+                //verifica se existe algum CHECK no request
                 if($request->group)
+                    // lista cada um dos CHECKS
                     foreach($request->group as $checked) 
+                        // se o id do CHECK for igual ao id do GRUPO (do foreach)
                         if($userGroup->id == $checked)
+                            // curso não será removido do grupo
                             $remove = false;
 
                 if($remove)
+                    // remove curso do grupo
                     $course->userGroups()->detach($userGroup);
             }
+            // se o curso NÃO PERTENCE ao grupo
             else
             {
+                // seta condição de adição no grupo como falsa
                 $add = false;
+
+                //verifica se existe algum CHECK no request
                 if($request->group)
+                    // lista cada um dos CHECKS
                     foreach($request->group as $checked) 
+                        // se o id do CHECK for igual ao id do GRUPO (do foreach)
                         if($userGroup->id == $checked)
+                            // curso será adicionado do grupo
                             $add = true;
                 if($add)
+                    // adiciona curso ao grupo
                     $course->userGroups()->attach($userGroup);
             }
         }

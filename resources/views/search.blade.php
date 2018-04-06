@@ -42,13 +42,18 @@
     @section('scripts')
         <script>
             $(document).ready(function(){
+                // a cada click em qualquer checkbox ou no botao de procurar
                 $('input[name="macrotema"], #search_btn').click(function(){
 
                     var checked_group = [];
+                    // controla a quantidade de checks, se = 0, any_check = false
                     var checked_num = 0;
+                    // controla o valor do campo de busca (string), se '', any_string = false
                     var course_title;
+                    // variavel que vai segurar ATRIBRUTOS extras no 'data' do ajax, e passar para o controller
                     var output;
 
+                    // adiciona cada categoria checada no array checked_group (a cada click em qualquer checkbox ou no botao de procurar)
                     $('input[name="macrotema"]:checked').each(function()
                     {
                         checked_group.push($(this).val());
@@ -56,9 +61,11 @@
                     });
                     checked_group = checked_group.toString();
                     
+                    // pega o valor do campo de busca (string)
                     course_title = $('#course_title').val();
                     course_title = course_title.toString();
 
+                    // verifica se existe check ou string e altera os ATRIBUTOS que serão usados pelo controller
                     if (course_title != "" && checked_num > 0)
                         output = {any_string:true,any_check:true,checked_group_output:checked_group,course_title_output:course_title};
                     else if (course_title != "" && checked_num == 0)
