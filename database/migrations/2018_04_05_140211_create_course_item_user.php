@@ -13,11 +13,11 @@ class CreateCourseItemOptionUser extends Migration
      */
     public function up()
     {
-        Schema::create('course_item_option_user', function (Blueprint $table) {
+        Schema::create('course_item_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('course_item_option_id');
             $table->integer('user_id');
-            $table->integer('checked');
+            $table->integer('course_item_id');
+            $table->string('desc');
             $table->timestamps();
         }); 
     }

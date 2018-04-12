@@ -31,4 +31,9 @@ class CourseItem extends Model
     {
         return $this->hasMany('App\CourseItem', 'course_items_parent');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

@@ -58,17 +58,62 @@ class CoursesController extends Controller
         //$options = new CourseItemOption();
         //$items = CourseItemOption::where('course_items_id', $id)->get();
         
-        $questoes = $request->all();
+        $all = $request->all();
+        $user = Auth::user();
 
-        foreach ($questoes as $key => $value) {
+        foreach ($all as $key => $value) {
+
             if (strpos($key, 'multiple') !== false) {
-                $respostas_multipla[] = explode('_', $key)[1];
-                //INSTANCIA DE OPTION
-                //$option->option_user()->attach($id_novo, ['desc' => $value]);
-           }
-        }
-        dd($respostas_multipla);
-        
+                $id_question_m = explode('_', $key)[1];
+                
+                $affirmatives = CourseItemOption::where('course_items_id', $id_question_m)->get();
+               
+                foreach ($affirmatives as $afirmative) {
+
+                    $i = 0;
+                    foreach ($value as $answer) {
+
+                        if ($afirmative->id == $answer) {
+                            $i = 1;
+                                 
+                        }
+                    }
+                    $user->itemOptions()->attach($afirmative->id, ['checked' => $i]);
+                }         
+            }
+
+            if (strpos($key, 'alternativa') !== false) {
+                $id_question_a = explode('_', $key)[1];
+                
+                $altertatives = CourseItemOption::where('course_items_id', $id_question_a)->get();
+               
+                foreach ($altertatives as $altertative) {
+
+                    $i = 0;
+                    foreach ($value as $answer) {
+
+                        if ($altertative->id == $answer) {
+                            $i = 1;
+                                 
+                        }
+                    }
+                    $user->itemOptions()->attach($altertative->id, ['checked' => $i]);
+                }         
+            }
+
+            if (strpos($key, 'dissertativa') !== false){
+                $id_question_d = explode('_', $key)[1];
+
+                $user->items()->attach($id_question_d, ['desc' => $value]);
+            }
+
+            if (strpos($key, 'trueFalse') !== false){
+                $id_trueFalse = explode('_', $key)[1];
+
+                $user->items()->attach($id_trueFalse, ['desc' => $value]);
+            }
+
+        } 
     }
 
     public function next(Request $request, $id)
