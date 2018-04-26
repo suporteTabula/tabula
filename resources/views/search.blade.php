@@ -1,44 +1,64 @@
 @extends('layouts.user')
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/busca.css') }}">
+@endsection
 @section('content')
     <section class="search-wrapper">
-        <div class="search-container">
-            <div class="search-inputeers">
-                <input id="course_title" type="text" placeholder="Faça sua busca" value="{{ $search_string }}" class="tabula-input">
-                <button id="search_btn" class="tabula-button">Buscar</button>
-            </div>
-            <p class="adv-search"><b>Busca Avançada</b></p>
-            <form class="search-checkers">
-                <ul>
-                    @foreach($categories as $category)
-                        <li><label><input 
-                            @if (isset($checked_category)) 
-                                @if ($checked_category->id == $category->id) 
-                                    checked 
-                                @endif 
-                            @endif 
-                        type="checkbox" name="macrotema" value="{{ $category->id }}"> {{ $category->desc }}</label></li>
-                    @endforeach
-                </ul>
-            </form>
-        </div>
-        <div class="search-results">
-            @if (count($courses) > 0)
-                <ul>
-                    @foreach($courses as $course)
-                        <a href="{{ route('course.single', ['id' => $course->id]) }}" class="card">
-                            <div class="card-media" style="background-image: url(../images/aulas/{{$course->id}}.jpg);">
-                                <div class="card-overlay"></div>
+        <div class="container grid-lg">
+            <div class="columns">
+                <div class="column col-12 side-search">
+                    <input id="course_title" type="text" placeholder="Faça sua busca" value="{{ $search_string }}" class="button-tabula">
+                    <button id="search_btn" class="button-tabula">Buscar</button>
+                    <div class="divider text-center" data-content="Busca Avançada"></div>
+                    <div class="columns">
+                        @for ($i = 0; $i < 2 ; $i++)
+                            <div class="column col-6">
+                                <ul>
+                                    @for ($j = 0; $j < 8; $j++)
+                                        <li><label><input 
+                                            @if (isset($checked_category)) 
+                                                @if ($checked_category->id == $categories[$category_count]->id) 
+                                                  checked 
+                                                @endif 
+                                            @endif 
+                                        type="checkbox" name="macrotema" value="{{ $categories[$category_count]->id }}"> {{ $categories[$category_count]->desc }}</label></li>
+                                            @php($category_count++)
+                                    @endfor
+                                </ul>
                             </div>
-                            <p><b>{{ $course->name }}</b></p>
-                        </a>
-                    @endforeach
-                </ul>
-            @else
-                Não existem cursos das opções selecionadas.
-            @endif
+                        @endfor                      
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <section class="course-gallery">
+        <div class="container grid-lg">
+           <div class="divider text-center" data-content="Resultados"></div>
+            <div class="columns" id="search-results">
+                @if (count($courses) > 0)
+                    @foreach($courses as $course)
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}" class="column col-4 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 course-item">
+                            <div class="columns">
+                                <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                                <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 course-content bg-primary-gray text-white">
+                                    <p><strong>{{ $course->name }}</strong></p>
+                                    <p>{{ $course->desc }}</p>
+                                    <div class="course-price">
+                                        <p>{{ $course->price }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach                
+                @else
+                    Não existem cursos das opções selecionadas.
+                @endif                         
+            </div>
+        </div>
+    </section>    
     @section('scripts')
         <script>
             $(document).ready(function(){
@@ -84,7 +104,7 @@
                             console.log(e);
                         },
                         success: function(response){
-                            $('.search-results').html(response);
+                            $('#search-results').html(response);
                         }
                     });
                 });

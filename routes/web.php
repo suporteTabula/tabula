@@ -31,8 +31,8 @@ Route::get('success', 'TransactionsController@success')->name('transaction.succe
 
 Route::get('course/{id}', 'CoursesController@course')->name('course.single');
 Route::get('course/start/{id}', 'CoursesController@course_start')->name('course.start');
-Route::get('lesson', 'CoursesController@lesson')->name('course.lesson');
-Route::post('next/{id}', 'CoursesController@next')->name('course.next');
+Route::match(['get', 'post'], 'lesson', 'CoursesController@lesson')->name('course.lesson');
+route::get('next', 'CoursesController@next')->name('course.next');
 Route::post('answers/{id}', 'CoursesController@answers')->name('course.answer');
 
 Route::get('search/{id}', 'SearchController@search')->name('search.single');

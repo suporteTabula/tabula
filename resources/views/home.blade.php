@@ -1,92 +1,158 @@
 @extends('layouts.user')
 @section('content')
-    <section class="hero-wrapper">
-        <div class="hero-text">
-            <h1>A mais simples e inovadora plataforma de ensino a distância</h1>
-            <button class="tabula-button-inverted">Descubra</button>
-        </div>
-        <div class="presentation-video"></div>
-    </section>
-    <h1 style="color: #404040; margin-top: 120px; text-align: center;">MACROTEMAS</h1>
-    <section class="macrotemas-mobile">
-        @for($i = 0; $i<3; $i++)
-            <div class="hex-col-{{ $i+1 }}">
-                @for($j = 0; $j < $mobile_col_limit; $j++)
-                    <div class="hexagon">
-                        <a href="{{ route('search.single', ['id' => $mobile_categories[$mobile_category_count]->id]) }}" class="hex-inner"> <img src="{{ asset('images/hex/mobile/'.$mobile_categories[$mobile_category_count]->mobile_hex_bg) }}">
-                            <p>{{ $mobile_categories[$mobile_category_count]->desc }}</p> 
-                            <img class="macro-icon" src="{{ asset('images/hex/icon/'.$mobile_categories[$mobile_category_count]->hex_icon) }}" style="display: none;"> 
-                        </a>
-                        @php($mobile_category_count++)
-                    </div>
-                @endfor
-                @if($mobile_col_limit == 5)
-                    @php($mobile_col_limit = 6)
-                @else
-                    @php($mobile_col_limit = 5)
-                @endif
+    <section class="hero-landing">
+        <div class="container grid-md">
+            <div class="columns">
+                <div class="column col-6 col-xs-12 col-sm-12 hero-text">
+                    <h2>A plataforma de ensino a <u>distância</u> mais <u>inovadora</u> e <u>prática</u> onde qualquer pessoa pode <u>aprender</u> ou <u>ensinar</u>.</h2>
+                    <button id="explore" class="button-tabula">EXPLORE</button>
+                </div>
+                <div class="column col-6 hide-sm hero-mock"></div>
             </div>
-        @endfor
+        </div>
     </section>
-    <section class="macrotemas-desktop">
-        @for($i = 0; $i<3; $i++)
-            <div class="hex-row-{{ $i+1 }}">
-                @for($j = 0; $j < $row_limit; $j++)
-                    <div class="hexagon">
-                        <a href="{{ route('search.single', ['id' => $categories[$category_count]->id]) }}" class="hex-inner"> <img src="{{ asset('images/hex/desktop/'.$categories[$category_count]->desktop_hex_bg) }}">
-                            <p>{{ $categories[$category_count]->desc }}</p> 
-                            <img class="macro-icon" src="{{ asset('images/hex/icon/'.$categories[$category_count]->hex_icon) }}" style="display: none;"> 
-                        </a>
-                        @php($category_count++)
+    
+    <section class="macrotemas">
+        <div class="container grid-md">
+            <div class="columns">
+                <div class="column col-12 show-md">
+                    <div class="macro-mobile-wrapper">
+                        @for($i = 0; $i<3; $i++)
+                            <div class="macrotema-col-{{ $i+1 }}">
+                                @for($j = 0; $j < $mobile_col_limit; $j++)
+                                    <a href="{{ route('search.single', ['id' => $mobile_categories[$mobile_category_count]->id]) }}" style="background-image: url({{ '../images/hex/mobile/'.$mobile_categories[$mobile_category_count]->mobile_hex_bg }})">
+                                        <p id="macro-title">{{ $mobile_categories[$mobile_category_count]->desc }}</p> 
+                                        <img id="macroicon" src="{{ asset('images/hex/icon/'.$mobile_categories[$mobile_category_count]->hex_icon) }}" style="display: none;"> 
+                                    </a>
+                                    @php($mobile_category_count++)
+                                    
+                                @endfor
+                                @if($mobile_col_limit == 5)
+                                    @php($mobile_col_limit = 6)
+                                @else
+                                    @php($mobile_col_limit = 5)
+                                @endif
+                            </div>
+                        @endfor
                     </div>
-                @endfor
-                @if($row_limit == 5)
-                    @php($row_limit = 6)
-                @else
-                    @php($row_limit = 5)
-                @endif
+                </div>
+                <div class="column col-12 hide-md">
+                    <div class="macro-pc-wrapper hide-md">
+                        @for($i = 0; $i<3; $i++)
+                            <div class="macro-row-{{ $i+1 }}">
+                                @for($j = 0; $j < $row_limit; $j++)
+                                    <div class="macro-indv-pc">
+                                        <a href="{{ route('search.single', ['id' => $categories[$category_count]->id]) }}" style="background-image: url({{ '../images/hex/desktop/'.$categories[$category_count]->desktop_hex_bg }})">
+                                            <p>{{ $categories[$category_count]->desc }}</p> 
+                                            <img id="macroicon" src="{{ asset('images/hex/icon/'.$categories[$category_count]->hex_icon) }}" style="display: none;"> 
+                                        </a>
+                                        @php($category_count++)
+                                    </div>
+                                @endfor
+                                @if($row_limit == 5)
+                                    @php($row_limit = 6)
+                                @else
+                                    @php($row_limit = 5)
+                                @endif
+                            </div>
+                        @endfor
+                    </div>
+                </div>
             </div>
-        @endfor
-    </section>
-    <section class="most-viewed-wrapper">
-        <h1 style="color: #404040; margin-top: 120px; text-align: center;">MAIS VISUALIZADOS</h1>
-        <p style="color: #808080; padding-left: 35px;">Cursos populares em {{ $featured_category1 }}</p>
-        <div class="carousel1">
-            @foreach($featured_courses1 as $course)
-                <a href="{{ route('course.single', ['id' => $course->id]) }}" class="card">
-                    <div class="card-media" style="background-image: url(../images/aulas/{{$course->thumb_img}});">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <p><b>{{ $course->name }}</b></p>
-                    <p>{{ $course->desc }}</p>
-                </a>
-            @endforeach
-        </div>
-        <p style="color: #808080; padding-left: 35px;">Cursos populares em {{ $featured_category2 }}</p>
-        <div class="carousel2">
-            @foreach($featured_courses2 as $course)
-                <a href="{{ route('course.single', ['id' => $course->id]) }}" class="card">
-                    <div class="card-media" style="background-image: url(../images/aulas/{{$course->thumb_img}});">
-                        <div class="card-overlay"></div>
-                    </div>
-                    <p><b>{{ $course->name }}</b></p>
-                    <p>{{ $course->desc }}</p>
-                </a>
-            @endforeach
         </div>
     </section>
-    <h1 style="color: #404040; margin-top: 120px; text-align: center;">BLOG</h1>
-    <section class="blog-wrapper">
-        <div class="carousel3">
-            @foreach($featured_posts as $post)
-                <a href="{{ route('course.single', ['id' => $post->id]) }}" class="card">
-                    <div class="card-media" style="background-image: url(../images/aulas/{{$post->thumb_img}});">
-                        <div class="card-overlay"></div>
+
+    <section class="advantages">
+        <div class="container grid-md">
+            <div class="columns">
+                <div class="column col-4 col-xs-12 col-sm-12">
+                    <div class="columns spacer card-advantage1">
+                        <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12 hex-adv">
+                            <img src="../images/layout/home/hexagon.svg" width="70px;">
+                        </div>
+                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
+                        </div>
                     </div>
-                    <p><b>{{ $post->name }}</b></p>
-                    <p>{{ $post->desc }}</p>
-                </a>
-            @endforeach
+                </div>
+                <div class="column col-4 col-xs-12 col-sm-12 ">
+                    <div class="columns spacer card-advantage2">
+                        <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12 hex-adv">
+                            <img src="../images/layout/home/hexagon.svg" width="70px;">
+                        </div>
+                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column col-4 col-xs-12 col-sm-12">
+                    <div class="columns spacer card-advantage3">
+                        <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12  hex-adv">
+                            <img src="../images/layout/home/hexagon.svg" width="70px;">
+                        </div>
+                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12 ">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlighted-courses">
+        <div class="container grid-md">
+            <div class="columns">
+                <div class="column col-12 course-row1">
+                   <p style="color: #808080;"><strong> Destaques em {{ $featured_category1 }}</strong></p>
+                    <div class="slider">                        
+                        @foreach($featured_courses1 as $course)
+                            <a style=" display:block; width: 272px!important" href="{{ route('course.single', ['id' => $course->id]) }}">
+                                <div class="course-card">
+                                    <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
+                                    <div class="course-content">
+                                        <p><b>{{ $course->name }}</b></p>
+                                        <p>{{ $course->desc }}</p>
+                                        <div class="course-price"><p>{{ $course->price }}</p></div>
+                                    </div>
+                                </div>                                
+                            </a>
+                        @endforeach                        
+                    </div>
+                </div>
+                <div class="column col-12 course-row1">
+                    <p style="color: #808080;"><strong> Destaques em {{ $featured_category2 }}</strong></p>
+                    <div class="slider">                        
+                        @foreach($featured_courses2 as $course)
+                            <a style=" display:block; width: 272px!important" href="{{ route('course.single', ['id' => $course->id]) }}">
+                                <div class="course-card">
+                                    <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
+                                    <div class="course-content">
+                                        <p><b>{{ $course->name }}</b></p>
+                                        <p>{{ $course->desc }}</p>
+                                        <div class="course-price"><p>{{ $course->price }}</p></div>
+                                    </div>
+                                </div>                                
+                            </a>
+                        @endforeach                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container grid-md">
+            <div class="columns spacer-2">
+                <div class="column col-8 col-xs-12 col-sm-12 col-md-12"> 
+                    <video controls poster="../images/layout/home/poster-video.PNG" width="500px">
+                        <source src="../images/layout/home/presentation-tabula.mp4">
+                    </video>
+                </div>
+                <div class="about-text column col-4 col-xs-12 col-sm-12 col-md-12">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti corporis, sed aperiam! Eum quae assumenda, optio suscipit fugiat facilis minima eos doloremque nostrum, modi quis est repudiandae eveniet tempora sapiente nihil. Quo enim animi accusantium, id sint doloribus obcaecati nulla beatae rerum vero dolore culpa unde delectus at. Voluptate, ex.</p>
+                </div>
+            </div>
         </div>
     </section>
 @endsection
+

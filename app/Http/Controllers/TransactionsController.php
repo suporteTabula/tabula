@@ -37,7 +37,7 @@ class TransactionsController extends Controller
             // soma o preço de cada curso
             $total_price = $total_price + $course->price;
             // vincula o usuário ao curso comprado
-            $user->courses()->save($course);
+            $user->courses()->save($course, ['progress' => 0]);
 
             $cart_item = Cart::find($item->id);
             // remove item do carrinho

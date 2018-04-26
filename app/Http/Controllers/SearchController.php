@@ -26,6 +26,7 @@ class SearchController extends Controller
                 $courses = Course::all();
 
             return view('search')
+                ->with('category_count', 0)
                 ->with('categories', Category::orderBy('desc', 'ASC')->get())
                 ->with('courses', $courses)
                 // variável para ser escrita no campo de busca na search.blade
@@ -36,6 +37,7 @@ class SearchController extends Controller
             $category = Category::find($id);
 
             return view('search')
+                ->with('category_count', 0)
                 ->with('categories', Category::orderBy('desc', 'ASC')->get())
                 // busca todas os cursos da categoria selecionada
                 ->with('courses', $category->courses->all())

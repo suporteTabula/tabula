@@ -9,6 +9,8 @@ use App\CourseItem;
 use Illuminate\Support\Facades\DB;
 use App\CourseItemOption;
 use App\CourseItemGroup;
+use App\CourseItemStatus;
+use App\User;
 
 class CoursesController extends Controller
 {
@@ -16,6 +18,7 @@ class CoursesController extends Controller
     {
         $user = Auth::user();
         $course = Course::find($id);
+        $author = User::find($course->user_id_owner);
         $chapter = $course->course_item_groups->all();
         $hasCourse = false;
 
@@ -24,42 +27,52 @@ class CoursesController extends Controller
 
         return view('course')
             ->with('course', $course)
+            ->with('author', $author)
             ->with('chapters', $chapter)
             ->with('hasCourse', $hasCourse);
     }
 
-    public function course_start($id)
+    public function course_start(Request $request, $id)
     {
         $course = Course::find($id);
         $chapter = $course->course_item_groups->all();
-        //$item = $chapter->course_items->all();
+        $user = Auth::user();
+        $item = $request->item_id; // Id específico do item ao finalizar aula
+
+        if ($item) {
+            $user->items()->attach($request->item_id, ['course_item_status_id' => 1 ]);
+        }
 
         return view('courseProgress')
             ->with('course', $course)
+            ->with('users', $user)
+            ->with('specificItem', $item)
             ->with('chapters', $chapter);
             //->with('items', $item);
     }
     public function lesson(Request $request)
-    {   
-        if ($request->ajax()){
-            
-            //$item = DB::table('course_items')->where('id', $request->item_id)->get();
-            $item = CourseItem::where('id', $request->item_id)->get();            
+    { 
+        $item = CourseItem::where('id', $request->item_id)->get();  
+        $next = DB::table('course_items')->where([
+            ['order', '>', $item->first()->order],
+            ['course_item_group_id', '=', $item->first()->course_item_group_id],
+        ])->get()->first();    
 
-            return view('lesson')
-                ->with('items', $item)
-                ->with('count', 0);
-        }
+        return view('lesson')
+            ->with('items', $item)
+            ->with('next', $next)
+            ->with('count', 0);
+            
+        //$item = DB::table('course_items')->where('id', $request->item_id)->get();
         
     }
-
     public function answers(Request $request, $id)
     {
         //$options = new CourseItemOption();
         //$items = CourseItemOption::where('course_items_id', $id)->get();
-        
         $all = $request->all();
         $user = Auth::user();
+        $user->items()->attach($id, ['course_item_status_id' => 1 ]);
 
         foreach ($all as $key => $value) {
 
@@ -104,20 +117,17 @@ class CoursesController extends Controller
             if (strpos($key, 'dissertativa') !== false){
                 $id_question_d = explode('_', $key)[1];
 
-                $user->items()->attach($id_question_d, ['desc' => $value]);
+                $user->items()->attach($id_question_d, ['desc' => $value, 'course_item_status_id' => 1 ]);
             }
 
             if (strpos($key, 'trueFalse') !== false){
                 $id_trueFalse = explode('_', $key)[1];
 
-                $user->items()->attach($id_trueFalse, ['desc' => $value]);
+                $user->items()->attach($id_trueFalse, ['desc' => $value, 'course_item_status_id' => 1 ]);
             }
 
-        } 
-    }
+        }
 
-    public function next(Request $request, $id)
-    {
-
+        return redirect()->back(); 
     }
 }

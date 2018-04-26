@@ -9,7 +9,8 @@ class Company extends Model
 
 	protected $fillable = [
 		'name',
-		'desc'
+		'desc',
+        'theme_color',
 	];
 
 	public function users()

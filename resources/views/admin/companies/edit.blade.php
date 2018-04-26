@@ -18,6 +18,21 @@
 					<label for="desc">Descrição</label>
 					<input class="form-control" type="text" value="{{ $company->desc }}" placeholder="Descrição da empresa" name="desc">
 				</div>
+				<div class="form-group">
+					<label for="theme_color">Tema</label>
+					<select class="form-control" id="theme_color" name="theme_color">
+						<option value="rose" @if ($company->theme_color == "rose") selected
+						@endif>Rosa</option>
+						<option value="gray" @if ($company->theme_color == "gray") selected
+						@endif>Cinza Escuro</option>
+						<option value="white" @if ($company->theme_color == "white") selected
+						@endif>Branco</option>
+						<option value="purple" @if ($company->theme_color == "purple") selected
+						@endif>Roxo</option>
+						<option value="blue" @if ($company->theme_color == "blue") selected
+						@endif>Azul</option>
+					</select>
+				</div>
 				<table class="table table-hover">
 					<thead>
 						<th>Grupos Associados</th>
