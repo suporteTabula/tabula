@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 125.87 109.01"><defs><style>.cls-1{fill:url(#linear-gradient);}.cls-2{fill:url(#linear-gradient-2);}</style><linearGradient id="linear-gradient" x1="64.68" y1="58.6" x2="173.69" y2="58.6" gradientTransform="translate(-10.99 -55.84) rotate(30)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b6ef89"/><stop offset="1" stop-color="#84e4a6"/></linearGradient><linearGradient id="linear-gradient-2" x1="15.73" y1="27.25" x2="110.14" y2="81.76" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6ade15"/><stop offset="1" stop-color="#07ca7c"/></linearGradient></defs><title>hex7-alt-mob</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><polygon class="cls-1" points="94.41 109.01 125.87 54.51 94.41 0 31.47 0 0 54.51 31.47 109.01 94.41 109.01"/><path class="cls-2" d="M33.78,4H92.1l29.15,50.5L92.1,105H33.78L4.62,54.5,33.78,4M31.47,0,0,54.5,31.47,109H94.41L125.87,54.5,94.41,0Z"/></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 49 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-725.746,-148.235)">
+        <g transform="matrix(-5.1027e-17,0.277778,-0.277778,-5.1027e-17,802.799,85.6841)">
+            <path d="M300.63,105.512L374.276,148.031L374.276,233.071L300.63,275.591L226.984,233.071L226.984,148.031L300.63,105.512Z" style="fill:none;stroke:rgb(13,242,40);stroke-width:3.6px;"/>
+        </g>
+    </g>
+</svg>

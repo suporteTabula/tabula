@@ -39,6 +39,38 @@ class User extends Authenticatable
         return false;
     }
 
+    public function isStudent()
+    {
+        foreach ($this->userTypes()->get() as $types) {
+            if($types->desc == 'Aluno')
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function isInstructor()
+    {
+        foreach($this->userTypes()->get() as $types)
+        {
+           if ($types->desc == 'Instrutor') {
+                return true;
+            } 
+        }
+        return false;
+    }
+
+    public function isCompanyManager()
+    {
+        foreach ($this->userTypes()->get() as $types) {
+            if ($types->desc == 'Empresa') {
+                return true;
+            }
+        }
+        return true;
+    }
+
     public function country()
     {
         return $this->belongsTo('App\Country', 'country_id');
@@ -91,6 +123,6 @@ class User extends Authenticatable
 
     public function items()
     {
-        return $this->belongsToMany('App\CourseItem');
+        return $this->belongsToMany('App\CourseItem')->withPivot('desc', 'course_item_status_id');
     }
 }

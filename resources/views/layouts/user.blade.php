@@ -10,99 +10,104 @@
 
         <title>Tabula</title>
 
-        <!-- Styles -->
+        <!-- Styles -->        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
         <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}" >
-        <link rel="stylesheet" href="{{ asset('css/slick-1.8.0/slick/slick.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/slick-1.8.0/slick/slick-theme.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/themes.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         @yield('styles')
     </head>
     <body>
-        <section class="navigation-wrapper">
-            <div class="menu-icon"></div>
-            <div class="logo-icon"></div>
-            <div class="loupe-icon"></div>
-            <div class="search-mob">
-                <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
-                    <input class="tabula-input" name="search_string" type="text" placeholder="Faça sua busca">
-                    <button class="tabula-button" style="text-decoration: none" type="submit" }}">Buscar</button>
-                </form>
+        <section class="navigation-bar">
+            <div class="container grid-md">
+                <div class="columns">
+                    <div class="nav-brand column col-2 col-xs-6 col-sm-3">
+                        <a href="{{ url('/') }}"><img src="{{ asset('images/layout/header/logo.svg') }}" height="30px"></a>
+                    </div>
+                    <div class="nav-search col-5 hide-xs col-sm-5">
+                        <section class="navbar-section">
+                            <div class="input-group input-inline">
+                                <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
+                                    <input class="" name="search_string" type="text" placeholder="Digite sua busca.">
+                                    <button class="button-tabula" type="submit">Buscar</button>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="nav-menu col-5 col-xs-6 col-sm-4 col-md-5">
+                        
+                        <div class="menu-icon show-sm">
+                            <div class="icon-open"></div>
+                            <div class="icon-closed"></div>
+                        </div>
+                        <ul class="hide-sm">
+                            @auth
+                                <li><a href="{{ route('cart') }}">Cart</a></li>
+                            @endauth
+                            <li><a href="#">Canais</a></li>
+                            <li><a href="#">Instituições</a></li>
+                            @auth
+                                <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                            @else
+                                <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                            @endauth
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="search-desktop">
-                <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
-                    <input class="tabula-input-inverted" name="search_string" placeholder="Faça sua busca" type="text">
-                    <button class="tabula-button-inverted" style="text-decoration: none" type="submit" }}">Buscar</button>
-                </form>
-            </div>
-            <div class="menu-links-desktop">
-                <ul>
-                    @auth
-                        <li><a href="{{ route('cart') }}">Cart</a></li>
-                    @endauth
-                    <li><a class="sta-link" href="#">Canais</a></li>
-                    <li><a class="sta-link" href="#">Instituições</a></li>
-                    @auth
-                        <li><a class="tabula-button" href="{{ route('userPanel.single') }}">Painel</a></li>
-                        <li><a class="tabula-button" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
-                    @else
-                        <li><a class="tabula-button" href="{{ route('register') }}">Cadastre-se</a></li>
-                        <li><a class="tabula-button" href="{{ route('login') }}">Login</a></li>
-                    @endauth
-                </ul>
-            </div>
-            <div class="menu-links-mobile">
-                <ul>
-                    <li><a href="#">Canais</a></li>
-                    <li><a href="#">Instituições</a></li>
-                    @auth
-                        <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
-                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                    @else   
-                        <li><a href="{{ route('register') }}">Cadastre-se</a></li>
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                    @endauth
-                </ul>
+            <div class="offscreen-menu show-sm">
+                <div class="menu-mob">
+                    <ul>
+                        <li><a href="#">Canais</a></li>
+                        <li><a href="#">Instituições</a></li>
+                        @auth
+                            <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
+                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                        @else
+                            <div class="divider"></div>
+                            <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
+                                <input class="" name="search_string" type="text" placeholder="Digite sua busca.">
+                                <button class="button-tabula" type="submit">Buscar</button>
+                            </form>
+                            <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                        @endauth
+                    </ul>
+                </div>
             </div>
         </section>
-        
+    
         @yield('content')
 
         <footer>
-            <ul>
-                <li><a href="#">Canais</a></li>
-                <li><a href="#">Instituições</a></li>
-                @auth
-                    <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
-                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                @else
-                    <li><a href="{{ route('register') }}">Cadastre-se</a></li>
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                @endauth
-                <li><a href="#">Suporte</a></li>
-            </ul>
-            <ul class="social-media">
-                <li><a href="#"><img src="../images/layout/footer/facebook-logo.svg" alt="facebook" style="width: 25px;"></a></li>
-                <li><a href="#"><img src="../images/layout/footer/instagram-logo.svg" alt="instagram" style="width: 25px;"></a></li>
-                <li><a href="#"><img src="../images/layout/footer/youtube-logo.svg" alt="youtube" style="width: 25px;"></a></li>
-            </ul>
+            <div class="container grid-md">
+                <div class="columns">
+                    <div class="column col-4"></div>
+                    <div class="column col-4"></div>
+                    <div class="column col-4"></div>
+                </div>
+            </div>
         </footer>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/toastr.min.js') }}"></script>
-        <script src="{{ asset('css/slick-1.8.0/slick/slick.min.js') }}"></script>
-        <script src="{{ asset('js/main.js') }}"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="{{ asset('js/main.js') }}"></script>        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script>
-        
             @if(Session::has('success'))
                 toastr.success("{{ Session::get('success') }}")
             @endif

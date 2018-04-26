@@ -38,13 +38,15 @@ class AdminCompaniesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:100',
-            'desc' => 'required|max:300'
+            'name'          => 'required|max:100',
+            'desc'          => 'required|max:300',
+            'theme_color'   => 'required'
         ]);
 
         $company = Company::create([
-            'name' => $request->name,
-            'desc' => $request->desc
+            'name'          => $request->name,
+            'desc'          => $request->desc,
+            'theme_color'   => $request->theme_color
         ]);
 
         Session::flash('success', 'Empresa cadastrada com sucesso');
@@ -88,12 +90,14 @@ class AdminCompaniesController extends Controller
         $this->validate($request, [
             'name' => 'required|max:100',
             'desc' => 'required|max:300'
+
         ]);
 
         $company = Company::find($id);
 
         $company->name = $request->name;
         $company->desc = $request->desc;
+        $company->theme_color = $request->theme_color;
         $company->save();
         
         Session::flash('success', 'Dados da Empresa alterados com sucesso');

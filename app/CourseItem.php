@@ -34,6 +34,6 @@ class CourseItem extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withPivot('desc', 'course_item_status_id');
     }
 }

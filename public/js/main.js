@@ -1,54 +1,66 @@
-$('.loupe-icon').click(function () {
-    $('.search-mob').slideToggle('fast');
-    $('.menu-links-mobile').hide()
+$(".icon-open").click(function () {
+    $(this).hide();
+    $(".icon-closed").show()
+    $(".offscreen-menu").animate({
+        top: "50px"
+    });
 });
-$('.menu-icon').click(function () {
-    $('.menu-links-mobile').slideToggle('fast');
-    $('.search-mob').hide();
+$(".icon-closed").click(function () {
+    $(this).hide();
+    $(".icon-open").show()
+    $(".offscreen-menu").animate({
+        top: "-80vh"
+    });
 });
-$('.hexagon').mouseenter(function () {
-    $(this).find('p').stop(true, true).delay(50).fadeOut(100);
-    $(this).find('.macro-icon').stop(true, true).delay(100).fadeIn(150);
-});
-$('.hexagon').mouseleave(function () {
-    $(this).find('.macro-icon').stop(true, true).delay(50).fadeOut(100);
-    $(this).find('p').stop(true, true).delay(100).fadeIn(150);
+$(document).ready(function () {
+    $('.slider').bxSlider({
+        mode: "horizontal",
+        preloadImages: "all",
+        maxSlides: 3,
+        moveSlides: 3,
+    });
 });
 
-$('.carousel1, .carousel2, .carousel3').slick({
-  dots: true,
-  infinite: true,
-  speed: 300,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        dots: true
-      }
-    },
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 2,
-        infinite: true,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 1,
-        infinite: true,
-        slidesToScroll: 1
-      }
-    }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
-  ]
+$(document).ready(function() {
+    $(".macro-indv").mouseenter(function(){
+        $(this).find('p').hide();
+        $(this).find('#macroicon').delay(200).show();
+    });
+    $(".macro-indv").mouseleave(function(){
+        $(this).find('#macroicon').hide();
+        $(this).find('p').delay(100).show(0);
+    })
+});
+
+$(document).ready(function() {
+    $(".macro-indv-pc").mouseenter(function(){
+        $(this).find('p').hide();
+        $(this).find('#macroicon').delay(200).show();
+    });
+    $(".macro-indv-pc").mouseleave(function(){
+        $(this).find('#macroicon').hide();
+        $(this).find('p').delay(100).show();
+    })
+});
+
+$(document).ready(function() {
+    $("#open-class").click(function() {
+        $(".offscreen-course-content").css({"left": "0vw", "transition": "200ms", "width": "30vw"});
+        $(this).hide()
+        $("#close-class").show();
+        if($(window).width()< 500) {
+            $(".offscreen-course-content").css({"left": "0vw", "transition": "200ms", "width": "80vw"});
+        }
+        else if ($(window).width() > 501 && $(window).width() < 750) {
+            $(".offscreen-course-content").css({"left": "0vw", "transition": "200ms", "width": "50vw"});
+        } 
+        else if ($(window).width() > 750){
+            $(".offscreen-course-content").css({"left": "0vw", "transition": "200ms", "width": "30vw"});
+        }
+    });
+    $("#close-class").click(function() {
+        $(".offscreen-course-content").css({"left": "-100vw", "transition": "200ms"});
+        $(this).hide();
+        $("#open-class").show();
+    })
 });
