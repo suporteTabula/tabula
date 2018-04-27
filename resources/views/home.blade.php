@@ -106,7 +106,7 @@
                    <p style="color: #808080;"><strong> Destaques em {{ $featured_category1 }}</strong></p>
                     <div class="slider">                        
                         @foreach($featured_courses1 as $course)
-                            <a style=" display:block; width: 272px!important" href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <a style="" href="{{ route('course.single', ['id' => $course->id]) }}">
                                 <div class="course-card">
                                     <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
                                     <div class="course-content">
@@ -123,7 +123,7 @@
                     <p style="color: #808080;"><strong> Destaques em {{ $featured_category2 }}</strong></p>
                     <div class="slider">                        
                         @foreach($featured_courses2 as $course)
-                            <a style=" display:block; width: 272px!important" href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <a  style=" display:block;" href="{{ route('course.single', ['id' => $course->id]) }}">
                                 <div class="course-card">
                                     <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
                                     <div class="course-content">

@@ -16,8 +16,10 @@ $(document).ready(function () {
     $('.slider').bxSlider({
         mode: "horizontal",
         preloadImages: "all",
-        maxSlides: 3,
-        moveSlides: 3,
+        responsive: true,
+        maxSlides: 4,
+        minSlides: 1,
+        moveSlides: 1,
     });
 });
 
