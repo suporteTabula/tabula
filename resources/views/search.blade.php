@@ -8,8 +8,8 @@
         <div class="container grid-lg">
             <div class="columns">
                 <div class="column col-12 side-search">
-                    <input id="course_title" type="text" placeholder="Faça sua busca" value="{{ $search_string }}" class="button-tabula">
-                    <button id="search_btn" class="button-tabula">Buscar</button>
+                    <input id="course_title" type="text" placeholder="Faça sua busca" value="{{ $search_string }}" class="button-tabula custom-input-search">
+                    <button id="search_btn" class="button-tabula custom-button-search">Buscar</button>
                     <div class="divider text-center" data-content="Busca Avançada"></div>
                     <div class="columns">
                         @for ($i = 0; $i < 2 ; $i++)
@@ -40,7 +40,7 @@
             <div class="columns" id="search-results">
                 @if (count($courses) > 0)
                     @foreach($courses as $course)
-                        <a href="{{ route('course.single', ['id' => $course->id]) }}" class="column col-4 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 course-item">
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}" class="column col-3 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 course-item">
                             <div class="columns">
                                 <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
                                 <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 course-content bg-primary-gray text-white">
