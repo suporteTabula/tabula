@@ -105,7 +105,7 @@
                    <p style="color: #808080;"><strong> Destaques em <?php echo e($featured_category1); ?></strong></p>
                     <div class="slider">                        
                         <?php $__currentLoopData = $featured_courses1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <a style=" display:block; width: 272px!important" href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
+                            <a style="" href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
                                 <div class="course-card">
                                     <div class="course-image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>)"></div>
                                     <div class="course-content">
@@ -122,7 +122,7 @@
                     <p style="color: #808080;"><strong> Destaques em <?php echo e($featured_category2); ?></strong></p>
                     <div class="slider">                        
                         <?php $__currentLoopData = $featured_courses2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <a style=" display:block; width: 272px!important" href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
+                            <a  style=" display:block;" href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
                                 <div class="course-card">
                                     <div class="course-image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>)"></div>
                                     <div class="course-content">
