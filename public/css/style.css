@@ -17,6 +17,7 @@
     background-color: #303030;
     color: #fff;
     border: 1px solid #303030;
+    padding:6px;
 }
 
 .button-tabula:hover {
@@ -162,11 +163,18 @@ body {
 .navigation-bar .nav-search input {
     width: 60%;
     font-size: 14px;
+    padding: 9px;
 }
 
 .navigation-bar .nav-search form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
     justify-content: flex-end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -532,8 +540,14 @@ body {
 }
 
 .highlighted-courses .columns .course-row1 .slider a .course-card .course-content .course-price {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     position: absolute;
     right: 0;

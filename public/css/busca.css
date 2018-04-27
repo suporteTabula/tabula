@@ -8,6 +8,13 @@ body {
 .search-wrapper .columns .side-search {
   padding: 15px;
   text-align: center; }
+.button-tabula:first-child {
+    width: 91%;
+    padding: 10px;
+}
+.button-tabula:nth-child(2) {
+    padding: 10px;
+}
   .search-wrapper .columns .side-search ul {
     margin: 0;
     padding: 0;
@@ -73,18 +80,34 @@ body {
       position: relative; }
       .course-gallery .container .columns .course-item .columns .course-content p {
         margin: 0;
-        padding: 0; }
+        padding: 0;
+overflow: hidden;
+font-size: 14px}
+.course-gallery .container .columns .course-item .columns .course-content p:first-child {
+    height: 25px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+}
+.course-gallery .container .columns .course-item .columns .course-content p:nth-child(2) {
+    height: 55px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+}
       .course-gallery .container .columns .course-item .columns .course-content .course-price {
         display: block;
         position: absolute;
         right: 0;
         bottom: 0;
         background-color: #5AA535;
-        padding: 10px; }
+        padding: 6px; }
         .course-gallery .container .columns .course-item .columns .course-content .course-price p {
           color: #fff;
           margin: 0;
-          padding: 0; }
+          padding: 6px; }
 
 @media (min-width: 1280px) {
   .course-item .columns {
