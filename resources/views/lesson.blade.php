@@ -8,7 +8,7 @@
                     
                     @foreach ($item->item_child as $child)
                         @if ($child->course_item_types_id == 6 || $child->course_item_types_id == 9)
-                            <label>{{ $child->name }}</label><br>  
+                            <label>{{ $child->desc }}</label><br>  
                             @foreach ($child->course_item_options as $options)
                                 @if ($child->course_item_types_id == 6)
                                     <input type="hidden" name="multiple_{{$options->course_item->id}}[]" value="0">
@@ -19,7 +19,7 @@
                                 @endif   
                             @endforeach
                         @else
-                            <label>{{ $child->name }}</label><br> 
+                            <label>{{ $child->desc }}</label><br> 
                             @if ($child->course_item_types_id == 5)
                                 <input type="text" name="dissertativa_{{$child->id}}"><br> 
                             @else
@@ -32,7 +32,7 @@
                     <input type="submit" name="next" id="next" value="Enviar avaliação">
                 </form>
             @else
-                {{ $item->name }}
+                {{ $item->desc }}
                 @if (!is_null($item->path))
                     <img src="{{ asset($item->path) }}">
                 @endif
