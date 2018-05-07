@@ -30,7 +30,7 @@
                         </div>
                     </a>
                 @endforeach
-                <a class="column  col-4 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 course-item">
+                <a class="column  col-3 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 course-item">
                     <div class="columns">
                         <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 course-image"></div>
                         <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 course-content bg-primary-white text-{{$company->theme_color}}">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="column col-4 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 course-item">
+                <a class="column col-3 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 course-item">
                     <div class="columns">
                         <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 course-image"></div>
                         <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 course-content bg-primary-white text-{{$company->theme_color}}">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="column col-4 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 course-item">
+                <a class="column col-3 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 course-item">
                     <div class="columns">
                         <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 course-image"></div>
                         <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 course-content bg-primary-white text-{{$company->theme_color}}">
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </a>
-                <a class="column col-4 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 course-item">
+                <a class="column col-3 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 course-item">
                     <div class="columns">
                         <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 course-image"></div>
                         <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 course-content bg-primary-white text-{{$company->theme_color}}">
