@@ -8,7 +8,7 @@
 
     <section class="course-overview">
         <div class="container grid-lg">
-            <div class="columns">
+            <div class="columns" style="border-top: 2px solid {{$course->category->course_color}} ">
                 <div class="column col-7 col-xs-12 col-sm-12 col-md-6 course-desc">
                     <p id="macrotext"><strong>{{ $course->category->desc }}</strong></p>
                     <h3>{{ $course->name }}</h3><p>{{ $course->desc }}</p>
