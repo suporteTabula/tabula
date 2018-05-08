@@ -33,7 +33,7 @@
                                 @endif 
                             @endforeach >  
                             </div>                
-                        <br>
+                        
                     @endif
                 @endforeach
             </details>
