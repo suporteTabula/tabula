@@ -40,26 +40,8 @@
         @endforeach
         
     </section>
-   <section class="search-wrapper">
-        <div class="search-container">
-            @foreach ($chapters as $chapter)
-                {{ $chapter->name }}<br>
-                @foreach ($chapter->course_items as $item)
-                    @if(is_null($item->course_items_parent))
-                        <a class="teste" value="{{ $item->id }}"> {{ $item->name }} </a>
-                        <input type="checkbox" name="progress" 
-                        @foreach ($users->items as $i)
-                            @if ($i->pivot->course_item_status_id == 1 && $item->id == $i->pivot->course_item_id)
-                                checked
-                            @endif 
-                        @endforeach >                  
-                    @endif
-                @endforeach
-            @endforeach
-        </div>
-        <div class="search-results">
-        </div>
-    </section>
+   
+   
 
     @section('scripts')
         <script>

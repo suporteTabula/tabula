@@ -39,7 +39,7 @@ class CoursesController extends Controller
         $user = Auth::user();
         $item = $request->item_id; // Id específico do item ao finalizar aula
 
-        if ($item) {
+        if ($item && !$user->items()->find($item)) {
             $user->items()->attach($request->item_id, ['course_item_status_id' => 1 ]);
         }
 
@@ -53,14 +53,9 @@ class CoursesController extends Controller
     public function lesson(Request $request)
     { 
         $item = CourseItem::where('id', $request->item_id)->get();  
-        $next = DB::table('course_items')->where([
-            ['order', '>', $item->first()->order],
-            ['course_item_group_id', '=', $item->first()->course_item_group_id],
-        ])->get()->first();    
 
         return view('lesson')
             ->with('items', $item)
-            ->with('next', $next)
             ->with('count', 0);
             
         //$item = DB::table('course_items')->where('id', $request->item_id)->get();
