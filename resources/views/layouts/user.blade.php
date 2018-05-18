@@ -40,11 +40,8 @@
                     </section>
                 </div>
                 <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
-                    <ul class="hide-sm hide-sm"> @auth
-                        <li><a href="{{ route('cart') }}">Cart</a></li> @endauth @auth
-                        <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
-                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form> @else
+                    <ul class="hide-sm hide-sm">  @auth
+                         @else
                         <li><a href="{{ route('register') }}">Cadastre-se</a></li>
                         <li><a href="{{ route('login') }}">Login</a></li> @endauth </ul>
                     <div class="menu-icon">
@@ -60,7 +57,9 @@
                             <ul> 
                                 @auth
                                 <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
-                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li> @else
+                                <li><a href="{{ route('cart') }}">Cart</a></li>
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form> @else
                                 <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
                                     <input style="border: 1px solid white" class="button-tabula" name="search_string" type="text" placeholder="Digite sua busca.">
                                     <button style="background-color: white; color: #303030" class="button-tabula" type="submit">Buscar</button>
