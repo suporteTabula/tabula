@@ -83,12 +83,19 @@ body {
         padding: 0;
 overflow: hidden;
 font-size: 14px}
-.course-gallery .container .columns .course-item .columns .course-content p:first-child {
-    height: 25px;
+.course-gallery .container .columns .course-item .columns .course-content .lineclamp-title {
+    height: 20px;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     font-size: 16px;
+}
+.course-gallery .container .columns .course-item .columns .course-content .lineclamp-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    height: 50px;
+    font-size: 14px;
 }
 .course-gallery .container .columns .course-item .columns .course-content p:nth-child(2) {
     height: 55px;
@@ -107,6 +114,7 @@ font-size: 14px}
         .course-gallery .container .columns .course-item .columns .course-content .course-price p {
           color: #fff;
           margin: 0;
+          height: 25px !important;
           padding: 6px; }
 
 @media (min-width: 1280px) {

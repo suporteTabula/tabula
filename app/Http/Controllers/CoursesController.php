@@ -21,19 +21,33 @@ class CoursesController extends Controller
         $author = User::find($course->user_id_owner);
         $chapter = $course->course_item_groups->all();
         $hasCourse = false;
+        $userHasItem = false;
+        if ($user) {
+            $userHasItem = DB::select( DB::raw("SELECT * FROM course_items AS ci
+                                JOIN course_item_groups AS chapter ON ci.course_item_group_id = chapter.id
+                                WHERE exists ( SELECT 1 FROM course_item_user AS ciu 
+                                WHERE ciu.user_id = :userid AND ciu.course_item_id = ci.id)
+                                AND chapter.course_id = :courseid"), array (
+                                    'userid' => $user->id, 
+                                    'courseid' => $course->id,
+                                ));
+        }
 
+        //dd($userHasItem);
         if($user && $user->courses()->find($id))
             $hasCourse = true;
 
+        
         return view('course')
             ->with('course', $course)
             ->with('author', $author)
             ->with('chapters', $chapter)
+            ->with('userItem', $userHasItem)
             ->with('hasCourse', $hasCourse);
     }
 
     public function course_start(Request $request, $id)
-    {
+    {        
         $course = Course::find($id);
         $chapter = $course->course_item_groups->all();
         $user = Auth::user();
@@ -42,21 +56,39 @@ class CoursesController extends Controller
         if ($item && !$user->items()->find($item)) {
             $user->items()->attach($request->item_id, ['course_item_status_id' => 1 ]);
         }
-
+        foreach ($chapter as $chap) {
+            $count[$chap->id] = count($chap->course_items);
+            
+        }
+        //$done = user->items()->wherePivot('course_item_status_id','1')->get();
+        //dd($done->all());
         return view('courseProgress')
-            ->with('course', $course)
             ->with('users', $user)
-            ->with('specificItem', $item)
             ->with('chapters', $chapter);
             //->with('items', $item);
     }
+
+    public function course_progress($id)
+    {
+        $item = CourseItem::find($id);
+        $items = CourseItem::where('id', $id)->get(); 
+        $user = Auth::user();
+        $id_course = $item->course_item_group->course_id;
+        $chapter = CourseItemGroup::where('course_id', $id_course)->get();
+
+        return view('courseProgress')
+            ->with('users', $user)
+            ->with('chapters', $chapter)
+            ->with('items', $items);
+
+    }
+
     public function lesson(Request $request)
     { 
         $item = CourseItem::where('id', $request->item_id)->get();  
 
         return view('lesson')
-            ->with('items', $item)
-            ->with('count', 0);
+            ->with('items', $item);
             
         //$item = DB::table('course_items')->where('id', $request->item_id)->get();
         

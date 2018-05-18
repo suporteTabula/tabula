@@ -507,8 +507,7 @@ body {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    padding: 10px;
 }
 
 .highlighted-courses .columns .course-row1 .slider a .course-card .course-image {
@@ -537,12 +536,12 @@ body {
     overflow: hidden;
     font-size: 14px;
 }
-.highlighted-courses .columns .course-row1 .slider a .course-card .course-content p:first-child {
-    height: 25px;
+.highlighted-courses .columns .course-row1 .slider a .course-card .course-content .lineclamp-desc {
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    font-size: 16px;
+    height: 50px;
+    font-size: 14px;
 }
 .highlighted-courses .columns .course-row1 .slider a .course-card .course-content p:nth-child(2) {
     display: -webkit-box;
@@ -551,7 +550,13 @@ body {
     height: 50px;
     font-size: 14px;
 }
-
+.highlighted-courses .columns .course-row1 .slider a .course-card .course-content .lineclamp-title {
+    height:20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+}
 .highlighted-courses .columns .course-row1 .slider a .course-card .course-content .course-price {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -575,6 +580,7 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     display: block;
+    height: 25px !important;
 }
 
 .about {
@@ -685,3 +691,4 @@ footer {
         height: 80px !important;
     }
 }
+

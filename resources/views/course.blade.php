@@ -27,14 +27,15 @@
                     <div class="start-course">
                         @auth
                             @if($hasCourse)
-                                <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
+                                @if ($userItem)
+                                    <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> 1]) }}">Continuar Curso</a>
+                                @else
+                                    <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
+                                @endif                                
                             @else
                                 <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a>
                                 <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a>
                             @endif
-                        @else 
-                            <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a>
-                            <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a>
                         @endauth
                     </div>
                 </div>
@@ -52,7 +53,7 @@
                                  <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo: {{$chapter->name}}</summary>
                                  @foreach ($chapter->course_items as $item)
                                      @if (is_null($item->course_items_parent))
-                                        <div id="accbody" class="accordion-body"> <a id="accbody-content" href="#">{{$item->name}}</a> </div>
+                                        <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.progress', ['id' => $item->id]) }}" @endauth>{{$item->name}}</a></div>
                                      @endif
                                  @endforeach
                             </details>
@@ -64,35 +65,7 @@
                     <details class="accordion">
                         <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo</summary>
                         <div id="accbody" class="accordion-body"> <a id="accbody-content" href="#">Aula</a> </div>
-                    </details>
-                    <details class="accordion">
-                        <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo</summary>
-                        <div id="accbody" class="accordion-body"> <a id="accbody-content" href="#">Aula</a> </div>
-                    </details>
-                    <details class="accordion">
-                        <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo</summary>
-                        <div id="accbody" class="accordion-body"> <a id="accbody-content" href="#">Aula</a> </div>
-                    </details>
-                    <details class="accordion">
-                        <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo</summary>
-                        <div id="accbody" class="accordion-body"> <a id="accbody-content" href="#">Aula</a> </div>
-                    </details>
-                    <details class="accordion">
-                        <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo</summary>
-                        <div id="accbody" class="accordion-body"> <a id="accbody-content" href="#">Aula</a> </div>
-                    </details>
-                    <details class="accordion">
-                        <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo</summary>
-                        <div id="accbody" class="accordion-body"> <a id="accbody-content" href="#">Aula</a> </div>
-                    </details>
-                    <details class="accordion">
-                        <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo</summary>
-                        <div id="accbody" class="accordion-body"> <a id="accbody-content" href="#">Aula</a> </div>
-                    </details>
-                    <details class="accordion">
-                        <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo</summary>
-                        <div id="accbody" class="accordion-body"> <a id="accbody-content" href="#">Aula</a> </div>
-                    </details>
+                    </details>                                        
                 </div>
                 <div class="column col-5 col-xs-12 col-sm-12">
                     <h4>Requisitos</h4>
