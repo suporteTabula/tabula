@@ -212,7 +212,7 @@
 	@section('scripts')
 		<script>
 			$( function() {
-				var dialogAlt, form, dialogQuestion, dialogMultiple,
+				var dialogAlt, form, dialogQuestion, dialogMultiple, dialogSingle,
 				name = $( "#name" ),
 				desc = $( "#desc" ),
 				verdadeira = $( "#verdadeira"),
@@ -291,7 +291,31 @@
 				 
 				$( "#create-multiple" ).button().on( "click", function() {
 					dialogMultiple.dialog( "open" );
-				});		
+				});
+
+				dialogSingle = $( "#single" ).dialog({
+				    autoOpen: false,
+				    height: 450,
+				    width: 350,
+				    modal: true,
+				    buttons: {
+				        Cancel: function() {
+				          	dialogSingle.dialog( "close" );
+				        }
+				    },
+				    close: function() {
+				        form[ 0 ].reset();
+				        allFields.removeClass( "ui-state-error" );
+				    }
+				});
+				 
+				form = dialogSingle.find( "form" ).on( "submit", function( event ) {	
+
+				});
+				 
+				$( "#create-single" ).button().on( "click", function() {
+					dialogSingle.dialog( "open" );
+				});				
 			});
 		</script>		
 	@stop	

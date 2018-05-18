@@ -54,30 +54,31 @@
                 </div>
             </div>
             <section style="width: 100%;">
-        <div class="container grid-md" style="position: relative">
-            <div class="offscreen-menu">
-                <div class="menu-mob">
-                    <ul> @auth
-                        <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
-                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li> @else
-                        <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
-                            <input style="border: 1px solid white" class="button-tabula" name="search_string" type="text" placeholder="Digite sua busca.">
-                            <button style="background-color: white; color: #303030" class="button-tabula" type="submit">Buscar</button>
-                        </form>
-                        <li><a href="{{ route('register') }}">Cadastre-se</a></li>
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Perfil</a></li>
-                        <li><a href="{{ route('register') }}">Carrinho</a></li>
-                        <li><a href="{{ route('register') }}">Cursos</a></li>
-                        <li><a href="{{ route('register') }}">Compras</a></li>
-                        <li><a href="{{ route('register') }}">Cursos Lecionados</a></li>
-                        <li><a href="{{ route('register') }}">Logout</a></li> 
-                         @endauth
-                         </ul>
+                <div class="container grid-md" style="position: relative">
+                    <div class="offscreen-menu">
+                        <div class="menu-mob">
+                            <ul> 
+                                @auth
+                                <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li> @else
+                                <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
+                                    <input style="border: 1px solid white" class="button-tabula" name="search_string" type="text" placeholder="Digite sua busca.">
+                                    <button style="background-color: white; color: #303030" class="button-tabula" type="submit">Buscar</button>
+                                </form>
+                                <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('register') }}">Perfil</a></li>
+                                <li><a href="{{ route('register') }}">Carrinho</a></li>
+                                <li><a href="{{ route('register') }}">Cursos</a></li>
+                                <li><a href="{{ route('register') }}">Compras</a></li>
+                                <li><a href="{{ route('register') }}">Cursos Lecionados</a></li>
+                                <li><a href="{{ route('register') }}">Logout</a></li> 
+                                 @endauth
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
         </div>
     </section>
     
@@ -100,7 +101,6 @@
     <script src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        @
         if (Session::has('success')) toastr.success("{{ Session::get('success') }}")@ endif@
         if (Session::has('info')) toastr.info("{{ Session::get('info') }}")@ endif
     </script> @yield('scripts') </body>

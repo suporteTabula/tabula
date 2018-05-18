@@ -109,8 +109,8 @@
                                 <div class="course-card">
                                     <div class="course-image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>)"></div>
                                     <div class="course-content">
-                                        <p><b><?php echo e($course->name); ?></b></p>
-                                        <p><?php echo e($course->desc); ?></p>
+                                        <p class="lineclamp-title"><b><?php echo e($course->name); ?></b></p>
+                                        <p class="lineclamp-desc"><?php echo e($course->desc); ?></p>
                                         <div class="course-price"><p><?php echo e($course->price); ?></p></div>
                                     </div>
                                 </div>                                
@@ -126,8 +126,7 @@
                                 <div class="course-card">
                                     <div class="course-image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>)"></div>
                                     <div class="course-content">
-                                        <p><b><?php echo e($course->name); ?></b></p>
-                                        <p><?php echo e($course->desc); ?></p>
+                                        <p><?php echo e($course->name); ?></p>
                                         <div class="course-price"><p><?php echo e($course->price); ?></p></div>
                                     </div>
                                 </div>                                
@@ -153,6 +152,17 @@
             </div>
         </div>
     </section>
+    <?php $__env->startSection('scripts'); ?>
+        <script src="<?php echo e(asset('js/clamp.min.js')); ?>"></script>
+
+        <script>
+            var title = document.getElementsByClassName("lineclamp-title");
+            var desc = document.getElementsByClassName("lineclamp-desc");
+
+            $clamp(title, {clamp: 1, useNativeClamp: false});
+            $clamp(desc, {clamp: 3});
+        </script>
+    <?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
 
 

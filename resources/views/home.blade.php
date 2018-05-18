@@ -110,8 +110,8 @@
                                 <div class="course-card">
                                     <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
                                     <div class="course-content">
-                                        <p><b>{{ $course->name }}</b></p>
-                                        <p>{{ $course->desc }}</p>
+                                        <p class="lineclamp-title"><b>{{ $course->name }}</b></p>
+                                        <p class="lineclamp-desc">{{ $course->desc }}</p>
                                         <div class="course-price"><p>{{ $course->price }}</p></div>
                                     </div>
                                 </div>                                
@@ -127,8 +127,7 @@
                                 <div class="course-card">
                                     <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
                                     <div class="course-content">
-                                        <p><b>{{ $course->name }}</b></p>
-                                        <p>{{ $course->desc }}</p>
+                                        <p>{{ $course->name }}</p>
                                         <div class="course-price"><p>{{ $course->price }}</p></div>
                                     </div>
                                 </div>                                
@@ -154,5 +153,16 @@
             </div>
         </div>
     </section>
+    @section('scripts')
+        <script src="{{ asset('js/clamp.min.js') }}"></script>
+
+        <script>
+            var title = document.getElementsByClassName("lineclamp-title");
+            var desc = document.getElementsByClassName("lineclamp-desc");
+
+            $clamp(title, {clamp: 1, useNativeClamp: false});
+            $clamp(desc, {clamp: 3});
+        </script>
+    @endsection
 @endsection
 
