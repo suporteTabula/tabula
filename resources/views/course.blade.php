@@ -28,7 +28,7 @@
                         @auth
                             @if($hasCourse)
                                 @if ($userItem)
-                                    <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> 1]) }}">Continuar Curso</a>
+                                    <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}">Continuar Curso</a>
                                 @else
                                     <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
                                 @endif                                
