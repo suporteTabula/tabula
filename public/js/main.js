@@ -2,8 +2,7 @@ $(".icon-open").click(function () {
     $(this).hide();
     $(".icon-closed").show()
     $(".offscreen-menu").animate({
-        top: "0px"
-        , right: "-8px"
+        top: "50px"
     });
 });
 $(".icon-closed").click(function () {
@@ -15,71 +14,88 @@ $(".icon-closed").click(function () {
 });
 $(document).ready(function () {
     $('.slider').bxSlider({
-        mode: "horizontal"
-        , preloadImages: "all"
-        , responsive: true
-        , maxSlides: 4
-        , minSlides: 1
-        , moveSlides: 1
-    , });
+        mode: "horizontal",
+        preloadImages: "all",
+        maxSlides: 4,
+        moveSlides: 4,
+    });
 });
-$(document).ready(function () {
-    $(".macro-indv").mouseenter(function () {
+
+$(document).ready(function() {
+    $(".macro-indv").mouseenter(function(){
         $(this).find('p').hide();
         $(this).find('#macroicon').delay(200).show();
     });
-    $(".macro-indv").mouseleave(function () {
+    $(".macro-indv").mouseleave(function(){
         $(this).find('#macroicon').hide();
         $(this).find('p').delay(100).show(0);
     })
 });
-$(document).ready(function () {
-    $(".macro-indv-pc").mouseenter(function () {
+
+$(document).ready(function() {
+    $(".macro-indv-pc").mouseenter(function(){
         $(this).find('p').hide();
         $(this).find('#macroicon').delay(200).show();
     });
-    $(".macro-indv-pc").mouseleave(function () {
+    $(".macro-indv-pc").mouseleave(function(){
         $(this).find('#macroicon').hide();
         $(this).find('p').delay(100).show();
     })
 });
-$(document).ready(function () {
-    $("#open-class").click(function () {
-        $(".offscreen-course-content").css({
-            "left": "0vw"
-            , "transition": "200ms"
-            , "width": "30vw"
-        });
+
+$(document).ready(function() {
+    $("#open-class").click(function() {
+        $(".offscreen-course-content").css({"left": "0vw", "transition": "200ms", "width": "30vw"});
         $(this).hide()
         $("#close-class").show();
-        if ($(window).width() < 500) {
-            $(".offscreen-course-content").css({
-                "left": "0vw"
-                , "transition": "200ms"
-                , "width": "80vw"
-            });
+        if($(window).width()< 500) {
+            $(".offscreen-course-content").css({"left": "0vw", "transition": "200ms", "width": "80vw"});
         }
         else if ($(window).width() > 501 && $(window).width() < 750) {
-            $(".offscreen-course-content").css({
-                "left": "0vw"
-                , "transition": "200ms"
-                , "width": "50vw"
-            });
-        }
-        else if ($(window).width() > 750) {
-            $(".offscreen-course-content").css({
-                "left": "0vw"
-                , "transition": "200ms"
-                , "width": "30vw"
-            });
+            $(".offscreen-course-content").css({"left": "0vw", "transition": "200ms", "width": "50vw"});
+        } 
+        else if ($(window).width() > 750){
+            $(".offscreen-course-content").css({"left": "0vw", "transition": "200ms", "width": "30vw"});
         }
     });
-    $("#close-class").click(function () {
-        $(".offscreen-course-content").css({
-            "left": "-100vw"
-            , "transition": "200ms"
-        });
+    $("#close-class").click(function() {
+        $(".offscreen-course-content").css({"left": "-100vw", "transition": "200ms"});
         $(this).hide();
         $("#open-class").show();
     })
 });
+
+$(document).ready(function () {
+    $(".sections-buttons a button").click(function () {
+        $(this).addClass("button-selected");
+        $("button").not(this).removeClass("button-selected");
+        console.log("oi")
+    });
+});
+
+$(document).ready(function () {
+    $("#data").click(function () {
+        $("#panel-2, #panel-3, #panel-4, #panel-5, #panel-6").slideUp(500);
+        $("#panel-1").delay(200).slideDown(500)
+    });
+    $("#courses").click(function () {
+        $("#panel-1, #panel-3, #panel-4, #panel-5, #panel-6").slideUp(500);
+        $("#panel-2").delay(200).slideDown(500)
+    });
+    $("#taught").click(function () {
+        $("#panel-1, #panel-2, #panel-4, #panel-5, #panel-6").slideUp(500);
+        $("#panel-3").delay(200).slideDown(500)
+    });
+    $("#create").click(function () {
+        $("#panel-1, #panel-2, #panel-3, #panel-5, #panel-6").slideUp(500);
+        $("#panel-4").delay(200).slideDown(500)
+    });
+    $("#payment").click(function () {
+        $("#panel-1, #panel-2, #panel-3, #panel-4, #panel-6").slideUp(500);
+        $("#panel-5").delay(200).slideDown(500)
+    });
+    $("#teacher").click(function () {
+        $("#panel-1, #panel-2, #panel-3, #panel-4, #panel-5").slideUp(500);
+        $("#panel-6").delay(200).slideDown(500)
+    });
+})
