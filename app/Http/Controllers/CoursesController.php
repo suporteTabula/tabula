@@ -22,22 +22,31 @@ class CoursesController extends Controller
         $chapter = $course->course_item_groups->all();
         $hasCourse = false;
         $userHasItem = false;
+        //query SELECT ci.id as ItemId, 
+        //              ci.name as ItemName, chapter.id as CapituloId, 
+        //               (SELECT created_at as CriadoEm from course_item_user 
+        //                WHERE ci.id = course_item_user.course_item_id ) as CriadoEm 
+        //                FROM course_items AS ci
+        //                JOIN course_item_groups AS chapter ON ci.course_item_group_id = chapter.id
+        //                WHERE exists (SELECT ciu.created_at FROM course_item_user AS ciu 
+        //                WHERE ciu.user_id = :userid AND ciu.course_item_id = ci.id)
+        //                AND chapter.course_id = :courseid ORDER BY ItemID DESC
+        
         if ($user) {
-            $userHasItem = DB::select( DB::raw("SELECT * FROM course_items AS ci
-                                JOIN course_item_groups AS chapter ON ci.course_item_group_id = chapter.id
-                                WHERE exists ( SELECT 1 FROM course_item_user AS ciu 
-                                WHERE ciu.user_id = :userid AND ciu.course_item_id = ci.id)
-                                AND chapter.course_id = :courseid"), array (
+            $userHasItem =  DB::select( DB::raw("SELECT ci.id as ItemId, 
+                        ci.name as ItemName, chapter.id as CapituloId
+                        FROM course_items AS ci JOIN course_item_groups AS chapter 
+                        ON ci.course_item_group_id = chapter.id WHERE ci.id NOT IN 
+                        ( SELECT course_item_id FROM course_item_user AS ciu WHERE ciu.user_id = :userid)
+                        AND chapter.course_id = :courseid ORDER BY ItemId ASC"), array (
                                     'userid' => $user->id, 
                                     'courseid' => $course->id,
-                                ));
+                                    ));
         }
-
-        //dd($userHasItem);
+       
         if($user && $user->courses()->find($id))
             $hasCourse = true;
 
-        
         return view('course')
             ->with('course', $course)
             ->with('author', $author)

@@ -123,6 +123,6 @@ class User extends Authenticatable
 
     public function items()
     {
-        return $this->belongsToMany('App\CourseItem')->withPivot('desc', 'course_item_status_id');
+        return $this->belongsToMany('App\CourseItem')->withPivot('desc', 'course_item_status_id')->withTimestamps();
     }
 }
