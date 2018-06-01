@@ -32,7 +32,7 @@ body {
 .offscreen-menu {
     position: absolute;
     top: -100vh;
-    width: 100vw;
+    width: 50vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -651,14 +651,14 @@ footer {
         min-height: 300px;
     }
     .offscreen-menu {
-        width: 500px;
+        width: 300px;
         position: absolute;
         right: -5px;
         top: -18vh;
     }
     
     .offscreen-menu .menu.mob form {
-        width: 500px;
+        width: 300px;
     }
     .offscreen-menu input {
         width: 70%;
@@ -667,14 +667,14 @@ footer {
 
 @media (min-width:960px) {
     .offscreen-menu {
-        width: 500px;
+        width: 200px;
         position: absolute;
         right: -7px;
         top: -50vh;
     }
     
     .offscreen-menu .menu.mob form {
-        width: 500px;
+        width: 300px;
     }
     .offscreen-menu input {
         width: 70%;

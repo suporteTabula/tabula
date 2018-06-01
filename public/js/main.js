@@ -2,7 +2,7 @@ $(".icon-open").click(function () {
     $(this).hide();
     $(".icon-closed").show()
     $(".offscreen-menu").animate({
-        top: "50px"
+        top: "0px"
     });
 });
 $(".icon-closed").click(function () {
