@@ -40,14 +40,16 @@
                     </section>
                 </div>
                 <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
-                    <ul class="hide-sm hide-sm">  @auth
+                    <ul class="hide-sm hide-sm">  
+                        @auth
+                            <div class="menu-icon">
+                                <div class="icon-open"></div>
+                                <div class="icon-closed"></div>
+                            </div>
                          @else
                         <li><a href="{{ route('register') }}">Cadastre-se</a></li>
                         <li><a href="{{ route('login') }}">Login</a></li> @endauth </ul>
-                    <div class="menu-icon">
-                        <div class="icon-open"></div>
-                        <div class="icon-closed"></div>
-                    </div>
+                    
                 </div>
             </div>
             <section style="width: 100%;">
