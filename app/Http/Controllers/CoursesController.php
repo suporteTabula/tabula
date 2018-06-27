@@ -111,10 +111,13 @@ class CoursesController extends Controller
         $user->items()->attach($id, ['course_item_status_id' => 1 ]);
 
         foreach ($all as $key => $value) {
-
+            //verifica se a chave($key) é de multipla escolha(multiple)
             if (strpos($key, 'multiple') !== false) {
+
+                //separa a string e pega a posicao 1, que será o id da questão
                 $id_question_m = explode('_', $key)[1];
-                
+
+                //pega todas alternativas(escolhas) relacionadas ao id da questão $id_question_m
                 $affirmatives = CourseItemOption::where('course_items_id', $id_question_m)->get();
                
                 foreach ($affirmatives as $afirmative) {
@@ -127,13 +130,17 @@ class CoursesController extends Controller
                                  
                         }
                     }
+                    //Atrela um usuario a uma resposta com attach pegando id da alternativa e colocando um campo adicional para a resposta(checked) 
                     $user->itemOptions()->attach($afirmative->id, ['checked' => $i]);
                 }         
             }
-
+            //verifica se a chave($key) é de alternativa
             if (strpos($key, 'alternativa') !== false) {
+
+                //separa a string e pega a posicao 1, que será o id da questão
                 $id_question_a = explode('_', $key)[1];
                 
+                //pega todas alternativas relacionadas ao id da questão $id_question_a
                 $altertatives = CourseItemOption::where('course_items_id', $id_question_a)->get();
                
                 foreach ($altertatives as $altertative) {
@@ -146,19 +153,26 @@ class CoursesController extends Controller
                                  
                         }
                     }
+                    //Atrela um usuario a uma resposta com attach pegando id da alternativa e colocando um campo adicional para a resposta(checked) 
                     $user->itemOptions()->attach($altertative->id, ['checked' => $i]);
                 }         
             }
-
+            //verifica se a chave($key) é de dissertativa
             if (strpos($key, 'dissertativa') !== false){
+
+                //separa a string e pega a posicao 1, que será o id da questão
                 $id_question_d = explode('_', $key)[1];
 
+                //Atrela um usuario a uma resposta com attach pegando id da questao e colocando um campo adicional para a resposta(desc)
                 $user->items()->attach($id_question_d, ['desc' => $value, 'course_item_status_id' => 1 ]);
             }
-
+            //verifica se a chave($key) é de verdadeira/falso
             if (strpos($key, 'trueFalse') !== false){
+                
+                //separa a string e pega a posicao 1, que será o id da questão
                 $id_trueFalse = explode('_', $key)[1];
 
+                //Atrela um usuario a uma resposta com attach pegando id da questao e colocando um campo adicional para a resposta(desc)
                 $user->items()->attach($id_trueFalse, ['desc' => $value, 'course_item_status_id' => 1 ]);
             }
 
