@@ -25,6 +25,7 @@
   .resumee .resumee-inner .user-face {
     width: 200px;
     height: 200px;
+    background-image: url(../images/avatar-1.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

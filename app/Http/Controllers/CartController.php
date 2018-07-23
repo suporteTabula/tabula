@@ -19,7 +19,8 @@ class CartController extends Controller
         // preço acumulado dos cursos
         $total_price = 0;
 
-    	foreach($items as $item)
+    	
+        foreach($items as $item)
     	{
     		$course = Course::find($item->course_id);
             // adiciona o ATRIBUTO 'cart_id' em cada $course, para saber qual id no carrinho pode ser REMOVIDO

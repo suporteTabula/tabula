@@ -28,8 +28,12 @@
                         @auth
                             @if($hasCourse)
                                 @if ($userItem)
-                                    <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}">Continuar Curso</a>
-                                @else
+                                    <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}">Continuar Curso</a><p>
+                                        <br> <br><br>
+
+                                     <a class="custom-button button-tabula"href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}"> Alunos Matrriculados</a>
+                              
+                                      @else
                                     <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
                                 @endif                                
                             @else
@@ -81,5 +85,6 @@
                 </div>
             </div>
         </div>
+   
     </section>
 @endsection
