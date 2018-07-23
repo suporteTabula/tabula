@@ -56,7 +56,7 @@
                 <div class="column col-10 panel-show">
                     <div id="panel-1" class="columns">
                         <form id="teste" action="{{ route('userProfile.update') }}" method="post">
-                            {{ csrf_field() }}
+                            {{ csrf_field() }} 
                             <!--Painel 1 - dados pessoais-->
                             <div class="column col-12 ">
                                 <div class="columns">
@@ -142,11 +142,15 @@
                         <div id="panel-3" class="columns">
                             <div class="column col-12">
                                 <div class="columns">
-                                    @foreach ($courses as $course)
-                                        @if ($course->user_id_owner == $user->id)
-                                            {{ $course->name }}<br>
+                                    @foreach ($courses as $course)<br>
+                                        @if ($course->user_id_owner == $user->id)<br> 
+                                   <a  href="{{ route('course.single', ['id' => $course->id]) }}">
+                                        {{($course->name)}}
+
                                         @endif
+
                                     @endforeach
+
                                     <a class="column  col-3 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 course-item">
                                         <div class="columns">
                                             <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 col-12 course-image"></div>

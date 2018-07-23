@@ -22,6 +22,7 @@ Route::get('/', 'HomeController@index')->name('index.single');
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
 
+
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
 Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('cart.remove');
@@ -42,6 +43,7 @@ Route::get('userPanel', 'UsersController@userPanel')->name('userPanel.single');
 Route::post('userPanel/update', 'UsersController@userProfileUpdate')->name('userProfile.update');
 Route::get('userPurchases', 'UsersController@userPurchases')->name('userPurchases.single');
 Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails')->name('userPurchaseDetails.single');
+
 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'AdminHomeController@index')->name('home');
@@ -106,4 +108,5 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/userType/edit/{id}', 'AdminUserTypesController@edit')->name('userType.edit');
 	Route::post('/admin/userType/update/{id}', 'AdminUserTypesController@update')->name('userType.update');
 	Route::get('/admin/userType/delete/{id}', 'AdminUserTypesController@destroy')->name('userType.delete');
+	
 });
