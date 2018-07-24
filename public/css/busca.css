@@ -3,63 +3,94 @@ body {
 
 #input-main {
   width: 100%;
-  padding: 10px; }
+  padding: .5rem; }
 
-.search-wrapper .columns .side-search {
-  padding: 15px;
-  text-align: center; }
-.button-tabula:first-child {
-    width: 91%;
-    padding: 10px;
-}
-.button-tabula:nth-child(2) {
-    padding: 10px;
-}
-  .search-wrapper .columns .side-search ul {
-    margin: 0;
-    padding: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column; }
-    .search-wrapper .columns .side-search ul li {
-      margin: 0;
-      padding: 6px;
-      list-style: none;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-      flex-direction: row; }
-      .search-wrapper .columns .side-search ul li input {
-        display: inline-block; }
-      .search-wrapper .columns .side-search ul li p {
-        padding-left: 15px;
-        line-height: 14px;
-        margin: 0;
-        text-align: left; }
+.macro-main__item,
+.macro-sub__item {
+  list-style: none;
+  margin: 5px;
+  padding: 0; }
+
+.macro-main label {
+  font-weight: 700;
+  color: #303030; }
+
+.macro-sub--financas,
+.macro-sub--varejo,
+.macro-sub--negocio,
+.macro-sub--direito,
+.macro-sub--controladoria,
+.macro-sub--ti,
+.macro-sub--marketing,
+.macro-sub--engenharia,
+.macro-sub--concursos,
+.macro-sub--arquitetura,
+.macro-sub--saude,
+.macro-sub--historia,
+.macro-sub--ensino,
+.macro-sub--video,
+.macro-sub--gastronomia,
+.macro-sub--hobbies {
+  margin: 0px;
+  margin-left: 16px;
+  display: none;
+  -webkit-transition: all 200ms;
+  -o-transition: all 200ms;
+  transition: all 200ms; }
+
+.macro-main__checkbox--financas:checked ~ .macro-sub--financas {
+  display: block; }
+
+.macro-main__checkbox--varejo:checked ~ .macro-sub--varejo {
+  display: block; }
+
+.macro-main__checkbox--negocio:checked ~ .macro-sub--negocio {
+  display: block; }
+
+.macro-main__checkbox--direito:checked ~ .macro-sub--direito {
+  display: block; }
+
+.macro-main__checkbox--controladoria:checked ~ .macro-sub--controladoria {
+  display: block; }
+
+.macro-main__checkbox--ti:checked ~ .macro-sub--ti {
+  display: block; }
+
+.macro-main__checkbox--marketing:checked ~ .macro-sub--marketing {
+  display: block; }
+
+.macro-main__checkbox--engenharia:checked ~ .macro-sub--engenharia {
+  display: block; }
+
+.macro-main__checkbox--concursos:checked ~ .macro-sub--concursos {
+  display: block; }
+
+.macro-main__checkbox--arquitetura:checked ~ .macro-sub--arquitetura {
+  display: block; }
+
+.macro-main__checkbox--saude:checked ~ .macro-sub--saude {
+  display: block; }
+
+.macro-main__checkbox--historia:checked ~ .macro-sub--historia {
+  display: block; }
+
+.macro-main__checkbox--ensino:checked ~ .macro-sub--ensino {
+  display: block; }
+
+.macro-main__checkbox--video:checked ~ .macro-sub--video {
+  display: block; }
+
+.macro-main__checkbox--gastronomia:checked ~ .macro-sub--gastronomia {
+  display: block; }
+
+.macro-main__checkbox--hobbies:checked ~ .macro-sub--hobbies {
+  display: block; }
 
 .course-gallery {
   padding: 15px; }
   .course-gallery .container .columns .course-item:hover {
     -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
     transform: scale(1.05);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden; }
@@ -67,55 +98,32 @@ body {
     padding: 15px;
     cursor: crosshair;
     -webkit-transition: 200ms;
+    -o-transition: 200ms;
     transition: 200ms; }
     .course-gallery .container .columns .course-item .columns .course-image {
-      min-height: 150px;
+      height: 150px;
       padding: 5px;
       background-image: url(http://via.placeholder.com/255x250);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover; }
     .course-gallery .container .columns .course-item .columns .course-content {
-      min-height: 150px;
+      height: 150px;
       position: relative; }
       .course-gallery .container .columns .course-item .columns .course-content p {
         margin: 0;
-        padding: 0;
-overflow: hidden;
-font-size: 14px}
-.course-gallery .container .columns .course-item .columns .course-content .lineclamp-title {
-    height: 20px;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    font-size: 16px;
-}
-.course-gallery .container .columns .course-item .columns .course-content .lineclamp-desc {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    height: 50px;
-    font-size: 14px;
-}
-.course-gallery .container .columns .course-item .columns .course-content p:nth-child(2) {
-    height: 55px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    font-size: 16px;
-}
+        padding: 0; }
       .course-gallery .container .columns .course-item .columns .course-content .course-price {
         display: block;
         position: absolute;
         right: 0;
         bottom: 0;
         background-color: #5AA535;
-        padding: 6px; }
+        padding: 10px; }
         .course-gallery .container .columns .course-item .columns .course-content .course-price p {
           color: #fff;
           margin: 0;
-          height: 25px !important;
-          padding: 6px; }
+          padding: 0; }
 
 @media (min-width: 1280px) {
   .course-item .columns {
