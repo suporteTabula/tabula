@@ -8,7 +8,11 @@
   background: aqua; }
 
 .column {
+<<<<<<< Updated upstream
   padding: 0.4rem; }
+=======
+  padding: .4rem; }
+>>>>>>> Stashed changes
 
 .button-tabula {
   background-color: #303030;
@@ -19,6 +23,7 @@
   background-color: #fff;
   color: #303030; }
 
+<<<<<<< Updated upstream
 .button-tabula-gray a:visited {
     color: white !important;
   }
@@ -29,6 +34,11 @@ a {
 body {
   font-family: "Poppins", sans-serif; }
 
+=======
+body {
+  font-family: "Poppins", sans-serif; }
+
+>>>>>>> Stashed changes
 .offscreen-menu {
   position: absolute;
   top: 50px;
@@ -165,6 +175,188 @@ body {
           color: #303030; }
   .navigation-bar .avatar {
     margin-left: 10px; }
+<<<<<<< Updated upstream
+=======
+
+.carousel-cell--1 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-financaseconomia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--2 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-varejoeconsumo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--3 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-negocioegestao.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--4 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-direito.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--5 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-controladoriaecontabilidade.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--6 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-tiesoftwares.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--7 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-marketing.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--8 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-engenharia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--9 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-concursosecertificacao.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--10 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-arquiteturaedesign.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--11 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-saude.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--12 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-historiaearte.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--13 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-ensinomedio.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--14 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-video.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--15 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-gastronomia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--16 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-hobbies.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.flickity-page-dots {
+  padding-bottom: 40px; }
+>>>>>>> Stashed changes
 
 .hero-landing {
   padding: 15px;
@@ -454,6 +646,7 @@ body {
       text-align: center; }
   .advantages p {
     margin: 0; }
+<<<<<<< Updated upstream
 
 .highlighted-courses {
   height: 950px; }
@@ -544,6 +737,94 @@ footer {
   .macro-indv {
     padding: 10px; }
 
+=======
+
+.highlighted-courses {
+  height: 950px; }
+  .highlighted-courses .columns .course-row1 {
+    padding: 0; }
+    .highlighted-courses .columns .course-row1 p {
+      padding: 0;
+      margin: 0; }
+    .highlighted-courses .columns .course-row1 .slider a {
+      margin: 0 6px;
+      width: 272px !important; }
+      .highlighted-courses .columns .course-row1 .slider a .course-card {
+        height: 400px;
+        width: 272px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); }
+        .highlighted-courses .columns .course-row1 .slider a .course-card .course-image {
+          width: 100%;
+          height: 250px;
+          background-image: url(http://via.placeholder.com/255x250);
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat; }
+        .highlighted-courses .columns .course-row1 .slider a .course-card .course-content {
+          width: 100%;
+          height: 150px;
+          padding: 10px;
+          background-color: #303030;
+          position: relative; }
+          .highlighted-courses .columns .course-row1 .slider a .course-card .course-content p {
+            margin: 0;
+            padding: 0;
+            color: #fff; }
+          .highlighted-courses .columns .course-row1 .slider a .course-card .course-content .course-price {
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            background-color: #5AA535; }
+            .highlighted-courses .columns .course-row1 .slider a .course-card .course-content .course-price p {
+              padding: 0;
+              margin: 0;
+              padding: 10px;
+              display: block; }
+
+.about {
+  padding: 30px; }
+  .about video {
+    width: 100%; }
+  .about .spacer-2 {
+    -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); }
+  .about .about-text {
+    padding: 15px;
+    color: #303030; }
+
+footer {
+  width: 100%;
+  background-color: #303030;
+  min-height: 100px;
+  margin-top: 15px; }
+
+@media (min-width: 600px) {
+  .macrotema-col-1,
+  .macrotema-col-2,
+  .macrotema-col-3 {
+    width: 120px !important; }
+  .macrotema-col-2 {
+    margin: 0 -20px; }
+  #macro-title {
+    font-size: 12px; }
+  .macro-indv {
+    padding: 10px; }
+>>>>>>> Stashed changes
   .advantages .card-advantage1 {
     margin-right: 5px;
     -webkit-box-orient: vertical;
@@ -568,12 +849,21 @@ footer {
     flex-direction: column;
     text-align: center;
     min-height: 300px; } }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 @media (max-width: 480px) {
   .macrotema-col-1,
   .macrotema-col-2,
   .macrotema-col-3 {
     width: 85px !important; }
+<<<<<<< Updated upstream
 
   .macro-indv
   a {
+=======
+  .macro-indv
+a {
+>>>>>>> Stashed changes
     height: 85px !important; } }

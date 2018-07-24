@@ -144,9 +144,14 @@
                                 <div class="columns">
                                     @foreach ($courses as $course)<br>
                                         @if ($course->user_id_owner == $user->id)<br> 
+<<<<<<< Updated upstream
                                    <a  href="{{ route('course.single', ['id' => $course->id]) }}">
                                         {{($course->name)}}
 
+=======
+                                       <a href="{{ route('userProfile.single') }}"></a>
+                                       {{($course->name)}}
+>>>>>>> Stashed changes
                                         @endif
 
                                     @endforeach
