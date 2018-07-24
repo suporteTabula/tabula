@@ -30,17 +30,19 @@
                                 @if ($userItem)
                                     <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}">Continuar Curso</a><p>
                                         <br> <br><br>
-
-                                     <a class="custom-button button-tabula"href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}"> Alunos Matrriculados</a>
-                              
+                                    
                                       @else
                                     <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
-                                @endif                                
+                                   @endif  
+                                                            
                             @else
                                 <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a>
                                 <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a>
                             @endif
+                            
+                      
                         @endauth
+                        
                     </div>
                 </div>
             </div>

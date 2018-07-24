@@ -144,12 +144,12 @@
                                 <div class="columns">
                                     @foreach ($courses as $course)<br>
                                         @if ($course->user_id_owner == $user->id)<br> 
-                                   <a  href="{{ route('course.single', ['id' => $course->id]) }}">
-                                        {{($course->name)}}
-
-                                        @endif
-
-                                    @endforeach
+                                   
+                                   <a href="{{ route('course.single', ['id' => $course->id]) }}">{{$course->name}}</a>
+                                  
+                                   @endif
+                                  
+                                @endforeach
 
                                     <a class="column  col-3 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 course-item">
                                         <div class="columns">
