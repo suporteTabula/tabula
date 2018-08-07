@@ -28,21 +28,24 @@
                         @auth
                             @if($hasCourse)
                                 @if ($userItem)
-                                    <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}">Continuar Curso</a><p>
-                                        <br> <br><br>
-                                    
+
+                                    <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}">Continuar Curso</a>
+
+                                    <ul></ul><a class="custom-button button-tabula" href="{{ route('alunos') }}">Alunos Matriculados</a></ul>
+                                                                                                        
+                                                                             
                                       @else
-                                    <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
-                                   @endif  
-                                                            
+
+                                  <ul>  <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a></ul>
+                                @endif                                
                             @else
-                                <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a>
-                                <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a>
+                                <ul><a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a></ul>
+
+                               <ul> <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a></ul>
                             @endif
-                            
-                      
                         @endauth
                         
+                            
                     </div>
                 </div>
             </div>
