@@ -75,6 +75,7 @@ class CartController extends Controller
     }
 
     public function checkout()
+   
     {
         $user = Auth::user();
         $items = Cart::where('user_id', $user->id)->get();

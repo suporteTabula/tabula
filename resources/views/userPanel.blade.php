@@ -146,6 +146,14 @@
 
                                     @foreach ($courses as $course)<br>
                                         @if ($course->user_id_owner == $user->id)<br> 
+
+                                   <a  href="{{ route('course.single', ['id' => $course->id]) }}">
+                                        {{($course->name)}}
+
+                                        @endif
+
+                                    @endforeach
+
                                    <a href="{{ route('course.single', ['id' => $course->id]) }}"><br>
                                    {{$course->name}} <br>                               
                                    @endif
