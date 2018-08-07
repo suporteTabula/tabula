@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /*
 |--------------------------------------------------------------------------
@@ -11,13 +11,22 @@
 |
 */
 
+
+Auth::routes();
+
+/*
+*
+* Routes to auth user
+*
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index.single');
+Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
 
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');

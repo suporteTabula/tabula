@@ -43,7 +43,7 @@
                     <div class="dropdown">
                     <span><a href="{{ url('/') }}"><img align="center" src="{{ asset('images/layout/header/logo.png') }}" height="30px"> </a></span>
                     <div class="dropdown-content">
-                    <a href="www.saintpaul.com.br/"> <img src="images/layout/header/sp.jpg" height="25px"></a>
+                    <a href="/home1"> <img src="images/layout/header/sp.jpg" height="25px"></a>
                     </div>
                     </div>
                 </div>
