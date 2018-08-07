@@ -8,7 +8,7 @@
   background: aqua; }
 
 .column {
-  padding: 0.4rem; }
+  padding: .4rem; }
 
 .button-tabula {
   background-color: #303030;
@@ -19,13 +19,6 @@
   background-color: #fff;
   color: #303030; }
 
-.button-tabula-gray a:visited {
-    color: white !important;
-  }
-
-a {
-  color: inherit;
-}
 body {
   font-family: "Poppins", sans-serif; }
 
@@ -165,6 +158,185 @@ body {
           color: #303030; }
   .navigation-bar .avatar {
     margin-left: 10px; }
+
+.carousel-cell--1 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-financaseconomia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--2 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-varejoeconsumo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--3 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-negocioegestao.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--4 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-direito.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--5 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-controladoriaecontabilidade.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--6 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-tiesoftwares.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--7 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-marketing.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--8 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-engenharia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--9 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-concursosecertificacao.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--10 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-arquiteturaedesign.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--11 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-saude.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--12 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-historiaearte.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--13 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-ensinomedio.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--14 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-video.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--15 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-gastronomia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.carousel-cell--16 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-hobbies.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.flickity-page-dots {
+  padding-bottom: 40px; }
 
 .hero-landing {
   padding: 15px;
@@ -534,16 +706,12 @@ footer {
   .macrotema-col-2,
   .macrotema-col-3 {
     width: 120px !important; }
-
   .macrotema-col-2 {
     margin: 0 -20px; }
-
   #macro-title {
     font-size: 12px; }
-
   .macro-indv {
     padding: 10px; }
-
   .advantages .card-advantage1 {
     margin-right: 5px;
     -webkit-box-orient: vertical;
@@ -568,12 +736,12 @@ footer {
     flex-direction: column;
     text-align: center;
     min-height: 300px; } }
+
 @media (max-width: 480px) {
   .macrotema-col-1,
   .macrotema-col-2,
   .macrotema-col-3 {
     width: 85px !important; }
-
   .macro-indv
-  a {
+a {
     height: 85px !important; } }
