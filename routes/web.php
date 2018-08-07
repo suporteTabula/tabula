@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /*
 |--------------------------------------------------------------------------
@@ -11,13 +11,22 @@
 |
 */
 
+
+Auth::routes();
+
+/*
+*
+* Routes to auth user
+*
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index.single');
+Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
 
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
@@ -46,8 +55,16 @@ Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails'
 
 
 Route::middleware(['auth', 'admin'])->group(function () {
+	
 	Route::get('admin/home', 'AdminHomeController@index')->name('home');
 
+	Route::get('admin/reports', 'AdminCoursesController@index')->name('reports');
+	
+
+
+
+	
+	
 	Route::get('/admin/categories', 'AdminCategoriesController@index')->name('categories');
 	Route::get('/admin/category/create', 'AdminCategoriesController@create')->name('category.create');
 	Route::post('/admin/category/store', 'AdminCategoriesController@store')->name('category.store');
@@ -95,6 +112,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::post('/admin/userGroups/update/{id}', 'AdminUserGroupsController@update')->name('userGroups.update');
 	Route::get('/admin/userGroups/destroy/{id}', 'AdminUserGroupsController@destroy')->name('userGroups.destroy');
 
+
 	Route::get('/admin/users', 'AdminUsersController@index')->name('users');
 	Route::get('/admin/user/create', 'AdminUsersController@create')->name('user.create');
 	Route::post('/admin/user/store', 'AdminUsersController@store')->name('user.store');
@@ -108,5 +126,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/userType/edit/{id}', 'AdminUserTypesController@edit')->name('userType.edit');
 	Route::post('/admin/userType/update/{id}', 'AdminUserTypesController@update')->name('userType.update');
 	Route::get('/admin/userType/delete/{id}', 'AdminUserTypesController@destroy')->name('userType.delete');
+
+	Route::get('/admin/courses', 'AdminCoursesController@index')->name('courses');
 	
 });

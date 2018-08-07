@@ -13,22 +13,11 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
-  'nesbot/carbon' => 
+  'nunomaduro/collision' => 
   array (
     'providers' => 
     array (
-      0 => 'Carbon\\Laravel\\ServiceProvider',
-    ),
-  ),
-  'pbmedia/laravel-ffmpeg' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'FFMpeg' => 'Pbmedia\\LaravelFFMpeg\\FFMpegFacade',
+      0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
 );
