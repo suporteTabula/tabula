@@ -1,0 +1,178 @@
+.button-selected {
+    color: red;
+}
+
+.resumee {
+    .resumee-inner {
+        margin-top: 100px;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .user-face {
+            width: 200px;
+            height: 200px;
+            background-image: url(../images/avatar-1.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 100%;
+            margin: 0 auto;
+        }
+        span {
+            text-align: center;
+            display: inline-block;
+            width: 100%;
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #303030;
+        }
+    }
+    .user-sections {
+        margin-top: 30px;
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        .sections-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .button-normal {
+                margin: 4px;
+                border-radius: 10px;
+                border: 1px solid #303030;
+                color: #fff;
+                background-color: #303030;
+                padding: 8px;
+                transition: 300ms;
+                font-size: 12px;
+            }
+            .button-selected {
+                margin: 4px;
+                border-radius: 10px;
+                border: 1px solid #303030;
+                color: #303030;
+                background-color: #fff;
+                padding: 8px;
+                transition: 300ms;
+                font-size: 12px;
+            }
+        }
+    }
+    .panel-show {
+        margin-top: 30px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        padding: 30px;
+        #panel-2,
+        #panel-3,
+        #panel-4,
+        #panel-5,
+        #panel-6 {
+            p {
+                color: #303030;
+                margin: 0;
+                padding: 0;
+            }
+            display: none;
+            .columns {
+                .course-item:hover {
+                    transform: scale(1.05);
+                    backface-visibility: hidden;
+                }
+                .course-item {
+                    padding: 15px;
+                    cursor: crosshair;
+                    transition: 200ms;
+                    .columns {
+                        .course-image {
+                            height: 150px;
+                            padding: 5px;
+                            background-image: url(http://via.placeholder.com/255x250);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                        }
+                        .course-content {
+                            height: 150px;
+                            position: relative;
+                            p {
+                                margin: 0;
+                                padding: 0;
+                                color: #fff;
+                            }
+                            .course-price {
+                                display: block;
+                                position: absolute;
+                                right: 0;
+                                bottom: 0;
+                                background-color: #5AA535;
+                                padding: 10px;
+                                p {
+                                    color: #fff;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        p,
+        label {
+            color: #303030;
+            margin: 0;
+            padding: 0;
+        }
+        label {
+            font-weight: 600;
+        }
+        input,
+        textarea,
+        select {
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #303030;
+            padding: 4px;
+            resize: none;
+        }
+        ::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            padding-left: 10px;
+        }
+        ::-moz-placeholder {
+            /* Firefox 19+ */
+            padding-left: 10px;
+        }
+        :-ms-input-placeholder {
+            /* IE 10+ */
+            padding-left: 10px;
+        }
+        :-moz-placeholder {
+            /* Firefox 18- */
+            padding-left: 10px;
+        }
+    }
+    .save-button {
+        margin-top: 30px;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+        padding: 15px;
+        flex-direction: column;
+        p{color: #303030;}
+        .button-tabula {
+            padding: 6px 12px;
+            border-radius: 3px;
+        }
+    }
+}

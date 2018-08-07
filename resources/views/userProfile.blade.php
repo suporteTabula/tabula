@@ -4,7 +4,7 @@
     <br><br><br>
     <p><b>Usuário: {{$user->login}}</b></p>
     <p><a href="{{ route('userPanel.single') }}">Painel</a></p>
-    <p><a href="{{ route('userProfile.single') }}">Perfil</a></p>
+    <p> Perfil</a></p>
 
 
     <form action="{{ route('userProfile.update') }}" method="post">

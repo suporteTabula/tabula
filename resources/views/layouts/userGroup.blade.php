@@ -25,7 +25,7 @@
     <body class="bg-primary-{{$company->theme_color}}">
         <section class="navigation-bar bg-primary-white">
             <div class="container grid-md">
-                <div class="columns">
+                <div class="columns">   
                     <div class="nav-brand column col-2 col-xs-6 col-sm-3">
                         <a href="{{ url('/') }}"><img src="{{ asset('images/layout/header/logo.svg') }}" height="30px"></a>
                     </div>

@@ -15,9 +15,18 @@
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/card-js.min.css') }}">                                                                        
+    
+    <script src="{{ asset('js/card.js') }}"></script>
+   
     <link rel="stylesheet" href="{{ asset('css/themes.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/card.css') }}">
+    
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/pagamento.css') }}">
+    
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> @yield('styles') </head>
@@ -40,17 +49,16 @@
                     </section>
                 </div>
                 <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
-                    <ul class="hide-sm hide-sm"> @auth
-                        <li><a href="{{ route('cart') }}">Cart</a></li> @endauth @auth
-                        <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
-                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form> @else
+                    <ul class="hide-sm hide-sm">  
+                        @auth
+                            <div class="menu-icon">
+                                <div class="icon-open"></div>
+                                <div class="icon-closed"></div>
+                            </div>
+                         @else
                         <li><a href="{{ route('register') }}">Cadastre-se</a></li>
                         <li><a href="{{ route('login') }}">Login</a></li> @endauth </ul>
-                    <div class="menu-icon">
-                        <div class="icon-open"></div>
-                        <div class="icon-closed"></div>
-                    </div>
+                    
                 </div>
             </div>
             <section style="width: 100%;">
@@ -60,7 +68,9 @@
                             <ul> 
                                 @auth
                                 <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
-                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li> @else
+                                <li><a href="{{ route('cart') }}">Cart</a></li>
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form> @else
                                 <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
                                     <input style="border: 1px solid white" class="button-tabula" name="search_string" type="text" placeholder="Digite sua busca.">
                                     <button style="background-color: white; color: #303030" class="button-tabula" type="submit">Buscar</button>
@@ -95,8 +105,14 @@
     </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+   
+    
+
+    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
