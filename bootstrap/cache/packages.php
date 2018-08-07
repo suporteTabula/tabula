@@ -6,11 +6,15 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
-  'laravel/tinker' => 
+  'pbmedia/laravel-ffmpeg' => 
   array (
     'providers' => 
     array (
-      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+      0 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'FFMpeg' => 'Pbmedia\\LaravelFFMpeg\\FFMpegFacade',
     ),
   ),
   'nesbot/carbon' => 
@@ -21,14 +25,18 @@
     ),
   ),
   'pbmedia/laravel-ffmpeg' => 
+
   array (
     'providers' => 
     array (
-      0 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
+      0 => 'Carbon\\Laravel\\ServiceProvider',
     ),
-    'aliases' => 
+  ),
+  'laravel/tinker' => 
+  array (
+    'providers' => 
     array (
-      'FFMpeg' => 'Pbmedia\\LaravelFFMpeg\\FFMpegFacade',
+      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
 );

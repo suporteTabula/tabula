@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class CourseItemGroup extends Model
 {
 
-	protected $fillable = ['name', 'desc', 'course_id', 'order'];
-	
+  protected $fillable = ['name', 'desc', 'course_id', 'order'];
+  
     public function course_items()
     {
-    	return $this->hasMany('App\CourseItem', 'course_item_group_id');
+      return $this->hasMany('App\CourseItem', 'course_item_group_id');
     }
 
     public function course()
     {
-    	return $this->belongsTo('App\Course');
+      return $this->belongsTo('App\Course');
     }
 }
