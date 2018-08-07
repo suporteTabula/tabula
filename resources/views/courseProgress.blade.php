@@ -72,7 +72,7 @@
     <section class="offscreen-course-content">
          @foreach ($chapters as $chapter)
             <details class="accordion">
-                <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo: {{ $chapter->name }}</summary>
+                <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo:{{ $chapter->name }}</summary>
                 @foreach ($chapter->course_items as $item)
                     @if(is_null($item->course_items_parent))
                         <div id="accbody" class="accordion-body"> <a id="accbody-content" class="aula" value="{{ $item->id }}">{{ $item->name }}</a>

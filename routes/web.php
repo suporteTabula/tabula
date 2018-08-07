@@ -24,6 +24,9 @@ Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.s
 
 
 Route::get('cart', 'CartController@cart')->name('cart');
+
+
+
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
 Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('cart.remove');
 Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
@@ -47,6 +50,7 @@ Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails'
 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'AdminHomeController@index')->name('home');
+	Route::get('admin/nota', 'NotasController@index')->name('nota');
 
 	Route::get('/admin/categories', 'AdminCategoriesController@index')->name('categories');
 	Route::get('/admin/category/create', 'AdminCategoriesController@create')->name('category.create');
@@ -108,5 +112,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/userType/edit/{id}', 'AdminUserTypesController@edit')->name('userType.edit');
 	Route::post('/admin/userType/update/{id}', 'AdminUserTypesController@update')->name('userType.update');
 	Route::get('/admin/userType/delete/{id}', 'AdminUserTypesController@destroy')->name('userType.delete');
+
+	Route::get('/admin/alunos', 'AdminUsersController@index')->name('alunos');
+
 	
 });
+
+
+
