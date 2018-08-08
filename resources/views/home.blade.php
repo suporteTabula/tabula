@@ -170,7 +170,7 @@
     </section>
     @section('scripts')
         <script src="{{ asset('js/clamp.min.js') }}"></script>
-
+        
         <script>
             var title = document.getElementsByClassName("lineclamp-title");
             var desc = document.getElementsByClassName("lineclamp-desc");
