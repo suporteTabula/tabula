@@ -1,14 +1,29 @@
 <?php $__env->startSection('content'); ?>
     <section class="hero-landing">
         <div class="container grid-md">
-            <div class="columns">
-                <div class="column col-6 col-xs-12 col-sm-12 hero-text">
-                    <h2>A plataforma de ensino a <u>distância</u> mais <u>inovadora</u> e <u>prática</u> onde qualquer pessoa pode <u>aprender</u> ou <u>ensinar</u>.</h2>
-                    <button id="explore" class="button-tabula">EXPLORE</button>
+                <div class="columns">
+                    <div class="column col-12 col-xs-12 col-sm-12 hero-text">
+                        <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false }'>
+                            <div class="carousel-cell--1"></div>
+                            <div class="carousel-cell--2"></div>
+                            <div class="carousel-cell--3"></div>
+                            <div class="carousel-cell--4"></div>
+                            <div class="carousel-cell--5"></div>
+                            <div class="carousel-cell--6"></div>
+                            <div class="carousel-cell--7"></div>
+                            <div class="carousel-cell--8"></div>
+                            <div class="carousel-cell--9"></div>
+                            <div class="carousel-cell--10"></div>
+                            <div class="carousel-cell--11"></div>
+                            <div class="carousel-cell--12"></div>
+                            <div class="carousel-cell--13"></div>
+                            <div class="carousel-cell--14"></div>
+                            <div class="carousel-cell--15"></div>
+                            <div class="carousel-cell--16"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="column col-6 hide-sm hero-mock"></div>
             </div>
-        </div>
     </section>
     
     <section class="macrotemas">
