@@ -102,42 +102,135 @@
     <section class="highlighted-courses">
         <div class="container grid-md">
             <div class="columns">
-                <div class="column col-12 course-row1">
-                   <p style="color: #808080;"><strong> Destaques em {{ $featured_category1 }}</strong></p>
-                    <div class="slider">                        
-                        @foreach($featured_courses1 as $course)
-                            <a style="" href="{{ route('course.single', ['id' => $course->id]) }}">
-                                <div class="course-card">
-                                    <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
-                                    <div class="course-content">
-                                        <p class="lineclamp-title"><b>{{ $course->name }}</b></p>
-                                        <p class="lineclamp-desc">{{ $course->desc }}</p>
-                                        <div class="course-price"><p>{{ $course->price }}</p></div>
-                                    </div>
-                                </div>                                
-                            </a>
-                        @endforeach                        
+            <h5>Cursos em destaque: Finanças e Economia</h5>
+            <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
                     </div>
                 </div>
-                <div class="column col-12 course-row1">
-                    <p style="color: #808080;"><strong> Destaques em {{ $featured_category2 }}</strong></p>
-                    <div class="slider">                        
-                        @foreach($featured_courses2 as $course)
-                            <a  style=" display:block;" href="{{ route('course.single', ['id' => $course->id]) }}">
-                                <div class="course-card">
-                                    <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
-                                    <div class="course-content">
-                                        <p>{{ $course->name }}</p>
-                                        <div class="course-price"><p>{{ $course->price }}</p></div>
-                                    </div>
-                                </div>                                
-                            </a>
-                        @endforeach                        
+                <h5>Cursos em destaque: Varejo e Consumo</h5>
+                <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-card__image"></div>
+                        <div class="course-card__description">
+                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
+                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
+                            <div class="course-card__price">313123</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <<script>
+        $('.highlighted-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        contain: true
+    });
+    </script>
 
     <section class="about">
         <div class="container grid-md">
@@ -153,6 +246,8 @@
             </div>
         </div>
     </section>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     @section('scripts')
         <script src="{{ asset('js/clamp.min.js') }}"></script>
 
