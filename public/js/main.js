@@ -3,7 +3,8 @@ $(".icon-open").click(function () {
     $(".icon-closed").show()
     $(".offscreen-menu").animate({
 
-        top: "50px"
+        top: "0px",
+        left: "-10px"
 
     });
 });
