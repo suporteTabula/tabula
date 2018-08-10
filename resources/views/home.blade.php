@@ -117,123 +117,35 @@
     <section class="highlighted-courses">
         <div class="container grid-md">
             <div class="columns">
-            <h5>Cursos em destaque: Finanças e Economia</h5>
-            <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+            <h5>Cursos em destaque: {{ $featured_category1 }}</h5>
+                <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    @foreach($featured_courses1 as $course)
                     <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                            <div class="course-card__description">
+                                <p>{{ $course->name }}</p>
+                                <p>{{ $course->desc }}</p>
+                                <div class="course-card__price">{{ $course->price }}</div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <h5>Cursos em destaque: Varejo e Consumo</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    @foreach($featured_courses1 as $course)
                     <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                            <div class="course-card__description">
+                                <p>{{ $course->name }}</p>
+                                <p>{{ $course->desc }}</p>
+                                <div class="course-card__price">{{ $course->price }}</div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

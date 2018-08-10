@@ -116,123 +116,35 @@
     <section class="highlighted-courses">
         <div class="container grid-md">
             <div class="columns">
-            <h5>Cursos em destaque: Finanças e Economia</h5>
-            <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+            <h5>Cursos em destaque: <?php echo e($featured_category1); ?></h5>
+                <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    <?php $__currentLoopData = $featured_courses1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
+                        <a href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>);"></div>
+                            <div class="course-card__description">
+                                <p><?php echo e($course->name); ?></p>
+                                <p><?php echo e($course->desc); ?></p>
+                                <div class="course-card__price"><?php echo e($course->price); ?></div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
                 <h5>Cursos em destaque: Varejo e Consumo</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    <?php $__currentLoopData = $featured_courses1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
+                        <a href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>);"></div>
+                            <div class="course-card__description">
+                                <p><?php echo e($course->name); ?></p>
+                                <p><?php echo e($course->desc); ?></p>
+                                <div class="course-card__price"><?php echo e($course->price); ?></div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </div>

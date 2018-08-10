@@ -639,6 +639,10 @@ body {
 
 .highlighted-courses {
     height: auto; padding: 15px }
+.highlighted-courses a {
+  text-decoration: none;
+  color: #303030;
+}
       
 .flickity-viewport {
   width: 100%;;
@@ -661,6 +665,11 @@ h5 {
   margin: 10px 15px 10px 0px;
 }
 
+.course-card a {
+  color: #303030;
+  text-decoration: none;
+}
+
 .course-card:hover {
   transform: scale(1.05);
 
@@ -669,7 +678,9 @@ h5 {
 .course-card__image{
   width: 100%;
   height: 60%;
-  background-color: blue;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .course-card__description {
   padding: 10px;
