@@ -134,7 +134,7 @@
                 </div>
                 <h5>Cursos em destaque: Varejo e Consumo</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
-                    @foreach($featured_courses1 as $course)
+                    @foreach($featured_courses2 as $course)
                     <div class="course-card">
                         <a href="{{ route('course.single', ['id' => $course->id]) }}">
                             <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
