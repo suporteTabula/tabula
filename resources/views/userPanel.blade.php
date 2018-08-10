@@ -151,9 +151,9 @@
                                         {{($course->name)}}
 
                                         @endif
-
+                                        
                                     @endforeach
-
+                                    @foreach ($courses as $course)<br>
                                    <a href="{{ route('course.single', ['id' => $course->id]) }}"><br>
                                    {{$course->name}} <br>                               
                                    @endif
