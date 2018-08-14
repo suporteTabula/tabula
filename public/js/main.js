@@ -12,8 +12,7 @@ $(".icon-closed").click(function () {
     $(this).hide();
     $(".icon-open").show()
     $(".offscreen-menu").animate({
-        top: "-80vh",
-        left: "-10px"
+        top: "-80vh"
     });
 });
 $(document).ready(function () {
@@ -152,6 +151,7 @@ $(document).ready(function() {
     } else {
         $(".macro-sub__item").hide();
     }
+
 });
 
 $('.main-carousel').flickity({

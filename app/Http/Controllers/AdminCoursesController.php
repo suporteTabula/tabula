@@ -74,7 +74,7 @@ class AdminCoursesController extends Controller
             $course->thumb_img = $attach_thumb_img_name;  
         }
         else
-            $course->thumb_img = 'e-learning.jpg'; 
+            $course->thumb_img = 'default.jpg'; 
 
         $course->save();
 
@@ -154,7 +154,7 @@ class AdminCoursesController extends Controller
             $course->thumb_img = $attach_thumb_img_name;  
         }
         else
-            $course->thumb_img = 'e-learning.jpg';
+            $course->thumb_img = 'default.jpg';
 
         // busca TODOS os usergroups para serem comparados com:
         // - os CHECKS 
