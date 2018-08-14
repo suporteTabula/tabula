@@ -151,7 +151,7 @@
                                         {{($course->name)}}
 
                                         @endif
-
+                                        
                                     @endforeach
                                     @foreach ($courses as $course)<br>
                                          @if ($course->user_id_owner == $user->id)<br> 
