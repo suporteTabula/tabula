@@ -11,11 +11,7 @@
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
 
     <!-- Styles -->
-    
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset('css/toastr.min.css')); ?>" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <?php echo $__env->yieldContent('styles'); ?>
 </head>
 <body>
     <div id="app">
@@ -33,15 +29,9 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                        Tabula
+                        <?php echo e(config('app.name', 'Laravel')); ?>
+
                     </a>
-                    <div class="navbar-brand">
-                        >>
-                    </div>
-                    <div class="navbar-brand">
-                        Administração
-                    </div>
-                    
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -53,14 +43,13 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        <li><a href="<?php echo e(route('search.single')); ?>">Busca</a></li>
                         <?php if(auth()->guard()->guest()): ?>
                             <li><a href="<?php echo e(route('login')); ?>">Login</a></li>
                             <li><a href="<?php echo e(route('register')); ?>">Register</a></li>
                         <?php else: ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    <?php echo e(Auth::user()->nickname); ?> <span class="caret"></span>
+                                    <?php echo e(Auth::user()->name); ?> <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -84,58 +73,10 @@
             </div>
         </nav>
 
-         <div class="container">
-            <div class="row">
-                <?php if(Auth::check()): ?>
-                    <div class="col-lg-3">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('home')); ?>">Principal</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('users')); ?>">Todos Usuários</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('usersType')); ?>">Tipos de Usuário</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('courses')); ?>">Cursos</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('categories')); ?>">Categorias/Macrotemas</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('companies')); ?>">Empresas</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="<?php echo e(route('userGroups')); ?>">Grupos de Usuários</a>
-                            </li>
-                        </ul>
-                    </div>
-                <?php endif; ?>
-                <div class="col-lg-9">
-                    <?php echo $__env->yieldContent('content'); ?>
-                </div>
-            </div>
-        </div>
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>"></script>
-    <script src="<?php echo e(asset('js/toastr.min.js')); ?>"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        
-        <?php if(Session::has('success')): ?>
-            toastr.success("<?php echo e(Session::get('success')); ?>")
-        <?php endif; ?>
-
-        <?php if(Session::has('info')): ?>
-            toastr.info("<?php echo e(Session::get('info')); ?>")
-        <?php endif; ?>
-    </script>
-
-    <?php echo $__env->yieldContent('scripts'); ?>
 </body>
 </html>

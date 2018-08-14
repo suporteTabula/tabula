@@ -1,0 +1,52 @@
+<<<<<<< Updated upstream
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 286 286" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;"><clipPath id="_clip1"><rect id="hexagon" x="0" y="0" width="285.159" height="285.159"/></clipPath><g clip-path="url(#_clip1)"><path d="M270.283,72.074l-124.757,-71.29c-1.829,-1.045 -4.063,-1.045 -5.893,0l-124.757,71.29c-1.853,1.058 -2.994,3.03 -2.994,5.157l0,130.698c0,2.127 1.141,4.099 2.994,5.156l124.757,71.29c0.915,0.523 1.925,0.784 2.947,0.784c1.022,0 2.032,-0.261 2.947,-0.784l124.757,-71.29c1.853,-1.057 2.994,-3.029 2.994,-5.156l0,-130.698c-0.001,-2.127 -1.141,-4.099 -2.995,-5.157Zm-8.888,132.409l-118.816,67.891l-118.816,-67.891l0,-123.807l118.816,-67.891l118.816,67.892l0,123.806Z" style="fill:#303030;fill-rule:nonzero;"/></g><path d="M21.106,77.45l245.107,129.467" style="fill:none;stroke:#303030;stroke-width:11px;"/><path d="M21.106,206.917l245.107,-129.467" style="fill:none;stroke:#303030;stroke-width:11px;"/></svg>
+=======
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<g>
+	<g>
+		<path d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249
+			C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306
+			C514.019,27.23,514.019,14.135,505.943,6.058z"/>
+	</g>
+</g>
+<g>
+	<g>
+		<path d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636
+			c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"/>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+>>>>>>> Stashed changes

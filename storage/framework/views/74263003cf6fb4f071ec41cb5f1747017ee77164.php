@@ -24,6 +24,7 @@
 					<th>Nome Completo</th>
 					<th>E-mail</th>
 					<th>Tipo de Usário</th>
+					<th>Grupo</th>
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead>
@@ -39,6 +40,14 @@
 										<?php echo e($userType->desc); ?>
 
 									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+								</td>
+								<td>
+									<?php if(!$user->group): ?>
+										Não tem
+									<?php else: ?>
+										<?php echo e($user->group); ?>
+
+									<?php endif; ?>
 								</td>
 								<td>
 									<a href="<?php echo e(route('user.edit', ['id' => $user->id])); ?>">
@@ -113,4 +122,4 @@
 		</script>
 	<?php $__env->stopSection(); ?>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.admin', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.aluno', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

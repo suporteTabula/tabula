@@ -5,37 +5,378 @@
     
 @endsection
 @section('content')
-    <section class="search-wrapper">
+ <section class="search-wrapper">
         <div class="container grid-lg">
-            <div class="columns">
+            <div class="columns ">
                 <div class="column col-12 side-search">
-                    <input id="course_title" type="text" placeholder="Faça sua busca" value="{{ $search_string }}" class="button-tabula custom-input-search">
-                    <button id="search_btn" class="button-tabula custom-button-search">Buscar</button>
+                    <input id="input-main" type="text" class="button-tabula" placeholder="Digite sua busca.">
                     <div class="divider text-center" data-content="Busca Avançada"></div>
                     <div class="columns">
-                        @for ($i = 0; $i < 2 ; $i++)
-                            <div class="column col-6">
-                                <ul>
-                                    @for ($j = 0; $j < 8; $j++)
-                                        <li><label><input 
-                                            @if (isset($checked_category)) 
-                                                @if ($checked_category->id == $categories[$category_count]->id) 
-                                                  checked 
-                                                @endif 
-                                            @endif 
-                                        type="checkbox" name="macrotema" value="{{ $categories[$category_count]->id }}"> {{ $categories[$category_count]->desc }}</label></li>
-                                            @php($category_count++)
-                                    @endfor
-                                </ul>
-                            </div>
-                        @endfor                      
+                        <div class="column col-6 col-xs-12 col-sm-12">
+
+
+
+                            <ul class="macro-main">
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--financas" id="financas" value="financas" name="financas">
+                                    <label for="financas">Finanças e Economia</label>
+                                    <ul class="macro-sub--financas">
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Finanças Corporativas
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Finanças Pessoais
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Investimentos
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Matemática Financeira
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Mercado Financeiro
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Finanças Pessoais
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Investimentos
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Valuation
+                                        </li>                                        
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--varejo" id="varejo" value="varejo" name="varejo">
+                                    <label for="varejo">Varejo e Consumo</label>
+                                    <ul class="macro-sub--varejo">
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Cenários e Tendências
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Distribuição
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">E-commerce
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Experiência do Consumidor
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Franquias
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Marcas
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Marketing e CRM
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Operação de Varejo
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Prevenção de Perdas
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Produto
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Shopping Center
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Trade Marketing
+                                        </li>                                        
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--negocio" id="negocio" value="negocio" name="negocio">
+                                    <label for="negocio">Negócio e Gestão</label>
+                                    <ul class="macro-sub--negocio">
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Business Plan
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Contabilidade Empresarial
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Direito Societário
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Empreendedorismo
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Gestão de Pessoas
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Inteligência de Mercado
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Liderança
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Logística
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Planejamento Estratégico
+                                        </li>
+                                        <li class="macro-sub__item">
+                                                <input type="checkbox" class="macro-main__checkbox">Planejamento Tributário
+                                        </li>                                      
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--direito" id="direito" value="direito" name="direito">
+                                    <label for="direito">Direito</label>
+                                    <ul class="macro-sub--direito">
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Ambiental
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Comercial
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Constitucional
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Empresarial
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">OAB
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Penal
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Criminal
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Societário
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Trabalhista
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Previdenciário
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Tributário
+                                        </li>                                              
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--controladoria" id="controladoria" value="controladoria" name="controladoria">
+                                    <label for="controladoria">Controladoria e Contabilidade</label>
+                                    <ul class="macro-sub--controladoria">
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Auditória Contábil
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Contabilidade de Setor Público
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Contabilidade de Custos
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Contabilidade Geral
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Controladoria
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Perícia Contábil
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Prova CRC
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Teoria da Contabilidade
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--ti" id="ti" value="ti" name="ti">
+                                    <label for="ti">T.I. e Softwares</label>
+                                    <ul class="macro-sub--ti">
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Joomla
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Microsoft Office
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Wordpress
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--marketing" id="marketing" value="marketing" name="marketing">
+                                    <label for="marketing">Marketing</label>
+                                    <ul class="macro-sub--marketing">
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Content Marketing
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">E-mail Marketing
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Gestão de Produto
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Gestão de Marketing
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Marketing para Pequenas Empresas
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Marketing Online
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Mídias Sociais
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Planejamento de Marketing
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">SEO
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--engenharia" id="engenharia" value="engenharia" name="engenharia">
+                                    <label for="engenharia">Engenharia</label>
+                                    <ul class="macro-sub--engenharia">
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Ambiental
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Ciclo Básico
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Civil
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Elétrica
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Materiais
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Mecânica
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Mecatrônica
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Produção
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Sub Química
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="column col-6 col-xs-12 col-sm-12">
+                            <ul class="macro-main">
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--concursos" id="concursos" value="concursos" name="concursos">
+                                    <label for="concursos">Concursos e Certificação</label>
+                                    <ul class="macro-sub--concursos">
+                                        <!-- li com subtema -->
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--arquitetura" id="arquitetura" value="arquitetura" name="arquitetura">
+                                    <label for="arquitetura">Arquitetura e Design</label>
+                                    <ul class="macro-sub--arquitetura">
+                                        <!-- li com subtema -->
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--saude" id="saude" value="saude" name="saude">
+                                    <label for="saude">Saúde</label>
+                                    <ul class="macro-sub--saude">
+                                        <!-- li com subtema -->
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--historia" id="historia" value="historia" name="historia">
+                                    <label for="historia">História e Arte</label>
+                                    <ul class="macro-sub--historia">
+                                        <!-- li com subtema -->
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--ensino" id="ensino" value="ensino" name="ensino">
+                                    <label for="ensino">Ensino Médio e Fundamental</label>
+                                    <ul class="macro-sub--ensino">
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Biologia
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Física
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Geografia
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">História
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Matemática
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Português
+                                        </li>
+                                        <li class="macro-sub__item">
+                                            <input type="checkbox" class="macro-main__checkbox">Química
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--video" id="video" value="video" name="video">
+                                    <label for="video">Vídeo e Fotografia</label>
+                                    <ul class="macro-sub--video">
+                                        <!-- li com subtema -->
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--gastronomia" id="gastronomia" value="gastronomia" name="gastronomia">
+                                    <label for="gastronomia">Gastronomia</label>
+                                    <ul class="macro-sub--gastronomia">
+                                        <!-- li com subtema -->
+                                    </ul>
+                                </li>
+
+                                <li class="macro-main__item">
+                                    <input type="checkbox" class="macro-main__checkbox--outros" id="outros" value="outros" name="outros">
+                                    <label for="hobbies">Hobbies</label>
+                                    <ul class="macro-sub--hobbies">
+                                        <!-- li com subtema -->
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="course-gallery">
+        <section class="course-gallery">
         <div class="container grid-lg">
            <div class="divider text-center" data-content="Resultados"></div>
             <div class="columns" id="search-results">
@@ -73,7 +414,9 @@
                 @endif                         
             </div>
         </div>
-    </section>    
+    </section>
+    <script src="js/main.js"></script>
+    </section>   
     @section('scripts')
         <script>
             $(document).ready(function(){
