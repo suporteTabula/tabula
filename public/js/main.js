@@ -2,17 +2,16 @@ $(".icon-open").click(function () {
     $(this).hide();
     $(".icon-closed").show()
     $(".offscreen-menu").animate({
-
         top: "0px",
         left: "-8px"
-
     });
 });
 $(".icon-closed").click(function () {
     $(this).hide();
     $(".icon-open").show()
     $(".offscreen-menu").animate({
-        top: "-80vh"
+        top: "-80vh",
+        left: "-10px"
     });
 });
 $(document).ready(function () {

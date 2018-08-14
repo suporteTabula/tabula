@@ -1,29 +1,29 @@
 <?php $__env->startSection('content'); ?>
     <section class="hero-landing">
         <div class="container grid-md">
-            <div class="columns">
-                <div class="column col-12 col-xs-12 col-sm-12 hero-text">
-                    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500 }'>
-                        <div class="carousel-cell--1"></div>
-                        <div class="carousel-cell--2"></div>
-                        <div class="carousel-cell--3"></div>
-                        <div class="carousel-cell--4"></div>
-                        <div class="carousel-cell--5"></div>
-                        <div class="carousel-cell--6"></div>
-                        <div class="carousel-cell--7"></div>
-                        <div class="carousel-cell--8"></div>
-                        <div class="carousel-cell--9"></div>
-                        <div class="carousel-cell--10"></div>
-                        <div class="carousel-cell--11"></div>
-                        <div class="carousel-cell--12"></div>
-                        <div class="carousel-cell--13"></div>
-                        <div class="carousel-cell--14"></div>
-                        <div class="carousel-cell--15"></div>
-                        <div class="carousel-cell--16"></div>
+                <div class="columns">
+                    <div class="column col-12 col-xs-12 col-sm-12 hero-text">
+                        <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false }'>
+                            <div class="carousel-cell--1"></div>
+                            <div class="carousel-cell--2"></div>
+                            <div class="carousel-cell--3"></div>
+                            <div class="carousel-cell--4"></div>
+                            <div class="carousel-cell--5"></div>
+                            <div class="carousel-cell--6"></div>
+                            <div class="carousel-cell--7"></div>
+                            <div class="carousel-cell--8"></div>
+                            <div class="carousel-cell--9"></div>
+                            <div class="carousel-cell--10"></div>
+                            <div class="carousel-cell--11"></div>
+                            <div class="carousel-cell--12"></div>
+                            <div class="carousel-cell--13"></div>
+                            <div class="carousel-cell--14"></div>
+                            <div class="carousel-cell--15"></div>
+                            <div class="carousel-cell--16"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
     
     <section class="macrotemas">
@@ -116,42 +116,47 @@
     <section class="highlighted-courses">
         <div class="container grid-md">
             <div class="columns">
-                <div class="column col-12 course-row1">
-                   <p style="color: #808080;"><strong> Destaques em <?php echo e($featured_category1); ?></strong></p>
-                    <div class="slider">                        
-                        <?php $__currentLoopData = $featured_courses1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <a style="" href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
-                                <div class="course-card">
-                                    <div class="course-image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>)"></div>
-                                    <div class="course-content">
-                                        <p class="lineclamp-title"><b><?php echo e($course->name); ?></b></p>
-                                        <p class="lineclamp-desc"><?php echo e($course->desc); ?></p>
-                                        <div class="course-price"><p><?php echo e($course->price); ?></p></div>
-                                    </div>
-                                </div>                                
-                            </a>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                        
+            <h5>Cursos em destaque: <?php echo e($featured_category1); ?></h5>
+                <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    <?php $__currentLoopData = $featured_courses1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="course-card">
+                        <a href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>);"></div>
+                            <div class="course-card__description">
+                                <p><?php echo e($course->name); ?></p>
+                                <p><?php echo e($course->desc); ?></p>
+                                <div class="course-card__price"><?php echo e($course->price); ?></div>
+                            </div>
+                        </a>
                     </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
-                <div class="column col-12 course-row1">
-                    <p style="color: #808080;"><strong> Destaques em <?php echo e($featured_category2); ?></strong></p>
-                    <div class="slider">                        
-                        <?php $__currentLoopData = $featured_courses2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <a  style=" display:block;" href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
-                                <div class="course-card">
-                                    <div class="course-image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>)"></div>
-                                    <div class="course-content">
-                                        <p><?php echo e($course->name); ?></p>
-                                        <div class="course-price"><p><?php echo e($course->price); ?></p></div>
-                                    </div>
-                                </div>                                
-                            </a>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                        
+                <h5>Cursos em destaque: Varejo e Consumo</h5>
+                <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    <?php $__currentLoopData = $featured_courses1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="course-card">
+                        <a href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>);"></div>
+                            <div class="course-card__description">
+                                <p><?php echo e($course->name); ?></p>
+                                <p><?php echo e($course->desc); ?></p>
+                                <div class="course-card__price"><?php echo e($course->price); ?></div>
+                            </div>
+                        </a>
                     </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </div>
     </section>
+
+    <<script>
+        $('.highlighted-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        contain: true
+    });
+    </script>
 
     <section class="about">
         <div class="container grid-md">
@@ -167,9 +172,11 @@
             </div>
         </div>
     </section>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <?php $__env->startSection('scripts'); ?>
         <script src="<?php echo e(asset('js/clamp.min.js')); ?>"></script>
-
+        
         <script>
             var title = document.getElementsByClassName("lineclamp-title");
             var desc = document.getElementsByClassName("lineclamp-desc");
