@@ -46,7 +46,7 @@
     8 => 'Illuminate\\Session\\SessionServiceProvider',
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    11 => 'Carbon\\Laravel\\ServiceProvider',
+    11 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
     12 => 'Carbon\\Laravel\\ServiceProvider',
     13 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
     14 => 'App\\Providers\\AppServiceProvider',
