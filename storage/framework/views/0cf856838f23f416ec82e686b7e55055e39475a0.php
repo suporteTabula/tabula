@@ -133,7 +133,7 @@
                 </div>
                 <h5>Cursos em destaque: Varejo e Consumo</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
-                    <?php $__currentLoopData = $featured_courses1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $featured_courses2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="course-card">
                         <a href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
                             <div class="course-card__image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>);"></div>
