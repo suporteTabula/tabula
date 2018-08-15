@@ -132,7 +132,7 @@
                 </div>
                 <h5>Cursos em destaque: Varejo e Consumo</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
-                    <?php $__currentLoopData = $featured_courses1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php $__currentLoopData = $featured_courses2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="course-card">
                         <a href="<?php echo e(route('course.single', ['id' => $course->id])); ?>">
                             <div class="course-card__image" style="background-image: url(../images/aulas/<?php echo e($course->thumb_img); ?>);"></div>
@@ -148,6 +148,7 @@
             </div>
         </div>
     </section>
+<<<<<<< Updated upstream
 
     <<script>
         $('.highlighted-carousel').flickity({
@@ -158,6 +159,9 @@
     </script>
 
     <section class="about">
+=======
+        <section class="about">
+>>>>>>> Stashed changes
         <div class="container grid-md">
             <div class="columns spacer-2">
                 <div class="column col-8 col-xs-12 col-sm-12 col-md-12"> 
@@ -171,8 +175,23 @@
             </div>
         </div>
     </section>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+=======
+<<<<<<< Updated upstream
+=======
+    <script>
+        $('.highlighted-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        contain: true
+    });
+    </script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     <?php $__env->startSection('scripts'); ?>
         <script src="<?php echo e(asset('js/clamp.min.js')); ?>"></script>
         u
