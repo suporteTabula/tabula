@@ -148,7 +148,7 @@
             </div>
         </div>
     </section>
-<<<<<<< Updated upstream
+
 
     <<script>
         $('.highlighted-carousel').flickity({
@@ -159,9 +159,9 @@
     </script>
 
     <section class="about">
-=======
+
         <section class="about">
->>>>>>> Stashed changes
+
         <div class="container grid-md">
             <div class="columns spacer-2">
                 <div class="column col-8 col-xs-12 col-sm-12 col-md-12"> 
@@ -175,12 +175,11 @@
             </div>
         </div>
     </section>
-<<<<<<< Updated upstream
+
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-=======
-<<<<<<< Updated upstream
-=======
+
+
     <script>
         $('.highlighted-carousel').flickity({
         // options
@@ -190,8 +189,7 @@
     </script>
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
     <?php $__env->startSection('scripts'); ?>
         <script src="<?php echo e(asset('js/clamp.min.js')); ?>"></script>
         u
