@@ -2,12 +2,10 @@ $(".icon-open").click(function () {
     $(this).hide();
     $(".icon-closed").show()
     $(".offscreen-menu").animate({
-<<<<<<< Updated upstream
-        top: "50px"
-=======
+
         top: "0px",
         left: "-8px"
->>>>>>> Stashed changes
+
     });
 });
 $(".icon-closed").click(function () {
@@ -154,20 +152,12 @@ $(document).ready(function() {
     } else {
         $(".macro-sub__item").hide();
     }
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
 
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 });
 
 $('.main-carousel').flickity({
     // options
     cellAlign: 'center',
     contain: true
->>>>>>> Stashed changes
+
 });
