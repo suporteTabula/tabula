@@ -2,8 +2,10 @@ $(".icon-open").click(function () {
     $(this).hide();
     $(".icon-closed").show()
     $(".offscreen-menu").animate({
-        top: "0",
-        left: "-10px"
+
+        top: "0px",
+        left: "-8px"
+
     });
 });
 $(".icon-closed").click(function () {

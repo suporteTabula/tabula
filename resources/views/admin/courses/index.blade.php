@@ -164,6 +164,8 @@
 			  	}
 			  	
 			}
+
 		</script>
+		<script src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
 	@stop
 @stop

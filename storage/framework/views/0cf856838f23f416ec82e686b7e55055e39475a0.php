@@ -1,26 +1,25 @@
 <?php $__env->startSection('content'); ?>
     <section class="hero-landing">
         <div class="container grid-md">
-                <div class="columns">
-                    <div class="column col-12 col-xs-12 col-sm-12 hero-text">
-                        <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false }'>
-                            <div class="carousel-cell--1"></div>
-                            <div class="carousel-cell--2"></div>
-                            <div class="carousel-cell--3"></div>
-                            <div class="carousel-cell--4"></div>
-                            <div class="carousel-cell--5"></div>
-                            <div class="carousel-cell--6"></div>
-                            <div class="carousel-cell--7"></div>
-                            <div class="carousel-cell--8"></div>
-                            <div class="carousel-cell--9"></div>
-                            <div class="carousel-cell--10"></div>
-                            <div class="carousel-cell--11"></div>
-                            <div class="carousel-cell--12"></div>
-                            <div class="carousel-cell--13"></div>
-                            <div class="carousel-cell--14"></div>
-                            <div class="carousel-cell--15"></div>
-                            <div class="carousel-cell--16"></div>
-                        </div>
+            <div class="columns">
+                <div class="column col-12 col-xs-12 col-sm-12 hero-text">
+                    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false }'>
+                        <div class="carousel-cell--1"></div>
+                        <div class="carousel-cell--2"></div>
+                        <div class="carousel-cell--3"></div>
+                        <div class="carousel-cell--4"></div>
+                        <div class="carousel-cell--5"></div>
+                        <div class="carousel-cell--6"></div>
+                        <div class="carousel-cell--7"></div>
+                        <div class="carousel-cell--8"></div>
+                        <div class="carousel-cell--9"></div>
+                        <div class="carousel-cell--10"></div>
+                        <div class="carousel-cell--11"></div>
+                        <div class="carousel-cell--12"></div>
+                        <div class="carousel-cell--13"></div>
+                        <div class="carousel-cell--14"></div>
+                        <div class="carousel-cell--15"></div>
+                        <div class="carousel-cell--16"></div>
                     </div>
                 </div>
             </div>
@@ -150,6 +149,7 @@
         </div>
     </section>
 
+
     <<script>
         $('.highlighted-carousel').flickity({
         // options
@@ -159,6 +159,9 @@
     </script>
 
     <section class="about">
+
+        <section class="about">
+
         <div class="container grid-md">
             <div class="columns spacer-2">
                 <div class="column col-8 col-xs-12 col-sm-12 col-md-12"> 
@@ -172,11 +175,24 @@
             </div>
         </div>
     </section>
+
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+
+    <script>
+        $('.highlighted-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        contain: true
+    });
+    </script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
     <?php $__env->startSection('scripts'); ?>
         <script src="<?php echo e(asset('js/clamp.min.js')); ?>"></script>
-        
+        u
         <script>
             var title = document.getElementsByClassName("lineclamp-title");
             var desc = document.getElementsByClassName("lineclamp-desc");
