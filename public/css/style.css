@@ -122,14 +122,26 @@ body {
     -ms-flex-align: center;
     align-items: center; }
   .navigation-bar .nav-search {
+    display: flex;
+    align-items: center;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center; }
+    justify-content: center;
+  flex-direction: row; }
+  .navbar-section form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
     .navigation-bar .nav-search input {
       width: 90%;
-      font-size: 14px; }
+      font-size: 14px; 
+    padding: 6px;
+  border: none;
+border-bottom: 1px solid #303030}
     .navigation-bar .nav-search .button-tabula {
-      font-size: 14px; }
+      font-size: 14px;
+    padding: 6px; }
   .navigation-bar .nav-menu {
     -webkit-box-pack: end;
     -ms-flex-pack: end;
