@@ -60,16 +60,16 @@ Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails'
 Route::middleware(['auth', 'admin'])->group(function () {
 	
 	Route::get('admin/home', 'AdminHomeController@index')->name('home');
-<<<<<<< HEAD
+
 	Route::get('admin/reports', 'Controller@reportsAdmin')->name('reports');
 	Route::get('/aluno', 'Controller@userAluno')->name('aluno');
-=======
+
 	Route::get('admin/nota', 'NotasController@index')->name('nota');
 
 	Route::get('admin/reports', 'AdminCoursesController@index')->name('reports');
 	
 
->>>>>>> frontend
+
 
 
 	

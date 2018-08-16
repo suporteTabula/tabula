@@ -16,7 +16,7 @@ public function homeEmpresa()
 	return view('homeEmpresa');
 }
 
-<<<<<<< HEAD
+
 public function reportsAdmin()
 {
 	return view ('reportsAdmin');
@@ -25,11 +25,11 @@ public function reportsAdmin()
 public function userAluno()
 {
 	return view ('userAluno');
-=======
+}
 public function reports()
 {
 	return ('teste');
->>>>>>> frontend
+
 }
 
 }
