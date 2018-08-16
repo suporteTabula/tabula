@@ -108,6 +108,9 @@
                             <li class="list-group-item">
                                 <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
                             </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('reports') }}">Reports</a>
+                            </li>
                         </ul>
                     </div>
                 @endif
