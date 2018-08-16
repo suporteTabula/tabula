@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
     <link rel="stylesheet" href="{{ asset('css/card-js.min.css') }}">                                                                        
     
     <script src="{{ asset('js/card.js') }}"></script>
@@ -36,28 +38,46 @@
         <div class="container grid-md">
             <div class="columns">
                 <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-3 col-lg-3 col-xl-2">
-                    <a href="{{ url('/') }}"><img src="{{ asset('images/layout/header/logo.svg') }}" height="30px"></a>
+                    <div class="dropdown">
+                    <span><a href="{{ url('/') }}"><img align="center" src="{{ asset('images/layout/header/logo.png') }}" height="30px"> </a></span>
+                    <div class="dropdown-content">
+                    <a href="/home1"> <img src="../images/layout/header/sp.jpg" height="25px"></a>
+                    </div>
+                    </div>
                 </div>
-                <div class="nav-search col-6 hide-xs hide-sm col-md-4 col-lg-5 col-xl-6">
+                <div class="nav-search col-6 col-md-4 col-lg-5 col-xl-6 hide-xs hide-sm">
                     <section class="navbar-section">
                         <div class="input-group input-inline">
                             <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
-                                <input class="" name="search_string" type="text" placeholder="Digite sua busca.">
-                                <button class="button-tabula" type="submit">Buscar</button>
+                                <input class="button-tabula-white" name="search_string" type="text" placeholder="Digite sua busca.">
+                                <button class="button-tabula-gray" type="submit">Buscar</button>
                             </form>
                         </div>
                     </section>
                 </div>
                 <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
-                    <ul class="hide-sm hide-sm">  
-                        @auth
+                    <a href="#">
+                        <img class="avatar" src="../images/avatar-1.png">
+                    </a>
+                    <ul class="show-sm">
+                        <li> 
                             <div class="menu-icon">
                                 <div class="icon-open"></div>
                                 <div class="icon-closed"></div>
                             </div>
-                         @else
-                        <li><a href="{{ route('register') }}">Cadastre-se</a></li>
-                        <li><a href="{{ route('login') }}">Login</a></li> @endauth </ul>
+                        </li>
+                        @auth
+                        
+                        @else
+                        
+                        @endauth 
+                    </ul>
+                    <ul class="hide-sm">
+                        <li><a href="#">Hello1</a></li>
+                        <li><a href="#">Hello2</a></li>
+                        <li><a href="#">Hello3</a></li>
+                        <li><a href="#">Hello4</a></li>
+                    </ul>
                     
                 </div>
             </div>
@@ -72,8 +92,8 @@
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form> @else
                                 <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
-                                    <input style="border: 1px solid white" class="button-tabula" name="search_string" type="text" placeholder="Digite sua busca.">
-                                    <button style="background-color: white; color: #303030" class="button-tabula" type="submit">Buscar</button>
+                                    <input style="border: 1px solid white" class="button-tabula-white" name="search_string" type="text" placeholder="Digite sua busca.">
+                                    <button style="background-color: white; color: #303030" class="button-tabula-white" type="submit">Buscar</button>
                                 </form>
                                 <li><a href="{{ route('register') }}">Cadastre-se</a></li>
                                 <li><a href="{{ route('login') }}">Login</a></li>
@@ -119,6 +139,8 @@
     <script>
         if (Session::has('success')) toastr.success("{{ Session::get('success') }}")@ endif@
         if (Session::has('info')) toastr.info("{{ Session::get('info') }}")@ endif
-    </script> @yield('scripts') </body>
+    </script> @yield('scripts') 
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    </body>
 
 </html>
