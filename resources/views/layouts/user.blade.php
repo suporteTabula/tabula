@@ -41,7 +41,7 @@
                     <div class="dropdown">
                     <span><a href="{{ url('/') }}"><img align="center" src="{{ asset('images/layout/header/logo.png') }}" height="30px"> </a></span>
                     <div class="dropdown-content">
-                    <a href="/home1"> <img src="images/layout/header/sp.jpg" height="25px"></a>
+                    <a href="/home1"> <img src="../images/layout/header/sp.jpg" height="25px"></a>
                     </div>
                     </div>
                 </div>
@@ -49,15 +49,15 @@
                     <section class="navbar-section">
                         <div class="input-group input-inline">
                             <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
-                                <input class="button-tabula-inverted" name="search_string" type="text" placeholder="Digite sua busca.">
-                                <button class="button-tabula" type="submit">Buscar</button>
+                                <input class="button-tabula-white" name="search_string" type="text" placeholder="Digite sua busca.">
+                                <button class="button-tabula-gray" type="submit">Buscar</button>
                             </form>
                         </div>
                     </section>
                 </div>
                 <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
                     <a href="#">
-                        <img class="avatar" src="images/avatar-1.png">
+                        <img class="avatar" src="../images/avatar-1.png">
                     </a>
                     <ul class="show-sm">
                         <li> 
@@ -70,8 +70,7 @@
                         
                         @else
                         
-                        <li class="hide-xs hide-sm"><a href="{{ route('register') }}">Cadastre-se</a></li>
-                        <li><a href="{{ route('login') }}">Login</a></li> @endauth 
+                        @endauth 
                     </ul>
                     <ul class="hide-sm">
                         <li><a href="#">Hello1</a></li>
@@ -93,8 +92,8 @@
                                 <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form> @else
                                 <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
-                                    <input style="border: 1px solid white" class="button-tabula" name="search_string" type="text" placeholder="Digite sua busca.">
-                                    <button style="background-color: white; color: #303030" class="button-tabula" type="submit">Buscar</button>
+                                    <input style="border: 1px solid white" class="button-tabula-white" name="search_string" type="text" placeholder="Digite sua busca.">
+                                    <button style="background-color: white; color: #303030" class="button-tabula-white" type="submit">Buscar</button>
                                 </form>
                                 <li><a href="{{ route('register') }}">Cadastre-se</a></li>
                                 <li><a href="{{ route('login') }}">Login</a></li>
