@@ -1,0 +1,56 @@
+.paymentForm {
+    margin-top: 100px;
+}
+
+.formInput {
+    margin: 10px 0px;
+}
+
+.card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[name="number"] {
+    width: 67%;
+    float: left;
+    padding: 10px;
+}
+
+input[name="cvv"] {
+    width: 30%;
+    padding: 10px;
+    float: right; 
+}
+
+input[name="first-name"] {
+    width: 49%;
+    padding: 10px;
+    float: left; 
+}
+
+input[name="last-name"] {
+    width: 48%;
+    padding: 10px;
+    float: right; 
+}
+
+.paymentButton {
+    float: right;
+    margin: 10px 0px;
+}
+
+.jp-card-container {
+    margin-bottom: 15px;
+}
+
+.button-tabula-gray:visited{
+    color: white;
+    text-decoration: none;
+}
+
+.button-tabula-gray:hover{
+    color: #303030;
+    text-decoration: none;
+}

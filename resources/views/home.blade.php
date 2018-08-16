@@ -2,26 +2,25 @@
 @section('content')
     <section class="hero-landing">
         <div class="container grid-md">
-                <div class="columns">
-                    <div class="column col-12 col-xs-12 col-sm-12 hero-text">
-                        <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false }'>
-                            <div class="carousel-cell--1"></div>
-                            <div class="carousel-cell--2"></div>
-                            <div class="carousel-cell--3"></div>
-                            <div class="carousel-cell--4"></div>
-                            <div class="carousel-cell--5"></div>
-                            <div class="carousel-cell--6"></div>
-                            <div class="carousel-cell--7"></div>
-                            <div class="carousel-cell--8"></div>
-                            <div class="carousel-cell--9"></div>
-                            <div class="carousel-cell--10"></div>
-                            <div class="carousel-cell--11"></div>
-                            <div class="carousel-cell--12"></div>
-                            <div class="carousel-cell--13"></div>
-                            <div class="carousel-cell--14"></div>
-                            <div class="carousel-cell--15"></div>
-                            <div class="carousel-cell--16"></div>
-                        </div>
+            <div class="columns">
+                <div class="column col-12 col-xs-12 col-sm-12 hero-text">
+                    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false }'>
+                        <div class="carousel-cell--1"></div>
+                        <div class="carousel-cell--2"></div>
+                        <div class="carousel-cell--3"></div>
+                        <div class="carousel-cell--4"></div>
+                        <div class="carousel-cell--5"></div>
+                        <div class="carousel-cell--6"></div>
+                        <div class="carousel-cell--7"></div>
+                        <div class="carousel-cell--8"></div>
+                        <div class="carousel-cell--9"></div>
+                        <div class="carousel-cell--10"></div>
+                        <div class="carousel-cell--11"></div>
+                        <div class="carousel-cell--12"></div>
+                        <div class="carousel-cell--13"></div>
+                        <div class="carousel-cell--14"></div>
+                        <div class="carousel-cell--15"></div>
+                        <div class="carousel-cell--16"></div>
                     </div>
                 </div>
             </div>
@@ -117,127 +116,40 @@
     <section class="highlighted-courses">
         <div class="container grid-md">
             <div class="columns">
-            <h5>Cursos em destaque: Finanças e Economia</h5>
-            <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+            <h5>Cursos em destaque: {{ $featured_category1 }}</h5>
+                <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    @foreach($featured_courses1 as $course)
                     <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                            <div class="course-card__description">
+                                <p>{{ $course->name }}</p>
+                                <p>{{ $course->desc }}</p>
+                                <div class="course-card__price">{{ $course->price }}</div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <h5>Cursos em destaque: Varejo e Consumo</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    @foreach($featured_courses2 as $course)
                     <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                            <div class="course-card__description">
+                                <p>{{ $course->name }}</p>
+                                <p>{{ $course->desc }}</p>
+                                <div class="course-card__price">{{ $course->price }}</div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <div class="course-card__image"></div>
-                        <div class="course-card__description">
-                            <p>Title Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aut fuga explicabo aperiam doloremque consequuntur?</p>
-                            <p>Decription Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates cupiditate sequi sed fugiat nostrum voluptatibus!</p>
-                            <div class="course-card__price">313123</div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
+
 
     <<script>
         $('.highlighted-carousel').flickity({
@@ -248,6 +160,9 @@
     </script>
 
     <section class="about">
+
+        <section class="about">
+
         <div class="container grid-md">
             <div class="columns spacer-2">
                 <div class="column col-8 col-xs-12 col-sm-12 col-md-12"> 
@@ -261,11 +176,24 @@
             </div>
         </div>
     </section>
+
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+
+    <script>
+        $('.highlighted-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        contain: true
+    });
+    </script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
     @section('scripts')
         <script src="{{ asset('js/clamp.min.js') }}"></script>
-
+        u
         <script>
             var title = document.getElementsByClassName("lineclamp-title");
             var desc = document.getElementsByClassName("lineclamp-desc");

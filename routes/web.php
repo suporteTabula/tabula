@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /*
 |--------------------------------------------------------------------------
@@ -11,11 +11,19 @@
 |
 */
 
+
+Auth::routes();
+
+/*
+*
+* Routes to auth user
+*
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index.single');
 Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
@@ -23,7 +31,11 @@ Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
 
+
 Route::get('cart', 'CartController@cart')->name('cart');
+
+
+
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
 Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('cart.remove');
 Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
@@ -40,16 +52,28 @@ Route::get('search/{id}', 'SearchController@search')->name('search.single');
 Route::get('searchcat', 'SearchController@searchCat')->name('search.category');
 
 Route::get('userPanel', 'UsersController@userPanel')->name('userPanel.single');
-Route::get('userProfile', 'UsersController@userProfile')->name('userProfile.single');
-Route::post('userProfile/update', 'UsersController@userProfileUpdate')->name('userProfile.update');
+Route::post('userPanel/update', 'UsersController@userProfileUpdate')->name('userProfile.update');
 Route::get('userPurchases', 'UsersController@userPurchases')->name('userPurchases.single');
 Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails')->name('userPurchaseDetails.single');
 
+
 Route::middleware(['auth', 'admin'])->group(function () {
+	
 	Route::get('admin/home', 'AdminHomeController@index')->name('home');
+<<<<<<< HEAD
 	Route::get('admin/reports', 'Controller@reportsAdmin')->name('reports');
 	Route::get('/aluno', 'Controller@userAluno')->name('aluno');
+=======
+	Route::get('admin/nota', 'NotasController@index')->name('nota');
 
+	Route::get('admin/reports', 'AdminCoursesController@index')->name('reports');
+	
+
+>>>>>>> frontend
+
+
+	
+	
 	Route::get('/admin/categories', 'AdminCategoriesController@index')->name('categories');
 	Route::get('/admin/category/create', 'AdminCategoriesController@create')->name('category.create');
 	Route::post('/admin/category/store', 'AdminCategoriesController@store')->name('category.store');
@@ -97,6 +121,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::post('/admin/userGroups/update/{id}', 'AdminUserGroupsController@update')->name('userGroups.update');
 	Route::get('/admin/userGroups/destroy/{id}', 'AdminUserGroupsController@destroy')->name('userGroups.destroy');
 
+
 	Route::get('/admin/users', 'AdminUsersController@index')->name('users');
 	Route::get('/admin/user/create', 'AdminUsersController@create')->name('user.create');
 	Route::post('/admin/user/store', 'AdminUsersController@store')->name('user.store');
@@ -110,4 +135,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/userType/edit/{id}', 'AdminUserTypesController@edit')->name('userType.edit');
 	Route::post('/admin/userType/update/{id}', 'AdminUserTypesController@update')->name('userType.update');
 	Route::get('/admin/userType/delete/{id}', 'AdminUserTypesController@destroy')->name('userType.delete');
+	Route::get('/admin/courses', 'AdminCoursesController@index')->name('courses');
+	Route::get('/admin/alunos', 'AdminUsersController@index')->name('alunos');
+
+	
 });
+
+
+
