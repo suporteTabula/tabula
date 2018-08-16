@@ -1,9 +1,9 @@
 <?php return array (
-  'fideloper/proxy' => 
+  'nesbot/carbon' => 
   array (
     'providers' => 
     array (
-      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+      0 => 'Carbon\\Laravel\\ServiceProvider',
     ),
   ),
   'pbmedia/laravel-ffmpeg' => 
@@ -17,18 +17,18 @@
       'FFMpeg' => 'Pbmedia\\LaravelFFMpeg\\FFMpegFacade',
     ),
   ),
+  'fideloper/proxy' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 
     array (
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    ),
-  ),
-  'nesbot/carbon' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Carbon\\Laravel\\ServiceProvider',
     ),
   ),
 );

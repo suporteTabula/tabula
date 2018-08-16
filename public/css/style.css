@@ -1,3 +1,72 @@
+.search-toggle-container
+{	
+	float:right;
+}
+ul.list { list-style: none; width: 100%; }
+ul.list li { display: block; background: #303030;}
+ 
+ul.list li.alt { background: #d7dfe0; }
+ 
+ul.list li section.left { display: block; float: left; position: relative;}
+ul.list li section.right { display: block; }
+ 
+ul.list li section.left img.thumb { float: left; margin-right: 10px; }
+ul.list li section.left img.featured-banner { position: absolute; left: -18px; top: 35px; }
+
+ul.list li section.left span.meta { color: #93989b; font-weight: normal; font-size: 1.1em; }
+
+ul.grid { list-style: none;  }
+
+.lineclamp-desc 
+{
+	color: #fff;
+	overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.lineclamp-title
+{
+	color: #fff;
+	overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.course-card-list
+{
+	position: relative;	
+}
+
+.course-card-title-list
+{
+ width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.course-card-desc-list
+{
+	color: #fff;	
+	height: 162px;
+}
+
+.course-card-price-list
+{
+	padding: 10px;
+    background-color: #5fd22f;
+    color: #fff;
+	position: absolute;	
+	right: 0;
+}
+
+.thumb {
+	width:260px;	
+	height: 200px;
+}
 .bx-wrapper {
   -webkit-box-shadow: none;
   box-shadow: none; }
@@ -658,11 +727,13 @@ h5 {
 }
 
 .course-card {
-  width: 225px;
-  height: 350px;
+  width: 260px;
+  height: 360px;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
   transition: all 300ms ease;
   margin: 10px 15px 10px 0px;
+  position: relative;
+  background: #303030;
 }
 
 .course-card a {
@@ -710,7 +781,7 @@ h5 {
 .course-card__price {
   padding: 10px;
   position: absolute;
-  background-color: #44AF5F;
+  background-color: #5fd22f;
   right: 0;
   bottom: 0;
   color: #fff;
@@ -779,3 +850,4 @@ footer {
   .macro-indv
 a {
     height: 85px !important; } }
+

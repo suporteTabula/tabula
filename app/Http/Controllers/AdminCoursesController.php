@@ -14,6 +14,8 @@ use App\CourseItemGroup;
 use App\CourseItem;
 use App\CourseItemOption;
 use Illuminate\Support\Facades\DB;
+use Vimeo\Vimeo;
+use Vimeo\Exceptions\VimeoUploadException;
 
 class AdminCoursesController extends Controller
 {
@@ -438,6 +440,9 @@ class AdminCoursesController extends Controller
             $attach_new_name = time().$attach->getClientOriginalName();
             $attach->move('uploads/archives', $attach_new_name); 
             $item->path = 'uploads/archives/'. $attach_new_name;
+			if($request->vimeo == 1){
+				$vimeo_result = vimeo_upload($item_path);
+			}
         }
         $item->name                 = $request->name;
         $item->desc                 = $request->desc;
@@ -448,6 +453,41 @@ class AdminCoursesController extends Controller
         return redirect()->back();
     }
 
+	/**
+	* Deal with the Vimeo API
+	*
+	* We need to check a bunch of settings and then attempt the upload. We should return the URL of the video
+	* @param string $videoPath
+	* @return string $vimeoPath
+	*/
+	public function vimeo_upload($videoPath)
+	{
+		if (empty($config['access_token'])) {
+			throw new Exception(
+				'You can not upload a file without an access token. You can find this token on your app page, or generate ' .
+				'one using `auth.php`.'
+			);
+		}
+		$lib = new Vimeo($config['client_id'], $config['client_secret'], $config['access_token']);
+		$file_name = $videoPath;
+		try {
+			// Upload the file and include the video title and description.
+			$uri = $lib->upload($file_name, array(
+				'name' => 'Vimeo API SDK test upload',
+				'description' => "This video was uploaded through the Vimeo API's PHP SDK."
+			));
+			// Get the metadata response from the upload and log out the Vimeo.com url
+			$video_data = $lib->request($uri . '?fields=link');
+			echo '"' . $file_name . ' has been uploaded to ' . $video_data['body']['link'] . "\n";
+		}
+		} catch (VimeoUploadException $e) {
+			// We may have had an error. We can't resolve it here necessarily, so report it to the user.
+			echo 'Error uploading ' . $file_name . "\n";
+			echo 'Server reported: ' . $e->getMessage() . "\n";
+		} catch (VimeoRequestException $e) {
+			echo 'There was an error making the request.' . "\n";
+			echo 'Server reported: ' . $e->getMessage() . "\n";
+		}
     /**
      * Remove the specified item from the chapter.
      *

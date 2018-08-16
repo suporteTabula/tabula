@@ -5,7 +5,7 @@
     
 @endsection
 @section('content')
- <section class="search-wrapper">
+ <section class="search-wrapper">	
         <div class="container grid-lg">
             <div class="columns ">
                 <div class="column col-12 side-search">
@@ -375,38 +375,37 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>	
         <section class="course-gallery">
         <div class="container grid-lg">
            <div class="divider text-center" data-content="Resultados"></div>
+		   <div class="search-toggle-container">
+				 <span class="list-style-buttons">
+					<a href="#" id="gridview" class="switcher active"><img src="/images/grid-view-active.png" alt="Grid"></a>
+					<a href="#" id="listview" class="switcher"><img src="/images/list-view.png" alt="List"></a>
+				</span>		
+			</div>
             <div class="columns" id="search-results">
                 @if (count($courses) > 0)
                     @foreach($courses as $course)
-                        <!-- <a href="{{ route('course.single', ['id' => $course->id]) }}" class="column col-3 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 course-item">
-                            <div class="columns">
-                                <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
-                                <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 course-content bg-primary-gray text-white">
-                                    <p class="lineclamp-title"><strong>{{ $course->name }}</strong></p>
-                                    <p class="lineclamp-desc">{{ $course->desc }}</p>
-                                    <div class="course-price">
-                                        <p>{{ $course->price }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a> -->
-
-
-                        <div class="course-card">
-                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
-                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
-                            <div class="course-card__description">
-                                <p>{{ $course->name }}</p>
-                                <p>{{ $course->desc }}</p>
-                                <div class="course-card__price">{{ $course->price }}</div>
-                            </div>
-                        </a>
-                        </div>
-
+					<ul class="clearfix grid" id="courses">
+						<li class="clearfix">
+							<div class="course-card" id="course-card">							
+								<a href="{{ route('course.single', ['id' => $course->id]) }}">
+								<section class="left">									
+										<div class="course-card__image"><img src="../images/aulas/{{$course->thumb_img}}" class="thumb" /></div>
+								</section>
+								<section class="right">
+									<div class="course-card__description" id="course-card-desc">
+										<p class="lineclamp-title"><strong>{{ $course->name }}</strong></p>
+										<p class="lineclamp-desc">{{ $course->desc }}</p>																																					
+									</div>							
+									<div class="course-card__price" id="course-card-price">{{ $course->price }}</div>		
+								</section>
+								</a>
+							</div>
+						</li>
+					</ul>
 
                     @endforeach                
                 @else
@@ -420,6 +419,89 @@
     @section('scripts')
         <script>
             $(document).ready(function(){
+				 //capture the switcher trigger and assign a function to it.
+				 //capturar o gatilho do switcher e atribuir uma função a ele.
+				 $("a.switcher").bind("click", function(e){
+					e.preventDefault();
+					
+					var theid = $(this).attr("id");
+					var theproducts = $("ul#courses");
+					var classNames = $(this).attr('class').split(' ');
+					
+					if($(this).hasClass("active")) {
+						// if currently clicked button has the active class
+						// then we do nothing!
+						return false;
+					} else {
+						// otherwise we are clicking on the inactive button
+						// and in the process of switching views!
+
+						if(theid == "gridview") {
+							$(this).addClass("active");
+							$("#listview").removeClass("active");							
+							$("#listview").children("img").attr("src","/images/list-view.png");
+							
+							//Restore the card layout to these divs
+							$.each( $('ul#courses'), function(i, left) {
+							   $('#course-card', left).each(function() {
+									$(this).addClass("course-card");
+									$(this).removeClass("course-card-list");
+							   });
+							   $('.lineclamp-title',left).each(function() {
+								   $(this).addClass("course-card-title-list");
+								   $(this).removeClass("lineclamp-title");
+							   });
+							   $('#course-card-desc', left).each(function() {
+									$(this).addClass("course-card__description");
+									$(this).removeClass("course-card-desc-list");
+							   });
+							   $('#course-card-price', left).each(function() {
+									$(this).addClass("course-card__price");
+									$(this).removeClass("course-card-price-list");
+							   });
+							})		
+									
+							var theimg = $(this).children("img");
+							theimg.attr("src","/images/grid-view-active.png");
+						
+							// remove the list class and change to grid
+							theproducts.removeClass("list");
+							theproducts.addClass("grid");
+						}					
+						else if(theid == "listview") {
+							$(this).addClass("active");							
+							$("#gridview").removeClass("active");								
+							$("#gridview").children("img").attr("src","/images/grid-view.png");
+								
+							//Remove the card layout to these divs
+							$.each( $('ul#courses'), function(i, left) {
+							   $('#course-card', left).each(function() {
+									$(this).removeClass("course-card");
+									$(this).addClass("course-card-list");
+							   });
+							   $('.lineclamp-title',left).each(function() {
+								   $(this).removeClass("course-card-title-list");
+								   $(this).addClass("lineclamp-title");
+							   });
+							   $('#course-card-desc', left).each(function() {
+									$(this).removeClass("course-card__description");
+									$(this).addClass("course-card-desc-list");
+							   });
+							   $('#course-card-price', left).each(function() {
+									$(this).removeClass("course-card__price");
+									$(this).addClass("course-card-price-list");
+							   });
+							})		
+							var theimg = $(this).children("img");
+							theimg.attr("src","/images/list-view-active.png");
+								
+							// remove the grid view and change to list
+							theproducts.removeClass("grid")
+							theproducts.addClass("list");	
+						}
+					}
+				 });				 
+						
                 // a cada click em qualquer checkbox ou no botao de procurar
                 $('input[name="macrotema"], #search_btn').click(function(){
 
