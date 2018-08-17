@@ -189,6 +189,32 @@ body {
         margin: 0;
         padding: 0; }
 
+    .teachers {
+      
+      padding: 15px;
+    }
+
+    .teacher-photo-wrapper {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .teacher-photo {
+      width: 100px;
+      height: 100px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 100px;
+      margin: 15px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+
+    }
+
 .about { 
   padding: 30px; }
   .about video {
