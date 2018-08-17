@@ -8,7 +8,7 @@ class UserGroup extends Model
 {
 
 	protected $fillable = [
-		'desc', 'company_id'
+		'desc', 'companies_id'
 	];
 
     public function users()

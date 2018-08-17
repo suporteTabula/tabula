@@ -16,7 +16,7 @@ class AdminCompaniesController extends Controller
     public function index()
     {
         return view('admin.companies.index')
-            ->with('companies', Company::all());
+            ->with('compaines', Company::all());
     }
 
     /**

@@ -151,7 +151,7 @@
     </section>
 
 
-    <<script>
+    <script>
         $('.highlighted-carousel').flickity({
         // options
         cellAlign: 'left',

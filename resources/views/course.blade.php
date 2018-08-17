@@ -25,6 +25,8 @@
                         <p><strong>5/5</strong></p>
                     </div>
                     <div class="start-course">
+                        
+                                           
                         @auth
                             @if($hasCourse)
                                 @if ($userItem)

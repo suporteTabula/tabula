@@ -19,24 +19,6 @@
   background-color: #fff;
   color: #303030; }
 
-  .dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #fff;
-    min-width: 160px;
-    box-shadow: 0px 8px 35px 0px rgba(0,0,0,0.2);
-    padding: 80px 30px;
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;}
-
 body {
   font-family: "Poppins", sans-serif; }
 
@@ -140,26 +122,14 @@ body {
     -ms-flex-align: center;
     align-items: center; }
   .navigation-bar .nav-search {
-    display: flex;
-    align-items: center;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
-  flex-direction: row; }
-  .navbar-section form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    justify-content: center; }
     .navigation-bar .nav-search input {
       width: 90%;
-      font-size: 14px; 
-    padding: 6px;
-  border: none;
-border-bottom: 1px solid #303030}
+      font-size: 14px; }
     .navigation-bar .nav-search .button-tabula {
-      font-size: 14px;
-    padding: 6px; }
+      font-size: 14px; }
   .navigation-bar .nav-menu {
     -webkit-box-pack: end;
     -ms-flex-pack: end;
