@@ -78,12 +78,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/category/delete/{id}', 'AdminCategoriesController@destroy')->name('category.delete');
 	Route::get('/admin/category/filter', 'AdminCategoriesController@filter')->name('category.filter');
 
-	Route::get('/admin/companies', 'AdminCompaniesController@index')->name('companies');
-	Route::get('/admin/companies/create', 'AdminCompaniesController@create')->name('companies.create');
-	Route::post('/admin/companies/store', 'AdminCompaniesController@store')->name('companies.store');
-	Route::get('/admin/companies/edit/{id}', 'AdminCompaniesController@edit')->name('companies.edit');
-	Route::post('/admin/companies/update/{id}', 'AdminCompaniesController@update')->name('companies.update');
-	Route::get('/admin/companies/destroy/{id}', 'AdminCompaniesController@destroy')->name('companies.destroy');
+	Route::get('/admin/companies', 'AdminCompainesController@index')->name('companies');
+	Route::get('/admin/companies/create', 'AdminCompainesController@create')->name('companies.create');
+	Route::post('/admin/companies/store', 'AdminCompainesController@store')->name('companies.store');
+	Route::get('/admin/companies/edit/{id}', 'AdminCompainesController@edit')->name('companies.edit');
+	Route::post('/admin/companies/update/{id}', 'AdminCompainesController@update')->name('companies.update');
+	Route::get('/admin/companies/destroy/{id}', 'AdminCompainesController@destroy')->name('companies.destroy');
 
 	Route::get('/admin/courses', 'AdminCoursesController@index')->name('courses');
 	Route::get('/admin/courses/create', 'AdminCoursesController@create')->name('course.create');
@@ -133,7 +133,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/userType/delete/{id}', 'AdminUserTypesController@destroy')->name('userType.delete');
 	Route::get('/admin/courses', 'AdminCoursesController@index')->name('courses');
 	Route::get('/admin/alunos', 'AdminUsersController@index')->name('alunos');
-
+	Route::get('/admin/alunos','AdminUsersController@index' )->name('professor');
 	
 });
 
