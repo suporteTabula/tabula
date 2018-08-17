@@ -225,6 +225,31 @@ footer {
   background-color: #303030;
   min-height: 100px;
   margin-top: 15px; }
+.teachers {
+  margin-bottom: 60px; 
+}
+
+.teacher-photo-wrapper {
+  background-color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.teacher-photo {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  border-radius: 100px;
+  margin: 16px;
+  
+}
 
 @media (min-width: 600px) {
   .course-gallery {
