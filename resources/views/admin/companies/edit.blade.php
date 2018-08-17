@@ -8,7 +8,7 @@
 			Editar empresa
 		</div>
 		<div class="panel-body">
-			<form action="{{ route('companies.update', ['id' => $company->id]) }}" method="post" enctype="multipart/form-data">
+			<form action="{{ route('company.update', ['id' => $company->id]) }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<div class="form-group">
 					<label for="name">Nome</label>
@@ -23,7 +23,7 @@
 					<select class="form-control" id="theme_color" name="theme_color">
 						<option value="rose" @if ($company->theme_color == "rose") selected
 						@endif>Rosa</option>
-						<option value="gray" @if ($company->theme_color == "gray") selected
+						<option value="gray" @if ($company>theme_color == "gray") selected
 						@endif>Cinza Escuro</option>
 						<option value="white" @if ($company->theme_color == "white") selected
 						@endif>Branco</option>
@@ -60,7 +60,7 @@
 				<div class="form-group">
 					<div class="text-center">
 						<button class="btn btn-success" type="submit">Salvar</button>
-						<a class="btn btn-success" href="{{ route('companies') }}">Voltar</a>
+						<a class="btn btn-success" href="{{ route('company') }}">Voltar</a>
 					</div>
 				</div>
 			</form>
