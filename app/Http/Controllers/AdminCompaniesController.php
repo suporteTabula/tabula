@@ -15,7 +15,7 @@ class AdminCompaniesController extends Controller
      */
     public function index()
     {
-        return view('admin.companies.index')
+        return view('admin.compaines.index')
             ->with('compaines', Company::all());
     }
 
@@ -26,7 +26,7 @@ class AdminCompaniesController extends Controller
      */
     public function create()
     {
-        return view('admin.companies.create');
+        return view('admin.compaines.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class AdminCompaniesController extends Controller
         ]);
 
         Session::flash('success', 'Empresa cadastrada com sucesso');
-        return redirect()->route('companies');
+        return redirect()->route('compaines');
     }
 
     /**
@@ -74,7 +74,7 @@ class AdminCompaniesController extends Controller
     {
         $company = Company::find($id);
 
-        return view('admin.companies.edit')
+        return view('admin.compaines.edit')
             ->with('company', $company);
     }
 
@@ -101,7 +101,7 @@ class AdminCompaniesController extends Controller
         $company->save();
         
         Session::flash('success', 'Dados da Empresa alterados com sucesso');
-        return redirect()->route('companies');
+        return redirect()->route('compaines');
     }
 
     /**

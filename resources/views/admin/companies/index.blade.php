@@ -19,7 +19,7 @@
 				</thead>
 				<tbody>
 					@if ($company->count() > 0)
-						@foreach ($company as $companies)
+						@foreach ($company as $compaines)
 							<tr>
 								<td style="vertical-align: middle !important;">
 									{{ $company->name }}

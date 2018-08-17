@@ -17,7 +17,7 @@
 				<div class="form-group">
 					<label for="company_id">Empresa</label>
 					<select id="company" name="company_id" class="form-control">
-						@foreach ($companies as $company)
+						@foreach ($compaines as $company)
 							<option value="{{ $company->id }}"
 							@if($userGroup->company->id == $company->id)
 								selected
