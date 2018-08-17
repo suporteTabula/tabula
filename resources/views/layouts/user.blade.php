@@ -37,15 +37,16 @@
     <section class="navigation-bar">
         <div class="container grid-md">
             <div class="columns">
-                <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-3 col-lg-3 col-xl-2">
-                    <div class="dropdown">
-                    <span><a href="{{ url('/') }}"><img align="center" src="{{ asset('images/layout/header/logo.png') }}" height="30px"> </a></span>
-                    <div class="dropdown-content">
-                    <a href="/home1"> <img src="../images/layout/header/sp.jpg" height="25px"></a>
-                    </div>
-                    </div>
-                </div>
-                <div class="nav-search col-6 col-md-4 col-lg-5 col-xl-6 hide-xs hide-sm">
+               <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-3 col-lg-3 col-xl-2"> 
+    <div class="dropdown">
+    <span><a href="{{ url('/') }}"><img src="{{ asset('images/layout/header/logo.svg') }}" height="30px"> </a></span>
+    <div class="dropdown-content">
+    <a href="/home1"> <img src="images/layout/header/sp.png" height="30px"></a>    
+    <p align="center"><a href=/home1>Home Empresa</p></a>
+    </div>
+    </div>
+    </div>  
+            <div class="nav-search col-6 col-md-4 col-lg-5 col-xl-6 hide-xs hide-sm">
                     <section class="navbar-section">
                         <div class="input-group input-inline">
                             <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
