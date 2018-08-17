@@ -207,7 +207,7 @@ footer {
   min-height: 100px;
   margin-top: 15px; }
 
-@media (min-width: 600px) {
+@media (min-width: 600px) { 
   .course-gallery {
     padding: 15px; }
     .course-gallery .container .columns .course-item {

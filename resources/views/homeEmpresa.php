@@ -179,21 +179,21 @@
     <section class="teachers">
         <div class="container grid-md">
         <h3>Professores</h3>
-            <div class="teacher-photo-wrapper"> 
+            <div class="teacher-photo-wrapper">  
                 <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);">.</div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
             </div>
         </div>
     </section>
