@@ -6,8 +6,7 @@
     <section class="course-inner-content">
         <div class="container grid-lg">
             <div class="columns">
-                <div class="column col-12 course-controls">   
-                           
+                <div class="column col-12 course-controls">                    
                     <button id="open-class" class="button-tabula">Menu de Aulas</button>
                     <button id="close-class" class="button-tabula">Fechar Menu de Aulas</button>
                 </div>
