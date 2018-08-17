@@ -35,11 +35,12 @@
     23 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
     24 => 'Laravel\\Tinker\\TinkerServiceProvider',
     25 => 'Carbon\\Laravel\\ServiceProvider',
-    26 => 'App\\Providers\\AppServiceProvider',
-    27 => 'App\\Providers\\AuthServiceProvider',
-    28 => 'App\\Providers\\EventServiceProvider',
-    29 => 'App\\Providers\\RouteServiceProvider',
 
+    26 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
+    27 => 'App\\Providers\\AppServiceProvider',
+    28 => 'App\\Providers\\AuthServiceProvider',
+    29 => 'App\\Providers\\EventServiceProvider',
+    30 => 'App\\Providers\\RouteServiceProvider',
 
   ),
   'eager' => 
@@ -56,13 +57,6 @@
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
 
-    11 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
-    12 => 'App\\Providers\\AppServiceProvider',
-    13 => 'App\\Providers\\AuthServiceProvider',
-    14 => 'App\\Providers\\EventServiceProvider',
-    15 => 'App\\Providers\\RouteServiceProvider',
-
-    11 => 'Carbon\\Laravel\\ServiceProvider',
     12 => 'Carbon\\Laravel\\ServiceProvider',
     13 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
     14 => 'App\\Providers\\AppServiceProvider',
