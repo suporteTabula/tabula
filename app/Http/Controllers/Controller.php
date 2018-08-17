@@ -32,4 +32,9 @@ public function reports()
 
 }
 
+	public function todosProfs()
+{
+	return view ('todosProfs');
+
+}
 }
