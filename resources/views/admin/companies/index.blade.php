@@ -5,7 +5,7 @@
 		<div class="panel-heading" style="position: relative; height:80x; ">
 			<p style="line-height: 40px;">Empresas cadastradas</p>
 			
-			<a href="{{ route('company.create') }}">
+			<a href="{{ route('companies.create') }}">
 				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
 			</a>
 		</div>
@@ -18,8 +18,8 @@
 					<th>Deletar</th>
 				</thead>
 				<tbody>
-					@if ($company->count() > 0)
-						@foreach ($company as $compaines)
+					@if ($companies->count() > 0)
+						@foreach ($companies as $company)
 							<tr>
 								<td style="vertical-align: middle !important;">
 									{{ $company->name }}
@@ -28,12 +28,12 @@
 									{{ $company->desc }}
 								</td>
 								<td>
-									<a href="{{ route('company.edit', ['id' => $company->id]) }}">
+									<a href="{{ route('companies.edit', ['id' => $company->id]) }}">
 										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
 									</a>
 								</td>
 								<td>									
-									<a href="{{ route('company.destroy', ['id' => $company->id]) }}">
+									<a href="{{ route('companies.destroy', ['id' => $company->id]) }}">
 										<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
 									</a>
 								</td>

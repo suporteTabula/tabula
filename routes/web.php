@@ -77,12 +77,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/category/delete/{id}', 'AdminCategoriesController@destroy')->name('category.delete');
 	Route::get('/admin/category/filter', 'AdminCategoriesController@filter')->name('category.filter');
 
-	Route::get('/admin/compaines', 'AdminCompainesController@index')->name('compaines');
-	Route::get('/admin/compaines/create', 'AdminCompainesController@create')->name('compaines.create');
-	Route::post('/admin/compaines/store', 'AdminCompainesController@store')->name('compaines.store');
-	Route::get('/admin/compaines/edit/{id}', 'AdminCompainesController@edit')->name('compaines.edit');
-	Route::post('/admin/compaines/update/{id}', 'AdminCompainesController@update')->name('compaines.update');
-	Route::get('/admin/compaines/destroy/{id}', 'AdminCompainesController@destroy')->name('compaines.destroy');
+	Route::get('/admin/companies', 'AdminCompaniesController@index')->name('companies');
+	Route::get('/admin/companies/create', 'AdminCompaniesController@create')->name('companies.create');
+	Route::post('/admin/companies/store', 'AdminCompaniesController@store')->name('companies.store');
+	Route::get('/admin/companies/edit/{id}', 'AdminCompaniesController@edit')->name('companies.edit');
+	Route::post('/admin/companies/update/{id}', 'AdminCompaniesController@update')->name('companies.update');
+	Route::get('/admin/companies/destroy/{id}', 'AdminCompaniesController@destroy')->name('companies.destroy');
 
 	Route::get('/admin/courses', 'AdminCoursesController@index')->name('courses');
 	Route::get('/admin/courses/create', 'AdminCoursesController@create')->name('course.create');

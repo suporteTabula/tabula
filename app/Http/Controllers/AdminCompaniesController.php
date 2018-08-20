@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 use Session;
 use App\Company;
 
+
 class AdminCompaniesController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index()
     {
-        return view('admin.compaines.index')
-            ->with('compaines', Company::all());
+        return view('admin.companies.index')
+            ->with('companies', Company::all());
+            
     }
 
     /**
@@ -26,7 +28,7 @@ class AdminCompaniesController extends Controller
      */
     public function create()
     {
-        return view('admin.compaines.create');
+        return view('admin.companies.create');
     }
 
     /**
@@ -43,14 +45,14 @@ class AdminCompaniesController extends Controller
             'theme_color'   => 'required'
         ]);
 
-        $company = Company::create([
+       $company = Company::create([
             'name'          => $request->name,
             'desc'          => $request->desc,
             'theme_color'   => $request->theme_color
         ]);
 
         Session::flash('success', 'Empresa cadastrada com sucesso');
-        return redirect()->route('compaines');
+        return redirect()->route('companies');
     }
 
     /**
@@ -74,7 +76,7 @@ class AdminCompaniesController extends Controller
     {
         $company = Company::find($id);
 
-        return view('admin.compaines.edit')
+        return view('admin.companies.edit')
             ->with('company', $company);
     }
 
@@ -101,7 +103,7 @@ class AdminCompaniesController extends Controller
         $company->save();
         
         Session::flash('success', 'Dados da Empresa alterados com sucesso');
-        return redirect()->route('compaines');
+        return redirect()->route('companies');
     }
 
     /**
