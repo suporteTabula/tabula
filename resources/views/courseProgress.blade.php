@@ -58,7 +58,7 @@
                                         {{ csrf_field() }}
 
                                         <input type="hidden" id="item_id" name="item_id" value="{{$item->id}}">
-                                        <input type="submit" name="next" value="Finalizar aula">
+                                        <input type="submit" class="button-tabula" name="next" value="Finalizar aula">
                                     </form>
                                 @endif
                             @endforeach
@@ -75,8 +75,8 @@
                 <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo:{{ $chapter->name }}</summary>
                 @foreach ($chapter->course_items as $item)
                     @if(is_null($item->course_items_parent))
-                        <div id="accbody" class="accordion-body"> <a id="accbody-content" class="aula" value="{{ $item->id }}">{{ $item->name }}</a>
-                        <input type="checkbox" name="progress" 
+                        <div id="accbody" class="accordion-body "> <a id="accbody-content" class="aula" value="{{ $item->id }}">{{ $item->name }}</a>
+                        <input id="custom-checkbox" type="checkbox" name="progress" 
                             @foreach ($users->items as $i)
                                 @if ($i->pivot->course_item_status_id == 1 && $item->id == $i->pivot->course_item_id)
                                     checked
