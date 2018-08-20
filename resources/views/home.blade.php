@@ -85,7 +85,7 @@
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
                         <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
+                            <p>O Tábula possui uma plataforma inédita e fácil de usar, com cursos das mais diversas áreas do conhecimento.</p>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
                         <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
+                            <p>Para os alunos, há a disponibilidade de aprender e assistir aulas dos mais variados temas no tempo que quiser e ainda receber um certificado de conclusão. Já aos professores, oferecemos a assessoria e suporte necessários, com salas,  gravação das video-aulas e a edição destas, da maneira que preferir.</p>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
                         <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12 ">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
+                            <p>Leve o Tábula para dentro de sua emrpesa através da realização de parcerias conosco. Procuramos realizar contratos com instituições de ensino que procuram crescer e disseminar uma educação de qualidade.</p>
                         </div>
                     </div>
                 </div>
