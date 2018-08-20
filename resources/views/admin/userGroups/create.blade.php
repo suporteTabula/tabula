@@ -18,7 +18,7 @@
 					<label for="company_id">Empresas</label>
 					<select id="company" name="company_id" class="form-control">
 						<option value="" selected disabled hidden>Escolha uma...</option>
-						@foreach ($company as $companies)
+						@foreach ($company as $compaines)
 							<option value="{{ $company->id }}"> {{ $company->name }} </option>
 						@endforeach
 					</select>

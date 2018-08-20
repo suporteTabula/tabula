@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 use Session;
 use App\Company;
 
+
 class AdminCompaniesController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index()
     {
         return view('admin.companies.index')
-            ->with('compaines', Company::all());
+            ->with('companies', Company::all());
+            
     }
 
     /**
@@ -43,7 +45,7 @@ class AdminCompaniesController extends Controller
             'theme_color'   => 'required'
         ]);
 
-        $company = Company::create([
+       $company = Company::create([
             'name'          => $request->name,
             'desc'          => $request->desc,
             'theme_color'   => $request->theme_color
