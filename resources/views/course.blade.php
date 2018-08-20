@@ -41,9 +41,9 @@
                                   <ul>  <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a></ul>
                                 @endif                                
                             @else
-                                <ul><a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a></ul>
+                                <ul><a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a></ul>
 
-                               <ul> <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a></ul>
+                               <ul> <a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a></ul>
                             @endif
                         @endauth
                         
