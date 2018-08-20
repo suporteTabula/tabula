@@ -20,5 +20,8 @@ public function reports()
 {
 	return ('teste');
 }
-
+public function todosProfs()
+{
+	return view ('todosProfs');
+}
 }

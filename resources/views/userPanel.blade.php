@@ -5,6 +5,9 @@
 @endsection
 @section('content')
 <section class="resumee">
+     <form id="foto" action="{{ route('userProfile.update') }}" method="post">
+
+
         <div class="container grid-lg">
             <div class="columns">
                 <div class="column col-1"></div>
@@ -12,10 +15,18 @@
                     <div class="columns">
                         <div class="column col-12">
                             <div class="column col-12">
-                                <div class="user-face" style="background-image: url(../images/avatar-1.png);"></div> <span>{{ $user->first_name}} {{ $user->last_name }}</span> </div>
+                                <href="/userPanel"><div class="user-face" style="background-image: url(../images/avatar-1.png);"></div> <span>{{ $user->first_name}} {{ $user->last_name }}</span> 
+                                </div></href>
+                                @if (auth()->user()->image!=null)
+                                <img src="" alt="{{auth()->user()->name}}" style="max-width: 50px;">
+                                @endif
+                                <input type="file" name="image" class="form-control">
+                                <button type="submit" class="btn">Atualizar</button>
+
                         </div>
                     </div>
                 </div>
+         </form>       
                 <div class="column col-1"></div>
             </div>
             <div class="columns">
