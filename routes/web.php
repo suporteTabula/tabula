@@ -133,7 +133,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/userType/delete/{id}', 'AdminUserTypesController@destroy')->name('userType.delete');
 	Route::get('/admin/courses', 'AdminCoursesController@index')->name('courses');
 	Route::get('/admin/alunos', 'AdminUsersController@index')->name('alunos');
-
+	Route::get('/admin/alunos','AdminUsersController@index' )->name('professor');
 	
 });
 
