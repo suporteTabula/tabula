@@ -101,7 +101,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\UserGroup');
     }
 
-    public function companies()
+    public function compaines()
     {
         return $this->belongsToMany('App\Company');
     }

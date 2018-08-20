@@ -103,7 +103,7 @@
                                 <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('companies') }}">Empresas</a>
+                                 <a href="{{ route('companies') }}">Empresas</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="{{ route('userGroups') }}">Grupos de Usuários</a>

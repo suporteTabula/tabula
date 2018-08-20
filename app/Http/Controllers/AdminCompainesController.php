@@ -4,17 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+<<<<<<< HEAD:app/Http/Controllers/AdminCompainesController.php
 class AdminCompainesController extends Controller
+=======
+
+class AdminCompaniesController extends Controller
+>>>>>>> integration:app/Http/Controllers/AdminCompaniesController.php
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index()
     {
+<<<<<<< HEAD:app/Http/Controllers/AdminCompainesController.php
         return view('admin.compaines.index')
             ->with('compaines', Company::all());
+=======
+        return view('admin.companies.index')
+            ->with('companies', Company::all());
+            
+>>>>>>> integration:app/Http/Controllers/AdminCompaniesController.php
     }
 
     /**
@@ -41,7 +52,7 @@ class AdminCompainesController extends Controller
             'theme_color'   => 'required'
         ]);
 
-        $company = Company::create([
+       $company = Company::create([
             'name'          => $request->name,
             'desc'          => $request->desc,
             'theme_color'   => $request->theme_color

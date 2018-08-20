@@ -15,14 +15,14 @@ class UserGroupsController extends Controller
     {
         $user = Auth::user();
         $userGroup = UserGroup::where('desc', $group)->first();
-        $companies = Company::where('id', $userGroup->company_id)->first();
+        $compaines = Company::where('id', $userGroup->company_id)->first();
 
         $courses = $userGroup->courses()->get();
 
         return view('userGroupHome')
             ->with('courses', $courses)
             ->with('userGroup', $userGroup)
-            ->with('companies', $companies);
+            ->with('compaines', $compaines);
     }
 
     public function select() 

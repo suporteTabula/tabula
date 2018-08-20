@@ -29,6 +29,7 @@ class UsersController extends Controller
     {
         $user = Auth::user();
 
+
         $this->validate($request, [
             'first_name'    => 'required',
             'last_name'     => 'required',
@@ -37,6 +38,7 @@ class UsersController extends Controller
         $user->first_name   = $request->first_name;
         $user->last_name    = $request->last_name;
         $user->nickname     = $request->nickname;
+        $user->image        = $request->image;
         $user->sex          = $request->sex;
         $user->bio          = $request->bio;
         $user->website      = $request->website;
@@ -48,6 +50,7 @@ class UsersController extends Controller
         $user->state_id     = $request->state_id;
         
         $user->save();
+
 
         Session::flash('success', 'Usuário alterado com sucesso');
         return redirect()->back();

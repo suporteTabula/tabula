@@ -117,6 +117,12 @@ body {
   position: fixed;
   z-index: 1000;
   top: 0; }
+
+  .navbar-section form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .navigation-bar a {
     display: -webkit-box;
     display: -ms-flexbox;

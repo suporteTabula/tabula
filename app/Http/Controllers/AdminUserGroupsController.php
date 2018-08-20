@@ -20,7 +20,7 @@ class AdminUserGroupsController extends Controller
     {
         return view('admin.userGroups.index')
             ->with('userGroups', UserGroup::all())
-            ->with('companies', Company::all());
+            ->with('compaines', Company::all());
     }
 
     /**
@@ -31,7 +31,7 @@ class AdminUserGroupsController extends Controller
     public function create()
     {
         return view('admin.userGroups.create')
-            ->with('companies', Company::all());
+            ->with('compaines', Company::all());
     }
 
     /**
@@ -80,7 +80,7 @@ class AdminUserGroupsController extends Controller
 
         return view('admin.userGroups.edit')
             ->with('userGroup', $userGroup)
-            ->with('companies', Company::all());
+            ->with('compaines', Company::all());
     }
 
     /**
