@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
+use App\Company;
 
-<<<<<<< HEAD:app/Http/Controllers/AdminCompainesController.php
-class AdminCompainesController extends Controller
-=======
 
 class AdminCompaniesController extends Controller
->>>>>>> integration:app/Http/Controllers/AdminCompaniesController.php
 {
      /**
      * Display a listing of the resource.
@@ -18,14 +16,9 @@ class AdminCompaniesController extends Controller
      */
      public function index()
     {
-<<<<<<< HEAD:app/Http/Controllers/AdminCompainesController.php
-        return view('admin.compaines.index')
-            ->with('compaines', Company::all());
-=======
         return view('admin.companies.index')
             ->with('companies', Company::all());
             
->>>>>>> integration:app/Http/Controllers/AdminCompaniesController.php
     }
 
     /**
@@ -35,7 +28,7 @@ class AdminCompaniesController extends Controller
      */
     public function create()
     {
-        return view('admin.compaines.create');
+        return view('admin.companies.create');
     }
 
     /**
@@ -59,7 +52,7 @@ class AdminCompaniesController extends Controller
         ]);
 
         Session::flash('success', 'Empresa cadastrada com sucesso');
-        return redirect()->route('compaines');
+        return redirect()->route('companies');
     }
 
     /**
@@ -83,7 +76,7 @@ class AdminCompaniesController extends Controller
     {
         $company = Company::find($id);
 
-        return view('admin.compaines.edit')
+        return view('admin.companies.edit')
             ->with('company', $company);
     }
 
@@ -110,7 +103,7 @@ class AdminCompaniesController extends Controller
         $company->save();
         
         Session::flash('success', 'Dados da Empresa alterados com sucesso');
-        return redirect()->route('compaines');
+        return redirect()->route('companies');
     }
 
     /**
