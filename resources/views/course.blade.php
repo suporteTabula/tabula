@@ -33,7 +33,7 @@
 
                                     <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}">Continuar Curso</a>
 
-                                    <ul></ul><a class="custom-button button-tabula" href="{{ route('alunos') }}">Alunos Matriculados</a></ul>
+                                    <ul></ul><a class="custom-button button-tabula" href="{{ route('users') }}">Alunos Matriculados</a></ul>
                                                                                                         
                                                                              
                                       @else
