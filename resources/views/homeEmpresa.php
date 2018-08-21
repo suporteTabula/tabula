@@ -182,23 +182,65 @@
     <section class="teachers">
         <div class="container grid-md"> 
         <h3>Professores</h3>
-            <div class="teacher-photo-wrapper">  
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+            <div class="teachers-wrapper">
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
             </div>
         </div>
+            </div>
     </section>
 
     <footer class="bg-primary-white">

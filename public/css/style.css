@@ -778,24 +778,21 @@ footer {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    text-align: center;
-    min-height: 250px; }
+    text-align: center; }
   .advantages .card-advantage2 {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
     text-align: center;
-    margin: 0 5px;
-    min-height: 250px; }
+    margin: 0 5px; }
   .advantages .card-advantage3 {
     margin-left: 5px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    text-align: center;
-    min-height: 250px; } }
+    text-align: center;} }
 
 @media (max-width: 480px) {
   .macrotema-col-1,
