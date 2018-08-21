@@ -41,7 +41,7 @@
                     <div class="dropdown">
                     <span><a href="{{ url('/') }}"><img align="center" src="images/layout/header/logo.png" height="30px"> </a></span>
                     <div class="dropdown-content">
-                    <a href="/home1"> <img src="../images/layout/header/sp.jpg" height="25px"></a>
+                    <a href="/homeEmpresa"> <img src="../images/layout/header/sp.jpg" height="25px"></a>
                     </div>
                     </div>
                 </div>
@@ -73,10 +73,10 @@
                         @endauth 
                     </ul>
                     <ul class="hide-sm">
-                        <li><a href="/login">Hello1</a></li>
-                        <li><a href="#">Hello2</a></li>
-                        <li><a href="#">Hello3</a></li>
-                        <li><a href="#">Hello4</a></li>
+                        <li><a href="/">Início</a></li>
+                        <li><a href="/cart">Cart</a></li>
+                        <li><a href="/todosProfs">Professores</a></li>
+                        <li><a href="/logout">Sair</a></li>
                     </ul>
                     
                 </div>

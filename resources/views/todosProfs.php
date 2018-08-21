@@ -43,10 +43,12 @@
                         <div class="icon-closed"></div>
                     </div>
                     <ul class="hide-sm">
-                        <li><a class="text-gray" href="#">Hello1</a></li>
-                        <li><a class="text-gray" href="#">Hello2</a></li>
-                        <li><a class="text-gray" href="#">Hello3</a></li>
-                        <li><a class="text-gray" href="#">Hello4</a></li>
+
+                        <li><a class="text-rose" href="/">Início</a></li>
+                        <li><a class="text-rose" href="/Cart">Cart</a></li>
+                        <li><a class="text-rose" href="/todosProfs">Professores</a></li>
+                        <li><a class="text-rose" href="/logout">Sair</a></li>
+
                     </ul> <img class="avatar" src="images/avatar-1.png" width="35px;"> </div>
             </div>
         </div>
