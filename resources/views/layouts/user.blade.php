@@ -56,7 +56,7 @@
                     </section>
                 </div>
                 <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
-                    <a href="#">
+                    <a href="/userPanel">
                         <img class="avatar" src="../images/avatar-1.png">
                     </a>
                     <ul class="show-sm">
@@ -73,7 +73,7 @@
                         @endauth 
                     </ul>
                     <ul class="hide-sm">
-                        <li><a href="#">Hello1</a></li>
+                        <li><a href="/login">Hello1</a></li>
                         <li><a href="#">Hello2</a></li>
                         <li><a href="#">Hello3</a></li>
                         <li><a href="#">Hello4</a></li>
