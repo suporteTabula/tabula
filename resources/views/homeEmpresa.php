@@ -23,7 +23,7 @@
             <div class="columns">
                 <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-3 col-lg-3 col-xl-2">
                     <div class="dropdown">
-                    <span><a href="/home1"><img align="center" src="images/layout/header/sp.jpg" height="30px"> </a></span>
+                    <span><a href="/homeEmpresa"><img align="center" src="images/layout/header/sp.jpg" height="30px"> </a></span>
                     <div class="dropdown-content">
                     <a href="/"> <img src="images/layout/header/logo.png" height="25px"></a>
                     </div>
@@ -43,11 +43,11 @@
                         <div class="icon-closed"></div>
                     </div>
                     <ul class="hide-sm">
-                        <li><a class="text-rose" href="#">Hello1</a></li>
-                        <li><a class="text-rose" href="#">Hello2</a></li>
-                        <li><a class="text-rose" href="#">Hello3</a></li>
-                        <li><a class="text-rose" href="#">Hello4</a></li>
-                    </ul> <img class="avatar" src="images/avatar-1.png" width="35px;"> </div>
+                        <li><a class="text-rose" href="/">Início</a></li>
+                        <li><a class="text-rose" href="/cart">Cart</a></li>
+                        <li><a class="text-rose" href="/todosProfs">Professores</a></li>
+                        <li><a class="text-rose" href="/logout">Sair</a></li>
+                    </ul><a href="/userPanel"> <img class="avatar" src="images/avatar-1.png" width="35px;"></a> </div>
             </div>
         </div>
         <div class="offscreen-menu show-sm bg-primary-rose">
