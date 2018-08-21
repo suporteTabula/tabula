@@ -209,8 +209,9 @@ body {
         padding: 0; }
 
     .teachers {
-      
-      padding: 15px;
+      margin-top:64px;
+      color: #fff;
+      padding-bottom: 32px;
     }
 
     .teacher-photo-wrapper {
@@ -219,9 +220,30 @@ body {
       justify-content: center;
       flex-wrap: wrap;
       align-items: center;
+      flex-direction: column;
       padding: 15px;
+      box-shadow: 0px 3px 6px rgba(0,0,0,0.3);
+      width: 26%;
+      transition: all .2s;
+      margin: 15px;
     }
 
+    .teacher-photo-wrapper:hover {
+      transform: scale(1.1);
+    }
+
+    .teacher-description p, a{
+      margin: 0;
+      color: #303030;
+      text-decoration: none !important;
+    }
+.teachers-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
     .teacher-photo {
       width: 100px;
       height: 100px;
@@ -229,8 +251,9 @@ body {
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 100px;
-      margin: 15px;
+      margin: 15px 30px;
       box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+      transition: all .2s;
 
     }
 
