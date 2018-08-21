@@ -36,7 +36,7 @@
                                                 @if ($child->course_item_types_id == 5)
                                                     <input type="text" name="dissertativa_{{$child->id}}"><br> 
                                                 @else
-                                                    <input type="hidden" name="trueFalse_{{$child->id}}" value="">
+                                                    <input type="hidden" name="trueFalse_{{$child->id}}" value="text">
                                                     <input type="radio" name="trueFalse_{{$child->id}}" value="1">Verdadeira
                                                     <input type="radio" name="trueFalse_{{$child->id}}" value="0">Falsa<br>
                                                  @endif
