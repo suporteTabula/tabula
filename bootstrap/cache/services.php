@@ -27,10 +27,11 @@
     23 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
     24 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     25 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    26 => 'App\\Providers\\AppServiceProvider',
-    27 => 'App\\Providers\\AuthServiceProvider',
-    28 => 'App\\Providers\\EventServiceProvider',
-    29 => 'App\\Providers\\RouteServiceProvider',
+    26 => 'Vinkla\\Vimeo\\VimeoServiceProvider',
+    27 => 'App\\Providers\\AppServiceProvider',
+    28 => 'App\\Providers\\AuthServiceProvider',
+    29 => 'App\\Providers\\EventServiceProvider',
+    30 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -47,10 +48,11 @@
     10 => 'Carbon\\Laravel\\ServiceProvider',
     11 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
     12 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    13 => 'App\\Providers\\AppServiceProvider',
-    14 => 'App\\Providers\\AuthServiceProvider',
-    15 => 'App\\Providers\\EventServiceProvider',
-    16 => 'App\\Providers\\RouteServiceProvider',
+    13 => 'Vinkla\\Vimeo\\VimeoServiceProvider',
+    14 => 'App\\Providers\\AppServiceProvider',
+    15 => 'App\\Providers\\AuthServiceProvider',
+    16 => 'App\\Providers\\EventServiceProvider',
+    17 => 'App\\Providers\\RouteServiceProvider',
   ),
   'deferred' => 
   array (

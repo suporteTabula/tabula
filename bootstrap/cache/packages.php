@@ -31,4 +31,15 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
+  'vimeo/laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Vinkla\\Vimeo\\VimeoServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Vimeo' => 'Vinkla\\Vimeo\\Facades\\Vimeo',
+    ),
+  ),
 );

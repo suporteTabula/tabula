@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a69baafe490e6d821b8fdf796d901f52",
-    "content-hash": "76f87030e329b002af6450dbe6606279",
+    "hash": "abb513be2ea702ed129bdd2b10caf83f",
+    "content-hash": "05ccc5883f49a77e8a40dc4f486b9984",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -541,6 +541,66 @@
                 "trusted proxy"
             ],
             "time": "2017-06-15 17:19:42"
+        },
+        {
+            "name": "graham-campbell/manager",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
+                "reference": "bf9da58aa32676209961558eaac5d6625f6f1399"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/bf9da58aa32676209961558eaac5d6625f6f1399",
+                "reference": "bf9da58aa32676209961558eaac5d6625f6f1399",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "graham-campbell/analyzer": "^1.1",
+                "graham-campbell/testbench-core": "^2.0",
+                "mockery/mockery": "dev-master#c90a17247147543081e4d00f46911e422b49e583",
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GrahamCampbell\\Manager\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                }
+            ],
+            "description": "Manager Provides Some Manager Functionality For Laravel 5",
+            "keywords": [
+                "Graham Campbell",
+                "GrahamCampbell",
+                "Laravel Manager",
+                "Laravel-Manager",
+                "connector",
+                "framework",
+                "interface",
+                "laravel",
+                "manager"
+            ],
+            "time": "2017-08-06 17:54:13"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2699,6 +2759,118 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2017-11-27 11:13:29"
+        },
+        {
+            "name": "vimeo/laravel",
+            "version": "3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vimeo/laravel.git",
+                "reference": "1fbb9ae7daf4f6a315456726c527c4835b8302a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vimeo/laravel/zipball/1fbb9ae7daf4f6a315456726c527c4835b8302a1",
+                "reference": "1fbb9ae7daf4f6a315456726c527c4835b8302a1",
+                "shasum": ""
+            },
+            "require": {
+                "graham-campbell/manager": "^3.0",
+                "illuminate/contracts": "5.5.*",
+                "illuminate/support": "5.5.*",
+                "php": "^7.0",
+                "vimeo/vimeo-api": "^1.2.6"
+            },
+            "require-dev": {
+                "graham-campbell/analyzer": "^1.1",
+                "graham-campbell/testbench": "^4.0",
+                "mockery/mockery": "dev-master#c90a17247147543081e4d00f46911e422b49e583",
+                "orchestra/testbench": "^3.5",
+                "phpunit/phpunit": "^6.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.7-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Vinkla\\Vimeo\\VimeoServiceProvider"
+                    ],
+                    "aliases": {
+                        "Vimeo": "Vinkla\\Vimeo\\Facades\\Vimeo"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vinkla\\Vimeo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vincent Klaiber",
+                    "email": "hello@vinkla.com",
+                    "homepage": "https://vinkla.com"
+                }
+            ],
+            "description": "A Vimeo bridge for Laravel",
+            "keywords": [
+                "laravel",
+                "video",
+                "vimeo"
+            ],
+            "time": "2017-09-02 21:55:20"
+        },
+        {
+            "name": "vimeo/vimeo-api",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vimeo/vimeo.php.git",
+                "reference": "46820e2d777362849137c1eb14f5cdb657c289ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vimeo/vimeo.php/zipball/46820e2d777362849137c1eb14f5cdb657c289ea",
+                "reference": "46820e2d777362849137c1eb14f5cdb657c289ea",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Vimeo\\": "src/Vimeo"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Vimeo",
+                    "homepage": "http://vimeo.com"
+                }
+            ],
+            "description": "Official PHP library for the Vimeo API.",
+            "homepage": "https://github.com/vimeo/vimeo.php",
+            "keywords": [
+                "video",
+                "vimeo"
+            ],
+            "time": "2017-10-25 15:11:51"
         },
         {
             "name": "vlucas/phpdotenv",
