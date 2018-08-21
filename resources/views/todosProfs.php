@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
-    
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home-empresa.css">
     <title>Tabula - Ensino a distância - Cursos EAD</title>
 </head>
 
@@ -23,17 +23,17 @@
             <div class="columns">
                 <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-3 col-lg-3 col-xl-2">
                     <div class="dropdown">
-                    <span><a href="/home1"><img align="center" src="images/layout/header/sp.jpg" height="30px"> </a></span>
+                    <span><a href="/home1"><img align="center" src="images/layout/header/logo.png" height="30px"> </a></span>
                     <div class="dropdown-content">
-                    <a href="/"> <img src="images/layout/header/logo.png" height="25px"></a>
+                    <a href="/"> <img src="images/layout/header/sp.jpg" height="25px"></a>
                     </div>
                     </div>
                 </div>
                 <div class="nav-search col-5 hide-xs col-sm-5">
                     <section class="navbar-section">
                         <div class="input-group input-inline">
-                            <input class="button-tabula-rose-inverted text-white;" type="text" placeholder="Digite sua busca.">
-                            <button class="button-tabula-rose">Buscar</button>
+                            <input class="button-tabula;" type="text" placeholder="Digite sua busca.">
+                            <button class="button-tabula">Buscar</button>
                         </div>
                     </section>
                 </div>
@@ -43,10 +43,10 @@
                         <div class="icon-closed"></div>
                     </div>
                     <ul class="hide-sm">
-                        <li><a class="text-rose" href="#">Hello1</a></li>
-                        <li><a class="text-rose" href="#">Hello2</a></li>
-                        <li><a class="text-rose" href="#">Hello3</a></li>
-                        <li><a class="text-rose" href="#">Hello4</a></li>
+                        <li><a class="text-gray" href="#">Hello1</a></li>
+                        <li><a class="text-gray" href="#">Hello2</a></li>
+                        <li><a class="text-gray" href="#">Hello3</a></li>
+                        <li><a class="text-gray" href="#">Hello4</a></li>
                     </ul> <img class="avatar" src="images/avatar-1.png" width="35px;"> </div>
             </div>
         </div>
@@ -74,6 +74,84 @@
                 </ul>
             </div>
         </div>
+    </section>
+    <section class="teachers">
+        <div class="container grid-md"> 
+            <div class="teachers-wrapper">
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+            <div class="teacher-photo-wrapper"> 
+                <a href="#"> 
+                    <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
+                    <div class="teacher-description">
+                        <p>Nome do professor</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+            </div>
     </section>
         
 </body>
