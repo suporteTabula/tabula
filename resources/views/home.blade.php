@@ -116,7 +116,7 @@
                         <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12 hex-adv">
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
-                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
+                        <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <p>O Tábula possui uma plataforma inédita e fácil de usar, com cursos das mais diversas áreas do conhecimento.</p>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                         <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12 hex-adv">
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
-                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
+                        <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <p>Para os alunos, há a disponibilidade de aprender e assistir aulas dos mais variados temas no tempo que quiser. Já aos professores, oferecemos a assessoria necessária, com salas para gravação e a edição destas.</p>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12  hex-adv">
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
-                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12 ">
+                        <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
                             <p>Leve o Tábula para dentro de sua emrpesa através da realização de parcerias conosco. Procuramos realizar contratos com instituições de ensino que procuram crescer e disseminar uma educação de qualidade.</p>
                         </div>
                     </div>

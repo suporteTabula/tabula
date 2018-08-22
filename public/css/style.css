@@ -30,14 +30,16 @@
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #fff;
-  min-width: 30px;
-  -webkit-box-shadow: 0px 8px 30px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 30px 0px rgba(0, 0, 0, 0.2);
-  padding: 30px 30px;
-  z-index: 1;
+
+   display: none;
+   position: absolute;
+   background-color: #fff;
+   min-width: 30px;
+   -webkit-box-shadow: 0px 8px 30px 0px rgba(0,0,0,0.2);
+           box-shadow: 0px 8px 30px 0px rgba(0,0,0,0.2);
+   padding: 30px 30px;
+   z-index: 1;
+
 }
 
 .dropdown:hover .dropdown-content {
@@ -157,6 +159,18 @@ body {
           align-items: center;
 }
 
+
+  .navbar-section form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+
 .navigation-bar a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -223,6 +237,7 @@ body {
 @media screen and (max-width: 600px) {
   .menu-icon {
     display: block;
+
   }
 }
 
@@ -474,6 +489,288 @@ body {
 
 .macrotemas {
   padding: 15px;
+
+  margin-top: 15px; }
+  .macrotemas .columns {
+    -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); }
+  .macrotemas .macro-mobile-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding: 15px; }
+    .macrotemas .macro-mobile-wrapper .macrotema-col-1,
+    .macrotemas .macro-mobile-wrapper .macrotema-col-2,
+    .macrotemas .macro-mobile-wrapper .macrotema-col-3 {
+      width: 110px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 a,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 a,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 a {
+        width: 100%;
+        height: 110px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center; }
+        .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv p,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-1 a p,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv p,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-2 a p,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv p,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-3 a p {
+          font-size: 10px;
+          color: #303030;
+          text-align: center;
+          padding: 10px;
+          margin: 0;
+          font-weight: 600; }
+        .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv img,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-1 a img,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv img,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-2 a img,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv img,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-3 a img {
+          width: 35px;
+          display: none; }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob1,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob1,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob1 {
+        background-image: url(../images/Macrotemas/vertical/v-finan%C3%A7as.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob2,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob2,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob2 {
+        background-image: url(../images/Macrotemas/vertical/v-controladoria.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob3,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob3,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob3 {
+        background-image: url(../images/Macrotemas/vertical/v-ti.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob4,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob4,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob4 {
+        background-image: url(../images/Macrotemas/vertical/v-saude.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob5,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob5,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob5 {
+        background-image: url(../images/Macrotemas/vertical/v-historia.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob6,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob6,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob6 {
+        background-image: url(../images/Macrotemas/vertical/v-varejo.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob7,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob7,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob7 {
+        background-image: url(../images/Macrotemas/vertical/v-direito.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob8,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob8,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob8 {
+        background-image: url(../images/Macrotemas/vertical/v-marketing.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob9,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob9,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob9 {
+        background-image: url(../images/Macrotemas/vertical/v-arquitetura.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob10,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob10,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob10 {
+        background-image: url(../images/Macrotemas/vertical/v-ensino.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob11,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob11,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob11 {
+        background-image: url(../images/Macrotemas/vertical/v-hobbies.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob12,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob12,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob12 {
+        background-image: url(../images/Macrotemas/vertical/v-negocio.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob13,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob13,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob13 {
+        background-image: url(../images/Macrotemas/vertical/v-engenharia.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob14,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob14,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob14 {
+        background-image: url(../images/Macrotemas/vertical/v-concursos.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob15,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob15,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob15 {
+        background-image: url(../images/Macrotemas/vertical/v-video.svg); }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob16,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob16,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob16 {
+        background-image: url(../images/Macrotemas/vertical/v-gastro.svg); }
+  .macrotemas .macro-pc-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding: 15px; }
+    .macrotemas .macro-pc-wrapper .macro-row-1,
+    .macrotemas .macro-pc-wrapper .macro-row-2,
+    .macrotemas .macro-pc-wrapper .macro-row-3 {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row; }
+      .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc,
+      .macrotemas .macro-pc-wrapper .macro-row-1 a,
+      .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc,
+      .macrotemas .macro-pc-wrapper .macro-row-2 a,
+      .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc,
+      .macrotemas .macro-pc-wrapper .macro-row-3 a {
+        width: 100px;
+        height: 112px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin: 0 5px;
+        text-decoration: none; }
+        .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc p,
+        .macrotemas .macro-pc-wrapper .macro-row-1 a p,
+        .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc p,
+        .macrotemas .macro-pc-wrapper .macro-row-2 a p,
+        .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc p,
+        .macrotemas .macro-pc-wrapper .macro-row-3 a p {
+          font-size: 12px;
+          color: #303030;
+          text-align: center;
+          padding: 0 10px;
+          margin: 0 40px;
+          font-weight: 600; }
+        .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc img,
+        .macrotemas .macro-pc-wrapper .macro-row-1 a img,
+        .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc img,
+        .macrotemas .macro-pc-wrapper .macro-row-2 a img,
+        .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc img,
+        .macrotemas .macro-pc-wrapper .macro-row-3 a img {
+          display: none;
+          width: 40px; }
+    .macrotemas .macro-pc-wrapper .macro-row-2 {
+      margin: -10px 0; }
+    .macrotemas .macro-pc-wrapper #macro-pc1 {
+      background-image: url(../images/Macrotemas/horizontal//h-financas.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc2 {
+      background-image: url(../images/Macrotemas/horizontal/h-varejo.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc3 {
+      background-image: url(../images/Macrotemas/horizontal/h-negocio.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc4 {
+      background-image: url(../images/Macrotemas/horizontal/h-direito.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc5 {
+      background-image: url(../images/Macrotemas/horizontal/h-controladoria.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc6 {
+      background-image: url(../images/Macrotemas/horizontal/h-ti.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc7 {
+      background-image: url(../images/Macrotemas/horizontal/h-marketing.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc8 {
+      background-image: url(../images/Macrotemas/horizontal/h-engenharia.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc9 {
+      background-image: url(../images/Macrotemas/horizontal/h-concursos.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc10 {
+      background-image: url(../images/Macrotemas/horizontal/h-arquitetura.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc11 {
+      background-image: url(../images/Macrotemas/horizontal/h-saude.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc12 {
+      background-image: url(../images/Macrotemas/horizontal/h-historia.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc13 {
+      background-image: url(../images/Macrotemas/horizontal/h-ensino.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc14 {
+      background-image: url(../images/Macrotemas/horizontal/h-video.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc15 {
+      background-image: url(../images/Macrotemas/horizontal/h-gastronomia.svg); }
+    .macrotemas .macro-pc-wrapper #macro-pc16 {
+      background-image: url(../images/Macrotemas/horizontal/h-hobbies.svg); }
+      #carousel-redirect {
+        color: red;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+  .linksnav li a {
+    margin-left: 5px;
+  }
+.advantages {
+  padding: 15px; }
+  .advantages .spacer {
+    padding: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 200px; }
+    .advantages .spacer .hex-adv {
+      text-align: center; }
+  .advantages p {
+    margin: 0; }
+
   margin-top: 15px;
 }
 
@@ -849,6 +1146,7 @@ body {
   margin: 0;
 }
 
+
 .highlighted-courses {
   height: auto;
   padding: 15px
@@ -877,8 +1175,10 @@ h5 {
 .course-card {
   width: 225px;
   height: 350px;
-  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+
+  -webkit-box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+          box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+
   -webkit-transition: all 300ms ease;
   transition: all 300ms ease;
   margin: 10px 15px 10px 0px;
@@ -892,6 +1192,9 @@ h5 {
 .course-card:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
+
+
+
 }
 
 .course-card__image {
@@ -999,9 +1302,27 @@ footer {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    text-align: center;
-  }
-}
+
+    text-align: center;} }
+    
+
+    @media (max-width: 600px) {
+      .macrotema-col-1,
+      .macrotema-col-2,
+      .macrotema-col-3 {
+        width: 85px !important; }
+      .macro-indv
+    a {
+        height: 85px !important; }
+      .advantages {
+        text-align: center;
+      }
+
+      .advantages p {
+        width: 90%;
+        margin: 0 auto;
+      }
+      }
 
 @media (max-width: 480px) {
   .macrotema-col-1,
