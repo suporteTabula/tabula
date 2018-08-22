@@ -30,7 +30,8 @@
    position: absolute;
    background-color: #fff;
    min-width: 30px;
-   box-shadow: 0px 8px 30px 0px rgba(0,0,0,0.2);
+   -webkit-box-shadow: 0px 8px 30px 0px rgba(0,0,0,0.2);
+           box-shadow: 0px 8px 30px 0px rgba(0,0,0,0.2);
    padding: 30px 30px;
    z-index: 1;
 }
@@ -120,9 +121,15 @@ body {
   top: 0; }
 
   .navbar-section form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .navigation-bar a {
     display: -webkit-box;
@@ -646,6 +653,10 @@ body {
         height: 100%;
         display: block;
       }
+
+  .linksnav li a {
+    margin-left: 5px;
+  }
 .advantages {
   padding: 15px; }
   .advantages .spacer {
@@ -661,8 +672,8 @@ body {
     align-items: center;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
+    -ms-flex-direction: column;
+    flex-direction: column;
     min-height: 200px; }
     .advantages .spacer .hex-adv {
       text-align: center; }
@@ -692,7 +703,9 @@ h5 {
 .course-card {
   width: 225px;
   height: 350px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+          box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+  -webkit-transition: all 300ms ease;
   transition: all 300ms ease;
   margin: 10px 15px 10px 0px;
 }
@@ -703,7 +716,8 @@ h5 {
 }
 
 .course-card:hover {
-  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
 
 }
 
@@ -800,6 +814,24 @@ footer {
     flex-direction: column;
     text-align: center;} }
     
+
+    @media (max-width: 600px) {
+      .macrotema-col-1,
+      .macrotema-col-2,
+      .macrotema-col-3 {
+        width: 85px !important; }
+      .macro-indv
+    a {
+        height: 85px !important; }
+      .advantages {
+        text-align: center;
+      }
+
+      .advantages p {
+        width: 90%;
+        margin: 0 auto;
+      }
+      }
 @media (max-width: 480px) {
   .macrotema-col-1,
   .macrotema-col-2,
