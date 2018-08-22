@@ -4,23 +4,55 @@
         <div class="container grid-md">
             <div class="columns">
                 <div class="column col-12 col-xs-12 col-sm-12 hero-text">
-                    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false }'>
-                        <div class="carousel-cell--1"></div>
-                        <div class="carousel-cell--2"></div>
-                        <div class="carousel-cell--3"></div>
-                        <div class="carousel-cell--4"></div>
-                        <div class="carousel-cell--5"></div>
-                        <div class="carousel-cell--6"></div>
-                        <div class="carousel-cell--7"></div>
-                        <div class="carousel-cell--8"></div>
-                        <div class="carousel-cell--9"></div>
-                        <div class="carousel-cell--10"></div>
-                        <div class="carousel-cell--11"></div>
-                        <div class="carousel-cell--12"></div>
-                        <div class="carousel-cell--13"></div>
-                        <div class="carousel-cell--14"></div>
-                        <div class="carousel-cell--15"></div>
-                        <div class="carousel-cell--16"></div>
+                    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false, "draggable": false}'>
+                        <div class="carousel-cell--1">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--2">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--3">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--4">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--5">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--6">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--7">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--8">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--9">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--10">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--11">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--12">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--13">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--14">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--15">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
+                        <div class="carousel-cell--16">
+                            <a id="carousel-redirect" href="#"></a>
+                        </div>
                     </div>
                 </div>
             </div>
