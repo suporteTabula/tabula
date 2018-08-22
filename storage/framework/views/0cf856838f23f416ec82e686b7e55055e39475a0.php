@@ -94,7 +94,9 @@
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
                         <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
+
                             <p>Para os alunos, há a disponibilidade de aprender e assistir aulas dos mais variados temas no tempo que quiser e ainda receber um certificado de conclusão. Já aos professores, oferecemos a assessoria e suporte necessários, com salas,  gravação das video-aulas e a edição destas, da maneira que preferir.</p>
+
                         </div>
                     </div>
                 </div>
