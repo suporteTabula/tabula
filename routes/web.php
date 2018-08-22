@@ -33,7 +33,7 @@ Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIn
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
 
 
-Route::get('cart', 'CartController@cart')->name('cart');
+
 
 
 
@@ -64,6 +64,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/nota', 'NotasController@index')->name('nota');
 
 	Route::get('admin/reports', 'AdminCoursesController@index')->name('reports');
+	Route::get('/cart', 'CartController@cart')->name('cart');
+	
 	
 
 

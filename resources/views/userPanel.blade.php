@@ -12,20 +12,22 @@
                 <div class="column col-10 resumee-inner">
                     <div class="columns">
                           <form action="http://localhost:8000/userPanel" method="post" enctype="multipart/form-data">
-  
-                                              
+                            <input class="form-control" type="file" name="img">    
+                            <input type="submit" name="enviar">                                     
                           
                                 <div class="column col-12">
-                                <div class="user-face" style="background-image: url(../images/avatar-1.png);"></div> <span>{{ $user->first_name}} {{ $user->last_name }}</span> 
-                                <input class="form-control" type="file" name="thumb_img">
+                                <div class="user-face" style="background-image: url(../images/capaprofile.jpg);"> {{ $user->avatar}}</div> <span>{{ $user->first_name}} {{ $user->last_name }}</span> 
+                           </form>     
+                                
 
-                                <button class="btn" type="submit">Criar</button>
+
+                                
                                           
                                 
-                                 </div>
+                         </div>
                     </div>
                 </div>
-               </form> 
+            
             
                 <div class="column col-1"></div>
             </div>
@@ -125,6 +127,11 @@
                                         <br>
                                         <label for="google_plus"><b>Google +</b></label>
                                         <input class="form-control" type="text" name="google_plus" placeholder="https://..." value="{{ $user->google_plus }}"></div>
+                                        <label for="avatar"><b>Avatar</b></label>
+                                        <input class="form-control" type="file" name="Avatar" placeholder="Sua foto" value="{{ $user->avatar}}"> 
+                                        <input type="submit" name="enviar"> 
+                                        <br>
+                                        <br>
                                 </div>
                             </div>
                         </form>
