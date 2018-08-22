@@ -24,4 +24,5 @@ public function todosProfs()
 {
 	return view ('todosProfs');
 }
+
 }
