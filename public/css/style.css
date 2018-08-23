@@ -170,7 +170,7 @@ body {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-
+  }
 .navigation-bar a {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -769,10 +769,11 @@ body {
     .advantages .spacer .hex-adv {
       text-align: center; }
   .advantages p {
-    margin: 0; }
+    margin: 0;
+    margin-top: 15px; }
 
-  margin-top: 15px;
-}
+  
+
 
 .macrotemas .columns {
   -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);

@@ -62,9 +62,11 @@
                                 <div class="icon-open"></div>
                                 <div class="icon-closed"></div>
                             </div>
-                         @else
-                        <li><a href="{{ route('register') }}">Cadastre-se</a></li>
-                        <li><a href="{{ route('login') }}">Login</a></li> @endauth </ul>
+                        @else
+                            <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                            <li><a href="{{ route('login') }}">Login</a></li> 
+                        @endauth 
+                        </ul>
 
                         <ul class="show-sm">
                         <li><a href="/userPanel"><img class="avatar" src="../images/avatar-1.png"></a></li>
