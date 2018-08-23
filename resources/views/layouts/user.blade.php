@@ -56,27 +56,22 @@
                     </section>
                 </div>
                 <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
-                    <a href="/userPanel">
-                        <img class="avatar" src="../images/avatar-1.png">
-                    </a>
-                    <ul class="show-sm">
-                        <li> 
+                        <ul class="hide-sm">  
+                        @auth
                             <div class="menu-icon">
                                 <div class="icon-open"></div>
                                 <div class="icon-closed"></div>
                             </div>
-                        </li>
-                        @auth
-                        
-                        @else
-                        
-                        @endauth 
-                    </ul>
-                    <ul class="hide-sm">
+                         @else
+                        <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li> @endauth </ul>
+
+                        <ul class="show-sm">
+                        <li><a href="/userPanel"><img class="avatar" src="../images/avatar-1.png"></a></li>
                         <li><a href="/">Início</a></li>
                         <li><a href="/cart">Cart</a></li>
                         <li><a href="/todosProfs">Professores</a></li>
-                        <li><a href="/logout">Sair</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
                     </ul>
                     
                 </div>
