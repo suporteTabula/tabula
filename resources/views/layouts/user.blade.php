@@ -37,15 +37,15 @@
     <section class="navigation-bar">
         <div class="container grid-md">
             <div class="columns">
-                <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-2 col-lg-2 col-xl-2">
+                <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-3 col-lg-3 col-xl-2">
                     <div class="dropdown">
-                    <span><a href="{{ url('/') }}"><img align="center" src="../images/layout/header/logo.png" height="30px"> </a></span>
+                    <span><a href="{{ url('/') }}"><img align="center" src="images/layout/header/logo.png" height="30px"> </a></span>
                     <div class="dropdown-content">
                     <a href="/homeEmpresa"> <img src="../images/layout/header/sp.jpg" height="25px"></a>
                     </div>
                     </div>
                 </div>
-                <div class="nav-search col-6 col-md-4 col-lg-5 col-xl-5 hide-xs hide-sm">
+                <div class="nav-search col-6 col-md-4 col-lg-5 col-xl-6 hide-xs hide-sm">
                     <section class="navbar-section">
                         <div class="input-group input-inline">
                             <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
@@ -55,32 +55,25 @@
                         </div>
                     </section>
                 </div>
-
-                <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-6 col-lg-5 col-xl-5">
-                    
-
-                    <ul class="show-sm">
-                        <li> 
+                <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
+                        <ul class="hide-sm">  
+                        @auth
                             <div class="menu-icon">
                                 <div class="icon-open"></div>
                                 <div class="icon-closed"></div>
                             </div>
-                        </li>
-                        @auth
-                        
-                        @else
-                        
-                        @endauth 
-                    </ul>
-                    <ul class="hide-sm linksnav">
+                         @else
+                        <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li> @endauth </ul>
+
+                        <ul class="show-sm">
+                        <li><a href="/userPanel"><img class="avatar" src="../images/avatar-1.png"></a></li>
                         <li><a href="/">Início</a></li>
                         <li><a href="/cart">Cart</a></li>
                         <li><a href="/todosProfs">Professores</a></li>
-                        <li><a href="/logout">Sair</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
                     </ul>
-                    <a href="/userPanel">
-                        <img class="avatar" src="../images/avatar-1.png">
-                    </a>
+                    
                 </div>
             </div>
             <section style="width: 100%;">
