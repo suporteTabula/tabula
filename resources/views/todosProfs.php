@@ -47,7 +47,7 @@
                         <li><a class="text-rose" href="/">Início</a></li>
                         <li><a class="text-rose" href="/Cart">Cart</a></li>
                         <li><a class="text-rose" href="/todosProfs">Professores</a></li>
-                        <li><a class="text-rose" href="/logout">Sair</a></li>
+                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
 
                     </ul> <img class="avatar" src="images/avatar-1.png" width="35px;"> </div>
             </div>
