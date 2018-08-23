@@ -169,7 +169,7 @@ body {
             justify-content: center;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center;
+            align-items: center;}
 
 .navigation-bar a {
   display: -webkit-box;
@@ -769,8 +769,7 @@ body {
     .advantages .spacer .hex-adv {
       text-align: center; }
   .advantages p {
-    margin: 0; }
-
+    margin: 0; 
   margin-top: 15px;
 }
 
