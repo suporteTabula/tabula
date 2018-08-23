@@ -4,7 +4,8 @@
 }
 
 .card-js .cvc-wrapper {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin-left: 5px;
 }
 .card-js .cvc-wrapper .cvc {
