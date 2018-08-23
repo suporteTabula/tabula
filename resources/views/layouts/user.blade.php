@@ -57,23 +57,28 @@
                 </div>
                 <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
                         <ul class="hide-sm">  
-                        @auth
-                            <div class="menu-icon">
-                                <div class="icon-open"></div>
-                                <div class="icon-closed"></div>
-                            </div>
-                        @else
-                            <li><a href="{{ route('register') }}">Cadastre-se</a></li>
-                            <li><a href="{{ route('login') }}">Login</a></li> 
-                        @endauth 
-                        </ul>
-
+                            <li>
+                                <div class="menu-icon">
+                                    <div class="icon-open"></div>
+                                    <div class="icon-closed"></div>
+                                </div>
+                             </li>    
+                             @auth
+                                @else
+                                    <li><a href="{{ route('register') }}">Cadastre-se</a></li>
+                                    <li><a href="{{ route('login') }}">Login</a></li> 
+                                    <li><a href="/">Início</a></li>
+                                    <li><a href="/todosProfs">Professores</a></li>  
+                             @endauth  
+                         </ul>
+                       
                         <ul class="show-sm">
-                        <li><a href="/userPanel"><img class="avatar" src="../images/avatar-1.png"></a></li>
+                           
                         <li><a href="/">Início</a></li>
                         <li><a href="/cart">Cart</a></li>
                         <li><a href="/todosProfs">Professores</a></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
+                       
                     </ul>
                     
                 </div>
@@ -86,7 +91,7 @@
                                 @auth
                                 <li><a href="{{ route('userPanel.single') }}">Painel</a></li>
                                 <li><a href="{{ route('cart') }}">Cart</a></li>
-                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form> @else
                                 <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
                                     <input style="border: 1px solid white" class="button-tabula-white" name="search_string" type="text" placeholder="Digite sua busca.">
@@ -95,11 +100,8 @@
                                 <li><a href="{{ route('register') }}">Cadastre-se</a></li>
                                 <li><a href="{{ route('login') }}">Login</a></li>
                                 <li><a href="{{ route('register') }}">Perfil</a></li>
-                                <li><a href="{{ route('register') }}">Carrinho</a></li>
-                                <li><a href="{{ route('register') }}">Cursos</a></li>
-                                <li><a href="{{ route('register') }}">Compras</a></li>
-                                <li><a href="{{ route('register') }}">Cursos Lecionados</a></li>
-                                <li><a href="{{ route('register') }}">Logout</a></li> 
+                                <li><a href="/todosProfs">Professores</a></li>
+                                
                                  @endauth
                             </ul>
                         </div>
