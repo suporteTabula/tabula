@@ -73,7 +73,7 @@ body {
 
 .offscreen-menu input {
   width: 80%;
-  margin: 0 auto;
+  margin: 10px auto;
   text-align: center;
 }
 
@@ -88,20 +88,45 @@ body {
 .offscreen-menu ul {
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .offscreen-menu ul li {
   list-style: none;
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
 }
 
+.menu-mob button {
+  margin-bottom: 15px;
+}
+
+.menu-mob form {
+  width: 100%;
+}
 .offscreen-menu ul li a {
   color: #fff;
+  text-align: center;
+  margin: 0;
 }
 
 .offscreen-menu ul li:last-child {
   text-align: center;
 }
 
+.menu-mob {
+  width: 100%;
+}
 .offscreen-menu ul li:last-child button {
   text-align: right;
   background-color: #fff;
