@@ -23,15 +23,11 @@
             <div class="columns">
                 <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-3 col-lg-3 col-xl-2">
                     <div class="dropdown">
-<<<<<<< HEAD
+
                     <span><a href="/"><img align="center" src="images/layout/header/logo.png" height="30px"> </a></span>
                     <div class="dropdown-content">
                     <a href="/homeEmpresa"> <img src="images/layout/header/sp.jpg" height="25px"></a>
-=======
-                    <span><a href="/home1"><img align="center" src="images/layout/header/logo.png" height="30px"> </a></span>
-                    <div class="dropdown-content">
-                    <a href="/"> <img src="images/layout/header/sp.jpg" height="25px"></a>
->>>>>>> navbar
+
                     </div>
                     </div>
                 </div>
@@ -87,7 +83,7 @@
         <div class="container grid-md"> 
             <div class="teachers-wrapper">
             <div class="teacher-photo-wrapper"> 
-                <a href="#"> 
+                <a href="/professor"> 
                     <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
                     <div class="teacher-description">
                         <p>Nome do professor</p>
@@ -95,7 +91,7 @@
                 </a>
             </div>
             <div class="teacher-photo-wrapper"> 
-                <a href="#"> 
+                <a href="/professor"> 
                     <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
                     <div class="teacher-description">
                         <p>Nome do professor</p>
