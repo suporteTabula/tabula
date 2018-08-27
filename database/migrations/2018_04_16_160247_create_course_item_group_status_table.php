@@ -15,7 +15,7 @@ class CreateCourseItemGroupStatusTable extends Migration
     {
         Schema::create('course_item_group_status', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('desc');
+            $table->longtext('desc');
             $table->timestamps();
         });
     }

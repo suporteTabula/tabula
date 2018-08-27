@@ -17,7 +17,7 @@ class CreateCourseItemUserTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('course_item_id');
-            $table->string('desc')->nullable();
+            $table->longtext('desc')->nullable();
             $table->integer('course_item_status_id');
             $table->timestamps();
         }); 
