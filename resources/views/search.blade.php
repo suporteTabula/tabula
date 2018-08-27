@@ -9,9 +9,17 @@
         <div class="container grid-lg">
             <div class="columns ">
                 <div class="column col-12 side-search">
-                    <input id="input-main" type="text" class="button-tabula" placeholder="Digite sua busca.">
-                    <div class="divider text-center" data-content="Busca Avançada"></div>
-                    <div class="columns">
+                   
+                    <section class="navbar-section">
+                        <div class="input-group input-inline">
+                            <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
+                                <input class="button-tabula-white" name="search_string" type="text" placeholder="Digite sua busca.">
+                                <button class="button-tabula-gray" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </section>
+
+
                         <div class="column col-6 col-xs-12 col-sm-12">
 
 
