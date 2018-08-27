@@ -16,9 +16,10 @@ class CreateCourseItemOptionsTable extends Migration
         Schema::create('course_item_options', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('course_items_id');
-            $table->string('desc');
+            $table->longtext('desc');
             $table->integer('checked');
             $table->timestamps();
+            
         });
     }
 

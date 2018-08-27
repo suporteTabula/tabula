@@ -35,7 +35,6 @@ body {
   margin-left: 16px;
   display: none;
   -webkit-transition: all 200ms;
-  -o-transition: all 200ms;
   transition: all 200ms; }
 
 .macro-main__checkbox--financas:checked ~ .macro-sub--financas {
@@ -90,7 +89,6 @@ body {
   padding: 15px; }
   .course-gallery .container .columns .course-item:hover {
     -webkit-transform: scale(1.05);
-    -ms-transform: scale(1.05);
     transform: scale(1.05);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden; }
@@ -98,7 +96,6 @@ body {
     padding: 15px;
     cursor: crosshair;
     -webkit-transition: 200ms;
-    -o-transition: 200ms;
     transition: 200ms; }
     .course-gallery .container .columns .course-item .columns .course-image {
       height: 150px;

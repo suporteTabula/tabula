@@ -15,10 +15,10 @@ class CreateCourseItemGroupsTable extends Migration
     {
         Schema::create('course_item_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 255);
-            $table->string('desc', 255);
+            $table->longtext('name');
+            $table->longtext('desc');
             $table->integer('course_id');
-            $table->integer('order');
+            $table->longtext('order');
             $table->timestamps();
         });
     }

@@ -3,7 +3,8 @@
   float: left;
 }
 .card-js .expiry-wrapper {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin-right: 5px;
 }
 .card-js .expiry-wrapper .expiry {
