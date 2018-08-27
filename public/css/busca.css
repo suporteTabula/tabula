@@ -11,6 +11,21 @@ body {
   margin: 5px;
   padding: 0; }
 
+.side-search form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-search input {
+  display: flex;
+  flex-grow: 1;
+}
+
+.side-search input:hover {
+  background-color: #fff;
+}
+
 .macro-main label {
   font-weight: 700;
   color: #303030; }

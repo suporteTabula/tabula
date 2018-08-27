@@ -9,15 +9,10 @@
         <div class="container grid-lg">
             <div class="columns ">
                 <div class="column col-12 side-search">
-                   
-                    <section class="navbar-section">
-                        <div class="input-group input-inline">
-                            <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
-                                <input class="button-tabula-white" name="search_string" type="text" placeholder="Digite sua busca.">
-                                <button class="button-tabula-gray" type="submit">Buscar</button>
-                            </form>
-                        </div>
-                    </section>
+                    <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
+                        <input class="button-tabula-white" name="search_string" type="text" placeholder="Digite sua busca.">
+                        <button class="button-tabula-gray" type="submit">Buscar</button>
+                    </form>
                 </div>
 
 
@@ -424,7 +419,7 @@
             </div>
         </div>
     </section>
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
     </section>   
     @section('scripts')
         <script>
