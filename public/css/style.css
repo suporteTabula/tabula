@@ -1197,6 +1197,7 @@ body {
 
 h5 {
   padding-left: 8px;
+  color: #303030
 }
 
 .course-card {
@@ -1268,7 +1269,7 @@ h5 {
 }
 
 .about {
-  padding: 15px;
+  padding-bottom: 15px;
 }
 
 .about video {

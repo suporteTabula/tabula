@@ -190,20 +190,14 @@
         contain: true
     });
     </script>
-
     <section class="about">
-
-        <section class="about">
 
         <div class="container grid-md">
             <div class="columns spacer-2">
-                <div class="column col-8 col-xs-12 col-sm-12 col-md-12"> 
+                <div class="column col-12"> 
                     <video controls poster="../images/layout/home/poster-video.PNG" width="500px">
                         <source src="../images/layout/home/presentation-tabula.mp4">
                     </video>
-                </div>
-                <div class="about-text column col-4 col-xs-12 col-sm-12 col-md-12">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti corporis, sed aperiam! Eum quae assumenda, optio suscipit fugiat facilis minima eos doloremque nostrum, modi quis est repudiandae eveniet tempora sapiente nihil. Quo enim animi accusantium, id sint doloribus obcaecati nulla beatae rerum vero dolore culpa unde delectus at. Voluptate, ex.</p>
                 </div>
             </div>
         </div>
@@ -225,7 +219,7 @@
 
     @section('scripts')
         <script src="{{ asset('js/clamp.min.js') }}"></script>
-        u
+        
         <script>
             var title = document.getElementsByClassName("lineclamp-title");
             var desc = document.getElementsByClassName("lineclamp-desc");
