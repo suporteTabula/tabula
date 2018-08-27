@@ -15,7 +15,7 @@ class CreateCourseItemTypesTable extends Migration
     {
         Schema::create('course_item_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 45);
+            $table->longtext('name');
             $table->timestamps();
         });
     }
