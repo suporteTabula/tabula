@@ -5,10 +5,7 @@
                 <div class="column col-12 col-xs-12 col-sm-12 hero-text">
                     <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false, "draggable": false}'>
                         <div class="carousel-cell--1">
-
                             <a id="carousel-redirect" href="/search/1"></a>
-
-
                         </div>
                         <div class="carousel-cell--2">
                             <a id="carousel-redirect" href="/search/2"></a>
