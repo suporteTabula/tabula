@@ -27,10 +27,13 @@ Route::get('/', function () {
 
 Route::get('/', 'HomeController@index')->name('index.single');
 Route::get('/todosProfs', 'Controller@todosProfs')->name('todosProfs');
+Route::get('/professor', 'profController@professor')->name('professor');
 Route::get('/homeEmpresa', ['uses' => 'Controller@HomeEmpresa']);
 
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
+
+
 
 
 

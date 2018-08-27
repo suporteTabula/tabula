@@ -6,52 +6,52 @@
                 <div class="column col-12 col-xs-12 col-sm-12 hero-text">
                     <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false, "draggable": false}'>
                         <div class="carousel-cell--1">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/1"></a>
                         </div>
                         <div class="carousel-cell--2">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/2"></a>
                         </div>
                         <div class="carousel-cell--3">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/3"></a>
                         </div>
                         <div class="carousel-cell--4">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/4"></a>
                         </div>
                         <div class="carousel-cell--5">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/5"></a>
                         </div>
                         <div class="carousel-cell--6">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/6"></a>
                         </div>
                         <div class="carousel-cell--7">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/7"></a>
                         </div>
                         <div class="carousel-cell--8">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/8"></a>
                         </div>
                         <div class="carousel-cell--9">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/9"></a>
                         </div>
                         <div class="carousel-cell--10">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/10"></a>
                         </div>
                         <div class="carousel-cell--11">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/11"></a>
                         </div>
                         <div class="carousel-cell--12">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/12"></a>
                         </div>
                         <div class="carousel-cell--13">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/13"></a>
                         </div>
                         <div class="carousel-cell--14">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/14"></a>
                         </div>
                         <div class="carousel-cell--15">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/15"></a>
                         </div>
                         <div class="carousel-cell--16">
-                            <a id="carousel-redirect" href="#"></a>
+                            <a id="carousel-redirect" href="/search/16"></a>
                         </div>
                     </div>
                 </div>
