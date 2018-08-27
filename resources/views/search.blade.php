@@ -18,6 +18,7 @@
                             </form>
                         </div>
                     </section>
+                </div>
 
 
                         <div class="column col-6 col-xs-12 col-sm-12">
