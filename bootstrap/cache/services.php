@@ -24,7 +24,7 @@
     20 => 'Illuminate\\Validation\\ValidationServiceProvider',
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-<<<<<<< Updated upstream
+
 
     23 => 'Laravel\\Tinker\\TinkerServiceProvider',
     24 => 'Carbon\\Laravel\\ServiceProvider',
@@ -35,11 +35,11 @@
     24 => 'Laravel\\Tinker\\TinkerServiceProvider',
     25 => 'Carbon\\Laravel\\ServiceProvider',
 
-=======
+
     23 => 'Laravel\\Tinker\\TinkerServiceProvider',
     24 => 'Carbon\\Laravel\\ServiceProvider',
     25 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
->>>>>>> Stashed changes
+
     26 => 'App\\Providers\\AppServiceProvider',
     27 => 'App\\Providers\\AuthServiceProvider',
     28 => 'App\\Providers\\EventServiceProvider',
@@ -65,7 +65,7 @@
     8 => 'Illuminate\\Session\\SessionServiceProvider',
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-<<<<<<< Updated upstream
+
 
     11 => 'Carbon\\Laravel\\ServiceProvider',
     12 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
@@ -74,10 +74,7 @@
     11 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
     12 => 'Carbon\\Laravel\\ServiceProvider',
 
-=======
-    11 => 'Carbon\\Laravel\\ServiceProvider',
-    12 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
->>>>>>> Stashed changes
+
     13 => 'App\\Providers\\AppServiceProvider',
     14 => 'App\\Providers\\AuthServiceProvider',
     15 => 'App\\Providers\\EventServiceProvider',
