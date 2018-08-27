@@ -64,10 +64,11 @@
                                 </div>
                              </li>    
                              @auth
+                                <li class ="hide-md"><a href=""{{ route('userPanel.single') }}"><img class="avatar" src="images/avatar-1.png"></a>
                                 <li class="hide-md"><a href="/todosProfs">Professores</a></li> 
                                 <li class="hide-md"><a href="{{ route('userPanel.single') }}">Painel</a></li>
                                 <li class="hide-md"><a href="{{ route('cart') }}">Carrinho</a></li>
-                                <li class="hide-md"><a href="{{ route('logout') }}">Sair</a></li>
+                                <li class= "hide-md"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
                                 @else
                                 <li class="hide-md"><a href="/">Início</a></li>
                                 <li class="hide-md"><a href="/todosProfs">Professores</a></li> 
