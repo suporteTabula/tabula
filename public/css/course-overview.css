@@ -133,8 +133,13 @@ body {
     width: 60px;
     z-index: 600; }
 
+.accordion-header {
+  font-weight: bold;
+}
+
 .will-learn {
-  margin-top: 30px; }
+  margin-top: 30px;
+color: #303030 }
   .will-learn h4 {
     margin: 0;
     padding: 0; }
@@ -147,9 +152,14 @@ details #accbody {
   margin: 0;
   padding-left: 45px; }
 
+  #accbody-content {
+    color: #505050;
+  }
+
   .custom-tabula-button {
     padding: 10px;
     background-color: #303030;
+    font-size: 14px;
   }
 
   .start-course a, .start-course a:visited {
