@@ -132,7 +132,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         if (Session::has('success')) toastr.success("{{ Session::get('success') }}")@ endif@
-        if (Session::has('info')) toastr.info("{{ Session::get('info') }}")@ endif
+        if (Session::has('info')) toastr.info("{{ Session::get('info') }}")@ endif@
     </script> @yield('scripts') 
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     </body>
