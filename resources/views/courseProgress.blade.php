@@ -44,10 +44,10 @@
                                         @endforeach
                                         <input type="submit" name="next" id="next" value="Enviar avaliação">
                                     </form>
-                                @else
+                                @else                                    
                                     {{ $item->desc }}
-                                    @if (!is_null($item->path))
-                                        <img src="{{ asset($item->path) }}">
+                                    @if (!is_null($item->embed))
+                                        {!! $item->embed !!}
                                     @endif
                                     @foreach ($item->item_child as $child)
                                         {{ $child->id }}

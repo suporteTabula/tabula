@@ -13,49 +13,14 @@ use App\CourseItemType;
 use App\CourseItemGroup;
 use App\CourseItem;
 use App\CourseItemOption;
+use App\CustomClasses\vimeo_tools;
+use Log;
+use Storage;
 use Illuminate\Support\Facades\DB;
-use Vimeo\Vimeo;
-use Vimeo\Exceptions\VimeoUploadException;
+
 
 class AdminCoursesController extends Controller
-{
-	/**
-	* Deal with the Vimeo API
-	*
-	* We need to check a bunch of settings and then attempt the upload. We should return the URL of the video
-	* @param string $videoPath
-	* @return string $vimeoPath
-	*/
-	public function vimeo_upload($videoPath)
-	{		
-		if (empty(env('VIMEO_TOKEN', 'default'))) {
-			throw new Exception(
-				'You can not upload a file without an access token. You can find this token on your app page, or generate ' .
-				'one using `auth.php`.'
-			);
-		}
-		$lib = new Vimeo(env('VIMEO_CLIENT_ID', 'default'), env('VIMEO_CLIENT_SECRET', 'default'), env('VIMEO_TOKEN', 'default'));
-		$file_name = $videoPath;
-		try {
-			// Upload the file and include the video title and description.
-			$uri = $lib->upload($file_name, array(
-				'name' => 'Vimeo API SDK test upload',
-				'description' => "This video was uploaded through the Vimeo API's PHP SDK."
-			));
-			// Get the metadata response from the upload and log out the Vimeo.com url
-			$video_data = $lib->request($uri . '?fields=link');
-			echo '"' . $file_name . ' has been uploaded to ' . $video_data['body']['link'] . "\n";
-		}
-		catch (VimeoUploadException $e) {
-			// We may have had an error. We can't resolve it here necessarily, so report it to the user.
-			echo 'Error uploading ' . $file_name . "\n";
-			echo 'Server reported: ' . $e->getMessage() . "\n";
-		} catch (VimeoRequestException $e) {
-			echo 'There was an error making the request.' . "\n";
-			echo 'Server reported: ' . $e->getMessage() . "\n";
-		}
-	}
-	
+{	    
     /**
      * Display a listing of the resource.
      *
@@ -362,8 +327,7 @@ class AdminCoursesController extends Controller
     {
         $this->validate($request, [
             'name'          => 'required'
-        ]);
-
+        ]);        
         $item = new CourseItem;
         
         $item->name                     = $request->name;
@@ -378,10 +342,14 @@ class AdminCoursesController extends Controller
             $attach = $request->archive;
             $attach_new_name = time().$attach->getClientOriginalName();
             $attach->move('uploads/archives', $attach_new_name); 
-            $item->path = 'uploads/archives/'. $attach_new_name;   
-			if($request->vimeo == 1){
-				$vimeo_result = $this->vimeo_upload($item->path);
-			}			
+            $new_path = 'uploads/archives/'. $attach_new_name;
+            if($request->vimeo == 1){                
+                $vimeo_result = vimeo_tools::Upload_Video($new_path,$item);                
+                $item->path = $vimeo_result;
+            }
+            else {                
+                $item->path = 'uploads/archives/'. $new_path;       
+            }
         }
 
         $order = DB::table('course_items')
@@ -415,7 +383,14 @@ class AdminCoursesController extends Controller
             $attach = $request->archive;
             $attach_new_name = time().$attach->getClientOriginalName();
             $attach->move('uploads/archives', $attach_new_name); 
-            $item->path = 'uploads/archives/'. $attach_new_name;     
+            $new_path = 'uploads/archives/'. $attach_new_name;
+           if($request->vimeo == 1){
+                $vimeo_result = $this->vimeo_upload($new_path,$item);
+                $item->path = $vimeo_result;
+            }
+            else {                
+                $item->path = 'uploads/archives/'. $new_path;       
+            }
         }
 
         $order = DB::table('course_items')
@@ -450,9 +425,14 @@ class AdminCoursesController extends Controller
         }
         else
         {
+            $items = CourseItem::all();
+            if(strpos('vimeo',$item->path)){
+                //this is a vimeo url, say so
+                $item = vimeo_tools::parse_for_urls($items);
+            }
             return view('admin.courses.item')
                     ->with('item', $item)
-                    ->with('items', CourseItem::all())
+                    ->with('items', $items)
                     ->with('chapter', $chapter)    
                     ->with('items_type', CourseItemType::all());
         }        
@@ -475,14 +455,26 @@ class AdminCoursesController extends Controller
         ]);
 
         if($request->hasFile('archive'))
-        {
+        {            
+            $old_itemPath = $item->path;
             $attach = $request->archive;
             $attach_new_name = time().$attach->getClientOriginalName();
             $attach->move('uploads/archives', $attach_new_name); 
-            $item->path = 'uploads/archives/'. $attach_new_name;
-			if($request->vimeo == 1){
-				$vimeo_result = $this->vimeo_upload($item->path);
-			}
+            $new_path = 'uploads/archives/'. $attach_new_name;
+            if($old_itemPath.contains('vimeo')){            
+                $vimeo_result = vimeo_tools::vimeo_edit($new_path,$item,$old_itemPath);                
+                $item->path = $vimeo_result;
+            }
+            else {
+                
+                $item->path = 'uploads/archives/'. $new_path;       
+            }
+        }
+        else {
+            if($item->path != '' && $item->path.contains('vimeo'))
+            {
+                $vimeo_result = vimeo_delete($item->path);
+            }
         }
         $item->name                 = $request->name;
         $item->desc                 = $request->desc;
@@ -512,6 +504,11 @@ class AdminCoursesController extends Controller
         
         $item->item_child()->forceDelete();
         
+        if(strpos($item->path,"vimeo"))
+        {
+            vimeo_tools::vimeo_delete($item);
+        }
+
         if(file_exists($item->path))
         {
             unlink(public_path().'/'. $item->path);

@@ -40,6 +40,8 @@
 
 				<div id="arquivo">
 					<div class="form-group">
+						<label for="path">Caminho atual</label>
+						<input class="form-control" type="text" value="{{ $item->path }}" name="path">
 						<label for="desc">Adicionar Arquivo</label>
 						<input class="form-control" type="file" name="archive">
 					</div>

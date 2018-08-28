@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\DB;
 use App\CourseItemOption;
 use App\CourseItemGroup;
 use App\CourseItemStatus;
+use App\CustomClasses\vimeo_tools;
 use App\User;
+use Log;
 
 class CoursesController extends Controller
 {
@@ -69,21 +71,27 @@ class CoursesController extends Controller
             $count[$chap->id] = count($chap->course_items);
             
         }
-        //$done = user->items()->wherePivot('course_item_status_id','1')->get();
+        $done = $user->items()->wherePivot('course_item_status_id','1')->get();
+        
         //dd($done->all());
         return view('courseProgress')
             ->with('users', $user)
             ->with('chapters', $chapter);
-            //->with('items', $item);
+            //->with('items', $items);
     }
 
     public function course_progress($id)
     {
         $item = CourseItem::find($id);
         $items = CourseItem::where('id', $id)->get(); 
+
+        $items = vimeo_tools::parse_for_urls($items);        
+
         $user = Auth::user();
         $id_course = $item->course_item_group->course_id;
         $chapter = CourseItemGroup::where('course_id', $id_course)->get();
+
+        
 
         return view('courseProgress')
             ->with('users', $user)

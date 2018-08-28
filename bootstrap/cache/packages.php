@@ -1,9 +1,27 @@
 <?php return array (
-  'nesbot/carbon' => 
+  'laravel/tinker' => 
   array (
     'providers' => 
     array (
-      0 => 'Carbon\\Laravel\\ServiceProvider',
+      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    ),
+  ),
+  'fideloper/proxy' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    ),
+  ),
+  'vimeo/laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Vimeo\\Laravel\\VimeoServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Vimeo' => 'Vimeo\\Laravel\\Facades\\Vimeo',
     ),
   ),
   'pbmedia/laravel-ffmpeg' => 
@@ -17,29 +35,15 @@
       'FFMpeg' => 'Pbmedia\\LaravelFFMpeg\\FFMpegFacade',
     ),
   ),
-  'fideloper/proxy' => 
+  'ixudra/curl' => 
   array (
     'providers' => 
     array (
-      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    ),
-  ),
-  'laravel/tinker' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    ),
-  ),
-  'vimeo/laravel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Vinkla\\Vimeo\\VimeoServiceProvider',
+      0 => 'Ixudra\\Curl\\CurlServiceProvider',
     ),
     'aliases' => 
     array (
-      'Vimeo' => 'Vinkla\\Vimeo\\Facades\\Vimeo',
+      'Curl' => 'Ixudra\\Curl\\Facades\\Curl',
     ),
   ),
 );
