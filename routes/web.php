@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index.single');
 
+// ROTA USADA PARA TESTES DA INTEGRAÇÃO DA YAPAY
+Route::get('test', 'TestController@intermediadorPagamentoCartaoCredito')->name('test.single');
+
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
 
