@@ -44,16 +44,21 @@
                                         @endforeach
                                         <input type="submit" name="next" id="next" value="Enviar avaliação">
                                     </form>
-                                @else                                    
-                                    {{ $item->desc }}
-                                    @if (!is_null($item->embed))
-                                        {!! $item->embed !!}
-                                    @endif
-                                    @foreach ($item->item_child as $child)
-                                        {{ $child->id }}
-                                    @endforeach
-
-                                    
+                                @else 
+                                    @if ($item->course_item_types == 1)                                   
+                                        {{ $item->desc }}
+                                        @if (!is_null($item->embed))
+                                            {!! $item->embed !!}
+                                        @else
+                                            <video controls>
+                                                <source src="{!! $item->path !!}" type="video/mp4">
+                                                    Your browser does not support html5 videos
+                                            </video>
+                                        @endif
+                                        @foreach ($item->item_child as $child)
+                                            {{ $child->id }}
+                                        @endforeach
+                                    @endif                                    
                                     <form action="{{ route('course.start', ['id' => $item->course_item_group->course_id]) }}" method="get" enctype="multipart/form-data">
                                         {{ csrf_field() }}
 

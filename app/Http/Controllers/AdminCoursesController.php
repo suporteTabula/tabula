@@ -348,7 +348,7 @@ class AdminCoursesController extends Controller
                 $item->path = $vimeo_result;
             }
             else {                
-                $item->path = 'uploads/archives/'. $new_path;       
+                $item->path = $new_path;       
             }
         }
 
@@ -389,7 +389,7 @@ class AdminCoursesController extends Controller
                 $item->path = $vimeo_result;
             }
             else {                
-                $item->path = 'uploads/archives/'. $new_path;       
+                $item->path = $new_path;       
             }
         }
 

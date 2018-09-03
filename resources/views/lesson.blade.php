@@ -32,15 +32,23 @@
                     <input type="submit" name="next" id="next" value="Enviar avaliação">
                 </form>
             @else
+             @if ($item->course_item_types_id == 1)                                   
                 {{ $item->desc }}
-                @if (!is_null($item->path))
-                    <img src="{{ asset($item->path) }}">
+                @if (!is_null($item->embed))
+                    <span>{!! $item->embed !!}</span>
                 @endif
                 @foreach ($item->item_child as $child)
                     {{ $child->id }}
                 @endforeach
-
-                
+            @else
+                {{ $item->desc }}
+                @if (!is_null($item->path))
+                    <img src="{{ asset($item->path) }}" id="{{ $item->id }}">
+                @endif
+                @foreach ($item->item_child as $child)
+                    {{ $child->id }}
+                @endforeach
+            @endif                
                 <form action="{{ route('course.start', ['id' => $item->course_item_group->course_id]) }}" method="get" enctype="multipart/form-data">
                     {{ csrf_field() }}
 

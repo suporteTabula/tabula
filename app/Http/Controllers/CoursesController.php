@@ -103,6 +103,8 @@ class CoursesController extends Controller
     public function lesson(Request $request)
     { 
         $item = CourseItem::where('id', $request->item_id)->get();  
+        
+        $item = vimeo_tools::parse_for_urls($item); 
 
         return view('lesson')
             ->with('items', $item);

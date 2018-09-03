@@ -85,8 +85,9 @@ class vimeo_tools
                 $item->embed = vimeo_tools::Get_Vimeo_Embed($item);
             }
             else{
-                $item->embed = 'non-vimeo';
+                $item->embed = '<video controls><source src="'.url($item->path).'"></video>';
             }            
+            Log::Debug($item);
             $new_items[] = $item;
         }
         return $new_items;        
@@ -118,7 +119,10 @@ class vimeo_tools
         $response = Curl::to($json_url)->get();        
         $html_embed = json_decode($response);
 
-        return $html_embed->html;
+        if(!is_null($html_embed))
+            return $html_embed->html;
+        else
+            return null;
         
     }
 
