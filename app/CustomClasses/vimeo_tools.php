@@ -71,26 +71,38 @@ class vimeo_tools
         return $result;
     }
     
+    public static function parse_for_urls_single($item)
+    {        
+        if($item[0]->course_item_types_id == 1)
+        {
+              $item->embed = '<video controls><source src="'.url($item[0]->path).'"></video>';          
+        }
+        return $item;
+    }
 
     /**
     * Takes a json list of course items and parses them to look for vimeo urls
     */
     public static function parse_for_urls($items)
     {
-        $new_items = [];
+        $new_items = [];        
         foreach($items as $item)
-        {
-            if(!file_exists(public_path().'/'. $item->path))
-            {
-                $item->embed = vimeo_tools::Get_Vimeo_Embed($item);
-            }
-            else{
-                $item->embed = '<video controls><source src="'.url($item->path).'"></video>';
-            }            
-            Log::Debug($item);
-            $new_items[] = $item;
+        {   if($item->course_item_types_id == 1)
+            {            
+                $item_path_string = public_path().'/'.$item->path;                
+                if(!file_exists($item_path_string))
+                {
+                    $item->embed = vimeo_tools::Get_Vimeo_Embed($item);
+                }
+                else{                    
+                    $item->embed = '<video controls><source src="'.url($item->path).'"></video>';
+                }                            
+                
+            }        
+            $new_items[] = $item;        
         }
-        return $new_items;        
+
+        return $new_items;
     }
 
     /** 
