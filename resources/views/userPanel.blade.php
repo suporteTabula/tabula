@@ -12,8 +12,12 @@
                     <div class="columns">
                         <div class="column col-12">
                             <div class="column col-12">
-                                <div class="user-face" style="background-image: url(../images/avatar-1.png);"></div> <span>{{ $user->first_name}} {{ $user->last_name }}</span> </div>
-                        </div>
+                              <div class="user-face">
+                                <img src="/../images/Profilepic/{{ $user->avatar }}" style="object-position:50% 30% ; object-fit:cover; float:left; border-radius:100px; margin-right:25px; height: 150px; width: 150px">
+                                    </div>
+                         <span>{{ $user->first_name}} {{ $user->last_name }}</span>               
+                        </div>       
+                      </div>
                     </div>
                 </div>
                 <div class="column col-1"></div>
@@ -55,8 +59,12 @@
                 <div class="column col-1"></div>
                 <div class="column col-10 panel-show">
                     <div id="panel-1" class="columns">
-                        <form id="teste" action="{{ route('userProfile.update') }}" method="post">
+                        <form id="teste" action="{{ route('userProfile.update') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }} 
+                                <div class="user-face2">
+                                   <label>Escolha a Foto De Perfil</label>
+                                    <input type="file" name="avatar">
+                                     </div>
                             <!--Painel 1 - dados pessoais-->
                             <div class="column col-12 ">
                                 <div class="columns">
@@ -122,16 +130,19 @@
                     <div id="panel-2" class="columns">
                         <div class="column col-12">
                             <div class="columns">
-                                @foreach($user->courses as $course)
-                                    <a class="column  col-3 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 course-item" href="{{ route('course.single', ['id' => $course->id]) }}">
-                                        <div class="columns">
-                                            <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 col-12 course-image"></div>
-                                            <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 col-12  course-content bg-primary-gray text-white">
-                                                <p><strong>{{ $course->name }}</strong></p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                @endforeach
+                               
+                                           @foreach($user->courses as $course)
+                                            <div class="course-card">
+                                            <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                                            <div class="course-card__description">
+                                                     <p>{{ $course->name }}</p>
+                                                     <p>{{ $course->desc }}</p>
+                                           </div>
+                                          </a>
+                                      </div>
+                                    @endforeach
+                                 
                             </div>
                         </div>
                     </div>
@@ -142,48 +153,22 @@
                         <div id="panel-3" class="columns">
                             <div class="column col-12">
                                 <div class="columns">
-                                    
-                                     @foreach ($courses as $course)<br>
-                                        @if ($course->user_id_owner == $user->id)<br> 
-
-                                   <a  href="{{ route('course.single', ['id' => $course->id]) }}">
-                                        {{($course->name)}}
-
-
-                                       <a href="{{ route('userProfile.single') }}"></a>
-                                       {{($course->name)}}
-
-                                        @endif
-
+                                            @foreach($courses as $course)
+                                            @if ($course->user_id_owner == $user->id)<br> 
+                                            <div class="course-card">
+                                            <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                                            <div class="course-card__description">
+                                                     <p>{{ $course->name }}</p>
+                                                     <p>{{ $course->desc }}</p>
+                                           </div>
+                                          </a>
+                                      </div>
+                                      @endif
                                     @endforeach
-                                        
-                                    <a class="column  col-3 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 course-item">
-                                        <div class="columns">
-                                            <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 col-12 course-image"></div>
-                                            <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 col-12 course-content bg-primary-gray text-white">
-                                                <p><strong>title</strong></p>
-                                                <p>Desc</p>
-                                                <div class="course-price">
-                                                    <p>Grátis</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="column  col-3 col-xs-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 course-item">
-                                        <div class="columns">
-                                            <div class="column col-xs-4 col-sm-4 col-md-12 col-xl-12 col-lg-12 col-12 course-image"></div>
-                                            <div class="column col-xs-8 col-sm-8 col-md-12 col-xl-12 col-lg-12 col-12 course-content bg-primary-gray text-white">
-                                                <p><strong>title</strong></p>
-                                                <p>Desc</p>
-                                                <div class="course-price">
-                                                    <p>Grátis</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
+                                 </div>                                
+                             </div>
                             </div>
-                        </div>
                         <!--criar curso-->
                         <div id="panel-4" class="columns">
                             <div class="column col-12">
@@ -199,7 +184,48 @@
                         <div class="column col-12">
                             <div class="columns">
                                 <div class="column col-12">
-                                    <p>dados</p>
+                                    <p>dados</p><br>
+
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="first_name"><b>Nome</b></label>
+                                        <input class="form-control" name="first_name" placeholder="Seu nome" type="text" value="{{ $user->first_name }}">
+                                        <br>
+                                        <br>
+                                        <label for="country"><b>País</b></label>
+                                        <select id="country" name="country_id" class="form-control">
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}" @if($user->country_id == $country->id) selected @endif> {{ $country->name }} </option>
+                                            @endforeach
+                                        </select>
+                                        <br>
+                                        <br>
+                                        <label for="state"><b>Estado</b></label>
+                                        <select id="state" name="state_id" class="form-control">
+                                            @foreach ($states as $state)
+                                                <option value="{{ $state->id }}" @if($user->state_id == $state->id) selected @endif> {{ $state->name }} </option>
+                                            @endforeach
+                                        </select>
+                                        <br>
+                                        <br> </div>
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="last_name"><b>Sobrenome</b></label>
+                                        <input class="form-control" name="last_name" placeholder="Seu sobrenome" type="text" value="{{ $user->last_name }}">
+                                        <br>
+                                        <br>
+                                        <label for="nickname"><b>Apelido</b></label>
+                                        <input class="form-control" type="text" name="nickname" placeholder="Seu apelido" value="{{ $user->nickname }}">
+                                        <br>
+                                        <br>
+                                        <label for="sexo"><b>Sexo</b></label>
+                                        <select id="sex" name="sex" class="form-control">
+                                            <option value="Feminino" @if($user->sex == 'Feminino') selected @endif> Feminino </option>
+                                            <option value="Masculino" @if($user->sex == 'Masculino') selected @endif> Masculino </option>
+                                        </select>
+                                    </div>
+                                    <div class="column col-12">
+                                        <label for="bio"><b>Mais Informações:</b></label>
+                                        <textarea class="form-control" rows="5" id="bio" name="bio" placeholder="Escreva aqui...">{{ $user->bio }}</textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +235,69 @@
                         <div class="column col-12">
                             <div class="columns">
                                 <div class="column col-12">
-                                    <p>tornar-se prof</p>
+                                    <p>Somos marketplace inovadora que permite aos nossos colaboradores, não apenas ampliar o alcance de alunos mas também ser remunerado de forma eficiente pelo conteúdo criado. Um de nossos diferenciais é que não somos proprietários do seu conteúdo. Somos apenas a ferramenta que permite a comercialização e a viabilização do seu curso on-line.
+
+                                    No Tabula, é você professor que tem a voz final sobre os aspectos mais relevantes do seu curso como conteúdo, métodos de avaliação e política de preço. Ao final, 65% do faturamento total do seu curso será SEU!
+
+                                    Entre em contato conosco através do formulário abaixo. Dentro de até uma semana entraremos em contato para darmos o próximo passo!</p><br>
+                                     <div class="columns">
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="first_name"><b>Nome</b></label>
+                                        <input class="form-control" name="first_name" placeholder="Seu nome" type="text" value="{{ $user->first_name }}">
+                                        <br>
+                                        <br>
+                                        <label for="country"><b>País</b></label>
+                                        <select id="country" name="country_id" class="form-control">
+                                            @foreach ($countries as $country)
+                                                <option value="{{ $country->id }}" @if($user->country_id == $country->id) selected @endif> {{ $country->name }} </option>
+                                            @endforeach
+                                        </select>
+                                        <br>
+                                        <br>
+                                        <label for="state"><b>Estado</b></label>
+                                        <select id="state" name="state_id" class="form-control">
+                                            @foreach ($states as $state)
+                                                <option value="{{ $state->id }}" @if($user->state_id == $state->id) selected @endif> {{ $state->name }} </option>
+                                            @endforeach
+                                        </select>
+                                        <br>
+                                        <br> </div>
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="last_name"><b>Sobrenome</b></label>
+                                        <input class="form-control" name="last_name" placeholder="Seu sobrenome" type="text" value="{{ $user->last_name }}">
+                                        <br>
+                                        <br>
+                                        <label for="nickname"><b>Apelido</b></label>
+                                        <input class="form-control" type="text" name="nickname" placeholder="Seu apelido" value="{{ $user->nickname }}">
+                                        <br>
+                                        <br>
+                                        <label for="sexo"><b>Sexo</b></label>
+                                        <select id="sex" name="sex" class="form-control">
+                                            <option value="Feminino" @if($user->sex == 'Feminino') selected @endif> Feminino </option>
+                                            <option value="Masculino" @if($user->sex == 'Masculino') selected @endif> Masculino </option>
+                                        </select>
+                                    </div>
+                                    <div class="column col-12">
+                                        <label for="bio"><b>O que te qualifica para ensinar? </b></label>
+                                        <textarea class="form-control" rows="5" id="bio" name="bio" placeholder="Escreva aqui...">{{ $user->bio }}</textarea>
+                                    </div>
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="website"><b>Website</b></label>
+                                        <input class="form-control" type="text" name="website" placeholder="https://..." value="{{ $user->website }}">
+                                        <br>
+                                        <br>
+                                        <label for="twitter"><b>Twitter</b></label>
+                                        <input class="form-control" type="text" name="twitter" placeholder="https://..." value="{{ $user->twitter }}"> </div>
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="facebook"><b>Facebook</b></label>
+                                        <input class="form-control" type="text" name="facebook" placeholder="https://..." value="{{ $user->facebook }}">
+                                        <br>
+                                        <br>
+                                        <label for="google_plus"><b>Google +</b></label>
+                                        <input class="form-control" type="text" name="google_plus" placeholder="https://..." value="{{ $user->google_plus }}"></div>
+                                </div>
+                            </div>
+
                                 </div>
                             </div>
                         </div>
@@ -227,4 +315,5 @@
             </div>
         </div>
     </section>
+
 @endsection

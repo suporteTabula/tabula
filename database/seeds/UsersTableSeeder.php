@@ -12,8 +12,31 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $schooling = App\Schooling::create([
-            'desc' => 'Tabula'
-        ]);        
+            'desc' => 'Fundamental - Incompleto'
+        ]);   
+
+        $schooling = App\Schooling::create([
+            'desc' => 'Fundamental - Completo'
+        ]); 
+        $schooling = App\Schooling::create([
+            'desc' => 'Médio - Incompleto'
+        ]); 
+        $schooling = App\Schooling::create([
+            'desc' => 'Médio - Completo'
+        ]); 
+        $schooling = App\Schooling::create([
+            'desc' => 'Superior - Incompleto'
+        ]); 
+        $schooling = App\Schooling::create([
+            'desc' => 'Superior - Completo'
+        ]);      
+        $schooling = App\Schooling::create([
+            'desc' => 'Pós Graduação - Incompleto'
+        ]); 
+        $schooling = App\Schooling::create([
+            'desc' => 'Pós Graduação - Completo'
+        ]); 
+
 
         $user = App\User::create([
             'login' => 'Tabula',

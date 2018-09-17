@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Tabula</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
@@ -64,9 +65,9 @@
                                 </div>
                              </li>    
                              @auth
-                                <li class ="hide-md"><a href=""{{ route('userPanel.single') }}"><img class="avatar" src="images/avatar-1.png"></a>
+                                <li class ="hide-md"><a href="{{ route('userPanel.single') }}"><img class="avatar" src="/../images/Profilepic/{{ Auth::user()->avatar }}"></a>
                                 <li class="hide-md"><a href="/todosProfs">Professores</a></li> 
-                                <li class="hide-md"><a href="{{ route('userPanel.single') }}">Painel</a></li>
+                                
                                 <li class="hide-md"><a href="{{ route('cart') }}">Carrinho</a></li>
                                 <li class= "hide-md"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
                                 @else
@@ -127,8 +128,7 @@
 
     
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
+    
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         if (Session::has('success')) toastr.success("{{ Session::get('success') }}")@ endif@

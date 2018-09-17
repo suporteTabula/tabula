@@ -162,7 +162,7 @@
                         </a>
                     </div>
                     @endforeach
-                </div>
+                </div><br>
                 <h5>Cursos em destaque: Varejo e Consumo</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
                     @foreach($featured_courses2 as $course)
@@ -202,10 +202,6 @@
             </div>
         </div>
     </section>
-
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
 
     <script>
         $('.highlighted-carousel').flickity({
