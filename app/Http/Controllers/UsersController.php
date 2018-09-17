@@ -11,6 +11,7 @@ use App\Schooling;
 use App\Transaction;
 use App\Course;
 use App\TransactionItem;
+use Image;
 
 class UsersController extends Controller
 {
@@ -34,11 +35,14 @@ class UsersController extends Controller
             'first_name'    => 'required',
             'last_name'     => 'required',
             'nickname'      => 'required',
-        ]);
+            
+         ]);
+
+            
+        
         $user->first_name   = $request->first_name;
         $user->last_name    = $request->last_name;
         $user->nickname     = $request->nickname;
-        $user->image        = $request->image;
         $user->sex          = $request->sex;
         $user->bio          = $request->bio;
         $user->website      = $request->website;
@@ -48,13 +52,37 @@ class UsersController extends Controller
         $user->youtube      = $request->youtube;
         $user->country_id   = $request->country_id;
         $user->state_id     = $request->state_id;
+        $user->avatar       = $request->avatar;
+
         
+        
+        
+
+            
+        
+            if($user->avatar != '')
+        {
+            $attach_img_avatar = $request->avatar;
+           // $attach_img_avatar_name = time().$attach_img_avatar>getClientOriginalName();
+            $attach_img_avatar_name = $user->nickname;
+            $attach_img_avatar_name =  $attach_img_avatar_name.".".pathinfo($attach_img_avatar->getClientOriginalName(),PATHINFO_EXTENSION);
+            $attach_img_avatar->move('images/Profilepic', $attach_img_avatar_name); 
+
+            $user->avatar = $attach_img_avatar_name;  
+        }
+        else
+            $user->avatar = 'default.jpg'; 
+          
+            
         $user->save();
 
+        
 
         Session::flash('success', 'Usuário alterado com sucesso');
         return redirect()->back();
-    }
+      }   
+    
+
 
     public function userPurchases() 
     {

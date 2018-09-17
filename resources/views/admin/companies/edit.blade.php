@@ -23,7 +23,7 @@
 					<select class="form-control" id="theme_color" name="theme_color">
 						<option value="rose" @if ($company->theme_color == "rose") selected
 						@endif>Rosa</option>
-						<option value="gray" @if ($company>theme_color == "gray") selected
+						<option value="gray" @if ($company->theme_color == "gray") selected
 						@endif>Cinza Escuro</option>
 						<option value="white" @if ($company->theme_color == "white") selected
 						@endif>Branco</option>
