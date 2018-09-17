@@ -1,77 +1,121 @@
-p, span {
+p {
   margin: 0;
-  padding: 0; }
+  color: #303030;
+}
 
-.checkout-courses {
-  margin-top: 100px; }
-  .checkout-courses .check-card {
-    -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-    padding: 15px; }
-  .checkout-courses table {
-    width: 100%; }
-    .checkout-courses table th {
-      text-align: left; }
-    .checkout-courses table td, .checkout-courses table tr, .checkout-courses table th {
-      padding: 15px; }
-  .checkout-courses .check-img, .checkout-courses .check-name, .checkout-courses .check-rem {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    text-align: left; }
-  .checkout-courses .check-img {
-    background-image: url(../images/avatar-1.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-    text-align: center;
-    height: 20vh; }
-  .checkout-courses .check-name {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    font-size: 18px; }
-    .check-name a {
-      color: #303030;
-      text-decoration: underline;
-      font-size: 14px;
-    }
-  .checkout-courses .check-rem {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center; }
+.course-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin-top: 100px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+  padding: 15px;
+}
+
+
+
+.course-row img {
+  display: block;
+  width: 120px;
+  
+}
+
+.course-row .course-description {
+  padding: 15px;
+  font-size: 16px;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.course-row .remove-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100%;
+}
+.course-row .remove-icon img {
+  width: 20px;
+}
 
 .total-checkout {
-  margin-top: 30px;
-  -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  color: #303030;
-  position: relative;
-  min-height: 250px; }
-  .total-checkout p {
-    text-align: center;
-    color: #303030; }
-  .total-checkout span {
-    font-size: 42px;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+}
+
+.checkout-button {
+  margin-top: 15px;
+}
+
+#checkout {
+  margin-top: 40px;
+} 
+
+.no-items {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 420px) {
+  .course-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+    padding: 15px;
+    margin: 100px 15px 30px 15px;
+    width: 90%;
+  }
+  .course-row .course-image {
+    width: 100%;
+  }
+
+  .course-row img {
     display: block;
-    color: #303030; }
-  .total-checkout a {
-    position: absolute;
-    left: 50%;
-    top: 80%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    text-decoration: none; }
+    width: 100%;
+    object-fit: cover;
+  }
+
+
+  
+  .course-row .course-description {
+    padding: 15px;
+    font-size: 16px;
+    flex-grow: 1;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .course-row .remove-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100%;
+  }
+  .course-row .remove-icon img {
+    width: 20px;
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

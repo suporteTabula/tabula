@@ -38,7 +38,7 @@
     <section class="navigation-bar">
         <div class="container grid-md">
             <div class="columns">
-                <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-3 col-lg-3 col-xl-2">
+                <div class="nav-brand column col-2 col-xs-10 col-sm-6 col-md-3 col-lg-2 col-xl-2">
                     <div class="dropdown">
                     <span><a href="{{ url('/') }}"><img align="center" src="../images/layout/header/logo.png" height="30px"> </a></span>
                     <div class="dropdown-content">
@@ -56,7 +56,7 @@
                         </div>
                     </section>
                 </div>
-                <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-4 col-xl-4">
+                <div class="nav-menu col-4 col-xs-2 col-sm-6 col-md-5 col-lg-5 col-xl-4">
                         <ul>  
                             <li>
                                 <div class="menu-icon show-md">
