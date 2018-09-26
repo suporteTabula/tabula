@@ -86,7 +86,7 @@
             <div class="row">
                 @if(Auth::check())
                     <div class="col-lg-3">
-                        <ul class="list-group">
+                        <ul class="list-group">                            
                             <li class="list-group-item">
                                 <a href="{{ route('home') }}">Principal</a>
                             </li>

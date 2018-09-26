@@ -10,28 +10,39 @@
     @else
     <section>
         <div class="container grid-lg">
-            <div class="columns">
-                <div class="column col-1"></div>
-                    <div class="column col-10 checkout-courses">
-                        <div class="columns">
-                            <div class="column col-12 check-card">
-                                <div class="columns">
-                                        @foreach($courses as $course)
-                                            <div class="column col-xs-12 col-sm-2 col-md-3 col-lg-2 col-2 check-img"></div>
-                                            <div class="column col-xs-12 col-sm-9 col-md-8 col-lg-9 col-9 check-name">
-                                                <p>{{ $course->name }}</p>
-                                                <p><b>{{ $course->price }}</b></p>
-                                                <a href="{{ route('cart.remove', ['id' => $course->cart_id]) }}">Remover</a>
+            <div class="column checkout-courses">
+                <div class="columns">                                                          
+                    <div class="column col-8 check-card"><!-- Master Column Left -->                    
+                        @foreach(array_chunk($courses,2) as $chunks)
+                            <div class="columns">
+                                @foreach($chunks as $course)
+                                    <div class="column col-6 two">
+                                        <div class="columns course-cart-item">
+                                            <div class="column col-4 check-img"></div>  
+                                            <div class="column col-5 three">
+                                                <p class="course-cart-title">{{ $course->name }}</p><br/>
+                                                <p>{{ $course->desc }}</p><br/>
+                                                <p>{{ $course->price }}</p>                                                
                                             </div>
-                                            <div class="column col-xs-12 col-sm-1 col-md-1 col-lg-1 col-1 check-rem">
-                                                <img src="images/cancel-music.svg" width="25px">
+                                            <div class="column col-1"></div>           
+                                            <div class="column col-2 course-target-remove-container">
+                                                <a href="{{ route('cart.remove', ['id' => $course->cart_id]) }}" class="course-cart-remove">X</a>
                                             </div>
-                                        @endforeach
-                                </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
+                        @endforeach                        
+                    </div>
+                    <div class="column col-4 check-card"><!-- Master Column Right -->
+                        <div class="column col-12 total-checkout">
+                            <p class="checkout-title">Valor Total</p>
+                            <span>{{ $total_price }}</span>
+                            <a href="{{ route('cart.checkout') }}" class="button-tabula-gray">Finalizar Compra</a>
                         </div>
                     </div>
-                <div class="column col-1"></div>
+                </div>
+                <div class="column col-1"></div>            
             </div>
         </div>
     </section>
@@ -39,13 +50,7 @@
     <section>
         <div class="container grid-lg">
             <div class="columns">
-                <div class="column col-1"></div>
-                <div class="column col-10 total-checkout">
-                    <p><b>Valor Total</b></p>
-                    <span>{{ $total_price }}</span>
-                    <a <a href="{{ route('cart.checkout') }}" class="button-tabula-gray">Finalizar Compra</a>
-                </div>
-                <div class="column col-1"></div>
+                
             </div>
         </div>
     </section>

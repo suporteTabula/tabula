@@ -44,3 +44,43 @@
       color: #fff; }
   .offscreen-course-content #accbody:hover {
     background-color: #606060; }
+.round {
+  position: relative;
+}
+
+.round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  float: right;
+  width: 28px;
+}
+
+.round label:after {
+  border: 2px solid #000;  
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;  
+  opacity: 0;  
+  transform: rotate(-45deg);
+  width: 12px;
+  float: right;
+  padding-right:8px;
+  padding-top:8px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+}
+

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Course;
 use App\CourseItem;
+use App\CourseItemUser;
 use Illuminate\Support\Facades\DB;
 use App\CourseItemOption;
 use App\CourseItemGroup;
@@ -57,6 +58,85 @@ class CoursesController extends Controller
             ->with('hasCourse', $hasCourse);
     }
 
+    public function check_chapter_progress($id)
+    {
+        $complete = true; //Assume the chapter is complete and then falsify it.
+
+        $item = CourseItem::find($id);
+        $items = CourseItem::where('id', $id)->get();
+        $user = Auth::user();
+        $id_course = $item->course_item_group->course_id;
+        $chapter_items = CourseItem::where('course_item_group_id',$item->course_item_group_id)->get();
+        
+       
+
+        foreach($chapter_items as $chapterItem)
+        {            
+            $item_status = CourseItemUser::where('course_item_id',$chapterItem->id)->where('user_id',$user->id)->where('course_item_status_id',0)->get();            
+            if(count($item_status) > 0)
+            {
+                //This means there is at least one chapter item with a status of 0
+                $complete = false;
+            }            
+        }                
+        
+        if($complete == true){
+            return $item->course_item_group_id.'-true';
+        }
+        else
+        {
+            return $item->course_item_group_id.'-false';
+        }        
+    }
+
+
+    public function course_item_toggle(Request $request,$id)
+    {
+        $course = Course::find($id);
+        $chapter = $course->course_item_groups->all();
+        $user = Auth::user();
+        $item = $request->item_id; // Id específico do item ao finalizar aula
+        $readonly = $request->readonly;
+
+        $courseItem = CourseItemUser::where('course_item_id',$item)->where('user_id',$user->id)->get();                                
+
+        if($readonly == 'false'){
+            Log::Debug('Not Readonly');
+            if(!count($courseItem) == 0)
+            {         
+                $realItem = CourseItemUser::find($courseItem->first()->id);            
+                if($realItem->course_item_status_id == 1)
+                {
+                    $realItem->course_item_status_id = 0;
+                }
+                else
+                {
+                    $realItem->course_item_status_id = 1;
+                }            
+                $realItem->save();
+            }
+            else{
+                //A user has attempted to mark as done an item they don't yet have
+                $realItem = new CourseItemUser;
+                $realItem->user_id = $user->id;
+                $realItem->course_item_id = $item;
+                $realItem->course_item_status_id = 1;
+                $realItem->save();
+            }
+        }
+        //Check if chapter is complete
+        $chapter_complete = $this->check_chapter_progress($item);
+        return $chapter_complete;
+
+        //$item->course_item_status_id = 1;
+        //$done = $item->save();
+        
+        //dd($done->all());
+        //return $done;
+    }
+
+    
+
     public function course_start(Request $request, $id)
     {        
         $course = Course::find($id);
@@ -73,9 +153,11 @@ class CoursesController extends Controller
         }
         $done = $user->items()->wherePivot('course_item_status_id','1')->get();
         
+        Log::Debug($course);
         //dd($done->all());
         return view('courseProgress')
             ->with('users', $user)
+            ->with('course',$course)
             ->with('chapters', $chapter);
             //->with('items', $items);
     }

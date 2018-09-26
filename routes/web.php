@@ -24,6 +24,7 @@ Auth::routes();
 
 
 Route::get('/', 'HomeController@index')->name('index.single');
+
 Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
 
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
@@ -42,6 +43,7 @@ Route::get('success', 'TransactionsController@success')->name('transaction.succe
 
 Route::get('course/{id}', 'CoursesController@course')->name('course.single');
 Route::get('course/start/{id}', 'CoursesController@course_start')->name('course.start');
+Route::get('course/course_item_toggle/{id}', 'CoursesController@course_item_toggle')->name('course.course_item_toggle');
 Route::match(['get', 'post'], 'lesson', 'CoursesController@lesson')->name('course.lesson');
 Route::get('course/progress/{id}', 'CoursesController@course_progress')->name('course.progress');
 Route::post('answers/{id}', 'CoursesController@answers')->name('course.answer');

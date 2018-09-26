@@ -1,11 +1,4 @@
 <?php return array (
-  'laravel/tinker' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    ),
-  ),
   'fideloper/proxy' => 
   array (
     'providers' => 
@@ -13,15 +6,22 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
-  'vimeo/laravel' => 
+  'ixudra/curl' => 
   array (
     'providers' => 
     array (
-      0 => 'Vimeo\\Laravel\\VimeoServiceProvider',
+      0 => 'Ixudra\\Curl\\CurlServiceProvider',
     ),
     'aliases' => 
     array (
-      'Vimeo' => 'Vimeo\\Laravel\\Facades\\Vimeo',
+      'Curl' => 'Ixudra\\Curl\\Facades\\Curl',
+    ),
+  ),
+  'laravel/tinker' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
   'pbmedia/laravel-ffmpeg' => 
@@ -35,15 +35,15 @@
       'FFMpeg' => 'Pbmedia\\LaravelFFMpeg\\FFMpegFacade',
     ),
   ),
-  'ixudra/curl' => 
+  'vimeo/laravel' => 
   array (
     'providers' => 
     array (
-      0 => 'Ixudra\\Curl\\CurlServiceProvider',
+      0 => 'Vimeo\\Laravel\\VimeoServiceProvider',
     ),
     'aliases' => 
     array (
-      'Curl' => 'Ixudra\\Curl\\Facades\\Curl',
+      'Vimeo' => 'Vimeo\\Laravel\\Facades\\Vimeo',
     ),
   ),
 );
