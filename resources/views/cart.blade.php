@@ -6,7 +6,7 @@
     @if(count($courses) == 0)
         <br><br><br><br>
         <div class="no-items">
-        <p><b>Não existem items no carrinho!</b><br>
+        <p><b>Não existem itens no carrinho!</b><br>
         Acesse nosso <a href="{{ route('search.single', ['id' => -1]) }}">catalogo</a></p>
         </div>
     @else

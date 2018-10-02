@@ -8,17 +8,17 @@
  <section class="search-wrapper">
         <div class="container grid-lg">
             <div class="columns ">
+                
                 <div class="column col-12 side-search">
-                    <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
+                                                        
+                 <form action="{{ route('search.single', ['id' => -1]) }}" method="get" enctype="multipart/form-data">
                         <input class="button-tabula-white" name="search_string" type="text" placeholder="Digite sua busca.">
                         <button class="button-tabula-gray" type="submit">Buscar</button>
-                    </form>
-                </div>
-
+                 </form>
+                        
+                 </div>
 
                         <div class="column col-6 col-xs-12 col-sm-12">
-
-
 
                             <ul class="macro-main">
                                 <li class="macro-main__item">
@@ -47,7 +47,7 @@
                                                 <input type="checkbox" class="macro-main__checkbox">Investimentos
                                         </li>
                                         <li class="macro-sub__item">
-                                                <input type="checkbox" class="macro-main__checkbox">Valuation
+                                        <input type="checkbox" class="macro-main__checkbox">Valuation
                                                
                                     </ul>
                                 </li>
@@ -411,7 +411,6 @@
                         </a>
                         </div>
 
-
                     @endforeach                
                 @else
                     Não existem cursos das opções selecionadas.
@@ -419,7 +418,7 @@
             </div>
         </div>
     </section>
-    <script src="../js/main.js"></script>
+    <script src="js/main.js"></script>
     </section>   
     @section('scripts')
         <script>
@@ -444,7 +443,7 @@
                     checked_group = checked_group.toString();
                     
                     // pega o valor do campo de busca (string)
-                    course_title = $('#course_title').val();
+                         = $('#course_title').val();
                     course_title = course_title.toString();
 
                     // verifica se existe check ou string e altera os ATRIBUTOS que serão usados pelo controller
