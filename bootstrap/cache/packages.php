@@ -1,4 +1,29 @@
 <?php return array (
+  'laravel/tinker' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    ),
+  ),
+  'ixudra/curl' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Ixudra\\Curl\\CurlServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Curl' => 'Ixudra\\Curl\\Facades\\Curl',
+    ),
+  ),
+  'nesbot/carbon' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Carbon\\Laravel\\ServiceProvider',
+    ),
+  ),
   'fideloper/proxy' => 
   array (
     'providers' => 
@@ -15,20 +40,6 @@
     'aliases' => 
     array (
       'FFMpeg' => 'Pbmedia\\LaravelFFMpeg\\FFMpegFacade',
-    ),
-  ),
-  'laravel/tinker' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    ),
-  ),
-  'nesbot/carbon' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Carbon\\Laravel\\ServiceProvider',
     ),
   ),
   'intervention/image' => 
