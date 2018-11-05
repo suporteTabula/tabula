@@ -16,7 +16,7 @@
 				@foreach ($categories as $category)
 					<option value="{{ $category->desc }}">{{ $category->desc }}</option>
 				@endforeach
-			</select><br>
+			</select><br><br>
 			<input class="form-control" type="text" id="search" onkeyup="Search()" placeholder="Digite Um Curso..." style="width: 300px;">
 		</div>
 		<div class="panel-body">

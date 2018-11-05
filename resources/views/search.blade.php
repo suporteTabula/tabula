@@ -19,11 +19,13 @@
                  </div>
 
                         <div class="column col-6 col-xs-12 col-sm-12">
-
+                             
                             <ul class="macro-main">
                                 <li class="macro-main__item">
-                                    <input type="checkbox" class="macro-main__checkbox--financas" id="financas" value="financas" name="financas">
-                                    <label for="financas">Finanças e Economia</label>
+                                    <input type="checkbox" class="macro-main__checkbox--financas" id="financas" value="financas" name="macrotema">
+                                    <label for="financas">Finanças e Economia
+                                      
+                                    </label>
                                     <ul class="macro-sub--financas">
                                         <li class="macro-sub__item">
                                             <input type="checkbox" class="macro-main__checkbox">Finanças Corporativas
@@ -422,6 +424,7 @@
     </section>   
     @section('scripts')
         <script>
+            
             $(document).ready(function(){
                 // a cada click em qualquer checkbox ou no botao de procurar
                 $('input[name="macrotema"], #search_btn').click(function(){
