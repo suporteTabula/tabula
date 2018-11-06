@@ -96,7 +96,7 @@
             @else
                 {{ $item->desc }}
                 @if (!is_null($item->path))
-                    <img src="{{ asset($item->path) }}" id="{{ $item->id }}">
+                    <img src="{{ asset($item->path) }}" id="{{ $item->id }}" class="course-asset">
                 @endif
                 @foreach ($item->item_child as $child)
                     {{ $child->id }}

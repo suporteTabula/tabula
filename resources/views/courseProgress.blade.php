@@ -4,13 +4,39 @@
 @endsection
 @section('content')
     <section class="course-inner-content">
-        <div class="container grid-lg">
-            <div class="columns">
-                <div class="column col-12 course-controls">                    
-                    <button id="open-class" class="button-tabula">Menu de Aulas</button>
-                    <button id="close-class" class="button-tabula">Fechar Menu de Aulas</button>
+        <div class="container">
+            <div class="columns col-oneline">
+                <div class="column col-4" id="nav">
+                    <section class="offscreen-course-content">        
+                        @foreach ($chapters as $chapter)         
+                            <details class="accordion">
+                                <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo: {{ $chapter->name }}
+                                    <span class="round">
+                                        <input type="checkbox" name="chap-{{ $chapter->id }}" id="chap-{{ $chapter->id }}" disabled>                               
+                                        <label class="chap-progress-label" for="chap-{{ $chapter->id }}"></label>
+                                        <input type="hidden" name="chap-{{ $chapter->id }}-courseID" id="chap-{{ $chapter->id }}-courseID" value="{{ $chapter->course_id }}"/>
+                                    </span>
+                                </summary>
+                                @foreach ($chapter->course_items as $item)
+                                    @if(is_null($item->course_items_parent))
+                                        <div id="accbody" class="accordion-body"> <a id="accbody-content" class="aula" value="{{ $item->id }}">{{ $item->name }}</a>
+                                            <span class="round">
+                                                <input type="checkbox" name="progress" id="{{ $item->id }}" 
+                                                @foreach ($users->items as $i)
+                                                    @if ($i->pivot->course_item_status_id == 1 && $item->id == $i->pivot->course_item_id)
+                                                        checked
+                                                    @endif 
+                                                @endforeach >  
+                                                <label class="progress-label" for="{{ $item->id }}"></label>
+                                            </span>
+                                        </div>                                                                
+                                    @endif					
+                                @endforeach
+                            </details>
+                        @endforeach
+                    </section>
                 </div>
-                <div class="column col-12 course-video-wrapper" id="aulas">
+                <div class="column course-video-wrapper" id="aulas">
 
                     @if (isset($items))
                         <ul>
@@ -71,109 +97,83 @@
                         </ul>
                     @endif
                 </div>
+                <div class="column col-2 course-controls">                    
+                    <button id="open-class" class="button-tabula">Menu de Aulas</button>
+                    <button id="close-class" class="button-tabula">Fechar Menu de Aulas</button>
+                </div>
             </div>
-        </div>
-        <section class="offscreen-course-content">        
-         @foreach ($chapters as $chapter)         
-            <details class="accordion">
-                <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo: {{ $chapter->name }}
-                    <span class="round">
-                        <input type="checkbox" name="chap-{{ $chapter->id }}" id="chap-{{ $chapter->id }}" disabled>                               
-                        <label class="chap-progress-label" for="chap-{{ $chapter->id }}"></label>
-                        <input type="hidden" name="chap-{{ $chapter->id }}-courseID" id="chap-{{ $chapter->id }}-courseID" value="{{ $chapter->course_id }}"/>
-                    </span>
-                </summary>
-                @foreach ($chapter->course_items as $item)
-                    @if(is_null($item->course_items_parent))
-                        <div id="accbody" class="accordion-body"> <a id="accbody-content" class="aula" value="{{ $item->id }}">{{ $item->name }}</a>
-                            <span class="round">
-                                <input type="checkbox" name="progress" id="{{ $item->id }}" 
-                                @foreach ($users->items as $i)
-                                    @if ($i->pivot->course_item_status_id == 1 && $item->id == $i->pivot->course_item_id)
-                                        checked
-                                    @endif 
-                                @endforeach >  
-                                <label class="progress-label" for="{{ $item->id }}"></label>
-                            </span>
-                        </div>                                                                
-                    @endif
-                @endforeach
-            </details>
-        @endforeach
-        
+        </div>   
     </section>
-   
-    </section>
+	
+							@section('scripts')
+						<script>
+							function checkChapterStatus(id,readonly)
+							{
+								var route='{{ route('course.course_item_toggle', ['id' => $item->course_item_group->course_id]) }}';                      
+								req = {
+									item_id:id,
+									readonly:readonly
+								};               
+								$.ajax({
+									type: 'GET',                                                
+									url: route,
+									headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+									data: req,
+									error: function(e){
+										console.log(e);
+									},
+									success: function(response){                                                                                 
+										response = response.replace(/\s/g,'');
+										var status = response.split("-");    
+										var elementID = status[0];
+										var elementStatus = status[1];  
+										var input = 'input[name=chap-'+elementID+']';                                                                                                             
+										
+										if(elementStatus == 'false')
+											$('input[name=chap-'+elementID+']').prop( "checked", false );
+										else
+											$('input[name=chap-'+elementID+']').prop( "checked", true );
+										
+									}
+								});
+							}
 
-    @section('scripts')
-        <script>
-            function checkChapterStatus(id,readonly)
-            {
-                var route='{{ route('course.course_item_toggle', ['id' => $item->course_item_group->course_id]) }}';                      
-                    req = {
-                        item_id:id,
-                        readonly:readonly
-                    };               
-                    $.ajax({
-                        type: 'GET',                                                
-                        url: route,
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        data: req,
-                        error: function(e){
-                            console.log(e);
-                        },
-                        success: function(response){                                                                                 
-                            response = response.replace(/\s/g,'');
-                            var status = response.split("-");    
-                            var elementID = status[0];
-                            var elementStatus = status[1];  
-                            var input = 'input[name=chap-'+elementID+']';                                                                                                             
-                            
-                            if(elementStatus == 'false')
-                                $('input[name=chap-'+elementID+']').prop( "checked", false );
-                            else
-                                $('input[name=chap-'+elementID+']').prop( "checked", true );
-                            
-                        }
-                    });
-            }
+							$(document).ready(function(){                
+								$('.progress-label').click(function(){
+									var id=$(this).attr('for');   
+									checkChapterStatus(id,false);
+								});
 
-            $(document).ready(function(){                
-                $('.progress-label').click(function(){
-                    var id=$(this).attr('for');   
-                    checkChapterStatus(id,false);
-                });
+								$('#open-class').click(function() {
+									$(".chap-progress-label").each(function(){
+										var id=$(this).attr('for');                        
+										var chapID = id.split("-");
+										chapID = chapID[1];
+										var courseID = $('#chap-'+chapID+'-courseID').attr('value');                        
+										checkChapterStatus(courseID,true);
+									})
+								})
 
-                $('#open-class').click(function() {
-                    $(".chap-progress-label").each(function(){
-                        var id=$(this).attr('for');                        
-                        var chapID = id.split("-");
-                        chapID = chapID[1];
-                        var courseID = $('#chap-'+chapID+'-courseID').attr('value');                        
-                        checkChapterStatus(courseID,true);
-                    })
-                })
+								$('.aula').click(function(){
 
-                $('.aula').click(function(){
+									var id = $(this).attr('value');  
+									//console.log(id);
 
-                    var id = $(this).attr('value');  
-                    //console.log(id);
-
-                    req = {item_id:id};
-                    $.ajax({
-                        type: 'GET',
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        url: '{{ route('course.lesson') }}',
-                        data: req,
-                        error: function(e){
-                            console.log(e);
-                        },
-                        success: function(response){
-                            $('#aulas').html(response);
-                        }
-                    });                    
-                });
-            });
-        </script>        
-    @stop
-@endsection
+									req = {item_id:id};
+									$.ajax({
+										type: 'GET',
+										headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+										url: '{{ route('course.lesson') }}',
+										data: req,
+										error: function(e){
+											console.log(e);
+										},
+										success: function(response){
+											$('#aulas').html(response);
+										}
+									});                    
+								});
+							});
+						</script>        
+						@stop
+					@endsection
