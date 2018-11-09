@@ -28,6 +28,49 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function isAdmin()
+    {
+        foreach ($this->userTypes()->get() as $types) {
+            if($types->desc == 'Admin')
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function isStudent()
+    {
+        foreach ($this->userTypes()->get() as $types) {
+            if($types->desc == 'Aluno')
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function isInstructor()
+    {
+        foreach($this->userTypes()->get() as $types)
+        {
+           if ($types->desc == 'Instrutor') {
+                return true;
+            } 
+        }
+        return false;
+    }
+
+    public function isCompanyManager()
+    {
+        foreach ($this->userTypes()->get() as $types) {
+            if ($types->desc == 'Empresa') {
+                return true;
+            }
+        }
+        return true;
+    }
+
     public function country()
     {
         return $this->belongsTo('App\Country', 'country_id');
@@ -66,5 +109,20 @@ class User extends Authenticatable
     public function institution()
     {
         return $this->hasOne('App\UserGroup');
+    }
+
+    public function courses()
+    {
+        return $this->belongsToMany('App\Course');
+    }
+
+    public function itemOptions()
+    {
+        return $this->belongsToMany('App\CourseItemOption');
+    }
+
+    public function items()
+    {
+        return $this->belongsToMany('App\CourseItem')->withPivot('desc', 'course_item_status_id')->withTimestamps();
     }
 }

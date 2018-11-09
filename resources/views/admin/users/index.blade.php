@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.aluno')
 
 @section('content')
 	<div class="panel panel-default">
@@ -12,7 +12,7 @@
 			<input class="form-control" type="text" id="search" onkeyup="Search()" placeholder="Digite um nome de usuário..." style="width: 300px;">
 
 			<select id="usersType" onchange="Filter()">
-				<option value="0">Tipo de usuário</option>
+				<option value="all">Todos tipos de usuário</option>
 				@foreach ($usersType as $userType)
 					<option value="{{ $userType->desc }}">{{ $userType->desc }}</option>
 				@endforeach
@@ -26,6 +26,7 @@
 					<th>Nome Completo</th>
 					<th>E-mail</th>
 					<th>Tipo de Usário</th>
+					<th>Grupo</th>
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead>
@@ -40,6 +41,13 @@
 									@foreach ($user->userTypes as $userType)
 										{{$userType->desc}}
 									@endforeach 
+								</td>
+								<td>
+									@if(!$user->group)
+										Não tem
+									@else
+										{{ $user->group }}
+									@endif
 								</td>
 								<td>
 									<a href="{{ route('user.edit', ['id' => $user->id]) }}">
@@ -91,16 +99,25 @@
 				option = select.options[select.selectedIndex].value;
 				table = document.getElementById("userTable");
 			  	tr = table.getElementsByTagName("tr");
-			  	for (i = 0; i < tr.length; i++) {
-			  		td = tr[i].getElementsByTagName("td")[3];
-			  		if (td) {
-			  			if (td.innerHTML.indexOf(option) > -1) {
-			  				tr[i].style.display = "";
-			  			} else {
-			  				tr[i].style.display = "none";
-			  			}
-			  		}        
+			  	if(option == 'all'){
+			  		for (i = 0; i < tr.length; i++) {
+			  			tr[i].style.display = "";
+        
+			  		}
 			  	}
+			  	else{
+			  		for (i = 0; i < tr.length; i++) {
+				  		td = tr[i].getElementsByTagName("td")[3];
+				  		if (td) {
+				  			if (td.innerHTML.indexOf(option) > -1) {
+				  				tr[i].style.display = "";
+				  			} else {
+				  				tr[i].style.display = "none";
+				  			}
+				  		}        
+			  		}	
+			  	}
+			  	
 			}
 		</script>
 	@stop

@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->char('login', 45);
             $table->string('password');
+            $table->string('group')->nullable();
             $table->char('email', 100)->unique();
             $table->string('first_name', 100);
             $table->string('last_name', 100);
@@ -31,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('facebook', 100)->nullable();
             $table->string('youtube', 100)->nullable();
             $table->integer('country_id');
-            $table->integer('state_id');
+            $table->integer('state_id')->nullable();
             $table->integer('schooling_id');
             $table->rememberToken();
             $table->timestamps();

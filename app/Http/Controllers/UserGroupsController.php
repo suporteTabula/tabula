@@ -4,121 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use Session;
-use App\User;
-use App\UserGroup;
+use App\Course;
+use App\Category;
 use App\Company;
+use App\UserGroup;
 
 class UserGroupsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index($group)
     {
-        return view('admin.userGroups.index')
-            ->with('userGroups', UserGroup::all())
-            ->with('companies', Company::all());
-    }
+        $user = Auth::user();
+        $userGroup = UserGroup::where('desc', $group)->first();
+        $company = Company::where('id', $userGroup->company_id)->first();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.userGroups.create')
-            ->with('companies', Company::all());
-    }
+        $courses = $userGroup->courses()->get();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'desc'       => 'required|max:100',
-            'company_id' => 'required'
-        ]);
-
-        $userGroup = UserGroup::create([
-            'desc' => $request->desc,
-            'company_id' => $request->company_id
-        ]);
-
-        Session::flash('success', 'Grupo criado com sucesso');
-
-        return redirect()->route('userGroups');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $userGroup = UserGroup::find($id);
-
-        return view('admin.userGroups.edit')
+        return view('userGroupHome')
+            ->with('courses', $courses)
             ->with('userGroup', $userGroup)
-            ->with('companies', Company::all());
+            ->with('company', $company);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function select() 
     {
-        $this->validate($request, [
-            'desc' => 'required|max:100'
-        ]);
+        $user = Auth::user();
+        $userGroups = $user->userGroups()->get();
 
-        $userGroup = UserGroup::find($id);
-
-        $userGroup->desc = $request->desc;
-        $userGroup->save();
-
-        Session::flash('success', 'Grupo editado com sucesso');
-
-        return redirect()->route('userGroups');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $userGroup = UserGroup::find($id);
-
-        $userGroup->delete();
-
-        Session::flash('success', 'Grupo removido com sucesso');
-        return redirect()->back();
+        return view('userGroups')
+            ->with('userGroups', $userGroups);
     }
 }

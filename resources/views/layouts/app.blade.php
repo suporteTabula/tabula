@@ -12,8 +12,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
-    @yield('styles')
 </head>
 <body>
     <div id="app">
@@ -50,7 +48,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->nickname }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -73,56 +71,10 @@
             </div>
         </nav>
 
-         <div class="container">
-            <div class="row">
-                @if(Auth::check())
-                    <div class="col-lg-3">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <a href="{{ route('home') }}">Home</a>
-                             </li>
-
-                            <li class="list-group-item">
-                                <a href="{{ route('users') }}">Todos Usuários</a>
-                            </li>
-
-                            <li class="list-group-item">
-                                <a href="{{ route('usersType') }}">Tipos de Usuário</a>
-                            </li>
-
-                            <li class="list-group-item">
-                                <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('companies') }}">Empresas</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
-                            </li>
-                        </ul>
-                    </div>
-                @endif
-                <div class="col-lg-9">
-                    @yield('content')
-                </div>
-            </div>
-        </div>
+        @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
-    <script>
-        
-        @if(Session::has('success'))
-            toastr.success("{{ Session::get('success') }}")
-        @endif
-
-        @if(Session::has('info'))
-            toastr.info("{{ Session::get('info') }}")
-        @endif
-    </script>
-
-    @yield('scripts')
 </body>
 </html>
