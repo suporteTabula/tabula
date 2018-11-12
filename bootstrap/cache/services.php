@@ -24,15 +24,16 @@
     20 => 'Illuminate\\Validation\\ValidationServiceProvider',
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Ixudra\\Curl\\CurlServiceProvider',
-    23 => 'Carbon\\Laravel\\ServiceProvider',
-    24 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
-    25 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    26 => 'Intervention\\Image\\ImageServiceProvider',
-    27 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    23 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    24 => 'Carbon\\Laravel\\ServiceProvider',
+    25 => 'Pbmedia\\LaravelFFMpeg\\FFMpegServiceProvider',
+    26 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+    27 => 'Intervention\\Image\\ImageServiceProvider',
     28 => 'App\\Providers\\AppServiceProvider',
     29 => 'App\\Providers\\AuthServiceProvider',
     30 => 'App\\Providers\\EventServiceProvider',
     31 => 'App\\Providers\\RouteServiceProvider',
+    32 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'eager' => 
   array (
@@ -55,6 +56,7 @@
     16 => 'App\\Providers\\AuthServiceProvider',
     17 => 'App\\Providers\\EventServiceProvider',
     18 => 'App\\Providers\\RouteServiceProvider',
+    19 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'deferred' => 
   array (
