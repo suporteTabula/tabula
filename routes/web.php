@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 /*
 |--------------------------------------------------------------------------
@@ -11,16 +11,28 @@
 |
 */
 
+
+Auth::routes();
+
+/*
+*
+* Routes to auth user
+*
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('index.single');
+Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
 
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
+Route::get('/todosProfs', 'Controller@todosProfs')->name('todosProfs');
+Route::get('/professor', 'profController@professor')->name('professor');
+Route::get('/homeEmpresa', ['uses' => 'Controller@HomeEmpresa']);
 
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
@@ -43,8 +55,14 @@ Route::post('userPanel/update', 'UsersController@userProfileUpdate')->name('user
 Route::get('userPurchases', 'UsersController@userPurchases')->name('userPurchases.single');
 Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails')->name('userPurchaseDetails.single');
 
+
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('admin/home', 'AdminHomeController@index')->name('home');
+
+	Route::get('admin/nota', 'NotasController@index')->name('nota');
+	Route::get('admin/reports', 'AdminCoursesController@index')->name('reports');
+	Route::get('/cart', 'CartController@cart')->name('cart');
+	
 
 	Route::get('/admin/categories', 'AdminCategoriesController@index')->name('categories');
 	Route::get('/admin/category/create', 'AdminCategoriesController@create')->name('category.create');
@@ -106,4 +124,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/userType/edit/{id}', 'AdminUserTypesController@edit')->name('userType.edit');
 	Route::post('/admin/userType/update/{id}', 'AdminUserTypesController@update')->name('userType.update');
 	Route::get('/admin/userType/delete/{id}', 'AdminUserTypesController@destroy')->name('userType.delete');
+	Route::get('/admin/courses', 'AdminCoursesController@index')->name('courses');
+	Route::get('/admin/alunos', 'AdminUsersController@index')->name('alunos');
+	Route::get('/admin/alunos','AdminUsersController@index' )->name('professor');
+	
 });

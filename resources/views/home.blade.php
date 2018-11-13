@@ -3,13 +3,59 @@
     <section class="hero-landing">
         <div class="container grid-md">
             <div class="columns">
-                <div class="column col-6 col-xs-12 col-sm-12 hero-text">
-                    <h2>A plataforma de ensino a <u>distância</u> mais <u>inovadora</u> e <u>prática</u> onde qualquer pessoa pode <u>aprender</u> ou <u>ensinar</u>.</h2>
-                    <button id="explore" class="button-tabula">EXPLORE</button>
+                <div class="column col-12 col-xs-12 col-sm-12 hero-text">
+                    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false, "draggable": false}'>
+                        <div class="carousel-cell--1">
+                            <a id="carousel-redirect" href="/search/1"></a>
+                        </div>
+                        <div class="carousel-cell--2">
+                            <a id="carousel-redirect" href="/search/2"></a>
+                        </div>
+                        <div class="carousel-cell--3">
+                            <a id="carousel-redirect" href="/search/3"></a>
+                        </div>
+                        <div class="carousel-cell--4">
+                            <a id="carousel-redirect" href="/search/4"></a>
+                        </div>
+                        <div class="carousel-cell--5">
+                            <a id="carousel-redirect" href="/search/5"></a>
+                        </div>
+                        <div class="carousel-cell--6">
+                            <a id="carousel-redirect" href="/search/6"></a>
+                        </div>
+                        <div class="carousel-cell--7">
+                            <a id="carousel-redirect" href="/search/7"></a>
+                        </div>
+                        <div class="carousel-cell--8">
+                            <a id="carousel-redirect" href="/search/8"></a>
+                        </div>
+                        <div class="carousel-cell--9">
+                            <a id="carousel-redirect" href="/search/9"></a>
+                        </div>
+                        <div class="carousel-cell--10">
+                            <a id="carousel-redirect" href="/search/10"></a>
+                        </div>
+                        <div class="carousel-cell--11">
+                            <a id="carousel-redirect" href="/search/11"></a>
+                        </div>
+                        <div class="carousel-cell--12">
+                            <a id="carousel-redirect" href="/search/12"></a>
+                        </div>
+                        <div class="carousel-cell--13">
+                            <a id="carousel-redirect" href="/search/13"></a>
+                        </div>
+                        <div class="carousel-cell--14">
+                            <a id="carousel-redirect" href="/search/14"></a>
+                        </div>
+                        <div class="carousel-cell--15">
+                            <a id="carousel-redirect" href="/search/15"></a>
+                        </div>
+                        <div class="carousel-cell--16">
+                            <a id="carousel-redirect" href="/search/16"></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="column col-6 hide-sm hero-mock"></div>
             </div>
-        </div>
     </section>
     
     <section class="macrotemas">
@@ -70,8 +116,8 @@
                         <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12 hex-adv">
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
-                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
+                        <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <p>O Tábula possui uma plataforma inédita e fácil de usar, com cursos das mais diversas áreas do conhecimento.</p>
                         </div>
                     </div>
                 </div>
@@ -80,8 +126,8 @@
                         <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12 hex-adv">
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
-                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
+                        <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                            <p>Para os alunos, há a disponibilidade de aprender e assistir aulas dos mais variados temas no tempo que quiser. Já aos professores, oferecemos a assessoria necessária, com salas para gravação e a edição destas.</p>
                         </div>
                     </div>
                 </div>
@@ -90,8 +136,8 @@
                         <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12  hex-adv">
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
-                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12 ">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
+                        <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                            <p>Leve o Tábula para dentro de sua emrpesa através da realização de parcerias conosco. Procuramos realizar contratos com instituições de ensino que procuram crescer e disseminar uma educação de qualidade.</p>
                         </div>
                     </div>
                 </div>
@@ -102,60 +148,74 @@
     <section class="highlighted-courses">
         <div class="container grid-md">
             <div class="columns">
-                <div class="column col-12 course-row1">
-                   <p style="color: #808080;"><strong> Destaques em {{ $featured_category1 }}</strong></p>
-                    <div class="slider">                        
-                        @foreach($featured_courses1 as $course)
-                            <a style="" href="{{ route('course.single', ['id' => $course->id]) }}">
-                                <div class="course-card">
-                                    <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
-                                    <div class="course-content">
-                                        <p class="lineclamp-title"><b>{{ $course->name }}</b></p>
-                                        <p class="lineclamp-desc">{{ $course->desc }}</p>
-                                        <div class="course-price"><p>{{ $course->price }}</p></div>
-                                    </div>
-                                </div>                                
-                            </a>
-                        @endforeach                        
+            <h5>Cursos em destaque: {{ $featured_category1 }}</h5>
+                <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    @foreach ($featured_courses1 as $course)
+                    <div class="course-card">
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                            <div class="course-card__description">
+                                <p>{{ $course->name }}</p>
+                                <p>{{ $course->desc }}</p>
+                                <div class="course-card__price">{{ $course->price }}</div>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="column col-12 course-row1">
-                    <p style="color: #808080;"><strong> Destaques em {{ $featured_category2 }}</strong></p>
-                    <div class="slider">                        
-                        @foreach($featured_courses2 as $course)
-                            <a  style=" display:block;" href="{{ route('course.single', ['id' => $course->id]) }}">
-                                <div class="course-card">
-                                    <div class="course-image" style="background-image: url(../images/aulas/{{$course->thumb_img}})"></div>
-                                    <div class="course-content">
-                                        <p>{{ $course->name }}</p>
-                                        <div class="course-price"><p>{{ $course->price }}</p></div>
-                                    </div>
-                                </div>                                
-                            </a>
-                        @endforeach                        
+                    @endforeach
+                </div><br>
+                <h5>Cursos em destaque: Varejo e Consumo</h5>
+                <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    @foreach($featured_courses2 as $course)
+                    <div class="course-card">
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                            <div class="course-card__description">
+                                <p>{{ $course->name }}</p>
+                                <p>{{ $course->desc }}</p>
+                                <div class="course-card__price">{{ $course->price }}</div>
+                            </div>
+                        </a>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </section>
 
+
+    <script>
+        $('.highlighted-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        contain: true
+    });
+    </script>
     <section class="about">
+
         <div class="container grid-md">
             <div class="columns spacer-2">
-                <div class="column col-8 col-xs-12 col-sm-12 col-md-12"> 
+                <div class="column col-12"> 
                     <video controls poster="../images/layout/home/poster-video.PNG" width="500px">
                         <source src="../images/layout/home/presentation-tabula.mp4">
                     </video>
                 </div>
-                <div class="about-text column col-4 col-xs-12 col-sm-12 col-md-12">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti corporis, sed aperiam! Eum quae assumenda, optio suscipit fugiat facilis minima eos doloremque nostrum, modi quis est repudiandae eveniet tempora sapiente nihil. Quo enim animi accusantium, id sint doloribus obcaecati nulla beatae rerum vero dolore culpa unde delectus at. Voluptate, ex.</p>
-                </div>
             </div>
         </div>
     </section>
+
+    <script>
+        $('.highlighted-carousel').flickity({
+        // options
+        cellAlign: 'left',
+        contain: true
+    });
+    </script>
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
     @section('scripts')
         <script src="{{ asset('js/clamp.min.js') }}"></script>
-
+        
         <script>
             var title = document.getElementsByClassName("lineclamp-title");
             var desc = document.getElementsByClassName("lineclamp-desc");

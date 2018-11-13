@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'login', 'nickname', 'email', 'password', 'first_name', 'last_name','sex','occupation','bio', 
+        'login', 'nickname', 'email', 'password', 'first_name', 'last_name','sex','occupation','bio', 'avatar','img_avatar',
         'birthdate', 'website', 'google_plus', 'twitter', 'facebook', 'youtube','state_id','country_id', 'schooling_id'
     ];
 
@@ -101,7 +101,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\UserGroup');
     }
 
-    public function companies()
+    public function compaines()
     {
         return $this->belongsToMany('App\Company');
     }

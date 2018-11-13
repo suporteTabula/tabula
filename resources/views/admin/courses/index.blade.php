@@ -9,15 +9,15 @@
 				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
 			</a>
 
-			<input class="form-control" type="text" id="search" onkeyup="Search()" placeholder="Digite um nome de usuário..." style="width: 300px;">
+			
 
 			<select id="categories" onchange="Filter()">
 				<option value="all">Todos</option>
 				@foreach ($categories as $category)
 					<option value="{{ $category->desc }}">{{ $category->desc }}</option>
 				@endforeach
-			</select>
-
+			</select><br><br>
+			<input class="form-control" type="text" id="search" onkeyup="Search()" placeholder="Digite Um Curso..." style="width: 300px;">
 		</div>
 		<div class="panel-body">
 			<table id="coursesTable" class="table table-hover">
@@ -164,6 +164,8 @@
 			  	}
 			  	
 			}
+
 		</script>
+		<script src="{{ asset('js/jquery.bxslider.min.js') }}"></script>
 	@stop
 @stop

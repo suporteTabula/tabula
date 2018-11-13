@@ -22,4 +22,5 @@ class Company extends Model
     {
     	return $this->hasMany('App\UserGroup');
     }
+   
 }

@@ -36,7 +36,7 @@
                                                 @if ($child->course_item_types_id == 5)
                                                     <input type="text" name="dissertativa_{{$child->id}}"><br> 
                                                 @else
-                                                    <input type="hidden" name="trueFalse_{{$child->id}}" value="">
+                                                    <input type="hidden" name="trueFalse_{{$child->id}}" value="text">
                                                     <input type="radio" name="trueFalse_{{$child->id}}" value="1">Verdadeira
                                                     <input type="radio" name="trueFalse_{{$child->id}}" value="0">Falsa<br>
                                                  @endif
@@ -72,7 +72,7 @@
     <section class="offscreen-course-content">
          @foreach ($chapters as $chapter)
             <details class="accordion">
-                <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo: {{ $chapter->name }}</summary>
+                <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo:{{ $chapter->name }}</summary>
                 @foreach ($chapter->course_items as $item)
                     @if(is_null($item->course_items_parent))
                         <div id="accbody" class="accordion-body"> <a id="accbody-content" class="aula" value="{{ $item->id }}">{{ $item->name }}</a>

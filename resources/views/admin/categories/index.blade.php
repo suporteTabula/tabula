@@ -17,8 +17,7 @@
 					@endif
 				@endforeach
 			</select>
-			<input id="category_string" placeholder="Filtrar por Nome" type="text">
-            <button class="btn btn-success" id="filter_btn" type="button">Filtrar</button>
+			 
 		</div> 
 		<div class="panel-body"> 
 			<table id="categories" class="table table-hover"> 

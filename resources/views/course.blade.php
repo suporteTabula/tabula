@@ -25,18 +25,29 @@
                         <p><strong>5/5</strong></p>
                     </div>
                     <div class="start-course">
+                        
+                                           
                         @auth
                             @if($hasCourse)
                                 @if ($userItem)
+
                                     <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}">Continuar Curso</a>
-                                @else
-                                    <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
+
+                                    <ul></ul><a class="custom-button button-tabula" href="{{ route('users') }}">Alunos Matriculados</a></ul>
+                                                                                                        
+                                                                             
+                                      @else
+
+                                  <ul>  <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a></ul>
                                 @endif                                
                             @else
-                                <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a>
-                                <a class="custom-button button-tabula" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a>
+                                <ul><a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a></ul>
+
+                               <ul> <a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a></ul>
                             @endif
                         @endauth
+                        
+                            
                     </div>
                 </div>
             </div>
@@ -50,7 +61,7 @@
                     <h4>Conteúdo</h4>
                         @foreach ($chapters as $chapter)
                             <details class="accordion">
-                                 <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo: {{$chapter->name}}</summary>
+                                 <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i>{{$chapter->name}}</summary>
                                  @foreach ($chapter->course_items as $item)
                                      @if (is_null($item->course_items_parent))
                                         <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.progress', ['id' => $item->id]) }}" @endauth>{{$item->name}}</a></div>
@@ -81,5 +92,6 @@
                 </div>
             </div>
         </div>
+   
     </section>
 @endsection

@@ -1,5 +1,6 @@
 .button-selected {
-  color: red; }
+  color: red;
+}
 
 .resumee .resumee-inner {
   margin-top: 100px;
@@ -21,175 +22,217 @@
   padding: 30px;
   display: flex;
   justify-content: center;
-  align-items: center; }
-  .resumee .resumee-inner .user-face {
-    width: 200px;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 100%;
-    margin: 0 auto; }
-  .resumee .resumee-inner span {
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-    margin-top: 30px;
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #303030; }
+  align-items: center;
+}
+
+.resumee .resumee-inner .user-face {
+  width: 200px;
+  height: 200px;
+  background-image: url(../images/avatar-1.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  margin: 0 auto;
+}
+
+.resumee .resumee-inner span {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #303030;
+}
 
 .resumee .user-sections {
   margin-top: 30px;
   -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
-  padding: 30px; }
-  .resumee .user-sections .sections-buttons {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center; }
-    .resumee .user-sections .sections-buttons .button-normal {
-      margin: 4px;
-      border-radius: 10px;
-      border: 1px solid #303030;
-      color: #fff;
-      background-color: #303030;
-      padding: 8px;
-      -webkit-transition: 300ms;
-      -o-transition: 300ms;
-      transition: 300ms;
-      font-size: 12px; }
-    .resumee .user-sections .sections-buttons .button-selected {
-      margin: 4px;
-      border-radius: 10px;
-      border: 1px solid #303030;
-      color: #303030;
-      background-color: #fff;
-      padding: 8px;
-      -webkit-transition: 300ms;
-      -o-transition: 300ms;
-      transition: 300ms;
-      font-size: 12px; }
+  padding: 30px;
+}
+
+.resumee .user-sections .sections-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.resumee .user-sections .sections-buttons .button-normal {
+  margin: 4px;
+  border-radius: 10px;
+  border: 1px solid #303030;
+  color: #fff;
+  background-color: #303030;
+  padding: 8px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  font-size: 12px;
+}
+
+.resumee .user-sections .sections-buttons .button-selected {
+  margin: 4px;
+  border-radius: 10px;
+  border: 1px solid #303030;
+  color: #303030;
+  background-color: #fff;
+  padding: 8px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  font-size: 12px;
+}
 
 .resumee .panel-show {
   margin-top: 30px;
   -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
   background-color: #fff;
-  padding: 30px; }
-  .resumee .panel-show #panel-2,
-  .resumee .panel-show #panel-3,
-  .resumee .panel-show #panel-4,
-  .resumee .panel-show #panel-5,
-  .resumee .panel-show #panel-6 {
-    display: none; }
-    .resumee .panel-show #panel-2 p,
-    .resumee .panel-show #panel-3 p,
-    .resumee .panel-show #panel-4 p,
-    .resumee .panel-show #panel-5 p,
-    .resumee .panel-show #panel-6 p {
-      color: #303030;
-      margin: 0;
-      padding: 0; }
-    .resumee .panel-show #panel-2 .columns .course-item:hover,
-    .resumee .panel-show #panel-3 .columns .course-item:hover,
-    .resumee .panel-show #panel-4 .columns .course-item:hover,
-    .resumee .panel-show #panel-5 .columns .course-item:hover,
-    .resumee .panel-show #panel-6 .columns .course-item:hover {
-      -webkit-transform: scale(1.05);
-      -ms-transform: scale(1.05);
-      transform: scale(1.05);
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden; }
-    .resumee .panel-show #panel-2 .columns .course-item,
-    .resumee .panel-show #panel-3 .columns .course-item,
-    .resumee .panel-show #panel-4 .columns .course-item,
-    .resumee .panel-show #panel-5 .columns .course-item,
-    .resumee .panel-show #panel-6 .columns .course-item {
-      padding: 15px;
-      cursor: crosshair;
-      -webkit-transition: 200ms;
-      -o-transition: 200ms;
-      transition: 200ms; }
-      .resumee .panel-show #panel-2 .columns .course-item .columns .course-image,
-      .resumee .panel-show #panel-3 .columns .course-item .columns .course-image,
-      .resumee .panel-show #panel-4 .columns .course-item .columns .course-image,
-      .resumee .panel-show #panel-5 .columns .course-item .columns .course-image,
-      .resumee .panel-show #panel-6 .columns .course-item .columns .course-image {
-        height: 150px;
-        padding: 5px;
-        background-image: url(http://via.placeholder.com/255x250);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover; }
-      .resumee .panel-show #panel-2 .columns .course-item .columns .course-content,
-      .resumee .panel-show #panel-3 .columns .course-item .columns .course-content,
-      .resumee .panel-show #panel-4 .columns .course-item .columns .course-content,
-      .resumee .panel-show #panel-5 .columns .course-item .columns .course-content,
-      .resumee .panel-show #panel-6 .columns .course-item .columns .course-content {
-        height: 150px;
-        position: relative; }
-        .resumee .panel-show #panel-2 .columns .course-item .columns .course-content p,
-        .resumee .panel-show #panel-3 .columns .course-item .columns .course-content p,
-        .resumee .panel-show #panel-4 .columns .course-item .columns .course-content p,
-        .resumee .panel-show #panel-5 .columns .course-item .columns .course-content p,
-        .resumee .panel-show #panel-6 .columns .course-item .columns .course-content p {
-          margin: 0;
-          padding: 0;
-          color: #fff; }
-        .resumee .panel-show #panel-2 .columns .course-item .columns .course-content .course-price,
-        .resumee .panel-show #panel-3 .columns .course-item .columns .course-content .course-price,
-        .resumee .panel-show #panel-4 .columns .course-item .columns .course-content .course-price,
-        .resumee .panel-show #panel-5 .columns .course-item .columns .course-content .course-price,
-        .resumee .panel-show #panel-6 .columns .course-item .columns .course-content .course-price {
-          display: block;
-          position: absolute;
-          right: 0;
-          bottom: 0;
-          background-color: #5AA535;
-          padding: 10px; }
-          .resumee .panel-show #panel-2 .columns .course-item .columns .course-content .course-price p,
-          .resumee .panel-show #panel-3 .columns .course-item .columns .course-content .course-price p,
-          .resumee .panel-show #panel-4 .columns .course-item .columns .course-content .course-price p,
-          .resumee .panel-show #panel-5 .columns .course-item .columns .course-content .course-price p,
-          .resumee .panel-show #panel-6 .columns .course-item .columns .course-content .course-price p {
-            color: #fff;
-            margin: 0;
-            padding: 0; }
-  .resumee .panel-show p,
-  .resumee .panel-show label {
-    color: #303030;
-    margin: 0;
-    padding: 0; }
-  .resumee .panel-show label {
-    font-weight: 600; }
-  .resumee .panel-show input,
-  .resumee .panel-show textarea,
-  .resumee .panel-show select {
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #303030;
-    padding: 4px;
-    resize: none; }
-  .resumee .panel-show ::-webkit-input-placeholder {
-    /* Chrome/Opera/Safari */
-    padding-left: 10px; }
-  .resumee .panel-show ::-moz-placeholder {
-    /* Firefox 19+ */
-    padding-left: 10px; }
-  .resumee .panel-show :-ms-input-placeholder {
-    /* IE 10+ */
-    padding-left: 10px; }
-  .resumee .panel-show :-moz-placeholder {
-    /* Firefox 18- */
-    padding-left: 10px; }
+  padding: 30px;
+}
+
+.resumee .panel-show #panel-2,
+.resumee .panel-show #panel-3,
+.resumee .panel-show #panel-4,
+.resumee .panel-show #panel-5,
+.resumee .panel-show #panel-6 {
+  display: none;
+}
+
+.resumee .panel-show #panel-2 p,
+.resumee .panel-show #panel-3 p,
+.resumee .panel-show #panel-4 p,
+.resumee .panel-show #panel-5 p,
+.resumee .panel-show #panel-6 p {
+  color: #303030;
+  margin: 0;
+  padding: 0;
+}
+
+.resumee .panel-show #panel-2 .columns .course-item:hover,
+.resumee .panel-show #panel-3 .columns .course-item:hover,
+.resumee .panel-show #panel-4 .columns .course-item:hover,
+.resumee .panel-show #panel-5 .columns .course-item:hover,
+.resumee .panel-show #panel-6 .columns .course-item:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.resumee .panel-show #panel-2 .columns .course-item,
+.resumee .panel-show #panel-3 .columns .course-item,
+.resumee .panel-show #panel-4 .columns .course-item,
+.resumee .panel-show #panel-5 .columns .course-item,
+.resumee .panel-show #panel-6 .columns .course-item {
+  padding: 15px;
+  cursor: crosshair;
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.resumee .panel-show #panel-2 .columns .course-item .columns .course-image,
+.resumee .panel-show #panel-3 .columns .course-item .columns .course-image,
+.resumee .panel-show #panel-4 .columns .course-item .columns .course-image,
+.resumee .panel-show #panel-5 .columns .course-item .columns .course-image,
+.resumee .panel-show #panel-6 .columns .course-item .columns .course-image {
+  height: 150px;
+  padding: 5px;
+  background-image: url(http://via.placeholder.com/255x250);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.resumee .panel-show #panel-2 .columns .course-item .columns .course-content,
+.resumee .panel-show #panel-3 .columns .course-item .columns .course-content,
+.resumee .panel-show #panel-4 .columns .course-item .columns .course-content,
+.resumee .panel-show #panel-5 .columns .course-item .columns .course-content,
+.resumee .panel-show #panel-6 .columns .course-item .columns .course-content {
+  height: 150px;
+  position: relative;
+}
+
+.resumee .panel-show #panel-2 .columns .course-item .columns .course-content p,
+.resumee .panel-show #panel-3 .columns .course-item .columns .course-content p,
+.resumee .panel-show #panel-4 .columns .course-item .columns .course-content p,
+.resumee .panel-show #panel-5 .columns .course-item .columns .course-content p,
+.resumee .panel-show #panel-6 .columns .course-item .columns .course-content p {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+.resumee .panel-show #panel-2 .columns .course-item .columns .course-content .course-price,
+.resumee .panel-show #panel-3 .columns .course-item .columns .course-content .course-price,
+.resumee .panel-show #panel-4 .columns .course-item .columns .course-content .course-price,
+.resumee .panel-show #panel-5 .columns .course-item .columns .course-content .course-price,
+.resumee .panel-show #panel-6 .columns .course-item .columns .course-content .course-price {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #5AA535;
+  padding: 10px;
+}
+
+.resumee .panel-show #panel-2 .columns .course-item .columns .course-content .course-price p,
+.resumee .panel-show #panel-3 .columns .course-item .columns .course-content .course-price p,
+.resumee .panel-show #panel-4 .columns .course-item .columns .course-content .course-price p,
+.resumee .panel-show #panel-5 .columns .course-item .columns .course-content .course-price p,
+.resumee .panel-show #panel-6 .columns .course-item .columns .course-content .course-price p {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.resumee .panel-show p,
+.resumee .panel-show label {
+  color: #303030;
+  margin: 0;
+  padding: 0;
+}
+
+.resumee .panel-show label {
+  font-weight: 600;
+}
+
+.resumee .panel-show input,
+.resumee .panel-show textarea,
+.resumee .panel-show select {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #303030;
+  padding: 4px;
+  resize: none;
+}
+
+.resumee .panel-show ::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  padding-left: 10px;
+}
+
+.resumee .panel-show ::-moz-placeholder {
+  /* Firefox 19+ */
+  padding-left: 10px;
+}
+
+.resumee .panel-show :-ms-input-placeholder {
+  /* IE 10+ */
+  padding-left: 10px;
+}
+
+.resumee .panel-show :-moz-placeholder {
+  /* Firefox 18- */
+  padding-left: 10px;
+}
 
 .resumee .save-button {
   margin-top: 30px;
@@ -209,9 +252,97 @@
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
-  flex-direction: column; }
-  .resumee .save-button p {
-    color: #303030; }
-  .resumee .save-button .button-tabula {
-    padding: 6px 12px;
-    border-radius: 3px; }
+  flex-direction: column;
+}
+
+.resumee .save-button p {
+  color: #303030;
+}
+
+.resumee .save-button .button-tabula {
+  padding: 6px 12px;
+  border-radius: 3px;
+}
+
+.highlighted-courses {
+  height: auto;
+  padding: 15px
+}
+
+.highlighted-courses a {
+  text-decoration: none;
+  color: #303030;
+}
+
+ .highlighted-carousel {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px
+}
+.course-card {
+  width: 225px;
+  height: 350px;
+
+  -webkit-box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+          box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  margin: 10px 15px 10px 0px;
+}
+
+.course-card a {
+  color: #303030;
+  text-decoration: none;
+}
+
+.course-card:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+
+
+
+}
+
+.course-card__image {
+  width: 100%;
+  height: 60%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.course-card__description {
+  padding: 10px;
+  position: relative;
+  height: 40%;
+  font-size: 14px;
+}
+
+.course-card__description p:first-child {
+  width: 90%;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  font-weight: 700;
+}
+
+.course-card__description p:nth-child(2) {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  font-weight: 300;
+}
+
+.course-card__price {
+  padding: 10px;
+  position: absolute;
+  background-color: #44AF5F;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+}

@@ -65,6 +65,10 @@ class AdminCoursesController extends Controller
         $course->price = $request->price;
         $course->user_id_owner = Auth::user()->id;
 
+
+
+        
+
         if($request->thumb_img != '')
         {
             $attach_thumb_img = $request->thumb_img;
@@ -74,7 +78,7 @@ class AdminCoursesController extends Controller
             $course->thumb_img = $attach_thumb_img_name;  
         }
         else
-            $course->thumb_img = 'default.jpg'; 
+            $course->thumb_img = 'e-learning.jpg'; 
 
         $course->save();
 
@@ -154,7 +158,10 @@ class AdminCoursesController extends Controller
             $course->thumb_img = $attach_thumb_img_name;  
         }
         else
-            $course->thumb_img = 'default.jpg';
+            $course->thumb_img = 'e-learning.jpg';
+
+            
+
 
         // busca TODOS os usergroups para serem comparados com:
         // - os CHECKS 

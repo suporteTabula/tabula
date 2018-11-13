@@ -6,7 +6,10 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "bestmomo/scafold": "dev-master",
         "fideloper/proxy": "~3.3",
+        "intervention/image": "^2.4",
+        "ixudra/curl": "^6.16",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "pbmedia/laravel-ffmpeg": "^1.3",

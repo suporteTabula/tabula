@@ -1,0 +1,13 @@
+.sec-hero {
+    width: 100%;
+    height: calc(100vh - 50px);
+    margin-top: 50px;
+    &__photo {
+        background-image: url(../images/secmaster.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 20% 50%;
+        width: 100%;
+        height: 100%;
+    }
+}

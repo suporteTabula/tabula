@@ -14,7 +14,7 @@ class StatesTableSeeder extends Seeder
         $now = date("Y-m-d H:i:s");
         DB::table("states")->insert([
             [
-                "name"       => "Rondônia",
+                "name"       => "São Paulo",
                 "country_id" => '1',
                 "created_at" => $now,
                 "updated_at" => $now,
@@ -109,7 +109,7 @@ class StatesTableSeeder extends Seeder
                 "created_at" => $now,
                 "updated_at" => $now,
             ], [
-                "name"       => "São Paulo",
+                "name"       => "Rondônia",
                 "country_id" => '1',
                 "created_at" => $now,
                 "updated_at" => $now,

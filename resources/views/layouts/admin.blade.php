@@ -103,10 +103,13 @@
                                 <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('companies') }}">Empresas</a>
+                                 <a href="{{ route('companies') }}">Empresas</a>
                             </li>
                             <li class="list-group-item">
                                 <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('reports') }}">Reports</a>
                             </li>
                         </ul>
                     </div>
@@ -119,6 +122,7 @@
     </div>
 
     <!-- Scripts -->
+    
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
