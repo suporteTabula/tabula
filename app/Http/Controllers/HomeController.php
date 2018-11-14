@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
    public function index()
    {
-       $featured_category1 = Category::find(1);
+       $featured_category1 = Category::find(1);              
        $featured_category2 = Category::find(2);
 
        $featured_courses1 = $featured_category1->courses()->inRandomOrder()->take(8)->get();

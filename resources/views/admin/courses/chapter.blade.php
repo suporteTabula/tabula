@@ -74,6 +74,12 @@
 							<input class="form-control" type="file" name="archive">
 						</div>
 					</div>
+					
+					<div id="vimeo">
+						<div class="form-group">							
+							<input name="vimeo" type="checkbox" value="1">Upload para o Vimeo
+						</div>
+					</div>
 
 					<div id="texto">
 						<div class="form-group">
@@ -81,7 +87,7 @@
 							<textarea id="desc" name="desc" class="form-control" rows="4" cols="5"></textarea>
 						</div>
 					</div>
-
+					
 					<div class="form-group">
 						<div class="text-center">
 							<button class="btn btn-success" type="submit">Nova Aula</button>
@@ -238,17 +244,23 @@
 			$('#arquivo').hide();
 			$('#texto').hide();
 			$('#dissertativa').hide();
-
+			$('#vimeo').hide();
+			
 			$('#item_type').change(function(){
 				if($('#item_type').val() == 3){
 					$('#desc').hide();
 					$('#texto').show();
-					$('#arquivo').hide();
+					$('#arquivo').hide();					
+					$('#vimeo').hide();
 				} else{
 					$('#texto').hide();
 					$('#desc').show();
 					$('#arquivo').show();
-				}				
+					$('#vimeo').hide();
+				}
+				if($('#item_type').val() == 1){
+					$('#vimeo').show();
+				}
 			});
 
 		</script>

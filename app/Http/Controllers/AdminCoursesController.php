@@ -13,10 +13,14 @@ use App\CourseItemType;
 use App\CourseItemGroup;
 use App\CourseItem;
 use App\CourseItemOption;
+use App\CustomClasses\vimeo_tools;
+use Log;
+use Storage;
 use Illuminate\Support\Facades\DB;
 
+
 class AdminCoursesController extends Controller
-{
+{	    
     /**
      * Display a listing of the resource.
      *
@@ -330,8 +334,7 @@ class AdminCoursesController extends Controller
     {
         $this->validate($request, [
             'name'          => 'required'
-        ]);
-
+        ]);        
         $item = new CourseItem;
         
         $item->name                     = $request->name;
@@ -346,7 +349,14 @@ class AdminCoursesController extends Controller
             $attach = $request->archive;
             $attach_new_name = time().$attach->getClientOriginalName();
             $attach->move('uploads/archives', $attach_new_name); 
-            $item->path = 'uploads/archives/'. $attach_new_name;     
+            $new_path = 'uploads/archives/'. $attach_new_name;
+            if($request->vimeo == 1){                
+                $vimeo_result = vimeo_tools::Upload_Video($new_path,$item);                
+                $item->path = $vimeo_result;
+            }
+            else {                
+                $item->path = $new_path;       
+            }
         }
 
         $order = DB::table('course_items')
@@ -380,7 +390,14 @@ class AdminCoursesController extends Controller
             $attach = $request->archive;
             $attach_new_name = time().$attach->getClientOriginalName();
             $attach->move('uploads/archives', $attach_new_name); 
-            $item->path = 'uploads/archives/'. $attach_new_name;     
+            $new_path = 'uploads/archives/'. $attach_new_name;
+           if($request->vimeo == 1){
+                $vimeo_result = $this->vimeo_upload($new_path,$item);
+                $item->path = $vimeo_result;
+            }
+            else {                
+                $item->path = $new_path;       
+            }
         }
 
         $order = DB::table('course_items')
@@ -415,9 +432,14 @@ class AdminCoursesController extends Controller
         }
         else
         {
+            $items = CourseItem::all();
+            if(strpos('vimeo',$item->path)){
+                //this is a vimeo url, say so
+                $item = vimeo_tools::parse_for_urls($items);
+            }
             return view('admin.courses.item')
                     ->with('item', $item)
-                    ->with('items', CourseItem::all())
+                    ->with('items', $items)
                     ->with('chapter', $chapter)    
                     ->with('items_type', CourseItemType::all());
         }        
@@ -440,11 +462,26 @@ class AdminCoursesController extends Controller
         ]);
 
         if($request->hasFile('archive'))
-        {
+        {            
+            $old_itemPath = $item->path;
             $attach = $request->archive;
             $attach_new_name = time().$attach->getClientOriginalName();
             $attach->move('uploads/archives', $attach_new_name); 
-            $item->path = 'uploads/archives/'. $attach_new_name;
+            $new_path = 'uploads/archives/'. $attach_new_name;
+            if($old_itemPath.contains('vimeo')){            
+                $vimeo_result = vimeo_tools::vimeo_edit($new_path,$item,$old_itemPath);                
+                $item->path = $vimeo_result;
+            }
+            else {
+                
+                $item->path = 'uploads/archives/'. $new_path;       
+            }
+        }
+        else {
+            if($item->path != '' && $item->path.contains('vimeo'))
+            {
+                $vimeo_result = vimeo_delete($item->path);
+            }
         }
         $item->name                 = $request->name;
         $item->desc                 = $request->desc;
@@ -455,6 +492,8 @@ class AdminCoursesController extends Controller
         return redirect()->back();
     }
 
+	
+	
     /**
      * Remove the specified item from the chapter.
      *
@@ -472,6 +511,11 @@ class AdminCoursesController extends Controller
         
         $item->item_child()->forceDelete();
         
+        if(strpos($item->path,"vimeo"))
+        {
+            vimeo_tools::vimeo_delete($item);
+        }
+
         if(file_exists($item->path))
         {
             unlink(public_path().'/'. $item->path);
