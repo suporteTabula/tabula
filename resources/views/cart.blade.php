@@ -11,7 +11,7 @@
         </div>
     @else
 
-    <section>
+    <!-- <section>
         <div class="container grid-md">
             <div class="columns">
             @foreach($courses as $course)
@@ -32,9 +32,9 @@
             @endforeach
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section id="checkout">
+    <!-- <section id="checkout">
         <div class="container grid-md">
             <div class="columns">
                 <div class="column total-checkout">
@@ -44,13 +44,13 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <!-- <section>
+    <section>
         <div class="container grid-lg">
             <div class="column checkout-courses">
                 <div class="columns">                                                          
-                    <div class="column col-8 check-card"><!-- Master Column Left -->                    
+                    <div class="column col-8 check-card">                    
                         @foreach(array_chunk($courses,2) as $chunks)
                             <div class="columns">
                                 @foreach($chunks as $course)

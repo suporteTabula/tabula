@@ -17,12 +17,94 @@ $(".icon-closed").click(function () {
     });
 });
 $(document).ready(function () {
-    $('.slider').bxSlider({
-        mode: "horizontal",
-        preloadImages: "all",
-        maxSlides: 4,
-        moveSlides: 4,
-    });
+    // $('.slider').bxSlider({
+    //     mode: "horizontal",
+    //     preloadImages: "all",
+    //     maxSlides: 4,
+    //     moveSlides: 4,
+    // });
+    //capture the switcher trigger and assign a function to it.
+				 //capturar o gatilho do switcher e atribuir uma função a ele.
+				 $("a.switcher").bind("click", function(e){
+					e.preventDefault();
+					
+					var theid = $(this).attr("id");
+					var theproducts = $("ul#courses");
+					var classNames = $(this).attr('class').split(' ');
+					
+					if($(this).hasClass("active")) {
+						// if currently clicked button has the active class
+						// then we do nothing!
+						return false;
+					} else {
+						// otherwise we are clicking on the inactive button
+						// and in the process of switching views!
+
+						if(theid == "gridview") {
+							$(this).addClass("active");
+							$("#listview").removeClass("active");							
+							$("#listview").children("img").attr("src","/images/list-view.png");
+							
+							//Restore the card layout to these divs
+							$.each( $('ul#courses'), function(i, left) {
+							   $('#course-card', left).each(function() {
+									$(this).addClass("course-card");
+									$(this).removeClass("course-card-list");
+							   });
+							   $('.lineclamp-title',left).each(function() {
+								   $(this).addClass("course-card-title-list");
+								   $(this).removeClass("lineclamp-title");
+							   });
+							   $('#course-card-desc', left).each(function() {
+									$(this).addClass("course-card__description");
+									$(this).removeClass("course-card-desc-list");
+							   });
+							   $('#course-card-price', left).each(function() {
+									$(this).addClass("course-card__price");
+									$(this).removeClass("course-card-price-list");
+							   });
+							})		
+									
+							var theimg = $(this).children("img");
+							theimg.attr("src","/images/grid-view-active.png");
+						
+							// remove the list class and change to grid
+							theproducts.removeClass("list");
+							theproducts.addClass("grid");
+						}					
+						else if(theid == "listview") {
+							$(this).addClass("active");							
+							$("#gridview").removeClass("active");								
+							$("#gridview").children("img").attr("src","/images/grid-view.png");
+								
+							//Remove the card layout to these divs
+							$.each( $('ul#courses'), function(i, left) {
+							   $('#course-card', left).each(function() {
+									$(this).removeClass("course-card");
+									$(this).addClass("course-card-list");
+							   });
+							   $('.lineclamp-title',left).each(function() {
+								   $(this).removeClass("course-card-title-list");
+								   $(this).addClass("lineclamp-title");
+							   });
+							   $('#course-card-desc', left).each(function() {
+									$(this).removeClass("course-card__description");
+									$(this).addClass("course-card-desc-list");
+							   });
+							   $('#course-card-price', left).each(function() {
+									$(this).removeClass("course-card__price");
+									$(this).addClass("course-card-price-list");
+							   });
+							})		
+							var theimg = $(this).children("img");
+							theimg.attr("src","/images/list-view-active.png");
+								
+							// remove the grid view and change to list
+							theproducts.removeClass("grid")
+							theproducts.addClass("list");	
+						}
+					}
+				 });		
 });
 
 $(document).ready(function() {
