@@ -1361,6 +1361,7 @@ h5 {
   overflow: hidden;
   margin: 0;
   font-weight: 700;
+  color: #fff;
 }
 
 .course-card__description p:nth-child(2) {
@@ -1370,6 +1371,7 @@ h5 {
   overflow: hidden;
   margin: 0;
   font-weight: 300;
+  color: #fff;
 }
 
 .course-card__price {

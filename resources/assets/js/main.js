@@ -13,12 +13,13 @@ $(".icon-closed").click(function () {
     });
 });
 $(document).ready(function () {
-    $('.slider').bxSlider({
-        mode: "horizontal",
-        preloadImages: "all",
-        maxSlides: 4,
-        moveSlides: 4,
-    });
+    // $('.slider').bxSlider({
+    //     mode: "horizontal",
+    //     preloadImages: "all",
+    //     maxSlides: 4,
+    //     moveSlides: 4,
+    // });
+    alert('doc');
 });
 
 $(document).ready(function() {
