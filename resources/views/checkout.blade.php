@@ -15,13 +15,15 @@
                     <div class='card-wrapper'>
 
                     </div>
-                    <form id="payment">
+                    <form id="payment" method="post" action="{{route('transaction.success')}}">
+                    {{ csrf_field() }}
                         <input class="button-tabula-white formInput" type="text" name="number" placeholder="Número do Cartão">
                         <input class="button-tabula-white formInput" type="text" name="cvv" placeholder="CVV"/>
                         <input class="button-tabula-white formInput" type="text" name="first-name" placeholder="Nome"/>
                         <input class="button-tabula-white formInput" type="text" name="last-name" placeholder="Sobrenome"/>
                         <input class="button-tabula-white formInput" type="text" name="expiry" placeholder="Validade"/>
-                        <a href="{{ route('transaction.success') }}" class="button-tabula-gray paymentButton">Continuar</a>
+                        <button class="button-tabula-gray paymentButton">Continuar</button>
+                        <!-- <a href="{{ route('transaction.success') }}" class="button-tabula-gray paymentButton">Continuar</a> -->
                     </form>
                     <script>
                         var card = new Card({

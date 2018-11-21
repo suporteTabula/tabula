@@ -19,7 +19,8 @@ Auth::routes();
 * Routes to auth user
 *
 */
-
+// ROTA USADA PARA TESTES DA INTEGRAÇÃO DA YAPAY
+Route::get('test', 'Yappay@intermediadorPagamentoCartaoCredito')->name('test.single');
 
 
 
@@ -36,9 +37,11 @@ Route::get('/homeEmpresa', ['uses' => 'Controller@HomeEmpresa']);
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
 Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('cart.remove');
+//Route::get('checkout', 'Yappay@intermediadorPagamentoCartaoCredito')->name('test.single');
+
 Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
 
-Route::get('success', 'TransactionsController@success')->name('transaction.success');
+Route::post('success', 'Yappay@intermediadorPagamentoCartaoCredito')->name('transaction.success');
 
 Route::get('course/{id}', 'CoursesController@course')->name('course.single');
 Route::get('course/start/{id}', 'CoursesController@course_start')->name('course.start');
