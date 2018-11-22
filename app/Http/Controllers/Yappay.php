@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Cart;
 use App\Course;
+use App\User;
 use App\Transaction;
 use App\TransactionItem;
 use App\CustomClasses\yapay_transaction;
+use App\CustomClasses\yapay_author;
+use App\CustomClasses\yapay_affiliate;
 
 class Yappay extends Controller
 {
@@ -30,15 +33,24 @@ class Yappay extends Controller
         // remover esse random quando existir algum serviço de transação real
         $random_hash = rand(1, 9999999);
 
+        $authors = array();
+
         foreach($items as $item)
         {
             $course = Course::find($item->course_id);
-            // adiciona o curso do item em questão no array de cursos
             array_push($courses, $course);
+
+            // adiciona o curso do item em questão no array de cursos
+            $author = User::find($course->user_id_owner);     
+
+            $author_item = new yapay_author;
+            $author_item->email = $author->email;
+            $author_item->course_cost = $course->price;
+
+            array_push($authors,$author_item);
+
             // soma o preço de cada curso
             $total_price = $total_price + $course->price;
-            // vincula o usuário ao curso comprado
-            $user->courses()->save($course, ['progress' => 0]);
 
             $cart_item = Cart::find($item->id);
             // remove item do carrinho
@@ -52,18 +64,9 @@ class Yappay extends Controller
             $transaction_item->course_id = $course->id;
             $transaction_item->price = $course->price;
             $transaction_item->save();
-
-            // "transaction_product" => array ([
-            //     "description" => "Camiseta Tony Stark", // S
-            //     "quantity" => "1", // S
-            //     "price_unit" => "130.00", // S
-            //     "code" => "1", // N
-            //     "sku_code" => "0001", // N
-            //     "extra" => "Informação Extra" // N
-            // ]),
             
             $transaction_item_yapay = new yapay_transaction;
-            $transaction_item_yapay->description = "Course Description";
+            $transaction_item_yapay->description = $course->name;
             $transaction_item_yapay->quantity = 1;
             $transaction_item_yapay->price_unit = $course->price;
             
@@ -74,15 +77,29 @@ class Yappay extends Controller
         $transaction->user_id = $user->id;
         $transaction->price = $total_price;
         // aqui entrará a informação do tipo de transação, quando houver algum serviço de compras
-        $transaction->transaction_type = 'remove_this';
+        $transaction->transaction_type = 'course_payment';
         // mesmo $random_hash de cada item da transação, fazendo o vínculo para poder ser resgatado na view
         // será substituido pelo codigo da compra 
         $transaction->hash = $random_hash;
         $transaction->save();
 
+        $affiliate_array = array();
+
+        foreach($authors as $author)
+        {
+            $author_cost = $author->course_cost * 100;
+
+            $affiliate = new yapay_affiliate;
+            $affiliate->email = $author->email;
+            $affiliate->percentage = $author_cost / $total_price;
+
+            array_push($affiliate_array,$affiliate);
+        };
+
         // Tipo da Request
         $reqtype = "POST";
         // Qual URL que vamos enviar a request
+        // mudar isso quando mudar para produção
         // Teste: https://api.intermediador.sandbox.yapay.com.br/api/v3/transactions/payment
         // Produção: https://api.intermediador.yapay.com.br/api/v3/transactions/payment
         $url = "https://api.intermediador.sandbox.yapay.com.br/api/v3/transactions/payment";
@@ -114,10 +131,7 @@ class Yappay extends Controller
             "transaction" => array (
                 "customer_ip" => \Request::ip(), // S
             ),
-            "affiliates" => array ([
-                 "account_email" => "user2.teste@teste.com", // N
-                 "percentage" => "20" // N
-            ]),
+            "affiliates" => $affiliate_array,
             "payment" => array (
                 "payment_method_id" => "4", // S
                 "card_name" => $post['first-name']." ".$post['last-name'], // N
@@ -152,8 +166,25 @@ class Yappay extends Controller
 
         // Para esse caso, retornará sucesso se as informações forem aprovadas pelo sistema da Yapay, junto com as informações de compra, ou erro caso sejam negadas.
         // Informações mais detalhadas em: https://intermediador.dev.yapay.com.br/#/transacao-cartao-credito?id=enviando-uma-transa%C3%A7%C3%A3o
-        return view('test')
-            ->with('result', compact('post','courses','data','transaction_items_yapay','result', 'total_price','user','transaction'));
+        
+        $message = '';
+
+        if($result->message_response->message=='success'){
+            foreach($items as $item)
+            {
+                $course = Course::find($item->course_id);
+                array_push($courses, $course);
+                
+                // vincula o usuário ao curso comprado
+                $user->courses()->save($course, ['progress' => 0]);
+                $message = '<div class="alert alert-success">Successfully added courses to user profile</div>';
+            }
+        } else {
+            $message = '<div class="alert alert-error">Failed to add courses to user profile. Problem with payment.</div>';
+        }
+
+        return view('home')
+            ->with('message', $message);
     }
 
     /* 

@@ -1,6 +1,9 @@
 @extends('layouts.user')
 @section('content')
     <section class="hero-landing">
+        @if (session('message'))
+           <div>poop</div>
+        @endif
         <div class="container grid-md">
             <div class="columns">
                 <div class="column col-12 col-xs-12 col-sm-12 hero-text">
