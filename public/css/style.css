@@ -1578,3 +1578,24 @@ footer {
           -webkit-transform: scale(1);
           transform: scale(1);
       }
+
+.alert {
+  border: 1px solid #fff;
+  padding: 5px;
+  background-color: #5bc0de;
+  color: #fff;
+}
+
+.success {
+  background-color: green;
+  color: #fff;
+}
+
+.error {
+  background-color: red;
+  color: #fff;
+}
+
+.closebtn {
+  float: right;
+}

@@ -177,14 +177,13 @@ class Yappay extends Controller
                 
                 // vincula o usuário ao curso comprado
                 $user->courses()->save($course, ['progress' => 0]);
-                $message = '<div class="alert alert-success">Successfully added courses to user profile</div>';
+                $message = 'Successfully added courses to user profile';
             }
         } else {
-            $message = '<div class="alert alert-error">Failed to add courses to user profile. Problem with payment.</div>';
+            $message = 'Failed to add courses to user profile. Problem with payment';
         }
 
-        return view('home')
-            ->with('message', $message);
+        return redirect()->action('HomeController@index')->with('message', $message);
     }
 
     /* 

@@ -2,60 +2,31 @@
 @section('content')
     <section class="hero-landing">
         @if (session('message'))
-           <div>poop</div>
+            <div class="alert">
+              {{ session('message') }}
+            </div>
+            <br/><br/>
         @endif
         <div class="container grid-md">
             <div class="columns">
                 <div class="column col-12 col-xs-12 col-sm-12 hero-text">
-                    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false, "draggable": false}'>
-                        <div class="carousel-cell--1">
-                            <a id="carousel-redirect" href="/search/1"></a>
-                        </div>
-                        <div class="carousel-cell--2">
-                            <a id="carousel-redirect" href="/search/2"></a>
-                        </div>
-                        <div class="carousel-cell--3">
-                            <a id="carousel-redirect" href="/search/3"></a>
-                        </div>
-                        <div class="carousel-cell--4">
-                            <a id="carousel-redirect" href="/search/4"></a>
-                        </div>
-                        <div class="carousel-cell--5">
-                            <a id="carousel-redirect" href="/search/5"></a>
-                        </div>
-                        <div class="carousel-cell--6">
-                            <a id="carousel-redirect" href="/search/6"></a>
-                        </div>
-                        <div class="carousel-cell--7">
-                            <a id="carousel-redirect" href="/search/7"></a>
-                        </div>
-                        <div class="carousel-cell--8">
-                            <a id="carousel-redirect" href="/search/8"></a>
-                        </div>
-                        <div class="carousel-cell--9">
-                            <a id="carousel-redirect" href="/search/9"></a>
-                        </div>
-                        <div class="carousel-cell--10">
-                            <a id="carousel-redirect" href="/search/10"></a>
-                        </div>
-                        <div class="carousel-cell--11">
-                            <a id="carousel-redirect" href="/search/11"></a>
-                        </div>
-                        <div class="carousel-cell--12">
-                            <a id="carousel-redirect" href="/search/12"></a>
-                        </div>
-                        <div class="carousel-cell--13">
-                            <a id="carousel-redirect" href="/search/13"></a>
-                        </div>
-                        <div class="carousel-cell--14">
-                            <a id="carousel-redirect" href="/search/14"></a>
-                        </div>
-                        <div class="carousel-cell--15">
-                            <a id="carousel-redirect" href="/search/15"></a>
-                        </div>
-                        <div class="carousel-cell--16">
-                            <a id="carousel-redirect" href="/search/16"></a>
-                        </div>
+                    <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "autoPlay": 2500, "pageDots": false }'>
+                        <div class="carousel-cell--1"></div>
+                        <div class="carousel-cell--2"></div>
+                        <div class="carousel-cell--3"></div>
+                        <div class="carousel-cell--4"></div>
+                        <div class="carousel-cell--5"></div>
+                        <div class="carousel-cell--6"></div>
+                        <div class="carousel-cell--7"></div>
+                        <div class="carousel-cell--8"></div>
+                        <div class="carousel-cell--9"></div>
+                        <div class="carousel-cell--10"></div>
+                        <div class="carousel-cell--11"></div>
+                        <div class="carousel-cell--12"></div>
+                        <div class="carousel-cell--13"></div>
+                        <div class="carousel-cell--14"></div>
+                        <div class="carousel-cell--15"></div>
+                        <div class="carousel-cell--16"></div>
                     </div>
                 </div>
             </div>
@@ -66,7 +37,7 @@
             <div class="columns">
                 <div class="column col-12 show-md">
                     <div class="macro-mobile-wrapper">
-                        @for($i = 0; $i<3; $i++)
+                        @for($i = 0; $i < 3; $i++)
                             <div class="macrotema-col-{{ $i+1 }}">
                                 @for($j = 0; $j < $mobile_col_limit; $j++)
                                     <a href="{{ route('search.single', ['id' => $mobile_categories[$mobile_category_count]->id]) }}" style="background-image: url({{ '../images/hex/mobile/'.$mobile_categories[$mobile_category_count]->mobile_hex_bg }})">
@@ -119,8 +90,8 @@
                         <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12 hex-adv">
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
-                        <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <p>O Tábula possui uma plataforma inédita e fácil de usar, com cursos das mais diversas áreas do conhecimento.</p>
+                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
                         </div>
                     </div>
                 </div>
@@ -129,8 +100,8 @@
                         <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12 hex-adv">
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
-                        <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <p>Para os alunos, há a disponibilidade de aprender e assistir aulas dos mais variados temas no tempo que quiser. Já aos professores, oferecemos a assessoria necessária, com salas para gravação e a edição destas.</p>
+                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
                         </div>
                     </div>
                 </div>
@@ -139,8 +110,8 @@
                         <div class="column col-4 col-sm-4 col-md-12 col-lg-12 col-xl-12  hex-adv">
                             <img src="../images/layout/home/hexagon.svg" width="70px;">
                         </div>
-                        <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-                            <p>Leve o Tábula para dentro de sua emrpesa através da realização de parcerias conosco. Procuramos realizar contratos com instituições de ensino que procuram crescer e disseminar uma educação de qualidade.</p>
+                        <div class="column col-sm-8 col-md-12 col-lg-12 col-xl-12 ">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio at eius ipsam illum, amet repudiandae.</p>
                         </div>
                     </div>
                 </div>
@@ -153,7 +124,7 @@
             <div class="columns">
             <h5>Cursos em destaque: {{ $featured_category1 }}</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
-                    @foreach ($featured_courses1 as $course)
+                    @foreach($featured_courses1 as $course)
                     <div class="course-card">
                         <a href="{{ route('course.single', ['id' => $course->id]) }}">
                             <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
@@ -165,7 +136,7 @@
                         </a>
                     </div>
                     @endforeach
-                </div><br>
+                </div>
                 <h5>Cursos em destaque: Varejo e Consumo</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
                     @foreach($featured_courses2 as $course)
@@ -186,25 +157,35 @@
     </section>
 
 
-    <script>
+    <<script>
         $('.highlighted-carousel').flickity({
         // options
         cellAlign: 'left',
         contain: true
     });
     </script>
+
     <section class="about">
+
+        <section class="about">
 
         <div class="container grid-md">
             <div class="columns spacer-2">
-                <div class="column col-12"> 
+                <div class="column col-8 col-xs-12 col-sm-12 col-md-12"> 
                     <video controls poster="../images/layout/home/poster-video.PNG" width="500px">
                         <source src="../images/layout/home/presentation-tabula.mp4">
                     </video>
                 </div>
+                <div class="about-text column col-4 col-xs-12 col-sm-12 col-md-12">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti corporis, sed aperiam! Eum quae assumenda, optio suscipit fugiat facilis minima eos doloremque nostrum, modi quis est repudiandae eveniet tempora sapiente nihil. Quo enim animi accusantium, id sint doloribus obcaecati nulla beatae rerum vero dolore culpa unde delectus at. Voluptate, ex.</p>
+                </div>
             </div>
         </div>
     </section>
+
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
 
     <script>
         $('.highlighted-carousel').flickity({
@@ -218,7 +199,7 @@
 
     @section('scripts')
         <script src="{{ asset('js/clamp.min.js') }}"></script>
-        
+        u
         <script>
             var title = document.getElementsByClassName("lineclamp-title");
             var desc = document.getElementsByClassName("lineclamp-desc");
@@ -228,4 +209,3 @@
         </script>
     @endsection
 @endsection
-
