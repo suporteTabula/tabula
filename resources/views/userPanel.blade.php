@@ -1,0 +1,345 @@
+@extends('layouts.user')
+
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/user.css') }}">
+@endsection
+@section('content')
+<section class="resumee">
+    <div class="container grid-lg">
+        <div class="columns">
+            <div class="column col-1"></div>
+            <div class="column col-10 resumee-inner">
+                <div class="columns">
+                    <div class="column col-12">
+                        <div class="column col-12">
+                          <div class="">
+                            <img src="{{asset('/images/Profilepic')}}/{{ $user->avatar }}" style="object-position:50% 30% ; object-fit:cover; float:left; border-radius:100px; margin-right:25px; height: 150px; width: 150px">
+                        </div>
+                        <span>{{ $user->first_name}} {{ $user->last_name }}</span>               
+                    </div>       
+                </div>
+            </div>
+        </div>
+        <div class="column col-1"></div>
+    </div>
+    <div class="columns">
+        <div class="column col-1"></div>
+        <div class="column col-10 user-sections">
+            <div class="columns">
+                <div class="column col-12">
+                    <div class="user-face"></div>
+                    <div class="columns">
+                        <div class="columns col-12 sections-buttons">
+                            @foreach ($user->userTypes as $userType)
+                            <?php $tipo = $userType->desc; ?>
+                            @endforeach
+                            @if($tipo == 'Aluno') 
+                            <a href="#">
+                                <button id="data" class="button-normal button-selected">Dados Pessoais</button>
+                            </a>
+                            <a href="#">
+                                <button id="courses" class="button-normal">Meus Cursos</button>
+                            </a>
+                            <a href="#">
+                                <button id="payment" class="button-normal">Dados de Pagamento</button>
+                            </a>
+                            <a href="#">
+                                <button id="teacher" class="button-normal">Tornar-se Professor</button>
+                            </a>
+                            @else
+                            <a href="#"> 
+                                <button id="data" class="button-normal button-selected">Dados Pessoais</button>
+                            </a>
+                            <a href="#">
+                                <button id="courses" class="button-normal">Meus Cursos</button>
+                            </a>
+                            <a href="#">
+                                <button id="taught" class="button-normal">Cursos que Leciono</button>
+                            </a>
+                            <a href="#">
+                                <button id="create" class="button-normal">Criar Curso</button>
+                            </a>
+                            <a href="#">
+                                <button id="payment" class="button-normal">Dados de Pagamento</button>
+                            </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column col-1"></div>
+    </div>
+    <div class="columns">
+        <div class="column col-1"></div>
+        <div class="column col-10 panel-show">
+            <div id="panel-1" class="columns">
+                <form id="teste" action="{{ route('userProfile.update') }}" method="post" enctype="multipart/form-data">
+                    {{ csrf_field() }} 
+                    <div class="user-face2">
+                     <label>Escolha a Foto De Perfil</label>
+                     <input type="file" name="avatar">
+                 </div>
+                 <!--Painel 1 - dados pessoais-->
+                 <div class="column col-12 ">
+                    <div class="columns">
+                        <div class="column col-xs-12 col-sm-12 col-6">
+                            <label for="first_name"><b>Nome</b></label>
+                            <input class="form-control" name="first_name" placeholder="Seu nome" type="text" value="{{ $user->first_name }}">
+                            <br>
+                            <br>
+                            <label for="country"><b>País</b></label>
+                            <select id="country" name="country_id" class="form-control">
+                                @foreach ($countries as $country)
+                                <option value="{{ $country->id }}" @if($user->country_id == $country->id) selected @endif> {{ $country->name }} </option>
+                                @endforeach
+                            </select>
+                            <br>
+                            <br>
+                            <label for="state"><b>Estado</b></label>
+                            <select id="state" name="state_id" class="form-control">
+                                @foreach ($states as $state)
+                                <option value="{{ $state->id }}" @if($user->state_id == $state->id) selected @endif> {{ $state->name }} </option>
+                                @endforeach
+                            </select>
+                            <br>
+                            <br> </div>
+                            <div class="column col-xs-12 col-sm-12 col-6">
+                                <label for="last_name"><b>Sobrenome</b></label>
+                                <input class="form-control" name="last_name" placeholder="Seu sobrenome" type="text" value="{{ $user->last_name }}">
+                                <br>
+                                <br>
+                                <label for="nickname"><b>Apelido</b></label>
+                                <input class="form-control" type="text" name="nickname" placeholder="Seu apelido" value="{{ $user->nickname }}">
+                                <br>
+                                <br>
+                                <label for="sexo"><b>Sexo</b></label>
+                                <select id="sex" name="sex" class="form-control">
+                                    <option value="Feminino" @if($user->sex == 'Feminino') selected @endif> Feminino </option>
+                                    <option value="Masculino" @if($user->sex == 'Masculino') selected @endif> Masculino </option>
+                                </select>
+                            </div>
+                            <div class="column col-12">
+                                <label for="bio"><b>Conte-nos um pouco sobre você:</b></label>
+                                <textarea class="form-control" rows="5" id="bio" name="bio" placeholder="Escreva aqui...">{{ $user->bio }}</textarea>
+                            </div>
+                            <div class="column col-xs-12 col-sm-12 col-6">
+                                <label for="website"><b>Website</b></label>
+                                <input class="form-control" type="text" name="website" placeholder="https://..." value="{{ $user->website }}">
+                                <br>
+                                <br>
+                                <label for="twitter"><b>Twitter</b></label>
+                                <input class="form-control" type="text" name="twitter" placeholder="https://..." value="{{ $user->twitter }}"> </div>
+                                <div class="column col-xs-12 col-sm-12 col-6">
+                                    <label for="facebook"><b>Facebook</b></label>
+                                    <input class="form-control" type="text" name="facebook" placeholder="https://..." value="{{ $user->facebook }}">
+                                    <br>
+                                    <br>
+                                    <label for="google_plus"><b>Google +</b></label>
+                                    <input class="form-control" type="text" name="google_plus" placeholder="https://..." value="{{ $user->google_plus }}"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--meus cursos-->
+                    <div id="panel-2" class="columns">
+                        <div class="column col-12">
+                            <div class="columns">
+
+                             @foreach($user->courses as $course)
+                             <div class="course-card">
+                                <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                                    <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                                    <div class="course-card__description">
+                                       <p>{{ $course->name }}</p>
+                                       <p>{{ $course->desc }}</p>
+                                   </div>
+                               </a>
+                           </div>
+                           @endforeach
+
+                       </div>
+                   </div>
+               </div>
+               @if ($user->IsStudent())
+               <b>Aluno DO TABULA</b>
+               @endif
+               <!--Lecionados-->
+               <div id="panel-3" class="columns">
+                <div class="column col-12">
+                    <div class="columns">
+                        @foreach($courses as $course)
+                        @if ($course->user_id_owner == $user->id)<br> 
+                        <div class="course-card">
+                            <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                                <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                                <div class="course-card__description">
+                                   <p>{{ $course->name }}</p>
+                                   <p>{{ $course->desc }}</p>
+                               </div>
+                           </a>
+                       </div>
+                       @endif
+                       @endforeach
+                   </div>                                
+               </div>
+           </div>
+           <!--criar curso-->
+           <div id="panel-4" class="columns">
+            <div class="column col-12">
+                <div class="columns">
+                    <div class="column col-12">
+                        <button class="btn button-tabula">Criar curso</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--dados de pagamento-->
+        <div id="panel-5" class="columns">
+            <div class="column col-12">
+                <div class="columns">
+                    <div class="column col-12">
+                        <p>dados</p><br>
+
+                        <div class="column col-xs-12 col-sm-12 col-6">
+                            <label for="first_name"><b>Nome</b></label>
+                            <input class="form-control" name="first_name" placeholder="Seu nome" type="text" value="{{ $user->first_name }}">
+                            <br>
+                            <br>
+                            <label for="country"><b>País</b></label>
+                            <select id="country" name="country_id" class="form-control">
+                                @foreach ($countries as $country)
+                                <option value="{{ $country->id }}" @if($user->country_id == $country->id) selected @endif> {{ $country->name }} </option>
+                                @endforeach
+                            </select>
+                            <br>
+                            <br>
+                            <label for="state"><b>Estado</b></label>
+                            <select id="state" name="state_id" class="form-control">
+                                @foreach ($states as $state)
+                                <option value="{{ $state->id }}" @if($user->state_id == $state->id) selected @endif> {{ $state->name }} </option>
+                                @endforeach
+                            </select>
+                            <br>
+                            <br> </div>
+                            <div class="column col-xs-12 col-sm-12 col-6">
+                                <label for="last_name"><b>Sobrenome</b></label>
+                                <input class="form-control" name="last_name" placeholder="Seu sobrenome" type="text" value="{{ $user->last_name }}">
+                                <br>
+                                <br>
+                                <label for="nickname"><b>Apelido</b></label>
+                                <input class="form-control" type="text" name="nickname" placeholder="Seu apelido" value="{{ $user->nickname }}">
+                                <br>
+                                <br>
+                                <label for="sexo"><b>Sexo</b></label>
+                                <select id="sex" name="sex" class="form-control">
+                                    <option value="Feminino" @if($user->sex == 'Feminino') selected @endif> Feminino </option>
+                                    <option value="Masculino" @if($user->sex == 'Masculino') selected @endif> Masculino </option>
+                                </select>
+                            </div>
+                            <div class="column col-12">
+                                <label for="bio"><b>Mais Informações:</b></label>
+                                <textarea class="form-control" rows="5" id="bio" name="bio" placeholder="Escreva aqui...">{{ $user->bio }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--tornar-se prof-->
+            <div id="panel-6" class="columns">
+                <div class="column col-12">
+                    <div class="columns">
+                        <div class="column col-12">
+                            <p>Somos marketplace inovadora que permite aos nossos colaboradores, não apenas ampliar o alcance de alunos mas também ser remunerado de forma eficiente pelo conteúdo criado. Um de nossos diferenciais é que não somos proprietários do seu conteúdo. Somos apenas a ferramenta que permite a comercialização e a viabilização do seu curso on-line.
+
+                                No Tabula, é você professor que tem a voz final sobre os aspectos mais relevantes do seu curso como conteúdo, métodos de avaliação e política de preço. Ao final, 65% do faturamento total do seu curso será SEU!
+
+                            Entre em contato conosco através do formulário abaixo. Dentro de até uma semana entraremos em contato para darmos o próximo passo!</p><br>
+                            <div class="columns">
+                                <form method="POST" action="{{url('/professor')}}" class="form-group">
+                                    {{ csrf_field() }}
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="first_name"><b>Nome</b></label>
+                                        <input class="form-control" name="first_name" placeholder="Seu nome" type="text" value="{{ $user->first_name }}">
+                                        <br>
+                                        <br>
+                                        <label for="country"><b>País</b></label>
+                                        <select id="country" name="country_id" class="form-control">
+                                            @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}" @if($user->country_id == $country->id) selected @endif> {{ $country->name }} </option>
+                                            @endforeach
+                                        </select>
+                                        <br>
+                                        <br>
+                                        <label for="state"><b>Estado</b></label>
+                                        <select id="state" name="state_id" class="form-control">
+                                            @foreach ($states as $state)
+                                            <option value="{{ $state->id }}" @if($user->state_id == $state->id) selected @endif> {{ $state->name }} </option>
+                                            @endforeach
+                                        </select>
+                                        <br>
+                                        <br> 
+                                    </div>
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="last_name"><b>Sobrenome</b></label>
+                                        <input class="form-control" name="last_name" placeholder="Seu sobrenome" type="text" value="{{ $user->last_name }}">
+                                        <br>
+                                        <br>
+                                        <label for="nickname"><b>Apelido</b></label>
+                                        <input class="form-control" type="text" name="nickname" placeholder="Seu apelido" value="{{ $user->nickname }}">
+                                        <br>
+                                        <br>
+                                        <label for="sexo"><b>Sexo</b></label>
+                                        <select id="sex" name="sex" class="form-control">
+                                            <option value="Feminino" @if($user->sex == 'Feminino') selected @endif> Feminino </option>
+                                            <option value="Masculino" @if($user->sex == 'Masculino') selected @endif> Masculino </option>
+                                        </select>
+                                    </div>
+                                    <div class="column col-12">
+                                        <label for="bio"><b>O que te qualifica para ensinar? </b></label>
+                                        <textarea class="form-control" rows="5" id="bio" name="bio" placeholder="Escreva aqui...">{{ $user->bio }}</textarea>
+                                    </div>
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="website"><b>Website</b></label>
+                                        <input class="form-control" type="text" name="website" placeholder="https://..." value="{{ $user->website }}">
+                                        <br>
+                                        <br>
+                                        <label for="twitter"><b>Twitter</b></label>
+                                        <input class="form-control" type="text" name="twitter" placeholder="https://..." value="{{ $user->twitter }}"> 
+                                    </div>
+                                    <div class="column col-xs-12 col-sm-12 col-6">
+                                        <label for="facebook"><b>Facebook</b></label>
+                                        <input class="form-control" type="text" name="facebook" placeholder="https://..." value="{{ $user->facebook }}">
+                                        <br>
+                                        <br>
+                                        <label for="google_plus"><b>Google +</b></label>
+                                        <input class="form-control" type="text" name="google_plus" placeholder="https://..." value="{{ $user->google_plus }}">
+                                        <input type="hidden" id="id" name="id" value="{{$user->id}}">
+                                        <div class="column col-10 save-button">
+                                            <button class="button-tabula" type="submit">Solicitar Professor</button>
+                                        </div>
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column col-1"></div>
+</div>
+<div class="columns">
+    <div class="column col-1"></div>
+    <div class="column col-10 save-button">
+     <p><b>Deseja salvar as alterações?</b></p>
+     <button class="button-tabula" type="submit" form="teste">Salvar</button>
+ </div>
+ <div class="column col-1"></div>
+</div>
+</div>
+</section>
+
+@endsection

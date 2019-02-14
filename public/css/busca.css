@@ -1,0 +1,106 @@
+body {
+  padding-top: 80px; }
+
+.search-container {
+  padding: 0 20px;
+}
+
+.search-bar {
+  display: none;
+}
+
+ul.macro-main {
+  margin: 0;
+}
+
+#input-main {
+  width: 100%;
+  padding: .5rem; }
+
+.macro-main__item,
+.macro-sub__item {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0; }
+
+.side-search {
+  margin-bottom: 40px;
+}
+
+.side-search form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-search input {
+  display: flex;
+  flex-grow: 1;
+}
+
+.side-search input:hover {
+  background-color: #fff;
+}
+
+.macro-main-label {
+  font-weight: 700;
+  color: #303030; }
+
+.macro-sub--category {
+  margin: 0px;
+  margin-left: 16px;
+  display: none;
+  -webkit-transition: all 200ms;
+  transition: all 200ms; }
+
+.macro-main__checkbox--category:checked ~ .macro-sub--category {
+  display: block; }
+
+.course-gallery {
+  padding: 15px; }
+  .course-gallery .container .columns .course-item:hover {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; }
+  .course-gallery .container .columns .course-item {
+    padding: 15px;
+    cursor: crosshair;
+    -webkit-transition: 200ms;
+    transition: 200ms; }
+    .course-gallery .container .columns .course-item .columns .course-image {
+      height: 150px;
+      padding: 5px;
+      background-image: url(http://via.placeholder.com/255x250);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover; }
+    .course-gallery .container .columns .course-item .columns .course-content {
+      height: 150px;
+      position: relative; }
+      .course-gallery .container .columns .course-item .columns .course-content p {
+        margin: 0;
+        padding: 0; }
+      .course-gallery .container .columns .course-item .columns .course-content .course-price {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background-color: #5AA535;
+        padding: 10px; }
+        .course-gallery .container .columns .course-item .columns .course-content .course-price p {
+          color: #fff;
+          margin: 0;
+          padding: 0; }
+
+
+
+@media (min-width: 1280px) {
+  .course-item .columns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; } }

@@ -1,0 +1,117 @@
+p,
+span {
+    margin: 0;
+    padding: 0;
+}
+.checkout-courses {
+    margin-top: 100px;
+}
+.checkout-courses .check-card {
+    padding: 15px;
+}
+.checkout-courses table {
+    width: 100%;
+}
+.checkout-courses table th {
+    text-align: left;
+}
+.checkout-courses table td,
+.checkout-courses table tr,
+.checkout-courses table th {
+    padding: 15px;
+}
+.checkout-courses .check-img,
+.checkout-courses .check-name,
+.checkout-courses .check-rem {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    text-align: left;
+}
+.checkout-courses .check-img {
+    background-image: url(../images/e-learning.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    text-align: center;
+    height: 100px;
+}
+.checkout-courses .check-name {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    font-size: 18px;
+}
+.checkout-courses .check-rem {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.course-cart-item {
+    -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    margin-right: 5px;
+    height: 100px;
+    overflow: hidden;
+}
+.course-cart-title {
+    color: #7a7978 !important;
+    font-weight: 900 !important;
+}
+.checkout-title {
+    color: #7a7978 !important;
+    font-weight: 900 !important;
+    font-size: 2em;
+}
+.course-cart-remove {
+    color: #ff0000 !important;
+    float: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    clear: right
+}
+.course-cart-remove a:hover {
+    text-decoration: none !important;
+}
+.course-target-remove-container {
+    position: relative;
+}
+.total-checkout {
+    -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    color: #303030;
+    position: relative;
+    min-height: 235px;
+}
+.total-checkout p {
+    text-align: center;
+    color: #303030;
+}
+.total-checkout span {
+    font-size: 42px;
+    text-align: center;
+    display: block;
+    color: #303030;
+}
+.total-checkout a {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+}

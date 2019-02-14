@@ -1,0 +1,72 @@
+p, span {
+    margin: 0;
+    padding: 0;
+}
+
+.checkout-courses {
+    margin-top: 100px;
+    .check-card {
+        box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+        padding: 15px;
+    }
+    table {
+        width: 100%;
+        th {
+            text-align: left;
+        }
+        td, tr, th {
+            padding: 15px;
+        }
+    }
+    .check-img, .check-name, .check-rem {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .check-img {
+        background-image: url(../images/e-learning.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: block;
+        text-align: center;
+        height: 20vh;
+    }
+    .check-name {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 18px;
+    }
+
+    .check-rem {
+        align-items: center
+    }
+}
+
+.total-checkout {
+    margin-top: 30px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+    padding: 30px;
+    color: #303030;
+    position: relative;
+    min-height: 250px;
+    p {
+        text-align: center;
+        color: #303030
+    }
+    span {
+        font-size:42px;
+        text-align: center;
+        display: block;
+        color: #303030
+    }
+    a {
+        position: absolute;
+        left: 50%;
+        top: 80%;
+        transform: translate(-50%, -50%);
+        text-decoration: none;
+    }
+}
