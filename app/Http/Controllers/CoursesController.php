@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\DB;
+use App\CustomClasses\vimeo_tools;
 use App\Course;
 use App\CourseItem;
 use App\CourseItemUser;
-use Illuminate\Support\Facades\DB;
 use App\CourseItemOption;
 use App\CourseItemGroup;
 use App\CourseItemStatus;
-use App\CustomClasses\vimeo_tools;
 use App\User;
+use Auth;
 use Log;
 
 class CoursesController extends Controller
@@ -54,6 +54,7 @@ class CoursesController extends Controller
             ->with('author', $author)
             ->with('chapters', $chapter)
             ->with('userItem', $userHasItem)
+            ->with('user', $user)
             ->with('hasCourse', $hasCourse);
     }
 

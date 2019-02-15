@@ -28,12 +28,12 @@ $(document).ready(function () {
 
                 $(document).on("click", 'a.switcher', function(e) { 
 
-					
-					var theid = $(this).attr("id");
-					var theproducts = $("ul#courses");
-					var classNames = $(this).attr('class').split(' ');
-					
-					if($(this).hasClass("active")) {
+
+                 var theid = $(this).attr("id");
+                 var theproducts = $("ul#courses");
+                 var classNames = $(this).attr('class').split(' ');
+
+                 if($(this).hasClass("active")) {
 						// if currently clicked button has the active class
 						// then we do nothing!
 						return false;
@@ -48,23 +48,23 @@ $(document).ready(function () {
 							//Restore the card layout to these divs
 							$.each( $('ul#courses'), function(i, left) {
 
-							   $('#course-card', left).each(function() {
-									$(this).addClass("course-card");
-									$(this).removeClass("course-card-list");
-							   });
-							   $('#course-card-desc', left).each(function() {
-									$(this).addClass("course-card__description");
-									$(this).removeClass("course-card-desc-list");
-							   });
-							   $('#course-card-price', left).each(function() {
-									$(this).addClass("course-card__price");
-									$(this).removeClass("course-card-price-list");
-							   });
-							});
-									
+                              $('#course-card', left).each(function() {
+                                 $(this).addClass("course-card");
+                                 $(this).removeClass("course-card-list");
+                             });
+                              $('#course-card-desc', left).each(function() {
+                                 $(this).addClass("course-card__description");
+                                 $(this).removeClass("course-card-desc-list");
+                             });
+                              $('#course-card-price', left).each(function() {
+                                 $(this).addClass("course-card__price");
+                                 $(this).removeClass("course-card-price-list");
+                             });
+                          });
+
 							var theimg = $(this).children("img");
 							theimg.attr("src","/images/grid-view-active.png");
-						
+
 							// remove the list class and change to grid
 							theproducts.removeClass("list");
 							theproducts.addClass("grid");
@@ -73,32 +73,32 @@ $(document).ready(function () {
 							$(this).addClass("active");							
 							$("#gridview").removeClass("active");								
 							$("#gridview").children("img").attr("src","/images/grid-view.png");
-								
+
 							//Remove the card layout to these divs
 							$.each( $('ul#courses'), function(i, left) {
-							   $('#course-card', left).each(function() {
-									$(this).removeClass("course-card");
-									$(this).addClass("course-card-list");
-							   });
-							   $('#course-card-desc', left).each(function() {
-									$(this).removeClass("course-card__description");
-									$(this).addClass("course-card-desc-list");
-							   });
-							   $('#course-card-price', left).each(function() {
-									$(this).removeClass("course-card__price");
-									$(this).addClass("course-card-price-list");
-							   });
-							})		
+                              $('#course-card', left).each(function() {
+                                 $(this).removeClass("course-card");
+                                 $(this).addClass("course-card-list");
+                             });
+                              $('#course-card-desc', left).each(function() {
+                                 $(this).removeClass("course-card__description");
+                                 $(this).addClass("course-card-desc-list");
+                             });
+                              $('#course-card-price', left).each(function() {
+                                 $(this).removeClass("course-card__price");
+                                 $(this).addClass("course-card-price-list");
+                             });
+                          })		
 							var theimg = $(this).children("img");
 							theimg.attr("src","/images/list-view-active.png");
-								
+
 							// remove the grid view and change to list
 							theproducts.removeClass("grid")
 							theproducts.addClass("list");	
 						}
 					}
-				 });		
-});
+             });		
+            });
 
 $(document).ready(function() {
     $(".macro-indv").mouseenter(function(){
@@ -167,7 +167,8 @@ $(document).ready(function () {
     });
     $("#create").click(function () {
         $("#panel-1, #panel-2, #panel-3, #panel-5, #panel-6").slideUp(500);
-        $("#panel-4").delay(200).slideDown(500)
+        $("#panel-4").delay(200).slideDown(500);
+
     });
     $("#payment").click(function () {
         $("#panel-1, #panel-2, #panel-3, #panel-4, #panel-6").slideUp(500);
@@ -179,6 +180,49 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function(){
+    $("#create").click(function(){
+        $("#hide").slideDown();
+    });
+    /*$("#course-teacher").click(function(){
+        dateAjax();
+    });*/
+
+});
+
+//Funcão ajax para enviar requisição
+/*function dateAjax(){
+    $.ajax({
+        url: '{{url(('/userPanel/course/store'))}}',
+        type: 'POST',
+        data: {
+            name: name,
+            desc: desc,
+            category_id: category_id,
+            price: price,
+            thumb_img: thumb_img,
+            featured: featured,
+        },
+        beforeSend: function() {
+            console.log('teste');
+        },
+        success: function(){
+            console.log('deu certo');
+            /*var result = $.parseJSON(data);
+            $('#cliques_rede').html(result.cliques_rede);
+            $('#cliques_foto_insta').html(result.cliques_foto_insta);
+            $('#cliques_link').html(result.cliques_link);
+            $('#total_cabecalho').html(result.total_cabecalho);
+
+            $('#data_inicial').html(result.data_inicial);
+            $('#data_final').html(result.data_final);
+
+
+            console.log(result.link);                    
+        }
+    });
+}
+*/
 /*
 var card = new Card({
     // a selector or DOM element for the form where users will

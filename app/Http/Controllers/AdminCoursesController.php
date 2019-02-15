@@ -70,11 +70,8 @@ class AdminCoursesController extends Controller
         $course->price         = $request->price;
         $course->category_id   = $request->category_id;
         $course->featured   = $request->featured;
+        $course->requirements = $request->requirements;
         $course->user_id_owner = Auth::user()->id;
-
-
-
-        
 
         if($request->thumb_img != '')
         {
@@ -87,7 +84,18 @@ class AdminCoursesController extends Controller
         else
             $course->thumb_img = 'e-learning.jpg'; 
 
+
+        if($request->video != '')
+        {
+            $attach_video = $request->video;
+            $attach_video_name = time().$attach_video->getClientOriginalName();
+            $attach_video->move('images/aulas', $attach_video_name); 
+
+            $course->video = $attach_video_name;  
+        }
+
         $course->save();
+        $id = $course->id;
 
         // se tiver algum check nos grupos de usuário
         if($request->group != '')
@@ -103,7 +111,6 @@ class AdminCoursesController extends Controller
 
             Session::flash('success', 'Curso criado com sucesso');
 
-            $id = Course::count('id');
             $course = Course::find($id);
             $categories = Category::all();
             $course_items_group = CourseItemGroup::all();
@@ -114,7 +121,7 @@ class AdminCoursesController extends Controller
                 'course' => $course,
                 'categories' => $categories,
                 'course_items_group' => $course_items_group,
-                'user_groups' => $user_groups] );
+                'user_groups' => $user_groups]);
 
         }
 
@@ -169,6 +176,7 @@ class AdminCoursesController extends Controller
         $course->desc        = $request->desc;
         $course->price       = $request->price;
         $course->category_id = $request->category_id;
+        $course->requirements = $request->requirements;
         $course->featured    = $request->featured;
         
 
@@ -183,7 +191,14 @@ class AdminCoursesController extends Controller
         else
             $course->thumb_img = 'e-learning.jpg';
 
+        if($request->video != '')
+        {
+            $attach_video = $request->video;
+            $attach_video_name = time().$attach_video->getClientOriginalName();
+            $attach_video->move('images/aulas', $attach_video_name); 
 
+            $course->video = $attach_video_name;  
+        }
 
 
         // busca TODOS os usergroups para serem comparados com:
@@ -444,7 +459,7 @@ class AdminCoursesController extends Controller
         $item = CourseItem::find($id);
         $chapter = CourseItemGroup::find($item->course_item_group_id);
 
-        if($item->course_item_type->id >= 5)
+        if($item->course_item_type->id >= 6)
         {
             return view('admin.courses.question')
             ->with('item', $item)
@@ -636,6 +651,31 @@ class AdminCoursesController extends Controller
         return redirect()->back();
     }
 
+    public function diss_edit($id)
+    {
+        $diss = CourseItem::find($id);
+        
+
+        return view('admin.courses.dissertative')
+        ->with('diss', $diss);
+
+    }
+
+    public function diss_update(Request $request, $id)
+    {
+        $diss = CourseItem::find($id);
+
+        $this->validate($request, [
+            'desc'          => 'required'
+        ]);
+
+        $diss->desc   = $request->desc; 
+        $diss->save();
+
+        Session::flash('success', 'Alternativa atualizada com sucesso!');
+        return redirect()->route('course.item.edit', ['id' => $diss->course_items_parent]);
+    }
+
     public function add_question_multiple($id, $name, $desc, $item_type_id)
     {
 
@@ -666,14 +706,15 @@ class AdminCoursesController extends Controller
         $this->validate($request, [
             'afirmacao' => 'required',
         ]);
-
-        $all_trues = array();
-        $variavel = array();
+        $all_trues = $request->verdadeira;
+        $variavel = $request->afirmacao;
         $funcao = $this->add_question_multiple($id, $request->name, $request->desc, $request->item_type_id);
         $all_requests = $request->all();
         
+        return dd($variavel);
         if ($request->item_type_id == '6') {
          foreach ($all_requests as $key => $value) {
+
             if (strpos($key, 'verdadeira') !== false) {
                 $all_trues[] = explode('_', $key)[1];
             }

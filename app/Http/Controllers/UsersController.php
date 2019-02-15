@@ -12,6 +12,8 @@ use App\Transaction;
 use App\Course;
 use App\TransactionItem;
 use App\Usertype;
+use App\Category;
+use App\UserGroup;
 use Image;
 
 class UsersController extends Controller
@@ -27,6 +29,8 @@ class UsersController extends Controller
         ->with('courses', Course::all())
         ->with('countries', Country::all())
         ->with('schoolings', Schooling::all())
+        ->with('categories', Category::all())
+        ->with('user_groups', UserGroup::all())
         ->with('usertype', $userType);
     }
 

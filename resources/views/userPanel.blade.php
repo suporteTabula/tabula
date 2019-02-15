@@ -189,7 +189,54 @@
             <div class="column col-12">
                 <div class="columns">
                     <div class="column col-12">
-                        <button class="btn button-tabula">Criar curso</button>
+                        <div id="hide" class="column col-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Cadastrar novo curso
+                                </div>
+                                <div class="panel-body">
+                                    <form action="{{ route('store.teacher') }}" enctype="multipart/form-data" method="POST">
+                                        {{ csrf_field() }}
+                                        <div class="form-group">
+                                            <label for="name">Nome</label>
+                                            <input class="form-control" type="text" id="name" name="name" placeholder="Nome do curso" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="desc">Descrição</label>
+                                            <input class="form-control" type="text" name="desc" id="desc" placeholder="Descrição do curso">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="category_id">Categoria</label>
+                                            <select class="form-control" id="category_id" name="category_id">
+                                                <option value="" selected disabled hidden>Escolha uma...</option>
+                                                @foreach($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->desc }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" name="featured" id="featured" value="0">
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="price">Preço</label>
+                                            <input class="form-control input-price" type="text" name="price" id="price"placeholder="Preço do curso">
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label for="thumb_img">Imagem da Vitrine</label>
+                                            <input class="form-control" type="file" name="thumb_img">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="text-center">
+                                                <button class="btn btn-success" id="course-teacher" type="submit">Criar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

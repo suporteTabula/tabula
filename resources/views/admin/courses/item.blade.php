@@ -16,7 +16,7 @@
 					<select id="item_type" name="item_type_id" class="form-control">
 						<option value="" selected disabled hidden>Escolha uma...</option>
 						@foreach ($items_type as $item_type)
-							@if($item_type->id < 5)
+							@if($item_type->id < 6)
 							<option value="{{ $item_type->id }}" 
 								@if ($item_type->id == $item->course_item_types_id)
 									selected
@@ -34,8 +34,13 @@
 				</div>
 
 				<div class="form-group">
+					@if($item->course_item_types_id == 3)
+					<label for="desc">Descrição</label>
+					<textarea class="form-control" placeholder="Descrição da questão" name="desc">{{ $item->desc }}</textarea>
+					@else
 					<label for="desc">Descrição</label>
 					<input class="form-control" type="text" value="{{ $item->desc }}" placeholder="Descrição da questão" name="desc">
+					@endif
 				</div>				
 
 				<div id="arquivo">
@@ -72,7 +77,7 @@
 								<option value="" selected disabled hidden>Escolha uma...</option>
 
 								@foreach ($items_type as $item_type)
-									@if ($item_type->id <= 4)
+									@if ($item_type->id <= 5)
 										<option value="{{ $item_type->id }}">{{ $item_type->name }}</option>
 									@endif 									
 								@endforeach

@@ -68,17 +68,26 @@
                             </div>
                         </li>    
                         @auth
+                        @foreach ($user->userTypes as $userType)
+                        <?php $tipo = $userType->desc; ?>
+                        @endforeach
+                        @if($tipo == "Aluno")
                         <li class ="hide-md"><a href="{{ route('userPanel.single') }}"><img class="avatar" src="{{asset('/images/Profilepic')}}/{{ Auth::user()->avatar }}"></a></li>
                         <li class="hide-md"><a href="{{ url('/') }}">Início</a></li>
                         <li class="hide-md"><a href="{{route('userPanel.single')}}">Torne-se professor</a></li> 
                         <li class="hide-md"><a href="{{ route('cart') }}">Carrinho</a></li>
                         <li class= "hide-md"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
                         @else
+                        <li class ="hide-md"><a href="{{ route('userPanel.single') }}"><img class="avatar" src="{{asset('/images/Profilepic')}}/{{ Auth::user()->avatar }}"></a></li>
+                        <li class="hide-md"><a href="{{ url('/') }}">Início</a></li>
+                        <li class="hide-md"><a href="{{ route('cart') }}">Carrinho</a></li>
+                        <li class= "hide-md"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
+                        @endif
+                        @else
                         <li class="hide-md"><a href="{{ url('/') }}">Início</a></li>
                         <li class="hide-md"><a href="{{route('register')}}">Torne-se professor</a></li> 
                         <li class="hide-md"><a href="{{ route('login') }}">Login</a></li>
                         <li class="hide-md"><a href="{{ route('register') }}">Registrar</a></li>
-
                         @endauth  
                     </ul>
 

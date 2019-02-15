@@ -23,7 +23,7 @@ class vimeo_tools
     */
     public static function Get_Vimeo_ID($item)
     {
-        $videoID = str_replace('https://vimeo.com/','',$item->path);
+        $videoID = str_replace('https://vimeo.com/','',$item);
         return $videoID;
     }
     /**

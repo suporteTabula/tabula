@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.teacher')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 		Editar curso
 	</div>
 	<div class="panel-body">
-		<form action="{{ route('course.update', ['id' => $course->id]) }}" method="post" enctype="multipart/form-data">
+		<form action="{{ route('course.update.teacher', ['id' => $course->id]) }}" method="post" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<div class="form-group">
 				<label for="name">Nome</label>
@@ -32,25 +32,12 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="featured">Destaque</label>
-					<select class="form-control" id="featured" name="featured">
-						<option value="0"
-						@if($course->featured == 0)
-						selected
-						@endif
-						>Não</option>
-						<option value="1"
-						@if($course->featured == 1)
-						selected
-						@endif
-						>Sim</option>
-					</select>
+					<input type="hidden" name="featured" value="{{$course->featured}}">
 				</div>
 				<div class="form-group">
 					<label for="price">Preço</label>
 					<input class="form-control" type="text" value="{{ $course->price }}" name="price" placeholder="Preço do curso" value="{{ old('price') }}">
 				</div>
-
 				<div class="form-group">
 					<label for="requirements">Requisitos</label>
 					<textarea class="form-control" name="requirements" placeholder="Requisitos para o Curso">{{ $course->requirements }}</textarea>
@@ -89,7 +76,7 @@
 					<div class="form-group">
 						<div class="text-center">
 							<button class="btn btn-success" type="submit">Salvar</button>
-							<a class="btn btn-success" href="{{ route('courses') }}">Voltar</a>
+							<a class="btn btn-success" href="{{ route('courses.teacher') }}">Voltar</a>
 						</div>
 					</div>
 				</form>
@@ -101,7 +88,7 @@
 				</div>
 
 				<div id="chapter">
-					<form action="{{ route('course.chapter', ['id' => $course->id]) }}"method="post" enctype="multipart/form-data">
+					<form action="{{ route('course.chapter.teacher', ['id' => $course->id]) }}"method="post" enctype="multipart/form-data">
 						{{ csrf_field() }}
 
 						<div class="form-group">
@@ -117,7 +104,7 @@
 						<div class="form-group">
 							<div class="text-center">
 								<button class="btn btn-success" type="submit">Salvar</button>
-								{{--<a class="btn btn-success" href="{{ route('courses') }}">Voltar</a>--}}
+								{{--<a class="btn btn-success" href="{{ route('courses.teacher') }}">Voltar</a>--}}
 							</div>
 						</div>
 					</form>
@@ -142,12 +129,12 @@
 								{{ $course_item_group->desc }}
 							</td>									
 							<td>
-								<a href="{{ route('course.chapter.edit', ['id' => $course_item_group->id]) }}">
+								<a href="{{ route('course.chapter.edit.teacher', ['id' => $course_item_group->id]) }}">
 									<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
 								</a>
 							</td>
 							<td>
-								<a class="remove-record" data-toggle="modal" data-id="{{$course_item_group->id}}" data-target="#custom-width-modal" data-url="{{ route('course.chapter.delete', ['id' => $course_item_group->id]) }}">
+								<a class="remove-record" data-toggle="modal" data-id="{{$course_item_group->id}}" data-target="#custom-width-modal" data-url="{{ route('course.chapter.delete.teacher', ['id' => $course_item_group->id]) }}">
 									<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
 								</a>
 							</td>										

@@ -13,10 +13,10 @@
 				{{ csrf_field() }}
 
 				<div class="form-group row">
-					<div class="col-xs-4">
+					<div class="col-xs-12">
 						<label for="usersType">Tipo de usuário: </label>
 						@foreach ($usersType as $userType)
-							<label class="checkbox-inline"><input type="checkbox" name="usersType[]" value="{{ $userType->id }}"> {{ $userType->desc }} </label>
+							<label class="radio-inline"><input type="radio" name="usersType[]" value="{{ $userType->id }}"> {{ $userType->desc }} </label>
 						@endforeach
 					</div>
 				</div>

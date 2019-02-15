@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.teacher')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 			Editar Avaliação
 		</div>
 		<div class="panel-body">
-			<form action="{{ route('course.item.update', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
+			<form action="{{ route('course.item.update.teacher', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<div class="form-group">
 					<label for="name">Título da Avaliação</label>
@@ -20,8 +20,8 @@
 					<select id="item_type" name="item_type_id" class="form-control">
 						<option value="" selected disabled hidden>Escolha uma...</option>
 						@foreach ($items_type as $item_type)
-							@if($item_type->id > 4)
-								@if($item_type->id >= 5)
+							@if($item_type->id > 5)
+								@if($item_type->id >= 6)
 									<option value="{{ $item_type->id }}" 
 										@if ($item_type->id == $item->course_item_types_id)
 											selected
@@ -44,7 +44,7 @@
 				<div class="form-group">
 					<div class="text-center">
 						<button class="btn btn-success" type="submit">Salvar</button>
-						<a class="btn btn-success" href="{{ route('course.chapter.edit', ['id' => $item->course_item_group_id]) }}">Voltar</a>
+						<a class="btn btn-success" href="{{ route('course.chapter.edit.teacher', ['id' => $item->course_item_group_id]) }}">Voltar</a>
 					</div>
 				</div>
 			</form>
@@ -59,7 +59,7 @@
 					<button id="create-single">Adicionar Alternativas</button>
 				</div>
 				<div id="alt">
-					<form action="{{ route('course.alt', ['id' => $chapter->id]) }}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('course.alt.teacher', ['id' => $chapter->id]) }}" method="post" enctype="multipart/form-data">
 						{{ csrf_field() }}				
 
 						<input type="hidden" name="item_type_id" value="8">
@@ -76,14 +76,14 @@
 						<div class="form-group">
 							<div class="text-center">
 								<button class="btn btn-success" type="submit">Nova Pergunta</button>
-								{{--<a class="btn btn-success" href="{{ route('courses') }}">Voltar</a>--}}
+								{{--<a class="btn btn-success" href="{{ route('courses.teacher') }}">Voltar</a>--}}
 							</div>
 						</div>
 					</form>
 				</div>
 
 				<div id="question">
-					<form action="{{ route('course.item.child', ['id' => $chapter->id]) }}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('course.item.child.teacher', ['id' => $chapter->id]) }}" method="post" enctype="multipart/form-data">
 						{{ csrf_field() }}					
 						<input type="hidden" name="name" value="PerguntaD">
 						<input type="hidden" name="item_type_id" value="10">
@@ -102,7 +102,7 @@
 				</div>
 
 				<div id="multiple">
-					<form action="{{ route('course.multiple', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('course.multiple.teacher', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
 						{{ csrf_field() }}					
 						<input type="hidden" name="name" value="PerguntaM">
 						<input type="hidden" name="item_type_id" value="6">
@@ -128,13 +128,13 @@
 
 						<div class="text-center">
 							<button class="btn btn-success" type="submit">Nova Pergunta</button>
-							{{--<a class="btn btn-success" href="{{ route('courses') }}">Voltar</a>--}}
+							{{--<a class="btn btn-success" href="{{ route('courses.teacher') }}">Voltar</a>--}}
 						</div>						
 					</form>
 				</div>
 
 				<div id="single">
-					<form action="{{ route('course.multiple', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
+					<form action="{{ route('course.multiple.teacher', ['id' => $item->id]) }}" method="post" enctype="multipart/form-data">
 						{{ csrf_field() }}					
 						<input type="hidden" name="name" value="PerguntaAl">
 						<input type="hidden" name="item_type_id" value="9">
@@ -160,7 +160,7 @@
 
 						<div class="text-center">
 							<button class="btn btn-success" type="submit">Nova Pergunta</button>
-							{{--<a class="btn btn-success" href="{{ route('courses') }}">Voltar</a>--}}
+							{{--<a class="btn btn-success" href="{{ route('courses.teacher') }}">Voltar</a>--}}
 						</div>						
 					</form>
 				</div>
@@ -185,17 +185,17 @@
 										</td>
 										<td>
 											@if ($question->course_item_types_id == 10)
-												<a href="{{ route('course.diss.edit', ['id' => $question->id]) }}">
+												<a href="{{ route('course.item.edit.teacher', ['id' => $question->id]) }}">
 													<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
 												</a>
 											@elseif ($question->course_item_types_id == 8)
-												<a href="{{ route('course.alt.edit', ['id' => $question->id]) }}">
+												<a href="{{ route('course.alt.edit.teacher', ['id' => $question->id]) }}">
 													<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
 												</a>
 											@endif
 										</td>
 										<td>
-											<a href="{{ route('course.item.delete', ['id' => $question->id]) }} ">
+											<a href="{{ route('course.item.delete.teacher', ['id' => $question->id]) }} ">
 												<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
 											</a>
 										</td>									
