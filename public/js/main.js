@@ -190,6 +190,12 @@ $(document).ready(function(){
 
 });
 
+
+$(document).ready(function() {
+    $("#star").click(function(){
+        alert("OK");
+    });
+});
 //Funcão ajax para enviar requisição
 /*function dateAjax(){
     $.ajax({

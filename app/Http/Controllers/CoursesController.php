@@ -25,37 +25,37 @@ class CoursesController extends Controller
         $chapter = $course->course_item_groups->all();
         $hasCourse = false;
         $userHasItem = false;
-        //query SELECT ci.id as ItemId, 
-        //              ci.name as ItemName, chapter.id as CapituloId, 
-        //               (SELECT created_at as CriadoEm from course_item_user 
-        //                WHERE ci.id = course_item_user.course_item_id ) as CriadoEm 
-        //                FROM course_items AS ci
-        //                JOIN course_item_groups AS chapter ON ci.course_item_group_id = chapter.id
-        //                WHERE exists (SELECT ciu.created_at FROM course_item_user AS ciu 
-        //                WHERE ciu.user_id = :userid AND ciu.course_item_id = ci.id)
-        //                AND chapter.course_id = :courseid ORDER BY ItemID DESC
-        
+        /*query SELECT ci.id as ItemId, 
+        ci.name as ItemName, chapter.id as CapituloId, 
+        (SELECT created_at as CriadoEm from course_item_user 
+        WHERE ci.id = course_item_user.course_item_id ) as CriadoEm 
+        FROM course_items AS ci
+        JOIN course_item_groups AS chapter ON ci.course_item_group_id = chapter.id
+        WHERE exists (SELECT ciu.created_at FROM course_item_user AS ciu 
+        WHERE ciu.user_id = :userid AND ciu.course_item_id = ci.id)
+        AND chapter.course_id = :courseid ORDER BY ItemID DESC*/
+
         if ($user) {
             $userHasItem =  DB::select( DB::raw("SELECT ci.id as ItemId, 
-                        ci.name as ItemName, chapter.id as CapituloId
-                        FROM course_items AS ci JOIN course_item_groups AS chapter 
-                        ON ci.course_item_group_id = chapter.id WHERE ci.id NOT IN 
-                        ( SELECT course_item_id FROM course_item_user AS ciu WHERE ciu.user_id = :userid)
-                        AND chapter.course_id = :courseid ORDER BY ItemId ASC"), array (
-                                    'userid' => $user->id, 
-                                    'courseid' => $course->id,
-                                    ));
+                ci.name as ItemName, chapter.id as CapituloId
+                FROM course_items AS ci JOIN course_item_groups AS chapter 
+                ON ci.course_item_group_id = chapter.id WHERE ci.id NOT IN 
+                ( SELECT course_item_id FROM course_item_user AS ciu WHERE ciu.user_id = :userid)
+                AND chapter.course_id = :courseid ORDER BY ItemId ASC"), array (
+                    'userid' => $user->id, 
+                    'courseid' => $course->id,
+                ));
         }
-       
+
         if($user && $user->courses()->find($id))
             $hasCourse = true;
         return view('course')
-            ->with('course', $course)
-            ->with('author', $author)
-            ->with('chapters', $chapter)
-            ->with('userItem', $userHasItem)
-            ->with('user', $user)
-            ->with('hasCourse', $hasCourse);
+        ->with('course', $course)
+        ->with('author', $author)
+        ->with('chapters', $chapter)
+        ->with('userItem', $userHasItem)
+        ->with('user', $user)
+        ->with('hasCourse', $hasCourse);
     }
 
     public function check_chapter_progress($id)
@@ -68,7 +68,7 @@ class CoursesController extends Controller
         $id_course = $item->course_item_group->course_id;
         $chapter_items = CourseItem::where('course_item_group_id',$item->course_item_group_id)->get();
         
-       
+
 
         foreach($chapter_items as $chapterItem)
         {            
@@ -156,9 +156,9 @@ class CoursesController extends Controller
         Log::Debug($course);
         //dd($done->all());
         return view('courseProgress')
-            ->with('users', $user)
-            ->with('course',$course)
-            ->with('chapters', $chapter);
+        ->with('users', $user)
+        ->with('course',$course)
+        ->with('chapters', $chapter);
             //->with('items', $items);
     }
 
@@ -175,9 +175,9 @@ class CoursesController extends Controller
 
         
         return view('courseProgress')
-            ->with('users', $user)
-            ->with('chapters', $chapter)
-            ->with('items', $items);
+        ->with('users', $user)
+        ->with('chapters', $chapter)
+        ->with('items', $items);
 
     }
 
@@ -190,8 +190,8 @@ class CoursesController extends Controller
 
 
         return view('lesson')
-            ->with('items', $item);
-            
+        ->with('items', $item);
+
         //$item = DB::table('course_items')->where('id', $request->item_id)->get();
         
     }
@@ -212,7 +212,7 @@ class CoursesController extends Controller
 
                 //pega todas alternativas(escolhas) relacionadas ao id da questão $id_question_m
                 $affirmatives = CourseItemOption::where('course_items_id', $id_question_m)->get();
-               
+
                 foreach ($affirmatives as $afirmative) {
 
                     $i = 0;
@@ -220,7 +220,7 @@ class CoursesController extends Controller
 
                         if ($afirmative->id == $answer) {
                             $i = 1;
-                                 
+
                         }
                     }
                     //Atrela um usuario a uma resposta com attach pegando id da alternativa e colocando um campo adicional para a resposta(checked) 
@@ -235,7 +235,7 @@ class CoursesController extends Controller
                 
                 //pega todas alternativas relacionadas ao id da questão $id_question_a
                 $altertatives = CourseItemOption::where('course_items_id', $id_question_a)->get();
-               
+
                 foreach ($altertatives as $altertative) {
 
                     $i = 0;
@@ -243,7 +243,7 @@ class CoursesController extends Controller
 
                         if ($altertative->id == $answer) {
                             $i = 1;
-                                 
+
                         }
                     }
                     //Atrela um usuario a uma resposta com attach pegando id da alternativa e colocando um campo adicional para a resposta(checked) 
@@ -261,7 +261,7 @@ class CoursesController extends Controller
             }
             //verifica se a chave($key) é de verdadeira/falso
             if (strpos($key, 'trueFalse') !== false){
-                
+
                 //separa a string e pega a posicao 1, que será o id da questão
                 $id_trueFalse = explode('_', $key)[1];
 

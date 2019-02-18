@@ -172,7 +172,7 @@
                         @if ($course->user_id_owner == $user->id)<br> 
                         <div class="course-card">
                             <a href="{{ route('course.single', ['id' => $course->id]) }}">
-                                <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                                <div class="course-card__image" style="background-image: url({{url('/images/aulas/')}}.{{$course->thumb_img}});"></div>
                                 <div class="course-card__description">
                                    <p>{{ $course->name }}</p>
                                    <p>{{ $course->desc }}</p>

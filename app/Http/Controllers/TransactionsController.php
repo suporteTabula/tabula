@@ -64,6 +64,7 @@ class TransactionsController extends Controller
 
         return view('success')
             ->with('courses', $courses)
-            ->with('total_price', $total_price);
+            ->with('total_price', $total_price)
+            ->with('user', $user);
 	}
 }

@@ -23,11 +23,17 @@
         @if($course->video != "" || $course->video != null)
         <video controls width="500px">
           <source src="../images/aulas/{{$course->video}}"> 
-        </video>
-        @endif
-          <div class="rating-stars"> <img src="{{ asset('images/layout/course/rating-stars.svg') }}" width="120px;">
+          </video>
+          @endif
+          @auth
+          <div id="star" class="rating-stars"> <img src="{{ asset('images/layout/course/rating-stars.svg') }}" width="120px;">
             <p><strong>5/5</strong></p>
           </div>
+          @else
+          <div  class="rating-stars"> <img src="{{ asset('images/layout/course/rating-stars.svg') }}" width="120px;">
+            <p><strong>5/5</strong></p>
+          </div>
+          @endauth
           <div class="start-course">
             @auth
             @if($user->id == $author->id)
