@@ -51,6 +51,7 @@ Route::post('userPanel/update', 'UsersController@userProfileUpdate')->name('user
 Route::get('userPurchases', 'UsersController@userPurchases')->name('userPurchases.single');
 Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails')->name('userPurchaseDetails.single');
 
+Route::post('course/rating-star', 'StarController@ratingStar')->name('rating-star');
 Route::get('categoria/{urn}', 'CategoriesController@category')->name('category.single');
 
 //professor

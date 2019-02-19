@@ -26,8 +26,17 @@
           </video>
           @endif
           @auth
-          <div id="star" class="rating-stars"> <img src="{{ asset('images/layout/course/rating-stars.svg') }}" width="120px;">
-            <p><strong>5/5</strong></p>
+          <span class="courseDados" data-id="{{$course->id}}"></span>
+          <div class="rating-stars">
+            <span class="bg"></span>
+            <div class="estrelas">
+              <?php for($i = 1; $i<=5; $i++): ?>
+                <span class="star" id="{{$i}}">
+                  <span class="starAbsolute"></span>
+                </span>
+              <?php endfor ?>
+              <span class="ratingAverage">{{$rating['star']}}</span>
+            </div> 
           </div>
           @else
           <div  class="rating-stars"> <img src="{{ asset('images/layout/course/rating-stars.svg') }}" width="120px;">

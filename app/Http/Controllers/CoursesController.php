@@ -12,6 +12,7 @@ use App\CourseItemOption;
 use App\CourseItemGroup;
 use App\CourseItemStatus;
 use App\User;
+use App\Star;
 use Auth;
 use Log;
 
@@ -25,6 +26,16 @@ class CoursesController extends Controller
         $chapter = $course->course_item_groups->all();
         $hasCourse = false;
         $userHasItem = false;
+        $votes = Star::where('id_course', $id)->count();
+        $point = Star::sum('point');
+
+        if($votes==0){
+            $point = 0;
+        }else{
+            $point = round($point/$votes, 1);
+        }
+        $rating['id'] = $id;
+        $rating['star'] = $point;
         /*query SELECT ci.id as ItemId, 
         ci.name as ItemName, chapter.id as CapituloId, 
         (SELECT created_at as CriadoEm from course_item_user 
@@ -47,6 +58,7 @@ class CoursesController extends Controller
                 ));
         }
 
+        
         if($user && $user->courses()->find($id))
             $hasCourse = true;
         return view('course')
@@ -55,6 +67,7 @@ class CoursesController extends Controller
         ->with('chapters', $chapter)
         ->with('userItem', $userHasItem)
         ->with('user', $user)
+        ->with('rating', $rating)
         ->with('hasCourse', $hasCourse);
     }
 

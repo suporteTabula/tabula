@@ -77,11 +77,11 @@
                 <form id="teste" action="{{ route('userProfile.update') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }} 
                     <div class="user-face2">
-                     <label>Escolha a Foto De Perfil</label>
-                     <input type="file" name="avatar">
-                 </div>
-                 <!--Painel 1 - dados pessoais-->
-                 <div class="column col-12 ">
+                       <label>Escolha a Foto De Perfil</label>
+                       <input type="file" name="avatar">
+                   </div>
+                   <!--Painel 1 - dados pessoais-->
+                   <div class="column col-12 ">
                     <div class="columns">
                         <div class="column col-xs-12 col-sm-12 col-6">
                             <label for="first_name"><b>Nome</b></label>
@@ -146,26 +146,26 @@
                         <div class="column col-12">
                             <div class="columns">
 
-                             @foreach($user->courses as $course)
-                             <div class="course-card">
+                               @foreach($user->courses as $course)
+                               <div class="course-card">
                                 <a href="{{ route('course.single', ['id' => $course->id]) }}">
                                     <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
                                     <div class="course-card__description">
-                                       <p>{{ $course->name }}</p>
-                                       <p>{{ $course->desc }}</p>
-                                   </div>
-                               </a>
-                           </div>
-                           @endforeach
+                                     <p>{{ $course->name }}</p>
+                                     <p>{{ $course->desc }}</p>
+                                 </div>
+                             </a>
+                         </div>
+                         @endforeach
 
-                       </div>
-                   </div>
-               </div>
-               @if ($user->IsStudent())
-               <b>Aluno DO TABULA</b>
-               @endif
-               <!--Lecionados-->
-               <div id="panel-3" class="columns">
+                     </div>
+                 </div>
+             </div>
+             @if ($user->IsStudent())
+             <b>Aluno DO TABULA</b>
+             @endif
+             <!--Lecionados-->
+             <div id="panel-3" class="columns">
                 <div class="column col-12">
                     <div class="columns">
                         @foreach($courses as $course)
@@ -174,18 +174,18 @@
                             <a href="{{ route('course.single', ['id' => $course->id]) }}">
                                 <div class="course-card__image" style="background-image: url({{url('/images/aulas/')}}.{{$course->thumb_img}});"></div>
                                 <div class="course-card__description">
-                                   <p>{{ $course->name }}</p>
-                                   <p>{{ $course->desc }}</p>
-                               </div>
-                           </a>
-                       </div>
-                       @endif
-                       @endforeach
-                   </div>                                
-               </div>
-           </div>
-           <!--criar curso-->
-           <div id="panel-4" class="columns">
+                                 <p>{{ $course->name }}</p>
+                                 <p>{{ $course->desc }}</p>
+                             </div>
+                         </a>
+                     </div>
+                     @endif
+                     @endforeach
+                 </div>                                
+             </div>
+         </div>
+         <!--criar curso-->
+         <div id="panel-4" class="columns">
             <div class="column col-12">
                 <div class="columns">
                     <div class="column col-12">
@@ -222,7 +222,10 @@
                                             <label for="price">Preço</label>
                                             <input class="form-control input-price" type="text" name="price" id="price"placeholder="Preço do curso">
                                         </div>
-
+                                        <div class="form-group">
+                                            <label for="requirements">Requisitos</label>
+                                            <textarea class="form-control" name="requirements" placeholder="Requisitos para o Curso"></textarea>
+                                        </div>
 
                                         <div class="form-group">
                                             <label for="thumb_img">Imagem da Vitrine</label>
@@ -381,10 +384,10 @@
 <div class="columns">
     <div class="column col-1"></div>
     <div class="column col-10 save-button">
-     <p><b>Deseja salvar as alterações?</b></p>
-     <button class="button-tabula" type="submit" form="teste">Salvar</button>
- </div>
- <div class="column col-1"></div>
+       <p><b>Deseja salvar as alterações?</b></p>
+       <button class="button-tabula" type="submit" form="teste">Salvar</button>
+   </div>
+   <div class="column col-1"></div>
 </div>
 </div>
 </section>
