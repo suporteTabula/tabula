@@ -25,7 +25,6 @@
           <source src="../images/aulas/{{$course->video}}"> 
           </video>
           @endif
-          @auth
           <span class="courseDados" data-id="{{$course->id}}"></span>
           <div class="rating-stars">
             <span class="bg"></span>
@@ -38,11 +37,7 @@
               <span class="ratingAverage">{{$rating['star']}}</span>
             </div> 
           </div>
-          @else
-          <div  class="rating-stars"> <img src="{{ asset('images/layout/course/rating-stars.svg') }}" width="120px;">
-            <p><strong>5/5</strong></p>
-          </div>
-          @endauth
+          
           <div class="start-course">
             @auth
             @if($user->id == $author->id)
