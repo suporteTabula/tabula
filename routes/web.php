@@ -31,10 +31,11 @@ Route::get('/homeEmpresa', ['uses' => 'Controller@HomeEmpresa']);
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
 Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('cart.remove');
-Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
+Route::get('cart/cupom', 'CartController@validaCupom')->name('cart.cupom');
 Route::get('/cart', 'CartController@cart')->name('cart');
+Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
 //Transações
-Route::get('success', 'TransactionsController@success')->name('transaction.success');
+Route::post('success', 'TransactionsController@statusTransaction')->name('transaction.success');
 //Cursos
 Route::get('course/{id}', 'CoursesController@course')->name('course.single');
 Route::get('course/start/{id}', 'CoursesController@course_start')->name('course.start');
@@ -51,7 +52,7 @@ Route::post('userPanel/update', 'UsersController@userProfileUpdate')->name('user
 Route::get('userPurchases', 'UsersController@userPurchases')->name('userPurchases.single');
 Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails')->name('userPurchaseDetails.single');
 
-Route::post('course/rating-star', 'StarController@ratingStar')->name('rating-star');
+Route::post('course/ratingstar', 'StarController@ratingStar')->name('ratingstar');
 Route::get('categoria/{urn}', 'CategoriesController@category')->name('category.single');
 
 //professor
@@ -62,6 +63,14 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 	Route::get('/courses/edit/{id}', 'ProfController@edit')->name('course.edit.teacher');
 	Route::post('/courses/update/{id}', 'ProfController@update')->name('course.update.teacher');
 	Route::get('/courses/destroy/{id}', 'ProfController@destroy')->name('course.destroy.teacher');
+
+
+	Route::get('/cupom', 'ProfController@cupomIndex')->name('cupom.teacher');
+	Route::get('/cupom/create', 'ProfController@cupomCreate')->name('cupom.create.teacher');
+	Route::post('/cupom/store', 'ProfController@cupomStore')->name('cupom.store.teacher');
+	Route::get('/cupom/edit/{id}', 'ProfController@cupomEdit')->name('cupom.edit.teacher');
+	Route::post('/cupom/update/{id}', 'ProfController@CupomUpdate')->name('cupom.update.teacher');
+	Route::get('/cupom/delete/{id}', 'ProfController@cupomDestroy')->name('cupom.delete.teacher');
 
 	Route::post('/course/chapter/{id}', 'ProfController@chapter')->name('course.chapter.teacher');
 	Route::get('/course/chapter/edit/{id}', 'ProfController@chapter_edit')->name('course.chapter.edit.teacher');
@@ -83,11 +92,18 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 });
 
 //Admin
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function (){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', 'suporte']], function (){
 	Route::get('/', 'AdminHomeController@index')->name('home');
 
 	Route::get('/nota', 'NotasController@index')->name('nota');
 	Route::get('/reports', 'AdminCoursesController@index')->name('reports');
+
+	Route::get('/cupom', 'AdminCupomController@index')->name('cupom');
+	Route::get('/cupom/create', 'AdminCupomController@create')->name('cupom.create');
+	Route::post('/cupom/store', 'AdminCupomController@store')->name('cupom.store');
+	Route::get('/cupom/edit/{id}', 'AdminCupomController@edit')->name('cupom.edit');
+	Route::post('/cupom/update/{id}', 'AdminCupomController@update')->name('cupom.update');
+	Route::get('/cupom/delete/{id}', 'AdminCupomController@destroy')->name('cupom.delete');
 	
 	Route::get('/categories', 'AdminCategoriesController@index')->name('categories');
 	Route::get('/category/create', 'AdminCategoriesController@create')->name('category.create');

@@ -27,7 +27,7 @@ class CoursesController extends Controller
         $hasCourse = false;
         $userHasItem = false;
         $votes = Star::where('id_course', $id)->count();
-        $point = Star::sum('point');
+        $point = Star::where('id_course', $id)->sum('point');
 
         if($votes==0){
             $point = 0;
@@ -57,10 +57,22 @@ class CoursesController extends Controller
                     'courseid' => $course->id,
                 ));
         }
-
-        
         if($user && $user->courses()->find($id))
             $hasCourse = true;
+        if ($chapter) {
+            $firstChapter = $course->course_item_groups->first();
+            $freeClass = CourseItem::where('course_item_group_id', $firstChapter->id)->first();
+            return view('course')
+            ->with('course', $course)
+            ->with('author', $author)
+            ->with('chapters', $chapter)
+            ->with('userItem', $userHasItem)
+            ->with('user', $user)
+            ->with('rating', $rating)
+            ->with('freeClass', $freeClass)
+            ->with('hasCourse', $hasCourse);
+        }
+        //return dd($userHasItem);
         return view('course')
         ->with('course', $course)
         ->with('author', $author)
@@ -93,7 +105,7 @@ class CoursesController extends Controller
             }            
         }                
         
-        if($complete == true){
+        if($complete){
             return $item->course_item_group_id.'-true';
         }
         else
@@ -107,6 +119,7 @@ class CoursesController extends Controller
     {
         $course = Course::find($id);
         $chapter = $course->course_item_groups->all();
+        //return dd($course->course_item_groups);
         $user = Auth::user();
         $item = $request->item_id; // Id específico do item ao finalizar aula
         $readonly = $request->readonly;
@@ -154,6 +167,8 @@ class CoursesController extends Controller
     {        
         $course = Course::find($id);
         $chapter = $course->course_item_groups->all();
+        $items = CourseItem::where('course_item_group_id', $chapter[0]->id)->get();
+        $items = vimeo_tools::parse_for_urls($items); 
         $user = Auth::user();
         $item = $request->item_id; // Id específico do item ao finalizar aula
 
@@ -169,26 +184,27 @@ class CoursesController extends Controller
         Log::Debug($course);
         //dd($done->all());
         return view('courseProgress')
-        ->with('users', $user)
+        ->with('user', $user)
         ->with('course',$course)
-        ->with('chapters', $chapter);
-            //->with('items', $items);
+        ->with('chapters', $chapter)
+        ->with('items', $items);
     }
 
     public function course_progress($id)
     {
         $item = CourseItem::find($id);
-        $items = CourseItem::where('id', $id)->get(); 
+        $items = CourseItem::where('id', $id)->get();
         
         $items = vimeo_tools::parse_for_urls($items);        
 
         $user = Auth::user();
         $id_course = $item->course_item_group->course_id;
         $chapter = CourseItemGroup::where('course_id', $id_course)->get();
+        //return dd($item);
 
         
         return view('courseProgress')
-        ->with('users', $user)
+        ->with('user', $user)
         ->with('chapters', $chapter)
         ->with('items', $items);
 

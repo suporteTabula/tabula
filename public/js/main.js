@@ -212,19 +212,23 @@ $(document).ready(function(){
     });
 
     $('.star').on('click', function(){
+
         var idCourse = $('.courseDados').attr('data-id');
-        var voto = $(this).attr('id');
-        ratingAjax(idCourse, voto);
+        if (idCourse == 0) {
+            alert("É Necessário comprar o curso para realizar a avaliação")
+        }else{
+            var voto = $(this).attr('id');
+
+            ratingAjax(idCourse, voto);
+        }
     });
-    /*$.post('{{url('/course/rating-star')}}', {votar: 'sim', artigo: idCourse, ponto: voto}, function(retorno){
-        avaliacao(retorno.average);
-        $('.votos span').html(retorno.votos);
-    }, 'jSON');*/
+
     
     function ratingAjax(idCourse, voto){
+        url = $(this).data('url');
         $.ajax({
-            url: 'http://localhost/projetos_web/tabula-imax/public/course/rating-star',
             type: 'POST',
+            url: 'http://localhost/projetos_web/tabula-imax/public/course/ratingstar',
             data:{
                 idCourse: idCourse,
                 voto: voto
@@ -233,46 +237,45 @@ $(document).ready(function(){
             },
             success: function(data){
                 var result = $.parseJSON(data);
-                alert(result.link);
+                if(result.hasCourse){
+                    if (result.hasVote) {
+                        alert("nota atribuida com sucesso");
+                    }else{
+                        alert("você já votou neste curso");
+                    }
+                }else{
+                    alert("Compre o curso para que possa realizar uma avaliação");
+                }
+                
             }
         });
     }
 }); 
-//Funcão ajax para enviar requisição
-/*function dateAjax(){
-    $.ajax({
-        url: '{{url(('/userPanel/course/store'))}}',
-        type: 'POST',
-        data: {
-            name: name,
-            desc: desc,
-            category_id: category_id,
-            price: price,
-            thumb_img: thumb_img,
-            featured: featured,
-        },
-        beforeSend: function() {
-            console.log('teste');
-        },
-        success: function(){
-            console.log('deu certo');
-            /*var result = $.parseJSON(data);
-            $('#cliques_rede').html(result.cliques_rede);
-            $('#cliques_foto_insta').html(result.cliques_foto_insta);
-            $('#cliques_link').html(result.cliques_link);
-            $('#total_cabecalho').html(result.total_cabecalho);
+$(document).ready(function(){
+    var item = $('#accbody-content'),
+    dialog = $('.dialog');
 
-            $('#data_inicial').html(result.data_inicial);
-            $('#data_final').html(result.data_final);
-
-
-            console.log(result.link);                    
-        }
+    dialog.dialog({
+        autoOpen: false,
+        modal: true
     });
-}
-*/
-/*
-var card = new Card({
+
+    item.on('click', function() {
+        var id = $(this).data('id'),
+        type = $(this).data('type');
+        if (id == 3) {
+            dialog.html(type);
+        }else if(id == 2){
+            dialog.html('<img src="'+type + '">');
+        }else{
+            dialog.html('<video controls width="500px"><source src="' + type + '"></video>');
+        }
+        dialog.dialog('open');
+    });
+});
+
+  /*
+  var card = new Card({
     // a selector or DOM element for the form where users will
     // be entering their information
     form: 'form', // *required*
@@ -314,7 +317,7 @@ var card = new Card({
 
 
 
-$(document).ready(function() {
+  $(document).ready(function() {
     if($("input.macro-main__checkbox").is(':checked')){
         $(".macro-sub__item").show();
         alert("checou")
@@ -325,10 +328,10 @@ $(document).ready(function() {
 });
 
 
-$('.main-carousel').flickity({
+  $('.main-carousel').flickity({
     // options
     cellAlign: 'center',
     contain: true
 
 });
-*/
+  */

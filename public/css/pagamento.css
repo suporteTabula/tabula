@@ -19,8 +19,20 @@
 }
 
 input[name="number"] {
-  width: 67%;
+  width: 60%;
   float: left;
+  padding: 10px;
+}
+#yearExpiry {
+
+  width: 20%;
+  float: left;
+  padding: px;
+}
+#monthexpiry {
+  margin: 5px;
+  width: 17%;
+  float: right;
   padding: 10px;
 }
 
@@ -30,16 +42,22 @@ input[name="cvv"] {
   float: right;
 }
 
-input[name="first-name"] {
-  width: 49%;
+input[name="cardName"] {
+  margin: 10px;
+  width: 60%;
   padding: 10px;
   float: left;
 }
-
-input[name="last-name"] {
-  width: 48%;
+input[name="cpf"] {
+  width: 32%;
   padding: 10px;
   float: right;
+}
+#parcel{
+  margin: 10px;
+  width: 49%;
+  padding: 10px;
+  float: left;
 }
 
 .paymentButton {

@@ -25,19 +25,33 @@
           <source src="../images/aulas/{{$course->video}}"> 
           </video>
           @endif
+          @auth
           <span class="courseDados" data-id="{{$course->id}}"></span>
           <div class="rating-stars">
             <span class="bg"></span>
             <div class="estrelas">
               <?php for($i = 1; $i<=5; $i++): ?>
-                <span class="star" id="{{$i}}">
+                <span class="star" id="{{$i}}" data-url="{{url('course/ratingstar')}}">
                   <span class="starAbsolute"></span>
                 </span>
               <?php endfor ?>
               <span class="ratingAverage">{{$rating['star']}}</span>
             </div> 
           </div>
-          
+          @else
+          <span class="courseDados" data-id="0"></span>
+          <div class="rating-stars">
+            <span class="bg"></span>
+            <div class="estrelas">
+              <?php for($i = 1; $i<=5; $i++): ?>
+                <span class="star" id="{{$i}}" data-url="{{url('course/ratingstar')}}">
+                  <span class="starAbsolute"></span>
+                </span>
+              <?php endfor ?>
+              <span class="ratingAverage">{{$rating['star']}}</span>
+            </div> 
+          </div>
+          @endauth
           <div class="start-course">
             @auth
             @if($user->id == $author->id)
@@ -84,7 +98,12 @@
            @if($hasCourse)
            <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.progress', ['id' => $item->id]) }}" @endauth>{{$item->name}}</a></div>
            @else
+           @if($freeClass->id == $item->id)
+           <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.progress', ['id' => $item->id]) }}" @else href="#" data-id="{{$freeClass->course_item_types_id}}" @if($freeClass->course_item_types_id == 3) data-type="{{$freeClass->desc}}"  @else data-type="{{url($freeClass->path)}}" @endif @endauth>{{$item->name}}</a></div>
+           <div  class="dialog"></div>
+           @else
            <div id="accbody" class="accordion-body"> <p id="accbody-content">{{$item->name}}</p></div>
+           @endif
            @endif
            @endif
            @endforeach

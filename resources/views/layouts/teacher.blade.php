@@ -83,10 +83,10 @@
                     <div class="col-lg-3">
                         <ul class="list-group">                            
                             <li class="list-group-item">
-                                <a href="{{ route('index.single') }}">Pagina Inicial</a>
+                                <a href="{{ route('courses.teacher')}}">Cursos</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('courses.teacher')}}">Cursos</a>
+                                <a href="{{ route('cupom.teacher') }}">Meus Cupons</a>
                             </li>
                         </ul>
                     </div>

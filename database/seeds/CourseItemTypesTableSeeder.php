@@ -30,10 +30,10 @@ class CourseItemTypesTableSeeder extends Seeder
         		"created_at"	=> $now,
         		"updated_at"	=> $now,
         	], [
-                "name"          => "dissertativa",
+                "name"          => "complemento",
                 "created_at"    => $now,
                 "updated_at"    => $now,
-            ], [
+            ],[
                 "name"          => "multipla_escolha",
                 "created_at"    => $now,
                 "updated_at"    => $now,
@@ -49,8 +49,8 @@ class CourseItemTypesTableSeeder extends Seeder
             	"name"			=> "alternativas",
             	"created_at"    => $now,
                 "updated_at"    => $now,
-            ],  [
-                "name"          => "complemento",
+            ], [
+                "name"          => "dissertativa",
                 "created_at"    => $now,
                 "updated_at"    => $now,
             ]

@@ -50,7 +50,7 @@
         <div class="container grid-lg">
             <div class="column checkout-courses">
                 <div class="columns">                                                          
-                    <div class="column col-8 check-card">                    
+                    <div class="column col-6 check-card">                    
                         @foreach(array_chunk($courses,2) as $chunks)
                         <div class="columns">
                             @foreach($chunks as $course)
@@ -72,9 +72,18 @@
                         </div>
                         @endforeach                        
                     </div>
-                    <div class="column col-4 check-card"><!-- Master Column Right -->
+                    <div class="column col-6 check-card"><!-- Master Column Right -->
                         <div class="column col-12 total-checkout">
-                            <p class="checkout-title">Valor Total</p>
+                            <p class="checkout-title">SubTotal</p>
+                            <span>R${{ $total_price }}</span>
+                            <form class="row" id="validaCupom" action="{{route('cart.cupom')}}">
+                                <div class="col-sm-3 my-1">
+                                    <label class="sr-only" for="validaCupom">Cupom</label>
+                                    <input type="text" class="form-control " name="validaCupom" placeholder="Informar Cupom">
+                                    <button class="button-tabula-gray">Validar</button>
+                                </div>
+                            </form>
+                            <p class="checkout-title">Total</p>
                             <span>R${{ $total_price }}</span>
                             <a href="{{ route('cart.checkout') }}" class="button-tabula-gray">Finalizar Compra</a>
 

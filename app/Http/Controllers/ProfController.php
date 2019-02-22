@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\CustomClasses\vimeo_tools;
 use App\User;
+use App\Cupom;
 use App\Course;
 use App\UserType;
 use App\Category;
@@ -103,18 +104,31 @@ class ProfController extends Controller
         else
             $course->thumb_img = 'e-learning.jpg'; 
 
+        //Valida o video     
         if($request->video != '')
         {
             $attach_video = $request->video;
-            $attach_video_name = time().$attach_video->getClientOriginalName();
+            $count = 1;
+            while($count != 0){
+                $str = "";
+                $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max = count($characters) - 1;
+                for ($i = 0; $i < 7; $i++) {
+                    $rand = mt_rand(0, $max);
+                    $str .= $characters[$rand];
+                    $count = Course::where('video', $str)->count();
+                }
+            }
+            $attach_video_name = $str;
             $attach_video->move('images/aulas', $attach_video_name); 
-
             $course->video = $attach_video_name;  
         }
-        $course->save();
 
+        $course->save();
+        $id = $course->id;
         // se tiver algum check nos grupos de usuário
         if($request->group != '')
+        {
             foreach($request->group as $checked) 
             {
                 $userGroup = UserGroup::find($checked);
@@ -124,35 +138,33 @@ class ProfController extends Controller
                 $course->group = 'ta dentro';
                 $course->save();
             }
-
-            Session::flash('success', 'Curso criado com sucesso');
-
-            $id = Course::count('id');
-            $course = Course::find($id);
-            $categories = Category::all();
-            $course_items_group = CourseItemGroup::all();
-            $user_groups = UserGroup::all();
-
-            return redirect()->route('userPanel.single', 
-                ['id' => $id,
-                'course' => $course,
-                'categories' => $categories,
-                'course_items_group' => $course_items_group,
-                'user_groups' => $user_groups] );
-
         }
+        Session::flash('success', 'Curso criado com sucesso');
 
-        public function edit($id)
-        {
-            $course = Course::find($id);
+        $course = Course::find($id);
+        $categories = Category::all();
+        $course_items_group = CourseItemGroup::all();
+        $user_groups = UserGroup::all();
 
-            return view('teacher.courses.edit')
-            ->with('course', $course)
-            ->with('categories', Category::all())
-            ->with('course_items_group', CourseItemGroup::all())
-            ->with('user', User::all())
-            ->with('user_groups', UserGroup::all());
-        }
+        return redirect()->route('course.edit.teacher', 
+            ['id' => $id,
+            'course' => $course,
+            'categories' => $categories,
+            'course_items_group' => $course_items_group,
+            'user_groups' => $user_groups]);
+    }
+
+    public function edit($id)
+    {
+        $course = Course::find($id);
+
+        return view('teacher.courses.edit')
+        ->with('course', $course)
+        ->with('categories', Category::all())
+        ->with('course_items_group', CourseItemGroup::all())
+        ->with('user', User::all())
+        ->with('user_groups', UserGroup::all());
+    }
 
     /**
      * Update the specified resource in storage.
@@ -191,68 +203,73 @@ class ProfController extends Controller
         else
             $course->thumb_img = 'e-learning.jpg';
 
-        if($request->video != '')
-        {
+        if($request->video != ''){
             $attach_video = $request->video;
-            $attach_video_name = time().$attach_video->getClientOriginalName();
+            $count = 1;
+            while($count != 0){
+                $str = "";
+                $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max = count($characters) - 1;
+                for ($i = 0; $i < 7; $i++) {
+                    $rand = mt_rand(0, $max);
+                    $str .= $characters[$rand];
+                }
+                $count = Course::where('video', $str)->count();
+                $attach_video_name = $str;
+            }
             $attach_video->move('images/aulas', $attach_video_name); 
 
-            $course->video = $attach_video_name;  
+            $course->video = $attach_video_name;    
         }
-
-
-        // busca TODOS os usergroups para serem comparados com:
+        //busca TODOS os usergroups para serem comparados com:
         // - os CHECKS 
         // - os vínculos do grupo aos userGroups
         $userGroups = UserGroup::all();
         // grupo por grupo
-        foreach($userGroups as $userGroup) 
-        {
+        foreach($userGroups as $userGroup){
             // se o curso PERTENCE ao grupo
-            if($userGroup->courses->contains($course))
-            {   
+            if($userGroup->courses->contains($course)){   
                 // seta condição de remoção do grupo como verdadeira
                 $remove = true;
 
                 //verifica se existe algum CHECK no request
-                if($request->group)
+                if($request->group){
                     // lista cada um dos CHECKS
-                    foreach($request->group as $checked) 
+                    foreach($request->group as $checked){
                         // se o id do CHECK for igual ao id do GRUPO (do foreach)
-                        if($userGroup->id == $checked)
                             // curso não será removido do grupo
+                        if($userGroup->id == $checked)
                             $remove = false;
-
-                        if($remove)
                     // remove curso do grupo
+                        if($remove)
                             $course->userGroups()->detach($userGroup);
-                    }
-            // se o curso NÃO PERTENCE ao grupo
-                    else
-                    {
+                // se o curso NÃO PERTENCE ao grupo
                 // seta condição de adição no grupo como falsa
-                        $add = false;
-
-                //verifica se existe algum CHECK no request
-                        if($request->group)
-                    // lista cada um dos CHECKS
-                            foreach($request->group as $checked) 
-                        // se o id do CHECK for igual ao id do GRUPO (do foreach)
-                                if($userGroup->id == $checked)
-                            // curso será adicionado do grupo
-                                    $add = true;
-                                if($add)
-                    // adiciona curso ao grupo
-                                    $course->userGroups()->attach($userGroup);
-                            }
-                        }
-
-                        $course->save();
-
-                        Session::flash('success', 'Curso atualizado com sucesso');
-                        return redirect()->back();
+                        else
+                            $add = false;
                     }
+                }    
+                //verifica se existe algum CHECK no request
+                    // lista cada um dos CHECKS
+                        // se o id do CHECK for igual ao id do GRUPO (do foreach)
+                if($request->group){
+                    foreach($request->group as $checked){
+                        if($userGroup->id == $checked)
+                            // curso será adicionado do grupo
+                            $add = true;
+                        if($add)
+                    // adiciona curso ao grupo
+                            $course->userGroups()->attach($userGroup);
+                    }
+                }
 
+            }            
+        }
+        $course->save();
+
+        Session::flash('success', 'Curso atualizado com sucesso');
+        return redirect()->back();
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -738,6 +755,108 @@ class ProfController extends Controller
                 $multi->save();
             }
         }
+        return redirect()->back();
+    }
+
+    public function cupomIndex(){
+        $users = Auth::user()->id;
+        $cupoms = Cupom::where('user_id', $users)->get();
+
+       // return dd($users);
+        return view('teacher.cupom.index')
+        ->with('users', User::all())
+        ->with('courses', Course::all())
+        ->with('cupoms', $cupoms);
+    }
+
+    public function cupomCreate()
+    {
+        $users = Auth::user()->id;
+        $cupoms = Cupom::where('user_id', $users)->get();
+        $cursos = Course::where('user_id_owner', $users)->get();
+        //return dd($cursos);
+        return view('teacher.cupom.create')
+        ->with('cupoms', $cupoms)
+        ->with('users', User::all())
+        ->with('cursos', $cursos);
+    }
+
+    public function cupomStore(Request $request)
+    {   //valida os campos digitados
+        $this->validate($request, [
+            'valorCupom'  => 'required|max:100',
+            'codCupom' => 'required|max:100'
+        ]);
+        //Vincula as variaveis 
+        
+        $user = Auth::user()->id;
+        if ($request->limiteCupom == null || $request->limiteCupom == '') {
+            $request->limiteCupom = 0;
+        }
+
+
+        Cupom::create([
+            'codCupom' => $request->codCupom,
+            'tipoCupom' => $request->tipoCupom,
+            'valorCupom' => $request->valorCupom,
+            'expiraCupom' => $request->expiraCupom,
+            'limiteCupom' => $request->limiteCupom,
+            'descCupom' => $request->descCupom,
+            'curso_id' => $request->curso_id,
+            'user_id' =>$user
+        ]);
+        // se tiver algum check nos grupos de usuário
+
+        Session::flash('success', 'Curso criado com sucesso');
+
+
+        return redirect()->route('cupom.teacher');
+    }
+
+    public function cupomEdit($id)
+    {   
+        $users = Auth::user()->id;
+        $cupom = Cupom::find($id);
+        $cursos = Course::where('user_id_owner', $users)->get();
+    
+        return view('teacher.cupom.edit')
+        ->with('cupom', $cupom)
+        ->with('users', User::all())
+        ->with('cursos', $cursos);
+    }
+
+    public function cupomUpdate(Request $request)
+    {   //valida os campos digitados
+        $this->validate($request, [
+            'valorCupom'  => 'required|max:100',
+            'codCupom' => 'required|max:100'
+        ]);
+        //Vincula as variaveis 
+        
+        $user = Auth::user()->id;
+
+
+        Cupom::where('id', $request->id)->update([
+            'codCupom' => $request->codCupom,
+            'tipoCupom' => $request->tipoCupom,
+            'valorCupom' => $request->valorCupom,
+            'expiraCupom' => $request->expiraCupom,
+            'limiteCupom' => $request->limiteCupom,
+            'descCupom' => $request->descCupom,
+            'curso_id' => $request->curso_id,
+            'user_id' =>$user
+        ]);        
+        Session::flash('success', 'Curso Editado com sucesso');
+        return redirect()->back();
+    }
+
+    public function cupomDestroy($id)
+    {
+        $cupom = Cupom::find($id);
+
+        $cupom->delete();
+
+        Session::flash('success', 'Curso removido com sucesso');
         return redirect()->back();
     }
 }

@@ -105,6 +105,8 @@ body {
 .star.full{
   background:linear-gradient(to bottom, #fee24f, #f4bb2f);
 }
+
+
 .course-overview .rating-stars p {
   padding-left: 15px; 
 }

@@ -23,8 +23,9 @@ class AdminUsersController extends Controller
 
     public function index()
     {
-        return view('admin.users.index')->with('users', User::all())
-                                        ->with('usersType', UserType::all());
+        return view('admin.users.index')
+        ->with('users', User::all())
+        ->with('usersType', UserType::all());
     }
 
     /**
@@ -36,10 +37,10 @@ class AdminUsersController extends Controller
     {
         $usersType = UserType::all();
         return view('admin.users.create')->with('usersType', $usersType)
-                                         ->with('states', State::all())
-                                         ->with('countries', Country::all())
-                                         ->with('schoolings', Schooling::all())
-                                         ->with('userGroups', UserGroup::all());
+        ->with('states', State::all())
+        ->with('countries', Country::all())
+        ->with('schoolings', Schooling::all())
+        ->with('userGroups', UserGroup::all());
     }
 
     /**
@@ -99,9 +100,9 @@ class AdminUsersController extends Controller
                 $user->save();
             }
 
-        Session::flash('success', 'Usuário adicionado com sucesso');
-        return redirect()->route('users');
-    }
+            Session::flash('success', 'Usuário adicionado com sucesso');
+            return redirect()->route('users');
+        }
 
     /**
      * Display the specified resource.
@@ -124,11 +125,11 @@ class AdminUsersController extends Controller
     {
         $user = User::find($id);
         return view('admin.users.edit')->with('user', $user)
-                                       ->with('usersType', UserType::all())
-                                       ->with('states', State::all())
-                                       ->with('countries', Country::all())
-                                       ->with('schoolings', Schooling::all())
-                                       ->with('userGroups', UserGroup::all());
+        ->with('usersType', UserType::all())
+        ->with('states', State::all())
+        ->with('countries', Country::all())
+        ->with('schoolings', Schooling::all())
+        ->with('userGroups', UserGroup::all());
     }
 
     /**
@@ -188,35 +189,35 @@ class AdminUsersController extends Controller
                             // usuário não será removido do grupo
                             $remove = false;
 
-                if($remove)
+                        if($remove)
                     // remove usuário do grupo
-                    $user->userGroups()->detach($userGroup);
-            }
+                            $user->userGroups()->detach($userGroup);
+                    }
             // se o usuário NÃO PERTENCE ao grupo
-            else
-            {
+                    else
+                    {
                 // seta condição de adição no grupo como falsa
-                $add = false;
+                        $add = false;
 
                 // verifica se existe algum CHECK no request
-                if($request->group)
+                        if($request->group)
                     // lista cada um dos CHECKS
-                    foreach($request->group as $checked) 
+                            foreach($request->group as $checked) 
                         // se o id do CHECK for igual ao id do GRUPO (do foreach)
-                        if($userGroup->id == $checked)
+                                if($userGroup->id == $checked)
                             // usuário será adicionado do grupo
-                            $add = true;
-                if($add)
+                                    $add = true;
+                                if($add)
                     // adiciona usuário ao grupo
-                    $user->userGroups()->attach($userGroup);
-            }
-        }
-        $user->userTypes()->sync($request->usersType);
-        $user->save();
+                                    $user->userGroups()->attach($userGroup);
+                            }
+                        }
+                        $user->userTypes()->sync($request->usersType);
+                        $user->save();
 
-        Session::flash('success', 'Usuário alterado com sucesso');
-        return redirect()->route('users');
-    }
+                        Session::flash('success', 'Usuário alterado com sucesso');
+                        return redirect()->route('users');
+                    }
 
     /**
      * Remove the specified resource from storage.

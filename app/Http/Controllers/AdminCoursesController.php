@@ -54,7 +54,7 @@ class AdminCoursesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   //valida os campos digitados
         $this->validate($request, [
             'name'        => 'required|max:100',
             'desc'        => 'required',
@@ -62,9 +62,9 @@ class AdminCoursesController extends Controller
             'featured'    => 'required',
             'category_id' => 'required'
         ]);
-        
+        //Chama o objeto
         $course = new Course();
-
+        //Vincula as variaveis 
         $course->name          = $request->name;
         $course->desc          = $request->desc;
         $course->price         = $request->price;
@@ -72,7 +72,7 @@ class AdminCoursesController extends Controller
         $course->featured   = $request->featured;
         $course->requirements = $request->requirements;
         $course->user_id_owner = Auth::user()->id;
-
+        //valida a foto de perfil
         if($request->thumb_img != '')
         {
             $attach_thumb_img = $request->thumb_img;
@@ -82,23 +82,33 @@ class AdminCoursesController extends Controller
             $course->thumb_img = $attach_thumb_img_name;  
         }
         else
-            $course->thumb_img = 'e-learning.jpg'; 
+            $course->thumb_img = 'e-learning.jpg';
 
-
+        //Valida o video     
         if($request->video != '')
         {
             $attach_video = $request->video;
-            $attach_video_name = time().$attach_video->getClientOriginalName();
+            $count = 1;
+            while($count != 0){
+                $str = "";
+                $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max = count($characters) - 1;
+                for ($i = 0; $i < 7; $i++) {
+                    $rand = mt_rand(0, $max);
+                    $str .= $characters[$rand];
+                    $count = Course::where('video', $str)->count();
+                }
+            }
+            $attach_video_name = $str;
             $attach_video->move('images/aulas', $attach_video_name); 
-
             $course->video = $attach_video_name;  
         }
 
         $course->save();
         $id = $course->id;
-
         // se tiver algum check nos grupos de usuário
         if($request->group != '')
+        {
             foreach($request->group as $checked) 
             {
                 $userGroup = UserGroup::find($checked);
@@ -108,23 +118,21 @@ class AdminCoursesController extends Controller
                 $course->group = 'ta dentro';
                 $course->save();
             }
-
-            Session::flash('success', 'Curso criado com sucesso');
-
-            $course = Course::find($id);
-            $categories = Category::all();
-            $course_items_group = CourseItemGroup::all();
-            $user_groups = UserGroup::all();
-
-            return redirect()->route('course.edit', 
-                ['id' => $id,
-                'course' => $course,
-                'categories' => $categories,
-                'course_items_group' => $course_items_group,
-                'user_groups' => $user_groups]);
-
         }
+        Session::flash('success', 'Curso criado com sucesso');
 
+        $course = Course::find($id);
+        $categories = Category::all();
+        $course_items_group = CourseItemGroup::all();
+        $user_groups = UserGroup::all();
+
+        return redirect()->route('course.edit', 
+            ['id' => $id,
+            'course' => $course,
+            'categories' => $categories,
+            'course_items_group' => $course_items_group,
+            'user_groups' => $user_groups]);
+    }
     /**
      * Display the specified resource.
      *
@@ -180,8 +188,7 @@ class AdminCoursesController extends Controller
         $course->featured    = $request->featured;
         
 
-        if($request->thumb_img != '')
-        {
+        if($request->thumb_img != ''){
             $attach_thumb_img = $request->thumb_img;
             $attach_thumb_img_name = time().$attach_thumb_img->getClientOriginalName();
             $attach_thumb_img->move('images/aulas', $attach_thumb_img_name); 
@@ -191,67 +198,73 @@ class AdminCoursesController extends Controller
         else
             $course->thumb_img = 'e-learning.jpg';
 
-        if($request->video != '')
-        {
+        if($request->video != ''){
             $attach_video = $request->video;
-            $attach_video_name = time().$attach_video->getClientOriginalName();
+            $count = 1;
+            while($count != 0){
+                $str = "";
+                $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max = count($characters) - 1;
+                for ($i = 0; $i < 7; $i++) {
+                    $rand = mt_rand(0, $max);
+                    $str .= $characters[$rand];
+                }
+                $count = Course::where('video', $str)->count();
+                $attach_video_name = $str;
+            }
             $attach_video->move('images/aulas', $attach_video_name); 
 
-            $course->video = $attach_video_name;  
+            $course->video = $attach_video_name;    
         }
-
-
-        // busca TODOS os usergroups para serem comparados com:
+        //busca TODOS os usergroups para serem comparados com:
         // - os CHECKS 
         // - os vínculos do grupo aos userGroups
         $userGroups = UserGroup::all();
         // grupo por grupo
-        foreach($userGroups as $userGroup) 
-        {
+        foreach($userGroups as $userGroup){
             // se o curso PERTENCE ao grupo
-            if($userGroup->courses->contains($course))
-            {   
+            if($userGroup->courses->contains($course)){   
                 // seta condição de remoção do grupo como verdadeira
                 $remove = true;
 
                 //verifica se existe algum CHECK no request
-                if($request->group)
+                if($request->group){
                     // lista cada um dos CHECKS
-                    foreach($request->group as $checked) 
+                    foreach($request->group as $checked){
                         // se o id do CHECK for igual ao id do GRUPO (do foreach)
-                        if($userGroup->id == $checked)
                             // curso não será removido do grupo
+                        if($userGroup->id == $checked)
                             $remove = false;
-
-                        if($remove)
                     // remove curso do grupo
+                        if($remove)
                             $course->userGroups()->detach($userGroup);
-                    }
-            // se o curso NÃO PERTENCE ao grupo
-                    else
-                    {
+                // se o curso NÃO PERTENCE ao grupo
                 // seta condição de adição no grupo como falsa
-                        $add = false;
-
-                //verifica se existe algum CHECK no request
-                        if($request->group)
-                    // lista cada um dos CHECKS
-                            foreach($request->group as $checked) 
-                        // se o id do CHECK for igual ao id do GRUPO (do foreach)
-                                if($userGroup->id == $checked)
-                            // curso será adicionado do grupo
-                                    $add = true;
-                                if($add)
-                    // adiciona curso ao grupo
-                                    $course->userGroups()->attach($userGroup);
-                            }
-                        }
-
-                        $course->save();
-
-                        Session::flash('success', 'Curso atualizado com sucesso');
-                        return redirect()->back();
+                        else
+                            $add = false;
                     }
+                }    
+                //verifica se existe algum CHECK no request
+                    // lista cada um dos CHECKS
+                        // se o id do CHECK for igual ao id do GRUPO (do foreach)
+                if($request->group){
+                    foreach($request->group as $checked){
+                        if($userGroup->id == $checked)
+                            // curso será adicionado do grupo
+                            $add = true;
+                        if($add)
+                    // adiciona curso ao grupo
+                            $course->userGroups()->attach($userGroup);
+                    }
+                }
+
+            }            
+        }
+        $course->save();
+
+        Session::flash('success', 'Curso atualizado com sucesso');
+        return redirect()->back();
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -384,7 +397,22 @@ class AdminCoursesController extends Controller
         if(isset($request->archive))
         {
             $attach = $request->archive;
-            $attach_new_name = time().$attach->getClientOriginalName();
+
+            $count = 1;
+            while($count != 0){
+                $str = "";
+                $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max = count($characters) - 1;
+                for ($i = 0; $i < 7; $i++) {
+                    $rand = mt_rand(0, $max);
+                    $str .= $characters[$rand];
+                }
+                $path = 'uploads/archives/'.$str; 
+                $count = CourseItem::where('path', $path)->count();
+                $attach_new_name = $str;
+            }
+
+
             $attach->move('uploads/archives', $attach_new_name); 
             $new_path = 'uploads/archives/'. $attach_new_name;
             if($request->vimeo == 1){                
@@ -502,7 +530,21 @@ class AdminCoursesController extends Controller
         {            
             $old_itemPath = $item->path;
             $attach = $request->archive;
-            $attach_new_name = time().$attach->getClientOriginalName();
+            //gera array aleatorio
+            $count = 1;
+            while($count != 0){
+                $str = "";
+                $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max = count($characters) - 1;
+                for ($i = 0; $i < 7; $i++) {
+                    $rand = mt_rand(0, $max);
+                    $str .= $characters[$rand];
+                }
+                $path = 'uploads/archives/'.$str; 
+                $count = CourseItem::where('path', $path)->count();
+                $attach_new_name = $str;
+            }
+
             $attach->move('uploads/archives', $attach_new_name); 
             $new_path = 'uploads/archives/'. $attach_new_name;
             if($old_itemPath.contains('vimeo')){            

@@ -31,7 +31,7 @@ class User extends Authenticatable
     public function isAdmin()
     {
         foreach ($this->userTypes()->get() as $types) {
-            if($types->desc == 'Admin')
+            if($types->desc == 'Admin' || $types->desc == 'Suporte')
             {
                 return true;
             }
