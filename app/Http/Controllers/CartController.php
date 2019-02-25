@@ -79,8 +79,9 @@ class CartController extends Controller
         }
 
         public function checkout()
-
         {
+            $session = session()->get('desconto');
+
             $user = Auth::user();
             $items = Cart::where('user_id', $user->id)->get();
         // array de cursos do pedido
@@ -100,17 +101,61 @@ class CartController extends Controller
             return view('checkout')
             ->with('courses', $courses)
             ->with('total_price', $total_price)
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('session', $session);
         }
 
         public function validaCupom(Request $request)
         {
-            $cupom = Cupom::where('codCupom', $request->validaCupom)->count();
-            
-            if($cupom >0){
-                return 'teste';
+            $user = Auth::user();
+            $items = Cart::where('user_id', $user->id)->get();
+            $courses = array();
+            $total_price = 0;
+            foreach($items as $item)
+            {
+                $course = Course::find($item->course_id);
+            // adiciona o curso do item em questão no array de cursos
+                array_push($courses, $course);
+            // soma o preço de cada curso
+                $total_price = $total_price + $course->price;
             }
-            else
-                return redirect()->back();
+
+            $cupom = Cupom::where('codCupom', $request->codCupom)->count();
+            $cupomChave = Cupom::where('codCupom', $request->codCupom)->first();
+
+            $validaCupom['total'] = $total_price;
+            $validaCupom['desconto'] = 0;
+
+            if ($cupom > 0) {
+                if ($cupomChave->tipoCupom == 'Fixo Carrinho') {
+                    //Reduz o valor no valor total do pedido
+                    $validaCupom['desconto'] = $cupomChave->valorCupom;
+                    $validaCupom['total'] = $total_price - $cupomChave->valorCupom;
+                }elseif ($cupomChave->tipoCupom == 'Porcentagem') {
+                    //reduz o valor total do carrinho com base na porcentagem
+                    $validaCupom['desconto'] = $total_price * ($cupomChave->valorCupom/100);
+                    $validaCupom['total'] = $total_price - ($total_price * ($cupomChave->valorCupom/100));
+                }else{
+                    foreach ($courses as $course) {
+                    if ($course->id == $cupomChave->curso_id) {
+                    //Reduz de um produto especifico
+                        $validaCupom['desconto'] = $cupomChave->valorCupom;
+                        $validaCupom['total'] = $validaCupom['total'] - $cupomChave->valorCupom;
+                    }
+                        
+                    }
+                    
+                }
+
+            }
+
+            $request->session()->put('desconto',[
+                'descontoTotal' => $validaCupom['desconto'],
+                'total' => $validaCupom['total'],
+            ]);
+            return json_encode($validaCupom);
+
+
+
         }
     }

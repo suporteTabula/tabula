@@ -19,7 +19,7 @@
 }
 
 input[name="number"] {
-  width: 60%;
+  width: 90%;
   float: left;
   padding: 10px;
 }
@@ -27,7 +27,7 @@ input[name="number"] {
 
   width: 20%;
   float: left;
-  padding: px;
+  padding: 5px;
 }
 #monthexpiry {
   margin: 5px;

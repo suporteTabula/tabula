@@ -31,7 +31,7 @@ Route::get('/homeEmpresa', ['uses' => 'Controller@HomeEmpresa']);
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
 Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('cart.remove');
-Route::get('cart/cupom', 'CartController@validaCupom')->name('cart.cupom');
+Route::post('cart/cupom', 'CartController@validaCupom')->name('cart.cupom');
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
 //Transações
