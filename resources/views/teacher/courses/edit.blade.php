@@ -36,7 +36,7 @@
 				</div>
 				<div class="form-group">
 					<label for="price">Preço</label>
-					<input class="form-control" type="text" value="{{ $course->price }}" name="price" placeholder="Preço do curso" value="{{ old('price') }}">
+					<input class="form-control" type="text" value="{{ $course->price }}" name="price" placeholder="Preço do curso">
 				</div>
 				<div class="form-group">
 					<label for="requirements">Requisitos</label>

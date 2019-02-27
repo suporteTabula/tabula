@@ -62,16 +62,15 @@
               <a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Excluir</a>
             </ul>
             @elseif($hasCourse)
-            @if ($userItem)
+            @if ($progress > 0)
             <ul>
-              <a class="custom-button button-tabula" href="{{ route('course.progress', ['id'=> $userItem[0]->ItemId ]) }}">Continuar Curso</a>
-            </ul>
-            <ul>
-              <a class="custom-button button-tabula" href="{{ route('users') }}">Alunos Matriculados</a>
+              <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Continuar Curso</a>
             </ul>
             @else
 
-            <ul>  <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a></ul>
+            <ul>
+              <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
+            </ul>
             @endif                                
             @else
             <ul><a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a></ul>
@@ -96,10 +95,10 @@
            @foreach ($chapter->course_items as $item)
            @if (is_null($item->course_items_parent))
            @if($hasCourse)
-           <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.progress', ['id' => $item->id]) }}" @endauth>{{$item->name}}</a></div>
+           <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.start', ['id' => $course->id]) }}" @endauth>{{$item->name}}</a></div>
            @else
            @if($freeClass->id == $item->id)
-           <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.progress', ['id' => $item->id]) }}" @else href="#" data-id="{{$freeClass->course_item_types_id}}" @if($freeClass->course_item_types_id == 3) data-type="{{$freeClass->desc}}"  @else data-type="{{url($freeClass->path)}}" @endif @endauth>{{$item->name}}</a></div>
+           <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.start', ['id' => $item->id]) }}" @else href="#" data-id="{{$freeClass->course_item_types_id}}" @if($freeClass->course_item_types_id == 3) data-type="{{$freeClass->desc}}"  @else data-type="{{url($freeClass->path)}}" @endif @endauth>{{$item->name}}</a></div>
            <div  class="dialog"></div>
            @else
            <div id="accbody" class="accordion-body"> <p id="accbody-content">{{$item->name}}</p></div>

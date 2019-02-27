@@ -12,7 +12,7 @@ use App\TransactionItem;
 
 class TransactionsController extends Controller
 {
-	public function success(Request $request)
+	public function statusTransaction(Request $request)
 	{  
         $session = session()->get('desconto');
         $idUser = Auth::user()->id;
@@ -23,7 +23,7 @@ class TransactionsController extends Controller
         // IMPORTANTE: não existe nada que impeça o acesso à essa URL
         // caso o usuário possua itens no carrinho e acessar essa URL, ele registrará os cursos à ele
         // !!!!!!!!!!!!!!!!!!!
-/*
+
 		$user = Auth::user();
         $items = Cart::where('user_id', $user->id)->get();
         // array de cursos do pedido
@@ -70,9 +70,9 @@ class TransactionsController extends Controller
         return view('success')
             ->with('courses', $courses)
             ->with('total_price', $total_price)
-            ->with('user', $user);*/
+            ->with('user', $user);
         }
-
+/*
         public function statusTransaction(Request $request)
         {
             $user=Auth::user();
@@ -89,7 +89,7 @@ class TransactionsController extends Controller
         *   ELO         |   16  |
         *   HIPERCARD   |   20  |
         *   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        */
+        *
 
 
         if(isset($request))
@@ -154,5 +154,5 @@ class TransactionsController extends Controller
                     //Tratamento das mensagens de erro
             }
         }
-    }
+    }*/
 }

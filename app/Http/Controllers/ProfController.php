@@ -92,7 +92,9 @@ class ProfController extends Controller
         $course->featured   = $request->featured;
         $course->requirements = $request->requirements;
         $course->user_id_owner = Auth::user()->id;
+        $course->total_class = 0;
 
+        $course->price = str_replace(',', '.', $course->price);
         if($request->thumb_img != '')
         {
             $attach_thumb_img = $request->thumb_img;
@@ -157,7 +159,8 @@ class ProfController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
-
+        $course->price = str_replace('.', ',', $course->price);
+        //return dd($course);
         return view('teacher.courses.edit')
         ->with('course', $course)
         ->with('categories', Category::all())
@@ -191,6 +194,7 @@ class ProfController extends Controller
         $course->requirements = $request->requirements;
         $course->featured    = $request->featured;
         
+        $course->price = str_replace(',', '.', $course->price);
 
         if($request->thumb_img != '')
         {

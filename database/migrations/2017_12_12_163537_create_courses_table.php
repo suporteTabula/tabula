@@ -24,6 +24,7 @@ class CreateCoursesTable extends Migration
             $table->string('requirements')->nullable();
             $table->string('video')->nullable();
             $table->integer('featured')->default(0);
+            $table->integer('total_class')->nullable();
             $table->string('thumb_img')->nullable();
             $table->timestamps();
         });

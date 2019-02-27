@@ -11,17 +11,16 @@
                     @foreach ($chapters as $chapter)         
                     <details class="accordion">
                         <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo: {{ $chapter->name }}
-                            <span class="round">
-                                <input type="checkbox" name="chap-{{ $chapter->id }}" id="chap-{{ $chapter->id }}" disabled>                               
-                                <label class="chap-progress-label" for="chap-{{ $chapter->id }}"></label>
-                                <input type="hidden" name="chap-{{ $chapter->id }}-courseID" id="chap-{{ $chapter->id }}-courseID" value="{{ $chapter->course_id }}"/>
-                            </span>
+                            <p style="position: relative; float: right;">
+                                <span id="chap-{{$chapter->id}}" >{{$chapter->progressDo}}</span>
+                                <span>/{{count($chapter->course_items)}}</span>
+                            </p>
                         </summary>
                         @foreach ($chapter->course_items as $item)
                         @if(is_null($item->course_items_parent))
                         <div id="accbody" class="accordion-body"> <a id="accbody-content" class="aula" value="{{ $item->id }}">{{ $item->name }}</a>
                             <span class="round">
-                                <input type="checkbox" name="progress" id="{{ $item->id }}" 
+                                <input type="checkbox" class="input-progress-label" name="progress" id="{{ $item->id }}" 
                                 @foreach ($user->items as $i)
                                 @if ($i->pivot->course_item_status_id == 1 && $item->id == $i->pivot->course_item_id)
                                 checked
@@ -30,153 +29,110 @@
                                 <label class="progress-label" for="{{ $item->id }}"></label>
                             </span>
                         </div>                                                                
-                        @endif					
+                        @endif                  
                         @endforeach
                     </details>
                     @endforeach
                 </section>
             </div>
+
             <div class="column course-video-wrapper" id="aulas">
-            @if (isset($items))
-                <ul>
-                    @foreach ($items as $item)
-                @if ($item->course_item_types_id >= 6)
 
-                    <form action="{{ route('course.answer', ['id' => $item->id]) }} " method="post" enctype="multipart/form-data"> <!--FORM PASSANDO ID DO ITEM PRA SALVAR EM ORDEM AS ALTERNATIVAS-->
-                        {{ csrf_field() }}
-
-                        @foreach ($item->item_child as $child)
-                    @if ($child->course_item_types_id == 6 || $child->course_item_types_id == 9)
-
-                        <label>{{ $child->desc }}</label><br>  
-                        @foreach ($child->course_item_options as $options)
-                            @if ($child->course_item_types_id == 6)
-
-                        <input type="hidden" name="multiple_{{$options->course_item->id}}[]" value="0">
-                        <input type="checkbox" name="multiple_{{$options->course_item->id}}[]" value="{{$options->id}}"> {{ $options->desc }}<br>
-                            @elseif ($child->course_item_types_id == 9)
-
-                        <input type="hidden" name="alternativa_{{$options->course_item->id}}[]" value="0">
-                        <input type="radio" name="alternativa_{{$options->course_item->id}}[]" value="{{$options->id}}"> {{ $options->desc}}<br>
-                            @endif   
-                        @endforeach
-                    @else
-                        <label>{{ $child->desc }}</label><br> 
-                        @if ($child->course_item_types_id == 10)
-                        <input type="text" name="dissertativa_{{$child->id}}"><br> 
-                        @else
-                        <input type="hidden" name="trueFalse_{{$child->id}}" value="text">
-                        <input type="radio" name="trueFalse_{{$child->id}}" value="1">Verdadeira
-                        <input type="radio" name="trueFalse_{{$child->id}}" value="0">Falsa<br>
-                        @endif
-                    @endif
-                        @endforeach
-                        <input type="submit" name="next" id="next" value="Enviar avaliação">
-                    </form>
-                @else 
-
-                    @if ($item->course_item_types_id == 3)                                   
-                    {{ $item->desc }}
-                        @if (!is_null($item->embed))
-                    {!! $item->embed !!}
-                        @endif
-                    @else
-                    <video controls >
-                        <source src="{{url($item->path)}}"> 
-                            Your browser does not support html5 videos
-                        </video>
-                        @foreach ($item->item_child as $child)
-                        {{ $child->id }}
-                        @endforeach
-                    @endif                                    
-                        <form action="{{ route('course.start', ['id' => $item->course_item_group->course_id]) }}" method="get" enctype="multipart/form-data">
-                            {{ csrf_field() }}
-
-                            <input type="hidden" id="item_id" name="item_id" value="{{$item->id}}">
-                            <input type="submit" name="next" value="Finalizar aula">
-                        </form>
-                @endif
-                        @endforeach
-                    </ul>
-            @else
-
-            @endif
-                </div>
-                <div class="column col-2 course-controls">                    
-                    <button id="open-class" class="button-tabula">Menu de Aulas</button>
-                    <button id="close-class" class="button-tabula">Fechar Menu de Aulas</button>
-                </div>
             </div>
-        </div>   
-    </section>
+            <div class="column col-2 course-controls">   
+                <button id="next" class="button-tabula">Próxima Aula</button>                 
+                <button id="open-class" class="button-tabula">Menu de Aulas</button>
+                <button id="close-class" class="button-tabula">Fechar Menu de Aulas</button>
+            </div>
+        </div>
+    </div>   
+</section>
 
-    @section('scripts')
-    <script>
-        function checkChapterStatus(id,readonly)
-        {
-            var route='{{ route('course.course_item_toggle', ['id' => $item->course_item_group->course_id]) }}';                      
-            req = {
-             item_id:id,
-             readonly:readonly
-         };               
-         $.ajax({
-            type: 'GET',                                                
-            url: route,
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: req,
-            error: function(e){
-                console.log(e);
-            },
-            success: function(response){                                                                                 
-                response = response.replace(/\s/g,'');
-                var status = response.split("-");    
-                var elementID = status[0];
-                var elementStatus = status[1];  
-                var input = 'input[name=chap-'+elementID+']';                                                                                                             
-
-                if(elementStatus == 'false')
-                    $('input[name=chap-'+elementID+']').prop( "checked", false );
-                else
-                    $('input[name=chap-'+elementID+']').prop( "checked", true );
-            }
-        });
-     }
-
-     $(document).ready(function(){                
-        $('.progress-label').click(function(){
-         var id=$(this).attr('for');   
-         checkChapterStatus(id,false);
-     });
-
-        $('#open-class').click(function() {
-         $(".chap-progress-label").each(function(){
-          var id=$(this).attr('for');                        
-          var chapID = id.split("-");
-          chapID = chapID[1];
-          var courseID = $('#chap-'+chapID+'-courseID').attr('value');                        
-          checkChapterStatus(courseID,true);
-      })
-     })
-
-        $('.aula').click(function(){
-
-            var id = $(this).attr('value');  
-		//console.log(id);
-
-     req = {item_id:id};
-     $.ajax({
-        type: 'GET',
+@section('scripts')
+<script>
+    function checkChapterStatus(id,readonly)
+    {
+        var route='{{ route('course.course_item_toggle', ['id' => $item->course_item_group->course_id]) }}';               
+        req = {
+           item_id:id,
+           readonly:readonly
+       };               
+       $.ajax({
+        type: 'GET',                                                
+        url: route,
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        url: '{{ route('course.lesson') }}',
         data: req,
         error: function(e){
-           console.log(e);
+            console.log(e);
         },
-       success: function(response){
-           $('#aulas').html(response);
+        success: function(response){      
+            var result = $.parseJSON(response);
+            var i = 0;
+            for (i =0; i < result.length; ++i){
+                $('#chap-'+ result[i].id).html(result[i].progressDo);
+            }
         }
-    });                    
-});
+    });
+   }
+
+   $(document).ready(function(){                
+    $('.progress-label').click(function(){
+        var id=$(this).attr('for');   
+        checkChapterStatus(id,false);
+    });
+
+
+
+    $(document).ready(function(){    
+        $('.input-progress-label').each(function(){
+            if(!$(this).is(':checked')){
+                var id = $(this).attr('id');
+                
+                req = {item_id:id};
+                $.ajax({
+                    type: 'GET',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    url: '{{ route('course.lesson') }}',
+                    data: req,
+                    error: function(e){
+                     console.log(e);
+                 },
+                 success: function(response){
+                     $('#aulas').html(response);
+                     var idInput = id;
+                     console.log(idInput);
+                 }
+             }); 
+                return false;     
+            }
+        }); 
+        $('#next').click(function(){
+            $('.input-progress-label').each(function(){
+
+                var id=$(this).attr('id'); 
+                alert(id);
+            });
+
+        });
+    });
+    $('.aula').click(function(){
+
+        var id = $(this).attr('value');
+
+        req = {item_id:id};
+        $.ajax({
+            type: 'GET',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url: '{{ route('course.lesson') }}',
+            data: req,
+            error: function(e){
+             console.log(e);
+         },
+         success: function(response){
+             $('#aulas').html(response);
+         }
+     });                    
+    });
 });
 </script>        
 @stop

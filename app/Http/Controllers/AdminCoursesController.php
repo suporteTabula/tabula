@@ -72,6 +72,7 @@ class AdminCoursesController extends Controller
         $course->featured   = $request->featured;
         $course->requirements = $request->requirements;
         $course->user_id_owner = Auth::user()->id;
+        $course->total_class = 0;
         //valida a foto de perfil
         if($request->thumb_img != '')
         {
@@ -393,7 +394,6 @@ class AdminCoursesController extends Controller
         $item->course_item_types_id     = $request->item_type_id;
         $item->course_items_parent      = NULL;
         
-
         if(isset($request->archive))
         {
             $attach = $request->archive;
@@ -431,6 +431,11 @@ class AdminCoursesController extends Controller
         $item->order = $order;
 
         $item->save();
+        $total_class = CourseItem::where('course_item_group_id', $id)->count();
+        
+        Course::where('id', $id)->update([
+            'total_class' => $total_class,
+        ]);
         Session::flash('success', 'Sessão adicionada com sucesso');
         return redirect()->back();
     }

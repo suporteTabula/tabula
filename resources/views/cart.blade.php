@@ -75,7 +75,7 @@
                     <div class="column col-6 check-card"><!-- Master Column Right  action="{{route('cart.cupom')}}-->
                         <div class="column col-12 total-checkout">
                             <p class="checkout-title">SubTotal</p>
-                            <span >R${{ $total_price }}</span>
+                            <span >R${{ number_format($total_price, 2,',', '.') }}</span>
 
                                 <div class="col-sm-8 my-1">
                                     <label class="sr-only" for="codCupom">Cupom</label>
@@ -83,7 +83,7 @@
                                     <button class="button-tabula-gray" id="cupom">Validar</button>
                                 </div>
                             <p class="checkout-title">Total</p>
-                            <span id="total">R$<{{number_format($total_price, 2, ',', '.')}}</span>
+                            <span id="total">R${{number_format($total_price, 2, ',', '.')}}</span>
                             <a href="{{ route('cart.checkout') }}" class="button-tabula-gray">Finalizar Compra</a>
 
                             <a href="{{ route('search.single', ['id' => -1]) }}" class="button-tabula-gray">Continuar</a>

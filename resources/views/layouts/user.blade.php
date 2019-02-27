@@ -54,7 +54,7 @@ rel = "stylesheet">
                     <div class="dropdown">
                         <span><a href="{{ url('/') }}"><img align="center" src="{{asset('/images/layout/header/logo.png')}}" height="30px"> </a></span>
                         <div class="dropdown-content">
-                            <a href="/homeEmpresa"> <img src="{{asset('/images/layout/header/sp.jpg')}}" height="25px"></a>
+                            <a href="{{route('empresa')}}"> <img src="{{asset('/images/layout/header/sp.jpg')}}" height="25px"></a>
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ rel = "stylesheet">
 
 
     @yield('content')
-    <footer>
+    <footer style="display: none;">
         <div class="container grid-md">
             <div class="columns">
                 <div class="column col-4"></div>

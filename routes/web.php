@@ -26,7 +26,8 @@ Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
 Route::get('/todosProfs', 'Controller@todosProfs')->name('todosProfs');
-Route::get('/homeEmpresa', ['uses' => 'Controller@HomeEmpresa']);
+
+Route::get('/empresa', 'EmpresaController@index')->name('empresa');
 //Carrinho
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');

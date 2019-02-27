@@ -154,7 +154,7 @@
           </tr>
           <tr>
             <td>Total:</td>
-            <td><strong>R$ {{ number_format($session['total'], 2, ',', '.') }}</strong></td>
+            <td><strong>R$<?php $total_price = $total_price - $session['descontoTotal'] ?> {{ number_format($total_price, 2, ',', '.') }}</strong></td>
           </tr>
           @else
           <tr><td>Não existem items para finalizar a compra!</td></tr>

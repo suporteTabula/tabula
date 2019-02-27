@@ -1,7 +1,7 @@
 @if (isset($items))
     <ul>
         @foreach ($items as $item)
-            @if ($item->course_item_types_id >= 5)
+            @if ($item->course_item_types_id >= 6)
                 
                 <form action="{{ route('course.answer', ['id' => $item->id]) }} " method="post" enctype="multipart/form-data"> <!--FORM PASSANDO ID DO ITEM PRA SALVAR EM ORDEM AS ALTERNATIVAS-->
                     {{ csrf_field() }}
@@ -28,7 +28,7 @@
                             @else
                                 <label>Descrição não disponível</label><br/>
                             @endif
-                            @if ($child->course_item_types_id == 5)
+                            @if ($child->course_item_types_id == 10)
                                 <input type="text" name="dissertativa_{{$child->id}}"><br> 
                             @else
                                 <input type="hidden" name="trueFalse_{{$child->id}}" value="">
@@ -40,8 +40,7 @@
                     <input type="submit" name="next" id="next" value="Enviar avaliação">
                 </form>
             @else
-             @if ($item->course_item_types_id == 1)                                   
-                {{ $item->desc }}
+             @if ($item->course_item_types_id == 1)
                 @if (!is_null($item->embed))
                     <span>{!! $item->embed !!}</span>
                 @endif
@@ -94,7 +93,7 @@
                 <input type="submit" name="next" id="next" value="Enviar avaliação">
                 </form>
             @else
-                {{ $item->desc }}
+                <p>{{ $item->desc }}</p>
                 @if (!is_null($item->path))
                     <img src="{{ asset($item->path) }}" id="{{ $item->id }}" class="course-asset">
                 @endif

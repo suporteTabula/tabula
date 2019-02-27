@@ -29,6 +29,10 @@ class UserTypesTableSeeder extends Seeder
                 "desc"       => "Suporte",
                 "created_at" => $now,
                 "updated_at" => $now,
+            ], [
+                "desc"       => "Empresa",
+                "created_at" => $now,
+                "updated_at" => $now,
             ], 
         ]);
     }
