@@ -29,9 +29,7 @@ class ProfController extends Controller
 		$user = User::find($request->id);
 
 
-        $user->first_name   = $request->first_name;
-        $user->last_name    = $request->last_name;
-        $user->nickname     = $request->nickname;
+        $user->name         = $request->name;
         $user->birthdate    = $request->birthdate;
         $user->sex          = $request->sex;
         $user->occupation   = $request->occupation;
@@ -862,5 +860,14 @@ class ProfController extends Controller
 
         Session::flash('success', 'Curso removido com sucesso');
         return redirect()->back();
+    }
+    public function todosProfs()
+    {
+        $userTeachers = User::all();
+        $myTpes = DB::table('user_user_type')->get();
+        return view('todosProfs')
+        ->with('myTpes', $myTpes)
+        ->with('userTeachers', $userTeachers)
+        ->with('users', Auth::user());
     }
 }

@@ -16,7 +16,7 @@ class TransactionsController extends Controller
 	{  
         $session = session()->get('desconto');
         $idUser = Auth::user()->id;
-        $user = User::find($idUser);
+        $auth = User::find($idUser);
 
 
         // !!!!!!!!!!!!!!!!!!!
@@ -24,8 +24,8 @@ class TransactionsController extends Controller
         // caso o usuário possua itens no carrinho e acessar essa URL, ele registrará os cursos à ele
         // !!!!!!!!!!!!!!!!!!!
 
-		$user = Auth::user();
-        $items = Cart::where('user_id', $user->id)->get();
+		$auth = Auth::user();
+        $items = Cart::where('user_id', $auth->id)->get();
         // array de cursos do pedido
         $courses = array();
         // preço acumulado dos cursos
@@ -42,7 +42,7 @@ class TransactionsController extends Controller
             // soma o preço de cada curso
             $total_price = $total_price + $course->price;
             // vincula o usuário ao curso comprado
-            $user->courses()->save($course, ['progress' => 0]);
+            $auth->courses()->save($course, ['progress' => 0]);
 
             $cart_item = Cart::find($item->id);
             // remove item do carrinho
@@ -52,13 +52,13 @@ class TransactionsController extends Controller
             // cada item é identificado pelo $random_hash (que será substituido pelo codigo da compra de algum serviço de compras)
             $transaction_item = new TransactionItem;
             $transaction_item->hash = $random_hash;
-            $transaction_item->user_id = $user->id;
+            $transaction_item->user_id = $auth->id;
             $transaction_item->course_id = $course->id;
             $transaction_item->price = $course->price;
             $transaction_item->save();
         }
 
-        $transaction->user_id = $user->id;
+        $transaction->user_id = $auth->id;
         $transaction->price = $total_price;
         // aqui entrará a informação do tipo de transação, quando houver algum serviço de compras
         $transaction->transaction_type = 'remove_this';
@@ -70,7 +70,7 @@ class TransactionsController extends Controller
         return view('success')
             ->with('courses', $courses)
             ->with('total_price', $total_price)
-            ->with('user', $user);
+            ->with('auth', $auth);
         }
 /*
         public function statusTransaction(Request $request)

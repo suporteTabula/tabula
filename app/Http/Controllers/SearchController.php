@@ -14,7 +14,7 @@ class SearchController extends Controller
 {
     public function search($id)
     {   
-        $user = Auth::user();
+        $auth = Auth::user();
         $userType = Usertype::all();
         $categories = Category::where('category_id_parent', null)->orderBy('desc', 'ASC')->get();
 
@@ -44,7 +44,7 @@ class SearchController extends Controller
             ->with('courses', $courses)
                 // variável para ser escrita no campo de busca na search.blade
             ->with('search_string', $search_string)
-            ->with('user', $user)
+            ->with('auth', $auth)
             ->with('userType', $userType);
         }
         else

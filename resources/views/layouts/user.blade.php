@@ -54,9 +54,9 @@ rel = "stylesheet">
                     <div class="dropdown">
                         <span><a href="{{ url('/') }}"><img align="center" src="{{asset('/images/layout/header/logo.png')}}" height="30px"> </a></span>
                         <div class="dropdown-content">
-                            <a href="{{route('empresa')}}"> <img src="{{asset('/images/layout/header/sp.jpg')}}" height="25px"></a>
+                            <a href="{{route('empresa', ['idType' => 5])}}"> <img src="{{asset('/images/layout/header/sp.jpg')}}" height="25px"></a>
                         </div>
-                    </div>
+                    </div>  
                 </div>
                 <div class="nav-search col-6 col-md-4 col-lg-5 col-xl-6 hide-xs hide-sm">
                     <section class="navbar-section search-bar">
@@ -77,11 +77,11 @@ rel = "stylesheet">
                             </div>
                         </li>    
                         @auth
-                        @foreach ($user->userTypes as $userType)
+                        @foreach ($auth->userTypes as $userType)
                         <?php $tipo = $userType->desc; ?>
                         @endforeach
                         @if($tipo == "Aluno")
-                        <li class ="hide-md"><a href="{{ route('userPanel.single') }}"><img class="avatar" src="{{asset('/images/Profilepic')}}/{{ Auth::user()->avatar }}"></a></li>
+                        <li class ="hide-md"><a href="{{ route('userPanel.single') }}"><img class="avatar" src="{{asset('/images/Profilepic')}}/{{ $auth->avatar }}"></a></li>
                         <li class="hide-md"><a href="{{route('userPanel.single')}}">Torne-se professor</a></li> 
                         <li class="hide-md"><a href="{{ route('cart') }}">Carrinho</a></li>
                         <li class= "hide-md"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>

@@ -21,7 +21,7 @@ class CoursesController extends Controller
 {
     public function course($id)
     {
-        $user = Auth::user();
+        $auth = Auth::user();
         $course = Course::find($id);
         $author = User::find($course->user_id_owner);
         $chapter = $course->course_item_groups->all();
@@ -39,7 +39,7 @@ class CoursesController extends Controller
         $rating['id'] = $id;
         $rating['star'] = $point;
       
-            if($user){
+            if($auth){
 
                 foreach ($chapter as $chapters) {
                     $itemChapter = CourseItem::where('course_item_group_id', $chapters->id)->pluck('id')->toArray();
@@ -49,7 +49,7 @@ class CoursesController extends Controller
                     $progress+= $chapters->progressDo;
                 }
             }
-            if($user && $user->courses()->find($id))
+            if($auth && $auth->courses()->find($id))
                 $hasCourse = true;
             if ($chapter) {
                 $firstChapter = $course->course_item_groups->first();
@@ -59,7 +59,7 @@ class CoursesController extends Controller
                 ->with('author', $author)
                 ->with('chapters', $chapter)
                 ->with('userItem', $userHasItem)
-                ->with('user', $user)
+                ->with('auth', $auth)
                 ->with('rating', $rating)
                 ->with('progress', $progress)
                 ->with('freeClass', $freeClass)
@@ -70,7 +70,7 @@ class CoursesController extends Controller
             ->with('author', $author)
             ->with('chapters', $chapter)
             ->with('userItem', $userHasItem)
-            ->with('user', $user)
+            ->with('auth', $auth)
             ->with('rating', $rating)
             ->with('progress', $progress)
             ->with('hasCourse', $hasCourse);

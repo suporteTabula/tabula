@@ -34,7 +34,7 @@ class CartController extends Controller
 
         return view('cart')
         ->with('courses', $courses)
-        ->with('user', Auth::user())
+        ->with('auth', Auth::user())
         ->with('total_price', $total_price);
 
     }
@@ -82,8 +82,8 @@ class CartController extends Controller
         {
             $session = session()->get('desconto');
 
-            $user = Auth::user();
-            $items = Cart::where('user_id', $user->id)->get();
+            $auth = Auth::user();
+            $items = Cart::where('user_id', $auth->id)->get();
         // array de cursos do pedido
             $courses = array();
         // preço acumulado dos cursos
@@ -101,13 +101,13 @@ class CartController extends Controller
             return view('checkout')
             ->with('courses', $courses)
             ->with('total_price', $total_price)
-            ->with('user', $user)
+            ->with('auth', $auth)
             ->with('session', $session);
         }
 
         public function validaCupom(Request $request)
         {
-            $user = Auth::user();
+            $auth = Auth::user();
             $items = Cart::where('user_id', $user->id)->get();
             $courses = array();
             $total_price = 0;

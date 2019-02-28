@@ -15,14 +15,14 @@ class CreateCupomTable extends Migration
     {
         Schema::create('cupoms', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codCupom', 100);
-            $table->string('tipoCupom',100);
-            $table->double('valorCupom',10 , 2);
-            $table->string('descCupom',100)->nullable();
+            $table->string('cod_cupom', 100);
+            $table->string('tipo_cupom',100);
+            $table->double('valor_cupom',10 , 2);
+            $table->string('desc_cupom',100)->nullable();
             $table->integer('curso_id')->nullable();
-            $table->integer('limiteCupom');
+            $table->integer('limite_cupom');
             $table->integer('user_id');
-            $table->date('expiraCupom')->nullable();
+            $table->date('expira_cupom')->nullable();
             $table->timestamps();
         });
     }

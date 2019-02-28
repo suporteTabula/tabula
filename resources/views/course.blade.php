@@ -54,7 +54,7 @@
           @endauth
           <div class="start-course">
             @auth
-            @if($user->id == $author->id)
+            @if($auth->id == $author->id)
             <ul>
               <a class="custom-tabula-button" href="{{ route('course.edit.teacher', ['id' => $course->id]) }}">Editar</a>
             </ul>

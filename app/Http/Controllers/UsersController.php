@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use App\User;
 use App\State;
 use App\Country;
 use App\Schooling;
@@ -21,16 +22,19 @@ class UsersController extends Controller
     public function userPanel() // criar outras funções para update de usuario no banco
     {   
         $auth = Auth::user();
-        $userType = Usertype::all();    
+        $userType = Usertype::all(); 
+        $teachers = User::where('empresa_id', $auth->id)->get();   
+
 
         return view('userPanel')
-        ->with('user', Auth::user())
+        ->with('auth', Auth::user())
         ->with('states', State::all())
         ->with('courses', Course::all())
         ->with('countries', Country::all())
         ->with('schoolings', Schooling::all())
         ->with('categories', Category::all())
         ->with('user_groups', UserGroup::all())
+        ->with('teachers', $teachers)
         ->with('usertype', $userType);
     }
 
@@ -41,17 +45,13 @@ class UsersController extends Controller
 
 
         $this->validate($request, [
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'nickname'      => 'required',
+            'name'    => 'required',
             
         ]);
 
 
         
-        $user->first_name   = $request->first_name;
-        $user->last_name    = $request->last_name;
-        $user->nickname     = $request->nickname;
+        $user->name         = $request->name;
         $user->sex          = $request->sex;
         $user->bio          = $request->bio;
         $user->website      = $request->website;

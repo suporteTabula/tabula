@@ -20,7 +20,7 @@
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Nome</label>
+                                <label for="name" class="col-md-4 control-label">Nome Empresa</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -33,7 +33,7 @@
                                 </div>                            
                             </div>
 
-                     <input type="hidden" name="userType" id="userType" value="2">
+                            <input type="hidden" name="userType" id="userType" value="5">
 
                             <div class="form-group{{ $errors->has('login') ? ' has-error' : '' }}">
                                 <label for="login" class="col-md-4 control-label">Login</label>
@@ -62,21 +62,8 @@
                                     @endif
                                 </div>
                             </div>
-                            
-                            <div class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
-                                <label for="sex" class="col-md-4 control-label">Sexo</label>
 
-                                <div class="col-md-6">
-                                    <label class="radio-inline"><input type="radio" name="sex" value="Masculino">Masculino</label>
-                                    <label class="radio-inline"><input type="radio" name="sex" value="Feminino">Feminino</label>
 
-                                    @if ($errors->has('sex'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('sex') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
 
                             <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                                 <label for="country" class="col-md-4 control-label">País</label>

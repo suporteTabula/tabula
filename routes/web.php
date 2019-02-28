@@ -21,13 +21,15 @@ Auth::routes();
 //home
 Route::get('/', 'HomeController@index')->name('index.single');
 //homeEmpresa
+Route::get('/empresa', 'EmpresaController@index')->name('empresa');
+
+
 Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
 //Grupos
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
-Route::get('/todosProfs', 'Controller@todosProfs')->name('todosProfs');
+Route::get('/todosProfs', 'ProfController@todosProfs')->name('todosProfs');
 
-Route::get('/empresa', 'EmpresaController@index')->name('empresa');
 //Carrinho
 Route::get('cart', 'CartController@cart')->name('cart');
 Route::get('cart/insert/{id}', 'CartController@insertCourseIntoCart')->name('cart.insert');
