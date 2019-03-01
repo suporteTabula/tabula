@@ -85,6 +85,7 @@
                             <li class="list-group-item">
                                 <a href="{{ route('courses.teacher')}}">Cursos</a>
                             </li>
+                     
                             <li class="list-group-item">
                                 <a href="{{ route('cupom.teacher') }}">Meus Cupons</a>
                             </li>

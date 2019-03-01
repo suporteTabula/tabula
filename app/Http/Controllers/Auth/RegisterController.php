@@ -59,7 +59,6 @@ class RegisterController extends Controller
          return Validator::make($request, [
             'login'         => 'required',   
             'name'          => 'required',
-//Validar Sexo
             'country_id'    => 'required',
             'schooling_id'  => 'required',
             'email'         => 'required|string|email|max:255|unique:users',
@@ -85,10 +84,10 @@ class RegisterController extends Controller
             'login'         => $data['login'],
             'email'         => $data['email'],
             'name'          => $data['name'],
-            //'sex'           => $data['sex'],
             'country_id'    => $data['country_id'],
             'schooling_id'  => $data['schooling_id'],
             'password'      => bcrypt($data['password']),
+            'sex'           => $data['sex'],
         ]);
 
         $user->userTypes()->attach($data['userType']);
