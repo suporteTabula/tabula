@@ -11,14 +11,3 @@ class Company extends Model
 
     protected $fillable = array('user_id','mission','knowledge');
 }
-
-	/*public function users()
-    {
-    	return $this->belongsToMany('App\User');
-    }
-
-    public function userGroups()
-    {
-    	return $this->hasMany('App\UserGroup');
-    }*/
-   

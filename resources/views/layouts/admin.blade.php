@@ -109,13 +109,24 @@
                     </li>
                     <li class="list-group-item">
                        <a href="{{ route('companies') }}">Empresas</a>
-                   </li>
-                   <li class="list-group-item">
-                    <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
-                </li>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('posts') }}">Posts do blog</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('posts') }}">Categorias do blog</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('posts') }}">Comentários do blog</a>
+                    </li>
+                <!--
                 <li class="list-group-item">
                     <a href="{{ route('reports') }}">Reports</a>
                 </li>
+                -->
             </ul>
         </div>
         @endif

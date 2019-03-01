@@ -190,5 +190,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 	Route::get('/courses', 'AdminCoursesController@index')->name('courses');
 	Route::get('/alunos', 'AdminUsersController@index')->name('alunos');
 	Route::get('/alunos','AdminUsersController@index' )->name('professor');
-	
+
+	Route::get('/posts','AdminBlogController@index' )->name('posts');
 });
