@@ -932,4 +932,11 @@ class ProfController extends Controller
         ->with('userTeachers', $userTeachers)
         ->with('users', Auth::user());
     }
+
+    public function courseProf($id)
+    {
+        $courses = Course::where('user_id_owner', $id)->get(); 
+        return view('teacher.courseProfs')
+        ->with('courses', $courses);
+    }
 }

@@ -37,10 +37,9 @@ class CompanyController extends Controller
 		foreach ($teachers as $teacher) {
 			$teachers->courses = Course::where('user_id_owner', $teacher->id)->get();
 		}
-		//$courses = Course::where('user_id_owner', );
+
 		return view('companies.company')
 		->with('teachers', $teachers)
-		//->with('courses', $courses)
 		->with('auth', $auth);
 	}
 
@@ -145,6 +144,7 @@ class CompanyController extends Controller
 		return view('companies.mission')
 		->with('company', $company);
 	}
+
 	public function missionUpdate(Request $request)
 	{
 		$auth = Auth::user();
@@ -166,6 +166,7 @@ class CompanyController extends Controller
 		return view('companies.knowledge')
 		->with('company', $company);
 	}
+
 	public function knowledgeUpdate(Request $request)
 	{
 		$auth = Auth::user();
@@ -175,8 +176,6 @@ class CompanyController extends Controller
 		]);
 		Session::flash('success', 'Área de Conhecimento atualizada');
 		return redirect()->back();
-
-
 	}
 
 }

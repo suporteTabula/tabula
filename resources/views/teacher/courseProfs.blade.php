@@ -21,21 +21,27 @@
  <section class="teachers">
     <div class="container grid-md"> 
         <div class="teachers-wrapper">
-            @foreach($myTpes as $myTpe)
-            @foreach($userTeachers as $userTeacher)
-            @if($myTpe->user_type_id == 3 && $myTpe->user_id == $userTeacher->id)
+            @foreach($courses as $course)
 
 
-            <div class="teacher-photo-wrapper"> 
-                <a href="{{ route('course.prof', ['id' => $userTeacher->id]) }}"> 
-                    <div class="teacher-photo" style="background-image: url({{asset('/images/Profilepic')}}/{{ $userTeacher->avatar }});"></div>
-                    <div class="teacher-description">
-                        <p>{{$userTeacher->name}} </p>
+            <ul class="clearfix grid" id="courses">
+                <li class="clearfix">
+                    <div class="course-card" id="course-card">                          
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <section class="left">                                  
+                                <div class="course-card__image"><img src="../images/aulas/{{$course->thumb_img}}" class="thumb" /></div>
+                            </section>
+                            <section class="right">
+                                <div class="course-card__description" id="course-card-desc">
+                                    <p class="lineclamp-title"><strong>{{ $course->name }}</strong></p>
+                                    <p class="lineclamp-desc">{{ $course->desc }}</p>
+                                </div>                          
+                                <div class="course-card__price" id="course-card-price">{{ $course->price }}</div>
+                            </section>
+                        </a>
                     </div>
-                </a>
-            </div>
-            @endif 
-            @endforeach
+                </li>
+            </ul>
             @endforeach
 
         </div>

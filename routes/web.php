@@ -59,8 +59,9 @@ Route::get('categoria/{urn}', 'CategoriesController@category')->name('category.s
 
 //Empresa
 Route::get('/empresa', 'CompanyController@index')->name('empresa');
-Route::get('/empresa/{id}', 'CompanyController@theCompany')->name('empresa.company');
 Route::get('/empresa/register', 'CompanyController@resgisterCompany')->name('empresa.register');
+Route::get('/empresa/{id}', 'CompanyController@theCompany')->name('empresa.company');
+
 Route::group(['prefix' => 'companies', 'middleware' => ['auth']], function (){
 	Route::get('/teachers', 'CompanyController@teachersIndex')->name('teachers.company');
 	Route::get('/teachers/create', 'CompanyController@teachersCreate')->name('teachers.company.create');
@@ -74,6 +75,7 @@ Route::group(['prefix' => 'companies', 'middleware' => ['auth']], function (){
 
 //professor
 Route::post('/professor', 'ProfController@virarProfessor')->name('professor');
+Route::get('todosProfs/{id}', 'ProfController@courseProf')->name('course.prof');
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 	Route::get('/courses/create', 'ProfController@create')->name('course.create.teacher');
 	Route::post('/courses/store', 'ProfController@store')->name('course.store.teacher');
