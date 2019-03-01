@@ -3,6 +3,138 @@ button, input, textarea, select, a {
   text-decoration: none;
 }
 
+.form-group:not(:last-child) {
+    margin-bottom: 0 !important;
+}
+
+.formInput{
+  margin: 0 !important;
+}
+
+.card-wrapper .form-control input, .card-wrapper .form-control select{
+  margin-bottom: 10px !important;
+}
+
+input[name="cvv"]{
+  margin-top: 10px !important;
+}
+
+select#payment {
+    height: 38px;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 2px;
+    padding: 6px;
+}
+
+input.button-tabula-white.formInput {
+    width: 100%;
+    border: 1px solid #000;
+    box-shadow: none;
+    border-radius: 2px;
+}
+
+input[name="cardName"] {
+    margin: 0px 0px 10px !important;
+}
+
+select#paymentMethod {
+    height: 38px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+select#yearExpiry {
+    height: 38px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    margin-right: 15px;
+}
+
+select#monthExpiry {
+    border: 1px solid #000;
+    height: 38px;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+select#parcel {
+    border: 1px solid #000;
+    border-radius: 2px;
+    margin: 10px 0;
+}
+
+#yearExpiry {
+  padding: 5px;
+}
+
+@media(max-width: 768px){
+  .details{
+    margin-top: 50px;
+  }
+  input[name="cvv"] {
+    margin-top: 0px !important;
+  }
+}
+
+input#codCupom {
+    border: 1px solid #000;
+    padding: 6px;
+    border-radius: 2px;
+    margin: 5px;
+}
+
+.remove-curso .course-cart-remove{
+  top: 3px;
+  right: 7px;
+}
+
+button#cupom {
+    border-radius: 2px;
+}
+
+.total-checkout .my-1{
+  text-align: center;
+}
+
+.total-checkout{
+  min-height: 345px !important;
+}
+
+a#btn-continuar {
+    margin-top: 45px;
+}
+
+.course-cart-item{
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+button.button-tabula-gray.paymentButton {
+    padding: 11px;
+    margin-right: 0;
+}
+
+input[name="cvv"] {
+    width: 30%;
+    padding: 10px;
+    float: right;
+    border: 1px solid #000;
+    border-radius: 2px;
+}
+
+@media(max-width: 768px){
+  .total-checkout {
+      min-height: 415px !important;
+  }
+
+  button#cupom{
+    margin-bottom: 8px;
+  }
+}
+
 .search-toggle-container
 {	
 	float:right;

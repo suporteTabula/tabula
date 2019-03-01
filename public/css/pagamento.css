@@ -24,8 +24,6 @@ input[name="number"] {
   padding: 10px;
 }
 #yearExpiry {
-
-  width: 20%;
   float: left;
   padding: 5px;
 }
@@ -52,12 +50,6 @@ input[name="cpf"] {
   width: 32%;
   padding: 10px;
   float: right;
-}
-#parcel{
-  margin: 10px;
-  width: 49%;
-  padding: 10px;
-  float: left;
 }
 
 .paymentButton {
