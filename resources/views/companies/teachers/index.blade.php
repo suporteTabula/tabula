@@ -73,7 +73,7 @@
 				</tbody>
 			</table>
 			@if ($courses->count() > 0)
-				<form action="{{ route('course.destroy.teacher', ['id' => $course->id]) }}" method="GET" class="remove-record-model">
+				<form action="{{ route('course.destroy', ['id' => $course->id]) }}" method="GET" class="remove-record-model">
 					{{ csrf_field() }}
 				    <div id="custom-width-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
 				        <div class="modal-dialog" style="width:55%;">

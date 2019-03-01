@@ -15,8 +15,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
     @yield('styles')
 </head>
 <body>
@@ -54,11 +52,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
+
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                 {{ Auth::user()->login }} <span class="caret"></span>
@@ -78,7 +72,6 @@
                             </li>
                         </ul>
                     </li>
-                    @endguest
                 </ul>
             </div>
         </div>
@@ -90,40 +83,26 @@
             <div class="col-lg-3">
                 <ul class="list-group">                            
                     <li class="list-group-item">
-                        <a href="{{ route('home') }}">Principal</a>
+                        <a href="{{ route('courses.teacher')}}">Cursos</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="{{ route('users') }}">Todos Usuários</a>
+                        <a href="{{ route('teachers.company')}}">Professores</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="{{ route('usersType') }}">Tipos de Usuário</a>
+                        <a href="{{ route('mission.company')}}">Missão</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="{{ route('courses') }}">Cursos</a>
+                        <a href="{{ route('knowledge.company')}}">Área de Conhecimento</a>
                     </li>
-                    <li class="list-group-item">
-                        <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="{{ route('cupom') }}">Cupom de Desconto</a>
-                    </li>
-                    <li class="list-group-item">
-                       <a href="{{ route('companies') }}">Empresas</a>
-                   </li>
-                   <li class="list-group-item">
-                    <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
-                </li>
-                <li class="list-group-item">
-                    <a href="{{ route('reports') }}">Reports</a>
-                </li>
-            </ul>
-        </div>
-        @endif
-        <div class="col-lg-9">
-            @yield('content')
+
+                </ul>
+            </div>
+            @endif
+            <div class="col-lg-9">
+                @yield('content')
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Scripts -->

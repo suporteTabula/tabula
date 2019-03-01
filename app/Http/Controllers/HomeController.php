@@ -24,7 +24,8 @@ class HomeController extends Controller
    ->with('categories', Category::whereNull('category_id_parent')->whereNotNull('desktop_index')->orderBy('desktop_index', 'ASC')->get())
    ->with('row_limit', 5)
    ->with('category_count', 0)
-   ->with('mobile_categories', Category::whereNull('category_id_parent')->whereNotNull('mobile_index')->orderBy('mobile_index', 'ASC')->get())
+   ->with('mobile_categories', Category::whereNull('category_id_parent')->whereNotNull('mobile_index')
+   ->orderBy('mobile_index', 'ASC')->get())
    ->with('mobile_col_limit', 5)
    ->with('mobile_category_count', 0)
    ->with('auth', $auth)
@@ -35,5 +36,5 @@ class HomeController extends Controller
    ->with('featured_courses2', $featured_courses2)
    ->with('featured_posts', $featured_posts);
 
- }
+}
 }

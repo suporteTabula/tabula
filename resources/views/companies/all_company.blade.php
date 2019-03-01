@@ -16,26 +16,26 @@
  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
  <link rel="stylesheet" href="css/style.css">
  <link rel="stylesheet" href="css/home-empresa.css">
- <title>Tabula - Ensino a distância - Cursos EAD</title>
+ <title>Empresas aprimoram suas equipes com o Tabula</title>
 
- <section class="teachers">
+<section class="teachers">
     <div class="container grid-md"> 
         <div class="teachers-wrapper">
-            @foreach($myTpes as $myTpe)
-            @foreach($userTeachers as $userTeacher)
-            @if($myTpe->user_type_id == 3 && $myTpe->user_id == $userTeacher->id)
-
+            @foreach($companies as $company)
 
             <div class="teacher-photo-wrapper"> 
-                <a href="{{ route('course.single', ['id' => $course->id]) }}"> 
-                    <div class="teacher-photo" style="background-image: url({{asset('/images/Profilepic')}}/{{ $userTeacher->avatar }});"></div>
-                    <div class="teacher-description">
-                        <p>{{$userTeacher->name}} </p>
+                <a href="{{ route('empresa.company', ['id' => $company->user->id]) }}"> 
+                    <div class="teacher-photo" style="background-image: url({{asset('/images/Profilepic')}}/{{ $company->user->avatar}});">
+
                     </div>
-                </a>
+                    <div class="teacher-description">
+                    <h4>{{$company->user->name }} </h4>
+                    </div>
+                    <div>
+                        <p>Cursos Publicados</p>
+                    </div>
+                    </a>
             </div>
-            @endif 
-            @endforeach
             @endforeach
 
         </div>

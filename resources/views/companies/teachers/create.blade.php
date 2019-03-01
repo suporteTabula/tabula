@@ -8,7 +8,7 @@
 		Cadastrar novo curso
 	</div>
 	<div class="panel-body">
-		<form action="{{ route('course.store.teacher') }}" method="post" enctype="multipart/form-data">
+		<form action="{{ route('course.store') }}" method="post" enctype="multipart/form-data">
 			{{ csrf_field() }}
 			<div class="form-group">
 				<label for="name">Nome</label>
@@ -62,7 +62,7 @@
 			<div class="form-group">
 				<div class="text-center">
 					<button class="btn btn-success" type="submit">Criar</button>
-					<a class="btn btn-success" href="{{ route('courses.teacher') }}">Voltar</a>
+					<a class="btn btn-success" href="{{ route('courses') }}">Voltar</a>
 				</div>
 			</div>
 		</form>

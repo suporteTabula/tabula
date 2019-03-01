@@ -1,4 +1,4 @@
-@extends('layouts.teacher')
+@extends('layouts.companies')
 
 @section('content')
 

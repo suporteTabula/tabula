@@ -36,7 +36,8 @@ class AdminUsersController extends Controller
     public function create()
     {
         $usersType = UserType::all();
-        return view('admin.users.create')->with('usersType', $usersType)
+        return view('admin.users.create')
+        ->with('usersType', $usersType)
         ->with('states', State::all())
         ->with('countries', Country::all())
         ->with('schoolings', Schooling::all())

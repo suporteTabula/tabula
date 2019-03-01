@@ -96,7 +96,6 @@ class RegisterController extends Controller
             $user->state_id = $data['state_id'];
         }
         $user->save();
-
         return $user;
     }
 }

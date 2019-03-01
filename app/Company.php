@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
 
-	protected $fillable = [
-		'name',
-		'desc',
-        'theme_color',
-	];
+    protected $table = 'company';    
 
-	public function users()
+    protected $fillable = array('user_id','mission','knowledge');
+}
+
+	/*public function users()
     {
     	return $this->belongsToMany('App\User');
     }
@@ -21,6 +20,5 @@ class Company extends Model
     public function userGroups()
     {
     	return $this->hasMany('App\UserGroup');
-    }
+    }*/
    
-}

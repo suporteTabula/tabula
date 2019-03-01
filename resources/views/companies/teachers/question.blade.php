@@ -96,7 +96,7 @@
 						
 						<div class="text-center">
 							<button class="btn btn-success" type="submit">Nova Pergunta</button>
-							{{--<a class="btn btn-success" href="{{ route('courses.teacher') }}">Voltar</a>--}}
+							{{--<a class="btn btn-success" href="{{ route('courses') }}">Voltar</a>--}}
 						</div>						
 					</form>
 				</div>

@@ -20,8 +20,7 @@ Auth::routes();
 */
 //home
 Route::get('/', 'HomeController@index')->name('index.single');
-//homeEmpresa
-Route::get('/empresa', 'EmpresaController@index')->name('empresa');
+
 
 
 Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
@@ -58,10 +57,26 @@ Route::get('userPurchases/details/{hash}', 'UsersController@userPurchaseDetails'
 Route::post('course/ratingstar', 'StarController@ratingStar')->name('ratingstar');
 Route::get('categoria/{urn}', 'CategoriesController@category')->name('category.single');
 
+//Empresa
+Route::get('/empresa', 'CompanyController@index')->name('empresa');
+Route::get('/empresa/{id}', 'CompanyController@theCompany')->name('empresa.company');
+Route::get('/empresa/register', 'CompanyController@resgisterCompany')->name('empresa.register');
+Route::group(['prefix' => 'companies', 'middleware' => ['auth']], function (){
+	Route::get('/teachers', 'CompanyController@teachersIndex')->name('teachers.company');
+	Route::get('/teachers/create', 'CompanyController@teachersCreate')->name('teachers.company.create');
+	Route::post('/teachers/store', 'CompanyController@teachersStore')->name('teachers.company.store');
+	Route::get('/teachers/destroy/{id}', 'CompanyController@teachersDestroy')->name('teachers.company.destroy');
+	Route::get('/mission', 'CompanyController@mission')->name('mission.company');
+	Route::post('/mission/update', 'CompanyController@missionUpdate')->name('mission.company.update');
+	Route::get('/knowledge', 'CompanyController@knowledge')->name('knowledge.company');
+	Route::post('/knowledge/update', 'CompanyController@knowledgeUpdate')->name('knowledge.company.update');
+});
+
 //professor
 Route::post('/professor', 'ProfController@virarProfessor')->name('professor');
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
-	Route::post('/courses/store', 'ProfController@store')->name('store.teacher');
+	Route::get('/courses/create', 'ProfController@create')->name('course.create.teacher');
+	Route::post('/courses/store', 'ProfController@store')->name('course.store.teacher');
 	Route::get('/courses/', 'ProfController@index')->name('courses.teacher');
 	Route::get('/courses/edit/{id}', 'ProfController@edit')->name('course.edit.teacher');
 	Route::post('/courses/update/{id}', 'ProfController@update')->name('course.update.teacher');

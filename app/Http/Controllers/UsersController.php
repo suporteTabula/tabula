@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Auth;
 use Session;
 use App\User;
@@ -25,17 +26,36 @@ class UsersController extends Controller
         $userType = Usertype::all(); 
         $teachers = User::where('empresa_id', $auth->id)->get();   
 
-
-        return view('userPanel')
-        ->with('auth', Auth::user())
-        ->with('states', State::all())
-        ->with('courses', Course::all())
-        ->with('countries', Country::all())
-        ->with('schoolings', Schooling::all())
-        ->with('categories', Category::all())
-        ->with('user_groups', UserGroup::all())
-        ->with('teachers', $teachers)
-        ->with('usertype', $userType);
+        $company = DB::table('company')->where('user_id', $auth->id)->first();
+        if ($company == null) {
+            return view('userPanel')
+            ->with('auth', Auth::user())
+            ->with('states', State::all())
+            ->with('courses', Course::all())
+            ->with('countries', Country::all())
+            ->with('schoolings', Schooling::all())
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all())
+            ->with('company', $company)
+            ->with('teachers', $teachers)
+            ->with('usertype', $userType);
+        }else{ 
+            $users = User::where('empresa_id', $company->user_id)->get();
+            foreach ($users as $user) {
+                $user->courses = Course::where('user_id_owner', $user->id)->get();
+            }
+            return view('userPanel')
+            ->with('auth', Auth::user())
+            ->with('states', State::all())
+            ->with('countries', Country::all())
+            ->with('schoolings', Schooling::all())
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all())
+            ->with('users', $users)
+            ->with('company', $company)
+            ->with('teachers', $teachers)
+            ->with('usertype', $userType);
+        }
     }
 
     

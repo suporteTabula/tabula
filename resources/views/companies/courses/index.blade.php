@@ -1,4 +1,4 @@
-@extends('layouts.teacher')
+@extends('layouts.companies')
 
 @section('content')
 	<div class="panel panel-default">
@@ -22,7 +22,7 @@
 		<div class="panel-body">
 			<table id="coursesTable" class="table table-hover">
 				<thead>
-					<th>Nome</th>
+					<th>Sou foda</th>
 					<th>Descrição</th>
 					<th>Categoria</th>
 					<th>Autor</th>
@@ -44,7 +44,7 @@
 									{{ $course->category->desc }}
 								</td>
 								<td style="vertical-align: middle !important;">
-									{{ $users->find($course->user_id_owner)->first_name }}
+									{{ $users->find($course->user_id_owner)->name }}
 								</td>
 								<td style="vertical-align: middle !important;">
 									@if(!$course->group)
@@ -73,7 +73,7 @@
 				</tbody>
 			</table>
 			@if ($courses->count() > 0)
-				<form action="{{ route('course.destroy.teacher', ['id' => $course->id]) }}" method="GET" class="remove-record-model">
+				<form action="{{ route('course.destroy', ['id' => $course->id]) }}" method="GET" class="remove-record-model">
 					{{ csrf_field() }}
 				    <div id="custom-width-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
 				        <div class="modal-dialog" style="width:55%;">

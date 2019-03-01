@@ -17,11 +17,12 @@ use App\CourseItemType;
 use App\CourseItemOption;
 use App\CourseItemGroup;
 use App\CourseItemStatus;
-
-
 use Session;
 use Auth;
 
+            #################
+            #Virar Professor#
+            #################
 class ProfController extends Controller
 {
 	public function virarProfessor(Request $request)
@@ -47,30 +48,52 @@ class ProfController extends Controller
         return redirect()->route('userPanel.single');
 
     }
+        ######################
+        #Tela Todos os Cursos#
+        ######################
     public function index()
     {
         $user = Auth::user();
         $courses = Course::where('user_id_owner', $user->id)->get();
-        return view('teacher.courses.index')
-        ->with('courses', $courses)
-        ->with('categories', Category::all())
-        ->with('users', $user);
+        $userCompanies = $user->userTypes()->first();
+        
+        if ($userCompanies->id == 5) {
+            return view('companies.courses.index')
+            ->with('courses', $courses)
+            ->with('categories', Category::all())
+            ->with('users', $user);
+        }else{
+            $courses = Course::where('user_id_owner', $user->id)->get();
+            return view('teacher.courses.index')
+            ->with('courses', $courses)
+            ->with('categories', Category::all())
+            ->with('users', $user);
+        }
     }
+
+            #####################
+            #Tela Cadastro Curso#
+            #####################
 
     public function create()
     {
+        $auth = Auth::user();
+        $userCompanies = $auth->userTypes()->first();
+        if ($userCompanies->id == 5) {
+            return view('companies.courses.create')
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all());
+        }else{
+            return view('teacher.courses.create')
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all());
+        }
 
-        return view('teacher.courses.create')
-        ->with('categories', Category::all())
-        ->with('user_groups', UserGroup::all());
     }
+            ########################
+            #Realiza cadastro Curso#
+            ########################
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -80,7 +103,7 @@ class ProfController extends Controller
             'featured'    => 'required',
             'category_id' => 'required'
         ]);
-        
+
         $course = new Course();
 
         $course->name          = $request->name;
@@ -91,6 +114,9 @@ class ProfController extends Controller
         $course->requirements = $request->requirements;
         $course->user_id_owner = Auth::user()->id;
         $course->total_class = 0;
+
+        $auth = Auth::user();
+        $userCompanies = $auth->userTypes()->first();
 
         $course->price = str_replace(',', '.', $course->price);
         if($request->thumb_img != '')
@@ -146,34 +172,54 @@ class ProfController extends Controller
         $course_items_group = CourseItemGroup::all();
         $user_groups = UserGroup::all();
 
-        return redirect()->route('course.edit.teacher', 
-            ['id' => $id,
-            'course' => $course,
-            'categories' => $categories,
-            'course_items_group' => $course_items_group,
-            'user_groups' => $user_groups]);
+        if ($userCompanies->id == 5) {
+            return redirect()->route('course.edit.companies', 
+                ['id' => $id,
+                'course' => $course,
+                'categories' => $categories,
+                'course_items_group' => $course_items_group,
+                'user_groups' => $user_groups]);
+        }else{
+            return redirect()->route('course.edit.teacher', 
+                ['id' => $id,
+                'course' => $course,
+                'categories' => $categories,
+                'course_items_group' => $course_items_group,
+                'user_groups' => $user_groups]);
+        }
     }
 
+            ######################
+            #Tela Edição do Curso#
+            ######################
     public function edit($id)
     {
         $course = Course::find($id);
         $course->price = str_replace('.', ',', $course->price);
-        //return dd($course);
-        return view('teacher.courses.edit')
-        ->with('course', $course)
-        ->with('categories', Category::all())
-        ->with('course_items_group', CourseItemGroup::all())
-        ->with('user', User::all())
-        ->with('user_groups', UserGroup::all());
+        
+        $auth = Auth::user();
+        $userCompanies = $auth->userTypes()->first();
+        if ($userCompanies->id == 5) {
+            return view('companies.courses.edit')
+            ->with('course', $course)
+            ->with('categories', Category::all())
+            ->with('course_items_group', CourseItemGroup::all())
+            ->with('user', User::all())
+            ->with('user_groups', UserGroup::all());
+        }else{
+            return view('teacher.courses.edit')
+            ->with('course', $course)
+            ->with('categories', Category::all())
+            ->with('course_items_group', CourseItemGroup::all())
+            ->with('user', User::all())
+            ->with('user_groups', UserGroup::all());
+        }
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+            #########################
+            #Realiza Edição do Curso#
+            #########################
     public function update(Request $request, $id)
     {
         $course = Course::find($id);
@@ -190,7 +236,7 @@ class ProfController extends Controller
         $course->price       = $request->price;
         $course->category_id = $request->category_id;
         $course->requirements = $request->requirements;
-        $course->featured    = $request->featured;
+        $course->featured    = $request->featured;        
         
         $course->price = str_replace(',', '.', $course->price);
 
@@ -272,12 +318,9 @@ class ProfController extends Controller
         Session::flash('success', 'Curso atualizado com sucesso');
         return redirect()->back();
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+                ##############
+                #Deleta Curso#
+                ##############
     public function destroy($id)
     {
         $course = Course::find($id);
@@ -288,13 +331,7 @@ class ProfController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Store a newly chapter in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function chapter(Request $request, $id)
     {
         $this->validate($request, [
@@ -302,7 +339,9 @@ class ProfController extends Controller
             'desc'      => 'required'
         ]);
 
-
+            ############################
+            #Cria Capitulo para o Curso#
+            ############################
         $order = CourseItemGroup::count();
 
         $course_item_group = CourseItemGroup::create([
@@ -312,34 +351,39 @@ class ProfController extends Controller
             'order'     =>  $order 
         ]);
 
-
         Session::flash('success', 'Capítulo adicionado com sucesso');
         return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified chapter.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+            ##################################
+            #Tela Ediçao do Capitulo do Curso#
+            ##################################
+
     public function chapter_edit($id)
     {
         $chapter = CourseItemGroup::find($id);
 
-        return view('teacher.courses.chapter')
-        ->with('chapter', $chapter)
-        ->with('items', CourseItem::all())
-        ->with('items_type', CourseItemType::all());
-    }
+        $auth = Auth::user();
+        $userCompanies = $auth->userTypes()->first();
+        if ($userCompanies->id == 5) {
 
-    /**
-     * Update the specified chapter in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+            return view('companies.courses.chapter')
+            ->with('chapter', $chapter)
+            ->with('items', CourseItem::all())
+            ->with('items_type', CourseItemType::all());
+        }else{
+            return view('teacher.courses.chapter')
+            ->with('chapter', $chapter)
+            ->with('items', CourseItem::all())
+            ->with('items_type', CourseItemType::all());
+        }
+
+    }
+            #####################################
+            #Realiza Ediçao do Capitulo do Curso#
+            #####################################
+
+
     public function chapter_update(Request $request, $id)
     {
         $chapter = CourseItemGroup::find($id);
@@ -356,6 +400,9 @@ class ProfController extends Controller
         Session::flash('success', 'Capítulo editado com sucesso');
         return redirect()->back();
     }
+            ###############################
+            #Exclusão do Capitulo do Curso#
+            ###############################
 
     public function chapter_delete($id)
     {
@@ -376,13 +423,10 @@ class ProfController extends Controller
         Session::flash('info', 'Capítulo e itens relacionados excluidos com sucesso!');
         return redirect()->back();
     }
-    /**
-     * Store a newly item for the chapter in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+            #######################
+            #Cria Item do Capitulo#
+            #######################
     public function item(Request $request, $id)
     {
         $this->validate($request, [
@@ -467,47 +511,61 @@ class ProfController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified item of the chapter.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function item_edit($id)
     {
         $item = CourseItem::find($id);
         $chapter = CourseItemGroup::find($item->course_item_group_id);
-
-        if($item->course_item_type->id >= 6)
-        {
-            return view('teacher.courses.question')
-            ->with('item', $item)
-            ->with('items', CourseItem::all())
-            ->with('chapter', $chapter)
-            ->with('items_type', CourseItemType::all());
-        }
-        else
-        {
-            $items = CourseItem::all();
-            if(strpos('vimeo',$item->path)){
-                //this is a vimeo url, say so
-                $item = vimeo_tools::parse_for_urls($items);
+        $user = Auth::user();
+        $userCompanies = $user->userTypes()->first();
+        if ($userCompanies->id == 5) {
+            if($item->course_item_type->id >= 6)
+            {
+                return view('companies.courses.question')
+                ->with('item', $item)
+                ->with('items', CourseItem::all())
+                ->with('chapter', $chapter)
+                ->with('items_type', CourseItemType::all());
             }
-            return view('teacher.courses.item')
-            ->with('item', $item)
-            ->with('items', $items)
-            ->with('chapter', $chapter)    
-            ->with('items_type', CourseItemType::all());
-        }        
+            else
+            {
+                $items = CourseItem::all();
+                if(strpos('vimeo',$item->path)){
+                //this is a vimeo url, say so
+                    $item = vimeo_tools::parse_for_urls($items);
+                }
+                return view('companies.courses.item')
+                ->with('item', $item)
+                ->with('items', $items)
+                ->with('chapter', $chapter)    
+                ->with('items_type', CourseItemType::all());
+            }     
+        }else{
+            if($item->course_item_type->id >= 6)
+            {
+                return view('teacher.courses.question')
+                ->with('item', $item)
+                ->with('items', CourseItem::all())
+                ->with('chapter', $chapter)
+                ->with('items_type', CourseItemType::all());
+            }
+            else
+            {
+                $items = CourseItem::all();
+                if(strpos('vimeo',$item->path)){
+                //this is a vimeo url, say so
+                    $item = vimeo_tools::parse_for_urls($items);
+                }
+                return view('teacher.courses.item')
+                ->with('item', $item)
+                ->with('items', $items)
+                ->with('chapter', $chapter)    
+                ->with('items_type', CourseItemType::all());
+            }        
+        }
     }
 
-    /**
-     * Update the specified item of the chapter in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function item_update(Request $request, $id)
     {
         $item = CourseItem::find($id);
@@ -624,11 +682,15 @@ class ProfController extends Controller
     public function alt_edit($id)
     {
         $alt = CourseItem::find($id);
-        
-
-        return view('teacher.courses.alternative')
-        ->with('alt', $alt);
-
+        $user = Auth::user();
+        $userCompanies = $user->userTypes()->first();
+        if ($userCompanies->id == 5) {
+            return view('companies.courses.alternative')
+            ->with('alt', $alt);
+        }else{
+            return view('teacher.courses.alternative')
+            ->with('alt', $alt);
+        }
     }
 
     /**
@@ -820,7 +882,7 @@ class ProfController extends Controller
         $users = Auth::user()->id;
         $cupom = Cupom::find($id);
         $cursos = Course::where('user_id_owner', $users)->get();
-    
+
         return view('teacher.cupom.edit')
         ->with('cupom', $cupom)
         ->with('users', User::all())
