@@ -13,7 +13,7 @@
                     <div class="column col-12">
                         <div class="column col-12">
                           <div>
-                            <img src="{{ asset('/images/Profilepic')}}/{{$auth->avatar}}" style="object-position:50% 30% ; object-fit:cover; float:left; border-radius:100px; margin-right:25px; height: 150px; width: 150px">
+                            <img src="{{ asset('/images/Profilepic')}}/{{$auth->avatar}}" class="img-profile">
                         </div>
                         <span>{{ $auth->name}}</span>               
                     </div>       
