@@ -82,14 +82,11 @@ class UsersController extends Controller
         $user->country_id   = $request->country_id;
         $user->state_id     = $request->state_id;
         $user->avatar       = $request->avatar;
-
-
-
-        
-        
-        
-
-
+        $user->cpf          = $request->cpf;  
+        $user->address      = $request->address;
+        $user->number       = $request->number;
+        $user->city         = $request->city; 
+        $user->cep          = $request->cep; 
         
         if($user->avatar != '')
         {

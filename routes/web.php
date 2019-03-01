@@ -79,11 +79,14 @@ Route::get('todosProfs/{id}', 'ProfController@courseProf')->name('course.prof');
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 	Route::get('/courses/create', 'ProfController@create')->name('course.create.teacher');
 	Route::post('/courses/store', 'ProfController@store')->name('course.store.teacher');
-	Route::get('/courses/', 'ProfController@index')->name('courses.teacher');
+	Route::get('/courses', 'ProfController@index')->name('courses.teacher');
 	Route::get('/courses/edit/{id}', 'ProfController@edit')->name('course.edit.teacher');
 	Route::post('/courses/update/{id}', 'ProfController@update')->name('course.update.teacher');
 	Route::get('/courses/destroy/{id}', 'ProfController@destroy')->name('course.destroy.teacher');
 
+	Route::get('/alunos/{id}', 'ProfController@alunosTeacher')->name('alunos.teacher');
+	Route::get('/alunos/reset/{id}', 'ProfController@alunosReset')->name('alunos.reset.teacher');
+	Route::get('/alunos/destroy/{id}', 'ProfController@alunosDestroy')->name('alunos.destroy.teacher');
 
 	Route::get('/cupom', 'ProfController@cupomIndex')->name('cupom.teacher');
 	Route::get('/cupom/create', 'ProfController@cupomCreate')->name('cupom.create.teacher');
@@ -109,6 +112,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 	Route::get('/course/alt/edit/{id}', 'ProfController@alt_edit')->name('course.alt.edit.teacher');
 	Route::post('/course/alt/update/{id}', 'ProfController@alt_update')->name('course.alt.update.teacher');
 	Route::get('/course/alt/delete/{id}', 'ProfController@alt_delete')->name('course.alt.delete.teacher');
+	
 });
 
 //Admin

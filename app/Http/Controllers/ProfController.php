@@ -11,6 +11,7 @@ use App\Course;
 use App\UserType;
 use App\Category;
 use App\UserGroup;
+use App\CourseUser;
 use App\CourseItem;
 use App\CourseItemUser;
 use App\CourseItemType;
@@ -171,22 +172,13 @@ class ProfController extends Controller
         $categories = Category::all();
         $course_items_group = CourseItemGroup::all();
         $user_groups = UserGroup::all();
+        return redirect()->route('course.edit.teacher', 
+            ['id' => $id,
+            'course' => $course,
+            'categories' => $categories,
+            'course_items_group' => $course_items_group,
+            'user_groups' => $user_groups]);
 
-        if ($userCompanies->id == 5) {
-            return redirect()->route('course.edit.companies', 
-                ['id' => $id,
-                'course' => $course,
-                'categories' => $categories,
-                'course_items_group' => $course_items_group,
-                'user_groups' => $user_groups]);
-        }else{
-            return redirect()->route('course.edit.teacher', 
-                ['id' => $id,
-                'course' => $course,
-                'categories' => $categories,
-                'course_items_group' => $course_items_group,
-                'user_groups' => $user_groups]);
-        }
     }
 
             ######################
@@ -938,5 +930,34 @@ class ProfController extends Controller
         $courses = Course::where('user_id_owner', $id)->get(); 
         return view('teacher.courseProfs')
         ->with('courses', $courses);
+    }
+
+    public function alunosTeacher($id)
+    {
+        $alunos = CourseUser::where('course_id', $id)->get();
+        foreach ($alunos as $aluno) {
+            $aluno->dados = User::where('id', $aluno->user_id)->first();
+        }
+        return view('teacher.courses.alunos')
+        ->with('alunos', $alunos)
+        ->with('courses', Course::all());
+    }
+
+    public function alunosReset($id)
+    {
+        CourseUser::where('id', $id)->update([
+            'progress' => 0,
+        ]);
+        Session::flash('success', 'Progresso Reiniciado');
+        return redirect()->back();
+    }
+
+    public function alunosDestroy($id)
+    {
+        $aluno = CourseUser::find($id);
+        $aluno->delete();
+
+        Session::flash('success', 'Aluno removido com sucesso');
+        return redirect()->back();
     }
 }

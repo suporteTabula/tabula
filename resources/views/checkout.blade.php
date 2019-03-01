@@ -9,113 +9,152 @@
 <section class="paymentForm">
   <div class="container">
     <div class="columns">
-      <div class="column col-8">
+      <div class="col-xl-1"></div>
+      <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-8">
         <div class='card-wrapper'>
           <form class="form-control" action="{{ route('transaction.success') }}" method="post" data-yapay="payment-form">
             <div class="form-row">
-              <div class="form-group col-md-8">
+              <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12">
                 <label for="name">Nome Completo</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Nome Completo">
               </div>
-              <div class="form-group col-md-4">
+            </div>
+            <div class="columns">
+              <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                 <label for="phone">Telefone Celular</label>
                 <input type="text" class="form-control" id="phone" name="phone" placeholder="(XX) 0000-0000">
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-10">
-                <label for="address">Endereço</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Endereço">
-              </div>
-              <div class="form-group col-md-2">
-                <label for="numAddress">Número</label>
-                <input type="text" class="form-control" id="numAddress" name="numAddress" placeholder="Número">
-              </div>
-            </div>
-            <div class="form-row"> 
-              <div class="form-group col-md-6">
-                <label for="neighborhood">Bairro</label>
-                <input type="text" class="form-control" name="neighborhood" id="neighborhood">
-              </div>
-              <div class="form-group col-md-6">
+              <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                 <label for="cpf">CPF</label>
                 <input class="button-tabula-white formInput" type="text" maxlength="15" name="cpf" placeholder="CPF"/>
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="city">Cidade</label>
-                <input type="text" class="form-control" name="city" id="city">
-              </div>
-              <div class="form-group col-md-4">
+            <div class="columns">
+              <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-12">
                 <label for="state">Estado</label>
                 <select id="state" name="state" class="form-control">
                   <option selected>Escolha</option>
                   <option value="SP">SP</option>
                 </select>
               </div>
-              <div class="form-group col-md-2">
+            </div>
+            <div class="columns">
+              <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-7">
+                <label for="city">Cidade</label>
+                <input type="text" class="form-control" name="city" id="city">
+              </div>
+              <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-5">
                 <label for="cep">CEP</label>
                 <input type="text" class="form-control" name="cep" id="cep">
               </div>
             </div>
-            <select class="custom-select"  name="payment" id="payment">
-              <option value="">Selecione forma de pagamento</option>
-              <option value="cardOption">Cartão de Crédito</option>
-              <option value="boletoOption">Boleto</option>
-            </select>
+            <div class="columns">
+              <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-10">
+                <label for="address">Endereço</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Endereço">
+              </div>
+              <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-2">
+                <label for="numAddress">Número</label>
+                <input type="text" class="form-control" id="numAddress" name="numAddress" placeholder="Número">
+              </div>
+            </div>
+            <div class="columns"> 
+              <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-12">
+                <label for="neighborhood">Bairro</label>
+                <input type="text" class="form-control" name="neighborhood" id="neighborhood">
+              </div>
+            </div>
+            <div class="columns"> 
+              <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-12">
+                <label>Forma de pagamento</label>
+                <select class="custom-select"  name="payment" id="payment">
+                  <option value="">Selecione forma de pagamento</option>
+                  <option value="cardOption">Cartão de Crédito</option>
+                  <option value="boletoOption">Boleto</option>
+                </select>
+              </div>
+            </div>
             <div id="paymentForm">
               <div id="cardOption">
                 <form action="{{ route('transaction.success') }}" method="post" data-yapay="payment-form">
-                  <div class="row">
-                    <input class="button-tabula-white formInput" maxlength="16" type="text" name="number" placeholder="Número Cartão">
-                    <input class="button-tabula-white formInput" type="text" name="cardName" placeholder="Nome no Cartão"/>
-                    <select class="form-control" name="paymentMethod" id="paymentMethod">
-                      <option value="">Selcione a bandeira</option>
-                      <option value="2">Diners Club</option>
-                      <option value="3">Visa</option>
-                      <option value="4">MasterCard</option>
-                      <option value="5">American Express</option>
-                      <option value="15">Discover</option>
-                      <option value="16">Elo</option>
-                      <option value="18">Aura</option>
-                      <option value="19">JCB</option>
-                      <option value="20">Hipercard</option>
-                      <option value="25">Hiper (Itaú)</option>
-                    </select>
+                  <div class="columns">
+                    <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                      <label>Bandeira</label>
+                      <select class="form-control" name="paymentMethod" id="paymentMethod">
+                        <option value="">Selecione a bandeira</option>
+                        <option value="2">Diners Club</option>
+                        <option value="3">Visa</option>
+                        <option value="4">MasterCard</option>
+                        <option value="5">American Express</option>
+                        <option value="15">Discover</option>
+                        <option value="16">Elo</option>
+                        <option value="18">Aura</option>
+                        <option value="19">JCB</option>
+                        <option value="20">Hipercard</option>
+                        <option value="25">Hiper (Itaú)</option>
+                      </select>
+                    </div>
+                    <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                      <label for="number">Número do cartão</label>
+                      <input class="form-control" maxlength="16" type="text" name="number" placeholder="Número do cartão">
+                    </div>
+                    
                   </div>
-                  <div class="row">
-                    <select class="form-control col-md-4" name="monthExpiry" id="monthExpiry">
-                      <option value="">MM</option>
-                      <option value="01">Jan</option>
-                      <option value="02">Fev</option>
-                      <option value="03">Mar</option>
-                      <option value="04">Abr</option>
-                      <option value="05">Mai</option>
-                      <option value="06">Jun</option>
-                      <option value="07">Jul</option>
-                      <option value="08">Ago</option>
-                      <option value="09">Set</option>
-                      <option value="10">Out</option>
-                      <option value="11">Nov</option>
-                      <option value="12">Dez</option>
-                    </select>
-                    <select class="form-control col-md-8"  name="yearExpiry" id="yearExpiry">
-                      <option value="">YYYY</option>
-                      <option value="2020">2020</option>
-                    </select>
+                  <div class="columns">
+                    <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-12">
+                      <label>Nome no cartão</label>
+                      <input class="form-control" type="text" name="cardName" placeholder="Nome no cartão"/>
+                    </div>
                   </div>
-                  <div class="row">
-                    <input class="buttonQ-tabula-white formInput" type="text" name="cvv" placeholder="CVV"/>
-                    <select class="form-control"  name="parcel" id="parcel">
-                      <option value="">Numero de parcelas</option>
-                      <option value="6">6 X R$ <?php $new_price = $total_price/6;echo round($new_price, 2)?> sem Juros</option>
-                      <option value="5">5 X R$ <?php $new_price = $total_price/5;echo round($new_price, 2)?> sem Juros</option>
-                      <option value="4">4 X R$ <?php $new_price = $total_price/4;echo round($new_price, 2)?> sem Juros</option>
-                      <option value="3">3 X R$ <?php $new_price = $total_price/3;echo round($new_price, 2)?> sem Juros</option>
-                      <option value="2">2 X R$ <?php $new_price = $total_price/2;echo round($new_price, 2)?> sem Juros</option>
-                      <option value="1">R$ {{ $total_price}} à Vista</option>
-                    </select>
+                  <div class="columns">
+                    <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                      <label>Mês de vencimento</label>
+                      <select class="form-control" name="monthExpiry" id="monthExpiry">
+                        <option value="">MM</option>
+                        <option value="01">Jan</option>
+                        <option value="02">Fev</option>
+                        <option value="03">Mar</option>
+                        <option value="04">Abr</option>
+                        <option value="05">Mai</option>
+                        <option value="06">Jun</option>
+                        <option value="07">Jul</option>
+                        <option value="08">Ago</option>
+                        <option value="09">Set</option>
+                        <option value="10">Out</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Dez</option>
+                      </select>
+                    </div>
+                    <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                      <label for="yearExpiry">Ano de vencimento</label>
+                      <select class="form-control"  name="yearExpiry" id="yearExpiry">
+                        <option value="">YYYY</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div class="columns">
+                    <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                      <label>Número de parcelas</label>
+                      <select class="form-control"  name="parcel" id="parcel">
+                        <option value="">Numero de parcelas</option>
+                        <option value="6">6 X R$ <?php $new_price = $total_price/6;echo round($new_price, 2)?> sem Juros</option>
+                        <option value="5">5 X R$ <?php $new_price = $total_price/5;echo round($new_price, 2)?> sem Juros</option>
+                        <option value="4">4 X R$ <?php $new_price = $total_price/4;echo round($new_price, 2)?> sem Juros</option>
+                        <option value="3">3 X R$ <?php $new_price = $total_price/3;echo round($new_price, 2)?> sem Juros</option>
+                        <option value="2">2 X R$ <?php $new_price = $total_price/2;echo round($new_price, 2)?> sem Juros</option>
+                        <option value="1">R$ {{ $total_price}} à Vista</option>
+                      </select>
+                    </div>
+                    <div class="form-group column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                      <label>CVV</label>
+                      <input class="form-control" type="text" name="cvv" placeholder="CVV"/>
+                    </div>
                   </div>
                   <button class="button-tabula-gray paymentButton">Continuar</button>
                 </form>
@@ -130,7 +169,8 @@
           </div>         
         </div>
       </div>
-      <div class="column col-4">
+      <div class="col-xl-1"></div>
+      <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 details">
         <h4>Detalhes da Compra</h4>
         <table class="table table-hover">
           <tr>

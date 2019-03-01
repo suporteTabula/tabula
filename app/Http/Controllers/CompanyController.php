@@ -25,7 +25,9 @@ class CompanyController extends Controller
 		foreach ($companies as $company) {
 			$company->user = User::where('id', $company->user_id)->first();
 		}
+		$auth = Auth::user();
 		return view('companies.all_company')
+		->with('auth', $auth)
 		->with('companies', $companies);
 	}
 
@@ -46,7 +48,6 @@ class CompanyController extends Controller
 
 	public function resgisterCompany()
 	{
-		
 
 		return view('auth.register_empresa')
 		->with('countries', Country::all())
