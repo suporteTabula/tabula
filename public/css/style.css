@@ -8,6 +8,90 @@ body {
   height: 100vh;
 }
 
+/*Página Empresa*/
+
+div#painel-2 .teachers-wrapper {
+    text-align: center;
+}
+
+.teacher-photo-wrapper img {
+    width: 80px;
+    border-radius: 100%;
+    box-shadow: 0px 1px 12px #000;
+}
+
+.painel-empresa {
+    background: #000;
+    position: relative;
+    height: 125px;
+}
+
+.painel-empresa img{
+    width: 150px;
+    position: absolute;
+    top: 75px;
+    left: 15px;
+}
+
+.painel-empresa ul {
+    list-style: none;
+    display: inline-flex;
+    float: right;
+    margin-top: 140px;
+}
+
+.painel-empresa ul li {
+    margin: 0 15px;
+}
+
+.painel-empresa ul li a{
+    color: #000;
+    font-weight: 600;
+}
+
+.painel-empresa ul li a:hover{
+    text-decoration: none;
+}
+
+.box-empresa {
+    border: 2px solid #b3aeae;
+    padding: 0 !important;
+    margin-bottom: 60px;
+}
+
+.missao-conhecimento{
+    text-align: center;
+}
+
+.missao-conhecimento h5{
+  font-weight: 400;
+}
+
+div#painel-2 h4{
+    margin-bottom: 0;
+    margin-top: 30px;
+    font-weight: 400;
+}
+
+@media(max-width: 768px){
+  .painel-empresa img{
+    width: 100px;
+    top: 15px;
+  }
+
+  .painel-empresa ul {
+    display: list-item;
+    float: left;
+    margin-top: 130px;
+  }
+
+  .painel-empresa ul li{
+    margin: 10px 0;
+  }
+}
+
+/*Fim - Página Empresa*/
+
 .wrapper {
   flex: 1 0 auto;
 }
