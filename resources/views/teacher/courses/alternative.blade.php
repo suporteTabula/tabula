@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.teacher')
 
 @section('content')
 
@@ -8,7 +8,7 @@
 			Editar Alternativa
 		</div>		
 		<div class="panel-body">
-			<form action="{{ route('course.alt.update', ['id' => $alt->id]) }}" method="post" enctype="multipart/form-data">
+			<form action="{{ route('course.alt.update.teacher', ['id' => $alt->id]) }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
 					
 				<div class="form-group">
@@ -24,7 +24,7 @@
 
 					<div class="text-center">
 						<button class="btn btn-success" type="submit">Salvar</button>
-						<a class="btn btn-success" href="{{ route('course.item.edit', ['id' => $alt->course_items_parent]) }}">Voltar</a>
+						<a class="btn btn-success" href="{{ route('course.item.edit.teacher', ['id' => $alt->course_items_parent]) }}">Voltar</a>
 					</div>
 				</div>
 			</form>			

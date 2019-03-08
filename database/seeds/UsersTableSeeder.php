@@ -40,12 +40,10 @@ class UsersTableSeeder extends Seeder
 
         $user = App\User::create([
             'login' => 'Tabula',
-            'first_name' => 'Tabula',
-            'last_name' => 'Admin',
+            'name' => 'Tabula',
             'sex' => 'Masculino',
             'occupation' => 'Admin',
             'birthdate' => '01/01/2016',
-        	'nickname' => 'Admin',
         	'email' => 'tabula@tabula.com.br',
         	'password' => bcrypt('tabula'),
             'country_id' => '1',

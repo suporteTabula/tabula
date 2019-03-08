@@ -21,7 +21,19 @@ class UserTypesTableSeeder extends Seeder
                 "desc"       => "Aluno",
                 "created_at" => $now,
                 "updated_at" => $now,
-            ],
+            ], [
+                "desc"       => "Professor",
+                "created_at" => $now,
+                "updated_at" => $now,
+            ], [
+                "desc"       => "Suporte",
+                "created_at" => $now,
+                "updated_at" => $now,
+            ], [
+                "desc"       => "Empresa",
+                "created_at" => $now,
+                "updated_at" => $now,
+            ], 
         ]);
     }
 }

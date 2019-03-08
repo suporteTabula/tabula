@@ -15,6 +15,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
     @yield('styles')
 </head>
 <body>
@@ -36,10 +38,10 @@
                         Tabula
                     </a>
                     <div class="navbar-brand">
-                        
+
                     </div>
                     <div class="navbar-brand">
-                       
+
                     </div>
                     
                 </div>
@@ -54,94 +56,108 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->nickname }} <span class="caret"></span>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                {{ Auth::user()->login }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
                                 </a>
 
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-         <div class="container">
-            <div class="row">
-                @if(Auth::check())
-                    <div class="col-lg-3">
-                        <ul class="list-group">                            
-                            <li class="list-group-item">
-                                <a href="{{ route('home') }}">Principal</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('users') }}">Todos Usuários</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('usersType') }}">Tipos de Usuário</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('courses') }}">Cursos</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
-                            </li>
-                            <li class="list-group-item">
-                                 <a href="{{ route('companies') }}">Empresas</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('reports') }}">Reports</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
                         </ul>
-                    </div>
-                @endif
-                <div class="col-lg-9">
-                    @yield('content')
-                </div>
+                    </li>
+                    @endguest
+                </ul>
             </div>
         </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            @if(Auth::check())
+            <div class="col-lg-3">
+                <ul class="list-group">                            
+                    <li class="list-group-item">
+                        <a href="{{ route('home') }}">Principal</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('users') }}">Todos Usuários</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('usersType') }}">Tipos de Usuário</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('courses') }}">Cursos</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('cupom') }}">Cupom de Desconto</a>
+                    </li>
+                    <li class="list-group-item">
+                       <a href="{{ route('companies') }}">Empresas</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('posts') }}">Posts do blog</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('posts') }}">Categorias do blog</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('posts') }}">Comentários do blog</a>
+                    </li>
+                <!--
+                <li class="list-group-item">
+                    <a href="{{ route('reports') }}">Reports</a>
+                </li>
+                -->
+            </ul>
+        </div>
+        @endif
+        <div class="col-lg-9">
+            @yield('content')
+        </div>
     </div>
+</div>
+</div>
 
-    <!-- Scripts -->
-    
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/toastr.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
-    <script src="{{ asset('js/admin.js') }}"></script>
+<!-- Scripts -->
 
-    <script>
-        
-        @if(Session::has('success'))
-            toastr.success("{{ Session::get('success') }}")
-        @endif
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+<script src="{{ asset('js/admin.js') }}"></script>
 
-        @if(Session::has('info'))
-            toastr.info("{{ Session::get('info') }}")
-        @endif
-    </script>
+<script>
 
-    @yield('scripts')
+    @if(Session::has('success'))
+    toastr.success("{{ Session::get('success') }}")
+    @endif
+
+    @if(Session::has('info'))
+    toastr.info("{{ Session::get('info') }}")
+    @endif
+</script>
+
+@yield('scripts')
 </body>
 </html>

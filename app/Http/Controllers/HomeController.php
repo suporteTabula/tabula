@@ -14,7 +14,7 @@ class HomeController extends Controller
  {
    $featured_category1 = Category::find(1);              
    $featured_category2 = Category::find(2);
-   $user = Auth::user();
+   $auth = Auth::user();
    $userType = Usertype::all();
 
    $featured_courses1 = $featured_category1->courses()->where('featured', 1)->inRandomOrder()->take(8)->get();
@@ -24,10 +24,11 @@ class HomeController extends Controller
    ->with('categories', Category::whereNull('category_id_parent')->whereNotNull('desktop_index')->orderBy('desktop_index', 'ASC')->get())
    ->with('row_limit', 5)
    ->with('category_count', 0)
-   ->with('mobile_categories', Category::whereNull('category_id_parent')->whereNotNull('mobile_index')->orderBy('mobile_index', 'ASC')->get())
+   ->with('mobile_categories', Category::whereNull('category_id_parent')->whereNotNull('mobile_index')
+   ->orderBy('mobile_index', 'ASC')->get())
    ->with('mobile_col_limit', 5)
    ->with('mobile_category_count', 0)
-   ->with('user', $user)
+   ->with('auth', $auth)
    ->with('userType', $userType)
    ->with('featured_category1', $featured_category1->desc)
    ->with('featured_category2', $featured_category2->desc)
@@ -35,5 +36,5 @@ class HomeController extends Controller
    ->with('featured_courses2', $featured_courses2)
    ->with('featured_posts', $featured_posts);
 
- }
+}
 }

@@ -26,14 +26,14 @@ $(document).ready(function () {
     //capture the switcher trigger and assign a function to it.
 				 //capturar o gatilho do switcher e atribuir uma função a ele.
 
-                $(document).on("click", 'a.switcher', function(e) { 
+                 $(document).on("click", 'a.switcher', function(e) { 
 
 
-                 var theid = $(this).attr("id");
-                 var theproducts = $("ul#courses");
-                 var classNames = $(this).attr('class').split(' ');
+                   var theid = $(this).attr("id");
+                   var theproducts = $("ul#courses");
+                   var classNames = $(this).attr('class').split(' ');
 
-                 if($(this).hasClass("active")) {
+                   if($(this).hasClass("active")) {
 						// if currently clicked button has the active class
 						// then we do nothing!
 						return false;
@@ -49,17 +49,17 @@ $(document).ready(function () {
 							$.each( $('ul#courses'), function(i, left) {
 
                               $('#course-card', left).each(function() {
-                                 $(this).addClass("course-card");
-                                 $(this).removeClass("course-card-list");
-                             });
+                               $(this).addClass("course-card");
+                               $(this).removeClass("course-card-list");
+                           });
                               $('#course-card-desc', left).each(function() {
-                                 $(this).addClass("course-card__description");
-                                 $(this).removeClass("course-card-desc-list");
-                             });
+                               $(this).addClass("course-card__description");
+                               $(this).removeClass("course-card-desc-list");
+                           });
                               $('#course-card-price', left).each(function() {
-                                 $(this).addClass("course-card__price");
-                                 $(this).removeClass("course-card-price-list");
-                             });
+                               $(this).addClass("course-card__price");
+                               $(this).removeClass("course-card-price-list");
+                           });
                           });
 
 							var theimg = $(this).children("img");
@@ -77,17 +77,17 @@ $(document).ready(function () {
 							//Remove the card layout to these divs
 							$.each( $('ul#courses'), function(i, left) {
                               $('#course-card', left).each(function() {
-                                 $(this).removeClass("course-card");
-                                 $(this).addClass("course-card-list");
-                             });
+                               $(this).removeClass("course-card");
+                               $(this).addClass("course-card-list");
+                           });
                               $('#course-card-desc', left).each(function() {
-                                 $(this).removeClass("course-card__description");
-                                 $(this).addClass("course-card-desc-list");
-                             });
+                               $(this).removeClass("course-card__description");
+                               $(this).addClass("course-card-desc-list");
+                           });
                               $('#course-card-price', left).each(function() {
-                                 $(this).removeClass("course-card__price");
-                                 $(this).addClass("course-card-price-list");
-                             });
+                               $(this).removeClass("course-card__price");
+                               $(this).addClass("course-card-price-list");
+                           });
                           })		
 							var theimg = $(this).children("img");
 							theimg.attr("src","/images/list-view-active.png");
@@ -97,8 +97,8 @@ $(document).ready(function () {
 							theproducts.addClass("list");	
 						}
 					}
-             });		
-            });
+               });		
+             });
 
 $(document).ready(function() {
     $(".macro-indv").mouseenter(function(){
@@ -154,28 +154,27 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#data").click(function () {
-        $("#panel-2, #panel-3, #panel-4, #panel-5, #panel-6").slideUp(500);
+        $("#panel-2, #panel-3, #panel-5, #panel-6, #panel-7").slideUp(500);
         $("#panel-1").delay(200).slideDown(500)
     });
     $("#courses").click(function () {
-        $("#panel-1, #panel-3, #panel-4, #panel-5, #panel-6").slideUp(500);
+        $("#panel-1, #panel-3, #panel-5, #panel-6, #panel-7").slideUp(500);
         $("#panel-2").delay(200).slideDown(500)
     });
     $("#taught").click(function () {
-        $("#panel-1, #panel-2, #panel-4, #panel-5, #panel-6").slideUp(500);
+        $("#panel-1, #panel-2, #panel-5, #panel-6, #panel-7").slideUp(500);
         $("#panel-3").delay(200).slideDown(500)
     });
-    $("#create").click(function () {
-        $("#panel-1, #panel-2, #panel-3, #panel-5, #panel-6").slideUp(500);
-        $("#panel-4").delay(200).slideDown(500);
-
+    $("#myTeacher").click(function () {
+        $("#panel-1, #panel-2, #panel-5, #panel-6, #panel-3").slideUp(500);
+        $("#panel-7").delay(200).slideDown(500)
     });
     $("#payment").click(function () {
-        $("#panel-1, #panel-2, #panel-3, #panel-4, #panel-6").slideUp(500);
+        $("#panel-1, #panel-2, #panel-3, #panel-6, #panel-7").slideUp(500);
         $("#panel-5").delay(200).slideDown(500)
     });
     $("#teacher").click(function () {
-        $("#panel-1, #panel-2, #panel-3, #panel-4, #panel-5").slideUp(500);
+        $("#panel-1, #panel-2, #panel-3, #panel-5, #panel-7").slideUp(500);
         $("#panel-6").delay(200).slideDown(500)
     });
 });
@@ -184,53 +183,98 @@ $(document).ready(function(){
     $("#create").click(function(){
         $("#hide").slideDown();
     });
-    /*$("#course-teacher").click(function(){
-        dateAjax();
-    });*/
 
 });
 
-
-$(document).ready(function() {
-    $("#star").click(function(){
-        alert("OK");
-    });
-});
-//Funcão ajax para enviar requisição
-/*function dateAjax(){
-    $.ajax({
-        url: '{{url(('/userPanel/course/store'))}}',
-        type: 'POST',
-        data: {
-            name: name,
-            desc: desc,
-            category_id: category_id,
-            price: price,
-            thumb_img: thumb_img,
-            featured: featured,
-        },
-        beforeSend: function() {
-            console.log('teste');
-        },
-        success: function(){
-            console.log('deu certo');
-            /*var result = $.parseJSON(data);
-            $('#cliques_rede').html(result.cliques_rede);
-            $('#cliques_foto_insta').html(result.cliques_foto_insta);
-            $('#cliques_link').html(result.cliques_link);
-            $('#total_cabecalho').html(result.total_cabecalho);
-
-            $('#data_inicial').html(result.data_inicial);
-            $('#data_final').html(result.data_final);
+//Tela empresa
 
 
-            console.log(result.link);                    
+//Controle de classificação estrela
+$(document).ready(function(){
+    var average = $('.ratingAverage').text();
+    function avaliacao(average){
+        average = (Number(average)*20);
+        $('.bg').css('width', 0);       
+        $('.rating-stars .bg').animate({width:average+'%'}, 500);
+    }
+    
+    avaliacao(average);
+
+    $('.star').on('mouseover', function(){
+        var indexAtual = $('.star').index(this);
+        for(var i=0; i<= indexAtual; i++){
+            $('.star:eq('+i+')').addClass('full');
         }
     });
-}
-*/
-/*
-var card = new Card({
+    $('.star').on('mouseout', function(){
+        $('.star').removeClass('full');
+    });
+
+    $('.star').on('click', function(){
+
+        var idCourse = $('.courseDados').attr('data-id');
+        if (idCourse == 0) {
+            alert("É Necessário comprar o curso para realizar a avaliação")
+        }else{
+            var voto = $(this).attr('id');
+
+            ratingAjax(idCourse, voto);
+        }
+    });
+
+    
+    function ratingAjax(idCourse, voto){
+        url = $(this).data('url');
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost/projetos_web/tabula-imax/public/course/ratingstar',
+            data:{
+                idCourse: idCourse,
+                voto: voto
+            },
+            beforeSend: function(){
+            },
+            success: function(data){
+                var result = $.parseJSON(data);
+                if(result.hasCourse){
+                    if (result.hasVote) {
+                        alert("nota atribuida com sucesso");
+                    }else{
+                        alert("você já votou neste curso");
+                    }
+                }else{
+                    alert("Compre o curso para que possa realizar uma avaliação");
+                }
+                
+            }
+        });
+    }
+}); 
+$(document).ready(function(){
+    var item = $('#accbody-content'),
+    dialog = $('.dialog');
+
+    dialog.dialog({
+        autoOpen: false,
+        modal: true
+    });
+
+    item.on('click', function() {
+        var id = $(this).data('id'),
+        type = $(this).data('type');
+        if (id == 3) {
+            dialog.html(type);
+        }else if(id == 2){
+            dialog.html('<img src="'+type + '">');
+        }else{
+            dialog.html('<video controls width="500px"><source src="' + type + '"></video>');
+        }
+        dialog.dialog('open');
+    });
+});
+
+  /*
+  var card = new Card({
     // a selector or DOM element for the form where users will
     // be entering their information
     form: 'form', // *required*
@@ -272,7 +316,7 @@ var card = new Card({
 
 
 
-$(document).ready(function() {
+  $(document).ready(function() {
     if($("input.macro-main__checkbox").is(':checked')){
         $(".macro-sub__item").show();
         alert("checou")
@@ -283,10 +327,10 @@ $(document).ready(function() {
 });
 
 
-$('.main-carousel').flickity({
+  $('.main-carousel').flickity({
     // options
     cellAlign: 'center',
     contain: true
 
 });
-*/
+  */

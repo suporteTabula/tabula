@@ -21,7 +21,10 @@ class CreateCoursesTable extends Migration
             $table->longtext('desc');
             $table->integer('user_id_owner');
             $table->integer('category_id');
+            $table->string('requirements')->nullable();
+            $table->string('video')->nullable();
             $table->integer('featured')->default(0);
+            $table->integer('total_class')->nullable();
             $table->string('thumb_img')->nullable();
             $table->timestamps();
         });

@@ -20,11 +20,10 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->default('default.png');
             $table->string('group')->nullable();
             $table->char('email', 100)->unique();
-            $table->string('first_name', 100);
-            $table->string('last_name', 100);
-            $table->string('nickname', 100);
+            $table->string('name', 100);
+            $table->string('cpf', 100)->nullable();
             $table->string('birthdate', 10)->nullable();
-            $table->string('sex', 45);
+            $table->string('sex', 45)->nullable();
             $table->string('occupation', 100)->nullable();
             $table->text('bio')->nullable();
             $table->string('website', 100)->nullable();
@@ -34,8 +33,13 @@ class CreateUsersTable extends Migration
             $table->string('youtube', 100)->nullable();
             $table->integer('country_id');
             $table->integer('state_id')->nullable();
-            $table->integer('schooling_id');
+            $table->string('address', 100)->nullable();
+            $table->integer('number')->nullable();     
+            $table->string('city', 100)->nullable();
+            $table->string('cep', 100)->nullable();
+            $table->integer('schooling_id')->nullable();
             $table->string('img_avatar')->nullable();
+            $table->integer('empresa_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             

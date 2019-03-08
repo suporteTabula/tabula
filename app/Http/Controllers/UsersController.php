@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Auth;
 use Session;
+use App\User;
 use App\State;
 use App\Country;
 use App\Schooling;
@@ -21,17 +23,39 @@ class UsersController extends Controller
     public function userPanel() // criar outras funções para update de usuario no banco
     {   
         $auth = Auth::user();
-        $userType = Usertype::all();    
+        $userType = Usertype::all(); 
+        $teachers = User::where('empresa_id', $auth->id)->get();   
 
-        return view('userPanel')
-        ->with('user', Auth::user())
-        ->with('states', State::all())
-        ->with('courses', Course::all())
-        ->with('countries', Country::all())
-        ->with('schoolings', Schooling::all())
-        ->with('categories', Category::all())
-        ->with('user_groups', UserGroup::all())
-        ->with('usertype', $userType);
+        $company = DB::table('company')->where('user_id', $auth->id)->first();
+        if ($company == null) {
+            return view('userPanel')
+            ->with('auth', Auth::user())
+            ->with('states', State::all())
+            ->with('courses', Course::all())
+            ->with('countries', Country::all())
+            ->with('schoolings', Schooling::all())
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all())
+            ->with('company', $company)
+            ->with('teachers', $teachers)
+            ->with('usertype', $userType);
+        }else{ 
+            $users = User::where('empresa_id', $company->user_id)->get();
+            foreach ($users as $user) {
+                $user->courses = Course::where('user_id_owner', $user->id)->get();
+            }
+            return view('userPanel')
+            ->with('auth', Auth::user())
+            ->with('states', State::all())
+            ->with('countries', Country::all())
+            ->with('schoolings', Schooling::all())
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all())
+            ->with('users', $users)
+            ->with('company', $company)
+            ->with('teachers', $teachers)
+            ->with('usertype', $userType);
+        }
     }
 
     
@@ -41,17 +65,13 @@ class UsersController extends Controller
 
 
         $this->validate($request, [
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'nickname'      => 'required',
+            'name'    => 'required',
             
         ]);
 
 
         
-        $user->first_name   = $request->first_name;
-        $user->last_name    = $request->last_name;
-        $user->nickname     = $request->nickname;
+        $user->name         = $request->name;
         $user->sex          = $request->sex;
         $user->bio          = $request->bio;
         $user->website      = $request->website;
@@ -62,14 +82,11 @@ class UsersController extends Controller
         $user->country_id   = $request->country_id;
         $user->state_id     = $request->state_id;
         $user->avatar       = $request->avatar;
-
-
-
-        
-        
-        
-
-
+        $user->cpf          = $request->cpf;  
+        $user->address      = $request->address;
+        $user->number       = $request->number;
+        $user->city         = $request->city; 
+        $user->cep          = $request->cep; 
         
         if($user->avatar != '')
         {

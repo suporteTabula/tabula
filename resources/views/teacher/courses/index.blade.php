@@ -5,7 +5,7 @@
 		<div class="panel-heading" style="position: relative; height:80x; ">
 			<p style="line-height: 40px;">Todos os Cursos</p>
 			
-			<a href="{{ route('course.create') }}">
+			<a href="{{ route('course.create.teacher') }}">
 				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
 			</a>
 
@@ -25,7 +25,7 @@
 					<th>Nome</th>
 					<th>Descrição</th>
 					<th>Categoria</th>
-					<th>Autor</th>
+					<th>Alunos</th>
 					<th>Cursos</th>
 					<th>Editar</th>
 					<th>Deletar</th>
@@ -44,7 +44,7 @@
 									{{ $course->category->desc }}
 								</td>
 								<td style="vertical-align: middle !important;">
-									{{ $users->find($course->user_id_owner)->first_name }}
+									<a href="{{ route('alunos.teacher', ['id' => $course->id]) }}">Alunos</a>
 								</td>
 								<td style="vertical-align: middle !important;">
 									@if(!$course->group)
@@ -73,7 +73,7 @@
 				</tbody>
 			</table>
 			@if ($courses->count() > 0)
-				<form action="{{ route('course.destroy', ['id' => $course->id]) }}" method="GET" class="remove-record-model">
+				<form action="{{ route('course.destroy.teacher', ['id' => $course->id]) }}" method="GET" class="remove-record-model">
 					{{ csrf_field() }}
 				    <div id="custom-width-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
 				        <div class="modal-dialog" style="width:55%;">

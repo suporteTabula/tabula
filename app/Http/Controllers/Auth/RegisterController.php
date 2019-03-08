@@ -55,12 +55,10 @@ class RegisterController extends Controller
 
     protected function validator($request)
     {       
+
          return Validator::make($request, [
             'login'         => 'required',   
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'nickname'      => 'required',
-            'sex'           => 'required',
+            'name'          => 'required',
             'country_id'    => 'required',
             'schooling_id'  => 'required',
             'email'         => 'required|string|email|max:255|unique:users',
@@ -85,21 +83,18 @@ class RegisterController extends Controller
         $user = User::create([
             'login'         => $data['login'],
             'email'         => $data['email'],
-            'first_name'    => $data['first_name'],
-            'nickname'      => $data['nickname'],
-            'sex'           => $data['sex'],
+            'name'          => $data['name'],
             'country_id'    => $data['country_id'],
             'schooling_id'  => $data['schooling_id'],
-            'last_name'     => $data['last_name'],
             'password'      => bcrypt($data['password']),
+            'sex'           => $data['sex'],
         ]);
 
-        $user->userTypes()->attach(2);
+        $user->userTypes()->attach($data['userType']);
         if (!empty($data['state_id'])) {
             $user->state_id = $data['state_id'];
         }
         $user->save();
-
         return $user;
     }
 }

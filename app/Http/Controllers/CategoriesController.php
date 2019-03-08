@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Course;
+use Auth;
 
 class CategoriesController extends Controller
 {
@@ -21,6 +22,7 @@ class CategoriesController extends Controller
 
         return view('category')
             ->with('category_desc', $category->desc)
+            ->with('user', Auth::user())
             ->with('category_count', 0)
             ->with('categories', Category::orderBy('desc', 'ASC')->get())
             // busca todas os cursos da categoria selecionada

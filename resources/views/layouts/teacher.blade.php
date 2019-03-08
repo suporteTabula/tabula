@@ -55,7 +55,7 @@
                        
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->nickname }} <span class="caret"></span>
+                                    {{ Auth::user()->login }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -83,10 +83,11 @@
                     <div class="col-lg-3">
                         <ul class="list-group">                            
                             <li class="list-group-item">
-                                <a href="{{ route('index.single') }}">Pagina Inicial</a>
-                            </li>
-                            <li class="list-group-item">
                                 <a href="{{ route('courses.teacher')}}">Cursos</a>
+                            </li>
+                     
+                            <li class="list-group-item">
+                                <a href="{{ route('cupom.teacher') }}">Meus Cupons</a>
                             </li>
                         </ul>
                     </div>

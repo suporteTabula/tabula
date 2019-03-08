@@ -148,7 +148,8 @@
     <section class="highlighted-courses">
         <div class="container grid-md">
             <div class="columns">
-            <h5>Cursos em destaque: {{ $featured_category1 }}</h5>
+                @if(count($featured_courses1) > 0)
+                <h5>Cursos em destaque: {{ $featured_category1 }}</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
                     @foreach ($featured_courses1 as $course)
                     <div class="course-card">
@@ -163,7 +164,10 @@
                     </div>
                     @endforeach
                 </div><br>
-                <h5>Cursos em destaque: Varejo e Consumo</h5>
+                @endif
+
+                @if(count($featured_courses2) > 0)
+                <h5>Cursos em destaque: {{ $featured_category2 }}</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
                     @foreach($featured_courses2 as $course)
                     <div class="course-card">
@@ -178,6 +182,7 @@
                     </div>
                     @endforeach
                 </div>
+                @endif
             </div>
         </div>
     </section>
