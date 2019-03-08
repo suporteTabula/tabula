@@ -15,6 +15,7 @@ use App\CourseUser;
 use App\User;
 use App\Star;
 use Auth;
+use Session;
 use Log;
 
 class CoursesController extends Controller
@@ -156,14 +157,18 @@ class CoursesController extends Controller
 
     public function course_start(Request $request, $id)
     {        
-        $user = Auth::user();
+        $auth = Auth::user();
         $course = Course::find($id);
         $chapter = $course->course_item_groups->all();
+        $total = 0;
         foreach ($chapter as $chapters) {
             $itemChapter = CourseItem::where('course_item_group_id', $chapters->id)->pluck('id')->toArray();
             $chapters->progressDo = CourseItemUser::wherein('course_item_id', $itemChapter)->where('course_item_status_id', 1)->count();
+            $item = CourseItem::where('course_item_group_id', $chapters->id)->count();
+            $total = $total + $item;
         }
-
+        
+        if ($total > 0) {
         $items = CourseItem::where('course_item_group_id', $chapter[0]->id)->get();
 
 
@@ -171,22 +176,27 @@ class CoursesController extends Controller
         $item = $request->item_id; // Id específico do item ao finalizar aula
 
 
-        if ($item && !$user->items()->find($item)) {
-            $user->items()->attach($request->item_id, ['course_item_status_id' => 1 ]);
+        if ($item && !$auth->items()->find($item)) {
+            $auth->items()->attach($request->item_id, ['course_item_status_id' => 1 ]);
         }
         foreach ($chapter as $chap) {
             $count[$chap->id] = count($chap->course_items);
             
         }
-        $done = $user->items()->wherePivot('course_item_status_id','1')->get();
+        $done = $auth->items()->wherePivot('course_item_status_id','1')->get();
         
 
         Log::Debug($course);
         return view('courseProgress')
-        ->with('user', $user)
+        ->with('auth', $auth)
         ->with('course',$course)
         ->with('chapters', $chapter)
         ->with('items', $items);
+        }else{
+            Session::flash('success', 'Este curso não possui nenhum capitulo');
+            return redirect()->back();
+        }
+
     }
 
 /*    public function course_progress($id)

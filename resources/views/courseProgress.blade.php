@@ -21,7 +21,7 @@
                         <div id="accbody" class="accordion-body"> <a id="accbody-content" class="aula" value="{{ $item->id }}">{{ $item->name }}</a>
                             <span class="round">
                                 <input type="checkbox" class="input-progress-label" name="progress" id="{{ $item->id }}" 
-                                @foreach ($user->items as $i)
+                                @foreach ($auth->items as $i)
                                 @if ($i->pivot->course_item_status_id == 1 && $item->id == $i->pivot->course_item_id)
                                 checked
                                 @endif 
