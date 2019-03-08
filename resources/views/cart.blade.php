@@ -86,7 +86,7 @@
                     },
                     success: function(data){
                         var result = $.parseJSON(data);
-                        $('#total').html(result.total);
+                        $('#total').html('R$'+result.total);
                         console.log(result);   
 
                     },

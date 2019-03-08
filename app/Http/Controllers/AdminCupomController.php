@@ -36,25 +36,27 @@ class AdminCupomController extends Controller
     	]);
         //Vincula as variaveis 
     	
-    	$user = Auth::user()->id;
+    	$auth = Auth::user()->id;
     	if ($request->limiteCupom == null || $request->limiteCupom == '') {
     		$request->limiteCupom = 0;
     	}
 
+        $expiraCupom = explode('/', $request->expiraCupom);
+        $expiraCupom = $expiraCupom[2] . '-' . $expiraCupom[1] . '-' . $expiraCupom[0];
+
 
     	Cupom::create([
-    		'codCupom' => $request->codCupom,
-    		'tipoCupom' => $request->tipoCupom,
-    		'valorCupom' => $request->valorCupom,
-    		'expiraCupom' => $request->expiraCupom,
-    		'limiteCupom' => $request->limiteCupom,
-    		'descCupom' => $request->descCupom,
+    		'cod_cupom' => $request->codCupom,
+    		'tipo_cupom' => $request->tipoCupom,
+    		'valor_cupom' => $request->valorCupom,
+    		'expira_cupom' => $expiraCupom,
+    		'limite_cupom' => $request->limiteCupom,
+    		'desc_cupom' => $request->descCupom,
     		'curso_id' => $request->curso_id,
-    		'user_id' =>$user
+    		'user_id' =>  $auth
     	]);
-        // se tiver algum check nos grupos de usuário
 
-    	Session::flash('success', 'Curso criado com sucesso');
+    	Session::flash('success', 'Cupom criado com sucesso');
 
 
     	return redirect()->back();
@@ -63,6 +65,9 @@ class AdminCupomController extends Controller
     public function edit($id)
     {
     	$cupom = Cupom::find($id);
+
+        $cupom->expira_cupom = explode('-', $cupom->expira_cupom);
+        $cupom->expira_cupom = $cupom->expira_cupom[2] . '/'. $cupom->expira_cupom[1] . '/' . $cupom->expira_cupom[0];
 
     	return view('admin.cupom.edit')
     	->with('cupom', $cupom)
@@ -78,20 +83,22 @@ class AdminCupomController extends Controller
     	]);
         //Vincula as variaveis 
     	
-    	$user = Auth::user()->id;
+    	$auth = Auth::user()->id;
+        $expiraCupom = explode('/', $request->expiraCupom);
+        $expiraCupom = $expiraCupom[2] . '-' . $expiraCupom[1] . '-' . $expiraCupom[0];
 
 
     	Cupom::where('id', $request->id)->update([
-    		'codCupom' => $request->codCupom,
-    		'tipoCupom' => $request->tipoCupom,
-    		'valorCupom' => $request->valorCupom,
-    		'expiraCupom' => $request->expiraCupom,
-    		'limiteCupom' => $request->limiteCupom,
-    		'descCupom' => $request->descCupom,
+    		'cod_cupom' => $request->codCupom,
+    		'tipo_cupom' => $request->tipoCupom,
+    		'valor_cupom' => $request->valorCupom,
+    		'expira_cupom' => $expiraCupom,
+    		'limite_cupom' => $request->limiteCupom,
+    		'desc_cupom' => $request->descCupom,
     		'curso_id' => $request->curso_id,
-    		'user_id' =>$user
+    		'user_id' =>$auth
     	]);        
-    	Session::flash('success', 'Curso Editado com sucesso');
+    	Session::flash('success', 'Cupom Editado com sucesso');
     	return redirect()->back();
     }
 
@@ -101,7 +108,7 @@ class AdminCupomController extends Controller
 
         $cupom->delete();
 
-        Session::flash('success', 'Curso removido com sucesso');
+        Session::flash('success', 'Cupom removido com sucesso');
         return redirect()->back();
     }
 }

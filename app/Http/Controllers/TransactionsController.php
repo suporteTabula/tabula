@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Session;
 use App\Cart;
 use App\User;
 use App\Course;
@@ -12,7 +13,7 @@ use App\TransactionItem;
 
 class TransactionsController extends Controller
 {
-	public function statusTransaction(Request $request)
+	/*public function statusTransaction(Request $request)
 	{  
         $session = session()->get('desconto');
         $idUser = Auth::user()->id;
@@ -66,20 +67,22 @@ class TransactionsController extends Controller
         // será substituido pelo codigo da compra 
         $transaction->hash = $random_hash;
         $transaction->save();
-
+        session()->flush();
         return view('success')
             ->with('courses', $courses)
             ->with('total_price', $total_price)
             ->with('auth', $auth);
-        }
-/*
+        }*/
+
         public function statusTransaction(Request $request)
         {
-            $user=Auth::user();
+            $auth=Auth::user();
             $i = 1;
-            $carts = Cart::where('user_id', $user->id)->get();
-            $numCard = $request->number;
-            $nCard = substr($numCard, 0, 1);
+            $items = Cart::where('user_id', $auth->id)->get();
+            // array de cursos do pedido
+            $courses = array();
+            // preço acumulado dos cursos
+            $total_price = 0;
 
         /*  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         *   TABELA BIN CARTAO DE CREDITO
@@ -89,8 +92,8 @@ class TransactionsController extends Controller
         *   ELO         |   16  |
         *   HIPERCARD   |   20  |
         *   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        *
-
+        */
+        //return dd($request);
 
         if(isset($request))
         {
@@ -108,14 +111,15 @@ class TransactionsController extends Controller
             $data["customer"]["addresses"][1]["city"] = $request->city;
             $data["customer"]["addresses"][1]["state"] = $request->state;
 
-            $data["customer"]["name"] = $user->first_name;
+            $data["customer"]["name"] = $auth->first_name;
             $data["customer"]["cpf"] = $request->cpf;
-            $data["customer"]["email"] = $user->email;
-            foreach ($carts as $cart) {
-                $course = Course::where('id', $cart->course_id)->first();
+            $data["customer"]["email"] = $auth->email;
+            foreach ($items as $item) {
+                $course = Course::where('id', $item->course_id)->first();
                 $data["transaction_product"][$i]["description"] = $course->name;
                 $data["transaction_product"][$i]["quantity"] = "1";
                 $data["transaction_product"][$i]["price_unit"] = $course->price;
+                $total_price = $total_price + $course->price;
                 $i++;
             } 
 
@@ -140,19 +144,60 @@ class TransactionsController extends Controller
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 
             curl_exec($ch);
-
-                // JSON de retorno
-            $resposta = json_decode(ob_get_contents());
-            $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            // JSON de retorno
+            $resposta   = json_decode(ob_get_contents());
+            $code       = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
             ob_end_clean();
             curl_close($ch);
+            $message    = $resposta->message_response->message;
+
             return dd($resposta);
+            if ($message == "success") {
+                $status_id  = $resposta->data_response->transaction->status_id;
+                $token_transaction = $resposta->data_response->transaction->token_transaction;
+                $payment_method_id = $resposta->data_response->transaction->payment_method_id;
+                if ($status_id = 6) {
+                    $transaction = new Transaction;
+                    foreach($items as $item)
+                    {
+                        $course = Course::find($item->course_id);
+                        // adiciona o curso do item em questão no array de cursos
+                        array_push($courses, $course);
+                        $auth->courses()->save($course, ['progress' => 0]);
+
+                        $cart_item = Cart::find($item->id);
+                        // remove item do carrinho
+                        $cart_item->delete();
+                        // aqui são criados cada item de uma compra 
+                        // cada item é identificado pelo $token_transaction 
+                        $transaction_item = new TransactionItem;
+                        $transaction_item->hash = $token_transaction;
+                        $transaction_item->user_id = $auth->id;
+                        $transaction_item->course_id = $course->id;
+                        $transaction_item->price = $course->price;
+                        $transaction_item->save();
+                    }
+                    $transaction->user_id = $auth->id;
+                    $transaction->price = $total_price;
+                    // aqui entrará a informação do tipo de transação
+                    $transaction->transaction_type = $payment_method_id;
+                    // mesmo $token_transaction de cada item da transação, 
+                    //fazendo o vínculo para poder ser resgatado na view
+                    // será substituido pelo codigo da compra 
+                    $transaction->hash = $token_transaction;
+                    $transaction->save();
+                    session()->flush();
+                }
+            }
+
+            
+            
             if($code == "201"){
                 return 'teste';
             }else{
                     //Tratamento das mensagens de erro
             }
         }
-    }*/
+    }
 }

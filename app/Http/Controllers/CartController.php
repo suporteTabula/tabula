@@ -108,7 +108,7 @@ class CartController extends Controller
         public function validaCupom(Request $request)
         {
             $auth = Auth::user();
-            $items = Cart::where('user_id', $user->id)->get();
+            $items = Cart::where('user_id', $auth->id)->get();
             $courses = array();
             $total_price = 0;
             foreach($items as $item)
@@ -120,27 +120,27 @@ class CartController extends Controller
                 $total_price = $total_price + $course->price;
             }
 
-            $cupom = Cupom::where('codCupom', $request->codCupom)->count();
-            $cupomChave = Cupom::where('codCupom', $request->codCupom)->first();
+            $cupom = Cupom::where('cod_cupom', $request->codCupom)->count();
+            $cupomChave = Cupom::where('cod_cupom', $request->codCupom)->first();
 
             $validaCupom['total'] = $total_price;
             $validaCupom['desconto'] = 0;
 
             if ($cupom > 0) {
-                if ($cupomChave->tipoCupom == 'Fixo Carrinho') {
+                if ($cupomChave->tipo_cupom == 'Fixo Carrinho') {
                     //Reduz o valor no valor total do pedido
-                    $validaCupom['desconto'] = $cupomChave->valorCupom;
-                    $validaCupom['total'] = $total_price - $cupomChave->valorCupom;
-                }elseif ($cupomChave->tipoCupom == 'Porcentagem') {
+                    $validaCupom['desconto'] = $cupomChave->valor_cupom;
+                    $validaCupom['total'] = $total_price - $cupomChave->valor_cupom;
+                }elseif ($cupomChave->tipo_cupom == 'Porcentagem') {
                     //reduz o valor total do carrinho com base na porcentagem
-                    $validaCupom['desconto'] = $total_price * ($cupomChave->valorCupom/100);
-                    $validaCupom['total'] = $total_price - ($total_price * ($cupomChave->valorCupom/100));
+                    $validaCupom['desconto'] = $total_price * ($cupomChave->valor_cupom/100);
+                    $validaCupom['total'] = $total_price - ($total_price * ($cupomChave->valor_cupom/100));
                 }else{
                     foreach ($courses as $course) {
                     if ($course->id == $cupomChave->curso_id) {
                     //Reduz de um produto especifico
-                        $validaCupom['desconto'] = $cupomChave->valorCupom;
-                        $validaCupom['total'] = $validaCupom['total'] - $cupomChave->valorCupom;
+                        $validaCupom['desconto'] = $cupomChave->valor_cupom;
+                        $validaCupom['total'] = $validaCupom['total'] - $cupomChave->valor_cupom;
                     }
                         
                     }
