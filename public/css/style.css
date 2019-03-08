@@ -1,10 +1,29 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.wrapper {
+  flex: 1 0 auto;
+}
+
+.wrapper-container {
+    padding: 15px;
+    margin-top: 65px;
+}
+
 button, input, textarea, select, a {
   outline: none;
   text-decoration: none;
 }
 
 .form-group:not(:last-child) {
-    margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .formInput{
@@ -20,50 +39,50 @@ input[name="cvv"]{
 }
 
 select#payment {
-    height: 38px;
-    width: 100%;
-    border: 1px solid #000;
-    border-radius: 2px;
-    padding: 6px;
+  height: 38px;
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 2px;
+  padding: 6px;
 }
 
 input.button-tabula-white.formInput {
-    width: 100%;
-    border: 1px solid #000;
-    box-shadow: none;
-    border-radius: 2px;
+  width: 100%;
+  border: 1px solid #000;
+  box-shadow: none;
+  border-radius: 2px;
 }
 
 input[name="cardName"] {
-    margin: 0px 0px 10px !important;
+  margin: 0px 0px 10px !important;
 }
 
 select#paymentMethod {
-    height: 38px;
-    border: 1px solid #000;
-    border-radius: 2px;
-    margin-bottom: 10px;
-    padding: 5px;
+  height: 38px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  padding: 5px;
 }
 
 select#yearExpiry {
-    height: 38px;
-    border: 1px solid #000;
-    border-radius: 2px;
-    margin-right: 15px;
+  height: 38px;
+  border: 1px solid #000;
+  border-radius: 2px;
+  margin-right: 15px;
 }
 
 select#monthExpiry {
-    border: 1px solid #000;
-    height: 38px;
-    border-radius: 2px;
-    padding: 5px;
+  border: 1px solid #000;
+  height: 38px;
+  border-radius: 2px;
+  padding: 5px;
 }
 
 select#parcel {
-    border: 1px solid #000;
-    border-radius: 2px;
-    margin: 10px 0;
+  border: 1px solid #000;
+  border-radius: 2px;
+  margin: 10px 0;
 }
 
 #yearExpiry {
@@ -80,10 +99,10 @@ select#parcel {
 }
 
 input#codCupom {
-    border: 1px solid #000;
-    padding: 6px;
-    border-radius: 2px;
-    margin: 5px;
+  border: 1px solid #000;
+  padding: 6px;
+  border-radius: 2px;
+  margin: 5px;
 }
 
 .remove-curso .course-cart-remove{
@@ -92,7 +111,7 @@ input#codCupom {
 }
 
 button#cupom {
-    border-radius: 2px;
+  border-radius: 2px;
 }
 
 .total-checkout .my-1{
@@ -104,7 +123,7 @@ button#cupom {
 }
 
 a#btn-continuar {
-    margin-top: 45px;
+  margin-top: 45px;
 }
 
 .course-cart-item{
@@ -113,21 +132,21 @@ a#btn-continuar {
 }
 
 button.button-tabula-gray.paymentButton {
-    padding: 11px;
-    margin-right: 0;
+  padding: 11px;
+  margin-right: 0;
 }
 
 input[name="cvv"] {
-    width: 30%;
-    padding: 10px;
-    float: right;
-    border: 1px solid #000;
-    border-radius: 2px;
+  width: 30%;
+  padding: 10px;
+  float: right;
+  border: 1px solid #000;
+  border-radius: 2px;
 }
 
 @media(max-width: 768px){
   .total-checkout {
-      min-height: 415px !important;
+    min-height: 415px !important;
   }
 
   button#cupom{
@@ -164,9 +183,9 @@ img.img-profile {
 }
 
 #toast-container {
-    position: fixed;
-    top: 50px;
-    width: 100%;
+  position: fixed;
+  top: 50px;
+  width: 100%;
 }
 
 .lineclamp-desc 
@@ -431,413 +450,432 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
 
-  align-items: center;}
+  align-items: center;
+}
 
 
-  .navigation-bar a {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+.navigation-bar a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.navigation-bar .nav-brand,
+.navigation-bar .nav-search,
+.navigation-bar .nav-menu {
+  height: 50px;
+  padding: .4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.navigation-bar .nav-menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.navigation-bar .nav-menu ul li a {
+  padding: 8px 5px;
+  text-decoration: none;
+}
+
+.navigation-bar .nav-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.navigation-bar .nav-search .navbar-section form input {
+  font-size: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.navigation-bar .nav-search .button-tabula {
+  font-size: 14px;
+}
+
+.navigation-bar .nav-menu {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.navigation-bar .nav-menu .menu-icon {
+  height: 35px;
+  width: 35px;
+}
+
+.navigation-bar .nav-menu .menu-icon .icon-open {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/menu.svg);
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 600px) {
+  .menu-icon {
+    display: block;
+
   }
+}
 
-  .navigation-bar .nav-brand,
-  .navigation-bar .nav-search,
-  .navigation-bar .nav-menu {
-    height: 50px;
-    padding: .4rem;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
+.navigation-bar .nav-menu .menu-icon .icon-closed {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/close.svg);
+  background-position: center;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  display: none;
+}
 
-  .navigation-bar .nav-menu ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-  }
+.navigation-bar .nav-menu ul {
+  padding: 0;
+  margin: 0;
+}
 
-  .navigation-bar .nav-menu ul li a {
-    padding: 8px 5px;
-    text-decoration: none;
-  }
+.navigation-bar .nav-menu ul li {
+  margin-top: 0;
+  padding: 0;
+  display: inline-block;
+  padding: 0px;
+}
 
-  .navigation-bar .nav-search {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
+.navigation-bar .nav-menu ul li a {
+  color: #303030;
+}
 
-  .navigation-bar .nav-search .navbar-section form input {
-    font-size: 14px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-  }
+.navigation-bar .nav-menu ul li.btn-menu-register a {
+  color: #fff;
+}
 
-  .navigation-bar .nav-search .button-tabula {
-    font-size: 14px;
-  }
+li.btn-menu-login {
+  border: solid 1px #000;
+  border-radius: 2px;
+  margin-right: 4px;
+}
 
-  .navigation-bar .nav-menu {
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-  }
+li.btn-menu-register {
+  border: solid 1px #000;
+  border-radius: 2px;
+  background: #000;
+}
 
-  .navigation-bar .nav-menu .menu-icon {
-    height: 35px;
-    width: 35px;
-  }
+.navigation-bar .avatar {
+  margin-left: 10px;
+}
 
-  .navigation-bar .nav-menu .menu-icon .icon-open {
-    width: 100%;
-    height: 100%;
-    background-image: url(../images/menu.svg);
-    background-position: center;
-    background-size: 70%;
-    background-repeat: no-repeat;
-  }
+.carousel-cell--1 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-financaseconomia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  @media screen and (max-width: 600px) {
-    .menu-icon {
-      display: block;
+.carousel-cell--2 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-varejoeconsumo.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-    }
-  }
+.carousel-cell--3 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-negocioegestao.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .navigation-bar .nav-menu .menu-icon .icon-closed {
-    width: 100%;
-    height: 100%;
-    background-image: url(../images/close.svg);
-    background-position: center;
-    background-size: 70%;
-    background-repeat: no-repeat;
-    display: none;
-  }
+.carousel-cell--4 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-direito.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .navigation-bar .nav-menu ul {
-    padding: 0;
-    margin: 0;
-  }
+.carousel-cell--5 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-controladoriaecontabilidade.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .navigation-bar .nav-menu ul li {
-    margin-top: 0;
-    padding: 0;
-    display: inline-block;
-    padding: 0px;
-  }
+.carousel-cell--6 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-tiesoftwares.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .navigation-bar .nav-menu ul li a {
-    color: #303030;
-  }
+.carousel-cell--7 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-marketing.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .navigation-bar .nav-menu ul li.btn-menu-register a {
-    color: #fff;
-  }
+.carousel-cell--8 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-engenharia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  li.btn-menu-login {
-    border: solid 1px #000;
-    border-radius: 2px;
-    margin-right: 4px;
-  }
+.carousel-cell--9 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-concursosecertificacao.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  li.btn-menu-register {
-    border: solid 1px #000;
-    border-radius: 2px;
-    background: #000;
-  }
+.carousel-cell--10 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-arquiteturaedesign.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .navigation-bar .avatar {
-    margin-left: 10px;
-  }
+.carousel-cell--11 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-saude.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .carousel-cell--1 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-financaseconomia.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.carousel-cell--12 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-historiaearte.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .carousel-cell--2 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-varejoeconsumo.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.carousel-cell--13 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-ensinomedio.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .carousel-cell--3 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-negocioegestao.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.carousel-cell--14 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-video.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .carousel-cell--4 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-direito.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.carousel-cell--15 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-gastronomia.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-  .carousel-cell--5 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-controladoriaecontabilidade.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--6 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-tiesoftwares.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--7 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-marketing.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--8 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-engenharia.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--9 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-concursosecertificacao.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--10 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-arquiteturaedesign.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--11 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-saude.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--12 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-historiaearte.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--13 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-ensinomedio.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--14 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-video.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--15 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-gastronomia.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-cell--16 {
-    width: 100%;
-    /* full width */
-    height: 50vh;
-    /* height of carousel */
-    margin-right: 10px;
-    background-image: url(../images/carousel/c-hobbies.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.carousel-cell--16 {
+  width: 100%;
+  /* full width */
+  height: 50vh;
+  /* height of carousel */
+  margin-right: 10px;
+  background-image: url(../images/carousel/c-hobbies.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 
-  .flickity-page-dots {
-    padding-bottom: 40px;
-  }
+.flickity-page-dots {
+  padding-bottom: 40px;
+}
 
-  .hero-landing {
-    padding: 15px;
-    margin-top: 65px;
-  }
+.hero-landing {
+  padding: 15px;
+  margin-top: 65px;
+}
 
-  .hero-landing .columns {
+.hero-landing .columns {
+  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+}
+
+.hero-landing .form-group.columns {
+  box-shadow: none;
+  padding: 0;
+}
+
+.form-group.columns label {
+  text-align: right;
+}
+
+.form-group label {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group select {
+  width: 100%;
+  border-radius: 2px;
+  padding: 8px;
+  border: solid 1px #000;
+  height: 36px;
+}
+
+.form-group input[type="radio"]:checked, .form-group input[type="radio"]:not(:checked) {
+  position: relative;
+  left: 0;
+  margin-right: 5px;
+}
+
+.box-body {
+  display: table;
+  width: auto;
+  margin: 0 auto
+}
+
+.hero-landing h2 {
+  color: #303030;
+  text-align: left;
+}
+
+.hero-landing #explore {
+  padding: 6px;
+}
+
+.macrotemas {
+  padding: 15px;
+
+  margin-top: 15px; }
+  .macrotemas .columns {
     -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-    padding: 15px;
-  }
-
-  .hero-landing .form-group.columns {
-    box-shadow: none;
-    padding: 0;
-  }
-
-  .form-group.columns label {
-    text-align: right;
-  }
-
-  .form-group label {
-    width: 100%;
-    margin-bottom: 5px;
-  }
-
-  .form-group input[type="text"],
-  .form-group input[type="email"],
-  .form-group input[type="password"],
-  .form-group input[type="number"],
-  .form-group select {
-    width: 100%;
-    border-radius: 2px;
-    padding: 8px;
-    border: solid 1px #000;
-    height: 36px;
-  }
-
-  .form-group input[type="radio"]:checked, .form-group input[type="radio"]:not(:checked) {
-    position: relative;
-    left: 0;
-    margin-right: 5px;
-  }
-
-  .box-body {
-    display: table;
-    width: auto;
-    margin: 0 auto
-  }
-
-  .hero-landing h2 {
-    color: #303030;
-    text-align: left;
-  }
-
-  .hero-landing #explore {
-    padding: 6px;
-  }
-
-  .macrotemas {
-    padding: 15px;
-
-    margin-top: 15px; }
-    .macrotemas .columns {
-      -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); }
-      .macrotemas .macro-mobile-wrapper {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); }
+    .macrotemas .macro-mobile-wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      padding: 15px; }
+      .macrotemas .macro-mobile-wrapper .macrotema-col-1,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-2,
+      .macrotemas .macro-mobile-wrapper .macrotema-col-3 {
+        width: 110px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -847,15 +885,21 @@ body {
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
-        -webkit-box-orient: horizontal;
+        -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        padding: 15px; }
-        .macrotemas .macro-mobile-wrapper .macrotema-col-1,
-        .macrotemas .macro-mobile-wrapper .macrotema-col-2,
-        .macrotemas .macro-mobile-wrapper .macrotema-col-3 {
-          width: 110px;
+        -ms-flex-direction: column;
+        flex-direction: column; }
+        .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-1 a,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-2 a,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv,
+        .macrotemas .macro-mobile-wrapper .macrotema-col-3 a {
+          width: 100%;
+          height: 110px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
           display: -webkit-box;
           display: -ms-flexbox;
           display: flex;
@@ -864,116 +908,110 @@ body {
           justify-content: center;
           -webkit-box-align: center;
           -ms-flex-align: center;
-          align-items: center;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-          flex-direction: column; }
-          .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv,
-          .macrotemas .macro-mobile-wrapper .macrotema-col-1 a,
-          .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv,
-          .macrotemas .macro-mobile-wrapper .macrotema-col-2 a,
-          .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv,
-          .macrotemas .macro-mobile-wrapper .macrotema-col-3 a {
-            width: 100%;
-            height: 110px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center; }
-            .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv p,
-            .macrotemas .macro-mobile-wrapper .macrotema-col-1 a p,
-            .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv p,
-            .macrotemas .macro-mobile-wrapper .macrotema-col-2 a p,
-            .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv p,
-            .macrotemas .macro-mobile-wrapper .macrotema-col-3 a p {
-              font-size: 10px;
-              color: #303030;
-              text-align: center;
-              padding: 10px;
-              margin: 0;
-              font-weight: 600; }
-              .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv img,
-              .macrotemas .macro-mobile-wrapper .macrotema-col-1 a img,
-              .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv img,
-              .macrotemas .macro-mobile-wrapper .macrotema-col-2 a img,
-              .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv img,
-              .macrotemas .macro-mobile-wrapper .macrotema-col-3 a img {
-                width: 35px;
-                display: none; }
-                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob1,
-                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob1,
-                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob1 {
-                  background-image: url(../images/Macrotemas/vertical/v-finan%C3%A7as.svg); }
-                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob2,
-                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob2,
-                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob2 {
-                    background-image: url(../images/Macrotemas/vertical/v-controladoria.svg); }
-                    .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob3,
-                    .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob3,
-                    .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob3 {
-                      background-image: url(../images/Macrotemas/vertical/v-ti.svg); }
-                      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob4,
-                      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob4,
-                      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob4 {
-                        background-image: url(../images/Macrotemas/vertical/v-saude.svg); }
-                        .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob5,
-                        .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob5,
-                        .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob5 {
-                          background-image: url(../images/Macrotemas/vertical/v-historia.svg); }
-                          .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob6,
-                          .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob6,
-                          .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob6 {
-                            background-image: url(../images/Macrotemas/vertical/v-varejo.svg); }
-                            .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob7,
-                            .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob7,
-                            .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob7 {
-                              background-image: url(../images/Macrotemas/vertical/v-direito.svg); }
-                              .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob8,
-                              .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob8,
-                              .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob8 {
-                                background-image: url(../images/Macrotemas/vertical/v-marketing.svg); }
-                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob9,
-                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob9,
-                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob9 {
-                                  background-image: url(../images/Macrotemas/vertical/v-arquitetura.svg); }
-                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob10,
-                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob10,
-                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob10 {
-                                    background-image: url(../images/Macrotemas/vertical/v-ensino.svg); }
-                                    .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob11,
-                                    .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob11,
-                                    .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob11 {
-                                      background-image: url(../images/Macrotemas/vertical/v-hobbies.svg); }
-                                      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob12,
-                                      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob12,
-                                      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob12 {
-                                        background-image: url(../images/Macrotemas/vertical/v-negocio.svg); }
-                                        .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob13,
-                                        .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob13,
-                                        .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob13 {
-                                          background-image: url(../images/Macrotemas/vertical/v-engenharia.svg); }
-                                          .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob14,
-                                          .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob14,
-                                          .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob14 {
-                                            background-image: url(../images/Macrotemas/vertical/v-concursos.svg); }
-                                            .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob15,
-                                            .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob15,
-                                            .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob15 {
-                                              background-image: url(../images/Macrotemas/vertical/v-video.svg); }
-                                              .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob16,
-                                              .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob16,
-                                              .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob16 {
-                                                background-image: url(../images/Macrotemas/vertical/v-gastro.svg); }
-                                                .macrotemas .macro-pc-wrapper {
+          align-items: center; }
+          .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv p,
+          .macrotemas .macro-mobile-wrapper .macrotema-col-1 a p,
+          .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv p,
+          .macrotemas .macro-mobile-wrapper .macrotema-col-2 a p,
+          .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv p,
+          .macrotemas .macro-mobile-wrapper .macrotema-col-3 a p {
+            font-size: 10px;
+            color: #303030;
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+            font-weight: 600; }
+            .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv img,
+            .macrotemas .macro-mobile-wrapper .macrotema-col-1 a img,
+            .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv img,
+            .macrotemas .macro-mobile-wrapper .macrotema-col-2 a img,
+            .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv img,
+            .macrotemas .macro-mobile-wrapper .macrotema-col-3 a img {
+              width: 35px;
+              display: none; }
+              .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob1,
+              .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob1,
+              .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob1 {
+                background-image: url(../images/Macrotemas/vertical/v-finan%C3%A7as.svg); }
+                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob2,
+                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob2,
+                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob2 {
+                  background-image: url(../images/Macrotemas/vertical/v-controladoria.svg); }
+                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob3,
+                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob3,
+                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob3 {
+                    background-image: url(../images/Macrotemas/vertical/v-ti.svg); }
+                    .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob4,
+                    .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob4,
+                    .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob4 {
+                      background-image: url(../images/Macrotemas/vertical/v-saude.svg); }
+                      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob5,
+                      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob5,
+                      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob5 {
+                        background-image: url(../images/Macrotemas/vertical/v-historia.svg); }
+                        .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob6,
+                        .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob6,
+                        .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob6 {
+                          background-image: url(../images/Macrotemas/vertical/v-varejo.svg); }
+                          .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob7,
+                          .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob7,
+                          .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob7 {
+                            background-image: url(../images/Macrotemas/vertical/v-direito.svg); }
+                            .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob8,
+                            .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob8,
+                            .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob8 {
+                              background-image: url(../images/Macrotemas/vertical/v-marketing.svg); }
+                              .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob9,
+                              .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob9,
+                              .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob9 {
+                                background-image: url(../images/Macrotemas/vertical/v-arquitetura.svg); }
+                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob10,
+                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob10,
+                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob10 {
+                                  background-image: url(../images/Macrotemas/vertical/v-ensino.svg); }
+                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob11,
+                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob11,
+                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob11 {
+                                    background-image: url(../images/Macrotemas/vertical/v-hobbies.svg); }
+                                    .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob12,
+                                    .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob12,
+                                    .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob12 {
+                                      background-image: url(../images/Macrotemas/vertical/v-negocio.svg); }
+                                      .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob13,
+                                      .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob13,
+                                      .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob13 {
+                                        background-image: url(../images/Macrotemas/vertical/v-engenharia.svg); }
+                                        .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob14,
+                                        .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob14,
+                                        .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob14 {
+                                          background-image: url(../images/Macrotemas/vertical/v-concursos.svg); }
+                                          .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob15,
+                                          .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob15,
+                                          .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob15 {
+                                            background-image: url(../images/Macrotemas/vertical/v-video.svg); }
+                                            .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob16,
+                                            .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob16,
+                                            .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob16 {
+                                              background-image: url(../images/Macrotemas/vertical/v-gastro.svg); }
+                                              .macrotemas .macro-pc-wrapper {
+                                                display: -webkit-box;
+                                                display: -ms-flexbox;
+                                                display: flex;
+                                                -webkit-box-pack: center;
+                                                -ms-flex-pack: center;
+                                                justify-content: center;
+                                                -webkit-box-align: center;
+                                                -ms-flex-align: center;
+                                                align-items: center;
+                                                -webkit-box-orient: vertical;
+                                                -webkit-box-direction: normal;
+                                                -ms-flex-direction: column;
+                                                flex-direction: column;
+                                                padding: 15px; }
+                                                .macrotemas .macro-pc-wrapper .macro-row-1,
+                                                .macrotemas .macro-pc-wrapper .macro-row-2,
+                                                .macrotemas .macro-pc-wrapper .macro-row-3 {
+                                                  width: 100%;
                                                   display: -webkit-box;
                                                   display: -ms-flexbox;
                                                   display: flex;
@@ -983,15 +1021,21 @@ body {
                                                   -webkit-box-align: center;
                                                   -ms-flex-align: center;
                                                   align-items: center;
-                                                  -webkit-box-orient: vertical;
+                                                  -webkit-box-orient: horizontal;
                                                   -webkit-box-direction: normal;
-                                                  -ms-flex-direction: column;
-                                                  flex-direction: column;
-                                                  padding: 15px; }
-                                                  .macrotemas .macro-pc-wrapper .macro-row-1,
-                                                  .macrotemas .macro-pc-wrapper .macro-row-2,
-                                                  .macrotemas .macro-pc-wrapper .macro-row-3 {
-                                                    width: 100%;
+                                                  -ms-flex-direction: row;
+                                                  flex-direction: row; }
+                                                  .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc,
+                                                  .macrotemas .macro-pc-wrapper .macro-row-1 a,
+                                                  .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc,
+                                                  .macrotemas .macro-pc-wrapper .macro-row-2 a,
+                                                  .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc,
+                                                  .macrotemas .macro-pc-wrapper .macro-row-3 a {
+                                                    width: 100px;
+                                                    height: 112px;
+                                                    background-size: contain;
+                                                    background-repeat: no-repeat;
+                                                    background-position: center;
                                                     display: -webkit-box;
                                                     display: -ms-flexbox;
                                                     display: flex;
@@ -1001,522 +1045,498 @@ body {
                                                     -webkit-box-align: center;
                                                     -ms-flex-align: center;
                                                     align-items: center;
-                                                    -webkit-box-orient: horizontal;
-                                                    -webkit-box-direction: normal;
-                                                    -ms-flex-direction: row;
-                                                    flex-direction: row; }
-                                                    .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc,
-                                                    .macrotemas .macro-pc-wrapper .macro-row-1 a,
-                                                    .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc,
-                                                    .macrotemas .macro-pc-wrapper .macro-row-2 a,
-                                                    .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc,
-                                                    .macrotemas .macro-pc-wrapper .macro-row-3 a {
-                                                      width: 100px;
-                                                      height: 112px;
-                                                      background-size: contain;
-                                                      background-repeat: no-repeat;
-                                                      background-position: center;
-                                                      display: -webkit-box;
-                                                      display: -ms-flexbox;
-                                                      display: flex;
-                                                      -webkit-box-pack: center;
-                                                      -ms-flex-pack: center;
-                                                      justify-content: center;
-                                                      -webkit-box-align: center;
-                                                      -ms-flex-align: center;
-                                                      align-items: center;
-                                                      margin: 0 5px;
-                                                      text-decoration: none; }
-                                                      .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc p,
-                                                      .macrotemas .macro-pc-wrapper .macro-row-1 a p,
-                                                      .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc p,
-                                                      .macrotemas .macro-pc-wrapper .macro-row-2 a p,
-                                                      .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc p,
-                                                      .macrotemas .macro-pc-wrapper .macro-row-3 a p {
-                                                        font-size: 12px;
-                                                        color: #303030;
-                                                        text-align: center;
-                                                        padding: 0 10px;
-                                                        margin: 0 40px;
-                                                        font-weight: 600; }
-                                                        .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc img,
-                                                        .macrotemas .macro-pc-wrapper .macro-row-1 a img,
-                                                        .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc img,
-                                                        .macrotemas .macro-pc-wrapper .macro-row-2 a img,
-                                                        .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc img,
-                                                        .macrotemas .macro-pc-wrapper .macro-row-3 a img {
-                                                          display: none;
-                                                          width: 40px; }
-                                                          .macrotemas .macro-pc-wrapper .macro-row-2 {
-                                                            margin: -10px 0; }
-                                                            .macrotemas .macro-pc-wrapper #macro-pc1 {
-                                                              background-image: url(../images/Macrotemas/horizontal//h-financas.svg); }
-                                                              .macrotemas .macro-pc-wrapper #macro-pc2 {
-                                                                background-image: url(../images/Macrotemas/horizontal/h-varejo.svg); }
-                                                                .macrotemas .macro-pc-wrapper #macro-pc3 {
-                                                                  background-image: url(../images/Macrotemas/horizontal/h-negocio.svg); }
-                                                                  .macrotemas .macro-pc-wrapper #macro-pc4 {
-                                                                    background-image: url(../images/Macrotemas/horizontal/h-direito.svg); }
-                                                                    .macrotemas .macro-pc-wrapper #macro-pc5 {
-                                                                      background-image: url(../images/Macrotemas/horizontal/h-controladoria.svg); }
-                                                                      .macrotemas .macro-pc-wrapper #macro-pc6 {
-                                                                        background-image: url(../images/Macrotemas/horizontal/h-ti.svg); }
-                                                                        .macrotemas .macro-pc-wrapper #macro-pc7 {
-                                                                          background-image: url(../images/Macrotemas/horizontal/h-marketing.svg); }
-                                                                          .macrotemas .macro-pc-wrapper #macro-pc8 {
-                                                                            background-image: url(../images/Macrotemas/horizontal/h-engenharia.svg); }
-                                                                            .macrotemas .macro-pc-wrapper #macro-pc9 {
-                                                                              background-image: url(../images/Macrotemas/horizontal/h-concursos.svg); }
-                                                                              .macrotemas .macro-pc-wrapper #macro-pc10 {
-                                                                                background-image: url(../images/Macrotemas/horizontal/h-arquitetura.svg); }
-                                                                                .macrotemas .macro-pc-wrapper #macro-pc11 {
-                                                                                  background-image: url(../images/Macrotemas/horizontal/h-saude.svg); }
-                                                                                  .macrotemas .macro-pc-wrapper #macro-pc12 {
-                                                                                    background-image: url(../images/Macrotemas/horizontal/h-historia.svg); }
-                                                                                    .macrotemas .macro-pc-wrapper #macro-pc13 {
-                                                                                      background-image: url(../images/Macrotemas/horizontal/h-ensino.svg); }
-                                                                                      .macrotemas .macro-pc-wrapper #macro-pc14 {
-                                                                                        background-image: url(../images/Macrotemas/horizontal/h-video.svg); }
-                                                                                        .macrotemas .macro-pc-wrapper #macro-pc15 {
-                                                                                          background-image: url(../images/Macrotemas/horizontal/h-gastronomia.svg); }
-                                                                                          .macrotemas .macro-pc-wrapper #macro-pc16 {
-                                                                                            background-image: url(../images/Macrotemas/horizontal/h-hobbies.svg); }
-                                                                                            #carousel-redirect {
-                                                                                              color: red;
-                                                                                              width: 100%;
-                                                                                              height: 100%;
-                                                                                              display: block;
-                                                                                            }
+                                                    margin: 0 5px;
+                                                    text-decoration: none; }
+                                                    .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc p,
+                                                    .macrotemas .macro-pc-wrapper .macro-row-1 a p,
+                                                    .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc p,
+                                                    .macrotemas .macro-pc-wrapper .macro-row-2 a p,
+                                                    .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc p,
+                                                    .macrotemas .macro-pc-wrapper .macro-row-3 a p {
+                                                      font-size: 12px;
+                                                      color: #303030;
+                                                      text-align: center;
+                                                      padding: 0 10px;
+                                                      margin: 0 40px;
+                                                      font-weight: 600; }
+                                                      .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc img,
+                                                      .macrotemas .macro-pc-wrapper .macro-row-1 a img,
+                                                      .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc img,
+                                                      .macrotemas .macro-pc-wrapper .macro-row-2 a img,
+                                                      .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc img,
+                                                      .macrotemas .macro-pc-wrapper .macro-row-3 a img {
+                                                        display: none;
+                                                        width: 40px; }
+                                                        .macrotemas .macro-pc-wrapper .macro-row-2 {
+                                                          margin: -10px 0; }
+                                                          .macrotemas .macro-pc-wrapper #macro-pc1 {
+                                                            background-image: url(../images/Macrotemas/horizontal//h-financas.svg); }
+                                                            .macrotemas .macro-pc-wrapper #macro-pc2 {
+                                                              background-image: url(../images/Macrotemas/horizontal/h-varejo.svg); }
+                                                              .macrotemas .macro-pc-wrapper #macro-pc3 {
+                                                                background-image: url(../images/Macrotemas/horizontal/h-negocio.svg); }
+                                                                .macrotemas .macro-pc-wrapper #macro-pc4 {
+                                                                  background-image: url(../images/Macrotemas/horizontal/h-direito.svg); }
+                                                                  .macrotemas .macro-pc-wrapper #macro-pc5 {
+                                                                    background-image: url(../images/Macrotemas/horizontal/h-controladoria.svg); }
+                                                                    .macrotemas .macro-pc-wrapper #macro-pc6 {
+                                                                      background-image: url(../images/Macrotemas/horizontal/h-ti.svg); }
+                                                                      .macrotemas .macro-pc-wrapper #macro-pc7 {
+                                                                        background-image: url(../images/Macrotemas/horizontal/h-marketing.svg); }
+                                                                        .macrotemas .macro-pc-wrapper #macro-pc8 {
+                                                                          background-image: url(../images/Macrotemas/horizontal/h-engenharia.svg); }
+                                                                          .macrotemas .macro-pc-wrapper #macro-pc9 {
+                                                                            background-image: url(../images/Macrotemas/horizontal/h-concursos.svg); }
+                                                                            .macrotemas .macro-pc-wrapper #macro-pc10 {
+                                                                              background-image: url(../images/Macrotemas/horizontal/h-arquitetura.svg); }
+                                                                              .macrotemas .macro-pc-wrapper #macro-pc11 {
+                                                                                background-image: url(../images/Macrotemas/horizontal/h-saude.svg); }
+                                                                                .macrotemas .macro-pc-wrapper #macro-pc12 {
+                                                                                  background-image: url(../images/Macrotemas/horizontal/h-historia.svg); }
+                                                                                  .macrotemas .macro-pc-wrapper #macro-pc13 {
+                                                                                    background-image: url(../images/Macrotemas/horizontal/h-ensino.svg); }
+                                                                                    .macrotemas .macro-pc-wrapper #macro-pc14 {
+                                                                                      background-image: url(../images/Macrotemas/horizontal/h-video.svg); }
+                                                                                      .macrotemas .macro-pc-wrapper #macro-pc15 {
+                                                                                        background-image: url(../images/Macrotemas/horizontal/h-gastronomia.svg); }
+                                                                                        .macrotemas .macro-pc-wrapper #macro-pc16 {
+                                                                                          background-image: url(../images/Macrotemas/horizontal/h-hobbies.svg); }
+                                                                                          #carousel-redirect {
+                                                                                            color: red;
+                                                                                            width: 100%;
+                                                                                            height: 100%;
+                                                                                            display: block;
+                                                                                          }
 
-                                                                                            .linksnav li a {
-                                                                                              margin-left: 5px;
-                                                                                            }
-                                                                                            .advantages {
-                                                                                              padding: 15px; }
-                                                                                              .advantages .spacer {
-                                                                                                padding: 15px;
-                                                                                                display: -webkit-box;
-                                                                                                display: -ms-flexbox;
-                                                                                                display: flex;
-                                                                                                -webkit-box-pack: center;
-                                                                                                -ms-flex-pack: center;
-                                                                                                justify-content: center;
-                                                                                                -webkit-box-align: center;
-                                                                                                -ms-flex-align: center;
-                                                                                                align-items: center;
-                                                                                                -webkit-box-orient: horizontal;
-                                                                                                -webkit-box-direction: normal;
-                                                                                                -ms-flex-direction: column;
-                                                                                                flex-direction: column;
-                                                                                                min-height: 200px; }
+                                                                                          .linksnav li a {
+                                                                                            margin-left: 5px;
+                                                                                          }
+                                                                                          .advantages {
+                                                                                            padding: 15px; }
+                                                                                            .advantages .spacer {
+                                                                                              padding: 15px;
+                                                                                              display: -webkit-box;
+                                                                                              display: -ms-flexbox;
+                                                                                              display: flex;
+                                                                                              -webkit-box-pack: center;
+                                                                                              -ms-flex-pack: center;
+                                                                                              justify-content: center;
+                                                                                              -webkit-box-align: center;
+                                                                                              -ms-flex-align: center;
+                                                                                              align-items: center;
+                                                                                              -webkit-box-orient: horizontal;
+                                                                                              -webkit-box-direction: normal;
+                                                                                              -ms-flex-direction: column;
+                                                                                              flex-direction: column;
+                                                                                              min-height: 200px; }
+                                                                                              .advantages .spacer .hex-adv {
+                                                                                                text-align: center; }
+                                                                                                .advantages p {
+                                                                                                  margin: 0; 
+                                                                                                  margin-top: 15px;
+                                                                                                }
+
+
+                                                                                                .macrotemas .columns {
+                                                                                                  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+                                                                                                  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper {
+                                                                                                  display: -webkit-box;
+                                                                                                  display: -ms-flexbox;
+                                                                                                  display: flex;
+                                                                                                  -webkit-box-pack: center;
+                                                                                                  -ms-flex-pack: center;
+                                                                                                  justify-content: center;
+                                                                                                  -webkit-box-align: center;
+                                                                                                  -ms-flex-align: center;
+                                                                                                  align-items: center;
+                                                                                                  -webkit-box-orient: horizontal;
+                                                                                                  -webkit-box-direction: normal;
+                                                                                                  -ms-flex-direction: row;
+                                                                                                  flex-direction: row;
+                                                                                                  padding: 15px;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 {
+                                                                                                  width: 110px;
+                                                                                                  display: -webkit-box;
+                                                                                                  display: -ms-flexbox;
+                                                                                                  display: flex;
+                                                                                                  -webkit-box-pack: center;
+                                                                                                  -ms-flex-pack: center;
+                                                                                                  justify-content: center;
+                                                                                                  -webkit-box-align: center;
+                                                                                                  -ms-flex-align: center;
+                                                                                                  align-items: center;
+                                                                                                  -webkit-box-orient: vertical;
+                                                                                                  -webkit-box-direction: normal;
+                                                                                                  -ms-flex-direction: column;
+                                                                                                  flex-direction: column;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 a,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 a,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 a {
+                                                                                                  width: 100%;
+                                                                                                  height: 110px;
+                                                                                                  background-size: contain;
+                                                                                                  background-repeat: no-repeat;
+                                                                                                  background-position: center;
+                                                                                                  display: -webkit-box;
+                                                                                                  display: -ms-flexbox;
+                                                                                                  display: flex;
+                                                                                                  -webkit-box-pack: center;
+                                                                                                  -ms-flex-pack: center;
+                                                                                                  justify-content: center;
+                                                                                                  -webkit-box-align: center;
+                                                                                                  -ms-flex-align: center;
+                                                                                                  align-items: center;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv p,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 a p,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv p,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 a p,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv p,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 a p {
+                                                                                                  font-size: 10px;
+                                                                                                  color: #303030;
+                                                                                                  text-align: center;
+                                                                                                  padding: 10px;
+                                                                                                  margin: 0;
+                                                                                                  font-weight: 600;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv img,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 a img,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv img,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 a img,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv img,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 a img {
+                                                                                                  width: 35px;
+                                                                                                  display: none;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob1,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob1,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob1 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-finan%C3%A7as.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob2,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob2,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob2 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-controladoria.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob3,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob3,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob3 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-ti.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob4,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob4,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob4 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-saude.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob5,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob5,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob5 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-historia.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob6,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob6,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob6 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-varejo.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob7,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob7,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob7 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-direito.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob8,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob8,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob8 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-marketing.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob9,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob9,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob9 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-arquitetura.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob10,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob10,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob10 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-ensino.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob11,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob11,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob11 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-hobbies.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob12,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob12,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob12 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-negocio.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob13,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob13,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob13 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-engenharia.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob14,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob14,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob14 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-concursos.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob15,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob15,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob15 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-video.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob16,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob16,
+                                                                                                .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob16 {
+                                                                                                  background-image: url(../images/Macrotemas/vertical/v-gastro.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper {
+                                                                                                  display: -webkit-box;
+                                                                                                  display: -ms-flexbox;
+                                                                                                  display: flex;
+                                                                                                  -webkit-box-pack: center;
+                                                                                                  -ms-flex-pack: center;
+                                                                                                  justify-content: center;
+                                                                                                  -webkit-box-align: center;
+                                                                                                  -ms-flex-align: center;
+                                                                                                  align-items: center;
+                                                                                                  -webkit-box-orient: vertical;
+                                                                                                  -webkit-box-direction: normal;
+                                                                                                  -ms-flex-direction: column;
+                                                                                                  flex-direction: column;
+                                                                                                  padding: 15px;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-1,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-2,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-3 {
+                                                                                                  width: 100%;
+                                                                                                  display: -webkit-box;
+                                                                                                  display: -ms-flexbox;
+                                                                                                  display: flex;
+                                                                                                  -webkit-box-pack: center;
+                                                                                                  -ms-flex-pack: center;
+                                                                                                  justify-content: center;
+                                                                                                  -webkit-box-align: center;
+                                                                                                  -ms-flex-align: center;
+                                                                                                  align-items: center;
+                                                                                                  -webkit-box-orient: horizontal;
+                                                                                                  -webkit-box-direction: normal;
+                                                                                                  -ms-flex-direction: row;
+                                                                                                  flex-direction: row;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-1 a,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-2 a,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-3 a {
+                                                                                                  width: 100px;
+                                                                                                  height: 112px;
+                                                                                                  background-size: contain;
+                                                                                                  background-repeat: no-repeat;
+                                                                                                  background-position: center;
+                                                                                                  display: -webkit-box;
+                                                                                                  display: -ms-flexbox;
+                                                                                                  display: flex;
+                                                                                                  -webkit-box-pack: center;
+                                                                                                  -ms-flex-pack: center;
+                                                                                                  justify-content: center;
+                                                                                                  -webkit-box-align: center;
+                                                                                                  -ms-flex-align: center;
+                                                                                                  align-items: center;
+                                                                                                  margin: 0 5px;
+                                                                                                  text-decoration: none;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc p,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-1 a p,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc p,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-2 a p,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc p,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-3 a p {
+                                                                                                  font-size: 12px;
+                                                                                                  color: #303030;
+                                                                                                  text-align: center;
+                                                                                                  padding: 0 10px;
+                                                                                                  margin: 0 40px;
+                                                                                                  font-weight: 600;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc img,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-1 a img,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc img,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-2 a img,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc img,
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-3 a img {
+                                                                                                  display: none;
+                                                                                                  width: 40px;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper .macro-row-2 {
+                                                                                                  margin: -10px 0;
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc1 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal//h-financas.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc2 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-varejo.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc3 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-negocio.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc4 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-direito.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc5 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-controladoria.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc6 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-ti.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc7 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-marketing.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc8 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-engenharia.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc9 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-concursos.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc10 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-arquitetura.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc11 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-saude.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc12 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-historia.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc13 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-ensino.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc14 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-video.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc15 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-gastronomia.svg);
+                                                                                                }
+
+                                                                                                .macrotemas .macro-pc-wrapper #macro-pc16 {
+                                                                                                  background-image: url(../images/Macrotemas/horizontal/h-hobbies.svg);
+                                                                                                }
+
+                                                                                                #carousel-redirect {
+                                                                                                  color: red;
+                                                                                                  width: 100%;
+                                                                                                  height: 100%;
+                                                                                                  display: block;
+                                                                                                }
+
+                                                                                                .advantages {
+                                                                                                  padding: 15px;
+                                                                                                }
+
+                                                                                                .advantages .spacer {
+                                                                                                  padding: 15px;
+                                                                                                  display: -webkit-box;
+                                                                                                  display: -ms-flexbox;
+                                                                                                  display: flex;
+                                                                                                  -webkit-box-pack: center;
+                                                                                                  -ms-flex-pack: center;
+                                                                                                  justify-content: center;
+                                                                                                  -webkit-box-align: center;
+                                                                                                  -ms-flex-align: center;
+                                                                                                  align-items: center;
+                                                                                                  -webkit-box-orient: horizontal;
+                                                                                                  -webkit-box-direction: normal;
+                                                                                                  -ms-flex-direction: row;
+                                                                                                  flex-direction: row;
+                                                                                                  min-height: 200px;
+                                                                                                }
+
                                                                                                 .advantages .spacer .hex-adv {
-                                                                                                  text-align: center; }
-                                                                                                  .advantages p {
-                                                                                                    margin: 0; 
-                                                                                                    margin-top: 15px;
-                                                                                                  }
+                                                                                                  text-align: center;
+                                                                                                }
+
+                                                                                                .advantages p {
+                                                                                                  margin: 0;
+                                                                                                }
 
 
-                                                                                                  .macrotemas .columns {
-                                                                                                    -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-                                                                                                    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
-                                                                                                  }
+                                                                                                .highlighted-courses {
+                                                                                                  height: auto;
+                                                                                                  padding: 15px
+                                                                                                }
 
-                                                                                                  .macrotemas .macro-mobile-wrapper {
-                                                                                                    display: -webkit-box;
-                                                                                                    display: -ms-flexbox;
-                                                                                                    display: flex;
-                                                                                                    -webkit-box-pack: center;
-                                                                                                    -ms-flex-pack: center;
-                                                                                                    justify-content: center;
-                                                                                                    -webkit-box-align: center;
-                                                                                                    -ms-flex-align: center;
-                                                                                                    align-items: center;
-                                                                                                    -webkit-box-orient: horizontal;
-                                                                                                    -webkit-box-direction: normal;
-                                                                                                    -ms-flex-direction: row;
-                                                                                                    flex-direction: row;
-                                                                                                    padding: 15px;
-                                                                                                  }
+                                                                                                .highlighted-courses a {
+                                                                                                  text-decoration: none;
+                                                                                                  color: #303030;
+                                                                                                }
 
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 {
-                                                                                                    width: 110px;
-                                                                                                    display: -webkit-box;
-                                                                                                    display: -ms-flexbox;
-                                                                                                    display: flex;
-                                                                                                    -webkit-box-pack: center;
-                                                                                                    -ms-flex-pack: center;
-                                                                                                    justify-content: center;
-                                                                                                    -webkit-box-align: center;
-                                                                                                    -ms-flex-align: center;
-                                                                                                    align-items: center;
-                                                                                                    -webkit-box-orient: vertical;
-                                                                                                    -webkit-box-direction: normal;
-                                                                                                    -ms-flex-direction: column;
-                                                                                                    flex-direction: column;
-                                                                                                  }
+                                                                                                .flickity-viewport {
+                                                                                                  width: 100%;
+                                                                                                  ;
+                                                                                                }
 
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 a,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 a,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 a {
-                                                                                                    width: 100%;
-                                                                                                    height: 110px;
-                                                                                                    background-size: contain;
-                                                                                                    background-repeat: no-repeat;
-                                                                                                    background-position: center;
-                                                                                                    display: -webkit-box;
-                                                                                                    display: -ms-flexbox;
-                                                                                                    display: flex;
-                                                                                                    -webkit-box-pack: center;
-                                                                                                    -ms-flex-pack: center;
-                                                                                                    justify-content: center;
-                                                                                                    -webkit-box-align: center;
-                                                                                                    -ms-flex-align: center;
-                                                                                                    align-items: center;
-                                                                                                  }
+                                                                                                .highlighted-carousel {
+                                                                                                  width: 100%;
+                                                                                                  padding: 8px;
+                                                                                                  margin-bottom: 15px
+                                                                                                }
 
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv p,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 a p,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv p,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 a p,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv p,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 a p {
-                                                                                                    font-size: 10px;
-                                                                                                    color: #303030;
-                                                                                                    text-align: center;
-                                                                                                    padding: 10px;
-                                                                                                    margin: 0;
-                                                                                                    font-weight: 600;
-                                                                                                  }
+                                                                                                h5 {
+                                                                                                  padding-left: 8px;
+                                                                                                  color: #303030
+                                                                                                }
 
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 .macro-indv img,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 a img,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 .macro-indv img,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 a img,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 .macro-indv img,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 a img {
-                                                                                                    width: 35px;
-                                                                                                    display: none;
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob1,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob1,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob1 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-finan%C3%A7as.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob2,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob2,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob2 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-controladoria.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob3,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob3,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob3 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-ti.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob4,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob4,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob4 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-saude.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob5,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob5,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob5 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-historia.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob6,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob6,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob6 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-varejo.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob7,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob7,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob7 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-direito.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob8,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob8,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob8 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-marketing.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob9,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob9,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob9 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-arquitetura.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob10,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob10,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob10 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-ensino.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob11,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob11,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob11 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-hobbies.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob12,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob12,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob12 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-negocio.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob13,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob13,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob13 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-engenharia.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob14,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob14,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob14 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-concursos.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob15,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob15,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob15 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-video.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-1 #macro-mob16,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-2 #macro-mob16,
-                                                                                                  .macrotemas .macro-mobile-wrapper .macrotema-col-3 #macro-mob16 {
-                                                                                                    background-image: url(../images/Macrotemas/vertical/v-gastro.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper {
-                                                                                                    display: -webkit-box;
-                                                                                                    display: -ms-flexbox;
-                                                                                                    display: flex;
-                                                                                                    -webkit-box-pack: center;
-                                                                                                    -ms-flex-pack: center;
-                                                                                                    justify-content: center;
-                                                                                                    -webkit-box-align: center;
-                                                                                                    -ms-flex-align: center;
-                                                                                                    align-items: center;
-                                                                                                    -webkit-box-orient: vertical;
-                                                                                                    -webkit-box-direction: normal;
-                                                                                                    -ms-flex-direction: column;
-                                                                                                    flex-direction: column;
-                                                                                                    padding: 15px;
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-1,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-2,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-3 {
-                                                                                                    width: 100%;
-                                                                                                    display: -webkit-box;
-                                                                                                    display: -ms-flexbox;
-                                                                                                    display: flex;
-                                                                                                    -webkit-box-pack: center;
-                                                                                                    -ms-flex-pack: center;
-                                                                                                    justify-content: center;
-                                                                                                    -webkit-box-align: center;
-                                                                                                    -ms-flex-align: center;
-                                                                                                    align-items: center;
-                                                                                                    -webkit-box-orient: horizontal;
-                                                                                                    -webkit-box-direction: normal;
-                                                                                                    -ms-flex-direction: row;
-                                                                                                    flex-direction: row;
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-1 a,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-2 a,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-3 a {
-                                                                                                    width: 100px;
-                                                                                                    height: 112px;
-                                                                                                    background-size: contain;
-                                                                                                    background-repeat: no-repeat;
-                                                                                                    background-position: center;
-                                                                                                    display: -webkit-box;
-                                                                                                    display: -ms-flexbox;
-                                                                                                    display: flex;
-                                                                                                    -webkit-box-pack: center;
-                                                                                                    -ms-flex-pack: center;
-                                                                                                    justify-content: center;
-                                                                                                    -webkit-box-align: center;
-                                                                                                    -ms-flex-align: center;
-                                                                                                    align-items: center;
-                                                                                                    margin: 0 5px;
-                                                                                                    text-decoration: none;
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc p,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-1 a p,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc p,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-2 a p,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc p,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-3 a p {
-                                                                                                    font-size: 12px;
-                                                                                                    color: #303030;
-                                                                                                    text-align: center;
-                                                                                                    padding: 0 10px;
-                                                                                                    margin: 0 40px;
-                                                                                                    font-weight: 600;
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-1 .macro-indv-pc img,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-1 a img,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-2 .macro-indv-pc img,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-2 a img,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-3 .macro-indv-pc img,
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-3 a img {
-                                                                                                    display: none;
-                                                                                                    width: 40px;
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper .macro-row-2 {
-                                                                                                    margin: -10px 0;
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc1 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal//h-financas.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc2 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-varejo.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc3 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-negocio.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc4 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-direito.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc5 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-controladoria.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc6 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-ti.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc7 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-marketing.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc8 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-engenharia.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc9 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-concursos.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc10 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-arquitetura.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc11 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-saude.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc12 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-historia.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc13 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-ensino.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc14 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-video.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc15 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-gastronomia.svg);
-                                                                                                  }
-
-                                                                                                  .macrotemas .macro-pc-wrapper #macro-pc16 {
-                                                                                                    background-image: url(../images/Macrotemas/horizontal/h-hobbies.svg);
-                                                                                                  }
-
-                                                                                                  #carousel-redirect {
-                                                                                                    color: red;
-                                                                                                    width: 100%;
-                                                                                                    height: 100%;
-                                                                                                    display: block;
-                                                                                                  }
-
-                                                                                                  .advantages {
-                                                                                                    padding: 15px;
-                                                                                                  }
-
-                                                                                                  .advantages .spacer {
-                                                                                                    padding: 15px;
-                                                                                                    display: -webkit-box;
-                                                                                                    display: -ms-flexbox;
-                                                                                                    display: flex;
-                                                                                                    -webkit-box-pack: center;
-                                                                                                    -ms-flex-pack: center;
-                                                                                                    justify-content: center;
-                                                                                                    -webkit-box-align: center;
-                                                                                                    -ms-flex-align: center;
-                                                                                                    align-items: center;
-                                                                                                    -webkit-box-orient: horizontal;
-                                                                                                    -webkit-box-direction: normal;
-                                                                                                    -ms-flex-direction: row;
-                                                                                                    flex-direction: row;
-                                                                                                    min-height: 200px;
-                                                                                                  }
-
-                                                                                                  .advantages .spacer .hex-adv {
-                                                                                                    text-align: center;
-                                                                                                  }
-
-                                                                                                  .advantages p {
-                                                                                                    margin: 0;
-                                                                                                  }
-
-
-                                                                                                  .highlighted-courses {
-                                                                                                    height: auto;
-                                                                                                    padding: 15px
-                                                                                                  }
-
-                                                                                                  .highlighted-courses a {
-                                                                                                    text-decoration: none;
-                                                                                                    color: #303030;
-                                                                                                  }
-
-                                                                                                  .flickity-viewport {
-                                                                                                    width: 100%;
-                                                                                                    ;
-                                                                                                  }
-
-                                                                                                  .highlighted-carousel {
-                                                                                                    width: 100%;
-                                                                                                    padding: 8px;
-                                                                                                    margin-bottom: 15px
-                                                                                                  }
-
-                                                                                                  h5 {
-                                                                                                    padding-left: 8px;
-                                                                                                    color: #303030
-                                                                                                  }
-
-                                                                                                  .course-card {
+                                                                                                .course-card {
   /* width: 225px;
   height: 350px;
 
@@ -1610,17 +1630,26 @@ body {
         }
 
         footer {
+          flex-shrink: 0;
           width: 100%;
           background-color: #303030;
-          min-height: 100px;
           margin-top: 15px;
-          bottom: 0;
-          left:0;
-          clear: both;
           position: relative;
           z-index: 10;
-          height: 3em;
-          margin-top: -0.4em;
+          padding: 20px 0;
+        }
+
+        footer ul {
+          list-style: none;
+          margin: 0;
+        }
+
+        footer ul li b,
+        footer ul li a,
+        footer ul li a:hover,
+        footer ul li a:focus{
+          color: #fff;
+          text-decoration: none;
         }
 
         @media (min-width: 600px) {

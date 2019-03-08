@@ -3,52 +3,26 @@
 <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 @endsection
 @section('content')
-@if(count($courses) == 0)
-<br><br><br><br>
-<div class="no-items">
-    <p><b>Não existem itens no carrinho!</b><br>
-        Acesse nosso <a href="{{ route('search.single', ['id' => -1]) }}">catalogo</a></p>
-    </div>
-    @else
-
-    <!-- <section>
-        <div class="container grid-md">
-            <div class="columns">
-            @foreach($courses as $course)
-                <div class="column col-12 course-row">
-                    <div class="course-image">
-                        <img src="../images/avatar-1.png" alt="image do curso">
-                    </div>
-                    <div class="course-description">
-                        <p>{{ $course->name }}</p>
-                        <p><b>R$ {{ $course->price }}</b></p>
-                    </div>
-                    <div class="remove-icon">
-                        <a href="{{ route('cart.remove', ['id' => $course->cart_id]) }}">
-                            <img src="images/cancel-music.svg" width="25px">
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-            </div>
-        </div>
-    </section> -->
-
-    <!-- <section id="checkout">
-        <div class="container grid-md">
-            <div class="columns">
-                <div class="column total-checkout">
-                    <p><b>Valor Total</b></p>
-                    <span>R$ {{ $total_price }}</span>
-                    <a id="checkout-button" href="{{ route('cart.checkout') }}" class="button-tabula-gray">Finalizar Compra</a>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <section>
+    <section class="wrapper-container">
+        @if(count($courses) == 0)
         <div class="container grid">
-            <div class="column checkout-courses">
+
+            <div class="columns">                                                          
+                <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 check-card"> 
+                    <div class="no-items">
+                        <p>
+                            <b>Não existem itens no carrinho!</b><br>
+                            Acesse nosso <a href="{{ route('search.single', ['id' => -1]) }}">catalogo</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @else
+
+        <div class="container grid">
+            <div class="column">
                 <div class="columns">                                                          
                     <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 check-card">                    
                         @foreach(array_chunk($courses,2) as $chunks)
@@ -95,13 +69,7 @@
             </div>
         </div>
     </section> 
-    <section>
-        <div class="container grid-md">
-            <div class="columns">
 
-            </div>
-        </div>
-    </section>
     <script type="text/javascript">
         $(document).ready(function(){
             $('#cupom').click(function(event){
