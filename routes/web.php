@@ -87,6 +87,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 	Route::get('/alunos/{id}', 'ProfController@alunosTeacher')->name('alunos.teacher');
 	Route::get('/alunos/reset/{id}', 'ProfController@alunosReset')->name('alunos.reset.teacher');
 	Route::get('/alunos/destroy/{id}', 'ProfController@alunosDestroy')->name('alunos.destroy.teacher');
+	Route::get('/alunos/certificate/{id}', 'ProfController@certificateGenerate')->name('certificate.teacher');
 
 	Route::get('/cupom', 'ProfController@cupomIndex')->name('cupom.teacher');
 	Route::get('/cupom/create', 'ProfController@cupomCreate')->name('cupom.create.teacher');

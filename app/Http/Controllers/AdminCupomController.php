@@ -12,7 +12,8 @@ use App\Cupom;
 class AdminCupomController extends Controller
 {
 	public function index(){
-		return view('admin.cupom.index')
+
+        return view('admin.cupom.index')
 		->with('users', User::all())
 		->with('courses', Course::all())
 		->with('cupoms', Cupom::all());
@@ -21,7 +22,6 @@ class AdminCupomController extends Controller
 	public function create()
 	{
 		$cupoms = Cupom::all();
-    	//return dd(Course::all());
 		return view('admin.cupom.create')
 		->with('cupoms', $cupoms)
 		->with('users', User::all())

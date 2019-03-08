@@ -135,7 +135,7 @@ rel = "stylesheet">
                         <li><b>O Tabula</b></li>
                         <li><a href="#">Institucional</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">Tabula para Empresas</a></li>
+                        <li><a href="{{route('empresa.register')}}">Tabula para Empresas</a></li>
                     </ul>
                 </div>
                 <div class="column col-5 col-xl-5 col-md-5 col-sm-12 col-xs-12">
@@ -152,8 +152,8 @@ rel = "stylesheet">
                     <ul>
                         <li><b>Comunidade</b></li>
                         <li><a href="#">Parceiros</a></li>
-                        <li><a href="#">Empresas</a></li>
-                        <li><a href="#">Professores</a></li>
+                        <li><a href="{{route('empresa')}}">Empresas</a></li>
+                        <li><a href="{{route('todosProfs')}}">Professores</a></li>
                     </ul>
                 </div>
             </div>

@@ -79,7 +79,7 @@
                                                 <p class="lineclamp-title"><strong>{{ $course->name }}</strong></p>
                                                 <p class="lineclamp-desc">{{ $course->desc }}</p>
                                             </div>                          
-                                            <div class="course-card__price" id="course-card-price">{{ $course->price }}</div>
+                                            <div class="course-card__price" id="course-card-price">R${{number_format($course->price, 2,',', '.')}}</div>
                                         </section>
                                     </a>
                                 </div>

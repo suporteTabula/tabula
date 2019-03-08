@@ -113,12 +113,13 @@ class CoursesController extends Controller
     {
         $course = Course::find($id);
         $chapter = $course->course_item_groups->all();
-        $user = Auth::user();
+        $auth = Auth::user();
         $item = $request->item_id; // Id específico do item ao finalizar aula
         $readonly = $request->readonly;
+        $totalProgress = 0;
 
-        $courseItem = CourseItemUser::where('course_item_id',$item)->where('user_id',$user->id)->get();
-        $courseCount = CourseItemUser::where('course_item_id',$item)->where('user_id',$user->id)->count();
+        $courseItem = CourseItemUser::where('course_item_id',$item)->where('user_id',$auth->id)->get();
+        $courseCount = CourseItemUser::where('course_item_id',$item)->where('user_id',$auth->id)->count();
         if($readonly == 'false'){
             Log::Debug('Not Readonly');
             if(!count($courseItem) == 0)
@@ -137,7 +138,7 @@ class CoursesController extends Controller
             else{
                 //A user has attempted to mark as done an item they don't yet have
                 $realItem = new CourseItemUser;
-                $realItem->user_id = $user->id;
+                $realItem->user_id = $auth->id;
                 $realItem->course_item_id = $item;
                 $realItem->course_item_status_id = 1;
                 $realItem->save();
@@ -148,7 +149,11 @@ class CoursesController extends Controller
             $chapters->progressDo = CourseItemUser::wherein('course_item_id', $itemChapter)
             ->where('course_item_status_id', 1)
             ->count();
+            $totalProgress = $totalProgress + $chapters->progressDo;
         }
+        CourseUser::where('course_id', $course->id)->where('user_id', $auth->id)->update([
+            'progress' =>   $totalProgress
+        ]);
 
         return json_encode($chapter);
     }

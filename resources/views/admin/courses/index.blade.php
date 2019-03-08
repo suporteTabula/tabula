@@ -26,7 +26,8 @@
 					<th>Descrição</th>
 					<th>Categoria</th>
 					<th>Autor</th>
-					<th>Cursos</th>
+					<th>Alunos</th>
+					<th>Grupo</th>
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead>
@@ -44,7 +45,10 @@
 									{{ $course->category->desc }}
 								</td>
 								<td style="vertical-align: middle !important;">
-									{{ $users->find($course->user_id_owner)->first_name }}
+									{{ $users->find($course->user_id_owner)->name }}
+								</td>
+								<td style="vertical-align: middle !important;">
+									<a href="{{ route('alunos.teacher', ['id' => $course->id]) }}">Alunos</a>
 								</td>
 								<td style="vertical-align: middle !important;">
 									@if(!$course->group)

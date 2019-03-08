@@ -13,7 +13,7 @@ use App\TransactionItem;
 
 class TransactionsController extends Controller
 {
-	/*public function statusTransaction(Request $request)
+	public function statusTransaction(Request $request)
 	{  
         $session = session()->get('desconto');
         $idUser = Auth::user()->id;
@@ -72,9 +72,9 @@ class TransactionsController extends Controller
             ->with('courses', $courses)
             ->with('total_price', $total_price)
             ->with('auth', $auth);
-        }*/
+        }
 
-        public function statusTransaction(Request $request)
+       /* public function statusTransaction(Request $request)
         {
             $auth=Auth::user();
             $i = 1;
@@ -92,7 +92,7 @@ class TransactionsController extends Controller
         *   ELO         |   16  |
         *   HIPERCARD   |   20  |
         *   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        */
+        *
         //return dd($request);
 
         if(isset($request))
@@ -188,6 +188,10 @@ class TransactionsController extends Controller
                     $transaction->hash = $token_transaction;
                     $transaction->save();
                     session()->flush();
+                    return view('success')
+                    ->with('courses', $courses)
+                    ->with('total_price', $total_price)
+                    ->with('auth', $auth);
                 }
             }
 
@@ -199,5 +203,5 @@ class TransactionsController extends Controller
                     //Tratamento das mensagens de erro
             }
         }
-    }
+    }*/
 }

@@ -815,8 +815,14 @@ class ProfController extends Controller
     }
 
     public function cupomIndex(){
-        $users = Auth::user()->id;
-        $cupoms = Cupom::where('user_id', $users)->get();
+        $auth = Auth::user()->id;
+        $cupoms = Cupom::where('user_id', $auth)->get();
+
+        foreach ($cupoms as $cupom) {
+        $cupom->expira_cupom = explode('-', $cupom->expira_cupom);
+        $cupom->expira_cupom = $cupom->expira_cupom[2] . '/' . $cupom->expira_cupom[1] . '/' . $cupom->expira_cupom[0];
+        }
+
 
        // return dd($users);
         return view('teacher.cupom.index')
@@ -827,9 +833,9 @@ class ProfController extends Controller
 
     public function cupomCreate()
     {
-        $users = Auth::user()->id;
-        $cupoms = Cupom::where('user_id', $users)->get();
-        $cursos = Course::where('user_id_owner', $users)->get();
+        $auth = Auth::user()->id;
+        $cupoms = Cupom::where('user_id', $auth)->get();
+        $cursos = Course::where('user_id_owner', $auth)->get();
         //return dd($cursos);
         return view('teacher.cupom.create')
         ->with('cupoms', $cupoms)
@@ -845,25 +851,27 @@ class ProfController extends Controller
         ]);
         //Vincula as variaveis 
         
-        $user = Auth::user()->id;
+        $auth = Auth::user()->id;
         if ($request->limiteCupom == null || $request->limiteCupom == '') {
             $request->limiteCupom = 0;
         }
 
+        $expiraCupom = explode('/', $request->expiraCupom);
+        $expiraCupom = $expiraCupom[2] . '-' . $expiraCupom[1] . '-' . $expiraCupom[0];
 
         Cupom::create([
-            'codCupom' => $request->codCupom,
-            'tipoCupom' => $request->tipoCupom,
-            'valorCupom' => $request->valorCupom,
-            'expiraCupom' => $request->expiraCupom,
-            'limiteCupom' => $request->limiteCupom,
-            'descCupom' => $request->descCupom,
+            'cod_cupom' => $request->codCupom,
+            'tipo_cupom' => $request->tipoCupom,
+            'valor_cupom' => $request->valorCupom,
+            'expira_cupom' => $expiraCupom,
+            'limite_cupom' => $request->limiteCupom,
+            'desc_cupom' => $request->descCupom,
             'curso_id' => $request->curso_id,
-            'user_id' =>$user
+            'user_id' =>$auth
         ]);
         // se tiver algum check nos grupos de usuário
 
-        Session::flash('success', 'Curso criado com sucesso');
+        Session::flash('success', 'Cupom criado com sucesso');
 
 
         return redirect()->route('cupom.teacher');
@@ -871,9 +879,12 @@ class ProfController extends Controller
 
     public function cupomEdit($id)
     {   
-        $users = Auth::user()->id;
+        $auth = Auth::user()->id;
         $cupom = Cupom::find($id);
-        $cursos = Course::where('user_id_owner', $users)->get();
+        $cursos = Course::where('user_id_owner', $auth)->get();
+
+        $cupom->expira_cupom = explode('-', $cupom->expira_cupom);
+        $cupom->expira_cupom = $cupom->expira_cupom[2] . '/'. $cupom->expira_cupom[1] . '/' . $cupom->expira_cupom[0];
 
         return view('teacher.cupom.edit')
         ->with('cupom', $cupom)
@@ -889,20 +900,22 @@ class ProfController extends Controller
         ]);
         //Vincula as variaveis 
         
-        $user = Auth::user()->id;
+        $auth = Auth::user()->id;
 
+        $expiraCupom = explode('/', $request->expiraCupom);
+        $expiraCupom = $expiraCupom[2] . '-' . $expiraCupom[1] . '-' . $expiraCupom[0];
 
         Cupom::where('id', $request->id)->update([
-            'codCupom' => $request->codCupom,
-            'tipoCupom' => $request->tipoCupom,
-            'valorCupom' => $request->valorCupom,
-            'expiraCupom' => $request->expiraCupom,
-            'limiteCupom' => $request->limiteCupom,
-            'descCupom' => $request->descCupom,
+            'cod_cupom' => $request->codCupom,
+            'tipo_cupom' => $request->tipoCupom,
+            'valor_cupom' => $request->valorCupom,
+            'expira_cupom' => $expiraCupom,
+            'limite_cupom' => $request->limiteCupom,
+            'desc_cupom' => $request->descCupom,
             'curso_id' => $request->curso_id,
-            'user_id' =>$user
+            'user_id' =>$auth
         ]);        
-        Session::flash('success', 'Curso Editado com sucesso');
+        Session::flash('success', 'Cupom Editado com sucesso');
         return redirect()->back();
     }
 
@@ -912,7 +925,7 @@ class ProfController extends Controller
 
         $cupom->delete();
 
-        Session::flash('success', 'Curso removido com sucesso');
+        Session::flash('success', 'Cupom removido com sucesso');
         return redirect()->back();
     }
     public function todosProfs()
@@ -922,7 +935,7 @@ class ProfController extends Controller
         return view('todosProfs')
         ->with('myTpes', $myTpes)
         ->with('userTeachers', $userTeachers)
-        ->with('users', Auth::user());
+        ->with('auth', Auth::user());
     }
 
     public function courseProf($id)
@@ -935,12 +948,30 @@ class ProfController extends Controller
     public function alunosTeacher($id)
     {
         $alunos = CourseUser::where('course_id', $id)->get();
+        $course = Course::find($id);
+        $course->total = 0;
+        $chapter = $course->course_item_groups->all();
+        //Verificar o total de aulas possui o curso
+        foreach ($chapter as $chapters) {   
+            $itemChapter = CourseItem::where('course_item_group_id', $chapters->id)->count();
+            $course->total = $course->total + $itemChapter;
+        }
+
         foreach ($alunos as $aluno) {
             $aluno->dados = User::where('id', $aluno->user_id)->first();
+            $aluno->progress = ($aluno->progress / $course->total)*100;
         }
+
+        $userTypes = Auth::user()->userTypes()->first();
+
+        if ($userTypes->desc == "Admin") {
+            return view('admin.courses.alunos')->with('alunos', $alunos)->with('courses', Course::all());
+        }else{
         return view('teacher.courses.alunos')
         ->with('alunos', $alunos)
         ->with('courses', Course::all());
+        }
+       
     }
 
     public function alunosReset($id)
@@ -959,5 +990,27 @@ class ProfController extends Controller
 
         Session::flash('success', 'Aluno removido com sucesso');
         return redirect()->back();
+    }
+
+    public function certificateGenerate($id)
+    {
+        $aluno = CourseUser::find($id);
+        $course = Course::find($aluno->course_id);
+        $course->total = 0;
+        $chapter = $course->course_item_groups->all();
+
+        foreach ($chapter as $chapters) {   
+            $itemChapter = CourseItem::where('course_item_group_id', $chapters->id)->count();
+            $course->total = $course->total + $itemChapter;
+        }
+        if ($aluno->progress != $course->total) {
+            Session::flash('success', 'O Aluno não finalizou o curso');
+            return redirect()->back();
+        }else{
+            
+        }
+
+        return dd($aluno);
+
     }
 }

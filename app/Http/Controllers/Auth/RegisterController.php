@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Session;
 use App\User;
 use App\State; 
 use App\Country;
@@ -95,6 +96,7 @@ class RegisterController extends Controller
             $user->state_id = $data['state_id'];
         }
         $user->save();
+        Session::flash('success', 'Usuário criado com sucesso');
         return $user;
     }
 }

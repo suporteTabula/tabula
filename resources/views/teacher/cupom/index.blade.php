@@ -18,7 +18,7 @@
 				<th>Tipo de Cupom</th>
 				<th>Valor do Cupom</th>
 				<th>Descrição</th>
-				<th>ID do Produto</th>
+				<th>ID Curso</th>
 				<th>Uso/Limite</th>
 				<th>Validade</th>
 				<th>Editar</th>
@@ -28,13 +28,17 @@
 				@if ($cupoms->count() > 0)
 				@foreach ($cupoms as $cupom)
 				<tr>
-					<td style="vertical-align: middle !important;">{{ $cupom->codCupom}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->tipoCupom}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->valorCupom}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->descCupom}}</td>
+					<td style="vertical-align: middle !important;">{{ $cupom->cod_cupom}}</td>
+					<td style="vertical-align: middle !important;">{{ $cupom->tipo_cupom}}</td>
+					<td style="vertical-align: middle !important;">{{ $cupom->valor_cupom}}</td>
+					<td style="vertical-align: middle !important;">{{ $cupom->desc_cupom}}</td>
+					@if($cupom->curso_id == "" || $cupom->curso_id == null)
+					<td style="vertical-align: middle !important;">Sem Curso</td>
+					@else
 					<td style="vertical-align: middle !important;">{{ $cupom->curso_id}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->limiteCupom}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->expiraCupom}} dias</td>
+					@endif
+					<td style="vertical-align: middle !important;">{{ $cupom->limite_cupom}}</td>
+					<td style="vertical-align: middle !important;">{{ $cupom->expira_cupom}}</td>
 					
 					<td>
 						<a href="{{ route('cupom.edit.teacher', ['id' => $cupom->id]) }} ">
