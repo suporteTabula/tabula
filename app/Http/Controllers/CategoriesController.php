@@ -22,7 +22,7 @@ class CategoriesController extends Controller
 
         return view('category')
             ->with('category_desc', $category->desc)
-            ->with('user', Auth::user())
+            ->with('auth', Auth::user())
             ->with('category_count', 0)
             ->with('categories', Category::orderBy('desc', 'ASC')->get())
             // busca todas os cursos da categoria selecionada

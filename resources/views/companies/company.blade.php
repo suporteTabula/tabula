@@ -43,7 +43,7 @@
                     <!--<div id="content"></div>-->
 
                     <div id="painel-1">
-                        @foreach($teachers->courses as $course)
+                        @foreach($courses as $course)
                         <ul class="clearfix grid" id="courses">
                             <li class="clearfix">
                                 <div class="course-card" id="course-card">                          
@@ -89,7 +89,7 @@
                                     @foreach($teachers as $teacher)
                                     @if ($teacher->empresa_id == $auth->id)<br>
                                     <div class="teacher-photo-wrapper"> 
-                                        <a href="#"> 
+                                        <a href="{{ route('course.prof', ['id' => $teacher->id]) }}"> 
                                             <img src="{{asset('/images/Profilepic')}}/{{ $teacher->avatar}}">
                                             <div class="teacher-description">
                                                 <p>{{$teacher->name}} </p>
@@ -107,35 +107,34 @@
         </div>
     </div>
 </section>
-
 <!--
-$(document).ready(function(){
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#panel-course').hide();
+        $('#panel-teacher').hide();
+        $('#panel-know').hide();
+        $('#panel-mission').hide();
 
         $('#courseCompany').click(function(){
-            $('#painel-2','#painel-3', '#painel-4', ).slideUp(500);
-            $('#painel-1').delay(200).slideDown(500);
+            $('#content-company').html(''); 
+            $('#content-company').append($('#panel-course').html());
         });
 
         $('#teacherCompany').click(function(){
-            $('#painel-1','#painel-3', '#painel-4' ).slideUp(500);
-            $('#painel-2').delay(200).slideDown(500);
+            $('#content-company').html(''); 
+            $('#content-company').append($('#panel-teacher').html());
         });
 
         $('#knowledgeCompany').click(function(){
-            $('#painel-1','#painel-2', '#painel-4' ).slideUp(500);
-            $('#painel-3').delay(200).slideDown(500);
-        });
+            $('#content-company').html(''); 
+            $('#content-company').append($('#panel-know').html());
 
         $('#missionCompany').click(function(){
-            $('#painel-1','#painel-2', '#painel-3').slideUp(500);
-            $('#painel-4').delay(200).slideDown(500);
+            $('#content-company').html(''); 
+            $('#content-company').append($('#panel-mission').html());
         });
 
 
     });
--->
-
-
-
-
+</script>-->
 @stop

@@ -16,7 +16,7 @@
 					<div class="col-xs-12">
 						<label for="userType">Tipo de usuário: </label>
 						@foreach ($usersType as $userType)
-							<label class="radio-inline"><input type="radio" name="usersType[]" value="{{ $userType->id }}" 
+							<label class="radio-inline"><input type="radio" name="usersType" value="{{ $userType->id }}" 
 								@foreach ($user->userTypes as $type)
 									@if ($type->id == $userType->id)
 										checked
@@ -79,21 +79,9 @@
 
 				<div class="form-group row">
 					<div class="col-xs-6">
-				    	<label for="first_name">Primeiro Nome</label>
-				    	<input class="form-control" name="first_name" placeholder="Seu nome" type="text" value="{{ $user->first_name }}">
+				    	<label for="name">Nome Completo</label>
+				    	<input class="form-control" name="name" placeholder="Seu nome" type="text" value="{{ $user->name }}">
 				  	</div>
-
-				  	<div class="col-xs-6">
-				    	<label for="last_name">Sobrenome</label>
-				    	<input class="form-control" name="last_name" placeholder="Seu sobrenome" type="text" value="{{ $user->last_name }}">
-				  	</div>
-				</div>
-
-				<div class="form-group row">
-					<div class="col-xs-6">
-						<label for="nickname">Apelido</label>
-						<input class="form-control" type="text" name="nickname" placeholder="Seu apelido" value="{{ $user->nickname }}">
-					</div>
 
 					<div class="col-xs-6">
 						<label for="birthdate">Data de Nascimento</label>
@@ -101,16 +89,19 @@
 					</div>
 				</div>
 
+			
+
 				<div class="form-group">
 					<label for="email">E-mail</label>
 					<input class="form-control" type="email" name="email" placeholder="exemplo@email.com" value="{{ $user->email }}">
 				</div>
-
-				<label for="birthdate">Sexo: </label>
-				<label class="radio-inline"><input type="radio" name="sex" value="Masculino" @if ($user->sex == 'Masculino')
-				checked @endif>Masculino</label>
-				<label class="radio-inline"><input type="radio" name="sex" value="Feminino" @if ($user->sex == 'Feminino')
-				checked @endif>Feminino</label>
+				<div class="sex">
+					<label for="sex">Sexo: </label>
+					<label class="radio-inline"><input type="radio" name="sex" value="Masculino" @if ($user->sex == 'Masculino')
+					checked @endif>Masculino</label>
+					<label class="radio-inline"><input type="radio" name="sex" value="Feminino" @if ($user->sex == 'Feminino')
+					checked @endif>Feminino</label>
+				</div>
 
 				<div class="form-group row">
 					<div class="col-xs-6">
