@@ -12,7 +12,6 @@
 		<form action="{{ route('mission.company.update') }}" method="post" enctype="multipart/form-data">
 			{{ csrf_field() }}
 
-
 			<div class="form-group">
 				<label for="bio">Missão</label>
 			@if($company->mission != null || $company->mission != '')
@@ -21,7 +20,7 @@
 			<textarea class="form-control" rows="5" id="mission" name="mission" placeholder="Escreva aqui..."></textarea>
 			@endif
 			<div class="text-center">
-				<button class="btn btn-success" type="submit">Vincular</button>
+				<button class="btn btn-success" type="submit">Editar</button>
 				<a class="btn btn-success" href="{{ route('users') }}">Voltar</a>
 			</div>
 

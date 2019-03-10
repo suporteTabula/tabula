@@ -2,7 +2,17 @@
 
 @section('content')
 	<div class="panel panel-default">
-		
+		<div class="panel-heading" style="position: relative; height:80x; ">
+			<form class="form-group" method="POST" action="{{ route('alunos.store', ['id' => $id]) }}">
+			{{ csrf_field() }}
+			<label for="email">E-mail Aluno</label>
+			<input class="form-control" type="email" id="email"  name="email" placeholder="E-mail " style="width: 300px;">
+			<button style="width:35px; position: absolute; right:15px; top: 12px;">
+				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
+			</button>
+			</form>
+		</div>
+
 		<div class="panel-body">
 			<table id="coursesTable" class="table table-hover">
 				<thead>

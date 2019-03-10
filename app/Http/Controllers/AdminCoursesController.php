@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Session;
-use Auth;
+use Illuminate\Support\Facades\DB;
+use App\CustomClasses\vimeo_tools;
 use App\Category;
 use App\Course;
 use App\User;
 use App\UserGroup;
+use App\CourseUser;
+use App\CourseItem;
 use App\CourseItemType;
 use App\CourseItemGroup;
-use App\CourseItem;
 use App\CourseItemOption;
-use App\CustomClasses\vimeo_tools;
-use Log;
 use Storage;
-use Illuminate\Support\Facades\DB;
+use Session;
+use Auth;
+use Log;
 
 
 class AdminCoursesController extends Controller
@@ -760,56 +761,73 @@ class AdminCoursesController extends Controller
         
         return dd($variavel);
         if ($request->item_type_id == '6') {
-         foreach ($all_requests as $key => $value) {
+            foreach ($all_requests as $key => $value) {
+                if (strpos($key, 'verdadeira') !== false) {
+                    $all_trues[] = explode('_', $key)[1];
+                }
+            }
 
-            if (strpos($key, 'verdadeira') !== false) {
-                $all_trues[] = explode('_', $key)[1];
+            foreach ( $all_requests['afirmacao'] as $key => $value) {
+                if($value == '' || $value == NULL){
+                    continue;
+                }
+                else
+                {
+                    $multi = new CourseItemOption;
+                    $multi->course_items_id = $funcao->id;
+                    $multi->desc = $value;
+                    $multi->checked = 0;
+                    foreach ($all_trues as $verdadeiras) {
+                        if ($key == $verdadeiras) {
+                            $multi->checked = 1;
+                        }    
+                    }           
+                } 
+                $multi->save();
             }
         }
+        if ($request->item_type_id == '9')
+        {
+            $this->validate($request, [
+                'verdadeira'    => 'required',
+            ]);
 
-        
-        foreach ( $all_requests['afirmacao'] as $key => $value) {
-            if($value == '' || $value == NULL){
-                continue;
-            }
-            else
-            {
-                $multi = new CourseItemOption;
-                $multi->course_items_id = $funcao->id;
-                $multi->desc = $value;
-                $multi->checked = 0;
-                foreach ($all_trues as $verdadeiras) {
-                    if ($key == $verdadeiras) {
+            foreach ( $all_requests['afirmacao'] as $key => $value) {
+                if($value == '' || $value == NULL){
+                    continue;
+                }
+                else
+                {
+                    $multi = new CourseItemOption;
+                    $multi->course_items_id = $funcao->id;
+                    $multi->desc = $value;
+                    $multi->checked = 0;
+                    if ($request->verdadeira == $key) {
                         $multi->checked = 1;
-                    }    
-                }           
-            } 
-            $multi->save();
+                    }               
+                } 
+                $multi->save();
+            }
         }
+        return redirect()->back();
     }
-    if ($request->item_type_id == '9')
+
+    public function storeAluno(Request $request, $id)
     {
         $this->validate($request, [
-            'verdadeira'    => 'required',
-        ]);
+                'email'    => 'required',
+            ]);
+        $user = User::where('email', $request->email)->first();
+        $course = Course::find($id);
 
-        foreach ( $all_requests['afirmacao'] as $key => $value) {
-            if($value == '' || $value == NULL){
-                continue;
-            }
-            else
-            {
-                $multi = new CourseItemOption;
-                $multi->course_items_id = $funcao->id;
-                $multi->desc = $value;
-                $multi->checked = 0;
-                if ($request->verdadeira == $key) {
-                    $multi->checked = 1;
-                }               
-            } 
-            $multi->save();
+        $item = CourseUser::where('user_id', $user->id)->where('course_id', $course->id)->count();
+
+        if ($item > 0) {
+            Session::flash('success', 'Este Usuário já esta no curso');
+            return redirect()->back();
         }
+        $user->courses()->save($course, ['progress' => 0]);
+        Session::flash('success', 'Aluno vinculado ao curso '. $course->name);
+        return redirect()->back();
     }
-    return redirect()->back();
-}
 }

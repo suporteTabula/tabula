@@ -151,6 +151,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 	Route::get('/courses/edit/{id}', 'AdminCoursesController@edit')->name('course.edit');
 	Route::post('/courses/update/{id}', 'AdminCoursesController@update')->name('course.update');
 	Route::get('/courses/destroy/{id}', 'AdminCoursesController@destroy')->name('course.destroy');
+	Route::post('/courses/alunos/store/{id}', 'AdminCoursesController@storeAluno')->name('alunos.store');
 
 	Route::post('/course/chapter/{id}', 'AdminCoursesController@chapter')->name('course.chapter');
 	Route::get('/course/chapter/edit/{id}', 'AdminCoursesController@chapter_edit')->name('course.chapter.edit');

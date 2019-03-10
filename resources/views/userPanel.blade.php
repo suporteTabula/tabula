@@ -141,6 +141,14 @@
                                 <input class="form-control" type="text" name="google_plus" placeholder="https://..." value="{{ $auth->google_plus }}">
                             </div>
                         </div>
+                        <div class="columns">
+                            <div class="column col-1"></div>
+                            <div class="column col-10 save-button">
+                                <p><b>Deseja salvar as alterações?</b></p>
+                                <button class="button-tabula" type="submit" form="teste">Salvar</button>
+                            </div>
+                            div class="column col-1"></div>
+                        </div>
                     </div>
                     <!--Dados Pagamento-->
                     <div class="columns">
@@ -175,14 +183,7 @@
                     </div>
                 </form>
             </div>
-            <div class="columns">
-                <div class="column col-1"></div>
-                <div class="column col-10 save-button">
-                   <p><b>Deseja salvar as alterações?</b></p>
-                   <button class="button-tabula" type="submit" form="teste">Salvar</button>
-               </div>
-               <div class="column col-1"></div>
-            </div>
+            
                <!--meus cursos-->
            <div id="panel-2" class="columns">
                 <div class="column col-12">
@@ -190,7 +191,9 @@
                        @foreach($auth->courses as $course)
                        <div class="course-card">
                             <a href="{{ route('course.single', ['id' => $course->id]) }}">
-                                <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                                <div class="course-card__image">
+                                    <img style="width: 100%" src="{{asset('images/aulas')}}/{{$course->thumb_img}}" class="thumb" />
+                                </div>
                                 <div class="course-card__description">
                                     <p>{{ $course->name }}</p>
                                     <p>{{ $course->desc }}</p>
@@ -209,7 +212,7 @@
                         <div class="course-card">
                             <a href="{{route('course.create.teacher')}}">
                                 <div class="course-card__image" >
-                                    <img style="width: 50%" src="{{url('/images/img/more.png')}}">
+                                    <img style="width: 100%" src="{{url('/images/img/more.png')}}">
                                 </div>
                                 <div class="course-card__description">
 
@@ -221,7 +224,9 @@
                                 @if ($course->user_id_owner == $auth->id)<br> 
                                 <div class="course-card">
                                     <a href="{{ route('course.single', ['id' => $course->id]) }}">
-                                        <div class="course-card__image" style="background-image: url({{url('/images/aulas/')}}.{{$course->thumb_img}});"></div>
+                                        <div class="course-card__image">
+                                            <img style="width: 100%" src="{{asset('images/aulas')}}/{{$course->thumb_img}}" class="thumb" />
+                                        </div>
                                         <div class="course-card__description">
                                             <p>{{ $course->name }}</p>
                                             <p>{{ $course->desc }}</p>

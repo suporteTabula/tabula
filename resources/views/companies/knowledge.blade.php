@@ -12,7 +12,6 @@
 		<form action="{{ route('knowledge.company.update') }}" method="post" enctype="multipart/form-data">
 			{{ csrf_field() }}
 
-
 			<div class="form-group">
 				<label for="bio">Área de Conhecimento</label>
 			@if($company->knowledge != null || $company->knowledge != '')
@@ -22,7 +21,7 @@
 			@endif
 			</div>
 			<div class="text-center">
-				<button class="btn btn-success" type="submit">Adicionar</button>
+				<button class="btn btn-success" type="submit">Editar</button>
 				<a class="btn btn-success" href="{{ route('users') }}">Voltar</a>
 			</div>
 
