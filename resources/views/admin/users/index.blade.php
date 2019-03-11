@@ -35,7 +35,7 @@
 				@foreach ($users as $user)
 				<tr>
 					<td style="vertical-align: middle !important;">{{ $user->login }}</td>
-					<td style="vertical-align: middle !important;">{{ $user->first_name. ' ' .$user->last_name}}</td>
+					<td style="vertical-align: middle !important;">{{ $user->name}}</td>
 					<td style="vertical-align: middle !important;">{{ $user->email }}</td>
 					<td style="vertical-align: middle !important;">
 						@foreach ($user->userTypes as $userType)

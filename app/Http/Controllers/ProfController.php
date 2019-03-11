@@ -26,6 +26,8 @@ use Auth;
             #################
 class ProfController extends Controller
 {
+
+
 	public function virarProfessor(Request $request)
 	{
 		$user = User::find($request->id);
@@ -942,6 +944,7 @@ class ProfController extends Controller
     {
         $courses = Course::where('user_id_owner', $id)->get(); 
         return view('teacher.courseProfs')
+        ->with('auth', Auth::user())
         ->with('courses', $courses);
     }
 
@@ -959,16 +962,19 @@ class ProfController extends Controller
 
         foreach ($alunos as $aluno) {
             $aluno->dados = User::where('id', $aluno->user_id)->first();
+            if ($aluno->progress == 0) {
+                $aluno->progress = 0;
+            }else
             $aluno->progress = ($aluno->progress / $course->total)*100;
         }
 
         $userTypes = Auth::user()->userTypes()->first();
-
         if ($userTypes->desc == "Admin") {
-            return view('admin.courses.alunos')->with('alunos', $alunos)->with('courses', Course::all());
+            return view('admin.courses.alunos')->with('alunos', $alunos)->with('id', $course->id);
         }else{
         return view('teacher.courses.alunos')
         ->with('alunos', $alunos)
+        ->with('id', $course->id)
         ->with('courses', Course::all());
         }
        

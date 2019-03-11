@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container grid-lg content-padding">
+
     <div class="columns">
         <h1>{{$category_desc}}</h1>
     </div>

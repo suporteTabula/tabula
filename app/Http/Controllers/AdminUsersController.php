@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserType;
-use Session;
 use App\State;
 use App\Country;
 use App\Schooling;
 use App\UserGroup;
+use App\Company;
+use Session;
 
 class AdminUsersController extends Controller
 {
@@ -56,10 +57,7 @@ class AdminUsersController extends Controller
 
         $this->validate($request, [
             'login'         => 'required',
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'sex'           => 'required',
-            'nickname'      => 'required',
+            'name'          => 'required',
             'email'         => 'required|email',
             'password'      => 'required',
             'usersType'     => 'required'
@@ -68,9 +66,7 @@ class AdminUsersController extends Controller
         $user->login        = $request->login;
         $user->email        = $request->email;
         $user->password     = bcrypt($request->password);
-        $user->first_name   = $request->first_name;
-        $user->last_name    = $request->last_name;
-        $user->nickname     = $request->nickname;
+        $user->name         = $request->name;
         $user->birthdate    = $request->birthdate;
         $user->sex          = $request->sex;
         $user->occupation   = $request->occupation;
@@ -88,6 +84,12 @@ class AdminUsersController extends Controller
         $user->save();
 
         $user->userTypes()->attach($request->usersType);
+
+        if ($request->usersType == "5") {
+            Company::create([
+                'user_id'   => $user->id
+            ]);
+        }
 
         // se tiver algum check nos grupos de usuário
         if($request->group != '')
@@ -146,18 +148,13 @@ class AdminUsersController extends Controller
 
         $this->validate($request, [
             'login'         => 'required',
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'sex'           => 'required',
-            'nickname'      => 'required',
+            'name'          => 'required',
             'email'         => 'required|email',
         ]);
 
         $user->login        = $request->login;
         $user->email        = $request->email;
-        $user->first_name   = $request->first_name;
-        $user->last_name    = $request->last_name;
-        $user->nickname     = $request->nickname;
+        $user->name         = $request->name;
         $user->birthdate    = $request->birthdate;
         $user->sex          = $request->sex;
         $user->occupation   = $request->occupation;

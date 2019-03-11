@@ -33,15 +33,23 @@ class CompanyController extends Controller
 
 	public function theCompany($id)
 	{
-		$auth = User::find($id);
-		$auth->company = Company::where('user_id', $auth->id)->first();
-		$teachers = User::where('empresa_id', $auth->id)->get();
+		$auth 			= User::find($id);
+		$auth->company 	= Company::where('user_id', $auth->id)->first();
+		$teachers 		= User::where('empresa_id', $auth->id)->get();
+		
 		foreach ($teachers as $teacher) {
-			$teachers->courses = Course::where('user_id_owner', $teacher->id)->get();
+			$idTeachers = User::where('empresa_id', $id)->pluck('id')->toArray();
 		}
 
+		$courses = Course::wherein('user_id_owner', $idTeachers)->orWhere('user_id_owner', $id); 
+
+		$totalTeachers = User::where('empresa_id', $auth->id)->count();
+		if ($courses->count() == 0) {
+			return view('companies.company')->with('auth', $auth);
+		}
 		return view('companies.company')
 		->with('teachers', $teachers)
+		->with('courses', $courses->get())
 		->with('auth', $auth);
 	}
 
@@ -122,7 +130,7 @@ class CompanyController extends Controller
 			}
 
 			Session::flash('success', 'Usuário adicionado com sucesso');
-			return redirect()->route('teachers.company');
+			return redirect()->back();
 		}
 	}
 
@@ -155,7 +163,7 @@ class CompanyController extends Controller
 
 		]);
 
-		Session::flash('success', 'Missão alterada com sucesso');
+		Session::flash('success', 'Missão atualizada');
 		return redirect()->back();
 
 	}

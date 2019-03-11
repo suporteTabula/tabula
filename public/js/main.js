@@ -153,6 +153,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    alert('teste');
     $("#data").click(function () {
         $("#panel-2, #panel-3, #panel-5, #panel-6, #panel-7").slideUp(500);
         $("#panel-1").delay(200).slideDown(500)

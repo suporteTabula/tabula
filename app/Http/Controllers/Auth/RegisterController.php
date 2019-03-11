@@ -8,11 +8,12 @@ use App\State;
 use App\Country;
 use App\UserType;
 use App\Schooling;
+use App\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -88,15 +89,25 @@ class RegisterController extends Controller
             'country_id'    => $data['country_id'],
             'schooling_id'  => $data['schooling_id'],
             'password'      => bcrypt($data['password']),
-            'sex'           => $data['sex'],
+            
         ]);
 
         $user->userTypes()->attach($data['userType']);
         if (!empty($data['state_id'])) {
             $user->state_id = $data['state_id'];
         }
+        if(!empty($data['sex'])){
+            $user->sex = $data['sex'];
+        }
         $user->save();
+
         Session::flash('success', 'Usuário criado com sucesso');
+
+        if ($data['userType'] == "5") {
+            Company::create([
+                'user_id'   => $user->id
+            ]);
+        }
         return $user;
     }
 }

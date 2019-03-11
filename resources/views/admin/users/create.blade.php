@@ -13,10 +13,10 @@
 				{{ csrf_field() }}
 
 				<div class="form-group row">
-					<div class="col-xs-12">
+					<div class="col-xs-12 userType">
 						<label for="usersType">Tipo de usuário: </label>
 						@foreach ($usersType as $userType)
-							<label class="radio-inline"><input type="radio" name="usersType[]" value="{{ $userType->id }}"> {{ $userType->desc }} </label>
+							<label class="radio-inline"><input type="radio" name="usersType" value="{{ $userType->id }}"> {{ $userType->desc }} </label>
 						@endforeach
 					</div>
 				</div>
@@ -70,21 +70,9 @@
 
 				<div class="form-group row">
 					<div class="col-xs-6">
-				    	<label for="first_name">Primeiro Nome</label>
-				    	<input class="form-control" name="first_name" type="text" placeholder="Seu nome" value="{{ old('first_name') }}">
+				    	<label for="name">Nome Completo</label>
+				    	<input class="form-control" name="name" type="text" placeholder="Seu nome" value="{{ old('name') }}">
 				  	</div>
-
-				  	<div class="col-xs-6">
-				    	<label for="last_name">Sobrenome</label>
-				    	<input class="form-control" name="last_name" type="text" placeholder="Seu sobrenome" value="{{ old('last_name') }}">
-				  	</div>
-				</div>
-
-				<div class="form-group row">
-					<div class="col-xs-6">
-						<label for="nickname">Apelido</label>
-						<input class="form-control" type="text" name="nickname" placeholder="Seu apelido" value="{{ old('nickname') }}">
-					</div>
 
 					<div class="col-xs-6">
 						<label for="birthdate">Data de Nascimento</label>
@@ -92,15 +80,16 @@
 					</div>
 				</div>
 
+
 				<div class="form-group">
 					<label for="email">E-mail</label>
 					<input class="form-control" type="email" name="email" placeholder="exemplo@email.com" value="{{ old('email') }}">
 				</div>
-
-				<label for="birthdate">Sexo: </label>
-				<label class="radio-inline"><input type="radio" name="sex" value="Masculino">Masculino</label>
-				<label class="radio-inline"><input type="radio" name="sex" value="Feminino">Feminino</label>
-
+				<div class="sex">
+					<label for="sex">Sexo: </label>
+					<label class="radio-inline"><input type="radio" name="sex" value="Masculino">Masculino</label>
+					<label class="radio-inline"><input type="radio" name="sex" value="Feminino">Feminino</label>
+				</div>
 				<div class="form-group row">
 					<div class="col-xs-6">
 						<label for="occupation">Cargo</label>
@@ -165,6 +154,8 @@
 		<script>
 
 			$('.state').hide();
+			//$('.sex').hide();
+
 			$('#country').change(function(){
 				if($('#country').val() == 1){
 					$('.state').show();
