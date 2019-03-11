@@ -146,8 +146,7 @@
                             <div class="column col-10 save-button">
                                 <p><b>Deseja salvar as alterações?</b></p>
                                 <button class="button-tabula" type="submit" form="teste">Salvar</button>
-                            </div>
-                            div class="column col-1"></div>
+                            </div class="column col-1"></div>
                         </div>
                     </div>
                     <!--Dados Pagamento-->

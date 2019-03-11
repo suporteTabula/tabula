@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->longtext('desc');
             $table->string('urn');
+            $table->string('sub_type')->nullable();
             $table->integer('category_id_parent')->nullable();
             $table->integer('desktop_index')->nullable();
             $table->integer('mobile_index')->nullable();

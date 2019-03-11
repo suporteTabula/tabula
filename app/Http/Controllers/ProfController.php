@@ -26,6 +26,8 @@ use Auth;
             #################
 class ProfController extends Controller
 {
+
+
 	public function virarProfessor(Request $request)
 	{
 		$user = User::find($request->id);

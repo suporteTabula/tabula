@@ -42,6 +42,7 @@ class AdminCategoriesController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'desc' => 'required',
             'urn' => 'required|unique:categories'
@@ -49,7 +50,7 @@ class AdminCategoriesController extends Controller
         
 
         $category = new Category();
-        
+
         if($request->category_id == '')
         {
             $this->validate($request, [
@@ -123,7 +124,7 @@ class AdminCategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
+        $category = Category::find($id);    
         return view('admin.categories.edit')->with('category', $category)
                                             ->with('categories', Category::all());
     }

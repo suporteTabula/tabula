@@ -10,6 +10,7 @@
 		<div class="panel-body">
 			<form action="{{ route('category.update', ['id' => $category->id]) }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
+				
 				<div class="form-group">
 					<label for="desc">Nome Categoria/Subcategoria</label>
 					<input class="form-control" type="text" placeholder="Nome da categoria/subcategoria" value="{{ $category->desc }}" name="desc" required>
@@ -69,5 +70,23 @@
 			</form>
 		</div>
 	</div>
+@section('scripts')
+<script>
 
+    $('.category_id_parent').hide();
+    $('.panel-hex').hide();
+    $('#typeCateg').click(function() {
+    	var typeCateg =  $( "input[type=radio][name='typeCateg']:checked").val();
+    	if (typeCateg == 0) {
+    		$('.category_id_parent').hide();
+    		$('.panel-hex').hide();
+    	}else{
+    		$('.category_id_parent').show();
+    		$('.panel-hex').show();
+    	}
+
+    });
+
+</script>
+@stop
 @stop
