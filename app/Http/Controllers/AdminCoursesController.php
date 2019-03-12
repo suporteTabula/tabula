@@ -70,6 +70,7 @@ class AdminCoursesController extends Controller
         $course->desc          = $request->desc;
         $course->price         = $request->price;
         $course->category_id   = $request->category_id;
+        $course->subcategory_id   = $request->subcategory_id;
         $course->featured   = $request->featured;
         $course->requirements = $request->requirements;
         $course->user_id_owner = Auth::user()->id;
@@ -105,6 +106,7 @@ class AdminCoursesController extends Controller
             $attach_video->move('images/aulas', $attach_video_name); 
             $course->video = $attach_video_name;  
         }
+
 
         $course->save();
         $id = $course->id;
@@ -185,7 +187,8 @@ class AdminCoursesController extends Controller
         $course->name        = $request->name;
         $course->desc        = $request->desc;
         $course->price       = $request->price;
-        $course->category_id = $request->category_id;
+        $course->category_id   = $request->category_id;
+        $course->subcategory_id   = $request->subcategory_id;
         $course->requirements = $request->requirements;
         $course->featured    = $request->featured;
         

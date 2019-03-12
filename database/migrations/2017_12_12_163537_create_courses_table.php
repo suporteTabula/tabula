@@ -21,6 +21,7 @@ class CreateCoursesTable extends Migration
             $table->longtext('desc');
             $table->integer('user_id_owner');
             $table->integer('category_id');
+            $table->integer('subcategory_id')->nullable();
             $table->string('requirements')->nullable();
             $table->string('video')->nullable();
             $table->integer('featured')->default(0);

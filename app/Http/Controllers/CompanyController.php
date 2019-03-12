@@ -36,21 +36,22 @@ class CompanyController extends Controller
 		$auth 			= User::find($id);
 		$auth->company 	= Company::where('user_id', $auth->id)->first();
 		$teachers 		= User::where('empresa_id', $auth->id)->get();
-		
+
 		foreach ($teachers as $teacher) {
 			$idTeachers = User::where('empresa_id', $id)->pluck('id')->toArray();
 		}
-
-		$courses = Course::wherein('user_id_owner', $idTeachers)->orWhere('user_id_owner', $id); 
-
-		$totalTeachers = User::where('empresa_id', $auth->id)->count();
-		if ($courses->count() == 0) {
-			return view('companies.company')->with('auth', $auth);
+		if($teachers != '[]'){
+			$courses = Course::wherein('user_id_owner', $idTeachers)->orWhere('user_id_owner', $id); 
 		}
-		return view('companies.company')
-		->with('teachers', $teachers)
-		->with('courses', $courses->get())
-		->with('auth', $auth);
+		$totalTeachers = User::where('empresa_id', $auth->id)->count();
+		if (isset($courses)) {
+			return view('companies.company')
+			->with('teachers', $teachers)
+			->with('courses', $courses->get())
+			->with('auth', $auth);
+		}
+		return view('companies.company')->with('auth', $auth);
+
 	}
 
 

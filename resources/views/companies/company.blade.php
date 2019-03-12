@@ -42,7 +42,8 @@
                     
                     <!--<div id="content"></div>-->
 
-                    <div id="painel-1">
+                    <div class="courses">
+                        @if(isset($courses))
                         @foreach($courses as $course)
                         <ul class="clearfix grid" id="courses">
                             <li class="clearfix">
@@ -62,17 +63,24 @@
                                 </div>
                             </li>
                         </ul>
-                        @endforeach                
+                        @endforeach
+                        @else
+                        <div>
+                            <h1>Não Possui nenhum Curso</h1>
+                        </div>                
+                        @endif
                     </div>
 
-                    <div class="columns">
-                        <div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="columns mission">
+                        <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="missao-conhecimento">
                                 <h5>Missão</h5>
                                 <p>{{$auth->company->mission}}</p>
                             </div>
                         </div>
-                        <div class="column col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    </div>
+                    <div class="columns knowledge">
+                        <div class="column col-xs-12 col-sm-12 col-md-6 col-lg-12 col-xl-12">
                             <div class="missao-conhecimento">
                                 <h5>Áreas de Conhecimento</h5>
                                 <p>{{$auth->company->knowledge}}</p>
@@ -80,26 +88,29 @@
                         </div>
                     </div>
 
-
-                    <div class="columns">
+                    <div class="columns teachers">
                         <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div id="painel-2">
-                                <div class="teachers-wrapper">
-                                    <h4>Professores</h4>
-                                    @foreach($teachers as $teacher)
-                                    @if ($teacher->empresa_id == $auth->id)<br>
-                                    <div class="teacher-photo-wrapper"> 
-                                        <a href="{{ route('course.prof', ['id' => $teacher->id]) }}"> 
-                                            <img src="{{asset('/images/Profilepic')}}/{{ $teacher->avatar}}">
-                                            <div class="teacher-description">
-                                                <p>{{$teacher->name}} </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    @endif
-                                    @endforeach
+                        @if(isset($teachers))
+                            <div class="teachers-wrapper">
+                                <h4>Professores</h4>
+                                @foreach($teachers as $teacher)
+                                @if ($teacher->empresa_id == $auth->id)<br>
+                                <div class="teacher-photo-wrapper"> 
+                                    <a href="{{ route('course.prof', ['id' => $teacher->id]) }}"> 
+                                        <img src="{{asset('/images/Profilepic')}}/{{ $teacher->avatar}}">
+                                        <div class="teacher-description">
+                                            <p>{{$teacher->name}} </p>
+                                        </div>
+                                    </a>
                                 </div>
+                                @endif
+                                @endforeach
                             </div>
+                        @else
+                            <div>
+                                <h1>Não Possui nenhum Professor</h1>
+                            </div>
+                        @endif
                         </div>
                     </div>
                 </div>
