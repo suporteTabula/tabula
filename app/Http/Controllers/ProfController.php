@@ -113,6 +113,7 @@ class ProfController extends Controller
         $course->desc          = $request->desc;
         $course->price         = $request->price;
         $course->category_id   = $request->category_id;
+        $course->subcategory_id   = $request->subcategory_id;
         $course->featured   = $request->featured;
         $course->requirements = $request->requirements;
         $course->user_id_owner = Auth::user()->id;
@@ -229,6 +230,7 @@ class ProfController extends Controller
         $course->desc        = $request->desc;
         $course->price       = $request->price;
         $course->category_id = $request->category_id;
+        $course->subcategory_id   = $request->subcategory_id;
         $course->requirements = $request->requirements;
         $course->featured    = $request->featured;        
         

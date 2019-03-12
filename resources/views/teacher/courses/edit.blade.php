@@ -23,14 +23,30 @@
 				<select class="form-control" id="category_id" name="category_id">
 					<option value="" selected disabled hidden>Escolha uma...</option>
 					@foreach($categories as $category)
+					@if($category->category_id_parent == NULL)
 					<option value="{{ $category->id }}"
 						@if($course->category->id == $category->id)
 						selected
 						@endif
 						>{{ $category->desc }}</option>
+						@endif
 						@endforeach
 					</select>
 				</div>
+		<?php $idcateg = "<script>document.write(category_id)</script>"; ?>
+		{{ $idcateg}}
+				<div class="form-group" id="subCateg">
+				<label for="subcategory_id">Subcategoria</label>
+				<select class="form-control" id="subcategory_id" name="subcategory_id">
+					<option value="" selected disabled hidden>Escolha uma...</option>
+
+					@foreach($categories as $category)
+					@if($category->category_id_parent == $idcateg)
+					<option value="{{ $category->id }}">{{ $category->desc }}</option>
+					@endif
+					@endforeach
+				</select>
+			</div>
 				<div class="form-group">
 					<input type="hidden" name="featured" value="{{$course->featured}}">
 				</div>
@@ -208,6 +224,11 @@
 		</script>
 		<script>
 			$(document).ready(function(){
+				$('#subCateg').hide();
+	    		$('#categ').change(function() {
+	    			var category_id = $('#category_id').val();
+	    			$('#subCateg').show();
+	    		});
 			// For A Delete Record Popup
 			$('.remove-record').click(function() {
 				var id = $(this).attr('data-id');

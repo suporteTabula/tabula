@@ -204,7 +204,7 @@
 
 		@section('scripts')		
 		<script>
-			 $('#subCateg').hide();
+			$('#subCateg').hide();
     		$('#categ').change(function() {
     			var category_id = $('#category_id').val();
     			$('#subCateg').show();
