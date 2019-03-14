@@ -140,19 +140,9 @@
                                 <label for="google_plus"><b>Google +</b></label>
                                 <input class="form-control" type="text" name="google_plus" placeholder="https://..." value="{{ $auth->google_plus }}">
                             </div>
-                        </div>
-                        <div class="columns">
-                            <div class="column col-1"></div>
-                            <div class="column col-10 save-button">
-                                <p><b>Deseja salvar as alterações?</b></p>
-                                <button class="button-tabula" type="submit" form="teste">Salvar</button>
-                            </div class="column col-1"></div>
-                        </div>
-                    </div>
-                    <!--Dados Pagamento-->
-                    <div class="columns">
-                        <div class="column col-12">
-
+                            <div class="column col-xs-12 col-sm-12 col-12">
+                                <h4>Dados de pagamento</h4>
+                            </div>
                             <div class="column col-xs-12 col-sm-12 col-6">
                                 <label for="address"><b>Endereço</b></label>
                                 <input class="form-control" name="address" placeholder="Endereço" type="text" value="{{ $auth->address }}">
@@ -160,8 +150,8 @@
                                 <br>
                                 <label for="number"><b>Número</b></label>
                                 <input class="form-control" type="text" name="number" placeholder="Seu Número" value="{{ $auth->number }}">
-                                <br>
-                                <br>
+                            </div>
+                            <div class="column col-xs-12 col-sm-12 col-6">
                                 <label for="city"><b>Cidade</b></label>
                                 <input class="form-control" type="text" name="city" placeholder="Sua Cidade" value="{{ $auth->city }}">
                                 <br>
@@ -173,17 +163,16 @@
                                 <label for="cpf"><b>CPF</b></label>
                                 <input class="form-control" type="text" name="cpf" placeholder="Seu CPF" value="{{ $auth->cpf }}">
                             </div>
-
-                            <div class="column col-12">
-                                <label for="bio"><b>Mais Informações:</b></label>
-                                <textarea class="form-control" rows="5" id="bio" name="bio" placeholder="Escreva aqui...">{{ $auth->bio }}</textarea>
-                            </div>
+                            <div class="column col-1"></div>
+                            <div class="column col-10 save-button">
+                                <p><b>Deseja salvar as alterações?</b></p>
+                                <button class="button-tabula" type="submit" form="teste">Salvar</button>
+                            </div class="column col-1">
                         </div>
                     </div>
                 </form>
             </div>
-            
-               <!--meus cursos-->
+            <!--meus cursos-->
            <div id="panel-2" class="columns">
                 <div class="column col-12">
                     <div class="columns">
