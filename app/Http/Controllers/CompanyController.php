@@ -55,9 +55,12 @@ class CompanyController extends Controller
 	}
 
 
-	public function resgisterCompany()
+	public function registerCompany()
 	{
-
+		if (Auth::user()) {
+			Session::flash('success', 'Para registrar uma empresa, inicialmente deslogue da plataforma');
+			return redirect()->back();
+		}
 		return view('auth.register_empresa')
 		->with('countries', Country::all())
 		->with('states', State::all())
@@ -129,10 +132,9 @@ class CompanyController extends Controller
 				$user->group = 'ta dentro';
 				$user->save();
 			}
-
-			Session::flash('success', 'Usuário adicionado com sucesso');
-			return redirect()->back();
 		}
+		Session::flash('success', 'Usuário adicionado com sucesso');
+		return redirect()->back();
 	}
 
 	public function teachersDestroy($id)

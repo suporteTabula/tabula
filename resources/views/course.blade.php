@@ -71,7 +71,13 @@
             <ul>
               <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
             </ul>
-            @endif                                
+            @endif
+            <ul>
+              <a class="custom-button button-tabula classContent" href="#">Conteúdo</a>
+              <a class="custom-button button-tabula question" href="#">Perguntas</a>
+            </ul>  
+             <ul>
+            </ul>                               
             @else
             <ul><a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a></ul>
 
@@ -88,7 +94,7 @@
     <div class="container grid-lg">
       <div class="columns">
         <div class="column col-7 col-xs-12 col-sm-12">
-          <h4>Conteúdo</h4>
+          <h5>Conteúdo</h5>
           @foreach ($chapters as $chapter)
           <details class="accordion">
            <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo:&nbsp; {{$chapter->name}}</summary>
@@ -110,7 +116,7 @@
          @endforeach                                       
        </div>
        <div class="column col-5 col-xs-12 col-sm-12">
-        <h4>Requisitos</h4>
+        <h5>Requisitos</h5>
         @if($course->requirements == null || $course->requirements == "")
         <p>Não existem requisitos para este curso</p>
         @else
@@ -119,6 +125,54 @@
       </div>
     </div>
   </div>
-
 </section>
+@auth
+<section class="comments-teacher">
+  <div class="container grid-lg">
+    <div class="columns">
+      <div class="column col-12 col-xs-12 col-sm-12">
+        <form class="form-control" id="comments" method="POST" action="{{route('course.comment')}}">
+          {{ csrf_field() }} 
+          <input type="hidden" name="idCourse" value="{{$course->id}}">
+          <input type="hidden" name="typeComment" value="question">
+          <div class="form-group">
+            <label class="form-label" for="comments">Faça uma pergunta:</label>
+            <textarea class="form-input theComment"   name="comments" rows="3" placeholder="Digite a pergunta"></textarea>
+          </div>
+          <button class="btn btn-lg custom-button button-tabula">Enviar</button>
+        </form>
+      </div>
+      <div class="column col-12 col-xs-12 col-sm-12" >
+        <h3>Perguntas Frequentes!</h3>
+        @foreach ($course->comments as $comment)
+        <div class="columns" style="border:1px solid; border-radius: 2px;">
+          <div class="column col-12 col-xs-12 col-sm-12" >
+            <h5>{{$comment->user->name}} </h5>
+            <h6>{{$comment->comment}}</h6>
+          </div>
+        </div>
+         @endforeach
+      </div>
+    </div>
+  </div>
+</section>
+@endauth
+
+@section('scripts')
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.comments-teacher').hide();
+    $('.classContent').click(function(){
+      $('.will-learn').show();
+      $('.comments-teacher').hide();
+    });
+    $('.question').click(function(){
+      $('.will-learn').hide();
+      $('.comments-teacher').show();
+    });
+
+    
+  });
+</script>
+@stop
 @endsection

@@ -71,6 +71,11 @@
 					<label for="requirements">Requisitos</label>
 					<textarea class="form-control" name="requirements" placeholder="Requisitos para o Curso">{{ $course->requirements }}</textarea>
 				</div>
+
+				<div class="form-group">
+					<label for="interest">Área de Interesse</label>
+					<input class="form-control input" type="text" name="interest" placeholder="Área de Interesse" value="{{$course->interest}}">
+				</div>
 				<div class="form-group row">
 					<div class="col-xs-4">
 						<label for="group">Grupo</label>

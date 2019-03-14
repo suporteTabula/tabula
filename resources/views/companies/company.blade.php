@@ -41,46 +41,47 @@
                     </div>
                     
                     <!--<div id="content"></div>-->
-
-                    <div class="courses">
-                        @if(isset($courses))
-                        @foreach($courses as $course)
-                        <ul class="clearfix grid" id="courses">
-                            <li class="clearfix">
-                                <div class="course-card" id="course-card">                          
-                                    <a href="{{ route('course.single', ['id' => $course->id]) }}">
-                                        <section class="left">                                  
-                                            <div class="course-card__image"><img src="../images/aulas/{{$course->thumb_img}}" class="thumb" /></div>
-                                        </section>
-                                        <section class="right">
-                                            <div class="course-card__description" id="course-card-desc">
-                                                <p class="lineclamp-title"><strong>{{ $course->name }}</strong></p>
-                                                <p class="lineclamp-desc">{{ $course->desc }}</p>
-                                            </div>                          
-                                            <div class="course-card__price" id="course-card-price">{{ $course->price }}</div>
-                                        </section>
-                                    </a>
+                    
+                    <div id="painel-1">
+                        <div class="columns">
+                        @if(isset($courses))                                    
+                            @foreach($courses as $course)
+                                <div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                    <div class="course-card" id="course-card">                    
+                                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                                            <section class="left">                                  
+                                                <div class="course-card__image"><img src="../images/aulas/{{$course->thumb_img}}" class="thumb" /></div>
+                                            </section>
+                                            <section class="right">
+                                                <div class="course-card__description" id="course-card-desc">
+                                                    <p class="lineclamp-title"><strong>{{ $course->name }}</strong></p>
+                                                    <p class="lineclamp-desc">{{ $course->desc }}</p>
+                                                </div>                          
+                                                <div class="course-card__price" id="course-card-price">R$ {{ number_format($course->price, 2, ',', '.') }}</div>
+                                            </section>
+                                        </a>
+                                    </div>
                                 </div>
-                            </li>
-                        </ul>
-                        @endforeach
-                        @else
-                        <div>
-                            <h1>Não Possui nenhum Curso</h1>
-                        </div>                
-                        @endif
+                            @endforeach
+                            @else
+                                <div>
+                                    <h4>Não possuimos nenhum curso no momento</h4>
+                                </div>
+                            @endif
+                        </div>              
                     </div>
+                    
 
-                    <div class="columns mission">
+                    <div class="columns">
                         <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <div class="missao-conhecimento">
+                            <div class="missao-conhecimento missao">
                                 <h5>Missão</h5>
                                 <p>{{$auth->company->mission}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="columns knowledge">
-                        <div class="column col-xs-12 col-sm-12 col-md-6 col-lg-12 col-xl-12">
+                    <div class="columns">
+                        <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="missao-conhecimento">
                                 <h5>Áreas de Conhecimento</h5>
                                 <p>{{$auth->company->knowledge}}</p>
@@ -88,29 +89,36 @@
                         </div>
                     </div>
 
-                    <div class="columns teachers">
+
+                    <div class="columns">
                         <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        @if(isset($teachers))
-                            <div class="teachers-wrapper">
-                                <h4>Professores</h4>
-                                @foreach($teachers as $teacher)
-                                @if ($teacher->empresa_id == $auth->id)<br>
-                                <div class="teacher-photo-wrapper"> 
-                                    <a href="{{ route('course.prof', ['id' => $teacher->id]) }}"> 
-                                        <img src="{{asset('/images/Profilepic')}}/{{ $teacher->avatar}}">
-                                        <div class="teacher-description">
-                                            <p>{{$teacher->name}} </p>
-                                        </div>
-                                    </a>
+                            <div id="painel-2">
+                                <div class="teachers-wrapper teachers-align">
+                                    <h4>Professores</h4>
+                                    @if(isset($courses))
+                                        @foreach($teachers as $teacher)
+                                        <ul>                                        
+                                            <li>
+                                                @if ($teacher->empresa_id == $auth->id)<br>              
+                                                    <div class="teacher-photo-wrapper"> 
+                                                        <a href="{{ route('course.prof', ['id' => $teacher->id]) }}"> 
+                                                            <img src="{{asset('/images/Profilepic')}}/{{ $teacher->avatar}}">
+                                                            <div class="teacher-description">
+                                                                <p>{{$teacher->name}} </p>
+                                                            </div>
+                                                        </a>
+                                                    </div>                                                
+                                                @endif
+                                             </li>
+                                        </ul>
+                                        @endforeach
+                                    @else
+                                        <div>
+                                            <h4>Não possuimos nenhum professor vinculado no momento</h4>
+                                        </div>   
+                                    @endif                                
                                 </div>
-                                @endif
-                                @endforeach
                             </div>
-                        @else
-                            <div>
-                                <h1>Não Possui nenhum Professor</h1>
-                            </div>
-                        @endif
                         </div>
                     </div>
                 </div>

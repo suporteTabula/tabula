@@ -114,6 +114,9 @@
                         <a href="{{ route('userGroups') }}">Grupos de Usuários</a>
                     </li>
                     <li class="list-group-item">
+                        <a href="{{ route('seo') }}">Configuração SEO</a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="{{ route('posts') }}">Posts do blog</a>
                     </li>
                     <li class="list-group-item">

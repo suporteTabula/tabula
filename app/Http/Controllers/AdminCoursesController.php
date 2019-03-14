@@ -66,47 +66,62 @@ class AdminCoursesController extends Controller
         //Chama o objeto
         $course = new Course();
         //Vincula as variaveis 
-        $course->name          = $request->name;
-        $course->desc          = $request->desc;
-        $course->price         = $request->price;
-        $course->category_id   = $request->category_id;
-        $course->subcategory_id   = $request->subcategory_id;
-        $course->featured   = $request->featured;
-        $course->requirements = $request->requirements;
-        $course->user_id_owner = Auth::user()->id;
-        $course->total_class = 0;
+        $course->name               = $request->name;
+        $course->desc               = $request->desc;
+        $course->price              = $request->price;
+        $course->category_id        = $request->category_id;
+        $course->subcategory_id     = $request->subcategory_id;
+        $course->featured           = $request->featured;
+        $course->requirements       = $request->requirements;
+        $course->interest           = $request->interest;
+        $course->user_id_owner      = Auth::user()->id;
+        $course->total_class        = 0;
+//Verficacao de URL amigável
+        $urn = '';
+        $urns = explode(' ', $request->name);
+        for($i = 0; $i < sizeof($urns); $i++) {
+            $urn =  $urn . '-' .$urns[$i];
+            
+        }
+        $urns = 1;
+        while ($urns != 0) {
+            $urns = Course::where('urn', $urn)->count();
+            $urn = $urn.'-'.$urns;
+        }
+        $course->urn        = $urn; 
+
         //valida a foto de perfil
         if($request->thumb_img != '')
         {
-            $attach_thumb_img = $request->thumb_img;
-            $attach_thumb_img_name = time().$attach_thumb_img->getClientOriginalName();
+            $attach_thumb_img       = $request->thumb_img;
+            $attach_thumb_img_name  = time().$attach_thumb_img->getClientOriginalName();
             $attach_thumb_img->move('images/aulas', $attach_thumb_img_name); 
 
-            $course->thumb_img = $attach_thumb_img_name;  
+            $course->thumb_img      = $attach_thumb_img_name;  
         }
         else
-            $course->thumb_img = 'e-learning.jpg';
+            $course->thumb_img      = 'e-learning.jpg';
 
         //Valida o video     
         if($request->video != '')
         {
-            $attach_video = $request->video;
+            $attach_video           = $request->video;
             $count = 1;
             while($count != 0){
-                $str = "";
-                $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
-                $max = count($characters) - 1;
+                $str            = "";
+                $characters     = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max            = count($characters) - 1;
+
                 for ($i = 0; $i < 7; $i++) {
-                    $rand = mt_rand(0, $max);
-                    $str .= $characters[$rand];
-                    $count = Course::where('video', $str)->count();
+                    $rand   = mt_rand(0, $max);
+                    $str   .= $characters[$rand];
+                    $count  = Course::where('video', $str)->count();
                 }
             }
             $attach_video_name = $str;
             $attach_video->move('images/aulas', $attach_video_name); 
             $course->video = $attach_video_name;  
         }
-
 
         $course->save();
         $id = $course->id;
@@ -115,27 +130,27 @@ class AdminCoursesController extends Controller
         {
             foreach($request->group as $checked) 
             {
-                $userGroup = UserGroup::find($checked);
+                $userGroup      = UserGroup::find($checked);
                 // vincula curso com o usergroup em questao
                 $course->userGroups()->attach($userGroup);
                 // remover essa linha e a coluna da tabela de grupos
-                $course->group = 'ta dentro';
+                $course->group  = 'ta dentro';
                 $course->save();
             }
         }
         Session::flash('success', 'Curso criado com sucesso');
 
-        $course = Course::find($id);
-        $categories = Category::all();
+        $course             = Course::find($id);
+        $categories         = Category::all();
         $course_items_group = CourseItemGroup::all();
-        $user_groups = UserGroup::all();
+        $user_groups        = UserGroup::all();
 
         return redirect()->route('course.edit', 
-            ['id' => $id,
-            'course' => $course,
-            'categories' => $categories,
-            'course_items_group' => $course_items_group,
-            'user_groups' => $user_groups]);
+            ['id'                   => $id,
+            'course'                => $course,
+            'categories'            => $categories,
+            'course_items_group'    => $course_items_group,
+            'user_groups'           => $user_groups]);
     }
     /**
      * Display the specified resource.
@@ -184,38 +199,39 @@ class AdminCoursesController extends Controller
             'featured'    => 'required'
         ]);
 
-        $course->name        = $request->name;
-        $course->desc        = $request->desc;
-        $course->price       = $request->price;
-        $course->category_id   = $request->category_id;
-        $course->subcategory_id   = $request->subcategory_id;
-        $course->requirements = $request->requirements;
-        $course->featured    = $request->featured;
+        $course->name               = $request->name;
+        $course->desc               = $request->desc;
+        $course->price              = $request->price;
+        $course->category_id        = $request->category_id;
+        $course->subcategory_id     = $request->subcategory_id;
+        $course->requirements       = $request->requirements;
+        $course->featured           = $request->featured;
+        $course->interest           = $request->interest;
         
 
         if($request->thumb_img != ''){
-            $attach_thumb_img = $request->thumb_img;
-            $attach_thumb_img_name = time().$attach_thumb_img->getClientOriginalName();
+            $attach_thumb_img       = $request->thumb_img;
+            $attach_thumb_img_name  = time().$attach_thumb_img->getClientOriginalName();
             $attach_thumb_img->move('images/aulas', $attach_thumb_img_name); 
 
-            $course->thumb_img = $attach_thumb_img_name;  
+            $course->thumb_img      = $attach_thumb_img_name;  
         }
         else
-            $course->thumb_img = 'e-learning.jpg';
+            $course->thumb_img      = 'e-learning.jpg';
 
         if($request->video != ''){
-            $attach_video = $request->video;
+            $attach_video           = $request->video;
             $count = 1;
             while($count != 0){
                 $str = "";
-                $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
-                $max = count($characters) - 1;
+                $characters         = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max                = count($characters) - 1;
                 for ($i = 0; $i < 7; $i++) {
-                    $rand = mt_rand(0, $max);
-                    $str .= $characters[$rand];
+                    $rand       = mt_rand(0, $max);
+                    $str       .= $characters[$rand];
                 }
-                $count = Course::where('video', $str)->count();
-                $attach_video_name = $str;
+                $count              = Course::where('video', $str)->count();
+                $attach_video_name  = $str;
             }
             $attach_video->move('images/aulas', $attach_video_name); 
 

@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
     	'course/ratingstar',
         'success',
         'cart/cupom'
+
         //
     ];
 }

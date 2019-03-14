@@ -32,7 +32,7 @@ class AdminCupomController extends Controller
     {   //valida os campos digitados
     	$this->validate($request, [
     		'valorCupom'  => 'required|max:100',
-    		'codCupom' => 'required|max:100'
+    		'codCupom'    => 'required|max:100'
     	]);
         //Vincula as variaveis 
     	
@@ -46,14 +46,14 @@ class AdminCupomController extends Controller
 
 
     	Cupom::create([
-    		'cod_cupom' => $request->codCupom,
-    		'tipo_cupom' => $request->tipoCupom,
-    		'valor_cupom' => $request->valorCupom,
-    		'expira_cupom' => $expiraCupom,
-    		'limite_cupom' => $request->limiteCupom,
-    		'desc_cupom' => $request->descCupom,
-    		'curso_id' => $request->curso_id,
-    		'user_id' =>  $auth
+    		'cod_cupom'       => $request->codCupom,
+    		'tipo_cupom'      => $request->tipoCupom,
+    		'valor_cupom'     => $request->valorCupom,
+    		'expira_cupom'    => $expiraCupom,
+    		'limite_cupom'    => $request->limiteCupom,
+    		'desc_cupom'      => $request->descCupom,
+    		'curso_id'        => $request->curso_id,
+    		'user_id'         =>  $auth
     	]);
 
     	Session::flash('success', 'Cupom criado com sucesso');
@@ -89,14 +89,14 @@ class AdminCupomController extends Controller
 
 
     	Cupom::where('id', $request->id)->update([
-    		'cod_cupom' => $request->codCupom,
-    		'tipo_cupom' => $request->tipoCupom,
-    		'valor_cupom' => $request->valorCupom,
-    		'expira_cupom' => $expiraCupom,
-    		'limite_cupom' => $request->limiteCupom,
-    		'desc_cupom' => $request->descCupom,
-    		'curso_id' => $request->curso_id,
-    		'user_id' =>$auth
+    		'cod_cupom'       => $request->codCupom,
+    		'tipo_cupom'      => $request->tipoCupom,
+    		'valor_cupom'     => $request->valorCupom,
+    		'expira_cupom'    => $expiraCupom,
+    		'limite_cupom'    => $request->limiteCupom,
+    		'desc_cupom'      => $request->descCupom,
+    		'curso_id'        => $request->curso_id,
+    		'user_id'         =>$auth
     	]);        
     	Session::flash('success', 'Cupom Editado com sucesso');
     	return redirect()->back();

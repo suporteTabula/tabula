@@ -45,6 +45,7 @@ Route::get('course/course_item_toggle/{id}', 'CoursesController@course_item_togg
 Route::match(['get', 'post'], 'lesson', 'CoursesController@lesson')->name('course.lesson');
 Route::get('course/progress/{id}', 'CoursesController@course_progress')->name('course.progress');
 Route::post('answers/{id}', 'CoursesController@answers')->name('course.answer');
+Route::post('comment', 'CoursesController@comment')->name('course.comment');
 //Pesquisas
 Route::get('search/{id}', 'SearchController@search')->name('search.single');
 Route::get('searchcat', 'SearchController@searchCat')->name('search.category');
@@ -59,7 +60,7 @@ Route::get('categoria/{urn}', 'CategoriesController@category')->name('category.s
 
 //Empresa
 Route::get('/empresa', 'CompanyController@index')->name('empresa');
-Route::get('/empresa/register', 'CompanyController@resgisterCompany')->name('empresa.register');
+Route::get('/empresa/register', 'CompanyController@registerCompany')->name('empresa.register');
 Route::get('/empresa/{id}', 'CompanyController@theCompany')->name('empresa.company');
 
 Route::group(['prefix' => 'companies', 'middleware' => ['auth']], function (){
@@ -122,6 +123,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 
 	Route::get('/nota', 'NotasController@index')->name('nota');
 	Route::get('/reports', 'AdminCoursesController@index')->name('reports');
+
+	Route::get('/seo', 'AdminSeoController@index')->name('seo');
+	Route::get('/seo/create', 'AdminSeoController@create')->name('seo.create');
+	Route::post('/seo/store', 'AdminSeoController@store')->name('seo.store');
+	Route::get('/seo/edit/{id}', 'AdminSeoController@edit')->name('seo.edit');
+	Route::post('/seo/update/{id}', 'AdminSeoController@update')->name('seo.update');
+	Route::get('/seo/delete/{id}', 'AdminSeoController@destroy')->name('seo.delete');
 
 	Route::get('/cupom', 'AdminCupomController@index')->name('cupom');
 	Route::get('/cupom/create', 'AdminCupomController@create')->name('cupom.create');

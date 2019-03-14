@@ -22,7 +22,6 @@
     <div class="container grid-md"> 
         <div class="teachers-wrapper">
             @foreach($companies as $company)
-
             <div class="teacher-photo-wrapper"> 
                 <a href="{{ route('empresa.company', ['id' => $company->user->id]) }}"> 
                     <div class="teacher-photo" style="background-image: url({{asset('/images/Profilepic')}}/{{ $company->user->avatar}});">
@@ -37,7 +36,6 @@
                     </a>
             </div>
             @endforeach
-
         </div>
     </div>
 </section>
