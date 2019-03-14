@@ -10,6 +10,7 @@
 		<div class="panel-body">
 			<form action="{{ route('category.update', ['id' => $category->id]) }}" method="post" enctype="multipart/form-data">
 				{{ csrf_field() }}
+				
 				<div class="form-group">
 					<label for="desc">Nome Categoria/Subcategoria</label>
 					<input class="form-control" type="text" placeholder="Nome da categoria/subcategoria" value="{{ $category->desc }}" name="desc" required>
