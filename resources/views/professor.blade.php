@@ -1,4 +1,4 @@
- @extends('layouts.user')
+@extends('layouts.user')
 
 
 
@@ -19,13 +19,8 @@
 
 
 
-    <title>Perfil Professor</title>
-    
-    
-    
+    <title>Perfil Professor</title>       
     <section class="resumee">
-
-     
         <div class="container grid-lg">
             <div class="columns">
                 <div class="column col-1"></div>
@@ -35,40 +30,25 @@
 
                                 <div class="column col-12">
                                 <div class="teacher-photo" style="background-image: url(../images/uiface1.jpg);"></div>
-                                <span><b>Professor {{$user["first_name"]}} {{$user["last_name"]}}</b>
+                                <span><b>Professor {{$user["name"]}} </b>
                                     <center><div class="column col-xs-12 col-sm-12 col-6">
                                         
-                                        <label for="first_name">
+                                        <label for="name">
                                            
-                                            {{$user["first_name"]}}<br>
-
-                                            {{$user["last_name"]}}<br>
+                                            {{$user["name"]}}<br>
                                             email: {{$user["email"]}}<br>
                                             sexo: {{$user["sex"]}}<br>
                                             Ocupação: {{$user["occupation"]}}<br>
                                             Aniversário:{{$user["birthdate"]}}<br>
-                                           
-                                        
                                         </center>
-
                                         </label>
-                                        
                                     </div>
-                                   
-
-                                
                                 </span></center>
                         </div>
                     </div>
                 </div>
-            
             </div>
-
-            
-                <div class="column col-1"></div>
-           
-           
-               
+            <div class="column col-1"></div>               
         </section>            
 @stop
 

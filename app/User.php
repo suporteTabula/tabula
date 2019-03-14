@@ -125,4 +125,9 @@ public function items()
 {
     return $this->belongsToMany('App\CourseItem')->withPivot('desc', 'course_item_status_id')->withTimestamps();
 }
+
+public function teacher()
+    {
+        return $this->hasOne('App\Teacher');
+    }
 }

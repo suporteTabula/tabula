@@ -102,6 +102,9 @@
                         <a href="{{ route('courses') }}">Cursos</a>
                     </li>
                     <li class="list-group-item">
+                        <a href="{{ route('course.analise') }}">Cursos para análise</a>
+                    </li>
+                    <li class="list-group-item">
                         <a href="{{ route('categories') }}">Categorias/Macrotemas</a>
                     </li>
                     <li class="list-group-item">

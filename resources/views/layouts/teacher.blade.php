@@ -16,11 +16,13 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
     @yield('styles')
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navigation-bar nav-companies">
             <div class="container">
                 <div class="navbar-header">
 
@@ -34,7 +36,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        Tabula
+                        <img align="center" src="{{asset('/images/layout/header/logo.png')}}" height="30px"> 
                     </a>
                     <div class="navbar-brand">
                         
@@ -52,28 +54,13 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                       
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->login }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                    </ul>
+                    <div class="top-right">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class ="hide-md"><a href="{{ route('userPanel.single') }}"><img class="avatar" src="{{asset('/images/Profilepic')}}/"></a></li>
+                            <li class="hide-md"><a href="{{ route('cart') }}">Carrinho</a></li>
+                            <li class= "hide-md"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

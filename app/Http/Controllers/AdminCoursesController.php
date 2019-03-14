@@ -27,6 +27,32 @@ class AdminCoursesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function analise()
+    {
+        return view('admin.courses.analise')
+        ->with('courses', Course::all())
+        ->with('categories', Category::all())
+        ->with('users', User::all());
+    }
+
+    public function aprove($id)
+    {
+        $course = Course::find($id);
+        $course->avaliable = 1;
+        $course->save();
+        return redirect()->back()->with('success', 'Curso aprovado e disponível.');
+    }
+
+
+    public function remove($id)
+    {
+        $course = Course::find($id);
+        $course->avaliable = 2;
+        $course->save();
+        return redirect()->back()->with('success', 'Curso reprovado.');
+        
+    }
     public function index()
     {
         return view('admin.courses.index')

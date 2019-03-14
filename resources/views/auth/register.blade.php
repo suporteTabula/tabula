@@ -65,7 +65,7 @@
                                 <input type="radio" name="sex" value="Masculino">Masculino
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="sex" value="Feminino">Feminino
+                                <input type="radio" id="sex-fem" name="sex" value="Feminino">Feminino
                             </label>
 
                             @if ($errors->has('sex'))

@@ -41,7 +41,7 @@
                                 <button id="courses" class="button-normal">Meus Cursos</button>
                             </a>
 
-                            <a href="#">
+                            <a href="{{route('beTeacher')}}">
                                 <button id="teacher" class="button-normal">Tornar-se Professor</button>
                             </a>
                             @elseif($tipo == 'Empresa')
@@ -64,9 +64,16 @@
                             <a href="#">
                                 <button id="courses" class="button-normal">Meus Cursos</button>
                             </a>
+                            @if($myCourse == 0)
+                            <a href="{{route('course.create.teacher')}}">
+                                <button class="button-normal" style="background-color:Tomato;">Criar Curso</button>
+                            </a>    
+                            @else
                             <a href="#">
                                 <button id="taught" class="button-normal">Cursos que Leciono</button>
                             </a>
+
+                            @endif
                             @endif
                         </div>
                     </div>
@@ -239,78 +246,6 @@
                             @endforeach
                         @endif
                     </div>                                
-                </div>
-            </div>
-            <!--tornar-se professor-->
-            <div id="panel-6" class="columns">
-                <div class="column col-12">
-                    <div class="columns">
-                        <div class="column col-12">
-                            <p>Somos marketplace inovadora que permite aos nossos colaboradores, não apenas ampliar o alcance de alunos mas também ser remunerado de forma eficiente pelo conteúdo criado. Um de nossos diferenciais é que não somos proprietários do seu conteúdo. Somos apenas a ferramenta que permite a comercialização e a viabilização do seu curso on-line.
-
-                                No Tabula, é você professor que tem a voz final sobre os aspectos mais relevantes do seu curso como conteúdo, métodos de avaliação e política de preço. Ao final, 65% do faturamento total do seu curso será SEU!
-
-                            Entre em contato conosco através do formulário abaixo. Dentro de até uma semana entraremos em contato para darmos o próximo passo!</p><br>
-                            <div class="columns">
-                                <form method="POST" action="{{url('/professor')}}" class="form-group">
-                                    {{ csrf_field() }}
-                                    <div class="column col-xs-12 col-sm-12 col-6">
-                                        <label for="name"><b>Nome</b></label>
-                                        <input class="form-control" name="name" placeholder="Seu nome" type="text" value="{{ $auth->name }}">
-                                        <br>
-                                        <br>
-                                        <label for="country"><b>País</b></label>
-                                        <select id="country" name="country_id" class="form-control">
-                                            @foreach ($countries as $country)
-                                            <option value="{{ $country->id }}" @if($auth->country_id == $country->id) selected @endif> {{ $country->name }} </option>
-                                            @endforeach
-                                        </select>
-                                        <br>
-                                        <br>
-                                        <label for="state"><b>Estado</b></label>
-                                        <select id="state" name="state_id" class="form-control">
-                                            @foreach ($states as $state)
-                                            <option value="{{ $state->id }}" @if($auth->state_id == $state->id) selected @endif> {{ $state->name }} </option>
-                                            @endforeach
-                                        </select>
-                                        <br>
-                                        <br> 
-                                    </div>
-                                    <div class="column col-xs-12 col-sm-12 col-6">
-                                        <label for="sexo"><b>Sexo</b></label>
-                                        <select id="sex" name="sex" class="form-control">
-                                            <option value="Feminino" @if($auth->sex == 'Feminino') selected @endif> Feminino </option>
-                                            <option value="Masculino" @if($auth->sex == 'Masculino') selected @endif> Masculino </option>
-                                        </select>
-                                    </div>
-                                    <div class="column col-12">
-                                        <label for="bio"><b>O que te qualifica para ensinar? </b></label>
-                                        <textarea class="form-control" rows="5" id="bio" name="bio" placeholder="Escreva aqui...">{{ $auth->bio }}</textarea>
-                                    </div>
-                                    <div class="column col-xs-12 col-sm-12 col-6">
-                                        <label for="website"><b>Website</b></label>
-                                        <input class="form-control" type="text" name="website" placeholder="https://..." value="{{ $auth->website }}">
-                                        <br>
-                                        <br>
-                                        <label for="twitter"><b>Twitter</b></label>
-                                        <input class="form-control" type="text" name="twitter" placeholder="https://..." value="{{ $auth->twitter }}"> 
-                                    </div>
-                                    <div class="column col-xs-12 col-sm-12 col-6">
-                                        <label for="facebook"><b>Facebook</b></label>
-                                        <input class="form-control" type="text" name="facebook" placeholder="https://..." value="{{ $auth->facebook }}">
-                                        <br>
-                                        <br>
-                                        <label for="google_plus"><b>Google +</b></label>
-                                        <input class="form-control" type="text" name="google_plus" placeholder="https://..." value="{{ $auth->google_plus }}">
-                                        <input type="hidden" id="id" name="id" value="{{$auth->id}}">
-                                        <div class="column col-10 save-button">
-                                            <button class="button-tabula" type="submit">Solicitar Professor</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!--Meus Professores-->

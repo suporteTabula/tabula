@@ -36,6 +36,7 @@ Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('car
 Route::post('cart/cupom', 'CartController@validaCupom')->name('cart.cupom');
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
+
 //Transações
 Route::post('success', 'TransactionsController@statusTransaction')->name('transaction.success');
 //Cursos
@@ -46,9 +47,11 @@ Route::match(['get', 'post'], 'lesson', 'CoursesController@lesson')->name('cours
 Route::get('course/progress/{id}', 'CoursesController@course_progress')->name('course.progress');
 Route::post('answers/{id}', 'CoursesController@answers')->name('course.answer');
 Route::post('comment', 'CoursesController@comment')->name('course.comment');
+
 //Pesquisas
 Route::get('search/{id}', 'SearchController@search')->name('search.single');
 Route::get('searchcat', 'SearchController@searchCat')->name('search.category');
+
 //Painel do Usuario
 Route::get('userPanel', 'UsersController@userPanel')->name('userPanel.single');
 Route::post('userPanel/update', 'UsersController@userProfileUpdate')->name('userProfile.update');
@@ -62,7 +65,6 @@ Route::get('categoria/{urn}', 'CategoriesController@category')->name('category.s
 Route::get('/empresa', 'CompanyController@index')->name('empresa');
 Route::get('/empresa/register', 'CompanyController@registerCompany')->name('empresa.register');
 Route::get('/empresa/{id}', 'CompanyController@theCompany')->name('empresa.company');
-
 Route::group(['prefix' => 'companies', 'middleware' => ['auth']], function (){
 	Route::get('/teachers', 'CompanyController@teachersIndex')->name('teachers.company');
 	Route::get('/teachers/create', 'CompanyController@teachersCreate')->name('teachers.company.create');
@@ -75,7 +77,11 @@ Route::group(['prefix' => 'companies', 'middleware' => ['auth']], function (){
 });
 
 //professor
-Route::post('/professor', 'ProfController@virarProfessor')->name('professor');
+Route::get('/serprofessor', 'ProfController@beTeacher')->name('beTeacher');
+Route::post('/serprofessorStore', 'ProfController@storeAnswer')->name('store.answer');
+Route::get('/serprofessorDestroy/{id}', 'ProfController@destroyAnswer')->name('destroy.answer');
+Route::get('/professor', 'ProfController@virarProfessor')->name('teacher');
+
 Route::get('todosProfs/{id}', 'ProfController@courseProf')->name('course.prof');
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 	Route::get('/courses/create', 'ProfController@create')->name('course.create.teacher');
@@ -84,6 +90,8 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 	Route::get('/courses/edit/{id}', 'ProfController@edit')->name('course.edit.teacher');
 	Route::post('/courses/update/{id}', 'ProfController@update')->name('course.update.teacher');
 	Route::get('/courses/destroy/{id}', 'ProfController@destroy')->name('course.destroy.teacher');
+	Route::get('/courses/analise/{id}', 'ProfController@analise')->name('course.analise.teacher');
+
 
 	Route::get('/alunos/{id}', 'ProfController@alunosTeacher')->name('alunos.teacher');
 	Route::get('/alunos/reset/{id}', 'ProfController@alunosReset')->name('alunos.reset.teacher');
@@ -160,6 +168,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 	Route::post('/courses/update/{id}', 'AdminCoursesController@update')->name('course.update');
 	Route::get('/courses/destroy/{id}', 'AdminCoursesController@destroy')->name('course.destroy');
 	Route::post('/courses/alunos/store/{id}', 'AdminCoursesController@storeAluno')->name('alunos.store');
+	Route::post('/courses/alunos/store/{id}', 'AdminCoursesController@storeAluno')->name('alunos.store');
 
 	Route::post('/course/chapter/{id}', 'AdminCoursesController@chapter')->name('course.chapter');
 	Route::get('/course/chapter/edit/{id}', 'AdminCoursesController@chapter_edit')->name('course.chapter.edit');
@@ -171,6 +180,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 	Route::get('/course/chapter/item/edit/{id}', 'AdminCoursesController@item_edit')->name('course.item.edit');
 	Route::post('/course/chapter/item/update/{id}', 'AdminCoursesController@item_update')->name('course.item.update');
 	Route::get('/course/chapter/item/delete/{id}', 'AdminCoursesController@item_delete')->name('course.item.delete');
+	Route::get('/courses/analise/', 'AdminCoursesController@analise')->name('course.analise');
+	Route::get('/courses/aprove/{id}/', 'AdminCoursesController@aprove')->name('course.aprove');
+	Route::get('/courses/remove/{id}/', 'AdminCoursesController@remove')->name('course.remove');
+
 
 	Route::post('/course/multiple/{id}', 'AdminCoursesController@multiple')->name('course.multiple');
 

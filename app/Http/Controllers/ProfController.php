@@ -8,49 +8,103 @@ use App\CustomClasses\vimeo_tools;
 use App\User;
 use App\Cupom;
 use App\Course;
+use App\Teacher;
 use App\UserType;
 use App\Category;
 use App\UserGroup;
 use App\CourseUser;
 use App\CourseItem;
-use App\CourseItemUser;
 use App\CourseItemType;
+use App\CourseItemUser;
 use App\CourseItemOption;
 use App\CourseItemGroup;
 use App\CourseItemStatus;
 use Session;
 use Auth;
 
-            #################
-            #Virar Professor#
-            #################
 class ProfController extends Controller
 {
+    
+
+
+
+    public function beTeacher()
+    {
+        $auth = Auth::user();
+
+        $teacher = Teacher::where('user_id', $auth->id);
+
+        if ($teacher->count() > 0) {
+            if($teacher->first()->answer_first == null){
+
+                return view('teacher.form.tela1')->with('auth', $auth);
+            }
+            if($teacher->first()->answer_second == null){
+
+                return view('teacher.form.tela2')->with('auth', $auth);
+            }
+            if($teacher->first()->answer_third == null){
+
+                return view('teacher.form.tela3')->with('auth', $auth);
+            }
+            return redirect()->route('teacher');
+        }
+        Teacher::create([
+            'user_id'   =>  $auth->id 
+        ]);
+
+        return view('teacher.form.tela1')->with('auth', $auth);
+    }
+
+    public function storeAnswer(Request $request)
+    {
+        $auth = Auth::user();
+
+        Teacher::where('user_id', $auth->id)->update([
+            $request->row      => $request->answer
+       ]);
+        return redirect()->route('beTeacher');
+    }
+
+    public function destroyAnswer($id)
+    {
+        $auth = Auth::user();
+
+        Teacher::where('user_id', $auth->id)->update([
+            $id     => null
+       ]);
+
+        return redirect()->route('beTeacher');
+    }
 
 
 	public function virarProfessor(Request $request)
 	{
-		$user = User::find($request->id);
+		$user = Auth::user();
 
-
-        $user->name         = $request->name;
-        $user->birthdate    = $request->birthdate;
-        $user->sex          = $request->sex;
-        $user->occupation   = $request->occupation;
-        $user->bio          = $request->bio;
-        $user->website      = $request->website;
-        $user->google_plus  = $request->google_plus;
-        $user->twitter      = $request->twitter;
-        $user->facebook     = $request->facebook;
-        $user->youtube      = $request->youtube;
-        $request->id = 3;
+       
+        $userType = 3;
         
-        $user->userTypes()->sync($request->id);
+        $user->userTypes()->sync($userType);
         $user->save();
-
-        return redirect()->route('userPanel.single');
+        $course = Course::where('user_id_owner', $user->id)->count();
+        Session::flash('success', 'Parabéns, você é o mais novo professor no Tabula, crie um curso agora mesmo');
+        return redirect()->route('userPanel.single')
+            ->with('myCourse', $course);
 
     }
+
+    public function analise($id)
+    {
+        $course = Course::find($id);
+        $course->avaliable = 0;
+        $course->save();
+        Session::flash('success', 'Seu conteúdo foi enviado para avaliação, retornaremos em breve.');
+        return redirect()->back();
+    }
+
+
+
         ######################
         #Tela Todos os Cursos#
         ######################

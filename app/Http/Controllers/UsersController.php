@@ -27,6 +27,7 @@ class UsersController extends Controller
         $teachers = User::where('empresa_id', $auth->id)->get();   
 
         $company = DB::table('company')->where('user_id', $auth->id)->first();
+        $course = Course::where('user_id_owner', $auth->id)->count();
         if ($company == null) {
             return view('userPanel')
             ->with('auth', Auth::user())
@@ -37,6 +38,7 @@ class UsersController extends Controller
             ->with('categories', Category::all())
             ->with('user_groups', UserGroup::all())
             ->with('company', $company)
+            ->with('myCourse', $course)
             ->with('teachers', $teachers)
             ->with('usertype', $userType);
         }else{ 
@@ -53,6 +55,7 @@ class UsersController extends Controller
             ->with('user_groups', UserGroup::all())
             ->with('users', $users)
             ->with('company', $company)
+            ->with('myCourse', $course)
             ->with('teachers', $teachers)
             ->with('usertype', $userType);
         }

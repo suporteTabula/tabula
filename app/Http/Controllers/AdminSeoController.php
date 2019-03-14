@@ -55,11 +55,11 @@ class AdminSeoController extends Controller
  		}
 
     	Seo::create([
-    		'meta_type' => $request->metaType,
-    		'meta_description' => $request->metaDescription,
-    		'meta' => $metaDescription,
-    		'page' => $request->page,
-    		'page_type' => $request->pageType,
+    		'meta_type'           => $request->metaType,
+    		'meta_description'    => $request->metaDescription,
+    		'meta'                => $metaDescription,
+    		'page'                => $request->page,
+    		'page_type'           => $request->pageType,
     	]);
 
     	Session::flash('success', 'SEO criado com sucesso');
@@ -97,11 +97,11 @@ class AdminSeoController extends Controller
  		}
 
  		Seo::where('id', $request->id)->update([
-    		'meta_type'       => $request->metaType,
-    		'meta_description'      => $request->metaDescription,
-    		'meta'     => $metaDescription,
-    		'page'    => $request->page,
-    		'page_type'    => $request->pageType,
+    		'meta_type'           => $request->metaType,
+    		'meta_description'    => $request->metaDescription,
+    		'meta'                => $metaDescription,
+    		'page'                => $request->page,
+    		'page_type'           => $request->pageType,
     	]);  
 
     	Session::flash('success', 'SEO criado com sucesso');
