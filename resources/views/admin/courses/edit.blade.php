@@ -205,7 +205,7 @@
 
 		@section('scripts')	
 		<script>
-	var category_id = 0;
+		var category_id = 0;
 		    $('#subCateg').hide();
 		    $('#categ' ).change(function() {
 		    	var url = "{{route('sub.categ')}}";

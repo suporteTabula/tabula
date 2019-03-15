@@ -34,8 +34,8 @@
                                         <input type="radio" value="2" name="answer"><i class="form-icon"></i>Uma quantidade considerável de seguidores.
                                         </label>
                                     </div>
-                                    <button class="btn btn-success" type="submit">Próximo</button>
                                     <a class="btn btn-success" href="{{ route('destroy.answer', ['id' => 'answer_second']) }}">Anterior</a>
+                                    <button class="btn btn-success" type="submit">Próximo</button>
                                 </form>
                             </div>
                         </span>

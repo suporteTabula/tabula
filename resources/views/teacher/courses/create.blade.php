@@ -18,7 +18,7 @@
 				<label for="desc">Descrição</label>
 				<input class="form-control" type="text" name="desc" placeholder="Descrição do curso" value="{{ old('desc') }}">
 			</div>
-			<div class="form-group">
+			<div class="form-group" id="categ">
 				<label for="category_id">Categoria</label>
 				<select class="form-control" id="category_id" name="category_id">
 					<option value="" selected disabled hidden>Escolha uma...</option>
@@ -29,17 +29,12 @@
 					@endforeach
 				</select>
 			</div>
-			<?php $idcateg = "<script>document.write(category_id)</script>"; ?>
-		{{ $idcateg}}
 			<div class="form-group" id="subCateg">
 				<label for="subcategory_id">Subcategoria</label>
 				<select class="form-control" id="subcategory_id" name="subcategory_id">
 					<option value="" selected disabled hidden>Escolha uma...</option>
-
 					@foreach($categories as $category)
-					@if($category->category_id_parent == $idcateg)
-					<option value="{{ $category->id }}">{{ $category->desc }}</option>
-					@endif
+					<option value="{{ $category->id }}" >{{ $category->desc }}</option>
 					@endforeach
 				</select>
 			</div>
@@ -88,10 +83,29 @@
 <script>
 	var category_id = 0;
     $('#subCateg').hide();
-    $('#categ').change(function() {
-    	category_id = $('#category_id').val();
+    $('#categ' ).change(function() {
+    	var url = "{{route('sub.categ')}}";
+    	var categId = $('#categ option:selected').val();
+    	categAjax(url, categId);
     	$('#subCateg').show();
     });
+
+    function categAjax(url, categId){
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data:{
+                categId: categId,
+            },
+            beforeSend: function(){
+            },
+            success: function(data){
+                var result = $.parseJSON(data);
+                console.log(result);
+                
+            }
+        });
+    }
 
 </script>
 @stop
