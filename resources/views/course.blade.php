@@ -35,6 +35,7 @@
                   <span class="starAbsolute"></span>
                 </span>
               <?php endfor ?>
+              <span class="urlRating" data-url="{{route('ratingstar')}}"></span>
               <span class="ratingAverage">{{$rating['star']}}</span>
             </div> 
           </div>
@@ -54,35 +55,42 @@
           @endauth
           <div class="start-course">
             @auth
-            @if($auth->id == $author->id)
-            <ul>
-              <a class="custom-tabula-button" href="{{ route('course.edit.teacher', ['id' => $course->id]) }}">Editar</a>
-            </ul>
-            <ul>
-              <a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Excluir</a>
-            </ul>
-            @elseif($hasCourse)
-            @if ($progress > 0)
-            <ul>
-              <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Continuar Curso</a>
-            </ul>
-            @else
+              @if($auth->id == $author->id)
+              <ul>
+                @if($auth->userTypes->first()->id == 1)
+                <a class="custom-tabula-button" href="{{ route('course.edit', ['id' => $course->id]) }}">Editar</a>
+                @else
+                <a class="custom-tabula-button" href="{{ route('course.edit.teacher', ['id' => $course->id]) }}">Editar</a>
+                @endif
+              </ul>
+              <ul>
+                <a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Excluir</a>
+              </ul>
+              @elseif($hasCourse)
+                @if ($progress > 0)
+                <ul>
+                  <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Continuar Curso</a>
+                </ul>
+                @else
+                <ul>
+                  <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
+                </ul>
+                @endif
+              <ul>
+                <a class="custom-button button-tabula classContent" href="#">Conteúdo</a>
+                <a class="custom-button button-tabula question" href="#">Perguntas</a>
+              </ul>  
+               <ul>
+              </ul>                               
+              @else
+              <ul><a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a></ul>
 
-            <ul>
-              <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
-            </ul>
-            @endif
-            <ul>
-              <a class="custom-button button-tabula classContent" href="#">Conteúdo</a>
-              <a class="custom-button button-tabula question" href="#">Perguntas</a>
-            </ul>  
-             <ul>
-            </ul>                               
+              <ul> <a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a></ul>
+              @endif
             @else
-            <ul><a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Comprar</a></ul>
+            <ul><a class="custom-tabula-button" href="{{ route('new.cart', ['id' => $course->id]) }}">Comprar</a></ul>
 
-            <ul> <a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Adicionar ao carrinho</a></ul>
-            @endif
+            <ul> <a class="custom-tabula-button" href="{{ route('new.cart', ['id' => $course->id]) }}">Adicionar ao carrinho</a></ul>  
             @endauth
           </div>
         </div>

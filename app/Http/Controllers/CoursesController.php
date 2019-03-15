@@ -211,26 +211,6 @@ class CoursesController extends Controller
 
     }
 
-/*    public function course_progress($id)
-    {
-        $item = CourseItem::find($id);
-        $items = CourseItem::where('id', $id)->get();
-        
-        $items = vimeo_tools::parse_for_urls($items);        
-
-        $user = Auth::user();
-        $id_course = $item->course_item_group->course_id;
-        $chapter = CourseItemGroup::where('course_id', $id_course)->get();
-        //return dd($item);
-
-        
-        return view('courseProgress')
-        ->with('user', $user)
-        ->with('chapters', $chapter)
-        ->with('items', $items);
-
-    }*/
-
     public function lesson(Request $request)
     { 
         $item = CourseItem::where('id', $request->item_id)->get();
@@ -242,8 +222,6 @@ class CoursesController extends Controller
         return view('lesson')
         ->with('items', $item);
 
-        //$item = DB::table('course_items')->where('id', $request->item_id)->get();
-        
     }
     public function answers(Request $request, $id)
     {

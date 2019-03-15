@@ -14,8 +14,7 @@
  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
  <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
- <link rel="stylesheet" href="css/style.css">
- <link rel="stylesheet" href="css/home-empresa.css">
+ <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 
 
@@ -41,9 +40,8 @@
                     </div>
                     
                     <!--<div id="content"></div>-->
-                    
-                    <div id="painel-1">
-                        <div class="columns">
+                   
+                        <div class="columns course-company">
                         @if(isset($courses))                                    
                             @foreach($courses as $course)
                                 <div class="column col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
@@ -69,10 +67,10 @@
                                 </div>
                             @endif
                         </div>              
-                    </div>
+                   
                     
 
-                    <div class="columns">
+                    <div class="columns mission-company">
                         <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="missao-conhecimento missao">
                                 <h5>Missão</h5>
@@ -80,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="columns">
+                    <div class="columns knowledge-company">
                         <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="missao-conhecimento">
                                 <h5>Áreas de Conhecimento</h5>
@@ -90,7 +88,7 @@
                     </div>
 
 
-                    <div class="columns">
+                    <div class="columns teacher-company">
                         <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div id="painel-2">
                                 <div class="teachers-wrapper teachers-align">
@@ -126,34 +124,6 @@
         </div>
     </div>
 </section>
-<!--
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#panel-course').hide();
-        $('#panel-teacher').hide();
-        $('#panel-know').hide();
-        $('#panel-mission').hide();
-
-        $('#courseCompany').click(function(){
-            $('#content-company').html(''); 
-            $('#content-company').append($('#panel-course').html());
-        });
-
-        $('#teacherCompany').click(function(){
-            $('#content-company').html(''); 
-            $('#content-company').append($('#panel-teacher').html());
-        });
-
-        $('#knowledgeCompany').click(function(){
-            $('#content-company').html(''); 
-            $('#content-company').append($('#panel-know').html());
-
-        $('#missionCompany').click(function(){
-            $('#content-company').html(''); 
-            $('#content-company').append($('#panel-mission').html());
-        });
 
 
-    });
-</script>-->
 @stop

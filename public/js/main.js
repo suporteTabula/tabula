@@ -211,7 +211,7 @@ $(document).ready(function(){
             alert("É Necessário comprar o curso para realizar a avaliação")
         }else{
             var voto = $(this).attr('id');
-            var url = "{{route('ratingstar')}}";
+            var url = $('.urlRating').attr('data-url');
             ratingAjax(idCourse, voto, url);
         }
     });
@@ -220,7 +220,7 @@ $(document).ready(function(){
     function ratingAjax(idCourse, voto, url){
         $.ajax({
             type: 'POST',
-            url: 'http://localhost/projetos_web/tabula-imax/public/course/ratingstar',
+            url: url,
             data:{
                 idCourse: idCourse,
                 voto: voto

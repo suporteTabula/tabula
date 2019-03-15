@@ -35,15 +35,15 @@ class ProfController extends Controller
         $teacher = Teacher::where('user_id', $auth->id);
 
         if ($teacher->count() > 0) {
-            if($teacher->first()->answer_first == null){
+            if($teacher->first()->answer_first === null){
 
                 return view('teacher.form.tela1')->with('auth', $auth);
             }
-            if($teacher->first()->answer_second == null){
+            if($teacher->first()->answer_second === null){
 
                 return view('teacher.form.tela2')->with('auth', $auth);
             }
-            if($teacher->first()->answer_third == null){
+            if($teacher->first()->answer_third === null){
 
                 return view('teacher.form.tela3')->with('auth', $auth);
             }
@@ -110,21 +110,21 @@ class ProfController extends Controller
         ######################
     public function index()
     {
-        $user = Auth::user();
-        $courses = Course::where('user_id_owner', $user->id)->get();
-        $userCompanies = $user->userTypes()->first();
+        $auth = Auth::user();
+        $courses = Course::where('user_id_owner', $auth->id)->get();
+        $userCompanies = $auth->userTypes()->first();
         
         if ($userCompanies->id == 5) {
             return view('companies.courses.index')
             ->with('courses', $courses)
             ->with('categories', Category::all())
-            ->with('users', $user);
+            ->with('users', $auth);
         }else{
-            $courses = Course::where('user_id_owner', $user->id)->get();
+            $courses = Course::where('user_id_owner', $auth->id)->get();
             return view('teacher.courses.index')
             ->with('courses', $courses)
             ->with('categories', Category::all())
-            ->with('users', $user);
+            ->with('auth', $auth);
         }
     }
 
@@ -143,6 +143,7 @@ class ProfController extends Controller
         }else{
             return view('teacher.courses.create')
             ->with('categories', Category::all())
+            ->with('auth', $auth)
             ->with('user_groups', UserGroup::all());
         }
 

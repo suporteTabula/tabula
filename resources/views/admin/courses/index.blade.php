@@ -28,6 +28,7 @@
 					<th>Autor</th>
 					<th>Alunos</th>
 					<th>Grupo</th>
+					<th>Disponibilizar</th>
 					<th>Editar</th>
 					<th>Deletar</th>
 				</thead>
@@ -55,6 +56,15 @@
 										Não tem
 									@else
 										{{ $course->group }}
+									@endif
+								</td>
+								<td>
+									@if($course->avaliable == 1)
+									Disponiblizado
+									@else
+									<a href="{{ route('course.aprove', ['id' => $course->id]) }} ">
+										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
+									</a>
 									@endif
 								</td>
 								<td>

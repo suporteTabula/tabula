@@ -20,7 +20,7 @@
 			</div>
 			<div class="form-group">
 				<label for="desc">Descrição</label>
-				<input class="form-control" type="text" value="{{ $chapter->desc }}" placeholder="Descrição do capítulo" name="desc">
+				<input class="form-control" type="text" value="{{ $chapter->desc}}" placeholder="Descrição do capítulo" name="desc">
 			</div>
 
 			<div class="form-group">
@@ -65,8 +65,8 @@
 
 				<div id="desc">
 					<div class="form-group">
-						<label for="desc">Descrição</label>
-						<input class="form-control" type="text" placeholder="Descrição da aula" name="desc">
+						<label for="texto">Descrição</label>
+						<textarea id="desc" name="desc" class="form-control" rows="3" cols="5"></textarea>
 					</div>
 				</div>
 
@@ -83,12 +83,7 @@
 					</div>
 				</div>
 
-				<div id="texto">
-					<div class="form-group">
-						<label for="texto">Adicionar Texto</label>
-						<textarea id="desc" name="desc" class="form-control" rows="4" cols="5"></textarea>
-					</div>
-				</div>
+				
 
 				<div class="form-group">
 					<div class="text-center">
@@ -293,18 +288,18 @@ $( "#create-complement" ).button().on( "click", function() {
 
 <script>
 	$('#arquivo').hide();
-	$('#texto').hide();
+	$('#desc').hide();
 	$('#dissertativa').hide();
 	$('#vimeo').hide();
 
 	$('#item_type').change(function(){
 		if($('#item_type').val() == 3){
 			$('#desc').hide();
-			$('#texto').show();
+			$('#desc').show();
 			$('#arquivo').hide();					
 			$('#vimeo').hide();
 		} else{
-			$('#texto').hide();
+			$('#desc').hide();
 			$('#desc').show();
 			$('#arquivo').show();
 			$('#vimeo').hide();

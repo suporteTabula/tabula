@@ -146,16 +146,19 @@ class CartController extends Controller
                     }
                     
                 }
-
             }
-
             $request->session()->put('desconto',[
                 'descontoTotal' => $validaCupom['desconto'],
                 'total' => $validaCupom['total'],
             ]);
             return json_encode($validaCupom);
 
+        }
 
+        public function newCart($id)
+        {
+            session(['course_id' => $id]);
 
+            return redirect()->route('register');
         }
     }

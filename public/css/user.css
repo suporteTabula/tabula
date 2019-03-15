@@ -312,7 +312,12 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+.card_img{
 
+  width: 50%;
+  margin: 110px auto 0;
+  display: table;
+}
 .course-card__description {
   padding: 10px;
   position: relative;

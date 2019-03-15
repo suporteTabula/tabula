@@ -187,7 +187,7 @@
                        <div class="course-card">
                             <a href="{{ route('course.single', ['id' => $course->id]) }}">
                                 <div class="course-card__image">
-                                    <img style="width: 100%" src="{{asset('images/aulas')}}/{{$course->thumb_img}}" class="thumb" />
+                                    <img src="{{asset('images/aulas')}}/{{$course->thumb_img}}" class="thumb" />
                                 </div>
                                 <div class="course-card__description">
                                     <p>{{ $course->name }}</p>
@@ -207,7 +207,7 @@
                         <div class="course-card">
                             <a href="{{route('course.create.teacher')}}">
                                 <div class="course-card__image" >
-                                    <img style="width: 100%" src="{{url('/images/img/more.png')}}">
+                                    <img class="card_img" src="{{url('/images/img/more.png')}}">
                                 </div>
                                 <div class="course-card__description">
 
@@ -220,7 +220,7 @@
                                 <div class="course-card">
                                     <a href="{{ route('course.single', ['id' => $course->id]) }}">
                                         <div class="course-card__image">
-                                            <img style="width: 100%" src="{{asset('images/aulas')}}/{{$course->thumb_img}}" class="thumb" />
+                                            <img  src="{{asset('images/aulas')}}/{{$course->thumb_img}}" class="thumb" />
                                         </div>
                                         <div class="course-card__description">
                                             <p>{{ $course->name }}</p>
@@ -255,7 +255,7 @@
                         <div class="course-card">
                             <a href="{{route('teachers.company.create')}}">
                                 <div class="course-card__image" >
-                                    <img style="width: 50%" src="{{url('/images/img/more.png')}}">
+                                    <img class="card_img" src="{{url('/images/img/more.png')}}">
                                 </div>
                                 <div class="course-card__description">
 

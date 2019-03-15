@@ -39,8 +39,7 @@
             <div class="column course-video-wrapper" id="aulas">
 
             </div>
-            <div class="column col-2 course-controls">   
-                <button id="next" class="button-tabula">Próxima Aula</button>                 
+            <div class="column col-2 course-controls">                
                 <button id="open-class" class="button-tabula">Menu de Aulas</button>
                 <button id="close-class" class="button-tabula">Fechar Menu de Aulas</button>
             </div>
@@ -56,24 +55,26 @@
         req = {
            item_id:id,
            readonly:readonly
-       };               
-       $.ajax({
-        type: 'GET',                                                
-        url: route,
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        data: req,
-        error: function(e){
-            console.log(e);
-        },
-        success: function(response){      
-            var result = $.parseJSON(response);
-            var i = 0;
-            for (i =0; i < result.length; ++i){
-                $('#chap-'+ result[i].id).html(result[i].progressDo);
+        };               
+        $.ajax({
+            type: 'GET',                                                
+            url: route,
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: req,
+            error: function(e){
+                console.log(e);
+            },
+            success: function(response){      
+                var result = $.parseJSON(response);
+                console.log(result);
+                var i = 0;
+                for (i =0; i < result.length; ++i){
+                    $('#chap-'+ result[i].id).html(result[i].progressDo);
+                }
+
             }
-        }
-    });
-   }
+        });
+    }
 
    $(document).ready(function(){                
     $('.progress-label').click(function(){
@@ -106,14 +107,6 @@
                 return false;     
             }
         }); 
-        $('#next').click(function(){
-            $('.input-progress-label').each(function(){
-
-                var id=$(this).attr('id'); 
-                alert(id);
-            });
-
-        });
     });
     $('.aula').click(function(){
 

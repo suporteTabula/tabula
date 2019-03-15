@@ -329,6 +329,14 @@ class AdminCoursesController extends Controller
         return redirect()->back();
     }
 
+    public function subCateg(Request $request)
+    {
+        $categ = Category::find($request->categId);
+
+        $subCateg = Category::where('category_id_parent', $categ->id)->get();
+        return json_encode($subCateg);
+    }
+
     /**
      * Store a newly chapter in storage.
      *
@@ -426,16 +434,14 @@ class AdminCoursesController extends Controller
      */
     public function item(Request $request, $id)
     {
+
         $this->validate($request, [
             'name'          => 'required'
         ]);        
         $item = new CourseItem;
         
         $item->name                     = $request->name;
-        if(isset($request->desc))
-        {
-            $item->desc                 = $request->desc;
-        }
+        $item->desc                     = $request->desc;
         $item->course_item_group_id     = $id;
         $item->course_item_types_id     = $request->item_type_id;
         $item->course_items_parent      = NULL;

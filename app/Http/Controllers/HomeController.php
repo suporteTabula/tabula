@@ -12,6 +12,11 @@ class HomeController extends Controller
 {
  public function index()
  {
+   $session = session()->pull('course_id');
+   if ($session != null) {
+      return redirect()->route('cart.insert', ['id' => $session]);   
+   }
+
    $featured_category1 = Category::find(1);              
    $featured_category2 = Category::find(2);
    $auth = Auth::user();

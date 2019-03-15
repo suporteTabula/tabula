@@ -62,7 +62,6 @@ class RegisterController extends Controller
             'login'         => 'required',   
             'name'          => 'required',
             'country_id'    => 'required',
-            'schooling_id'  => 'required',
             'email'         => 'required|string|email|max:255|unique:users',
             'password'      => 'required|min:6|confirmed',
         ]);     
@@ -87,7 +86,6 @@ class RegisterController extends Controller
             'email'         => $data['email'],
             'name'          => $data['name'],
             'country_id'    => $data['country_id'],
-            'schooling_id'  => $data['schooling_id'],
             'password'      => bcrypt($data['password']),
             
         ]);
@@ -98,6 +96,9 @@ class RegisterController extends Controller
         }
         if(!empty($data['sex'])){
             $user->sex = $data['sex'];
+        }
+        if(!empty($data['schooling_id'])){
+            $user->schooling_id = $data['schooling_id'];
         }
         $user->save();
 

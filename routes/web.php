@@ -36,6 +36,7 @@ Route::get('cart/remove/{id}', 'CartController@removeCourseFromCart')->name('car
 Route::post('cart/cupom', 'CartController@validaCupom')->name('cart.cupom');
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::get('checkout', 'CartController@checkout')->name('cart.checkout');
+Route::get('/login/{id?}', 'CartController@newCart')->name('new.cart');
 
 //Transações
 Route::post('success', 'TransactionsController@statusTransaction')->name('transaction.success');
@@ -169,6 +170,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 	Route::get('/courses/destroy/{id}', 'AdminCoursesController@destroy')->name('course.destroy');
 	Route::post('/courses/alunos/store/{id}', 'AdminCoursesController@storeAluno')->name('alunos.store');
 	Route::post('/courses/alunos/store/{id}', 'AdminCoursesController@storeAluno')->name('alunos.store');
+	Route::get('/courses/subcateg', 'AdminCoursesController@subCateg')->name('sub.categ');
 
 	Route::post('/course/chapter/{id}', 'AdminCoursesController@chapter')->name('course.chapter');
 	Route::get('/course/chapter/edit/{id}', 'AdminCoursesController@chapter_edit')->name('course.chapter.edit');

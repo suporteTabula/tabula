@@ -1,4 +1,4 @@
-@extends('layouts.aluno')
+@extends('layouts.admin')
 
 @section('content')
 

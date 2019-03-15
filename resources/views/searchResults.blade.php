@@ -1,6 +1,7 @@
 @if (isset($courses))
 	@if (count($courses) > 0)
         @foreach($courses as $course)
+        @if($course->avaliable == 1)
             <ul class="clearfix grid" id="courses">
                 <li class="clearfix">
                     <div class="course-card" id="course-card">                          
@@ -19,6 +20,7 @@
                     </div>
                 </li>
             </ul>
+            @endif
         @endforeach                
     @else
         Não existem cursos das opções selecionadas.

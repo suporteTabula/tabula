@@ -65,9 +65,10 @@
                         <div class="columns" id="search-results">
                             @if (count($courses) > 0)
                             @foreach($courses as $course)
+                            @if($course->avaliable == 1)
                             <ul class="clearfix grid" id="courses">
                                 <li class="clearfix">
-                                    <div class="course-card" id="course-card">                          
+                                    <div class="course-card-search" id="course-card">                          
                                         <a href="{{ route('course.single', ['id' => $course->id]) }}">
                                             <section class="left">                                  
                                                 <div class="course-card__image">
@@ -85,6 +86,7 @@
                                 </div>
                             </li>
                         </ul>
+                        @endif
                         @endforeach                
                         @else
                         Não existem cursos das opções selecionadas.
