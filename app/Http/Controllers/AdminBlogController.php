@@ -12,4 +12,9 @@ class AdminBlogController extends Controller
     	$posts = BlogPost::get();
     	return view('admin.blog.index')->with('posts', $posts);
     }
+
+    public function createPost()
+    {
+    	return 'ok';
+    }
 }
