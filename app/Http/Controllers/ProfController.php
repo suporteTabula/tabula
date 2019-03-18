@@ -30,6 +30,7 @@ class ProfController extends Controller
 
     public function beTeacher()
     {
+        if (AUth::user()) {
         $auth = Auth::user();
 
         $teacher = Teacher::where('user_id', $auth->id);
@@ -54,6 +55,9 @@ class ProfController extends Controller
         ]);
 
         return view('teacher.form.tela1')->with('auth', $auth);
+        }
+        $session = session(['teacher' => 0]);
+        return redirect()->route('register');
     }
 
     public function storeAnswer(Request $request)

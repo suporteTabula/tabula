@@ -488,7 +488,8 @@ class AdminCoursesController extends Controller
         Course::where('id', $id)->update([
             'total_class' => $total_class,
         ]);
-        Session::flash('success', 'Sessão adicionada com sucesso');
+
+        Session::flash('success', 'Conteúdo adicionado com sucesso.');
         return redirect()->back();
     }
 
@@ -659,7 +660,7 @@ class AdminCoursesController extends Controller
 
         $item->delete();
 
-        Session::flash('info', 'Aula/Avaliação deletada com sucesso');
+        Session::flash('info', 'Aula/Avaliação deletada.');
         return redirect()->back();
     }
 

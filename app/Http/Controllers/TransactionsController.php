@@ -67,7 +67,7 @@ class TransactionsController extends Controller
         // será substituido pelo codigo da compra 
         $transaction->hash = $random_hash;
         $transaction->save();
-        session()->flush('desconto');
+        session()->pull('desconto');
         return view('success')
             ->with('courses', $courses)
             ->with('total_price', $total_price)

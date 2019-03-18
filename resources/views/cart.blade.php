@@ -86,7 +86,12 @@
                     },
                     success: function(data){
                         var result = $.parseJSON(data);
-                        $('#total').html('R$'+result.total);
+                        if (result.desconto == 0) {
+                            alert('Cupom não é válido.');
+                        }else{
+                            alert('Cupom Aplicado com sucesso!')
+                            $('#total').html('R$'+result.total);
+                        }
                         console.log(result);   
 
                     },

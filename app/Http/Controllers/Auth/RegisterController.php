@@ -109,6 +109,10 @@ class RegisterController extends Controller
                 'user_id'   => $user->id
             ]);
         }
+        if (session()->exists('teacher')) {
+            session()->pull('teacher');
+            return redirect()->route('beTeacher')->with('user', $user);
+        }
         return $user;
     }
 }

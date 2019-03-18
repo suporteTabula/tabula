@@ -65,7 +65,11 @@
                                 <button id="courses" class="button-normal">Meus Cursos</button>
                             </a>
                             @if($myCourse == 0)
+                            @if($tipo == 'Admin')
+                            <a href="{{route('course.create')}}">
+                            @else
                             <a href="{{route('course.create.teacher')}}">
+                            @endif
                                 <button class="button-normal" style="background-color:Tomato;">Criar Curso</button>
                             </a>    
                             @else

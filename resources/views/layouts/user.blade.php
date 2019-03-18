@@ -87,7 +87,7 @@ rel = "stylesheet">
                             <li class= "hide-md"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
                             @endif
                             @else
-                            <li class="hide-md"><a href="{{route('register')}}">Torne-se professor</a></li> 
+                            <li class="hide-md"><a href="{{route('beTeacher')}}">Torne-se professor</a></li> 
                             <li class="hide-md btn-menu-login"><a href="{{ route('login') }}">Login</a></li>
                             <li class="hide-md btn-menu-register"><a href="{{ route('register') }}">Cadastre-se</a></li>
                             @endauth  
