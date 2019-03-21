@@ -152,13 +152,15 @@
                 <h5>Cursos em destaque: {{ $featured_category1 }}</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
                     @foreach ($featured_courses1 as $course)
-                    <div class="course-card">
+                    <div class="course-card-search">
                         <a href="{{ route('course.single', ['id' => $course->id]) }}">
-                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                            <div class="course-card__image">
+                                <img src="{{asset('')}}/images/aulas/{{$course->thumb_img}}" class="thumb" />
+                            </div>
                             <div class="course-card__description">
                                 <p>{{ $course->name }}</p>
                                 <p>{{ $course->desc }}</p>
-                                <div class="course-card__price">{{ $course->price }}</div>
+                                <div class="course-card__price">R${{number_format($course->price, 2,',', '.')}}</div>
                             </div>
                         </a>
                     </div>
@@ -170,13 +172,35 @@
                 <h5>Cursos em destaque: {{ $featured_category2 }}</h5>
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
                     @foreach($featured_courses2 as $course)
-                    <div class="course-card">
+                    <div class="course-card-search">
                         <a href="{{ route('course.single', ['id' => $course->id]) }}">
-                            <div class="course-card__image" style="background-image: url(../images/aulas/{{$course->thumb_img}});"></div>
+                            <div class="course-card__image">
+                                <img src="{{asset('')}}/images/aulas/{{$course->thumb_img}}" class="thumb" />
+                            </div>
                             <div class="course-card__description">
                                 <p>{{ $course->name }}</p>
                                 <p>{{ $course->desc }}</p>
-                                <div class="course-card__price">{{ $course->price }}</div>
+                                <div class="course-card__price">R${{number_format($course->price, 2,',', '.')}}</div>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+                @endif
+
+                @if($courses)
+                <h5>Cursos Recomendados</h5>
+                <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+                    @foreach($courses as $course)
+                    <div class="course-card-search">
+                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <div class="course-card__image">
+                                <img src="{{asset('')}}/images/aulas/{{$course->thumb_img}}" class="thumb" />
+                            </div>
+                            <div class="course-card__description">
+                                <p>{{ $course->name }}</p>
+                                <p>{{ $course->desc }}</p>
+                                <div class="course-card__price">R${{number_format($course->price, 2,',', '.')}}</div>
                             </div>
                         </a>
                     </div>

@@ -8,6 +8,7 @@ use App\State;
 use App\Country;
 use App\UserType;
 use App\Schooling;
+use App\Category;
 use App\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -71,7 +72,8 @@ class RegisterController extends Controller
     {
         return view('auth.register')->with('countries', Country::all())
                                     ->with('states', State::all())
-                                    ->with('schoolings', Schooling::all());
+                                    ->with('schoolings', Schooling::all())
+                                    ->with('categories', Category::all());
     }
     /**
      * Create a new user instance after a valid registration.
@@ -81,12 +83,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $interest = serialize($data['interest']);
         $user = User::create([
             'login'         => $data['login'],
             'email'         => $data['email'],
             'name'          => $data['name'],
             'country_id'    => $data['country_id'],
             'password'      => bcrypt($data['password']),
+            'interest'      => $interest,
             
         ]);
 

@@ -51,14 +51,7 @@
 				<textarea class="form-control" name="requirements" placeholder="Requisitos para o Curso"></textarea>
 			</div>
 			<h4><b>Área de Interesse</b></h4>
-			@foreach($categories as $category)
-			<div class="form-check form-check-inline">
-				@if($category->category_id_parent == NULL)
-			  	<input class="form-check-input" id="interest[]" name="interest[]" type="checkbox"  value="{{ $category->id }}">
-			  	<label class="form-check-label" for="interest">{{ $category->desc }}</label>
-				@endif
-			</div>
-			@endforeach
+			
 		
 
 			<div class="form-group row">

@@ -138,7 +138,6 @@ class AdminCoursesController extends Controller
         $course->subcategory_id     = $request->subcategory_id;
         $course->featured           = $request->featured;
         $course->requirements       = $request->requirements;
-        $course->interest           = serialize($request->interest);
         $course->user_id_owner      = Auth::user()->id;
         $course->total_class        = 0;
 //Verficacao de URL amigável
@@ -233,10 +232,6 @@ class AdminCoursesController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
-        if ($course->interest != '' || $course->interest != NULL) {
-            $course->interest = unserialize($course->interest); 
-        }
-
 
         return view('admin.courses.edit')
         ->with('course', $course)
@@ -270,8 +265,7 @@ class AdminCoursesController extends Controller
         $course->category_id        = $request->category_id;
         $course->subcategory_id     = $request->subcategory_id;
         $course->requirements       = $request->requirements;
-        $course->featured           = $request->featured;
-        $course->interest           = serialize($request->interest);        
+        $course->featured           = $request->featured;    
 
         if($request->thumb_img != ''){
             $attach_thumb_img       = $request->thumb_img;
