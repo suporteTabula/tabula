@@ -138,7 +138,6 @@ div#painel-2 h4{
     margin: 10px 0;
   }
 }
-
 /*Fim - Página Empresa*/
 
 .wrapper {
@@ -286,7 +285,27 @@ input[name="cvv"] {
     margin-bottom: 8px;
   }
 }
+audio{
+  -webkit-transition:all 0.5s linear;
+  -moz-transition:all 0.5s linear;
+  -o-transition:all 0.5s linear;
+  transition:all 0.5s linear;
+  -moz-box-shadow: 2px 2px 4px 0px #006773;
+  -webkit-box-shadow:  2px 2px 4px 0px #006773;
+  box-shadow: 2px 2px 4px 0px #006773;
+  -moz-border-radius:7px 7px 7px 7px ;
+  -webkit-border-radius:7px 7px 7px 7px ;
+  border-radius:7px 7px 7px 7px ;
+}
 
+audio:hover, audio:focus, audio:active{
+  -webkit-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-moz-box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+-webkit-transform: scale(1.05);
+-moz-transform: scale(1.05);
+transform: scale(1.05);
+}
 .search-toggle-container
 {	
 	float:right;

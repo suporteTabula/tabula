@@ -3,13 +3,7 @@
 @section('content')
 	<div class="panel panel-default">
 		<div class="panel-heading" style="position: relative; height:80x; ">
-			<p style="line-height: 40px;">Todos os Cursos</p>
-			
-			<a href="{{ route('course.create') }}">
-				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
-			</a>
-
-		
+			<p style="line-height: 40px;">Cursos para análise</p>
 		</div>
 		<div class="panel-body">
 			<table id="coursesTable" class="table table-hover">
@@ -41,7 +35,7 @@
 									{{ $users->find($course->user_id_owner)->name }}
 								</td>
 								<td>
-									<a href="{{ route('course.edit', ['id' => $course->id]) }} ">
+									<a href="{{ route('course.analise.view', ['id' => $course->id]) }} ">
 										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
 									</a>
 								</td>

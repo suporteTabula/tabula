@@ -142,6 +142,15 @@
                                 </span>
                             @endif
                         </div>
+                        @foreach($categories as $category)
+                        <div class="form-group">
+                            @if($category->category_id_parent == NULL)
+                            <label  for="interest-{{$category->id}}"><i class="form-icon"></i>
+                            <input  id="interest-{{$category->id}}" name="interest[]" type="checkbox"  value="{{ $category->id }}">
+                            {{ $category->desc }}</label>
+                            @endif
+                        </div>
+                        @endforeach
 
                         <div class="form-group">
                             <button type="submit" class="button-tabula-gray">

@@ -7,7 +7,9 @@
                     <div class="course-card" id="course-card">                          
                         <a href="{{ route('course.single', ['id' => $course->id]) }}">
                             <section class="left">                                  
-                                <div class="course-card__image"><img src="../images/aulas/{{$course->thumb_img}}" class="thumb" /></div>
+                                <div class="course-card__image">
+                                    <img src="../images/aulas/{{$course->thumb_img}}" class="thumb" />
+                                </div>
                             </section>
                             <section class="right">
                                 <div class="course-card__description" id="course-card-desc">

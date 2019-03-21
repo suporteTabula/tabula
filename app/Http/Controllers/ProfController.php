@@ -21,6 +21,7 @@ use App\CourseItemGroup;
 use App\CourseItemStatus;
 use Session;
 use Auth;
+use PDF;
 
 class ProfController extends Controller
 {
@@ -1076,10 +1077,27 @@ class ProfController extends Controller
 
     public function certificateGenerate($id)
     {
+
         $aluno = CourseUser::find($id);
         $course = Course::find($aluno->course_id);
+        $teacher = User::find( $course->user_id_owner);
+        $company = null;
+        if ($teacher->empresa_id != NULL) {
+            $company = Find($teacher->empresa_id);
+        }
         $course->total = 0;
         $chapter = $course->course_item_groups->all();
+        $now = date("Y-m-d H:i:s");
+
+        $data = [
+            'date'      => $now,
+            'aluno'     => $aluno,
+            'course'    => $course,
+            'teacher'   => $teacher,
+            'empresa'   => $company
+            ];
+            $pdf = PDF::loadView('pdf.document', $data);
+            return $pdf->stream('document.pdf');
 
         foreach ($chapter as $chapters) {   
             $itemChapter = CourseItem::where('course_item_group_id', $chapters->id)->count();
@@ -1090,9 +1108,12 @@ class ProfController extends Controller
             return redirect()->back();
         }else{
             
+            
         }
 
-        return dd($aluno);
+        
+
+        
 
     }
 }

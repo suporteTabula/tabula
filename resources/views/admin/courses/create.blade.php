@@ -32,10 +32,7 @@
 			<div class="form-group" id="subCateg">
 				<label for="subcategory_id">Subcategoria</label>
 				<select class="form-control" id="subcategory_id" name="subcategory_id">
-					<option value="" selected disabled hidden>Escolha uma...</option>
-					@foreach($categories as $category)
-					<option value="{{ $category->id }}" >{{ $category->desc }}</option>
-					@endforeach
+									
 				</select>
 			</div>
 			<div class="form-group">
@@ -53,21 +50,9 @@
 				<label for="requirements">Requisitos</label>
 				<textarea class="form-control" name="requirements" placeholder="Requisitos para o Curso"></textarea>
 			</div>
-<!--
 			<h4><b>Área de Interesse</b></h4>
-			@foreach($categories as $category)
-			<div class="form-check form-check-inline">
-				@if($category->category_id_parent == NULL)
-			  	<input class="form-check-input" id="interest-{{ $category->id }}" name="interest-{{ $category->id }}" type="checkbox"  value="{{ $category->id }}">
-			  	<label class="form-check-label" for="interest-{{ $category->id }}">{{ $category->desc }}</label>
-				@endif
-			</div>
-			@endforeach
-		-->
-			<div class="form-group">
-				<label for="interest">Área de Interesse</label>
-				<input class="form-control" type="text" name="interest" placeholder="Área de Interesse" value="{{ old('interest') }}">
-			</div>
+			
+		
 
 			<div class="form-group row">
 				<div class="col-xs-4">
@@ -92,19 +77,19 @@
 					<a class="btn btn-success" href="{{ route('courses') }}">Voltar</a>
 				</div>
 			</div>
+
 		</form>
 	</div>
 </div>
 
 @section('scripts')
 <script>
-	var category_id = 0;
     $('#subCateg').hide();
     $('#categ' ).change(function() {
     	var url = "{{route('sub.categ')}}";
     	var categId = $('#categ option:selected').val();
     	categAjax(url, categId);
-    	$('#subCateg').show();
+    	
     });
 
     function categAjax(url, categId){
@@ -119,7 +104,16 @@
             success: function(data){
                 var result = $.parseJSON(data);
                 console.log(result);
-                
+                var i = 0;
+                $('#subcategory_id').html('');
+                if (result.length != 0) {
+	                for (i =0; i < result.length; ++i){
+	                    $('#subcategory_id').append('<option value="'+result[i].id+'" >'+result[i].desc+'</option>');
+	                }
+    				$('#subCateg').show();
+                }else{
+                	$('#subCateg').hide();
+                }
             }
         });
     }

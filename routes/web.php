@@ -21,7 +21,7 @@ Auth::routes();
 //home
 Route::get('/', 'HomeController@index')->name('index.single');
 
-
+Route::get('home/{id}', 'HomeController@pagesHome')->name('pages.home');
 
 Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
 //Grupos
@@ -92,6 +92,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 	Route::post('/courses/update/{id}', 'ProfController@update')->name('course.update.teacher');
 	Route::get('/courses/destroy/{id}', 'ProfController@destroy')->name('course.destroy.teacher');
 	Route::get('/courses/analise/{id}', 'ProfController@analise')->name('course.analise.teacher');
+	Route::get('/courses/subcateg', 'AdminCoursesController@subCateg')->name('sub.categ.teacher');
 
 
 	Route::get('/alunos/{id}', 'ProfController@alunosTeacher')->name('alunos.teacher');
@@ -183,9 +184,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 	Route::post('/course/chapter/item/update/{id}', 'AdminCoursesController@item_update')->name('course.item.update');
 	Route::get('/course/chapter/item/delete/{id}', 'AdminCoursesController@item_delete')->name('course.item.delete');
 	Route::get('/courses/analise/', 'AdminCoursesController@analise')->name('course.analise');
+	Route::get('/courses/analise/{id}', 'AdminCoursesController@view')->name('course.analise.view');
 	Route::get('/courses/aprove/{id}/', 'AdminCoursesController@aprove')->name('course.aprove');
 	Route::get('/courses/remove/{id}/', 'AdminCoursesController@remove')->name('course.remove');
 
+	Route::get('/pages/', 'AdminPageController@index')->name('pages');
+	Route::get('/pages/create', 'AdminPageController@create')->name('pages.create');
+	Route::post('/pages/store', 'AdminPageController@store')->name('pages.store');
+	Route::get('/pages/edit/{id}', 'AdminPageController@edit')->name('pages.edit');
+	Route::post('/pages/update/{id}', 'AdminPageController@update')->name('pages.update');
+	Route::get('/pages/destroy/{id}', 'AdminPageController@destroy')->name('pages.destroy');
 
 	Route::post('/course/multiple/{id}', 'AdminCoursesController@multiple')->name('course.multiple');
 

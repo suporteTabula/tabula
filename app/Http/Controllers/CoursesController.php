@@ -122,6 +122,7 @@ class CoursesController extends Controller
         $item           = $request->item_id; // Id específico do item ao finalizar aula
         $readonly       = $request->readonly;
         $totalProgress  = 0;
+        $totalClass     = 0;
 
         $courseItem     = CourseItemUser::where('course_item_id',$item)->where('user_id',$auth->id)->get();
         $courseCount    = CourseItemUser::where('course_item_id',$item)->where('user_id',$auth->id)->count();
@@ -150,6 +151,9 @@ class CoursesController extends Controller
             }
         }
         foreach ($chapter as $chapters) {
+            $total  = CourseItem::where('course_item_group_id', $chapters->id)->count();
+            $totalClass  = $totalClass + $total;
+
             $itemChapter            = CourseItem::where('course_item_group_id', $chapters->id)->pluck('id')->toArray();
             $chapters->progressDo   = CourseItemUser::wherein('course_item_id', $itemChapter)
             ->where('course_item_status_id', 1)
@@ -159,7 +163,8 @@ class CoursesController extends Controller
         CourseUser::where('course_id', $course->id)->where('user_id', $auth->id)->update([
             'progress' =>   $totalProgress
         ]);
-
+        // $chapter['total']           = $total;
+        // $chapter['totalProgress']   = $totalProgress;
         return json_encode($chapter);
     }
 
@@ -193,11 +198,11 @@ class CoursesController extends Controller
         }
         foreach ($chapter as $chap) {
             $count[$chap->id] = count($chap->course_items);
+
             
         }
         $done   = $auth->items()->wherePivot('course_item_status_id','1')->get();
         
-
         Log::Debug($course);
         return view('courseProgress')
         ->with('auth', $auth)
@@ -302,16 +307,16 @@ class CoursesController extends Controller
     public function comment(Request $request)
     {
         $auth = Auth::user();
-        if ($request->typeComment == 'question') {
-            Comment::create([
-                'user_id'       => $auth->id,
-                'course_id'     => $request->idCourse,
-                'comment'       => $request->comments,
-                'type_comment'  => $request->typeComment,
-            ]);
-        }
+        Comment::create([
+            'user_id'       => $auth->id,
+            'course_id'     => $request->idCourse,
+            'comment'       => $request->comments,
+            'type_comment'  => $request->typeComment,
+        ]);
 
-        Session::flash('success', 'Comentário adiionado');
+        Session::flash('success', 'Comentário adicionado');
         return redirect()->back();
     }
+
+   
 }

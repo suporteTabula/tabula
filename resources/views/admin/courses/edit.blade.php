@@ -18,7 +18,7 @@
 				<label for="desc">Descrição</label>
 				<input class="form-control" type="text" value="{{ $course->desc }}" placeholder="Descrição do curso" name="desc">
 			</div>
-			<div class="form-group">
+			<div class="form-group" id="categ">
 				<label for="category_id">Categoria</label>
 				<select class="form-control" id="category_id" name="category_id">
 					<option value="" selected disabled hidden>Escolha uma...</option>
@@ -37,10 +37,7 @@
 				<div class="form-group" id="subCateg">
 					<label for="subcategory_id">Subcategoria</label>
 					<select class="form-control" id="subcategory_id" name="subcategory_id">
-						<option value="" selected disabled hidden>Escolha uma...</option>
-						@foreach($categories as $category)
-						<option value="{{ $category->id }}" >{{ $category->desc }}</option>
-						@endforeach
+						
 					</select>
 				</div>
 				<div class="form-group">
@@ -66,11 +63,6 @@
 				<div class="form-group">
 					<label for="requirements">Requisitos</label>
 					<textarea class="form-control" name="requirements" placeholder="Requisitos para o Curso">{{ $course->requirements }}</textarea>
-				</div>
-
-				<div class="form-group">
-					<label for="interest">Área de Interesse</label>
-					<input class="form-control input" type="text" name="interest" placeholder="Área de Interesse" value="{{$course->interest}}">
 				</div>
 				<div class="form-group row">
 					<div class="col-xs-4">
@@ -203,93 +195,90 @@
 			</div>
 		</div>
 
-		@section('scripts')	
-		<script>
-		var category_id = 0;
-		    $('#subCateg').hide();
-		    $('#categ' ).change(function() {
-		    	var url = "{{route('sub.categ')}}";
-		    	var categId = $('#categ option:selected').val();
-		    	categAjax(url, categId);
-		    	$('#subCateg').show();
-		    });
+	@section('scripts')	
+	<script>
+		var id = '{{$course->category_id}}';
+    	var url = "{{route('sub.categ')}}";
+		categAjax(url, id);
+		console.log(id);
+	    $('#categ' ).change(function() {
+	    	var categId = $('#categ option:selected').val();
+	    	console.log(categId);
+	    	categAjax(url, categId);
+	    });
 
-		    function categAjax(url, categId){
-		        $.ajax({
-		            type: 'GET',
-		            url: url,
-		            data:{
-		                categId: categId,
-		            },
-		            beforeSend: function(){
-		            },
-		            success: function(data){
-		                var result = $.parseJSON(data);
-		                console.log(result);
-		                
-		            }
-		        });
-		    }
-
-		</script>	
-		<script>
-			$( function() {
-				var dialog, form,
-				name = $( "#name" ),
-				desc = $( "#desc" ),
-				allFields = $( [] ).add( name ).add( desc ),
-				
-				dialog = $( "#chapter" ).dialog({
-					autoOpen: false,
-					height: 400,
-					width: 350,
-					modal: true,
-					buttons: {
-						Cancel: function() {
-							dialog.dialog( "close" );
-						}
-					},
-					close: function() {
-						form[ 0 ].reset();
-						allFields.removeClass( "ui-state-error" );
+	    function categAjax(url, categId){
+	        $.ajax({
+	            type: 'GET',
+	            url: url,
+	            data:{
+	                categId: categId,
+	            },
+	            beforeSend: function(){
+	            },
+	            success: function(data){
+	                var result = $.parseJSON(data);
+	                console.log(result);
+	                var i = 0;
+	                $('#subcategory_id').html('');
+	                if (result.length != 0) {
+		                for (i =0; i < result.length; ++i){
+		                    $('#subcategory_id').append('<option value="'+result[i].id+'" >'+result[i].desc+'</option>');
+		                }
+	    				$('#subCateg').show();
+	                }else{
+	                	$('#subCateg').hide();
+	                }
+	            }
+	        });
+		}
+		$( function() {
+			var dialog, form,
+			name = $( "#name" ),
+			desc = $( "#desc" ),
+			allFields = $( [] ).add( name ).add( desc ),
+			
+			dialog = $( "#chapter" ).dialog({
+				autoOpen: false,
+				height: 400,
+				width: 350,
+				modal: true,
+				buttons: {
+					Cancel: function() {
+						dialog.dialog( "close" );
 					}
-				});
-
-				form = dialog.find( "form" ).on( "submit", function( event ) {
-
-				});
-
-				$( "#create-chapter" ).button().on( "click", function() {
-					dialog.dialog( "open" );
-				});
-			});
-		</script>
-		<script>
-			$(document).ready(function(){
-				var category_id = 0;
-			    $('#subCateg').hide();
-			    $('#categ').change(function() {
-			    	category_id = $('#category_id').val();
-			    	$('#subCateg').show();
-			    });
-			// For A Delete Record Popup
-			$('.remove-record').click(function() {
-				var id = $(this).attr('data-id');
-				var d = $(this).attr('data-url');
-
-				$(".remove-record-model").attr('action',d);
-
-				$('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
-				$('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+				},
+				close: function() {
+					form[ 0 ].reset();
+					allFields.removeClass( "ui-state-error" );
+				}
 			});
 
-			$('.remove-data-from-delete-form').click(function() {
-				$('body').find('.remove-record-model').find( "input" ).remove();
-			});		
-			$('.modal').click(function() {
-					// $('body').find('.remove-record-model').find( "input" ).remove();
-				});		
+			form = dialog.find( "form" ).on( "submit", function( event ) {
+
+			});
+
+			$( "#create-chapter" ).button().on( "click", function() {
+				dialog.dialog( "open" );
+			});
 		});
-	</script>
-	@stop
-	@stop
+		// For A Delete Record Popup
+		$('.remove-record').click(function() {
+			var id = $(this).attr('data-id');
+			var d = $(this).attr('data-url');
+
+			$(".remove-record-model").attr('action',d);
+
+			$('body').find('.remove-record-model').append('<input name="_method" type="hidden" value="DELETE">');
+			$('body').find('.remove-record-model').append('<input name="id" type="hidden" value="'+ id +'">');
+		});
+
+		$('.remove-data-from-delete-form').click(function() {
+			$('body').find('.remove-record-model').find( "input" ).remove();
+		});		
+		$('.modal').click(function() {
+				// $('body').find('.remove-record-model').find( "input" ).remove();
+		});		
+</script>
+@stop
+@stop
