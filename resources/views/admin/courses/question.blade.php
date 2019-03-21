@@ -15,24 +15,6 @@
 					<input class="form-control" type="text" value="{{ $item->name }}" placeholder="Titulo da avaliação" name="name">
 				</div>
 
-				<div class="form-group">
-					<label for="item_type">Tipo de avaliação</label>
-					<select id="item_type" name="item_type_id" class="form-control">
-						<option value="" selected disabled hidden>Escolha uma...</option>
-						@foreach ($items_type as $item_type)
-							@if($item_type->id > 4)
-								@if($item_type->id >= 5)
-									<option value="{{ $item_type->id }}" 
-										@if ($item_type->id == $item->course_item_types_id)
-											selected
-										@endif
-										>{{ $item_type->name }}
-									</option>
-								@endif
-							@endif
-						@endforeach
-					</select>
-				</div>
 
 				@if ($item->course_items_parent !== NULL)
 					<div class="form-group">
@@ -114,15 +96,15 @@
 
 						<div class="form-group">
 							<label>Digite as alternativas e marque as verdadeiras</label>
-							<input type="checkbox" name="verdadeira_0" value="1">
+							<input type="checkbox" name="verdadeira[]" value="0">
 							<input type="text" name="afirmacao[]"  placeholder="Digite a afirmação"><br>
-							<input type="checkbox" name="verdadeira_1" value="1">
+							<input type="checkbox" name="verdadeira[]" value="1">
 							<input type="text" name="afirmacao[]" placeholder="Digite a afirmação"><br>
-							<input type="checkbox" name="verdadeira_2" value="1">
+							<input type="checkbox" name="verdadeira[]" value="2">
 							<input type="text" name="afirmacao[]" placeholder="Digite a afirmação"><br>
-							<input type="checkbox" name="verdadeira_3" value="1">
+							<input type="checkbox" name="verdadeira[]" value="3">
 							<input type="text" name="afirmacao[]" placeholder="Digite a afirmação"><br>
-							<input type="checkbox" name="verdadeira_4" value="1">
+							<input type="checkbox" name="verdadeira[]" value="4">
 							<input type="text" name="afirmacao[]" placeholder="Digite a afirmação"><br>
 						</div>
 

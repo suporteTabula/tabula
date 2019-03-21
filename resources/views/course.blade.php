@@ -145,21 +145,42 @@
           <input type="hidden" name="typeComment" value="question">
           <div class="form-group">
             <label class="form-label" for="comments">Faça uma pergunta:</label>
-            <textarea class="form-input theComment"   name="comments" rows="3" placeholder="Digite a pergunta"></textarea>
+            <textarea style="border-radius: 10px" class="form-input theComment"   name="comments" rows="3" placeholder="Digite a pergunta"></textarea>
           </div>
-          <button class="btn btn-lg custom-button button-tabula">Enviar</button>
+          <button class="btn btn-lg custom-button button-tabula" style="float: right; margin-top: 5px;">Enviar</button>
         </form>
       </div>
       <div class="column col-12 col-xs-12 col-sm-12" >
         <h3>Perguntas Frequentes!</h3>
         @foreach ($course->comments as $comment)
+        @if($comment->type_comment == 'question')
         <div class="columns" style="border:1px solid; border-radius: 2px;">
-          <div class="column col-12 col-xs-12 col-sm-12" >
+          <div class="column col-10 col-xs-10 col-sm-10" >
             <h5>{{$comment->user->name}} </h5>
+            <hr>
             <h6>{{$comment->comment}}</h6>
           </div>
+          <div class="column col-2 col-xs-2 col-sm-2" >
+            <button class="btn btn-lg custom-button button-tabula btn1" style="float: right; margin-top: 5px;">v</button>
+            <button class="btn btn-lg custom-button button-tabula btn2" style="float: right;">^</button>
+            <div class="answer-{{$comment->id}}">
+              
+            </div>
+          </div>
         </div>
-         @endforeach
+        @endif
+        @endforeach
+          @foreach ($course->comments as $comment)
+          @if($comment->type_comment == 'question')
+          <div class="answer">
+              <div class="column col-12 col-xs-12 col-sm-12" >
+              <h5>{{$comment->user->name}} </h5>
+              <h6>{{$comment->comment}}</h6>
+              <hr>
+              </div>
+          </div>
+          @endif
+          @endforeach
       </div>
     </div>
   </div>
@@ -169,6 +190,21 @@
 @section('scripts')
 <script type="text/javascript">
   $(document).ready(function(){
+    $(".btn2").hide();
+    $(".answer").hide();
+
+    $(".btn2").click(function(){
+      $(".btn1").show();
+      $(".btn2").hide();  
+      $(".answer").slideUp();
+    });
+
+    $(".btn1").click(function(){
+      $(".btn1").hide();
+      $(".btn2").show();  
+      $(".answer").slideDown();
+    });
+
     $('.comments-teacher').hide();
     $('.classContent').click(function(){
       $('.will-learn').show();

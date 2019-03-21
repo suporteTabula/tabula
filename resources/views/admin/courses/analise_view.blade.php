@@ -12,8 +12,7 @@
                     <details class="accordion">
                         <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo: {{ $chapter->name }}
                             <p style="position: relative; float: right;">
-                                <span id="chap-{{$chapter->id}}" >{{$chapter->progressDo}}</span>
-                                <span>/{{count($chapter->course_items)}}</span>
+                                <span>{{count($chapter->course_items)}} Aula(s)</span>
                             </p>
                         </summary>
                         @foreach ($chapter->course_items as $item)
@@ -25,8 +24,7 @@
                                 @if ($i->pivot->course_item_status_id == 1 && $item->id == $i->pivot->course_item_id)
                                 checked
                                 @endif 
-                                @endforeach >  
-                                <label class="progress-label" for="{{ $item->id }}"></label>
+                                @endforeach >
                             </span>
                         </div>                                                                
                         @endif                  
@@ -42,6 +40,7 @@
             <div class="column col-2 course-controls">                
                 <button id="open-class" class="button-tabula">Menu de Aulas</button>
                 <button id="close-class" class="button-tabula">Fechar Menu de Aulas</button>
+                <a href="{{route('course.analise')}}"> <button  class="button-tabula">Voltar</button></a>
             </div>
         </div>
     </div>   
@@ -49,41 +48,7 @@
 
 @section('scripts')
 <script>
-    function checkChapterStatus(id,readonly)
-    {
-        var route='{{ route('course.course_item_toggle', ['id' => $item->course_item_group->course_id]) }}';               
-        req = {
-           item_id:id,
-           readonly:readonly
-        };               
-        $.ajax({
-            type: 'GET',                                                
-            url: route,
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            data: req,
-            error: function(e){
-                console.log(e);
-            },
-            success: function(response){      
-                var result = $.parseJSON(response);
-                console.log(result);
-                var i = 0;
-                for (i =0; i < result.length; ++i){
-                    $('#chap-'+ result[i].id).html(result[i].progressDo);
-                }
-
-            }
-        });
-    }
-
-   $(document).ready(function(){                
-    $('.progress-label').click(function(){
-        var id=$(this).attr('for');   
-        checkChapterStatus(id,false);
-    });
-
-
-
+    
     $(document).ready(function(){    
         $('.input-progress-label').each(function(){
             if(!$(this).is(':checked')){
@@ -126,7 +91,6 @@
          }
      });                    
     });
-});
 </script>        
 @stop
 @endsection

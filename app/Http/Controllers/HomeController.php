@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\Category;
 use App\Usertype;
+use App\Page;
 use Auth;
 
 class HomeController extends Controller
 {
- public function index()
- {
+  public function index()
+  {
    $session = session()->pull('course_id');
    if ($session != null) {
       return redirect()->route('cart.insert', ['id' => $session]);   
@@ -30,7 +31,7 @@ class HomeController extends Controller
    ->with('row_limit', 5)
    ->with('category_count', 0)
    ->with('mobile_categories', Category::whereNull('category_id_parent')->whereNotNull('mobile_index')
-   ->orderBy('mobile_index', 'ASC')->get())
+      ->orderBy('mobile_index', 'ASC')->get())
    ->with('mobile_col_limit', 5)
    ->with('mobile_category_count', 0)
    ->with('auth', $auth)
@@ -41,5 +42,13 @@ class HomeController extends Controller
    ->with('featured_courses2', $featured_courses2)
    ->with('featured_posts', $featured_posts);
 
-}
+   }
+
+   public function pagesHome($id){
+      $page = Page::find($id);
+      $auth = Auth::user();
+      return view('page')
+      ->with('auth', $auth)
+      ->with('page', $page);
+   }
 }

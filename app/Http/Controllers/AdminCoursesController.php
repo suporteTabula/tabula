@@ -11,6 +11,7 @@ use App\User;
 use App\UserGroup;
 use App\CourseUser;
 use App\CourseItem;
+use App\CourseItemUser;
 use App\CourseItemType;
 use App\CourseItemGroup;
 use App\CourseItemOption;
@@ -34,6 +35,44 @@ class AdminCoursesController extends Controller
         ->with('courses', Course::all())
         ->with('categories', Category::all())
         ->with('users', User::all());
+    }
+    public function view($id)
+    {
+
+        $auth       = Auth::user();
+        $course     = Course::find($id);
+        $chapter    = $course->course_item_groups->all();
+        $total      = 0;
+        foreach ($chapter as $chapters) {
+            $itemChapter            = CourseItem::where('course_item_group_id', $chapters->id)->pluck('id')->toArray();
+            $chapters->progressDo   = CourseItemUser::wherein('course_item_id', $itemChapter)
+                                        ->where('course_item_status_id', 1)
+                                        ->count();
+            $item                   = CourseItem::where('course_item_group_id', $chapters->id)->count();
+            $total                  = $total + $item;
+        }
+        
+        if ($total > 0) {
+        $items  = CourseItem::where('course_item_group_id', $chapter[0]->id)->get();
+
+
+        $items  = vimeo_tools::parse_for_urls($items); 
+
+        foreach ($chapter as $chap) {
+            $count[$chap->id] = count($chap->course_items);
+
+            
+        }
+        
+        return view('admin.courses.analise_view')
+        ->with('course',$course)
+        ->with('auth', $auth)
+        ->with('chapters', $chapter)
+        ->with('items', $items);
+        }else{
+            Session::flash('success', 'Este curso não possui nenhum capitulo');
+            return redirect()->back();
+        }
     }
 
     public function aprove($id)
@@ -68,7 +107,7 @@ class AdminCoursesController extends Controller
      */
     public function create()
     {
-
+        
         return view('admin.courses.create')
         ->with('categories', Category::all())
         ->with('user_groups', UserGroup::all());
@@ -99,7 +138,7 @@ class AdminCoursesController extends Controller
         $course->subcategory_id     = $request->subcategory_id;
         $course->featured           = $request->featured;
         $course->requirements       = $request->requirements;
-        $course->interest           = $request->interest;
+        $course->interest           = serialize($request->interest);
         $course->user_id_owner      = Auth::user()->id;
         $course->total_class        = 0;
 //Verficacao de URL amigável
@@ -184,10 +223,6 @@ class AdminCoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -198,6 +233,10 @@ class AdminCoursesController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
+        if ($course->interest != '' || $course->interest != NULL) {
+            $course->interest = unserialize($course->interest); 
+        }
+
 
         return view('admin.courses.edit')
         ->with('course', $course)
@@ -232,8 +271,7 @@ class AdminCoursesController extends Controller
         $course->subcategory_id     = $request->subcategory_id;
         $course->requirements       = $request->requirements;
         $course->featured           = $request->featured;
-        $course->interest           = $request->interest;
-        
+        $course->interest           = serialize($request->interest);        
 
         if($request->thumb_img != ''){
             $attach_thumb_img       = $request->thumb_img;
@@ -331,9 +369,10 @@ class AdminCoursesController extends Controller
 
     public function subCateg(Request $request)
     {
-        $categ = Category::find($request->categId);
 
-        $subCateg = Category::where('category_id_parent', $categ->id)->get();
+        $subCateg = Category::where('category_id_parent', $request->categId)->get();
+
+
         return json_encode($subCateg);
     }
 
@@ -449,6 +488,8 @@ class AdminCoursesController extends Controller
         if(isset($request->archive))
         {
             $attach = $request->archive;
+            $extension = (explode(".", $request->archive->getClientOriginalName()));
+            $extension = end($extension);
 
             $count = 1;
             while($count != 0){
@@ -459,9 +500,9 @@ class AdminCoursesController extends Controller
                     $rand = mt_rand(0, $max);
                     $str .= $characters[$rand];
                 }
-                $path = 'uploads/archives/'.$str; 
+                $path = 'uploads/archives/'.$str.$extension; 
                 $count = CourseItem::where('path', $path)->count();
-                $attach_new_name = $str;
+                $attach_new_name = $str.$extension;
             }
 
 
@@ -581,13 +622,14 @@ class AdminCoursesController extends Controller
 
         $this->validate($request, [
             'name'          => 'required',
-            'item_type_id'  => 'required',
         ]);
 
         if($request->hasFile('archive'))
         {            
             $old_itemPath = $item->path;
             $attach = $request->archive;
+            $extension = (explode(".", $request->archive->getClientOriginalName()));
+            $extension = end($extension);
             //gera array aleatorio
             $count = 1;
             while($count != 0){
@@ -598,9 +640,9 @@ class AdminCoursesController extends Controller
                     $rand = mt_rand(0, $max);
                     $str .= $characters[$rand];
                 }
-                $path = 'uploads/archives/'.$str; 
+                $path = 'uploads/archives/'.$str.$extension; 
                 $count = CourseItem::where('path', $path)->count();
-                $attach_new_name = $str;
+                $attach_new_name = $str.$extension;
             }
 
             $attach->move('uploads/archives', $attach_new_name); 
@@ -622,7 +664,9 @@ class AdminCoursesController extends Controller
         }
         $item->name                 = $request->name;
         $item->desc                 = $request->desc;
-        $item->course_item_types_id = $request->item_type_id;
+        if ($request->item_type_id != NULL || $request->item_type_id != '') {
+            $item->course_item_types_id = $request->item_type_id;
+        }
         $item->save();
 
         Session::flash('success', 'Aula/Avaliação atualizada com sucesso');
@@ -802,35 +846,32 @@ class AdminCoursesController extends Controller
 
     public function multiple(Request $request, $id)
     {
-
         $this->validate($request, [
             'afirmacao' => 'required',
         ]);
-        $all_trues = $request->verdadeira;
-        $variavel = $request->afirmacao;
-        $funcao = $this->add_question_multiple($id, $request->name, $request->desc, $request->item_type_id);
-        $all_requests = $request->all();
-        
-        return dd($variavel);
-        if ($request->item_type_id == '6') {
-            foreach ($all_requests as $key => $value) {
-                if (strpos($key, 'verdadeira') !== false) {
-                    $all_trues[] = explode('_', $key)[1];
-                }
-            }
 
-            foreach ( $all_requests['afirmacao'] as $key => $value) {
+        $auth       = Auth::user();
+        //Verdadeiras
+        $all_trues  = $request->verdadeira;
+        //Todas as alternativas
+        $afirmacoes = $request->afirmacao;
+
+        $funcao = $this->add_question_multiple($id, $request->name, $request->desc, $request->item_type_id);
+        
+        if ($request->item_type_id == '6') {
+            foreach ( $afirmacoes as $afirmacao => $value) {
                 if($value == '' || $value == NULL){
                     continue;
                 }
                 else
                 {
                     $multi = new CourseItemOption;
-                    $multi->course_items_id = $funcao->id;
-                    $multi->desc = $value;
-                    $multi->checked = 0;
+                    $multi->course_item_option_id   = $funcao->id;
+                    $multi->desc                    = $value;
+                    $multi->user_id                 = $auth->id;
+                    $multi->checked                 = 0;
                     foreach ($all_trues as $verdadeiras) {
-                        if ($key == $verdadeiras) {
+                        if ($afirmacao == $verdadeiras) {
                             $multi->checked = 1;
                         }    
                     }           
@@ -838,29 +879,26 @@ class AdminCoursesController extends Controller
                 $multi->save();
             }
         }
-        if ($request->item_type_id == '9')
-        {
-            $this->validate($request, [
-                'verdadeira'    => 'required',
-            ]);
-
-            foreach ( $all_requests['afirmacao'] as $key => $value) {
+        if ($request->item_type_id == '9') {
+            foreach ($afirmacoes as $afirmacao => $value) {
                 if($value == '' || $value == NULL){
                     continue;
                 }
                 else
                 {
                     $multi = new CourseItemOption;
-                    $multi->course_items_id = $funcao->id;
-                    $multi->desc = $value;
-                    $multi->checked = 0;
-                    if ($request->verdadeira == $key) {
+                    $multi->course_item_option_id   = $funcao->id;
+                    $multi->desc                    = $value;
+                    $multi->user_id                 = $auth->id;
+                    $multi->checked                 = 0;
+                    if ($all_trues == $afirmacao) {
                         $multi->checked = 1;
                     }               
                 } 
                 $multi->save();
             }
         }
+        
         return redirect()->back();
     }
 

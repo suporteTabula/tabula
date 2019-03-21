@@ -25,9 +25,6 @@
 -->
 
 <link rel="stylesheet" href="{{ asset('css/themes.css') }}">
-    <!--
-    <link rel="stylesheet" href="{{ asset('css/card.css') }}">
--->
 
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
@@ -127,61 +124,11 @@ rel = "stylesheet">
 
     </div>
     
-    <footer>
-        <div class="container grid-md">
-            <div class="columns">
-                <div class="column col-4 col-xl-4 col-md-4 col-sm-12 col-xs-12">
-                    <ul>
-                        <li><b style="border-bottom: 2px solid">O Tabula</b></li>
-                        <li><a href="#">Institucional</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="{{route('empresa.register')}}">Tabula para Empresas</a></li>
-                    </ul>
-                </div>
-                <div class="column col-5 col-xl-5 col-md-5 col-sm-12 col-xs-12">
-                    <ul>
-                        <li><b style="border-bottom: 2px solid">Suporte</b></li>
-                        <li><a href="{{ route('pages.home', ['id' => 1]) }} ">Central de Ajuda</a></li>
-                        <li><a href="{{ route('pages.home', ['id' => 2]) }} ">Perguntas Frequentes</a></li>
-                        <li><a href="{{ route('pages.home', ['id' => 3]) }} ">Termos e Condições</a></li>
-                        <li><a href="{{ route('pages.home', ['id' => 4]) }} ">Política de Privacidade</a></li>
-                        <li><a href="{{ route('pages.home', ['id' => 5]) }} ">Política de Propriedade Intelectual</a></li>
-                    </ul>
-                </div>
-                <div class="column col-3 col-xl-3 col-md-3 col-sm-12 col-xs-12">
-                    <ul>
-                        <li><b style="border-bottom: 2px solid">Comunidade</b></li>
-                        <li><a href="#">Parceiros</a></li>
-                        <li><a href="{{route('empresa')}}">Empresas</a></li>
-                        <li><a href="{{route('todosProfs')}}">Professores</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
-    
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/5c8ba67f101df77a8be2c191/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->    
-
-
-
-
 
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>

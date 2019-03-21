@@ -32,19 +32,10 @@
 			<div class="form-group" id="subCateg">
 				<label for="subcategory_id">Subcategoria</label>
 				<select class="form-control" id="subcategory_id" name="subcategory_id">
-					<option value="" selected disabled hidden>Escolha uma...</option>
-					@foreach($categories as $category)
-					<option value="{{ $category->id }}" >{{ $category->desc }}</option>
-					@endforeach
+									
 				</select>
 			</div>
-			<div class="form-group">
-				<label for="featured">Destaque</label>
-				<select class="form-control" id="featured" name="featured">
-					<option value="0">Não</option>
-					<option value="1">Sim</option>
-				</select>
-			</div>
+			<input type="hidden" name="featured" id="featured" value="0">
 			<div class="form-group">
 				<label for="price">Preço</label>
 				<input class="form-control input-price" type="text" name="price" placeholder="Preço do curso" value="{{ old('price') }}">
@@ -81,13 +72,12 @@
 </div>
 @section('scripts')
 <script>
-	var category_id = 0;
     $('#subCateg').hide();
     $('#categ' ).change(function() {
-    	var url = "{{route('sub.categ')}}";
+    	var url = "{{route('sub.categ.teacher')}}";
     	var categId = $('#categ option:selected').val();
     	categAjax(url, categId);
-    	$('#subCateg').show();
+    	
     });
 
     function categAjax(url, categId){
@@ -102,7 +92,16 @@
             success: function(data){
                 var result = $.parseJSON(data);
                 console.log(result);
-                
+                var i = 0;
+                $('#subcategory_id').html('');
+                if (result.length != 0) {
+	                for (i =0; i < result.length; ++i){
+	                    $('#subcategory_id').append('<option value="'+result[i].id+'" >'+result[i].desc+'</option>');
+	                }
+    				$('#subCateg').show();
+                }else{
+                	$('#subCateg').hide();
+                }
             }
         });
     }

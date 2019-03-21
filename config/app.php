@@ -175,7 +175,9 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,        
+        App\Providers\RouteServiceProvider::class,
+
+        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,        
 
     ],
 
@@ -226,7 +228,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,	
         'Vimeo' => Vimeo\Laravel\Facades\Vimeo::class,
-        'Curl' => Ixudra\Curl\Facades\Curl::class
+        'Curl' => Ixudra\Curl\Facades\Curl::class,
+        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class
     ],
 
 ];

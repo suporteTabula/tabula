@@ -129,6 +129,9 @@
                     <li class="list-group-item">
                         <a href="{{ route('posts') }}">Comentários do blog</a>
                     </li>
+                    <li class="list-group-item">
+                        <a href="{{ route('pages') }}">Páginas Footer</a>
+                    </li>
                 <!--
                 <li class="list-group-item">
                     <a href="{{ route('reports') }}">Reports</a>

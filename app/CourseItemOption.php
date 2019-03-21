@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseItemOption extends Model
 {
+	protected $table = 'course_item_option';
+	
 	protected $fillable = ['desc', 'course_items_id', 'checked'];
     
     public function course_item()
