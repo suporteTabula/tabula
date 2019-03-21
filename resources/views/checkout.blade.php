@@ -171,66 +171,62 @@
               </div>
           </div>         
         </div>
-      </div>
-      <div class="col-xl-1"></div>
-      <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 details">
-        <h4>Detalhes da Compra</h4>
-        <table class="table table-hover">
-          <tr>
-            <th>Nome do Curso</th>
-            <th>Valor do Curso</th>
-          </tr>
-          @if(count($courses) > 0)
-          @foreach($courses as $course)
-          <tr>
-            <td>{{ $course->name }}</td>
-            <td>R$ {{number_format($course->price, 2, ',', '.')}}</td>
-          </tr>
-          @endforeach
-          <tr>
-            <td>Subtotal:</td>
-            <td><strong>R$ {{ number_format($total_price, 2, ',', '.') }}</strong></td>
-          </tr>
-          <tr>
-            <td>Desconto:</td>
-            <td><strong>R$ {{ number_format($session['descontoTotal'], 2, ',', '.') }}</strong></td>
-          </tr>
-          <tr>
-            <td>Total:</td>
-            <td><strong>R$<?php $total_price = $total_price - $session['descontoTotal'] ?> {{ number_format($total_price, 2, ',', '.') }}</strong></td>
-          </tr>
-          @else
-          <tr><td>Não existem items para finalizar a compra!</td></tr>
-          <tr><td>Acesse nosso <a href="{{ route('search.single', ['id' => -1]) }}">Catálogo</a></td></tr>
-          @endif
-        </table>
-      </div>
-
-
-      <script>
-        $(document).ready(function(){
-          $('#boletoOption').hide();
-          $('#cardOption').hide();
-          $('#payment').change(function(event){
-            var payment = $(this).val();
-
-            if(payment == 'cardOption'){
-              $('#paymentForm').html(''); 
-              $('#paymentForm').append($('#cardOption').html());
-              
-            }else{
-              $('#paymentForm').html(''); 
-              $('#paymentForm').append($('#boletoOption').html());
-              
-            }
-          });
-        });
-            </script>
-          </div>
+        <div class="col-xl-1"></div>
+        <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-3 details">
+          <h4>Detalhes da Compra</h4>
+          <table class="table table-hover">
+            <tr>
+              <th>Nome do Curso</th>
+              <th>Valor do Curso</th>
+            </tr>
+            @if(count($courses) > 0)
+            @foreach($courses as $course)
+            <tr>
+              <td>{{ $course->name }}</td>
+              <td>R$ {{number_format($course->price, 2, ',', '.')}}</td>
+            </tr>
+            @endforeach
+            <tr>
+              <td>Subtotal:</td>
+              <td><strong>R$ {{ number_format($total_price, 2, ',', '.') }}</strong></td>
+            </tr>
+            <tr>
+              <td>Desconto:</td>
+              <td><strong>R$ {{ number_format($session['descontoTotal'], 2, ',', '.') }}</strong></td>
+            </tr>
+            <tr>
+              <td>Total:</td>
+              <td><strong>R$<?php $total_price = $total_price - $session['descontoTotal'] ?> {{ number_format($total_price, 2, ',', '.') }}</strong></td>
+            </tr>
+            @else
+            <tr><td>Não existem items para finalizar a compra!</td></tr>
+            <tr><td>Acesse nosso <a href="{{ route('search.single', ['id' => -1]) }}">Catálogo</a></td></tr>
+            @endif
+          </table>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    $(document).ready(function(){
+      $('#boletoOption').hide();
+      $('#cardOption').hide();
+      $('#payment').change(function(event){
+        var payment = $(this).val();
+
+        if(payment == 'cardOption'){
+          $('#paymentForm').html(''); 
+          $('#paymentForm').append($('#cardOption').html());
+          
+        }else{
+          $('#paymentForm').html(''); 
+          $('#paymentForm').append($('#boletoOption').html());
+          
+        }
+      });
+    });
+  </script>
   <script src="https://static.traycheckout.com.br/js/finger_print.js" type="text/javascript"></script>
   <script>window.yapay.FingerPrint({ env: 'sandbox' });</script>
 

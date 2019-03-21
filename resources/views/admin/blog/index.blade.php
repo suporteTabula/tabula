@@ -4,7 +4,7 @@
 	<div class="panel panel-default"> 
 		<div class="panel-heading" style="position: relative; height:80x; ">
 			<p style="line-height: 40px;">Posts do blog</p> 
-			<a href="{{ route('category.create') }}"> 
+			<a href="{{ route('post.create') }}"> 
 				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}"> 
 			</a> 
 		</div> 
