@@ -82,8 +82,12 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
-        $interest = serialize($data['interest']);
+    {   
+        if ($data['userType'] == 5) {
+            $interest = NULL;
+        }else{
+            $interest = serialize($data['interest']);
+        }
         $user = User::create([
             'login'         => $data['login'],
             'email'         => $data['email'],

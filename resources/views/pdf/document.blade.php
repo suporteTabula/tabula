@@ -54,12 +54,14 @@
 <body>
 	<div class="certificate">
 		<div class="content">
-			<h1 id="universidade">Universidade</h1>
+			@if($teacher->empresa_id != NULL)
+			<h1 id="universidade"> {{$empresa->name}} </h1>
+			@endif
 			<p id="data">{{$date}}</p>
-			<h2 class="course-name"><!--{{$aluno->name}}--> Igor Nascimento Silva</h2>
+			<h2 class="course-name">{{$aluno->name}}</h2>
 			<p class="completo">Completou o curso online de </p>
 			<h2 class="course-name">{{$course->name}}</h2>
-			<p class="completo">por 5 semanas, autorizado pelo professor {{$teacher->name}} @if($teacher->empresa_id != NULL), da {{$empresa->name}} @endif e oferecido pelo Tabula. Tabula Tabula Tabula Tabula Tabula Tabula Tabula Tabula Tabula Tabula</p>
+			<p class="completo">por 5 semanas, autorizado pelo professor {{$teacher->name}} @if($teacher->empresa_id != NULL), da {{$empresa->name}} @endif e oferecido pelo Tabula. </p>
 
 			<div class="hr"></div>
 			<p id="teacher">{{$teacher->name}}</p>
