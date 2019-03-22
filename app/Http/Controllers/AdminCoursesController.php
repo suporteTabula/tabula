@@ -149,10 +149,11 @@ class AdminCoursesController extends Controller
         }
         $urns = 1;
         while ($urns != 0) {
-            $urns = Course::where('urn', $urn)->count();
-            $urn = $urn.'-'.$urns;
+            $urns   = Course::where('urn', $urn)->count();
+            $urn    = $urn.'-'.$urns;
         }
-        $course->urn        = $urn; 
+        $urn = substr($urn, 1);
+        $course->urn        = strtolower($urn); 
 
         //valida a foto de perfil
         if($request->thumb_img != '')

@@ -12,7 +12,20 @@
     <div class="container grid-lg">
         <div class="columns">
             <div class="column col-1"></div>
-            <div class="column col-10 resumee-inner">
+            <div class="column col-12 resumee-inner">
+                <div class="columns" style="margin-top: 50px;">
+                    
+                    
+                    <div class="column col-12 text-justify">
+                        <span>
+                            <h5>
+                                Bem-vindo, produtor de conteúdo! Gostaríamos de te conhecer melhor e saber em qual perfil profissional você se encaixaria. Temos o intuito de te possibilitar uma experiência incrível e um relacionamento longo e duradouro conosco.
+                            </h5>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="column col-12 resumee-inner">
                 <div class="columns" style="margin-top: 50px;">
                     
                     <div class="column col-6">
@@ -41,11 +54,8 @@
 
                     <div class="column col-6 text-justify">
                         <span>
-                            <p>
-                                Bem-vindo, produtor de conteúdo! Gostaríamos de te conhecer melhor e saber em qual perfil profissional você se encaixaria. Temos o intuito de te possibilitar uma experiência incrível e um relacionamento longo e duradouro conosco.
-                            </p>
                             <div class="column col-xs-12 col-sm-12 col-12">
-                                <img style="width: 90%" src="{{asset('/images/img/tela1.png')}}">
+                                <img style="width: 100%" src="{{asset('/images/img/tela1.png')}}">
                             </div>
                         </span>
                     </div>

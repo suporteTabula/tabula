@@ -41,11 +41,10 @@ Route::get('/login/{id?}', 'CartController@newCart')->name('new.cart');
 //Transações
 Route::post('success', 'TransactionsController@statusTransaction')->name('transaction.success');
 //Cursos
-Route::get('course/{id}', 'CoursesController@course')->name('course.single');
-Route::get('course/start/{id}', 'CoursesController@course_start')->name('course.start');
+Route::get('course/{urn}', 'CoursesController@course')->name('course.single');
+Route::get('course/start/{urn}', 'CoursesController@course_start')->name('course.start');
 Route::get('course/course_item_toggle/{id}', 'CoursesController@course_item_toggle')->name('course.course_item_toggle');
 Route::match(['get', 'post'], 'lesson', 'CoursesController@lesson')->name('course.lesson');
-Route::get('course/progress/{id}', 'CoursesController@course_progress')->name('course.progress');
 Route::post('answers/{id}', 'CoursesController@answers')->name('course.answer');
 Route::post('comment', 'CoursesController@comment')->name('course.comment');
 

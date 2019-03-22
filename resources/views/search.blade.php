@@ -69,7 +69,7 @@
                             <ul class="clearfix grid" id="courses">
                                 <li class="clearfix">
                                     <div class="course-card-search" id="course-card">                          
-                                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                                        <a href="{{ route('course.single', ['urn' => $course->urn]) }}">
                                             <section class="left">                                  
                                                 <div class="course-card__image">
                                                  <img src="../images/aulas/{{$course->thumb_img}}" class="thumb" />

@@ -21,16 +21,16 @@ use Log;
 
 class CoursesController extends Controller
 {
-    public function course($id)
+    public function course($urn)
     {
         $auth           = Auth::user();
-        $course         = Course::find($id);
+        $course         = Course::where('urn', $urn)->first();
         $author         = User::find($course->user_id_owner);
         $chapter        = $course->course_item_groups->all();
         $hasCourse      = false;
         $userHasItem    = false;
-        $votes          = Star::where('id_course', $id)->count();
-        $point          = Star::where('id_course', $id)->sum('point');
+        $votes          = Star::where('id_course', $course->id)->count();
+        $point          = Star::where('id_course', $course->id)->sum('point');
 
         foreach ($course->comments as $comment) {
             $comment->user = User::where('id', $comment->user_id)->first();
@@ -42,35 +42,24 @@ class CoursesController extends Controller
         }else{
             $point      = round($point/$votes, 1);
         }
-        $rating['id']   = $id;
+        $rating['id']   = $course->id;
         $rating['star'] = $point;
       
-            if($auth){
+        if($auth){
 
-                foreach ($chapter as $chapters) {
-                    $itemChapter = CourseItem::where('course_item_group_id', $chapters->id)->pluck('id')->toArray();
-                    $chapters->progressDo = CourseItemUser::wherein('course_item_id', $itemChapter)
-                    ->where('course_item_status_id', 1)
-                    ->count();
-                    $progress+= $chapters->progressDo;
-                }
+            foreach ($chapter as $chapters) {
+                $itemChapter = CourseItem::where('course_item_group_id', $chapters->id)->pluck('id')->toArray();
+                $chapters->progressDo = CourseItemUser::wherein('course_item_id', $itemChapter)
+                ->where('course_item_status_id', 1)
+                ->count();
+                $progress+= $chapters->progressDo;
             }
-            if($auth && $auth->courses()->find($id))
-                $hasCourse      = true;
-            if ($chapter) {
-                $firstChapter   = $course->course_item_groups->first();
-                $freeClass      = CourseItem::where('course_item_group_id', $firstChapter->id)->first();
-                return view('course')
-                ->with('course', $course)
-                ->with('author', $author)
-                ->with('chapters', $chapter)
-                ->with('userItem', $userHasItem)
-                ->with('auth', $auth)
-                ->with('rating', $rating)
-                ->with('progress', $progress)
-                ->with('freeClass', $freeClass)
-                ->with('hasCourse', $hasCourse);
-            }
+        }
+        if($auth && $auth->courses()->find($course->id))
+            $hasCourse      = true;
+        if ($chapter) {
+            $firstChapter   = $course->course_item_groups->first();
+            $freeClass      = CourseItem::where('course_item_group_id', $firstChapter->id)->first();
             return view('course')
             ->with('course', $course)
             ->with('author', $author)
@@ -79,8 +68,19 @@ class CoursesController extends Controller
             ->with('auth', $auth)
             ->with('rating', $rating)
             ->with('progress', $progress)
+            ->with('freeClass', $freeClass)
             ->with('hasCourse', $hasCourse);
         }
+        return view('course')
+        ->with('course', $course)
+        ->with('author', $author)
+        ->with('chapters', $chapter)
+        ->with('userItem', $userHasItem)
+        ->with('auth', $auth)
+        ->with('rating', $rating)
+        ->with('progress', $progress)
+        ->with('hasCourse', $hasCourse);
+    }
 
         public function check_chapter_progress($id)
         {
@@ -170,10 +170,10 @@ class CoursesController extends Controller
 
     
 
-    public function course_start(Request $request, $id)
+    public function course_start(Request $request, $urn)
     {        
         $auth       = Auth::user();
-        $course     = Course::find($id);
+        $course     = Course::where('urn', $urn)->first();
         $chapter    = $course->course_item_groups->all();
         $total      = 0;
         foreach ($chapter as $chapters) {

@@ -69,11 +69,11 @@
               @elseif($hasCourse)
                 @if ($progress > 0)
                 <ul>
-                  <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Continuar Curso</a>
+                  <a class="custom-button button-tabula" href="{{ route('course.start', ['urn' => $course->urn]) }}">Continuar Curso</a>
                 </ul>
                 @else
                 <ul>
-                  <a class="custom-button button-tabula" href="{{ route('course.start', ['id' => $course->id]) }}">Iniciar Curso</a>
+                  <a class="custom-button button-tabula" href="{{ route('course.start', ['urn' => $course->urn]) }}">Iniciar Curso</a>
                 </ul>
                 @endif
               <ul>
@@ -109,7 +109,7 @@
            @foreach ($chapter->course_items as $item)
            @if (is_null($item->course_items_parent))
            @if($hasCourse)
-           <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.start', ['id' => $course->id]) }}" @endauth>{{$item->name}}</a></div>
+           <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.start', ['urn' => $course->urn) }}" @endauth>{{$item->name}}</a></div>
            @else
            @if($freeClass->id == $item->id)
            <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.start', ['id' => $item->id]) }}" @else href="#" data-id="{{$freeClass->course_item_types_id}}" @if($freeClass->course_item_types_id == 3) data-type="{{$freeClass->desc}}"  @else data-type="{{url($freeClass->path)}}" @endif @endauth>{{$item->name}}</a></div>
