@@ -28,8 +28,8 @@ class CategoriesTableSeeder extends Seeder
                 'mobile_index' => '6',
                 'desktop_hex_bg' => 'category-2.svg',
                 'mobile_hex_bg' => 'category-2.svg',
-                'hex_icon' => 'category-2.svg',
-                'hex_course_icon' => 'category-2.svg'
+                'hex_icon' => 'category-2.gif',
+                'hex_course_icon' => 'category-2.gif'
             ], [
                 'desc' => 'Negócio e Gestão',
                 'urn' => 'negocio-e-gestao',
@@ -118,8 +118,8 @@ class CategoriesTableSeeder extends Seeder
                 'mobile_index' => '5',
                 'desktop_hex_bg' => 'category-12.svg',
                 'mobile_hex_bg' => 'category-12.svg',
-                'hex_icon' => 'category-12.svg',
-                'hex_course_icon' => 'category-12.svg'
+                'hex_icon' => 'category-12.gif',
+                'hex_course_icon' => 'category-12.gif'
             ], [
                 'desc' => 'Ensino Médio e Fundamental',
                 'urn' => 'ensino-medio-e-fundamental',
@@ -127,8 +127,8 @@ class CategoriesTableSeeder extends Seeder
                 'mobile_index' => '10',
                 'desktop_hex_bg' => 'category-13.svg',
                 'mobile_hex_bg' => 'category-13.svg',
-                'hex_icon' => 'category-13.svg',
-                'hex_course_icon' => 'category-13.svg'
+                'hex_icon' => 'category-13.gif',
+                'hex_course_icon' => 'category-13.gif'
             ], [
                 'desc' => 'Vídeo e Fotografia',
                 'urn' => 'video-e-fotografia',

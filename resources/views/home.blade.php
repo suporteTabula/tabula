@@ -196,7 +196,7 @@
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
                     @foreach($courses as $course)
                     <div class="course-card-search">
-                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                        <a href="{{ route('course.single', ['urn' => $course->urn]) }}">
                             <div class="course-card__image">
                                 <img src="{{asset('')}}/images/aulas/{{$course->thumb_img}}" class="thumb" />
                             </div>

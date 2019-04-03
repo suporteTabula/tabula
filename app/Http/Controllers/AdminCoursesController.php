@@ -147,6 +147,10 @@ class AdminCoursesController extends Controller
             'featured'    => 'required',
             'category_id' => 'required'
         ]);
+
+
+
+        
         //Chama o objeto
         $course = new Course();
         //Vincula as variaveis 
@@ -160,7 +164,7 @@ class AdminCoursesController extends Controller
         $course->user_id_owner      = Auth::user()->id;
         $course->total_class        = 0;
 
-        //Verficacao de URL amigável
+        
         $urn = '';
         $urns = explode(' ', $request->name);
         for($i = 0; $i < sizeof($urns); $i++){
@@ -174,22 +178,16 @@ class AdminCoursesController extends Controller
         $urn = substr($urn, 1);
         $course->urn        = strtolower($urn); 
 
-        //valida a foto de perfil
+        //valida a foto de capa
         if($request->thumb_img != '')
         {
-            $attach_thumb_img       = $request->thumb_img;
-            $attach_thumb_img_name  = time().$attach_thumb_img->getClientOriginalName();
-            $attach_thumb_img->move('images/aulas', $attach_thumb_img_name); 
-
-            $course->thumb_img      = $attach_thumb_img_name;  
-        }
-        else
-            $course->thumb_img      = 'e-learning.jpg';
-
-        //Valida o video     
-        if($request->video != '')
-        {
-            $attach_video           = $request->video;
+            $arq_img = $request->file('thumb_img');
+            $name    = basename($arq_img->getClientOriginalName());
+            $type    = strtolower(pathinfo($name,PATHINFO_EXTENSION));
+            if($type != "jpg" && $type != "png" && $type != "jpeg") {
+                Session::flash('info', 'Formato informado, não suportado!');
+                return redirect()->back();
+            }
             $count = 1;
             while($count != 0){
                 $str            = "";
@@ -202,9 +200,41 @@ class AdminCoursesController extends Controller
                     $count  = Course::where('video', $str)->count();
                 }
             }
-            $attach_video_name = $str;
-            $attach_video->move('images/aulas', $attach_video_name); 
-            $course->video = $attach_video_name;  
+            $arq_img_name = $str.'.'.$type;
+            $arq_img_name  = time().$arq_img->getClientOriginalName();
+            $arq_img->move('images/aulas', $arq_img); 
+
+            $course->thumb_img      = $arq_img_name;  
+        }
+        else
+            $course->thumb_img      = 'e-learning.jpg';
+
+        //Valida o video     
+        if($request->video != '')
+        {
+            $arq_video  = $request->file('video');
+            $name = basename($arq_video->getClientOriginalName());
+            $type = strtolower(pathinfo($name,PATHINFO_EXTENSION));
+            if($type != "mp4" && $type != "mkv") {
+                Session::flash('info', 'Formato informado, não suportado!');
+                return redirect()->back();
+            }
+            $count = 1;
+            while($count != 0){
+                $str            = "";
+                $characters     = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max            = count($characters) - 1;
+
+                for ($i = 0; $i < 7; $i++) {
+                    $rand   = mt_rand(0, $max);
+                    $str   .= $characters[$rand];
+                    $count  = Course::where('video', $str)->count();
+                }
+            }
+            $arq_video_name = $str.'.'.$type;
+            
+            $arq->move('images/aulas', $arq_video_name); 
+            $course->video = $arq_video_name;  
         }
 
         $course->save();
@@ -305,33 +335,63 @@ class AdminCoursesController extends Controller
         $course->requirements       = $request->requirements;
         $course->featured           = $request->featured;    
 
-        if($request->thumb_img != ''){
-            $attach_thumb_img       = $request->thumb_img;
-            $attach_thumb_img_name  = time().$attach_thumb_img->getClientOriginalName();
-            $attach_thumb_img->move('images/aulas', $attach_thumb_img_name); 
+        //valida a foto de capa
+        if($request->thumb_img != '')
+        {
+            $arq_img = $request->file('thumb_img');
+            $name    = basename($arq_img->getClientOriginalName());
+            $type    = strtolower(pathinfo($name,PATHINFO_EXTENSION));
+            if($type != "jpg" && $type != "png" && $type != "jpeg") {
+                Session::flash('info', 'Formato informado, não suportado!');
+                return redirect()->back();
+            }
+            $count = 1;
+            while($count != 0){
+                $str            = "";
+                $characters     = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max            = count($characters) - 1;
 
-            $course->thumb_img      = $attach_thumb_img_name;  
+                for ($i = 0; $i < 7; $i++) {
+                    $rand   = mt_rand(0, $max);
+                    $str   .= $characters[$rand];
+                    $count  = Course::where('video', $str)->count();
+                }
+            }
+            $arq_img_name = $str.'.'.$type;
+            $arq_img_name  = time().$arq_img->getClientOriginalName();
+            $arq_img->move('images/aulas', $arq_img); 
+
+            $course->thumb_img      = $arq_img_name;  
         }
         else
             $course->thumb_img      = 'e-learning.jpg';
 
-        if($request->video != ''){
-            $attach_video           = $request->video;
+        //Valida o video     
+        if($request->video != '')
+        {
+            $arq_video  = $request->file('video');
+            $name = basename($arq_video->getClientOriginalName());
+            $type = strtolower(pathinfo($name,PATHINFO_EXTENSION));
+            if($type != "mp4" && $type != "mkv") {
+                Session::flash('info', 'Formato informado, não suportado!');
+                return redirect()->back();
+            }
             $count = 1;
             while($count != 0){
-                $str = "";
-                $characters         = array_merge(range('A','Z'), range('a','z'), range('0','9'));
-                $max                = count($characters) - 1;
-                for ($i = 0; $i < 7; $i++) {
-                    $rand       = mt_rand(0, $max);
-                    $str       .= $characters[$rand];
-                }
-                $count              = Course::where('video', $str)->count();
-                $attach_video_name  = $str;
-            }
-            $attach_video->move('images/aulas', $attach_video_name); 
+                $str            = "";
+                $characters     = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+                $max            = count($characters) - 1;
 
-            $course->video = $attach_video_name;    
+                for ($i = 0; $i < 7; $i++) {
+                    $rand   = mt_rand(0, $max);
+                    $str   .= $characters[$rand];
+                    $count  = Course::where('video', $str)->count();
+                }
+            }
+            $arq_video_name = $str.'.'.$type;
+            
+            $arq->move('images/aulas', $arq_video_name); 
+            $course->video = $arq_video_name;  
         }
         //busca TODOS os usergroups para serem comparados com:
         // - os CHECKS 
@@ -465,7 +525,6 @@ class AdminCoursesController extends Controller
             ->with('items', CourseItem::all())
             ->with('items_type', CourseItemType::all());
         }
-        
     }
 
     /**
@@ -525,19 +584,22 @@ class AdminCoursesController extends Controller
             'name'          => 'required'
         ]);        
         $item = new CourseItem;
-        
         $item->name                     = $request->name;
         $item->desc                     = $request->desc;
         $item->course_item_group_id     = $id;
         $item->course_item_types_id     = $request->item_type_id;
         $item->course_items_parent      = NULL;
+          
         
         if(isset($request->archive))
         {
-            $attach = $request->archive;
-            $extension = (explode(".", $request->archive->getClientOriginalName()));
-            $extension = end($extension);
-
+            $arq = $request->file('archive');
+            $name    = basename($arq->getClientOriginalName());
+            $type    = strtolower(pathinfo($name,PATHINFO_EXTENSION));
+            if($type != "jpg" && $type != "png" && $type != "jpeg" && $type != "pdf" && $type != "mp4") {
+                Session::flash('info', 'Formato informado, não suportado!');
+                return redirect()->back();
+            }
             $count = 1;
             while($count != 0){
                 $str = "";
@@ -547,14 +609,13 @@ class AdminCoursesController extends Controller
                     $rand = mt_rand(0, $max);
                     $str .= $characters[$rand];
                 }
-                $path = 'uploads/archives/'.$str.$extension; 
+                $path = 'uploads/archives/'.$str.$type; 
                 $count = CourseItem::where('path', $path)->count();
-                $attach_new_name = $str.$extension;
+                $arq_new_name = $str.'.'.$type;
             }
 
-
-            $attach->move('uploads/archives', $attach_new_name); 
-            $new_path = 'uploads/archives/'. $attach_new_name;
+            $arq->move('uploads/archives', $arq_new_name); 
+            $new_path = 'uploads/archives/'. $arq_new_name;
             if($request->vimeo == 1){                
                 $vimeo_result = vimeo_tools::Upload_Video($new_path,$item);                
                 $item->path = $vimeo_result;
