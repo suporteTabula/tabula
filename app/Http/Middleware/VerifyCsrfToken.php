@@ -14,8 +14,9 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
     	'course/ratingstar',
         'success',
-        'cart/cupom'
-
+        'cart/cupom',
+        'admin/cupom/search',
+        'teacher/cupom/search'
         //
     ];
 }

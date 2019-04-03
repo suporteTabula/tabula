@@ -59,75 +59,81 @@ class User extends Authenticatable
         } 
     }
     return false;
-}
-
-public function isCompanyManager()
-{
-    foreach ($this->userTypes()->get() as $types) {
-        if ($types->desc == 'Empresa') {
-            return true;
-        }
     }
-    return true;
-}
 
-public function country()
-{
-    return $this->belongsTo('App\Country', 'country_id');
-}
+    public function isCompanyManager()
+    {
+        foreach ($this->userTypes()->get() as $types) {
+            if ($types->desc == 'Empresa') {
+                return true;
+            }
+        }
+        return true;
+    }
 
-public function state()
-{
-    return $this->belongsTo('App\State', 'state_id');
-} 
+    public function country()
+    {
+        return $this->belongsTo('App\Country', 'country_id');
+    }
 
-public function schooling()
-{
-    return $this->belongsTo('App\Schooling', 'schooling_id');
-}
+    public function state()
+    {
+        return $this->belongsTo('App\State', 'state_id');
+    } 
 
-public function categories()
-{
-    return $this->belongsToMany('App\Category');
-}
+    public function schooling()
+    {
+        return $this->belongsTo('App\Schooling', 'schooling_id');
+    }
 
-public function userTypes()
-{
-    return $this->belongsToMany('App\UserType');
-}
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
+    }
 
-public function userGroups()
-{
-    return $this->belongsToMany('App\UserGroup');
-}
+    public function userTypes()
+    {
+        return $this->belongsToMany('App\UserType');
+    }
 
-public function compaines()
-{
-    return $this->belongsToMany('App\Company');
-}
+    public function userGroups()
+    {
+        return $this->belongsToMany('App\UserGroup');
+    }
 
-public function institution()
-{
-    return $this->hasOne('App\UserGroup');
-}
+    public function compaines()
+    {
+        return $this->belongsToMany('App\Company');
+    }
 
-public function courses()
-{
-    return $this->belongsToMany('App\Course');
-}
+    public function institution()
+    {
+        return $this->hasOne('App\UserGroup');
+    }
 
-public function itemOptions()
-{
-    return $this->belongsToMany('App\CourseItemOption');
-}
+    public function courses()
+    {
+        return $this->belongsToMany('App\Course');
+    }
 
-public function items()
-{
-    return $this->belongsToMany('App\CourseItem')->withPivot('desc', 'course_item_status_id')->withTimestamps();
-}
+    public function itemOptions()
+    {
+        return $this->belongsToMany('App\CourseItemOption');
+    }
 
-public function teacher()
+    public function items()
+    {
+        return $this->belongsToMany('App\CourseItem')->withPivot('desc', 'course_item_status_id')->withTimestamps();
+    }
+
+    public function teacher()
     {
         return $this->hasOne('App\Teacher');
     }
+    public function cupom()
+    {
+        return $this->belongsToMany('App\Cupom');
+    }
 }
+
+

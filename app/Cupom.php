@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Cupom extends Model
 {
     protected $fillable = [
-    	'tipo_cupom', 'valor_cupom', 'expira_cupom', 'limite_cupom', 'desc_cupom', 'curso_id', 'cod_cupom', 'user_id',
+    	'tipo_cupom', 'valor_cupom', 'expira_cupom', 'active', 'desc_cupom', 'type_id', 'cod_cupom', 'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
 }

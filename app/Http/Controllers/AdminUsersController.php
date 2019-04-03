@@ -11,6 +11,7 @@ use App\Schooling;
 use App\UserGroup;
 use App\Company;
 use Session;
+use Auth;
 
 class AdminUsersController extends Controller
 {
@@ -27,6 +28,18 @@ class AdminUsersController extends Controller
         return view('admin.users.index')
         ->with('users', User::all())
         ->with('usersType', UserType::all());
+    }
+
+    public function panel()
+    {
+        $auth = Auth::user();
+        //Professor
+        if ($auth->userTypes->first()->id == 3 ) {
+            return view('teacher.panel')->with('auth', $auth);
+        }
+        if ($auth->userTypes->first()->id == 5 ) {
+            return view('companies.panel')->with('auth', $auth);
+        }
     }
 
     /**

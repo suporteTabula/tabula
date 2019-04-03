@@ -46,7 +46,7 @@
                         </div>
                         @endforeach                        
                     </div>
-                    <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-5 check-card"><!-- Master Column Right  action="{{route('cart.cupom')}}-->
+                    <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-5 check-card">
                         <div class="column col-12 total-checkout">
                             <p class="checkout-title">SubTotal</p>
                             <span >R${{ number_format($total_price, 2,',', '.') }}</span>

@@ -16,8 +16,8 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     @yield('styles')
 </head>
 <body>
@@ -69,7 +69,10 @@
             <div class="row">
                 @if(Auth::check())
                     <div class="col-lg-3">
-                        <ul class="list-group">                            
+                        <ul class="list-group">  
+                            <li class="list-group-item">
+                                <a href="{{ route('panel.teacher') }}">Principal</a>
+                            </li>                          
                             <li class="list-group-item">
                                 <a href="{{ route('courses.teacher')}}">Cursos</a>
                             </li>
@@ -96,7 +99,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script>
         
         @if(Session::has('success'))

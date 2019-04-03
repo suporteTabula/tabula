@@ -23,11 +23,6 @@ use Log;
 
 class AdminCoursesController extends Controller
 {	    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     public function analise()
     {
@@ -94,23 +89,47 @@ class AdminCoursesController extends Controller
     }
     public function index()
     {
-        return view('admin.courses.index')
-        ->with('courses', Course::all())
-        ->with('categories', Category::all())
-        ->with('users', User::all());
+        $auth = Auth::user();
+        $courses = Course::where('user_id_owner', $auth->id)->get();
+        
+        if ($auth->userTypes->first()->id == 5) {
+            return view('companies.courses.index')
+            ->with('courses', $courses)
+            ->with('categories', Category::all())
+            ->with('users', $auth);
+        }elseif ($auth->userTypes->first()->id == 1) {
+            return view('admin.courses.index')
+            ->with('courses', Course::all())
+            ->with('categories', Category::all())
+            ->with('users', User::all());
+        }else{
+            $courses = Course::where('user_id_owner', $auth->id)->get();
+            return view('teacher.courses.index')
+            ->with('courses', $courses)
+            ->with('categories', Category::all())
+            ->with('auth', $auth);
+        }
+        
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
+        $auth = Auth::user();
+        $userCompanies = $auth->userTypes->first();
+        if ($auth->userTypes->first()->id == 5) {
+            return view('companies.courses.create')
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all());
+        }elseif ($auth->userTypes->first()->id == 1) {
+            return view('admin.courses.create')
+            ->with('categories', Category::all())
+            ->with('user_groups', UserGroup::all());
+        }else{
+            return view('teacher.courses.create')
+            ->with('categories', Category::all())
+            ->with('auth', $auth)
+            ->with('user_groups', UserGroup::all());
+        }
         
-        return view('admin.courses.create')
-        ->with('categories', Category::all())
-        ->with('user_groups', UserGroup::all());
     }
 
     /**
@@ -140,12 +159,12 @@ class AdminCoursesController extends Controller
         $course->requirements       = $request->requirements;
         $course->user_id_owner      = Auth::user()->id;
         $course->total_class        = 0;
-//Verficacao de URL amigável
+
+        //Verficacao de URL amigável
         $urn = '';
         $urns = explode(' ', $request->name);
-        for($i = 0; $i < sizeof($urns); $i++) {
-            $urn =  $urn . '-' .$urns[$i];
-            
+        for($i = 0; $i < sizeof($urns); $i++){
+            $urn =  $urn . '-' .$urns[$i];  
         }
         $urns = 1;
         while ($urns != 0) {
@@ -189,7 +208,6 @@ class AdminCoursesController extends Controller
         }
 
         $course->save();
-        $id = $course->id;
         // se tiver algum check nos grupos de usuário
         if($request->group != '')
         {
@@ -205,17 +223,16 @@ class AdminCoursesController extends Controller
         }
         Session::flash('success', 'Curso criado com sucesso');
 
-        $course             = Course::find($id);
+        $course             = Course::find($course->id);
         $categories         = Category::all();
         $course_items_group = CourseItemGroup::all();
         $user_groups        = UserGroup::all();
 
-        return redirect()->route('course.edit', 
-            ['id'                   => $id,
-            'course'                => $course,
-            'categories'            => $categories,
-            'course_items_group'    => $course_items_group,
-            'user_groups'           => $user_groups]);
+        return redirect()->route('course.edit.teacher', ['id' => $course->id])
+        ->with('course', $course)
+        ->with('categories', $categories)
+        ->with('user_groups', $user_groups)
+        ->with('course_items_group', $course_items_group);
     }
     /**
      * Display the specified resource.
@@ -233,12 +250,32 @@ class AdminCoursesController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
+        $auth = Auth::user();
 
-        return view('admin.courses.edit')
-        ->with('course', $course)
-        ->with('categories', Category::all())
-        ->with('course_items_group', CourseItemGroup::all())
-        ->with('user_groups', UserGroup::all());
+
+        if ($auth->userTypes->first()->id == 5) {
+            return view('companies.courses.edit')
+            ->with('course', $course)
+            ->with('categories', Category::all())
+            ->with('course_items_group', CourseItemGroup::all())
+            ->with('user', User::all())
+            ->with('user_groups', UserGroup::all());
+        }elseif ($auth->userTypes->first()->id == 1) {
+            return view('admin.courses.edit')
+            ->with('course', $course)
+            ->with('categories', Category::all())
+            ->with('course_items_group', CourseItemGroup::all())
+            ->with('user_groups', UserGroup::all());
+        }else{
+            return view('teacher.courses.edit')
+            ->with('course', $course)
+            ->with('categories', Category::all())
+            ->with('course_items_group', CourseItemGroup::all())
+            ->with('user', User::all())
+            ->with('user_groups', UserGroup::all());
+        }
+
+        
     }
 
     /**
@@ -409,11 +446,26 @@ class AdminCoursesController extends Controller
     public function chapter_edit($id)
     {
         $chapter = CourseItemGroup::find($id);
+        $auth = Auth::user();
+        
+        if ($auth->userTypes->first()->id == 5) {
 
-        return view('admin.courses.chapter')
-        ->with('chapter', $chapter)
-        ->with('items', CourseItem::all())
-        ->with('items_type', CourseItemType::all());
+            return view('companies.courses.chapter')
+            ->with('chapter', $chapter)
+            ->with('items', CourseItem::all())
+            ->with('items_type', CourseItemType::all());
+        }elseif ($auth->userTypes->first()->id == 1) {
+            return view('admin.courses.chapter')
+            ->with('chapter', $chapter)
+            ->with('items', CourseItem::all())
+            ->with('items_type', CourseItemType::all());
+        }else{
+            return view('teacher.courses.chapter')
+            ->with('chapter', $chapter)
+            ->with('items', CourseItem::all())
+            ->with('items_type', CourseItemType::all());
+        }
+        
     }
 
     /**
@@ -578,31 +630,81 @@ class AdminCoursesController extends Controller
      */
     public function item_edit($id)
     {
+        
+
         $item = CourseItem::find($id);
         $chapter = CourseItemGroup::find($item->course_item_group_id);
-
-        if($item->course_item_type->id >= 6)
-        {
-            return view('admin.courses.question')
-            ->with('item', $item)
-            ->with('items', CourseItem::all())
-            ->with('chapter', $chapter)
-            ->with('items_type', CourseItemType::all());
-        }
-        else
-        {
-            $items = CourseItem::all();
-            if(strpos('vimeo',$item->path)){
-                //this is a vimeo url, say so
-                $item = vimeo_tools::parse_for_urls($items);
+        $user = Auth::user();
+        $userCompanies = $user->userTypes()->first();
+        if ($userCompanies->id == 5) {
+            if($item->course_item_type->id >= 6)
+            {
+                return view('companies.courses.question')
+                ->with('item', $item)
+                ->with('items', CourseItem::all())
+                ->with('chapter', $chapter)
+                ->with('items_type', CourseItemType::all());
             }
-            return view('admin.courses.item')
-            ->with('item', $item)
-            ->with('items', $items)
-            ->with('chapter', $chapter)    
-            ->with('items_type', CourseItemType::all());
-        }        
+            else
+            {
+                $items = CourseItem::all();
+                if(strpos('vimeo',$item->path)){
+                //this is a vimeo url, say so
+                    $item = vimeo_tools::parse_for_urls($items);
+                }
+                return view('companies.courses.item')
+                ->with('item', $item)
+                ->with('items', $items)
+                ->with('chapter', $chapter)    
+                ->with('items_type', CourseItemType::all());
+            }     
+        }elseif ($userCompanies->id == 1) {
+            if($item->course_item_type->id >= 6)
+            {
+                return view('admin.courses.question')
+                ->with('item', $item)
+                ->with('items', CourseItem::all())
+                ->with('chapter', $chapter)
+                ->with('items_type', CourseItemType::all());
+            }
+            else
+            {
+                $items = CourseItem::all();
+                if(strpos('vimeo',$item->path)){
+                    //this is a vimeo url, say so
+                    $item = vimeo_tools::parse_for_urls($items);
+                }
+                return view('admin.courses.item')
+                ->with('item', $item)
+                ->with('items', $items)
+                ->with('chapter', $chapter)    
+                ->with('items_type', CourseItemType::all());
+            } 
+        }{
+            if($item->course_item_type->id >= 6)
+            {
+                return view('teacher.courses.question')
+                ->with('item', $item)
+                ->with('items', CourseItem::all())
+                ->with('chapter', $chapter)
+                ->with('items_type', CourseItemType::all());
+            }
+            else
+            {
+                $items = CourseItem::all();
+                if(strpos('vimeo',$item->path)){
+                //this is a vimeo url, say so
+                    $item = vimeo_tools::parse_for_urls($items);
+                }
+                return view('teacher.courses.item')
+                ->with('item', $item)
+                ->with('items', $items)
+                ->with('chapter', $chapter)    
+                ->with('items_type', CourseItemType::all());
+            }        
+        }
     }
+
 
     /**
      * Update the specified item of the chapter in storage.

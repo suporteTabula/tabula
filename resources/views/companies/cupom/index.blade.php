@@ -1,4 +1,4 @@
-@extends('layouts.teacher')
+@extends('layouts.companies')
 
 @section('content')
 <div class="panel panel-default">
@@ -18,9 +18,6 @@
 				<th>Tipo de Cupom</th>
 				<th>Valor do Cupom</th>
 				<th>Descrição</th>
-				<th>ID do Produto</th>
-				<th>Uso/Limite</th>
-				<th>Validade</th>
 				<th>Editar</th>
 				<th>Deletar</th>
 			</thead>
@@ -28,14 +25,14 @@
 				@if ($cupoms->count() > 0)
 				@foreach ($cupoms as $cupom)
 				<tr>
-					<td style="vertical-align: middle !important;">{{ $cupom->codCupom}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->tipoCupom}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->valorCupom}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->descCupom}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->curso_id}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->limiteCupom}}</td>
-					<td style="vertical-align: middle !important;">{{ $cupom->expiraCupom}} dias</td>
-					
+					<td style="vertical-align: middle !important;">{{ $cupom->cod_cupom}}</td>
+					<td style="vertical-align: middle !important;">{{ $cupom->tipo_cupom}}</td>
+					@if($cupom->tipo_cupom == 'porcentagem')
+					<td style="vertical-align: middle !important;"> {{$cupom->valor_cupom}} %</td>
+					@else
+					<td style="vertical-align: middle !important;">R$ {{ number_format($cupom->valor_cupom, 2 , ',' , ' ')}}</td>
+					@endif
+					<td style="vertical-align: middle !important;">{{ $cupom->desc_cupom}}</td>
 					<td>
 						<a href="{{ route('cupom.edit.teacher', ['id' => $cupom->id]) }} ">
 							<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
@@ -55,6 +52,7 @@
 					<td colspan="4" class="text-center">Nenhum Cupom cadastrado</td>
 				</tr>
 				@endif
+					
 			</tbody>
 		</table>
 	</div>

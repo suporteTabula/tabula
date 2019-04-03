@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanyTable extends Migration
+class CreateCupomUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateCompanyTable extends Migration
      */
     public function up()
     {
-        Schema::create('company', function (Blueprint $table) {
+        Schema::create('cupom_user', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->longtext('mission')->nullable();
+            $table->integer('cupom_id');
+            $table->string('type_cupom');
+            $table->double('discount');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateCompanyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company');
+        Schema::dropIfExists('cupom_user');
     }
 }

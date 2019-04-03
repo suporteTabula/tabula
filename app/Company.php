@@ -9,5 +9,5 @@ class Company extends Model
 
     protected $table = 'company';    
 
-    protected $fillable = array('user_id','mission','knowledge');
+    protected $fillable = array('user_id','mission');
 }

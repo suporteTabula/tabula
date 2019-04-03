@@ -171,23 +171,4 @@ class CompanyController extends Controller
 
 	}
 
-	public function knowledge()
-	{
-		$auth = Auth::user();
-		$company = DB::table('company')->where('user_id', $auth->id)->first();
-		return view('companies.knowledge')
-		->with('company', $company);
-	}
-
-	public function knowledgeUpdate(Request $request)
-	{
-		$auth = Auth::user();
-
-		DB::table('company')->where('user_id', $auth->id)->update([
-			'knowledge' => $request->knowledge,
-		]);
-		Session::flash('success', 'Área de Conhecimento atualizada');
-		return redirect()->back();
-	}
-
 }

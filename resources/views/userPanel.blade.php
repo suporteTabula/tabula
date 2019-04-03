@@ -56,6 +56,9 @@
                             </a>
                             <a href="#">
                                 <button id="myTeacher" class="button-normal">Meus Professores</button>
+                            </a>  
+                            <a href="{{route('panel')}}">
+                                <button id="painel" class="button-normal">Painel</button>
                             </a>                            
                             @else
                             <a href="#"> 
@@ -76,8 +79,10 @@
                             <a href="#">
                                 <button id="taught" class="button-normal">Cursos que Leciono</button>
                             </a>
-
                             @endif
+                            <a href="{{route('panel.teacher')}}">
+                                <button id="painel" class="button-normal">Painel</button>
+                            </a>
                             @endif
                         </div>
                     </div>

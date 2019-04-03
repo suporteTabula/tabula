@@ -19,10 +19,9 @@ class CreateCupomTable extends Migration
             $table->string('tipo_cupom',100);
             $table->double('valor_cupom',10 , 2);
             $table->string('desc_cupom',100)->nullable();
-            $table->integer('curso_id')->nullable();
-            $table->integer('limite_cupom');
+            $table->string('type_id')->nullable();
+            $table->integer('active');
             $table->integer('user_id');
-            $table->date('expira_cupom')->nullable();
             $table->timestamps();
         });
     }
