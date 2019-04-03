@@ -32,6 +32,8 @@ class CoursesController extends Controller
         $votes          = Star::where('id_course', $course->id)->count();
         $point          = Star::where('id_course', $course->id)->sum('point');
 
+        $courses        = Course::where('category_id', $course->category_id)
+                            ->where('id', '<>', $course->id)->inRandomOrder()->take(8)->get();
         foreach ($course->comments as $comment) {
             $comment->user = User::where('id', $comment->user_id)->first();
         }
@@ -73,6 +75,7 @@ class CoursesController extends Controller
         }
         return view('course')
         ->with('course', $course)
+        ->with('courses', $courses)
         ->with('author', $author)
         ->with('chapters', $chapter)
         ->with('userItem', $userHasItem)

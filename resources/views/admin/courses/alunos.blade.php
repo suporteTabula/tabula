@@ -2,14 +2,16 @@
 
 @section('content')
 	<div class="panel panel-default">
-		<div class="panel-heading" style="position: relative; height:80x; ">
-			<form class="form-group" method="POST" action="{{ route('alunos.store', ['id' => $id]) }}">
+		<div class="panel-heading" style="position: relative; height:80px; ">
+			<form class="form-inline" method="POST" action="{{ route('alunos.store', ['id' => $id]) }}">
 			{{ csrf_field() }}
-			<label for="email">E-mail Aluno</label>
-			<input class="form-control" type="email" id="email"  name="email" placeholder="E-mail " style="width: 300px;">
-			<button style="width:35px; position: absolute; right:15px; top: 12px;">
-				<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
-			</button>
+			<div class="form-group">
+				<label for="email">E-mail Aluno
+					<input class="form-control" type="email" id="email"  name="email" placeholder="E-mail ">
+				</label>
+				<button class="btn btn-primary">Incluir Aluno</button>
+
+			</div>
 			</form>
 		</div>
 

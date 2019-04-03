@@ -283,11 +283,12 @@ class ProfController extends Controller
 
     public function todosProfs()
     {
-        $userTeachers = User::all();
-        $myTpes = DB::table('user_user_type')->get();
+        $teachers = User::all();
+        foreach ($teachers as $teacher) {
+            $teacher->courses = Course::where('user_id_owner', $teacher->id);
+        }
         return view('todosProfs')
-        ->with('myTpes', $myTpes)
-        ->with('userTeachers', $userTeachers)
+        ->with('teachers', $teachers)
         ->with('auth', Auth::user());
     }
 
@@ -337,15 +338,6 @@ class ProfController extends Controller
             'progress' => 0,
         ]);
         Session::flash('success', 'Progresso Reiniciado');
-        return redirect()->back();
-    }
-
-    public function alunosDestroy($id)
-    {
-        $aluno = CourseUser::find($id);
-        $aluno->delete();
-
-        Session::flash('success', 'Aluno removido com sucesso');
         return redirect()->back();
     }
 

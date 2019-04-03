@@ -10,7 +10,6 @@
 					<th>Progresso</th>
 					<th>Gerar Certificado</th>
 					<th>Reiniciar</th>
-					<th>Remover</th>
 				</thead>
 				<tbody>
 					@if ($alunos->count() > 0)
@@ -31,11 +30,6 @@
 								<td>
 									<a href="{{route('alunos.reset.teacher', ['id' => $aluno->id])}}">
 										<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
-									</a>
-								</td>
-								<td>								
-									<a class="remove-record" data-toggle="modal" data-id={{$aluno->id}} data-target="#custom-width-modal" data-url="{{ route('alunos.destroy.teacher', ['id' => $aluno->id]) }}">
-										<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
 									</a>
 								</td>
 							</tr>

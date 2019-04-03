@@ -17,7 +17,7 @@
                     <div class="column col-12 text-justify">
                         <span>
                             <h5>
-                                Bem-vindo, produtor de conteúdo! Gostaríamos de te conhecer melhor e saber em qual perfil profissional você se encaixaria. Temos o intuito de te possibilitar uma experiência incrível e um relacionamento longo e duradouro conosco.
+                                Queremos saber o seu nível de produção de conteúdo para que possamos, dependendo da sua resposta, te auxiliar com dicas e sugestões valiosas! Também podemos te assessorar em cada etapa do seu curso e na forma como você quer publicá-lo, como, por exemplo: gravar as aulas em uma sala com todos os equipamentos necessários; editar os vídeos da gravação e, até mesmo, fazer o serviço de marketing do seu curso.
                             </h5>
                         </span>
                     </div>

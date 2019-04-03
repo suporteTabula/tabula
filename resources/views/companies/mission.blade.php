@@ -13,7 +13,7 @@
 			{{ csrf_field() }}
 
 			<div class="form-group">
-				<label for="bio">Missão</label>
+				<label for="bio">Sobre</label>
 			@if($company->mission != null || $company->mission != '')
 				<textarea class="form-control" rows="5" id="mission" name="mission" placeholder="Escreva aqui...">{{$company->mission}}</textarea>
 			@else

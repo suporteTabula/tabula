@@ -25,34 +25,7 @@
           <source src="../images/aulas/{{$course->video}}"> 
           </video>
           @endif
-          @auth
-          <span class="courseDados" data-id="{{$course->id}}"></span>
-          <div class="rating-stars">
-            <span class="bg"></span>
-            <div class="estrelas">
-              <?php for($i = 1; $i<=5; $i++): ?>
-                <span class="star" id="{{$i}}" data-url="{{url('course/ratingstar')}}">
-                  <span class="starAbsolute"></span>
-                </span>
-              <?php endfor ?>
-              <span class="urlRating" data-url="{{route('ratingstar')}}"></span>
-              <span class="ratingAverage">{{$rating['star']}}</span>
-            </div> 
-          </div>
-          @else
-          <span class="courseDados" data-id="0"></span>
-          <div class="rating-stars">
-            <span class="bg"></span>
-            <div class="estrelas">
-              <?php for($i = 1; $i<=5; $i++): ?>
-                <span class="star" id="{{$i}}" data-url="{{url('course/ratingstar')}}">
-                  <span class="starAbsolute"></span>
-                </span>
-              <?php endfor ?>
-              <span class="ratingAverage">{{$rating['star']}}</span>
-            </div> 
-          </div>
-          @endauth
+         
           <div class="start-course">
             @auth
               @if($auth->id == $author->id)
@@ -62,9 +35,6 @@
                 @else
                 <a class="custom-tabula-button" href="{{ route('course.edit.teacher', ['id' => $course->id]) }}">Editar</a>
                 @endif
-              </ul>
-              <ul>
-                <a class="custom-tabula-button" href="{{ route('cart.insert', ['id' => $course->id]) }}">Excluir</a>
               </ul>
               @elseif($hasCourse)
                 @if ($progress > 0)
@@ -91,6 +61,37 @@
             <ul><a class="custom-tabula-button" href="{{ route('new.cart', ['id' => $course->id]) }}">Comprar</a></ul>
 
             <ul> <a class="custom-tabula-button" href="{{ route('new.cart', ['id' => $course->id]) }}">Adicionar ao carrinho</a></ul>  
+            @endauth
+
+          </div>
+          <div class="start-course">
+            @auth
+            <span class="courseDados" data-id="{{$course->id}}"></span>
+            <div class="rating-stars">
+              <span class="bg"></span>
+              <div class="estrelas">
+                <?php for($i = 1; $i<=5; $i++): ?>
+                  <span class="star" id="{{$i}}" data-url="{{url('course/ratingstar')}}">
+                    <span class="starAbsolute"></span>
+                  </span>
+                <?php endfor ?>
+                <span class="urlRating" data-url="{{route('ratingstar')}}"></span>
+                <span class="ratingAverage">{{$rating['star']}}</span>
+              </div> 
+            </div>
+            @else
+            <span class="courseDados" data-id="0"></span>
+            <div class="rating-stars">
+              <span class="bg"></span>
+              <div class="estrelas">
+                <?php for($i = 1; $i<=5; $i++): ?>
+                  <span class="star" id="{{$i}}" data-url="{{url('course/ratingstar')}}">
+                    <span class="starAbsolute"></span>
+                  </span>
+                <?php endfor ?>
+                <span class="ratingAverage">{{$rating['star']}}</span>
+              </div> 
+            </div>
             @endauth
           </div>
         </div>
@@ -131,6 +132,33 @@
         <p>{{$course->requirements}}</p>
         @endif
       </div>
+    </div>
+  </div>
+</section>
+<section class="will-learn">
+    <div class="container grid-lg">
+      <div class="columns">
+        <div class="column col-12 col-xs-12 col-sm-12">
+        @if($courses)
+          <h5>Cursos Relacionados</h5>
+          <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
+              @foreach($courses as $crs)
+              <div class="course-card-search">
+                  <a href="{{ route('course.single', ['urn' => $crs->urn]) }}">
+                      <div class="course-card__image">
+                          <img src="{{asset('')}}/images/aulas/{{$crs->thumb_img}}" class="thumb" />
+                      </div>
+                      <div class="course-card__description">
+                          <p>{{ $crs->name }}</p>
+                          <p>{{ $crs->desc }}</p>
+                          <div class="course-card__price">R${{number_format($crs->price, 2,',', '.')}}</div>
+                      </div>
+                  </a>
+              </div>
+              @endforeach
+          </div>
+        @endif
+        </div>
     </div>
   </div>
 </section>

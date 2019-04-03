@@ -9,6 +9,15 @@
 		<a href="{{ route('teachers.company.create') }}">
 			<img style=" width:35px; position: absolute; right:15px; top: 12px;" src="{{asset('images\add.svg')}}">
 		</a>
+		<div>
+			<form method="POST" action="{{route('teachers.company.search')}}">
+				 {{ csrf_field() }} 
+				<input class="form-control" type="email" name="search"  placeholder="Digite o e-mail do professor" style="width: 300px;">
+				<button class="btn">Incluir</button>
+				
+			</form>
+
+		</div>
 	</div>
 	<div class="panel-body">
 		<table id="coursesTable" class="table table-hover">

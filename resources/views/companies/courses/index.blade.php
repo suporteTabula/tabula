@@ -22,7 +22,7 @@
 		<div class="panel-body">
 			<table id="coursesTable" class="table table-hover">
 				<thead>
-					<th>Sou foda</th>
+					<th>Nome</th>
 					<th>Descrição</th>
 					<th>Categoria</th>
 					<th>Autor</th>

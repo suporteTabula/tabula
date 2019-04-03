@@ -117,7 +117,8 @@
                             <img src="{{asset('/images/layout/home/hexagon.svg')}}" width="70px;">
                         </div>
                         <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <p>O Tábula possui uma plataforma inédita e fácil de usar, com cursos das mais diversas áreas do conhecimento.</p>
+                            <h5>Missão</h5>
+                            <p>Trabalhamos para sermos uma democratizadora do aprendizado, acolhendo novas ideias e compartilhando-as com nossos usuários, ampliando sua cultura e conhecimento. </p>
                         </div>
                     </div>
                 </div>
@@ -127,7 +128,8 @@
                             <img src="{{asset('/images/layout/home/hexagon.svg')}}" width="70px;">
                         </div>
                         <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                            <p>Para os alunos, há a disponibilidade de aprender e assistir aulas dos mais variados temas no tempo que quiser. Já aos professores, oferecemos a assessoria necessária, com salas para gravação e a edição destas.</p>
+                            <h5>Visão</h5>
+                            <p>Trabalhamos para sermos uma democratizadora do aprendizado, acolhendo novas ideias e compartilhando-as com nossos usuários, ampliando sua cultura e conhecimento. </p>
                         </div>
                     </div>
                 </div>
@@ -137,6 +139,7 @@
                             <img src="{{asset('/images/layout/home/hexagon.svg')}}" width="70px;">
                         </div>
                         <div class="column col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                            <h5>Valores</h5>
                             <p>Leve o Tábula para dentro de sua emrpesa através da realização de parcerias conosco. Procuramos realizar contratos com instituições de ensino que procuram crescer e disseminar uma educação de qualidade.</p>
                         </div>
                     </div>
@@ -153,7 +156,7 @@
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
                     @foreach ($featured_courses1 as $course)
                     <div class="course-card-search">
-                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                        <a href="{{ route('course.single', ['urn' => $course->urn]) }}">
                             <div class="course-card__image">
                                 <img src="{{asset('')}}/images/aulas/{{$course->thumb_img}}" class="thumb" />
                             </div>
@@ -173,7 +176,7 @@
                 <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
                     @foreach($featured_courses2 as $course)
                     <div class="course-card-search">
-                        <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                        <a href="{{ route('course.single', ['urn' => $course->urn]) }}">
                             <div class="course-card__image">
                                 <img src="{{asset('')}}/images/aulas/{{$course->thumb_img}}" class="thumb" />
                             </div>

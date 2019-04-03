@@ -28,7 +28,7 @@
                             <div class="painel-empresa">
                                 <span><img src="{{asset('/images/Profilepic')}}/{{ $auth->avatar}}"></span>
                                 <ul>
-                                    <li><a href="#missionCompany" id="scroll">Missão</a></li>
+                                    <li><a href="#missionCompany" id="scroll">Sobre</a></li>
                                     <li><a href="#teacherCompany" id="scroll">Professores</a></li>
                                     <li><a href="#courseCompany" id="scroll"> Cursos no tabula</a></li>
                                 </ul>
@@ -42,7 +42,7 @@
                     <div class="columns mission-company" id="missionCompany">
                         <div class="column col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                             <div class="missao-conhecimento missao">
-                                <h5>Missão</h5>
+                                <h5>Sobre</h5>
                                 <p>{{$auth->company->mission}}</p>
                             </div>
                         </div>
@@ -55,6 +55,7 @@
                                     <h4>Professores</h4>
                                     @if(isset($courses))
                                         @foreach($teachers as $teacher)
+                                        @if($teacher->courses->count() > 0)
                                         <ul>                                        
                                             <li>
                                                 @if ($teacher->empresa_id == $auth->id)<br>              
@@ -69,6 +70,7 @@
                                                 @endif
                                              </li>
                                         </ul>
+                                        @endif
                                         @endforeach
                                     @else
                                     <div>

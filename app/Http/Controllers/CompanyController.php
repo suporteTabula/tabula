@@ -22,8 +22,10 @@ class CompanyController extends Controller
 	public function index()
 	{
 		$companies = Company::all();
+
 		foreach ($companies as $company) {
 			$company->user = User::where('id', $company->user_id)->first();
+			$company->courses = Course::where('user_id_owner', $company->user_id);
 		}
 		$auth = Auth::user();
 		return view('companies.all_company')
@@ -36,12 +38,12 @@ class CompanyController extends Controller
 		$auth 			= User::find($id);
 		$auth->company 	= Company::where('user_id', $auth->id)->first();
 		$teachers 		= User::where('empresa_id', $auth->id)->get();
-
 		foreach ($teachers as $teacher) {
-			$idTeachers = User::where('empresa_id', $id)->pluck('id')->toArray();
+			$teacher->courses = Course::where('user_id_owner', $teacher->id);
 		}
+
 		if($teachers != '[]'){
-			$courses = Course::wherein('user_id_owner', $idTeachers)->orWhere('user_id_owner', $id); 
+			$courses = Course::where('user_id_owner', $id); 
 		}
 		$totalTeachers = User::where('empresa_id', $auth->id)->count();
 		if (isset($courses)) {
@@ -135,6 +137,27 @@ class CompanyController extends Controller
 		}
 		Session::flash('success', 'Usuário adicionado com sucesso');
 		return redirect()->back();
+	}
+
+	public function teacherSearch(Request $request)
+	{
+		$auth = Auth::user();
+		$teacher = User::where('email', $request->search)->first();
+		if ($teacher) {
+			if ($teacher->empresa_id != '' || $teacher->empresa_id != NULL) {
+				Session::flash('info', 'Professor já registrado no tabula');
+				return redirect()->back();
+			}
+			if ($teacher->userTypes->first()->id == 3) {
+				$teacher->empresa_id	= $auth->id;
+				$teacher->save();
+				Session::flash('success', 'Professor adicionado com sucesso');
+				return redirect()->back();
+			}
+		}else{
+			Session::flash('info', 'Professor não registrado no tabula');
+			return redirect()->back();
+		}
 	}
 
 	public function teachersDestroy($id)

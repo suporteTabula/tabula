@@ -30,7 +30,7 @@
                     <div class="teacher-description">
                     <h4>{{$company->user->name }} </h4>
                     </div>
-                    <div class="btn badge" data-badge="8">
+                    <div class="btn badge" data-badge="{{$company->courses->count()}}">
                         <p>Cursos Publicados</p>
                     </div>
                     </a>

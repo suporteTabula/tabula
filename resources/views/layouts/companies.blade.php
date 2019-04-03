@@ -59,7 +59,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class ="hide-md"><a href="{{ route('userPanel.single') }}"><img class="avatar" src="{{asset('/images/Profilepic')}}/"></a></li>
                             <li class="hide-md"><a href="{{ route('cart') }}">Carrinho</a></li>
-                            <li class= "hide-md"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></li>
+                            <li class= "hide-md"><a href="{{ route('logout') }}">Sair</a></li>
                         </ul>
                     </div>
                 </div>

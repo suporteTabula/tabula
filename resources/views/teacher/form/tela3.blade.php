@@ -19,7 +19,7 @@
                     <div class="column col-12 text-justify">
                         <span>
                             <h5>
-                                Bem-vindo, produtor de conteúdo! Gostaríamos de te conhecer melhor e saber em qual perfil profissional você se encaixaria. Temos o intuito de te possibilitar uma experiência incrível e um relacionamento longo e duradouro conosco.
+                                Esta pergunta facilita o processo de criação de cupons para o seu curso e o ajuda a distribuí-los ao público ideal.
                             </h5>
                         </span>
                     </div>

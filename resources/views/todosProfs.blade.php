@@ -21,21 +21,19 @@
  <section class="teachers">
     <div class="container grid-md"> 
         <div class="teachers-wrapper">
-            @foreach($myTpes as $myTpe)
-            @foreach($userTeachers as $userTeacher)
-            @if($myTpe->user_type_id == 3 && $myTpe->user_id == $userTeacher->id)
+            @foreach($teachers as $teacher)
+            @if($teacher->usertypes->first()->id == 3 && $teacher->courses->count() > 0 )
 
 
             <div class="teacher-photo-wrapper"> 
-                <a href="{{ route('course.prof', ['id' => $userTeacher->id]) }}"> 
-                    <div class="teacher-photo" style="background-image: url({{asset('/images/Profilepic')}}/{{ $userTeacher->avatar }});"></div>
+                <a href="{{ route('course.prof', ['id' => $teacher->id]) }}"> 
+                    <div class="teacher-photo" style="background-image: url({{asset('/images/Profilepic')}}/{{ $teacher->avatar }});"></div>
                     <div class="teacher-description">
-                        <p>{{$userTeacher->name}} </p>
+                        <p>{{$teacher->name}} </p>
                     </div>
                 </a>
             </div>
             @endif 
-            @endforeach
             @endforeach
 
         </div>

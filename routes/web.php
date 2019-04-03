@@ -27,7 +27,6 @@ Route::get('/home1', ['uses' => 'Controller@HomeEmpresa']);
 //Grupos
 Route::get('userGroup/{group}', 'UserGroupsController@index')->name('userGroupIndex.single');
 Route::get('userGroups', 'UserGroupsController@select')->name('userGroupSelect.single');
-Route::get('/todosProfs', 'ProfController@todosProfs')->name('todosProfs');
 
 //Carrinho
 Route::get('cart', 'CartController@cart')->name('cart');
@@ -72,6 +71,7 @@ Route::group(['prefix' => 'companies', 'middleware' => ['auth']], function (){
 	Route::get('/teachers', 'CompanyController@teachersIndex')->name('teachers.company');
 	Route::get('/teachers/create', 'CompanyController@teachersCreate')->name('teachers.company.create');
 	Route::post('/teachers/store', 'CompanyController@teachersStore')->name('teachers.company.store');
+	Route::post('/courses/search', 'CompanyController@teacherSearch')->name('teachers.company.search');
 	Route::get('/teachers/destroy/{id}', 'CompanyController@teachersDestroy')->name('teachers.company.destroy');
 	Route::get('/mission', 'CompanyController@mission')->name('mission.company');
 	Route::post('/mission/update', 'CompanyController@missionUpdate')->name('mission.company.update');
@@ -91,6 +91,7 @@ Route::post('/serprofessorStore', 'ProfController@storeAnswer')->name('store.ans
 Route::get('/serprofessorDestroy/{id}', 'ProfController@destroyAnswer')->name('destroy.answer');
 Route::get('/professor', 'ProfController@virarProfessor')->name('teacher');
 
+Route::get('/todosProfs', 'ProfController@todosProfs')->name('todosProfs');
 Route::get('todosProfs/{id}', 'ProfController@courseProf')->name('course.prof');
 Route::group(['prefix' => 'teacher', 'middleware' => ['auth']], function (){
 	Route::get('/panel', 'AdminUsersController@panel')->name('panel.teacher');
@@ -179,7 +180,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 	Route::get('/courses/edit/{id}', 'AdminCoursesController@edit')->name('course.edit');
 	Route::post('/courses/update/{id}', 'AdminCoursesController@update')->name('course.update');
 	Route::get('/courses/destroy/{id}', 'AdminCoursesController@destroy')->name('course.destroy');
-	Route::post('/courses/alunos/store/{id}', 'AdminCoursesController@storeAluno')->name('alunos.store');
 	Route::post('/courses/alunos/store/{id}', 'AdminCoursesController@storeAluno')->name('alunos.store');
 	Route::get('/courses/subcateg', 'AdminCoursesController@subCateg')->name('sub.categ');
 

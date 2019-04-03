@@ -22,10 +22,10 @@
 						@foreach ($companies as $company)
 							<tr>
 								<td style="vertical-align: middle !important;">
-									{{ $company->name }}
+									{{ $company->user->name }}
 								</td>							
 								<td style="vertical-align: middle !important;">
-									{{ $company->desc }}
+									{{ $company->user->bio }}
 								</td>
 								<td>
 									<a href="{{ route('companies.edit', ['id' => $company->id]) }}">

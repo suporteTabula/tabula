@@ -194,7 +194,7 @@
                     <div class="columns">
                        @foreach($auth->courses as $course)
                        <div class="course-card">
-                            <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                            <a href="{{ route('course.single', ['urn' => $course->urn]) }}">
                                 <div class="course-card__image">
                                     <img src="{{asset('images/aulas')}}/{{$course->thumb_img}}" class="thumb" />
                                 </div>
@@ -227,7 +227,7 @@
                             @foreach($courses as $course)
                                 @if ($course->user_id_owner == $auth->id)<br> 
                                 <div class="course-card">
-                                    <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                                    <a href="{{ route('course.single', ['urn' => $course->urn]) }}">
                                         <div class="course-card__image">
                                             <img  src="{{asset('images/aulas')}}/{{$course->thumb_img}}" class="thumb" />
                                         </div>
@@ -243,7 +243,7 @@
                             @foreach($users as $user)
                                 @foreach($user->courses as $course)
                                 <div class="course-card">
-                                    <a href="{{ route('course.single', ['id' => $course->id]) }}">
+                                    <a href="{{ route('course.single', ['urn' => $course->urn]) }}">
                                         <div class="course-card__image" style="background-image: url({{url('/images/aulas/')}}.{{$course->thumb_img}});"></div>
                                         <div class="course-card__description">
                                             <p>{{ $course->name }}</p>

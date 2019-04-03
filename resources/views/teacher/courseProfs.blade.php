@@ -26,7 +26,7 @@
 
             <ul class="clearfix grid" id="courses">
                 <li class="clearfix">
-                    <div class="course-card" id="course-card">                          
+                    <div class="course-card-search" id="course-card">                          
                         <a href="{{ route('course.single', ['id' => $course->id]) }}">
                             <section class="left">                                  
                                 <div class="course-card__image"><img src="../images/aulas/{{$course->thumb_img}}" class="thumb" /></div>
@@ -36,7 +36,7 @@
                                     <p class="lineclamp-title"><strong>{{ $course->name }}</strong></p>
                                     <p class="lineclamp-desc">{{ $course->desc }}</p>
                                 </div>                          
-                                <div class="course-card__price" id="course-card-price">{{ $course->price }}</div>
+                                <div class="course-card__price" id="course-card-price">R$  {{number_format($course->price, 2, ',', '.') }}</div>
                             </section>
                         </a>
                     </div>

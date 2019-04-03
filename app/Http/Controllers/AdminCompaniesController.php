@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use App\Company;
+use App\User;
 
 
 class AdminCompaniesController extends Controller
@@ -16,8 +17,12 @@ class AdminCompaniesController extends Controller
      */
      public function index()
     {
+        $companies = Company::all();
+        foreach ($companies as $company) {
+            $company->user = User::find($company->user_id);
+        }
         return view('admin.companies.index')
-            ->with('companies', Company::all());
+            ->with('companies', $companies);
             
     }
 
