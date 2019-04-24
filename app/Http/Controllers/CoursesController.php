@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\CustomClasses\vimeo_tools;
+use Illuminate\Support\Facades\Route;
 use App\Course;
-use App\CourseItem;
-use App\CourseItemUser;
-use App\CourseItemOption;
-use App\CourseItemGroup;
-use App\CourseItemStatus;
-use App\Comment;
-use App\CourseUser;
 use App\User;
 use App\Star;
+use App\Comment;
+use App\CourseUser;
+use App\CourseItem;
+use App\CourseItemUser;
+use App\CourseItemGroup;
+use App\CourseItemOption;
+use App\CourseItemStatus;
+use Log;
 use Auth;
 use Session;
-use Log;
 
 class CoursesController extends Controller
 {
@@ -38,6 +39,7 @@ class CoursesController extends Controller
             $comment->user = User::where('id', $comment->user_id)->first();
         }
 
+
         $progress       = 0;
         if($votes==0){
             $point      = 0;
@@ -57,6 +59,8 @@ class CoursesController extends Controller
                 $progress+= $chapters->progressDo;
             }
         }
+       $route = Route::getFacadeRoot()->current()->uri();
+       // return dd($route);
         if($auth && $auth->courses()->find($course->id))
             $hasCourse      = true;
         if ($chapter) {
@@ -69,6 +73,7 @@ class CoursesController extends Controller
             ->with('userItem', $userHasItem)
             ->with('auth', $auth)
             ->with('rating', $rating)
+            ->with('route', $route)
             ->with('progress', $progress)
             ->with('freeClass', $freeClass)
             ->with('hasCourse', $hasCourse);
@@ -80,6 +85,7 @@ class CoursesController extends Controller
         ->with('chapters', $chapter)
         ->with('userItem', $userHasItem)
         ->with('auth', $auth)
+        ->with('route', $route)
         ->with('rating', $rating)
         ->with('progress', $progress)
         ->with('hasCourse', $hasCourse);

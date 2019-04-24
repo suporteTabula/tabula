@@ -44,7 +44,7 @@
 					<label for="page">Selecionar página</label>
 					<select class="form-control" id="page" name="page">
 						@foreach($categories as $category)
-						<option value="{{$category->desc}}" <?php if ($category->desc == $seos->page): echo "selected"; ?>
+						<option value="{{$category->id}}" <?php if ($category->id == $seos->page): echo "selected"; ?>
 						<?php endif ?>>{{$category->desc}}</option>
 						@endforeach
 					</select>
@@ -56,7 +56,7 @@
 					<label for="page">Selecionar página</label>
 					<select class="form-control" id="page" name="page">
 						@foreach($courses as $course)
-						<option value="{{$course->name}}" <?php if ($course->name == $seos->page): echo "selected"; ?>
+						<option value="{{$course->edit}}" <?php if ($course->name == $seos->page): echo "selected"; ?>
 						<?php endif ?>>{{$course->name}}</option>
 						@endforeach
 					</select>

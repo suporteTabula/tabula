@@ -14,7 +14,6 @@
 	<div class="panel-body">
 		<table class="table table-hover" id="userTable">
 			<thead>
-				<th>Código</th>
 				<th>Tipo de SEO</th>
 				<th>Descrição</th>
 				<th>Página</th>
@@ -25,19 +24,21 @@
 				@if ($seos->count() > 0)
 				@foreach ($seos as $seo)
 				<tr>
-					<td style="vertical-align: middle !important;">{{ $seo->id}}</td>
 					<td style="vertical-align: middle !important;">{{ $seo->meta_type}}</td>
 					<td style="vertical-align: middle !important;">{{ $seo->meta_description}}</td>
-					<td style="vertical-align: middle !important;">{{ $seo->page}}</td>
-					
+					@if($seo->page_type == 'category')
+					<td style="vertical-align: middle !important;">{{ $seo->pages->desc}}</td>
+					@elseif($seo->page_type == 'course')
+					<td style="vertical-align: middle !important;">{{ $seo->pages->name}}</td>
+					@else
+					<td style="vertical-align: middle !important;">Home</td>
+					@endif
 					<td>
 						<a href="{{ route('seo.edit', ['id' => $seo->id]) }} ">
-							<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
-							
+							<img style=" width:35px; " src="{{asset('images\edit.svg')}}">		
 						</a>
 					</td>
 					<td>
-						
 						<a href="{{ route('seo.delete', ['id' => $seo->id]) }} ">
 							<img style=" width:35px; " src="{{ asset('images\error.svg') }}">
 						</a>

@@ -3,7 +3,7 @@
 @section('content')
 	<div class="panel panel-default">
 		<div class="panel-heading" style="position: relative; height:80px; ">
-			<form class="form-inline" method="POST" action="{{ route('alunos.store', ['id' => $id]) }}">
+			<form class="form-inline" method="POST" action="{{ route('course.alunos.store', ['id' => $id]) }}">
 			{{ csrf_field() }}
 			<div class="form-group">
 				<label for="email">E-mail Aluno

@@ -86,7 +86,7 @@
 <script>
     $('#subCateg').hide();
     $('#categ' ).change(function() {
-    	var url = "{{route('sub.categ')}}";
+    	var url = "{{route('course.sub.categ')}}";
     	var categId = $('#categ option:selected').val();
     	categAjax(url, categId);
     	

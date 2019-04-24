@@ -15,7 +15,7 @@
         <div class="teacher-wrapper">
 
           <div class="teacher-wrapper-left"> <img src="{{ asset('images/layout/course/avatar.svg') }}" width="25px;">
-            <p>{{ $author->first_name }} {{$author->last_name}}</p>
+            <p>{{ $author->name }}</p>
           </div>
         </div>
       </div>
@@ -95,6 +95,9 @@
             @endauth
           </div>
         </div>
+        <div class="column col-12 col-xs-12 col-sm-12 col-md-12"> 
+          <a class="act-rating btn custom-tabula-button float-right" href="#">Avaliar o Curso</a> 
+        </div>
       </div>
     </div>
   </section>
@@ -108,19 +111,24 @@
           <details class="accordion">
            <summary class="accordion-header"> <i class="icon icon-arrow-right mr-1"></i> Capitulo:&nbsp; {{$chapter->name}}</summary>
            @foreach ($chapter->course_items as $item)
-           @if (is_null($item->course_items_parent))
-           @if($hasCourse)
-           <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.start', ['urn' => $course->urn]) }}" @endauth>{{$item->name}}</a></div>
-           @else
-           @if($freeClass->id == $item->id)
-           <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.start', ['id' => $item->id]) }}" @else href="#" data-id="{{$freeClass->course_item_types_id}}" @if($freeClass->course_item_types_id == 3) data-type="{{$freeClass->desc}}"  @else data-type="{{url($freeClass->path)}}" @endif @endauth>{{$item->name}}</a></div>
-           <div  class="dialog"></div>
-           @else
-           <div id="accbody" class="accordion-body"> <p id="accbody-content">{{$item->name}}</p></div>
+            @if (is_null($item->course_items_parent))
+              @if($hasCourse)
+              <div id="accbody" class="accordion-body"> <a id="accbody-content" @auth href="{{ route('course.start', ['urn' => $course->urn]) }}" @endauth>{{$item->name}}</a></div>
+              @else
+                @if($item->freeItem == 1)
+                <div id="accbody" class="accordion-body"> 
+                  <a id="accbody-content-free" href="#" data-id="{{$item->course_item_types_id}}" @if($item->course_item_types_id == 3) data-type="{{$item->desc}}"  @else data-type="{{url($item->path)}}" @endif>{{$item->name}}</a>
+                </div>
+                <div  class="dialog"></div>
+                
+                @else
+                <div id="accbody" class="accordion-body">
+                  <p id="accbody-content">{{$item->name}}</p>
+                </div>
+              @endif
+            @endif
            @endif
-           @endif
-           @endif
-           @endforeach
+          @endforeach
          </details>
          @endforeach                                       
        </div>
@@ -135,11 +143,11 @@
     </div>
   </div>
 </section>
+@if(isset($courses))
 <section class="will-learn">
     <div class="container grid-lg">
       <div class="columns">
         <div class="column col-12 col-xs-12 col-sm-12">
-        @if($courses)
           <h5>Cursos Relacionados</h5>
           <div class="highlighted-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "groupCells": true, "pageDots": false }'>
               @foreach($courses as $crs)

@@ -15,6 +15,10 @@
 				<input class="form-control" type="text" value="{{ $course->name }}" placeholder="Nome do curso" name="name">
 			</div>
 			<div class="form-group">
+				<label for="urn">Nome</label>
+				<input class="form-control" type="text" value="{{ $course->urn }}" placeholder="URN" name="urn">
+			</div>
+			<div class="form-group">
 				<label for="desc">Descrição</label>
 				<input class="form-control" type="text" value="{{ $course->desc }}" placeholder="Descrição do curso" name="desc">
 			</div>
@@ -198,7 +202,7 @@
 	@section('scripts')	
 	<script>
 		var id = '{{$course->category_id}}';
-    	var url = "{{route('sub.categ')}}";
+    	var url = "{{route('course.sub.categ')}}";
 		categAjax(url, id);
 		console.log(id);
 	    $('#categ' ).change(function() {

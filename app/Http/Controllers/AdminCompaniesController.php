@@ -79,6 +79,7 @@ class AdminCompaniesController extends Controller
      */
     public function edit($id)
     {
+        
         $company = Company::find($id);
 
         return view('admin.companies.edit')

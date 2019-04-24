@@ -5,28 +5,31 @@
 	@include('admin.includes.errors')
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			Criar novo grupo
+			Criar nova categoria do Blog
 		</div>
 		<div class="panel-body">
-			<form action="{{ route('userGroups.store') }}" method="post" enctype="multipart/form-data">
+			<form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
 				{{ csrf_field() }}
 				<div class="form-group">
-					<label for="desc">Nome</label>
-					<input class="form-control" type="text" name="desc" placeholder="Nome do grupo" value="{{ old('desc') }}">
+					<label for="name">Nome</label>
+					<input class="form-control" type="text" name="name" placeholder="Nome da Categoria" value="{{ old('name') }}">
 				</div>
 				<div class="form-group">
-					<label for="company_id">Empresas</label>
-					<select id="company" name="company_id" class="form-control">
-						<option value="" selected disabled hidden>Escolha uma...</option>
-						@foreach ($companies as $company)
-							<option value="{{ $company->id }}"> {{ $company->name }} </option>
-						@endforeach
-					</select>
+					<label for="meta_title">Meta Title</label>
+					<input class="form-control" type="text" name="meta_title" placeholder="Definir Meta Title" value="{{ old('meta_title') }}">
+				</div>
+				<div class="form-group">
+					<label for="meta_description">Meta Description</label>
+					<input class="form-control" type="text" name="meta_description" placeholder="Definir Description" value="{{ old('meta_description') }}">
+				</div>
+				<div class="form-group">
+					<label for="keyword">KeyWord</label>
+					<input class="form-control" type="text" name="keyword" placeholder="Definir KeyWord" value="{{ old('keyword') }}">
 				</div>
 				<div class="form-group">
 					<div class="text-center">
 						<button class="btn btn-success" type="submit">Criar</button>
-						<a class="btn btn-success" href="{{ route('userGroups') }}">Voltar</a>
+						<a class="btn btn-success" href="{{ route('blog') }}">Voltar</a>
 					</div>
 				</div>
 			</form>

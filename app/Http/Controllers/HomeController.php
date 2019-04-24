@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Course;
 use App\Category;
 use App\Usertype;
@@ -28,10 +29,10 @@ class HomeController extends Controller
       $interests  = unserialize($auth->interest); 
       $courses    = Course::wherein('category_id', $interests)->inRandomOrder()->take(8)->get();
    }
+   $route = Route::getFacadeRoot()->current()->uri();
 
    $featured_courses1 = $featured_category1->courses()->where('featured', 1)->inRandomOrder()->take(8)->get();
    $featured_courses2 = $featured_category2->courses()->where('featured', 1)->inRandomOrder()->take(8)->get();
-
    $featured_posts = Course::inRandomOrder()->take(8)->get();       
    return view('home')
    ->with('categories', Category::whereNull('category_id_parent')->whereNotNull('desktop_index')->orderBy('desktop_index', 'ASC')->get())
@@ -43,6 +44,7 @@ class HomeController extends Controller
    ->with('mobile_category_count', 0)
    ->with('auth', $auth)
    ->with('courses', $courses)
+   ->with('route', $route)
    ->with('userType', $userType)
    ->with('featured_category1', $featured_category1->desc)
    ->with('featured_category2', $featured_category2->desc)

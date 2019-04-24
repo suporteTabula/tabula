@@ -144,6 +144,7 @@
 				<th>Descrição</th>
 				<th>Tipo</th>
 				<th>Editar</th>
+				<th>Aula Grátis</th>
 				<th>Deletar</th>
 			</thead>
 			<tbody>
@@ -165,6 +166,21 @@
 							<img style=" width:35px; " src="{{asset('images\edit.svg')}}">
 						</a>
 					</td>
+					@if($item->freeItem == 1)
+					<td>
+						<a href="{{route('course.item.noFree', ['id' => $item->id])}}">
+							
+							<img style="width: 40px;" src="{{asset('images\toggle-on.png')}}">
+						</a>
+					</td>
+					@else
+					<td>
+						<a href="{{route('course.item.free', ['id' => $item->id])}}">
+							
+							<img style="width: 40px;" src="{{asset('images\toggle-off.png')}}">
+						</a>
+					</td>
+					@endif
 					<td>
 						<a class="remove-record" data-toggle="modal" data-id={{$item->id}} data-target="#custom-width-modal" data-url="{{ route('course.item.delete', ['id' => $item->id]) }} ">
 							<img style=" width:35px; " src="{{ asset('images\error.svg') }}">

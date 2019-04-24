@@ -18,7 +18,7 @@
 					<select class="form-control" id="metaType" name="metaType">
 						<option value="description">Description</option>
 						<option value="title">Title</option>
-						<option value="eyword">Keyword</option>
+						<option value="keyword">Keyword</option>
 					</select>
 				</div>
 			</div>
@@ -39,7 +39,7 @@
 					<select class="form-control" id="page" name="page">
 						
 						@foreach($categories as $category)
-						<option value="{{$category->desc}}">{{$category->desc}}</option>
+						<option value="{{$category->id}}">{{$category->desc}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -49,7 +49,7 @@
 					<label for="page">Selecionar página</label>
 					<select class="form-control" id="page" name="page">
 						@foreach($courses as $course)
-						<option value="{{$course->name}}">{{$course->name}}</option>
+						<option value="{{$course->id}}">{{$course->name}}</option>
 						@endforeach
 					</select>
 				</div>

@@ -334,7 +334,7 @@ class AdminCoursesController extends Controller
         $course->subcategory_id     = $request->subcategory_id;
         $course->requirements       = $request->requirements;
         $course->featured           = $request->featured;    
-
+        $course->urn                = $request->urn;
         //valida a foto de capa
         if($request->thumb_img != '')
         {
@@ -1076,6 +1076,18 @@ class AdminCoursesController extends Controller
         }
         $user->courses()->save($course, ['progress' => 0]);
         Session::flash('success', 'Aluno vinculado ao curso '. $course->name);
+        return redirect()->back();
+    }
+
+    public function itemFree($id)
+    {
+        $item = CourseItem::find($id);
+        if ($item->freeItem == 1) {
+            $item->freeItem = NULL;
+        }else{
+            $item->freeItem = 1;
+        }
+        $item->save();
         return redirect()->back();
     }
 }

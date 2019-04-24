@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use App\Category;
 use App\Course;
 use Auth;
@@ -19,11 +20,12 @@ class CategoriesController extends Controller
         $all_categories = array_merge($all_categories, $parent_categories);
 
         $courses = Course::whereIn('category_id', $all_categories)->get();
-
+        $route = Route::getFacadeRoot()->current()->uri();
         return view('category')
             ->with('category_desc', $category->desc)
             ->with('auth', Auth::user())
             ->with('category_count', 0)
+            ->with('route', $route)
             ->with('categories', Category::orderBy('desc', 'ASC')->get())
             // busca todas os cursos da categoria selecionada
             ->with('courses', $courses)

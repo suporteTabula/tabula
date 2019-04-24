@@ -9,7 +9,7 @@ class BlogPost extends Model
     protected $table = 'blog_posts';    
 
     protected $fillable = [
-		'user_id', 'category_id', 'keywords', 'meta_title', 'meta_description', 'title', 'content', 'thumbnail'
+		'name', 'user_id', 'category_id', 'keywords', 'meta_title', 'meta_description',  'content', 'thumbnail'
 	];
 
 	public function comments()
@@ -19,7 +19,7 @@ class BlogPost extends Model
 
 	public function category()
 	{
-		return $this->hasOne('App\BlogCategory', 'id');
+		return $this->belongsTo('App\BlogCategory');
 	}
 
 	public function user()

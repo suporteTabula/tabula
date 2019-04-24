@@ -6,9 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
+    <?php
+    $seos = DB::table('seos')->get();
+    ?>
+    @forelse($seos as $seo)
+        @isset($route)
+            @if($seo->meta_type == 'description')
+                @if($route == '/' && $seo->page == 'Home')
+                   <meta name="{{$seo->meta_type}}" content="{{$seo->meta_description}}"> 
+                @elseif(isset($course))
+                    @if($route == 'course/{urn}' && $course->id == $seo->page && $seo->page_type == 'course')
+                    <meta name="{{$seo->meta_type}}" content="{{$seo->meta_description}}"> 
+                    @endif
+                @elseif(isset($checked_category))
+                    @if($route == 'categoria/{urn}' && $seo->page_type == 'category' && $checked_category->id == $seo->page)
+                    <meta name="{{$seo->meta_type}}" content="{{$seo->meta_description}}"> 
+                    @endif
+                @endif
+            @elseif($seo->meta_type == 'keyword')
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+                @if($route == '/' && $seo->page == 'Home')
+                   <meta name="{{$seo->meta_type}}" content="{{$seo->meta_description}}">
+                @elseif(isset($course))
+                    @if($route == 'course/{urn}' && $course->id == $seo->page && $seo->page_type == 'course')
+                    <meta name="{{$seo->meta_type}}" content="{{$seo->meta_description}}"> 
+                    @endif
+                @elseif(isset($checked_category))
+
+                    @if($route == 'categoria/{urn}' && $seo->page_type == 'category' && $checked_category->id == $seo->page)
+                    <meta name="{{$seo->meta_type}}" content="{{$seo->meta_description}}"> 
+                    @endif
+                @endif
+            @elseif($seo->meta_type == 'title')
+                @if($route == '/' && $seo->page == 'Home')
+                    <title> {{$seo->meta_description}}</title>
+                @elseif(isset($course))
+                    @if($route == 'course/{urn}' && $course->id == $seo->page && $seo->page_type == 'course')
+                    <title> {{$seo->meta_description}}</title>
+                    @endif
+                @elseif(isset($checked_category))   
+                    @if($route == 'categoria/{urn}' && $seo->page_type == 'category' && $checked_category->id == $seo->page)
+                    <title> {{$seo->meta_description}}</title>
+                    @endif
+                @endif
+            @endif
+        @endisset
+    @empty
+    @endforelse
     <title>Tabula</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -124,6 +170,7 @@ rel = "stylesheet">
         </section>
 
         @yield('content')
+        @include('modal.modals')
 
     </div>
     

@@ -166,37 +166,42 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 	Route::post('/category/update/{id}', 'AdminCategoriesController@update')->name('category.update');
 	Route::get('/category/delete/{id}', 'AdminCategoriesController@destroy')->name('category.delete');
 	Route::get('/category/filter', 'AdminCategoriesController@filter')->name('category.filter');
+	//Empresa
+		Route::get('/companies', 'AdminCompaniesController@index')->name('companies');
+	Route::group(['prefix' => 'companies', 'as' => 'companies.'], function (){
+		Route::get('/create', 'AdminCompaniesController@create')->name('create');
+		Route::post('/store', 'AdminCompaniesController@store')->name('store');
+		Route::get('/edit/{id}', 'AdminCompaniesController@edit')->name('edit');
+		Route::post('/update/{id}', 'AdminCompaniesController@update')->name('update');
+		Route::get('/destroy/{id}', 'AdminCompaniesController@destroy')->name('destroy');
+	});
+	//Cursos
+	Route::group(['prefix' => 'course', 'as' => 'course.'], function (){
+		Route::get('/', 'AdminCoursesController@index')->name('course');
+		Route::get('/create', 'AdminCoursesController@create')->name('create');
+		Route::post('/store', 'AdminCoursesController@store')->name('store');
+		Route::post('/alunos/store/{id}', 'AdminCoursesController@storeAluno')->name('alunos.store');
+		Route::get('/subcateg', 'AdminCoursesController@subCateg')->name('sub.categ');
+		Route::get('/chapter/edit/{id}', 'AdminCoursesController@chapter_edit')->name('chapter.edit');
+		Route::post('/chapter/update/{id}', 'AdminCoursesController@chapter_update')->name('chapter.update');
+		Route::get('/chapter/delete/{id}', 'AdminCoursesController@chapter_delete')->name('chapter.delete');
+		Route::get('/edit/{id}', 'AdminCoursesController@edit')->name('edit');
+		Route::post('/update/{id}', 'AdminCoursesController@update')->name('update');
+		Route::get('/destroy/{id}', 'AdminCoursesController@destroy')->name('destroy');
+		Route::post('/chapter/{id}', 'AdminCoursesController@chapter')->name('chapter');
+		Route::get('/free/{id}', 'AdminCoursesController@itemFree')->name('item.free');
+		Route::get('/nofree/{id}', 'AdminCoursesController@itemFree')->name('item.noFree');
 
-	Route::get('/companies', 'AdminCompaniesController@index')->name('companies');
-	Route::get('/companies/create', 'AdminCompaniesController@create')->name('companies.create');
-	Route::post('/companies/store', 'AdminCompaniesController@store')->name('companies.store');
-	Route::get('/companies/edit/{id}', 'AdminCompaniesController@edit')->name('companies.edit');
-	Route::post('/companies/update/{id}', 'AdminCompaniesController@update')->name('companies.update');
-	Route::get('/companies/destroy/{id}', 'AdminCompaniesController@destroy')->name('companies.destroy');
-
-	Route::get('/courses', 'AdminCoursesController@index')->name('courses');
-	Route::get('/courses/create', 'AdminCoursesController@create')->name('course.create');
-	Route::post('/courses/store', 'AdminCoursesController@store')->name('course.store');
-	Route::get('/courses/edit/{id}', 'AdminCoursesController@edit')->name('course.edit');
-	Route::post('/courses/update/{id}', 'AdminCoursesController@update')->name('course.update');
-	Route::get('/courses/destroy/{id}', 'AdminCoursesController@destroy')->name('course.destroy');
-	Route::post('/courses/alunos/store/{id}', 'AdminCoursesController@storeAluno')->name('alunos.store');
-	Route::get('/courses/subcateg', 'AdminCoursesController@subCateg')->name('sub.categ');
-
-	Route::post('/course/chapter/{id}', 'AdminCoursesController@chapter')->name('course.chapter');
-	Route::get('/course/chapter/edit/{id}', 'AdminCoursesController@chapter_edit')->name('course.chapter.edit');
-	Route::post('/course/chapter/update/{id}', 'AdminCoursesController@chapter_update')->name('course.chapter.update');
-	Route::get('/course/chapter/delete/{id}', 'AdminCoursesController@chapter_delete')->name('course.chapter.delete');
-
-	Route::post('/course/item/{id}', 'AdminCoursesController@item')->name('course.item');
-	Route::post('/course/item/child/{id}', 'AdminCoursesController@item_child')->name('course.item.child');
-	Route::get('/course/chapter/item/edit/{id}', 'AdminCoursesController@item_edit')->name('course.item.edit');
-	Route::post('/course/chapter/item/update/{id}', 'AdminCoursesController@item_update')->name('course.item.update');
-	Route::get('/course/chapter/item/delete/{id}', 'AdminCoursesController@item_delete')->name('course.item.delete');
-	Route::get('/courses/analise/', 'AdminCoursesController@analise')->name('course.analise');
-	Route::get('/courses/analise/{id}', 'AdminCoursesController@view')->name('course.analise.view');
-	Route::get('/courses/aprove/{id}/', 'AdminCoursesController@aprove')->name('course.aprove');
-	Route::get('/courses/remove/{id}/', 'AdminCoursesController@remove')->name('course.remove');
+		Route::post('/item/{id}', 'AdminCoursesController@item')->name('item');
+		Route::post('/item/child/{id}', 'AdminCoursesController@item_child')->name('item.child');
+		Route::get('/chapter/item/edit/{id}', 'AdminCoursesController@item_edit')->name('item.edit');
+		Route::post('/chapter/item/update/{id}', 'AdminCoursesController@item_update')->name('item.update');
+		Route::get('/chapter/item/delete/{id}', 'AdminCoursesController@item_delete')->name('item.delete');
+		Route::get('/analise/', 'AdminCoursesController@analise')->name('analise');
+		Route::get('/analise/{id}', 'AdminCoursesController@view')->name('analise.view');
+		Route::get('/aprove/{id}/', 'AdminCoursesController@aprove')->name('aprove');
+		Route::get('/remove/{id}/', 'AdminCoursesController@remove')->name('remove');
+	});
 
 	Route::get('/pages/', 'AdminPageController@index')->name('pages');
 	Route::get('/pages/create', 'AdminPageController@create')->name('pages.create');
@@ -237,7 +242,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], ['auth', '
 	Route::get('/courses', 'AdminCoursesController@index')->name('courses');
 	Route::get('/alunos', 'AdminUsersController@index')->name('alunos');
 	Route::get('/alunos','AdminUsersController@index' )->name('professor');
-
-	Route::get('/posts','AdminBlogController@index' )->name('posts');
-	Route::get('/post/create', 'AdminBlogController@createPost')->name('post.create');
+	Route::get('/blog','AdminBlogController@indexCategBlog' )->name('blog');
+	Route::group(['prefix' => 'blog', 'as' => 'blog.'], function (){
+		Route::get('/create', 'AdminBlogController@createCategBlog')->name('create');
+		Route::post('/store', 'AdminBlogController@storeCategBlog')->name('store');
+		Route::get('/edit/{id}', 'AdminBlogController@editCategBlog')->name('edit');
+		Route::post('/update', 'AdminBlogController@updateCategBlog')->name('update');
+		Route::get('/delete/{id}', 'AdminBlogController@deleteCategBlog')->name('delete');
+		Route::group(['prefix' => 'post', 'as' => 'post.'], function(){
+			Route::get('/post','AdminBlogController@indexPostBlog' )->name('index');
+			Route::get('/create', 'AdminBlogController@createPostBlog')->name('create');
+			Route::post('/store', 'AdminBlogController@storePostBlog')->name('store');
+			Route::get('/edit/{id}', 'AdminBlogController@editPostBlog')->name('edit');
+			Route::post('/update', 'AdminBlogController@updatePostBlog')->name('update');
+			Route::get('/delete/{id}', 'AdminBlogController@deletePostBlog')->name('delete');
+		});
+	});
 });

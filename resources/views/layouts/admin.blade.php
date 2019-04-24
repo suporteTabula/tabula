@@ -122,13 +122,13 @@
                         <a href="{{ route('seo') }}">Configuração SEO</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="{{ route('posts') }}">Posts do blog</a>
+                        <a href="{{ route('blog.post.index') }}">Posts do blog</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="{{ route('posts') }}">Categorias do blog</a>
+                        <a href="{{ route('blog') }}">Categorias do blog</a>
                     </li>
                     <li class="list-group-item">
-                        <a href="{{ route('posts') }}">Comentários do blog</a>
+                        <a href="{{ route('blog') }}">Comentários do blog</a>
                     </li>
                     <li class="list-group-item">
                         <a href="{{ route('pages') }}">Páginas Footer</a>

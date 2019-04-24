@@ -47,7 +47,7 @@ class AdminSeoController extends Controller
  		
     	//Confugura o Tipo da Página
  		if ($request->pageType == 'course') {
- 			$course = Course::where('name', $request->page)->first();
+ 			$course = Course::where('id', $request->page)->first();
  		}else if($request->pageType == 'category'){
  			$categories = Category::where('desc', $request->page)->first();
  		}else{

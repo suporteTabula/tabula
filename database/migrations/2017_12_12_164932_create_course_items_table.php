@@ -22,6 +22,7 @@ class CreateCourseItemsTable extends Migration
             $table->string('path')->nullable();
             $table->integer('course_items_parent')->nullable();
             $table->longtext('order');
+            $table->integer('freeItem')->nullable();
             $table->timestamps();
         });
     }

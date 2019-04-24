@@ -185,71 +185,48 @@ $(document).ready(function(){
 
 //Controle de classificação estrela
 $(document).ready(function(){
-    var average = $('.ratingAverage').text();
+    // var average = $('.ratingAverage').text();
     function avaliacao(average){
         average = (Number(average)*20);
-        $('.bg').css('width', 0);       
-        $('.rating-stars .bg').animate({width:average+'%'}, 500);
+        $('.bgModal').css('width', 0);       
+        $('.rating-starsModal .bgModal').animate({width:average+'%'}, 500);
     }
     
-    avaliacao(average);
+    // avaliacao(average);
 
-    $('.star').on('mouseover', function(){
-        var indexAtual = $('.star').index(this);
+    $('.starModal').on('mouseover', function(){
+        var indexAtual = $('.starModal').index(this);
         for(var i=0; i<= indexAtual; i++){
-            $('.star:eq('+i+')').addClass('full');
+            $('.starModal:eq('+i+')').addClass('full');
         }
     });
-    $('.star').on('mouseout', function(){
-        $('.star').removeClass('full');
+    $('.starModal').on('mouseout', function(){
+        $('.starModal').removeClass('full');
     });
 
-    $('.star').on('click', function(){
-
-        var idCourse = $('.courseDados').attr('data-id');
-        if (idCourse == 0) {
-            alert("É Necessário comprar o curso para realizar a avaliação")
-        }else{
+    $('.act-rating').on('click', function(e){
+        e.preventDefault();
+        $('#ratingComment').addClass('active');
+        $('.starModal').on('click', function(){
             var voto = $(this).attr('id');
-            var url = $('.urlRating').attr('data-url');
-            ratingAjax(idCourse, voto, url);
-        }
+            $('input[name="voto"]').val(voto);
+            avaliacao(voto);
+        });
+    });
+    $('.close').on('click', function(){
+        //var close = $(this).attr('href');
+        //alert(close);
+        $('#ratingComment').removeClass('active');
     });
 
-    
-    function ratingAjax(idCourse, voto, url){
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data:{
-                idCourse: idCourse,
-                voto: voto
-            },
-            beforeSend: function(){
-            },
-            success: function(data){
-                var result = $.parseJSON(data);
-                if(result.hasCourse){
-                    if (result.hasVote) {
-                        alert("nota atribuida com sucesso");
-                    }else{
-                        alert("você já votou neste curso");
-                    }
-                }else{
-                    alert("Compre o curso para que possa realizar uma avaliação");
-                }
-                
-            }
-        });
-    }
 }); 
 $(document).ready(function(){
-    var item = $('#accbody-content'),
+    var item = $('#accbody-content-free');
     dialog = $('.dialog');
 
     dialog.dialog({
         autoOpen: false,
-        modal: true
+        modal: true,
     });
 
     item.on('click', function() {
@@ -258,9 +235,9 @@ $(document).ready(function(){
         if (id == 3) {
             dialog.html(type);
         }else if(id == 2){
-            dialog.html('<img src="'+type + '">');
+            dialog.html('<img src="'+ type + '">');
         }else{
-            dialog.html('<video controls width="500px"><source src="' + type + '"></video>');
+            dialog.html('<video controls width="700px"><source src="' + type + '"></video>');
         }
         dialog.dialog('open');
     });
