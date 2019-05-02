@@ -95,8 +95,9 @@ class UsersController extends Controller
         {
             $attach_img_avatar = $request->avatar;
            // $attach_img_avatar_name = time().$attach_img_avatar>getClientOriginalName();
-            $attach_img_avatar_name = $user->nickname;
+            $attach_img_avatar_name = $user->name;
             $attach_img_avatar_name =  $attach_img_avatar_name.".".pathinfo($attach_img_avatar->getClientOriginalName(),PATHINFO_EXTENSION);
+            return dd($attach_img_avatar_name);
             $attach_img_avatar->move('images/Profilepic', $attach_img_avatar_name); 
 
             $user->avatar = $attach_img_avatar_name;  
